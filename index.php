@@ -167,6 +167,15 @@ include 'app/auth/out.php'; ?>
     <script src="bootstrap/assets/js/dashboard.js"></script>
     <!-- Подключение jQuery -->
 
+    <script>
+        $.ajax({
+            url: "app/classes/UsersList.php",
+        }).done((data) => {
+            let users = JSON.parse(data);
+            console.log(users);
+        })
+    </script>
 </body>
+
 
 </html>

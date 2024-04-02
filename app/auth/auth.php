@@ -49,8 +49,6 @@ function login($connectionDB)
             }
         }
 
-    }else{
-        echo "сессии нет";
     }
 
     return true;

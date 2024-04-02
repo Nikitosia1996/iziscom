@@ -58,9 +58,12 @@ class UsersList
 
     public function getListUsers()
     {
+        $usersData = [];
         foreach ($this->usersList as $user) {
-            echo $user->toJson();
+            $usersData[] = json_decode($user->toJson(), true);
         }
+
+        echo json_encode($usersData);
     }
 }
 

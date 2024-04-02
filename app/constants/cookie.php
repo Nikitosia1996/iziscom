@@ -2,14 +2,15 @@
 
 function getLoginCookie()
 {
-    return $_COOKIE['login'];
+    if (isset($_COOKIE['login']))
+        return $_COOKIE['login'];
 }
 
 function getPHPSESSIDCookie()
 {
-    if(isset($_SESSION['PHPSESSID']))
+    if (isset($_SESSION['PHPSESSID']))
         return $_SESSION['PHPSESSID'];
-    else{
+    else {
         return $_COOKIE['PHPSESSID'];
     }
 }
@@ -17,7 +18,8 @@ function getPHPSESSIDCookie()
 
 function getTokenCookie()
 {
-    return $_COOKIE['token'];
+    if (isset($_COOKIE['token']))
+        return $_COOKIE['token'];
 }
 
 function getPageServer()
