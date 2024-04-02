@@ -1,39 +1,35 @@
 <?php
 
-function getLoginCookie()
-{
-    if (isset($_COOKIE['login']))
-        return $_COOKIE['login'];
-}
+class CookieSessionHandler {
+    public static function getCookie($cookieName) {
+        if (isset($_COOKIE[$cookieName])) {
+            return $_COOKIE[$cookieName];
+        }
+    }
 
-function getPHPSESSIDCookie()
-{
-    if (isset($_SESSION['PHPSESSID']))
-        return $_SESSION['PHPSESSID'];
-    else {
-        return $_COOKIE['PHPSESSID'];
+    public static function getSession($sessionName) {
+        if (isset($_SESSION[$sessionName])) {
+            return $_SESSION[$sessionName];
+        } else {
+            return self::getCookie($sessionName);
+        }
     }
 }
 
-
-function getTokenCookie()
-{
-    if (isset($_COOKIE['token']))
-        return $_COOKIE['token'];
+class ServerHandler {
+    public static function getPage() {
+        return $_SERVER['REQUEST_URI'];
+    }
 }
 
-function getPageServer()
-{
-    return $_SERVER['REQUEST_URI'];
+class DateTimeHandler {
+    public static function getCurrentDateTime() {
+        return date('Y-m-d H:i:s');
+    }
 }
 
-function getDatetime()
-{
-    return date('Y-m-d H:i:s');
-}
-
-$LOGIN = getLoginCookie();
-$PHPSESSID = getPHPSESSIDCookie();
-$TOKEN = getTokenCookie();
-$PAGE = getPageServer();
-$DATETIME = getDatetime();
+$LOGIN = CookieSessionHandler::getCookie('login');
+$PHPSESSID = CookieSessionHandler::getSession('PHPSESSID');
+$TOKEN = CookieSessionHandler::getCookie('token');
+$PAGE = ServerHandler::getPage();
+$DATETIME = DateTimeHandler::getCurrentDateTime();

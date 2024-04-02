@@ -1,17 +1,20 @@
-<?php require_once 'connection/connection.php';
+<?php include 'connection/connection.php';
 include 'app/classes/UsersList.php';
 include "app/constants/cookie.php";
 include 'app/auth/auth.php';
 include 'app/auth/out.php';
 
 
-if(isset($TOKEN)){
-    $login = $usersList->getUser($TOKEN)->getLogin();
-}else{
+if (isset($TOKEN)) {
+    if ($usersList->getUser($TOKEN))
+        $login = $usersList->getUser($TOKEN)->getLogin();
+    else {
+        $login = "";
+    }
+} else {
     $login = "";
 }
 ?>
-
 
 
 <!doctype html>
@@ -117,7 +120,7 @@ if(isset($TOKEN)){
                                data-bs-toggle="dropdown"
                                aria-expanded="false">
                                 <span style="margin-right: 1rem"><?= $login !== "" ? $login : 'Гость' ?></span>
-                                <?=  $login === "admin" ? '<img src="bootstrap/assets/images/profile/romaIcon.jpg" alt="" width="35" height="35" class="rounded-circle">' :
+                                <?= $login === "admin" ? '<img src="bootstrap/assets/images/profile/romaIcon.jpg" alt="" width="35" height="35" class="rounded-circle">' :
                                     '<img src="../bootstrap/assets/images/profile/user-1.jpg" alt="" width="35" height="35" class="rounded-circle">' ?>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up"
@@ -131,7 +134,7 @@ if(isset($TOKEN)){
                                     <!--                      <i class="ti ti-list-check fs-6"></i>-->
                                     <!--                      <p class="mb-0 fs-3">My Task</p>-->
                                     <!--                    </a>-->
-                                    <?= isset($LOGIN) ? '<a href="index.php?logout" class="btn btn-outline-primary mx-3 mt-2 d-block">Выход</a>'
+                                    <?= $login != "" ? '<a href="index.php?logout" class="btn btn-outline-primary mx-3 mt-2 d-block">Выход</a>'
                                         : '<a href="/app/pages/login.php" class="btn btn-outline-primary mx-3 mt-2 d-block">Вход</a>' ?>
                                 </div>
                             </div>

@@ -2,8 +2,8 @@
 
 function out($connectionDB)
 {
+    $TOKEN = CookieSessionHandler::getCookie('token');
     if (isset($_GET['logout'])) {
-        $TOKEN = getTokenCookie();
 
         $connectionDB->executeQuery("UPDATE users SET online=0 WHERE token='$TOKEN'"); //обнуляется поле online, говорящее, что пользователь вышел с сайта (пригодится в будущем)
         unset($_SESSION['PHPSESSID']); //удалятся переменная сессии
