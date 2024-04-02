@@ -13,7 +13,7 @@
         <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
             <ul id="sidebarnav">
                 <li class="sidebar-item" id="main-page">
-                    <a class="sidebar-link" href="index.php" aria-expanded="false">
+                    <a class="sidebar-link" data-page="main" aria-expanded="false">
                 <span>
                   <i class="ti ti-layout-dashboard"></i>
                 </span>
@@ -22,7 +22,7 @@
                 </li>
 
                 <li class="sidebar-item" id="oborud-page">
-                    <a class="sidebar-link" href="index.php?oborud" aria-expanded="false">
+                    <a class="sidebar-link" href="index.php?oborud" data-page="oborud" aria-expanded="false">
                 <span>
                   <i class="ti ti-article"></i>
                 </span>

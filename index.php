@@ -39,13 +39,35 @@ if (isset($TOKEN)) {
     <div class="body-wrapper">
 
         <?php include "app/elements/header.php"; ?>
-        <?php include "app/renderPage.php";?>
-
+        <?php include "app/pages/main.php"; ?>
     </div>
 
     <?php include "app/elements/scripts.php";?>
 
 </body>
 
+<script>
+    $('a').on('click', function(e) {
+        e.preventDefault();
+        let url;
+        var page = $(this).attr('data-page');
+        switch (page) {
+            case 'main':
+                url = "app/pages/main.php";
+                break;
+            case 'oborud':
+                url = "app/pages/oborudovanie.php";
+                break;
+            default:
+                url = "app/pages/main.php";
+                break;
+        }
+        $.ajax({
+            url: url,
+        }).done(response => {
+            $('.app-header').nextAll().remove().end().after(response);
+        });
+    });
+</script>
 
 </html>
