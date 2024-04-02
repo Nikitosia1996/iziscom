@@ -1,7 +1,17 @@
 <?php require_once 'connection/connection.php';
+include 'app/classes/UsersList.php';
 include "app/constants/cookie.php";
 include 'app/auth/auth.php';
-include 'app/auth/out.php'; ?>
+include 'app/auth/out.php';
+
+
+if(isset($TOKEN)){
+    $login = $usersList->getUser($TOKEN)->getLogin();
+}else{
+    $login = "";
+}
+?>
+
 
 
 <!doctype html>
@@ -106,8 +116,8 @@ include 'app/auth/out.php'; ?>
                             <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2"
                                data-bs-toggle="dropdown"
                                aria-expanded="false">
-                                <span style="margin-right: 1rem"><?= isset($LOGIN) ? $LOGIN : 'Гость' ?></span>
-                                <?= isset($LOGIN) && $LOGIN === "admin" ? '<img src="bootstrap/assets/images/profile/romaIcon.jpg" alt="" width="35" height="35" class="rounded-circle">' :
+                                <span style="margin-right: 1rem"><?= $login !== "" ? $login : 'Гость' ?></span>
+                                <?=  $login === "admin" ? '<img src="bootstrap/assets/images/profile/romaIcon.jpg" alt="" width="35" height="35" class="rounded-circle">' :
                                     '<img src="../bootstrap/assets/images/profile/user-1.jpg" alt="" width="35" height="35" class="rounded-circle">' ?>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up"
@@ -168,12 +178,12 @@ include 'app/auth/out.php'; ?>
     <!-- Подключение jQuery -->
 
     <script>
-        $.ajax({
-            url: "app/classes/UsersList.php",
-        }).done((data) => {
-            let users = JSON.parse(data);
-            console.log(users);
-        })
+        // $.ajax({
+        //     url: "app/classes/UsersList.php",
+        // }).done((data) => {
+        //     let users = JSON.parse(data);
+        //     console.log(users);
+        // })
     </script>
 </body>
 

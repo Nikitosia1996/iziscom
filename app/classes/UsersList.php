@@ -1,5 +1,5 @@
 <?php
-include '../../connection/connection.php';
+//include '../../connection/connection.php';
 include 'User.php';
 
 class UsersList
@@ -36,10 +36,10 @@ class UsersList
         array_push($this->usersList, $user);
     }
 
-    public function getUser($id)
+    public function getUser($token)
     {
         foreach ($this->usersList as $user) {
-            if ($user->getId() == $id) {
+            if ($user->getToken() == $token) {
                 return $user;
             }
         }
@@ -67,6 +67,5 @@ class UsersList
     }
 }
 
-$userList = new UsersList();
-$userList->setListFromDB($connectionDB->con);
-$userList->getListUsers();
+$usersList = new UsersList();
+$usersList->setListFromDB($connectionDB->con);

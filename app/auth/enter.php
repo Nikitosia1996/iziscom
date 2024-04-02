@@ -14,11 +14,11 @@ if (isset($_POST["login"]) && isset($_POST["password"])) {
         $row = $connectionDB->getRowResult($result);
         $id_user = $row['id_user'];
         $email = $row['email'];
+        $password = $row['password'];
         $login = $row['login'];
         $username = $row['username'];
         $token = md5($hashPassword . $login);
         $connectionDB->executeQuery("update users set token = '$token' where id_user = '$id_user'");
-//        $user = new User();
         setcookie("login", $login, time() + (86400 * 30), "/");
         setcookie("token", md5($hashPassword . $login), time() + (86400 * 30), "/");
         echo true;

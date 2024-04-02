@@ -16,7 +16,7 @@ function lastAct($connectionDB, $sesId, $token)
     $connectionDB->executeQuery($query);
 }
 
-function login($connectionDB)
+function login($usersList,$connectionDB)
 {
     ini_set("session.use_trans_sid", true);
     session_start();
@@ -24,13 +24,9 @@ function login($connectionDB)
     $LOGIN = getLoginCookie();
     if (isset($TOKEN)) //если сесcия есть
     {
-        $query = "SELECT * FROM users WHERE token='$TOKEN'";
-        $rez = $connectionDB->executeQuery($query);
-        if ($connectionDB->getNumRows($rez) == 1) //если получена одна строка
-        {
-            $row = $connectionDB->getRowResult($rez); //она записывается в ассоциативный массив
+        $user = $usersList->getUser($TOKEN);
 
-            if (md5($row['password'] . $row['login']) === $TOKEN) {
+            if ($user != null) {
 
                 $sesId = getPHPSESSIDCookie();
                 setcookie("login", $LOGIN, time() + (86400 * 30), "/");
@@ -47,7 +43,7 @@ function login($connectionDB)
                 SetCookie("token", "");
                 return false;
             }
-        }
+
 
     }
 
@@ -55,7 +51,7 @@ function login($connectionDB)
 }
 
 
-login($connectionDB);
+login($usersList, $connectionDB);
 
 
 ?>
