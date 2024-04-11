@@ -1,5 +1,6 @@
 <?php
 //include '../../connection/connection.php';
+require_once 'connection/connection.php';
 include 'User.php';
 
 class UsersList
@@ -46,6 +47,22 @@ class UsersList
         return null;
     }
 
+    public function getUserById($id)
+    {
+        foreach ($this->usersList as $user) {
+            if ($user->getId() == $id) {
+                return $user;
+            }
+        }
+        return null;
+    }
+
+    public function updateUserInDB($con,$id,$login)
+    {
+        $sql = "update users set login='$login' where id_user = '$id'";
+        mysqli_query($con, $sql);
+    }
+
     public function setListFromDB($con)
     {
         $sql = "SELECT * FROM users";
@@ -56,6 +73,7 @@ class UsersList
         }
     }
 
+
     public function getListUsers()
     {
         $usersData = [];
@@ -63,9 +81,10 @@ class UsersList
             $usersData[] = json_decode($user->toJson(), true);
         }
 
-        echo json_encode($usersData);
+        return json_encode($usersData);
     }
 }
 
 $usersList = new UsersList();
+$connectionDB = new ConnectionDB();
 $usersList->setListFromDB($connectionDB->con);

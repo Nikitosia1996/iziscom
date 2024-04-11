@@ -1,4 +1,5 @@
 <?php require_once 'connection/connection.php';
+
 require_once 'app/classes/UsersList.php';
 include "app/constants/cookie.php";
 include 'app/auth/auth.php';
@@ -14,6 +15,8 @@ if (isset($TOKEN)) {
 } else {
     $login = "";
 }
+
+
 ?>
 
 
@@ -68,6 +71,7 @@ if (isset($TOKEN)) {
             $('.app-header').nextAll().remove().end().after(response);
         });
     });
+
 </script>
 
 </html>

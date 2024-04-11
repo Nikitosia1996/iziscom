@@ -13,7 +13,7 @@
         <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
             <ul id="sidebarnav">
                 <li class="sidebar-item" id="main-page">
-                    <a class="sidebar-link" data-page="main" aria-expanded="false">
+                    <a class="sidebar-link" href="index.php?main"  data-page="main" aria-expanded="false">
                 <span>
                   <i class="ti ti-layout-dashboard"></i>
                 </span>

@@ -1,0 +1,15 @@
+{
+  "name": "vendor_name/medoborudovanie",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Hancharou.Uladzislau",
+      "email": "email@example.com"
+    }
+  ],
+  "require": {
+    "cboden/ratchet": "^0.4.3"
+  }
+}

@@ -1,10 +1,26 @@
-<?php ?>
+<?php
+
+
+?>
 
 <div class="container-fluid">
     <!--  Row 1 -->
     <div class="row">
         <div class="col-lg-6">
-            1
+            <table id="myusers" border="1">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>login</th>
+                    <th>username</th>
+                    <th>email</th>
+                    <th>token</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
         </div>
         <div class="col-lg-6">
             <!-- Yearly Breakup -->
@@ -25,5 +41,4 @@
 
 
 </div>
-
-
+<script src="js/controllerUsers.js"></script>

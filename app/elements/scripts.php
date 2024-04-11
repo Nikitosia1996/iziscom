@@ -1,6 +1,5 @@
 <script src="bootstrap/assets/js/jquery-3.7.1.js"></script>
 <!-- Ensure Bootstrap JS is loaded -->
-<script src="bootstrap/assets/js/bootstrap.min.js"></script>
 
 <!-- Подключение DataTables -->
 <script type="text/javascript" src="bootstrap/assets/js/jquery.dataTables.min.js"></script>
