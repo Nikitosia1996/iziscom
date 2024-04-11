@@ -21,8 +21,7 @@ class UsersManager implements MessageComponentInterface
         $this->users = new UsersList();
         $this->users->setListFromDB($this->connectionDB->con);
         $conn->send($this->users->getListUsers());
-        echo "vot".$this->users->getListUsers();
-        echo "New connection! ({$conn->resourceId})\n";
+        echo "\nNew connection! ({$conn->resourceId})\n";
     }
 
     function onClose(ConnectionInterface $conn)
