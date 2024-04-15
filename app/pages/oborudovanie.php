@@ -1,26 +1,42 @@
 
-<div class="container-fluid">
-    <!--  Row 1 -->
-    <div class="row">
-        <div class="col-lg-6">
-            5
-        </div>
-        <div class="col-lg-6">
-            <!-- Yearly Breakup -->
-            6
-        </div>
-    </div>
-    <div class="row" style="justify-content: center;">
-
-        <div class="col-lg-6">
-            7
-        </div>
-
-
-        <div class="col-lg-6">
-            8
-        </div>
-    </div>
-
-
-</div>
+<!--<div class="container-fluid">-->
+<!--    <div class="row">-->
+<!--        <div class="col-lg-6">-->
+<!--            5-->
+<!--        </div>-->
+<!--        <div class="col-lg-6">-->
+<!--            <table class="table table-striped table-responsive-sm dataTable no-footer" id="myusers" role="grid" aria-describedby="agreementsTable_info">-->
+<!--                <thead>-->
+<!--                <tr>-->
+<!--                <th>ID</th>-->
+<!--                <th>login</th>-->
+<!--                <th>username</th>-->
+<!--                <th>email</th>-->
+<!--                <th>token</th>-->
+<!--                </tr>-->
+<!--                </thead>-->
+<!--                <tbody>-->
+<!--                </tbody>-->
+<!--            </table>-->
+<!---->
+<!---->
+<!---->
+<!---->
+<!---->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="row" style="justify-content: center;">-->
+<!---->
+<!--        <div class="col-lg-6">-->
+<!--            7-->
+<!--        </div>-->
+<!---->
+<!---->
+<!--        <div class="col-lg-6">-->
+<!--            8-->
+<!--        </div>-->
+<!--    </div>-->
+<!---->
+<!---->
+<!--</div>-->
+<!--<script src="js/controllerUsers.js"></script>-->

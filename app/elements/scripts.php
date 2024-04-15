@@ -9,3 +9,4 @@
 <script src="bootstrap/assets/libs/apexcharts/dist/apexcharts.min.js"></script>
 <script src="bootstrap/assets/libs/simplebar/dist/simplebar.js"></script>
 <script src="bootstrap/assets/js/dashboard.js"></script>
+<script src="js/global.js"></script>

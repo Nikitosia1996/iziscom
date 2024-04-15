@@ -28,12 +28,13 @@ if (isset($TOKEN)) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Админ панель</title>
 
-    <?php include "app/elements/links.php";?>
+    <?php include "app/elements/links.php"; ?>
 
 </head>
 
 <body>
 <!--  Body Wrapper -->
+<?php include "app/elements/header.php"; ?>
 <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
      data-sidebar-position="fixed" data-header-position="fixed">
 
@@ -41,36 +42,71 @@ if (isset($TOKEN)) {
 
     <div class="body-wrapper">
 
-        <?php include "app/elements/header.php"; ?>
-        <?php include "app/pages/main.php"; ?>
+        <?php
+        foreach ($_GET as $key => $value) {
+            $value = $key;
+            break;
+        }
+        if (isset($value)) {
+
+            switch ($value) {
+                case "minsk":
+                    require_once "app/pages/obls/minsk.php";
+                    break;
+                case "minskobl":
+                    require_once "app/pages/obls/minskobl.php";
+                    break;
+                case "brestobl":
+                    require_once "app/pages/obls/brestobl.php";
+                    break;
+                case "vitebskoblobl":
+                    require_once "app/pages/obls/vitebskoblobl.php";
+                    break;
+                case "gomelobl":
+                    require_once "app/pages/obls/gomelobl.php";
+                    break;
+                case "grodnoobl":
+                    require_once "app/pages/obls/grodnoobl.php";
+                    break;
+                case "mogilevobl":
+                    require_once "app/pages/obls/mogilevobl.php";
+                    break;
+                case "main":
+                    require_once "app/pages/main.php";
+                    break;
+                default:
+                    require_once "app/pages/main.php";
+            }
+        }
+        ?>
     </div>
 
-    <?php include "app/elements/scripts.php";?>
+    <?php include "app/elements/scripts.php"; ?>
 
 </body>
 
 <script>
-    $('a').on('click', function(e) {
-        e.preventDefault();
-        let url;
-        var page = $(this).attr('data-page');
-        switch (page) {
-            case 'main':
-                url = "app/pages/main.php";
-                break;
-            case 'oborud':
-                url = "app/pages/oborudovanie.php";
-                break;
-            default:
-                url = "app/pages/main.php";
-                break;
-        }
-        $.ajax({
-            url: url,
-        }).done(response => {
-            $('.app-header').nextAll().remove().end().after(response);
-        });
-    });
+    // $('.sidebar-link').on('click', function (e) {
+    //     e.preventDefault();
+    //     let url;
+    //     var page = $(this).attr('data-page');
+    //     switch (page) {
+    //         case 'main':
+    //             url = "app/pages/main.php";
+    //             break;
+    //         case 'oborud':
+    //             url = "app/pages/oborudovanie.php";
+    //             break;
+    //         default:
+    //             url = "app/pages/main.php";
+    //             break;
+    //     }
+    //     $.ajax({
+    //         url: url,
+    //     }).done(response => {
+    //         $('.app-header').nextAll().remove().end().after(response);
+    //     });
+    // });
 
 </script>
 

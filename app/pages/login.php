@@ -23,7 +23,7 @@
                 <a href="../../index.php" class="text-nowrap logo-img text-center d-block py-3 w-100">
                   <img src="" width="180" alt="">
                 </a>
-                <p class="text-center">ИП Галстян</p>
+                <p class="text-center">Оборудование</p>
 
                   <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Логин</label>
