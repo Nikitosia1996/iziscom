@@ -77,6 +77,8 @@ if (isset($TOKEN)) {
                 default:
                     require_once "app/pages/main.php";
             }
+        }else{
+            require_once "app/pages/main.php";
         }
         ?>
     </div>

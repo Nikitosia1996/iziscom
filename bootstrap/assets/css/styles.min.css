@@ -19195,7 +19195,7 @@ textarea.form-control-lg {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    font-size: 14px;
+    font-size: 20px;
     white-space: nowrap;
     -webkit-box-align: center;
     -ms-flex-align: center;
@@ -19256,7 +19256,7 @@ textarea.form-control-lg {
     z-index: 50;
     width: 100%;
     background: #fff;
-    padding: 0 25px
+    /*padding: 0 25px*/
 }
 
 .app-header .container-fluid, .app-header .container-lg, .app-header .container-md, .app-header .container-sm, .app-header .container-xl, .app-header .container-xxl {
