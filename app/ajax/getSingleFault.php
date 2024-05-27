@@ -9,7 +9,7 @@ $result = $connectionDB->executeQuery($sql);
 if ($result->num_rows > 0) {
     $data = array();
     while ($row = $result->fetch_assoc()) {
-        $data[] = array( 'id_oborudovanie' => $row['id_oborudovanie']
+        $data = ['id_oborudovanie' => $row['id_oborudovanie']
         , 'date_fault' => $row['date_fault']
         , 'date_call_service' => $row['date_call_service']
         , 'reason_fault' => $row['reason_fault']
@@ -19,7 +19,7 @@ if ($result->num_rows > 0) {
         , 'downtime' => $row['downtime']
         , 'id_fault' => $row['id_fault']
 
-        );
+        ];
     }
     echo json_encode($data);
 } else {

@@ -76,7 +76,7 @@ function getFaultsTable() {
                 tableContent += '<td>' + row.cost_repair + '</td>';
                 tableContent += '<td>' + row.time_repair + '</td>';
                 tableContent += '<td>' + row.downtime + '</td>';
-                tableContent += '<td><a href="#" onclick="confirmDeleteFault(' + row.id_fault + '); return false;">&#10060;</a><a href="#" onclick="editFault(' + row.id_fault + '); return false;">✏️</a></td>';
+                tableContent += '<td><a href="#" onclick="confirmDeleteFault(' + row.id_fault + '); return false;">&#10060;</a><a href="#" onclick="editFault(' + row.id_fault + ');">✏️</a></td>';
                 tableContent += '</tr>';
             });
             } else {
@@ -210,6 +210,7 @@ function editFault(id_fault) {
         data: { id_fault: id_fault },
         dataType: 'json',
         success: function (data) {
+            $('#editFaultModal').modal('show');
             document.getElementById('edit_date_fault').value = data.date_fault;
             document.getElementById('edit_date_call_service').value = data.date_call_service;
             document.getElementById('edit_reason_fault').value = data.reason_fault;
@@ -218,7 +219,7 @@ function editFault(id_fault) {
             document.getElementById('edit_time_repair').value = data.time_repair;
             document.getElementById('edit_downtime').value = data.downtime;
             document.getElementById('edit_id_fault').value = data.id_fault;
-            $('#editFaultModal').modal('show');
+
         }
     });
 }
