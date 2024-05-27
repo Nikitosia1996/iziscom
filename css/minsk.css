@@ -67,3 +67,7 @@ td {
     outline: none;
     border-color: #66afe9;
 }
+
+.modal-title{
+    color:#9d9999 !important;
+}

@@ -88,20 +88,64 @@
     </div>
     <div id="contMenu" style="display: none;">
         <div>
-            <a onclick="alert(1)" style="cursor: pointer">hello</a>
+            <a onclick="getFaultsTable()" style="cursor: pointer">Таблица неисправностей</a>
         </div>
         <div>
-            bye
+            <a onclick="getEffectTable()" style="cursor: pointer">Таблица эффективности</a>
         </div>
     </div>
 </section>
+
+
+
+<div class="modal" id="faultsModal">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel">Таблица неисправностей</h5>
+                <button type="button" class="btn  btn-danger btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal" id="effectModal">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel">Таблица эффективности использования оборудования</h5>
+                <button type="button" class="btn  btn-danger btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <script>
 
     const contMenu = document.getElementById('contMenu');
     const body = document.getElementsByTagName('body')[0];
+    let selectedEquipmentId;
 
     function showMenu(thisTr) {
         event.preventDefault();
+        selectedEquipmentId = thisTr.cells[0].textContent;
         contMenu.style.display = 'block';
         contMenu.style.position = 'absolute';
         contMenu.style.left = event.clientX - 200 + 'px';
@@ -111,6 +155,7 @@
     body.addEventListener('click', function (event) {
         contMenu.style.display = 'none';
     })
+
 
 </script>
 
