@@ -9,7 +9,6 @@ function showTable(idTable) {
     $('#' + idTable).DataTable();
     $('th').css('width', '20%');
 }
-
 function showSection(idCard, element) {
     let oldActive = document.getElementsByClassName("activecard1")[0];
     oldActive.classList.remove("activecard1");

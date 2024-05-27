@@ -130,8 +130,6 @@
                     </ul>
                 </div>
             </section>
-
-
             <section class="col-lg-3" id="right_section">
               <div>  <input style="width:100%;" type="text" id="myInputOrg" onkeyup="myFunctionOrg(this)"
                        placeholder="Поиск организации"
