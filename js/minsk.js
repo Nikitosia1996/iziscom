@@ -22,7 +22,7 @@ function showSection(idCard, element) {
     if (idCard === 'org1') {
         showTable('infoOb1');
     } else if (idCard === 'org2') {
-        showTable('infoOb3');
+        showTable('infoOb2');
     }
 }
 
