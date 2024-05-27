@@ -1,168 +1,91 @@
-<?php
-?>
-
 <link rel="stylesheet" href="css/minsk.css">
 <section class="content" style="margin-top: 100px; margin-left: 15px">
     <div class="container-fluid">
         <div class="row" id="main_row">
 
-            <section class="col-lg-9 connectedSortable ui-sortable" id="org1">
+            <section class="col-lg-9 connectedSortable ui-sortable" id="org1" style="display: block;">
                 <div class="row">
-                    <input type="text" id="myInput" onkeyup="myFunction(this)"
-                           placeholder="Введите название оборудования"
-                           title="Type in a name">
-
-                    <ul id="myUL">
-                        <li><a class="oborudovanieItem" onclick="showTable('infoOb1',this)">Оборудование 1</a></li>
-                        <li><a class="oborudovanieItem" onclick="showTable('infoOb2',this)">Оборудование 2</a></li>
-                    </ul>
 
                     <div class="table-responsive">
                         <table class="table table-striped table-responsive-sm dataTable no-footer" id="infoOb1"
                                style="display: none">
                             <thead>
                             <tr>
-                                <th>Столбец 1</th>
-                                <th>Столбец 2</th>
-                                <th>Столбец 3</th>
-                                <th>Столбец 4</th>
-                                <th>Столбец 5</th>
-                                <th>Столбец 6</th>
+                                <th>Наименование оборудования</th>
+                                <th>Тип оборудования</th>
+                                <th>Стоимость</th>
+                                <th>Дата производства</th>
+                                <th>Дата ввода в эксплуатацию</th>
+                                <th>Сервисная организация</th>
+                                <th>Дата последнего ТО</th>
+                                <th>Статус (Исправно/неисправно)</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr id="btnShMenu">
-                                <td>1</td>
-                                <td>2</td>
-                                <td>3</td>
-                                <td>4</td>
-                                <td>5</td>
-                                <td>6</td>
-                            </tr>
-                            <tr>
-                                <td>7</td>
-                                <td>8</td>
-                                <td>9</td>
-                                <td>10</td>
-                                <td>11</td>
-                                <td>12</td>
-                            </tr>
+                            <?php
+                            $sql = "SELECT * FROM oborudovanie where id_uz = 1";
+                            $result = $connectionDB->executeQuery($sql);
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                echo '<tr oncontextmenu="showMenu(this)">';
+                                echo '<td>' . $row['id_oborudovanie'] . '</td>';
+                                echo '<td>' . $row['id_type_oborudovanie'] . '</td>';
+                                echo '<td>' . $row['cost'] . '</td>';
+                                echo '<td>' . $row['date_create'] . '</td>';
+                                echo '<td>' . $row['date_release'] . '</td>';
+                                echo '<td>' . $row['service_organization'] . '</td>';
+                                echo '<td>' . $row['date_last_TO'] . '</td>';
+                                echo '<td>' . $row['status'] . '</td>';
+                                echo '</tr>';
+                            }
+                            ?>
                             </tbody>
                         </table>
 
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table table-striped table-responsive-sm dataTable no-footer" id="infoOb2"
-                               style="display: none">
-                            <thead>
-                            <tr>
-                                <th>Столбец 6</th>
-                                <th>Столбец 7</th>
-                                <th>Столбец 8</th>
-                                <th>Столбец 9</th>
-                                <th>Столбец 10</th>
-                                <th>Столбец 11</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>13</td>
-                                <td>14</td>
-                                <td>15</td>
-                                <td>16</td>
-                                <td>17</td>
-                                <td>18</td>
-                            </tr>
-                            <tr>
-                                <td>19</td>
-                                <td>20</td>
-                                <td>21</td>
-                                <td>22</td>
-                                <td>23</td>
-                                <td>24</td>
-                            </tr>
-                            </tbody>
-                        </table>
                     </div>
                 </div>
 
             </section>
             <section class="col-lg-9 connectedSortable ui-sortable" id="org2" style="display: none;">
                 <div class="row">
-                    <input type="text" id="myInput" onkeyup="myFunction(this)" placeholder="Что ищем?"
-                           title="Type in a name">
-                    <ul id="myUL">
-                        <li><a class="oborudovanieItem" onclick="showTable('infoOb3',this)">Оборудование 3</a></li>
-                        <li><a class="oborudovanieItem" onclick="showTable('infoOb4',this)">Оборудование 4</a></li>
-                    </ul>
                     <div class="table-responsive">
                         <table class="table table-striped table-responsive-sm dataTable no-footer" id="infoOb3"
                                style="display: none">
                             <thead>
                             <tr>
-                                <th>Столбец 1</th>
-                                <th>Столбец 2</th>
-                                <th>Столбец 3</th>
-                                <th>Столбец 4</th>
-                                <th>Столбец 5</th>
-                                <th>Столбец 6</th>
+                                <th>Наименование оборудования</th>
+                                <th>Тип оборудования</th>
+                                <th>Стоимость</th>
+                                <th>Дата производства</th>
+                                <th>Дата ввода в эксплуатацию</th>
+                                <th>Сервисная организация</th>
+                                <th>Дата последнего ТО</th>
+                                <th>Статус (Исправно/неисправно)</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr >
-                                <td>1</td>
-                                <td>2</td>
-                                <td>3</td>
-                                <td>4</td>
-                                <td>5</td>
-                                <td>6</td>
-                            </tr>
-                            <tr>
-                                <td>7</td>
-                                <td>8</td>
-                                <td>9</td>
-                                <td>10</td>
-                                <td>11</td>
-                                <td>12</td>
-                            </tr>
-                            </tbody>
-                        </table>
-
-                        <table class="table table-striped table-responsive-sm dataTable no-footer" id="infoOb4"
-                               style="display: none">
-                            <thead>
-                            <tr>
-                                <th>Столбец 6</th>
-                                <th>Столбец 7</th>
-                                <th>Столбец 8</th>
-                                <th>Столбец 9</th>
-                                <th>Столбец 10</th>
-                                <th>Столбец 11</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>13</td>
-                                <td>14</td>
-                                <td>15</td>
-                                <td>16</td>
-                                <td>17</td>
-                                <td>18</td>
-                            </tr>
-                            <tr>
-                                <td>19</td>
-                                <td>20</td>
-                                <td>21</td>
-                                <td>22</td>
-                                <td>23</td>
-                                <td>24</td>
-                            </tr>
+                            <?php
+                            $sql = "SELECT * FROM oborudovanie where id_uz = 2";
+                            $result = $connectionDB->executeQuery($sql);
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                echo '<tr oncontextmenu="showMenu(this)">';
+                                echo '<td>' . $row['id_oborudovanie'] . '</td>';
+                                echo '<td>' . $row['id_type_oborudovanie'] . '</td>';
+                                echo '<td>' . $row['cost'] . '</td>';
+                                echo '<td>' . $row['date_create'] . '</td>';
+                                echo '<td>' . $row['date_release'] . '</td>';
+                                echo '<td>' . $row['service_organization'] . '</td>';
+                                echo '<td>' . $row['date_last_TO'] . '</td>';
+                                echo '<td>' . $row['status'] . '</td>';
+                                echo '</tr>';
+                            }
+                            ?>
                             </tbody>
                         </table>
 
                     </div>
                 </div>
             </section>
+
             <section class="col-lg-9 connectedSortable ui-sortable" id="org3" style="display: none;">
                 <div class="row">
                     <input type="text" id="myInput" onkeyup="myFunction('depressia')" placeholder="Что ищем?"
@@ -210,7 +133,10 @@
 
 
             <section class="col-lg-3" id="right_section">
-
+              <div>  <input style="width:100%;" type="text" id="myInputOrg" onkeyup="myFunctionOrg(this)"
+                       placeholder="Поиск организации"
+                       title="Type in a name">
+              </div>
 
                 <div class="card card0 card1 activecard1" onclick="showSection('org1',this)">
                     <h4>Организация 1</h4>
@@ -241,17 +167,17 @@
     </div>
 </section>
 <script>
-    const btnShMenu = document.getElementById('btnShMenu');
+
     const contMenu = document.getElementById('contMenu');
     const body = document.getElementsByTagName('body')[0];
 
-    btnShMenu.addEventListener('contextmenu', function (event) {
+    function showMenu(thisTr) {
         event.preventDefault();
         contMenu.style.display = 'block';
         contMenu.style.position = 'absolute';
         contMenu.style.left = event.clientX - 200 + 'px';
         contMenu.style.top = event.clientY - 110 + 'px';
-    });
+    }
 
     body.addEventListener('click', function (event) {
         contMenu.style.display = 'none';

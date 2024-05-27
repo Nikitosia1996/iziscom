@@ -1,8 +1,4 @@
-function showTable(idTable, element) {
-    let oldActive = document.getElementsByClassName("activeOrg")[0];
-    if (oldActive)
-        oldActive.classList.remove("activeOrg");
-    element.classList.add('activeOrg');
+function showTable(idTable) {
     let tables = document.getElementsByTagName('table');
     [...tables].forEach(item => {
         item.style.display = 'none';
@@ -10,9 +6,8 @@ function showTable(idTable, element) {
     let table = document.getElementById(idTable);
     table.style.display = "block";
     $('table').DataTable().destroy();
-    $('#infoOb' + idTable.substr(6)).DataTable();
+    $('#' + idTable).DataTable();
     $('th').css('width', '20%');
-
 }
 
 function showSection(idCard, element) {
@@ -25,19 +20,26 @@ function showSection(idCard, element) {
     })
     let section = document.getElementById(idCard);
     section.style.display = "block";
+    if (idCard === 'org1') {
+        showTable('infoOb1');
+    } else if (idCard === 'org2') {
+        showTable('infoOb3');
+    }
 }
 
-function myFunction(input) {
-    let filter = input.value.toUpperCase();
-    let ul = input.nextElementSibling;
-    let lis = ul.children;
-    for (let i = 0; i < lis.length; i++) {
-        let a = lis[i].children[0];
-        let li = a.textContent.toUpperCase();
-        if (li.indexOf(filter) > -1) {
-            lis[i].style.display = "";
+function myFunctionOrg(input) {
+    var filter, cards, card, i, txtValue;
+    filter = input.value.toUpperCase();
+    cards = document.getElementsByClassName("card0");
+
+    for (i = 0; i < cards.length; i++) {
+        card = cards[i];
+        txtValue = card.textContent || card.innerText;
+
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            card.style.display = "";
         } else {
-            lis[i].style.display = "none";
+            card.style.display = "none";
         }
     }
 }
