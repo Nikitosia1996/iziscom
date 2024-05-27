@@ -106,6 +106,8 @@ function getEffectTable() {
                     'id_oborudovanie': 'Наименование оборудования',
                     'count_research': 'Количество проведенных исследований',
                     'count_patient': 'Количество диагностированных пациентов',
+                    'id_use_efficiency': 'Действия',
+
                 };
                 Object.keys(headers).forEach(function (key) {
                     tableContent += '<th>' + headers[key] + '</th>';
@@ -117,6 +119,7 @@ function getEffectTable() {
                     tableContent += '<td>' + row.id_oborudovanie + '</td>';
                     tableContent += '<td>' + row.count_research + '</td>';
                     tableContent += '<td>' + row.count_patient + '</td>';
+                    tableContent += '<td><a href="#" onclick="confirmDeleteEffect(' + row.id_use_efficiency + '); return false;">&#10060;</a><a href="#" onclick="editEffect(' + row.id_use_efficiency + ');">✏️</a></td>';
                     tableContent += '</tr>';
                 });
             }
@@ -157,6 +160,28 @@ function confirmDeleteFault(id_fault) {
 }
 
 
+function confirmDeleteEffect(id_use_efficiency) {
+    if (confirm('Вы точно хотите удалить эту запись?')) {
+        $.ajax({
+            url: '/app/ajax/deleteEffect.php',
+            type: 'POST',
+            data: { id_use_efficiency: id_use_efficiency },
+            success: function(response) {
+                if (response === "Запись успешно удалена.") {
+                    $('#deleteModal').modal('show');
+                    $('#deleteModal').on('hidden.bs.modal', function (e) {
+                        $('#deleteModal').modal('hide');
+                        getEffectTable();
+                    });
+                } else {
+                    getEffectTable();
+                }
+            }
+        });
+    }
+}
+
+
 
     $('#addFaultForm').on('submit', function(e) {
         e.preventDefault();
@@ -184,22 +209,54 @@ function confirmDeleteFault(id_fault) {
             url: '/app/ajax/insertFault.php',
             type: 'POST',
             data: data,
-            success: function(response) {
+            success: function (response) {
 
                 if (response === "Запись добавлена.") {
-
                     $('#addFaultModal').modal('hide');
-                    getFaultsTable();
+                    $('#addModal').modal('show');
+                    $('#addModal').on('hidden.bs.modal', function (e) {
+                        $('#addModal').modal('hide');
+                        getFaultsTable();
+                    });
                 } else {
                     getFaultsTable();
-                    alert(response);
                 }
-            },
-            error: function(xhr, status, error) {
-                alert('Произошла ошибка: ' + error);
             }
         });
     });
+
+
+
+$('#addEffectForm').on('submit', function(e) {
+    e.preventDefault();
+
+    let count_research = $('#count_research').val();
+    let count_patient = $('#count_patient').val();
+    let data = {
+        count_research: count_research,
+        count_patient: count_patient,
+        id_oborudovanie: selectedEquipmentId
+    };
+    $.ajax({
+        url: '/app/ajax/insertEffect.php',
+        type: 'POST',
+        data: data,
+        success: function (response) {
+
+            if (response === "Запись добавлена.") {
+                $('#addEffectModal').modal('hide');
+                $('#addModal').modal('show');
+                $('#addModal').on('hidden.bs.modal', function (e) {
+                    $('#addModal').modal('hide');
+                    getEffectTable();
+                });
+            } else {
+                getEffectTable();
+            }
+        }
+    });
+});
+
 
 
 
@@ -225,23 +282,106 @@ function editFault(id_fault) {
 }
 
 
-function submitEditFault() {
-    let formData = $('#editFaultForm').serialize();
+function saveFaultData() {
+
+    let dateFault = $('#edit_date_fault').val();
+    let dateCallService = $('#edit_date_call_service').val();
+    let reasonFault = $('#edit_reason_fault').val();
+    let dateProcedurePurchase = $('#edit_date_procedure_purchase').val();
+    let costRepair = $('#edit_cost_repair').val();
+    let timeRepair = $('#edit_time_repair').val();
+    let downtime = $('#edit_downtime').val();
+    let idFault = $('#edit_id_fault').val();
+
     $.ajax({
         url: '/app/ajax/updateFault.php',
         type: 'POST',
-        data: formData,
+        data: {
+            id_fault: idFault,
+            date_fault: dateFault,
+            date_call_service: dateCallService,
+            reason_fault: reasonFault,
+            date_procedure_purchase: dateProcedurePurchase,
+            cost_repair: costRepair,
+            time_repair: timeRepair,
+            downtime: downtime
+        },
         success: function(response) {
-
             if (response === "Запись обновлена.") {
                 $('#editFaultModal').modal('hide');
-                getFaultsTable();
+                $('#saveModal').modal('show');
+                $('#saveModal').on('hidden.bs.modal', function (e) {
+                    $('#saveModal').modal('hide');
+                    getFaultsTable();
+                });
             } else {
-                alert(response);
+                getFaultsTable();
             }
-        },
-        error: function(xhr, status, error) {
-            alert('Произошла ошибка: ' + error);
+        }
+});
+}
+
+$('#editFaultForm').on('submit', function(event) {
+    event.preventDefault();
+    saveFaultData();
+});
+
+
+
+
+//--------------------------------
+
+function editEffect(id_use_efficiency) {
+    $.ajax({
+        url: '/app/ajax/getSingleEffect.php',
+        type: 'GET',
+        data: { id_use_efficiency: id_use_efficiency },
+        dataType: 'json',
+        success: function (data) {
+            $('#editEffectModal').modal('show');
+            document.getElementById('edit_count_research').value = data.count_research;
+            document.getElementById('edit_count_patient').value = data.count_patient;
+            document.getElementById('edit_id_use_efficiency').value = data.id_use_efficiency;
         }
     });
 }
+
+
+function saveEffectData() {
+
+    let countResearch = $('#edit_count_research').val();
+    let countPatient = $('#edit_count_patient').val();
+    let idUseEfficiency = $('#edit_id_use_efficiency').val();
+
+    $.ajax({
+        url: '/app/ajax/updateFault.php',
+        type: 'POST',
+        data: {
+            idUseEfficiency: idUseEfficiency,
+            countPatient: countPatient,
+            countResearch: countResearch,
+        },
+        success: function(response) {
+            if (response === "Запись обновлена.") {
+                $('#editEffectModal').modal('hide');
+                $('#saveModal').modal('show');
+                $('#saveModal').on('hidden.bs.modal', function (e) {
+                    $('#saveModal').modal('hide');
+                    getEffectTable();
+                });
+            } else {
+                getEffectTable();
+            }
+        }
+    });
+}
+
+$('#editFaultForm').on('submit', function(event) {
+    event.preventDefault();
+    saveFaultData();
+});
+
+$('#editEfectForm').on('submit', function(event) {
+    event.preventDefault();
+    saveEffectData();
+});

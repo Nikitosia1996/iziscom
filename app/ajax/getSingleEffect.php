@@ -3,17 +3,16 @@ include "../../connection/connection.php";
 if (!$connectionDB) {
     die("Connection failed: " . mysqli_connect_error());
 }
-$id_oborudovanie = $_GET['id_oborudovanie'];
-$sql = "SELECT * FROM use_efficiency where id_oborudovanie = '$id_oborudovanie'";
+$id_use_efficiency = $_GET['id_use_efficiency'];
+$sql = "SELECT * FROM use_efficiency where id_use_efficiency = '$id_use_efficiency'";
 $result = $connectionDB->executeQuery($sql);
 if ($result->num_rows > 0) {
     $data = array();
     while ($row = $result->fetch_assoc()) {
-        $data[] = array('id_oborudovanie' => $row['id_oborudovanie']
+        $data = ['date_fault' => $row['date_fault']
         , 'count_research' => $row['count_research']
         , 'count_patient' => $row['count_patient']
-        , 'id_use_efficiency' => $row['id_use_efficiency']
-        );
+        ];
     }
     echo json_encode($data);
 } else {
