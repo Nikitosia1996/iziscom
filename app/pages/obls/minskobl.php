@@ -37,7 +37,8 @@
                 $result1 = $connectionDB->executeQuery($sql1);
                 while ($row1 = mysqli_fetch_assoc($result1)) {
                     $nameOborudov = $row1['name'];
-                    echo '<tr oncontextmenu="showMenu(this)">';
+                    $idOborudovanie = $row1['id_oborudovanie'];
+                    echo '<tr oncontextmenu="showMenu(this,'.$idOborudovanie.')">';
 
                     echo '<td>' . $nameOborudov . '</td>';
                     echo '<td>' . $row1['cost'] . '</td>';
