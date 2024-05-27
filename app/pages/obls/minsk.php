@@ -110,7 +110,10 @@
 
             </div>
 
-            <div class="modal-footer">
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addFaultModal">
+                    Добавить
+                </button>
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Закрыть</button>
             </div>
         </div>
@@ -138,6 +141,111 @@
 </div>
 
 
+
+<div class="modal" id="deleteModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel">Успех</h5>
+                <button type="button" class="btn  btn-danger btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div>Запись успешно удалена</div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal" id="addFaultModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Добавление неисправности</h5>
+                <button type="button" class="btn btn-danger btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+
+                <form id="addFaultForm">
+                    <label for="date_fault">Дата обнаружения неисправности:</label>
+                    <input type="date" id="date_fault" name="date_fault">
+
+                    <label for="date_call_service">Дата вызова сервиса:</label>
+                    <input type="date" id="date_call_service" name="date_call_service">
+
+                    <label for="reason_fault">Причина неисправности:</label>
+                    <input type="text" id="reason_fault" name="reason_fault">
+
+                    <label for="date_procedure_purchase">Дата процедуры закупки:</label>
+                    <input type="date" id="date_procedure_purchase" name="date_procedure_purchase">
+
+                    <label for="cost_repair">Стоимость ремонта:</label>
+                    <input type="number" id="cost_repair" name="cost_repair">
+
+                    <label for="time_repair">Время ремонта:</label>
+                    <input type="date" id="time_repair" name="time_repair">
+
+                    <label for="downtime">Простой (в часах):</label>
+                    <input type="number" id="downtime" name="downtime">
+                    <div id="btnsGroup">
+                    <button type="submit" class="btn btn-primary">Добавить запись</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Закрыть</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal" id="editFaultModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Редактирование неисправности</h5>
+                <button type="button" class="btn btn-danger btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+
+                <form id="editFaultForm">
+                    <label for="date_fault">Дата обнаружения неисправности:</label>
+                    <input type="date" id="edit_date_fault" name="date_fault">
+
+                    <label for="date_call_service">Дата вызова сервиса:</label>
+                    <input type="date" id="edit_date_call_service" name="date_call_service">
+
+                    <label for="reason_fault">Причина неисправности:</label>
+                    <input type="text" id="edit_reason_fault" name="reason_fault">
+
+                    <label for="date_procedure_purchase">Дата процедуры закупки:</label>
+                    <input type="date" id="edit_date_procedure_purchase" name="date_procedure_purchase">
+
+                    <label for="cost_repair">Стоимость ремонта:</label>
+                    <input type="number" id="edit_cost_repair" name="cost_repair">
+
+                    <label for="time_repair">Время ремонта:</label>
+                    <input type="date" id="edit_time_repair" name="time_repair">
+
+                    <label for="downtime">Простой (в часах):</label>
+                    <input type="number" id="edit_downtime" name="downtime">
+
+                    <input type="hidden" id="edit_id_fault" name="id_fault">
+
+                    <div id="edit_btnsGroup">
+                        <button type="submit" class="btn btn-primary">Сохранить</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Закрыть</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
 
     const contMenu = document.getElementById('contMenu');
@@ -159,6 +267,6 @@
 
 
 </script>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="js/minsk.js"></script>
 

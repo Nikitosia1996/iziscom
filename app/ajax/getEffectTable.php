@@ -16,7 +16,7 @@ if ($result->num_rows > 0) {
     }
     echo json_encode($data);
 } else {
-    echo json_encode(array('error' => 'Нет данных'));
+    echo json_encode(array('empty' => true));
 }
 
 ?>

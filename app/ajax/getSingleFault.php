@@ -3,8 +3,8 @@ include "../../connection/connection.php";
 if (!$connectionDB) {
     die("Connection failed: " . mysqli_connect_error());
 }
-$id_oborudovanie = $_GET['id_oborudovanie'];
-$sql = "SELECT * FROM faults where id_oborudovanie = '$id_oborudovanie'";
+$id_fault = $_GET['id_fault'];
+$sql = "SELECT * FROM faults where id_fault = '$id_fault'";
 $result = $connectionDB->executeQuery($sql);
 if ($result->num_rows > 0) {
     $data = array();

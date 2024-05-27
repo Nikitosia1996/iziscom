@@ -49,6 +49,7 @@ function getFaultsTable() {
         dataType: 'json',
         success: function (data) {
             let tableContent = '<table class="table" style="font-size: 13px;">';
+            if (!data.hasOwnProperty('empty')) {
             tableContent += '<thead><tr>';
             let headers = {
                 'id_oborudovanie': 'Наименование оборудования',
@@ -58,9 +59,10 @@ function getFaultsTable() {
                 'date_procedure_purchase': 'Дата проведения процедуры закупки на поставку з/ч или услуги по ремонту',
                 'cost_repair': 'Стоимость ремонта',
                 'time_repair': 'Срок ремонта/поставки запасных частей',
-                'downtime': 'Время простоя'
+                'downtime': 'Время простоя',
+                'id_fault': 'Действия'
             };
-            Object.keys(data[0]).forEach(function(key) {
+            Object.keys(headers).forEach(function(key) {
                 tableContent += '<th>' + headers[key] + '</th>';
             });
             tableContent += '</tr></thead><tbody>';
@@ -74,8 +76,15 @@ function getFaultsTable() {
                 tableContent += '<td>' + row.cost_repair + '</td>';
                 tableContent += '<td>' + row.time_repair + '</td>';
                 tableContent += '<td>' + row.downtime + '</td>';
+                tableContent += '<td><a href="#" onclick="confirmDeleteFault(' + row.id_fault + '); return false;">&#10060;</a><a href="#" onclick="editFault(' + row.id_fault + '); return false;">✏️</a></td>';
                 tableContent += '</tr>';
             });
+            } else {
+                tableContent += '<thead><tr>';
+                tableContent += '<th></th>';
+                tableContent += '</tr></thead><tbody>';
+                tableContent += '<tr><td colspan="8" style="text-align:center;">Нет данных</td></tr>';
+            }
             tableContent += '</tbody></table>';
             $('#faultsModal .modal-body').html(tableContent);
             $('#faultsModal').modal('show');
@@ -91,23 +100,32 @@ function getEffectTable() {
         dataType: 'json',
         success: function (data) {
             let tableContent = '<table class="table" style="font-size: 13px;">';
-            tableContent += '<thead><tr>';
-            let headers = {
-                'id_oborudovanie': 'Наименование оборудования',
-                'count_research': 'Количество проведенных исследований',
-                'count_patient': 'Количество диагностированных пациентов',
-            };
-            Object.keys(data[0]).forEach(function(key) {
-                tableContent += '<th>' + headers[key] + '</th>';
-            });
-            tableContent += '</tr></thead><tbody>';
-            data.forEach(function(row) {
-                tableContent += '<tr>';
-                tableContent += '<td>' + row.id_oborudovanie + '</td>';
-                tableContent += '<td>' + row.count_research + '</td>';
-                tableContent += '<td>' + row.count_patient + '</td>';
-                tableContent += '</tr>';
-            });
+            if (!data.hasOwnProperty('empty')) {
+                tableContent += '<thead><tr>';
+                let headers = {
+                    'id_oborudovanie': 'Наименование оборудования',
+                    'count_research': 'Количество проведенных исследований',
+                    'count_patient': 'Количество диагностированных пациентов',
+                };
+                Object.keys(headers).forEach(function (key) {
+                    tableContent += '<th>' + headers[key] + '</th>';
+                });
+                tableContent += '</tr></thead><tbody>';
+
+                data.forEach(function (row) {
+                    tableContent += '<tr>';
+                    tableContent += '<td>' + row.id_oborudovanie + '</td>';
+                    tableContent += '<td>' + row.count_research + '</td>';
+                    tableContent += '<td>' + row.count_patient + '</td>';
+                    tableContent += '</tr>';
+                });
+            }
+            else {
+                    tableContent += '<thead><tr>';
+                    tableContent += '<th></th>';
+                    tableContent += '</tr></thead><tbody>';
+                    tableContent += '<tr><td colspan="8" style="text-align:center;">Нет данных</td></tr>';
+                }
             tableContent += '</tbody></table>';
             $('#effectModal .modal-body').html(tableContent);
             $('#effectModal').modal('show');
@@ -117,5 +135,112 @@ function getEffectTable() {
 
 
 
+function confirmDeleteFault(id_fault) {
+    if (confirm('Вы точно хотите удалить эту запись?')) {
+        $.ajax({
+            url: '/app/ajax/deleteFault.php',
+            type: 'POST',
+            data: { id_fault: id_fault },
+            success: function(response) {
+                if (response === "Запись успешно удалена.") {
+                    $('#deleteModal').modal('show');
+                    $('#deleteModal').on('hidden.bs.modal', function (e) {
+                        $('#deleteModal').modal('hide');
+                        getFaultsTable();
+                    });
+                } else {
+                    getFaultsTable();
+                }
+            }
+        });
+    }
+}
 
 
+
+    $('#addFaultForm').on('submit', function(e) {
+        e.preventDefault();
+
+        let date_fault = $('#date_fault').val();
+        let date_call_service = $('#date_call_service').val();
+        let reason_fault = $('#reason_fault').val();
+        let date_procedure_purchase = $('#date_procedure_purchase').val();
+        let cost_repair = $('#cost_repair').val();
+        let time_repair = $('#time_repair').val();
+        let downtime = $('#downtime').val();
+
+
+        let data = {
+            date_fault: date_fault,
+            date_call_service: date_call_service,
+            reason_fault: reason_fault,
+            date_procedure_purchase: date_procedure_purchase,
+            cost_repair: cost_repair,
+            time_repair: time_repair,
+            downtime: downtime,
+            id_oborudovanie: selectedEquipmentId
+        };
+        $.ajax({
+            url: '/app/ajax/insertFault.php',
+            type: 'POST',
+            data: data,
+            success: function(response) {
+
+                if (response === "Запись добавлена.") {
+
+                    $('#addFaultModal').modal('hide');
+                    getFaultsTable();
+                } else {
+                    getFaultsTable();
+                    alert(response);
+                }
+            },
+            error: function(xhr, status, error) {
+                alert('Произошла ошибка: ' + error);
+            }
+        });
+    });
+
+
+
+function editFault(id_fault) {
+    $.ajax({
+        url: '/app/ajax/getSingleFault.php',
+        type: 'GET',
+        data: { id_fault: id_fault },
+        dataType: 'json',
+        success: function (data) {
+            document.getElementById('edit_date_fault').value = data.date_fault;
+            document.getElementById('edit_date_call_service').value = data.date_call_service;
+            document.getElementById('edit_reason_fault').value = data.reason_fault;
+            document.getElementById('edit_date_procedure_purchase').value = data.date_procedure_purchase;
+            document.getElementById('edit_cost_repair').value = data.cost_repair;
+            document.getElementById('edit_time_repair').value = data.time_repair;
+            document.getElementById('edit_downtime').value = data.downtime;
+            document.getElementById('edit_id_fault').value = data.id_fault;
+            $('#editFaultModal').modal('show');
+        }
+    });
+}
+
+
+function submitEditFault() {
+    let formData = $('#editFaultForm').serialize();
+    $.ajax({
+        url: '/app/ajax/updateFault.php',
+        type: 'POST',
+        data: formData,
+        success: function(response) {
+
+            if (response === "Запись обновлена.") {
+                $('#editFaultModal').modal('hide');
+                getFaultsTable();
+            } else {
+                alert(response);
+            }
+        },
+        error: function(xhr, status, error) {
+            alert('Произошла ошибка: ' + error);
+        }
+    });
+}

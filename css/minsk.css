@@ -71,3 +71,88 @@ td {
 .modal-title{
     color:#9d9999 !important;
 }
+
+
+#contMenu {
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+    width: 200px;
+    position: absolute;
+}
+
+#contMenu a {
+    padding: 8px 16px;
+    text-decoration: none;
+    display: block;
+    color: #333;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+}
+
+#contMenu a:hover {
+    background-color: #ddd;
+}
+
+
+label {
+    display: block; /* Каждая метка на новой строке */
+    margin-top: 20px; /* Отступ сверху для разделения */
+    color: #333; /* Цвет текста метки */
+    font-size: 16px; /* Размер шрифта метки */
+}
+
+input[type="date"],
+input[type="number"],
+input[type="text"] {
+    width: 100%; /* Полная ширина контейнера */
+    padding: 10px; /* Внутренний отступ */
+    margin-top: 5px; /* Отступ сверху */
+    border: 1px solid #ccc; /* Граница */
+    border-radius: 4px; /* Скругление углов */
+}
+
+
+
+button[type="submit"]:hover {
+    background-color: #45a049; /* Темно-зеленый цвет при наведении */
+}
+
+/* Стили для модального окна */
+.modal-content {
+    border-radius: 5px; /* Скругление углов модального окна */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Тень для модального окна */
+}
+
+.modal-header,
+.modal-footer {
+    padding: 16px 20px; /* Внутренний отступ для шапки и подвала модального окна */
+    text-align: right; /* Выравнивание текста и кнопок справа */
+    border-bottom: 1px solid #e5e5e5; /* Граница под шапкой */
+}
+
+.modal-header {
+    border-bottom: none; /* Убираем границу у шапки */
+}
+
+.modal-title {
+    margin: 0; /* Убираем внешние отступы у заголовка */
+    line-height: 1.5; /* Межстрочный интервал для заголовка */
+}
+
+/* Стили для кнопки закрытия */
+.btn-close {
+    color: #aaaaaa; /* Цвет иконки закрытия */
+}
+
+.btn-close:hover,
+.btn-close:focus {
+    color: #777; /* Цвет иконки закрытия при наведении/фокусе */
+    text-decoration: none;
+    cursor: pointer;
+}
+#btnsGroup{
+    margin-top: 15px;
+}
