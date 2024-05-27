@@ -71,6 +71,9 @@ if (isset($TOKEN)) {
                 case "mogilevobl":
                     require_once "app/pages/obls/mogilevobl.php";
                     break;
+                case "oborud":
+                    require_once "app/pages/oborudovanie.php";
+                    break;
                 case "main":
                     require_once "app/pages/main.php";
                     break;

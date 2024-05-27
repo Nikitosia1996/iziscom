@@ -86,26 +86,71 @@
                 </div>
             </section>
 
+            <section class="col-lg-9 connectedSortable ui-sortable" id="org3" style="display: none;">
+                <div class="row">
+                    <input type="text" id="myInput" onkeyup="myFunction('depressia')" placeholder="Что ищем?"
+                           title="Type in a name">
+
+                    <ul id="myUL">
+                        <li><a href="public/3Инструкция Депрессия - краткая версия.pdf" target="_blank">Оборудование 5
+                            </a></li>
+                        <li><a href="public/33Инструкция по депрессии.pdf" target="_blank">Оборудование 6</a></li>
+
+
+                    </ul>
+                </div>
+            </section>
+            <section class="col-lg-9 connectedSortable ui-sortable" id="org4" style="display: none;">
+                <div class="row">
+                    <input type="text" id="myInput" onkeyup="myFunction('imt')" placeholder="Что ищем?"
+                           title="Type in a name">
+
+                    <ul id="myUL">
+                        <li><a href="public/4Инструкция ИМТ - краткая версия.pdf" target="_blank">Оборудование 7</a>
+                        </li>
+                        <li><a href="public/44Инструкция о ПООМП в отношении профилактики и ведения ИМТ.pdf"
+                               target="_blank">Оборудование 8</a></li>
+
+
+                    </ul>
+                </div>
+            </section>
+            <section class="col-lg-9 connectedSortable ui-sortable" id="org5" style="display: none;">
+                <div class="row">
+                    <input type="text" id="myInput" onkeyup="myFunction('kurenie')" placeholder="Что ищем?"
+                           title="Type in a name">
+
+                    <ul id="myUL">
+                        <li><a href="public/5Инструкция Курение - краткая версия.pdf" target="_blank">Оборудование 9</a>
+                        </li>
+                        <li><a href="public/55Инструкция о ПООМП в отношении прекращения Курения.pdf" target="_blank">Оборудование
+                                10</a></li>
+
+
+                    </ul>
+                </div>
+            </section>
             <section class="col-lg-3" id="right_section">
               <div>  <input style="width:100%;" type="text" id="myInputOrg" onkeyup="myFunctionOrg(this)"
                        placeholder="Поиск организации"
                        title="Type in a name">
               </div>
 
-
-                <?php
-                $sql = "select * from uz";
-                $result = $connectionDB->executeQuery($sql);
-                $activeClass = "activecard1";
-                while ($row = mysqli_fetch_assoc($result)) {
-
-                    echo '<div class="card card0 '.$activeClass.'" onclick="showSection(\'org'. $row['id_uz']. '\',this)">';
-                    echo '<h4>'. $row['name']. '</h4>';
-                    echo '</div>';
-                    $activeClass = "";
-                }
-
-              ?>
+                <div class="card card0 card1 activecard1" onclick="showSection('org1',this)">
+                    <h4>Организация 1</h4>
+                </div>
+                <div class="card card0 card2" onclick="showSection('org2',this)">
+                    <h4>Организация 2</h4>
+                </div>
+                <div class="card card0 card3" onclick="showSection(this)">
+                    <h4>Организация 3</h4>
+                </div>
+                <div class="card card0 card4" onclick="showSection(this)">
+                    <h4>Организация 4</h4>
+                </div>
+                <div class="card card0 card5" onclick="showSection(this)">
+                    <h4>Организация 5</h4>
+                </div>
 
 
         </div>
