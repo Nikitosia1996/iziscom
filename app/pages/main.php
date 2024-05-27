@@ -1,6 +1,5 @@
 <?php
 
-
 ?>
 <style>
 
@@ -54,44 +53,19 @@
 
 <section class="col-lg-12 connectedSortable ui-sortable" style="margin-top: 90px">
 
-    <div class="row">
-        <div class="card card1" onclick="location.href='index.php?minsk'"
-        >
-            <h2>г. Минск</h2>
-        </div>
-    </div>
-    <div class="row">
-        <div class="card card1" onclick="location.href='index.php?minskobl'"
-        >
-            <h2>Минская область</h2>
-        </div>
-    </div>
-    <div class="row">
-        <div class="card card1" onclick="location.href='index.php?brestobl'"
-        >
-            <h2>Брестская область</h2>
-        </div>
-    </div>
-    <div class="row">
-        <div class="card card1" onclick="location.href='index.php?vitebskoblobl'" >
-            <h2>Витебская область</h2>
-        </div>
-    </div>
-    <div class="row">
-        <div class="card card1" onclick="location.href='index.php?gomelobl'" >
-            <h2>Гомельская область</h2>
-        </div>
-    </div>
-    <div class="row">
-        <div class="card card1" onclick="location.href='index.php?grodnoobl'" >
-            <h2>Гродненская область</h2>
-        </div>
-    </div>
-    <div class="row">
-        <div class="card card1" onclick="location.href='index.php?mogilevobl'" >
-            <h2>Могилевская область</h2>
-        </div>
-    </div>
+    <?php
+    $query = "SELECT * FROM oblast;";
+    $result = $connectionDB->executeQuery($query);
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo "<div class='row'>";
+        echo "<div class='card card1' onclick='location.href=\"index.php?". $row["hrefadded"]. "\"'>";
+        echo "<h2>". $row['name']. "</h2>";
+        echo "</div>";
+        echo "</div>";
+    }
+    ?>
+
+
     <button onclick="sendSms()">
         Тест смс
     </button>
