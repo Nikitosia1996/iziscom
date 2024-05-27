@@ -61,8 +61,13 @@ td {
     border-radius: 4px;
     font-size: 15px;
     background-color: #f8f8f8;
+}
 
 #myInputOrg:focus {
     outline: none;
     border-color: #66afe9;
+}
+
+.modal-title{
+    color:#9d9999 !important;
 }
