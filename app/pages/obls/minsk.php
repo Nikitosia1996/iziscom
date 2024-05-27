@@ -28,7 +28,6 @@
                                 <th>Сервисная организация</th>
                                 <th>Дата последнего ТО</th>
                                 <th>Статус </th>
-                                <th>Действия </th>
                             </tr>
                             </thead>
                             <tbody>';
@@ -135,7 +134,10 @@
 
             </div>
 
-            <div class="modal-footer">
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addEffectModal">
+                    Добавить
+                </button>
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Закрыть</button>
             </div>
         </div>
@@ -153,6 +155,43 @@
             </div>
             <div class="modal-body">
                 <div>Запись успешно удалена</div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal" id="saveModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel">Успех</h5>
+                <button type="button" class="btn  btn-danger btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div>Запись успешно обновлена</div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="addModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel">Успех</h5>
+                <button type="button" class="btn  btn-danger btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div>Запись успешно добавлена</div>
             </div>
 
             <div class="modal-footer">
@@ -204,6 +243,33 @@
 </div>
 
 
+<div class="modal" id="addEffectModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Добавление эффективности</h5>
+                <button type="button" class="btn btn-danger btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+
+                <form id="addEffectForm">
+                    <label for="count_research">Количество проведенных исследований:</label>
+                    <input type="number" id="count_research" name="count_research">
+
+                    <label for="count_patient">Количество диагностированных пациентов:</label>
+                    <input type="number" id="count_patient" name="count_patient">
+
+                    <div id="btnsGroupEffect">
+                        <button type="submit" class="btn btn-primary">Добавить запись</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Закрыть</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 <div class="modal" id="editFaultModal">
     <div class="modal-dialog">
@@ -237,6 +303,37 @@
                     <input type="number" id="edit_downtime" name="downtime">
 
                     <input type="hidden" id="edit_id_fault" name="id_fault">
+
+                    <div id="edit_btnsGroup">
+                        <button type="submit" class="btn btn-primary">Сохранить</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Закрыть</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="modal" id="editEffectModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Редактирование</h5>
+                <button type="button" class="btn btn-danger btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+
+                <form id="editEffectForm">
+                    <label for="count_research">Количество проведенных исследований:</label>
+                    <input type="date" id="edit_count_research" name="count_research">
+
+                    <label for="count_patient">Количество диагностированных пациентов:</label>
+                    <input type="date" id="edit_count_patient" name="count_patient">
+
+                    <input type="hidden" id="edit_id_use_efficiency" name="id_use_efficiency">
 
                     <div id="edit_btnsGroup">
                         <button type="submit" class="btn btn-primary">Сохранить</button>
