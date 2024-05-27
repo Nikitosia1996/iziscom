@@ -354,8 +354,9 @@ function saveEffectData() {
     let countPatient = $('#edit_count_patient').val();
     let idUseEfficiency = $('#edit_id_use_efficiency').val();
 
+
     $.ajax({
-        url: '/app/ajax/updateFault.php',
+        url: '/app/ajax/updateEffect.php',
         type: 'POST',
         data: {
             idUseEfficiency: idUseEfficiency,
@@ -442,7 +443,7 @@ $('#editFaultForm').on('submit', function(event) {
     saveFaultData();
 });
 
-$('#editEfectForm').on('submit', function(event) {
+$('#editEffectForm').on('submit', function(event) {
     event.preventDefault();
     saveEffectData();
 });

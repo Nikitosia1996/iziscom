@@ -9,7 +9,7 @@ $result = $connectionDB->executeQuery($sql);
 if ($result->num_rows > 0) {
     $data = array();
     while ($row = $result->fetch_assoc()) {
-        $data = ['date_fault' => $row['date_fault']
+        $data = ['id_use_efficiency' => $row['id_use_efficiency']
         , 'count_research' => $row['count_research']
         , 'count_patient' => $row['count_patient']
         ];

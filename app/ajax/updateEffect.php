@@ -8,7 +8,7 @@ if (!$connectionDB) {
     $countResearch = $_POST['countResearch'];
     $idUseEfficiency = $_POST['idUseEfficiency'];
 
-$sql = "UPDATE faults
+$sql = "UPDATE use_efficiency
         SET count_patient = '$countPatient',
             count_research = '$countResearch'
         WHERE id_use_efficiency = '$idUseEfficiency'";

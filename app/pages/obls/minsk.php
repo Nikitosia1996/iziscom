@@ -233,7 +233,7 @@
 
                     <label for="downtime">Простой (в часах):</label>
                     <input type="number" id="downtime" name="downtime">
-                    <div id="btnsGroup">
+                    <div id="btnsGroup" style="margin-top: 10px;">
                     <button type="submit" class="btn btn-primary">Добавить запись</button>
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Закрыть</button>
                     </div>
@@ -260,7 +260,7 @@
                     <label for="count_patient">Количество диагностированных пациентов:</label>
                     <input type="number" id="count_patient" name="count_patient">
 
-                    <div id="btnsGroupEffect">
+                    <div id="btnsGroupEffect" style="margin-top: 10px;">
                         <button type="submit" class="btn btn-primary">Добавить запись</button>
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Закрыть</button>
                     </div>
@@ -305,7 +305,7 @@
 
                     <input type="hidden" id="edit_id_fault" name="id_fault">
 
-                    <div id="edit_btnsGroup">
+                    <div id="edit_btnsGroup" style="margin-top: 10px;">
                         <button type="submit" class="btn btn-primary">Сохранить</button>
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Закрыть</button>
                     </div>
@@ -329,14 +329,14 @@
 
                 <form id="editEffectForm">
                     <label for="count_research">Количество проведенных исследований:</label>
-                    <input type="date" id="edit_count_research" name="count_research">
+                    <input type="number" id="edit_count_research" name="count_research">
 
                     <label for="count_patient">Количество диагностированных пациентов:</label>
-                    <input type="date" id="edit_count_patient" name="count_patient">
+                    <input type="number" id="edit_count_patient" name="count_patient">
 
                     <input type="hidden" id="edit_id_use_efficiency" name="id_use_efficiency">
 
-                    <div id="edit_btnsGroup">
+                    <div id="edit_btnsGroup" style="margin-top: 10px;">
                         <button type="submit" class="btn btn-primary">Сохранить</button>
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Закрыть</button>
                     </div>
