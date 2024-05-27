@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="row" id="main_row">
 
-            <?php $query = "select * from uz where id_oblast = 7;";
+            <?php $query = "select * from uz where id_oblast = 4;";
             $result = $connectionDB->executeQuery($query);
             if($connectionDB->getNumRows($result) == 0){
                 echo '<section class="col-lg-9 connectedSortable ui-sortable"  style="display: block;">
@@ -31,26 +31,26 @@
                             </tr>
                             </thead>
                             <tbody>';
-                            $sql1 = "SELECT oborudovanie.*, type_oborudovanie.name FROM oborudovanie
+                $sql1 = "SELECT oborudovanie.*, type_oborudovanie.name FROM oborudovanie
                                         left outer join type_oborudovanie on oborudovanie.id_type_oborudovanie = type_oborudovanie.id_type_oborudovanie
                                         where id_uz = $id_uz";
-                            $result1 = $connectionDB->executeQuery($sql1);
-                            while ($row1 = mysqli_fetch_assoc($result1)) {
-                                $nameOborudov = $row1['name'];
-                                echo '<tr oncontextmenu="showMenu(this)">';
+                $result1 = $connectionDB->executeQuery($sql1);
+                while ($row1 = mysqli_fetch_assoc($result1)) {
+                    $nameOborudov = $row1['name'];
+                    echo '<tr oncontextmenu="showMenu(this)">';
 
-                                echo '<td>' . $nameOborudov . '</td>';
-                                echo '<td>' . $row1['cost'] . '</td>';
-                                echo '<td>' . $row1['date_create'] . '</td>';
-                                echo '<td>' . $row1['date_release'] . '</td>';
-                                echo '<td>' . $row1['service_organization'] . '</td>';
-                                echo '<td>' . $row1['date_last_TO'] . '</td>';
-                                $status =  $row1['status'] === "1" ? "исправно" : "неисправно";
-                                echo '<td>' .$status. '</td>';
-                                echo '</tr>';
-                            }
+                    echo '<td>' . $nameOborudov . '</td>';
+                    echo '<td>' . $row1['cost'] . '</td>';
+                    echo '<td>' . $row1['date_create'] . '</td>';
+                    echo '<td>' . $row1['date_release'] . '</td>';
+                    echo '<td>' . $row1['service_organization'] . '</td>';
+                    echo '<td>' . $row1['date_last_TO'] . '</td>';
+                    $status =  $row1['status'] === "1" ? "исправно" : "неисправно";
+                    echo '<td>' .$status. '</td>';
+                    echo '</tr>';
+                }
 
-                       echo' 
+                echo' 
                             </tbody>
                         </table>
      
@@ -58,19 +58,19 @@
                 </div>
 
             </section>';
-}
+            }
             ?>
 
 
             <section class="col-lg-3" id="right_section">
-              <div>  <input style="width:100%;" type="text" id="myInputOrg" onkeyup="myFunctionOrg(this)"
-                       placeholder="Поиск организации"
-                       title="Type in a name">
-              </div>
+                <div>  <input style="width:100%;" type="text" id="myInputOrg" onkeyup="myFunctionOrg(this)"
+                              placeholder="Поиск организации"
+                              title="Type in a name">
+                </div>
 
 
                 <?php
-                $sql = "select * from uz where id_oblast = 7";
+                $sql = "select * from uz where id_oblast = 4";
                 $result = $connectionDB->executeQuery($sql);
                 $activeClass = "activecard1";
                 while ($row = mysqli_fetch_assoc($result)) {
@@ -81,7 +81,7 @@
                     $activeClass = "";
                 }
 
-              ?>
+                ?>
 
 
         </div>

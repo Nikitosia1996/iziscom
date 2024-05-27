@@ -3,154 +3,85 @@
     <div class="container-fluid">
         <div class="row" id="main_row">
 
-            <section class="col-lg-9 connectedSortable ui-sortable" id="org1" style="display: block;">
+            <?php $query = "select * from uz where id_oblast = 5;";
+            $result = $connectionDB->executeQuery($query);
+            if($connectionDB->getNumRows($result) == 0){
+                echo '<section class="col-lg-9 connectedSortable ui-sortable"  style="display: block;">
+                <div class="row">
+                </div>
+                </section>';
+            }
+            while ($row = mysqli_fetch_assoc($result)) {
+                $id_uz = $row['id_uz'];
+                echo ' <section class="col-lg-9 connectedSortable ui-sortable" id="org'.$id_uz.'" style="display: block;">
                 <div class="row">
 
                     <div class="table-responsive">
-                        <table class="table table-striped table-responsive-sm dataTable no-footer" id="infoOb1"
+                        <table class="table table-striped table-responsive-sm dataTable no-footer" id="infoOb'.$id_uz.'"
                                style="display: none">
                             <thead>
                             <tr>
-                                <th>Наименование оборудования</th>
                                 <th>Тип оборудования</th>
                                 <th>Стоимость</th>
                                 <th>Дата производства</th>
                                 <th>Дата ввода в эксплуатацию</th>
                                 <th>Сервисная организация</th>
                                 <th>Дата последнего ТО</th>
-                                <th>Статус (Исправно/неисправно)</th>
+                                <th>Статус </th>
                             </tr>
                             </thead>
-                            <tbody>
-                            <?php
-                            $sql = "SELECT * FROM oborudovanie where id_uz = 1";
-                            $result = $connectionDB->executeQuery($sql);
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                echo '<tr oncontextmenu="showMenu(this)">';
-                                echo '<td>' . $row['id_oborudovanie'] . '</td>';
-                                echo '<td>' . $row['id_type_oborudovanie'] . '</td>';
-                                echo '<td>' . $row['cost'] . '</td>';
-                                echo '<td>' . $row['date_create'] . '</td>';
-                                echo '<td>' . $row['date_release'] . '</td>';
-                                echo '<td>' . $row['service_organization'] . '</td>';
-                                echo '<td>' . $row['date_last_TO'] . '</td>';
-                                echo '<td>' . $row['status'] . '</td>';
-                                echo '</tr>';
-                            }
-                            ?>
+                            <tbody>';
+                $sql1 = "SELECT oborudovanie.*, type_oborudovanie.name FROM oborudovanie
+                                        left outer join type_oborudovanie on oborudovanie.id_type_oborudovanie = type_oborudovanie.id_type_oborudovanie
+                                        where id_uz = $id_uz";
+                $result1 = $connectionDB->executeQuery($sql1);
+                while ($row1 = mysqli_fetch_assoc($result1)) {
+                    $nameOborudov = $row1['name'];
+                    echo '<tr oncontextmenu="showMenu(this)">';
+
+                    echo '<td>' . $nameOborudov . '</td>';
+                    echo '<td>' . $row1['cost'] . '</td>';
+                    echo '<td>' . $row1['date_create'] . '</td>';
+                    echo '<td>' . $row1['date_release'] . '</td>';
+                    echo '<td>' . $row1['service_organization'] . '</td>';
+                    echo '<td>' . $row1['date_last_TO'] . '</td>';
+                    $status =  $row1['status'] === "1" ? "исправно" : "неисправно";
+                    echo '<td>' .$status. '</td>';
+                    echo '</tr>';
+                }
+
+                echo' 
                             </tbody>
                         </table>
-
+     
                     </div>
                 </div>
 
-            </section>
-            <section class="col-lg-9 connectedSortable ui-sortable" id="org2" style="display: none;">
-                <div class="row">
-                    <div class="table-responsive">
-                        <table class="table table-striped table-responsive-sm dataTable no-footer" id="infoOb3"
-                               style="display: none">
-                            <thead>
-                            <tr>
-                                <th>Наименование оборудования</th>
-                                <th>Тип оборудования</th>
-                                <th>Стоимость</th>
-                                <th>Дата производства</th>
-                                <th>Дата ввода в эксплуатацию</th>
-                                <th>Сервисная организация</th>
-                                <th>Дата последнего ТО</th>
-                                <th>Статус (Исправно/неисправно)</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php
-                            $sql = "SELECT * FROM oborudovanie where id_uz = 2";
-                            $result = $connectionDB->executeQuery($sql);
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                echo '<tr oncontextmenu="showMenu(this)">';
-                                echo '<td>' . $row['id_oborudovanie'] . '</td>';
-                                echo '<td>' . $row['id_type_oborudovanie'] . '</td>';
-                                echo '<td>' . $row['cost'] . '</td>';
-                                echo '<td>' . $row['date_create'] . '</td>';
-                                echo '<td>' . $row['date_release'] . '</td>';
-                                echo '<td>' . $row['service_organization'] . '</td>';
-                                echo '<td>' . $row['date_last_TO'] . '</td>';
-                                echo '<td>' . $row['status'] . '</td>';
-                                echo '</tr>';
-                            }
-                            ?>
-                            </tbody>
-                        </table>
-
-                    </div>
-                </div>
-            </section>
-
-            <section class="col-lg-9 connectedSortable ui-sortable" id="org3" style="display: none;">
-                <div class="row">
-                    <input type="text" id="myInput" onkeyup="myFunction('depressia')" placeholder="Что ищем?"
-                           title="Type in a name">
-
-                    <ul id="myUL">
-                        <li><a href="public/3Инструкция Депрессия - краткая версия.pdf" target="_blank">Оборудование 5
-                            </a></li>
-                        <li><a href="public/33Инструкция по депрессии.pdf" target="_blank">Оборудование 6</a></li>
+            </section>';
+            }
+            ?>
 
 
-                    </ul>
-                </div>
-            </section>
-            <section class="col-lg-9 connectedSortable ui-sortable" id="org4" style="display: none;">
-                <div class="row">
-                    <input type="text" id="myInput" onkeyup="myFunction('imt')" placeholder="Что ищем?"
-                           title="Type in a name">
-
-                    <ul id="myUL">
-                        <li><a href="public/4Инструкция ИМТ - краткая версия.pdf" target="_blank">Оборудование 7</a>
-                        </li>
-                        <li><a href="public/44Инструкция о ПООМП в отношении профилактики и ведения ИМТ.pdf"
-                               target="_blank">Оборудование 8</a></li>
-
-
-                    </ul>
-                </div>
-            </section>
-            <section class="col-lg-9 connectedSortable ui-sortable" id="org5" style="display: none;">
-                <div class="row">
-                    <input type="text" id="myInput" onkeyup="myFunction('kurenie')" placeholder="Что ищем?"
-                           title="Type in a name">
-
-                    <ul id="myUL">
-                        <li><a href="public/5Инструкция Курение - краткая версия.pdf" target="_blank">Оборудование 9</a>
-                        </li>
-                        <li><a href="public/55Инструкция о ПООМП в отношении прекращения Курения.pdf" target="_blank">Оборудование
-                                10</a></li>
-
-
-                    </ul>
-                </div>
-            </section>
             <section class="col-lg-3" id="right_section">
-              <div>  <input style="width:100%;" type="text" id="myInputOrg" onkeyup="myFunctionOrg(this)"
-                       placeholder="Поиск организации"
-                       title="Type in a name">
-              </div>
+                <div>  <input style="width:100%;" type="text" id="myInputOrg" onkeyup="myFunctionOrg(this)"
+                              placeholder="Поиск организации"
+                              title="Type in a name">
+                </div>
 
-                <div class="card card0 card1 activecard1" onclick="showSection('org1',this)">
-                    <h4>Организация 1</h4>
-                </div>
-                <div class="card card0 card2" onclick="showSection('org2',this)">
-                    <h4>Организация 2</h4>
-                </div>
-                <div class="card card0 card3" onclick="showSection(this)">
-                    <h4>Организация 3</h4>
-                </div>
-                <div class="card card0 card4" onclick="showSection(this)">
-                    <h4>Организация 4</h4>
-                </div>
-                <div class="card card0 card5" onclick="showSection(this)">
-                    <h4>Организация 5</h4>
-                </div>
+
+                <?php
+                $sql = "select * from uz where id_oblast = 5";
+                $result = $connectionDB->executeQuery($sql);
+                $activeClass = "activecard1";
+                while ($row = mysqli_fetch_assoc($result)) {
+
+                    echo '<div class="card card0 '.$activeClass.'" onclick="showSection('. $row['id_uz']. ',this)">';
+                    echo '<h4>'. $row['name']. '</h4>';
+                    echo '</div>';
+                    $activeClass = "";
+                }
+
+                ?>
 
 
         </div>

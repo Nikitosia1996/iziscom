@@ -66,39 +66,39 @@
     ?>
 
 
-    <button onclick="sendSms()">
-        Тест смс
-    </button>
+<!--    <button onclick="sendSms()">-->
+<!--        Тест смс-->
+<!--    </button>-->
 </section>
 
-<script>
-    function sendSms() {
-        let email = prompt('Введите вашу почту');
-        let pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Паттерн для проверки формата номера
-
-        if (email && pattern.test(email)) {
-            $.ajax({
-                type: "POST",
-                url: "checkCode.php",
-                data: {
-                    email: email
-                },
-                success: function (codeFromDb) {
-                    let code = prompt("Введите полученный код");
-                    if(code === codeFromDb){
-                        alert("Код верный");
-                    }
-                    else{
-                        alert("Код не верный");
-                    }
-                }
-            });
-        } else {
-            alert('Вы ввели неверный формат почты');
-        }
-
-    }
-</script>
+<!--<script>-->
+<!--    function sendSms() {-->
+<!--        let email = prompt('Введите вашу почту');-->
+<!--        let pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Паттерн для проверки формата номера-->
+<!---->
+<!--        if (email && pattern.test(email)) {-->
+<!--            $.ajax({-->
+<!--                type: "POST",-->
+<!--                url: "checkCode.php",-->
+<!--                data: {-->
+<!--                    email: email-->
+<!--                },-->
+<!--                success: function (codeFromDb) {-->
+<!--                    let code = prompt("Введите полученный код");-->
+<!--                    if(code === codeFromDb){-->
+<!--                        alert("Код верный");-->
+<!--                    }-->
+<!--                    else{-->
+<!--                        alert("Код не верный");-->
+<!--                    }-->
+<!--                }-->
+<!--            });-->
+<!--        } else {-->
+<!--            alert('Вы ввели неверный формат почты');-->
+<!--        }-->
+<!---->
+<!--    }-->
+<!--</script>-->
 <!--<div class="container-fluid">-->
 <!--    <div class="row">-->
 <!--        <div class="col-lg-6">-->

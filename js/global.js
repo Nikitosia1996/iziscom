@@ -6,7 +6,7 @@ if(currentUrl == "?main" || currentUrl == ""){
     mainMenu.classList.add('active');
 }
 else if(currentUrl == "?oborud" || currentUrl == "?grodnoobl" || currentUrl == "?minsk" || currentUrl == "?mogilevobl" ||
-        currentUrl == "?minskobl" || currentUrl == "?brestobl" || currentUrl == "?gomelobl" || currentUrl == "?vetibskobl"){
+        currentUrl == "?minskobl" || currentUrl == "?brestobl" || currentUrl == "?gomelobl" || currentUrl == "?vitebskobl"){
     let oborMenu = document.querySelector('[href="index.php?oborud"]');
     oborMenu.classList.add('active');
 }

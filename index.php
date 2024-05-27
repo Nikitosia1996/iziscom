@@ -59,8 +59,8 @@ if (isset($TOKEN)) {
                 case "brestobl":
                     require_once "app/pages/obls/brestobl.php";
                     break;
-                case "vitebskoblobl":
-                    require_once "app/pages/obls/vitebskoblobl.php";
+                case "vitebskobl":
+                    require_once "app/pages/obls/vitebskobl.php";
                     break;
                 case "gomelobl":
                     require_once "app/pages/obls/gomelobl.php";
