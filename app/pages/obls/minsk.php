@@ -1,69 +1,15 @@
 <?php
 ?>
 
-<style>
-
-
-    #myUL li a {
-
-        border: 1px solid #ddd;
-        margin-top: 15px;
-        background-color: #f6f6f6;
-        padding: 12px;
-        text-decoration: none;
-        font-size: 18px;
-        color: black;
-        display: block;
-    }
-
-    .card {
-        position: relative;
-        display: -ms-flexbox;
-        display: flex;
-        -ms-flex-direction: column;
-        flex-direction: column;
-        min-width: 0;
-        word-wrap: break-word;
-        background-color: #fff;
-        background-clip: border-box;
-        border: 0 solid rgba(0, 0, 0, 0.125);
-        border-radius: 0.25rem;
-        box-shadow: 0 0 1px rgba(0, 0, 0, 0.125), 0 1px 3px rgba(0, 0, 0, 0.2);
-        margin-bottom: 1rem;
-        cursor: pointer;
-        height: 85px;
-        background-size: cover;
-        background-attachment: fixed;
-        padding-left: 20px;
-        justify-content: center;
-        color: black;
-        transition: all 0.5s ease-in;
-    }
-
-    .activecard1 {
-        background-color: #c6d1dd;
-    }
-
-    .activeOrg{
-        background-color: #c6d1dd !important;
-    }
-
-    td {
-        text-align: center;
-    }
-
-    #myUL li a:hover {
-        cursor: pointer;
-        background-color: #c6d1dd;
-    }
-</style>
+<link rel="stylesheet" href="css/minsk.css">
 <section class="content" style="margin-top: 100px; margin-left: 15px">
     <div class="container-fluid">
         <div class="row" id="main_row">
 
             <section class="col-lg-9 connectedSortable ui-sortable" id="org1">
                 <div class="row">
-                    <input type="text" id="myInput" onkeyup="myFunction(this)" placeholder="Что ищем?"
+                    <input type="text" id="myInput" onkeyup="myFunction(this)"
+                           placeholder="Введите название оборудования"
                            title="Type in a name">
 
                     <ul id="myUL">
@@ -85,7 +31,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
+                            <tr id="btnShMenu">
                                 <td>1</td>
                                 <td>2</td>
                                 <td>3</td>
@@ -103,6 +49,7 @@
                             </tr>
                             </tbody>
                         </table>
+
                     </div>
                     <div class="table-responsive">
                         <table class="table table-striped table-responsive-sm dataTable no-footer" id="infoOb2"
@@ -162,7 +109,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
+                            <tr >
                                 <td>1</td>
                                 <td>2</td>
                                 <td>3</td>
@@ -212,6 +159,7 @@
                             </tr>
                             </tbody>
                         </table>
+
                     </div>
                 </div>
             </section>
@@ -283,52 +231,33 @@
 
         </div>
     </div>
+    <div id="contMenu" style="display: none;">
+        <div>
+            <a onclick="alert(1)" style="cursor: pointer">hello</a>
+        </div>
+        <div>
+            bye
+        </div>
+    </div>
 </section>
-
 <script>
+    const btnShMenu = document.getElementById('btnShMenu');
+    const contMenu = document.getElementById('contMenu');
+    const body = document.getElementsByTagName('body')[0];
 
-    function showTable(idTable, element) {
-        let oldActive = document.getElementsByClassName("activeOrg")[0];
-        if (oldActive)
-            oldActive.classList.remove("activeOrg");
-        element.classList.add('activeOrg');
-        let tables = document.getElementsByTagName('table');
-        [...tables].forEach(item => {
-            item.style.display = 'none';
-        })
-        let table = document.getElementById(idTable);
-        table.style.display = "block";
-        $('table').DataTable().destroy();
-        $('#infoOb' + idTable.substr(6)).DataTable();
-        $('th').css('width', '20%');
+    btnShMenu.addEventListener('contextmenu', function (event) {
+        event.preventDefault();
+        contMenu.style.display = 'block';
+        contMenu.style.position = 'absolute';
+        contMenu.style.left = event.clientX - 200 + 'px';
+        contMenu.style.top = event.clientY - 110 + 'px';
+    });
 
-    }
+    body.addEventListener('click', function (event) {
+        contMenu.style.display = 'none';
+    })
 
-    function showSection(idCard, element) {
-        let oldActive = document.getElementsByClassName("activecard1")[0];
-        oldActive.classList.remove("activecard1");
-        element.classList.add('activecard1');
-        let sections = document.getElementsByClassName('connectedSortable');
-        [...sections].forEach(item => {
-            item.style.display = 'none';
-        })
-        let section = document.getElementById(idCard);
-        section.style.display = "block";
-    }
-
-    function myFunction(input) {
-        let filter = input.value.toUpperCase();
-        let ul = input.nextElementSibling;
-        let lis = ul.children;
-        for (let i = 0; i < lis.length; i++) {
-            let a = lis[i].children[0];
-            let li = a.textContent.toUpperCase();
-            if (li.indexOf(filter) > -1) {
-                lis[i].style.display = "";
-            } else {
-                lis[i].style.display = "none";
-            }
-        }
-    }
 </script>
+
+<script src="js/minsk.js"></script>
 

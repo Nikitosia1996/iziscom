@@ -1,0 +1,53 @@
+#myUL li a {
+
+    border: 1px solid #ddd;
+    margin-top: 15px;
+    background-color: #f6f6f6;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+    display: block;
+}
+
+.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.125), 0 1px 3px rgba(0, 0, 0, 0.2);
+    margin-bottom: 1rem;
+    cursor: pointer;
+    height: 85px;
+    background-size: cover;
+    background-attachment: fixed;
+    padding-left: 20px;
+    justify-content: center;
+    color: black;
+    transition: all 0.5s ease-in;
+}
+
+.activecard1 {
+    background-color: #c6d1dd;
+}
+
+.activeOrg{
+    background-color: #c6d1dd !important;
+}
+
+td {
+    text-align: center;
+}
+
+#myUL li a:hover {
+    cursor: pointer;
+    background-color: #c6d1dd;
+}
+
