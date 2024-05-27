@@ -28,6 +28,7 @@
                                 <th>Сервисная организация</th>
                                 <th>Дата последнего ТО</th>
                                 <th>Статус </th>
+                                <th>Действия </th>
                             </tr>
                             </thead>
                             <tbody>';
@@ -48,6 +49,7 @@
                                 echo '<td>' . $row1['date_last_TO'] . '</td>';
                                 $status =  $row1['status'] === "1" ? "исправно" : "неисправно";
                                 echo '<td>' .$status. '</td>';
+                                echo '<td><a href="#" onclick="">&#10060;</a><a href="#" onclick="editOborudovanie('.$idOborudovanie.')">✏️</a></td>';
                                 echo '</tr>';
                             }
 
@@ -73,13 +75,13 @@
                 <?php
                 $sql = "select * from uz where id_oblast = 7";
                 $result = $connectionDB->executeQuery($sql);
-                $activeClass = "activecard1";
+//                $activeClass = "activecard1";
                 while ($row = mysqli_fetch_assoc($result)) {
 
-                    echo '<div class="card card0 '.$activeClass.'" onclick="showSection('. $row['id_uz']. ',this)">';
+                    echo '<div class="card card0 " onclick="showSection('. $row['id_uz']. ',this)">';
                     echo '<h4>'. $row['name']. '</h4>';
                     echo '</div>';
-                    $activeClass = "";
+//                    $activeClass = "";
                 }
 
               ?>
@@ -238,6 +240,61 @@
 
                     <div id="edit_btnsGroup">
                         <button type="submit" class="btn btn-primary">Сохранить</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Закрыть</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="editOborudovanieModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Редактирование оборудования</h5>
+                <button type="button" class="btn btn-danger btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+
+                <form id="editOborudovanieForm">
+                    <label >Тип оборудования:</label>
+                    <select class="form-select" id="select_type_oborudovanie">
+                        <?php
+                        $query = "select * from type_oborudovanie";
+                        $result = $connectionDB->executeQuery($query);
+                        while($row = $result->fetch_assoc()){
+                            echo "<option value='".$row['id_type_oborudovanie']."'>".$row['name']."</option>";
+                        }
+                        ?>
+                    </select>
+
+                    <label for="cost">Стоимость:</label>
+                    <input type="number" id="edit_cost" name="cost">
+<!---->
+                    <label for="date_create">Дата производства:</label>
+                    <input type="date" id="edit_date_create" name="date_create">
+<!---->
+                    <label for="date_release">Дата ввода в эксплуатацию:</label>
+                    <input type="date" id="edit_date_release" name="date_release">
+<!---->
+                    <label for="service_organization">Сервисная организация:</label>
+                    <input type="text" id="edit_service_organization" name="service_organization">
+
+<!---->
+                    <label for="date_last_TO">Дата последнего ТО:</label>
+                    <input type="date" id="edit_date_last_TO" name="date_last_TO">
+<!---->
+                    <label >Статус:</label>
+                    <select class="form-select" id="select_status">
+                       <option value='0'>Неисправно</option>
+                       <option value='1'>Исправно</option>
+                    </select>
+<!---->
+<!--                    <input type="hidden" id="edit_id_fault" name="id_fault">-->
+
+                    <div style="margin-top: 10px">
+                        <button type="button" class="btn btn-primary" onclick="saveEditedOborudovanie()">Сохранить</button>
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Закрыть</button>
                     </div>
                 </form>

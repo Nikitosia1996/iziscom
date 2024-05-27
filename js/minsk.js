@@ -12,6 +12,7 @@ function showTable(idTable) {
 }
 function showSection(idOborudovanie, element) {
     let oldActive = document.getElementsByClassName("activecard1")[0];
+    if(oldActive)
     oldActive.classList.remove("activecard1");
     element.classList.add('activecard1');
     let sections = document.getElementsByClassName('connectedSortable');
@@ -242,6 +243,66 @@ function submitEditFault() {
         },
         error: function(xhr, status, error) {
             alert('Произошла ошибка: ' + error);
+        }
+    });
+}
+
+let editedOborudovanie;
+function editOborudovanie(idOborudovanie) {
+    editedOborudovanie = idOborudovanie;
+    $.ajax({
+        url: '/app/ajax/getSingleOborudovanie.php',
+        type: 'GET',
+        data: { id_oborudovanie: idOborudovanie },
+        dataType: 'json',
+        success: function (data) {
+            $('#editOborudovanieModal').modal('show');
+            let select_type_oborudovanie = document.getElementById("select_type_oborudovanie");
+            select_type_oborudovanie.options.forEach(option => {
+                if (option.value === data.id_type_oborudovanie) {
+                    option.selected = true;
+                }
+            });
+            document.getElementById('edit_cost').value = data.cost;
+            document.getElementById('edit_date_create').value = data.date_create;
+            document.getElementById('edit_date_release').value = data.date_release;
+            document.getElementById('edit_service_organization').value = data.service_organization;
+            document.getElementById('edit_date_last_TO').value = data.date_last_TO;
+
+
+            let select_status = document.getElementById("select_status");
+            select_status.options.forEach(option => {
+                if (option.value === data['status']) {
+                    option.selected = true;
+                }
+            });
+        }
+    });
+}
+
+function saveEditedOborudovanie(){
+    let select_type_oborudovanie = document.getElementById("select_type_oborudovanie");
+    let select_status = document.getElementById("select_status");
+    $.ajax({
+        url: '/app/ajax/updateOborudovanie.php',
+        type: 'POST',
+        data: {id_oborudovanie: editedOborudovanie,
+            id_type_oborudovanie: select_type_oborudovanie.options[select_type_oborudovanie.selectedIndex].value,
+            cost: document.getElementById('edit_cost').value,
+            date_create: document.getElementById('edit_date_create').value,
+            date_release: document.getElementById('edit_date_release').value,
+            service_organization: document.getElementById('edit_service_organization').value,
+            date_last_TO: document.getElementById('edit_date_last_TO').value,
+            status: select_status.options[select_status.selectedIndex].value
+        },
+        success: function (data) {
+            if(data == "1") {
+                alert("Запись изменена");
+                location.reload();
+            }else{
+                alert("Ошибка в заполнении");
+            }
+
         }
     });
 }
