@@ -9,7 +9,7 @@ function showTable(idTable) {
     $('#' + idTable).DataTable();
     $('th').css('width', '20%');
 }
-function showSection(idCard, element) {
+function showSection(idOborudovanie, element) {
     let oldActive = document.getElementsByClassName("activecard1")[0];
     oldActive.classList.remove("activecard1");
     element.classList.add('activecard1');
@@ -17,13 +17,10 @@ function showSection(idCard, element) {
     [...sections].forEach(item => {
         item.style.display = 'none';
     })
-    let section = document.getElementById(idCard);
+    let section = document.getElementById("org" + idOborudovanie);
     section.style.display = "block";
-    if (idCard === 'org1') {
-        showTable('infoOb1');
-    } else if (idCard === 'org2') {
-        showTable('infoOb2');
-    }
+    showTable('infoOb' + idOborudovanie);
+
 }
 
 function myFunctionOrg(input) {

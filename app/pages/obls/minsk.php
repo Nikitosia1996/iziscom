@@ -69,7 +69,7 @@
                 $activeClass = "activecard1";
                 while ($row = mysqli_fetch_assoc($result)) {
 
-                    echo '<div class="card card0 '.$activeClass.'" onclick="showSection(\'org'. $row['id_uz']. '\',this)">';
+                    echo '<div class="card card0 '.$activeClass.'" onclick="showSection('. $row['id_uz']. ',this)">';
                     echo '<h4>'. $row['name']. '</h4>';
                     echo '</div>';
                     $activeClass = "";
