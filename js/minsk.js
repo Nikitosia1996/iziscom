@@ -439,6 +439,7 @@ function editOborudovanie(idOborudovanie) {
             $('#editBtnOb').show();
             $('#addBtnOb').hide();
             $('#editOborudovanieModal').modal('show');
+            $('#editOborudovanieModal .modal-title').text("Изменение оборудования");
             let select_type_oborudovanie = document.getElementById("select_type_oborudovanie");
             select_type_oborudovanie.options.forEach(option => {
                 if (option.value === data.id_type_oborudovanie) {
