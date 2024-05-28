@@ -84,7 +84,6 @@ function getFaultsTable() {
             if (!data.hasOwnProperty('empty')) {
             tableContent += '<thead><tr>';
             let headers = {
-                'id_oborudovanie': 'Наименование оборудования',
                 'date_fault': 'Дата поломки',
                 'date_call_service': 'Дата вызова сервисантов иных технических специалистов',
                 'reason_fault': 'Причина поломки',
@@ -100,7 +99,6 @@ function getFaultsTable() {
             tableContent += '</tr></thead><tbody>';
             data.forEach(function(row) {
                 tableContent += '<tr>';
-                tableContent += '<td>' + row.id_oborudovanie + '</td>';
                 tableContent += '<td>' + row.date_fault + '</td>';
                 tableContent += '<td>' + row.date_call_service + '</td>';
                 tableContent += '<td>' + row.reason_fault + '</td>';
@@ -135,7 +133,6 @@ function getEffectTable() {
             if (!data.hasOwnProperty('empty')) {
                 tableContent += '<thead><tr>';
                 let headers = {
-                    'id_oborudovanie': 'Наименование оборудования',
                     'count_research': 'Количество проведенных исследований',
                     'count_patient': 'Количество диагностированных пациентов',
                     'id_use_efficiency': 'Действия',
@@ -148,7 +145,6 @@ function getEffectTable() {
 
                 data.forEach(function (row) {
                     tableContent += '<tr>';
-                    tableContent += '<td>' + row.id_oborudovanie + '</td>';
                     tableContent += '<td>' + row.count_research + '</td>';
                     tableContent += '<td>' + row.count_patient + '</td>';
                     tableContent += '<td><a href="#" onclick="confirmDeleteEffect(' + row.id_use_efficiency + '); return false;">&#10060;</a><a href="#" onclick="editEffect(' + row.id_use_efficiency + ');">✏️</a></td>';
