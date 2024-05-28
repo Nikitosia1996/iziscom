@@ -1,3 +1,4 @@
+let selectedOrg;
 
 function showTable(idTable) {
     let tables = document.getElementsByTagName('table');
@@ -10,7 +11,8 @@ function showTable(idTable) {
     $('#' + idTable).DataTable();
     $('th').css('width', '20%');
 }
-function showSection(idOborudovanie, element) {
+function showSection(idOrg, element) {
+    selectedOrg = idOrg;
     let oldActive = document.getElementsByClassName("activecard1")[0];
     if(oldActive)
     oldActive.classList.remove("activecard1");
@@ -19,9 +21,38 @@ function showSection(idOborudovanie, element) {
     [...sections].forEach(item => {
         item.style.display = 'none';
     })
-    let section = document.getElementById("org" + idOborudovanie);
+    let section = document.getElementById("org" + idOrg);
     section.style.display = "block";
-    showTable('infoOb' + idOborudovanie);
+    showTable('infoOb' + idOrg);
+
+    let container_fluid = document.getElementById("container_fluid");
+    let btnAddOborudovanie = document.getElementById("btnAddOborudovanie");
+    if(btnAddOborudovanie)
+        btnAddOborudovanie.remove();
+    btnAddOborudovanie = document.createElement("button");
+    btnAddOborudovanie.innerHTML = "Добавить оборудование";
+    btnAddOborudovanie.id = "btnAddOborudovanie";
+    btnAddOborudovanie.className = "btn btn-primary";
+    container_fluid.insertAdjacentElement("afterbegin", btnAddOborudovanie);
+
+    btnAddOborudovanie.onclick = () => {
+        $('#editBtnOb').hide();
+        $('#addBtnOb').show();
+        $('#editOborudovanieModal').modal('show');
+        $('#editOborudovanieModal .modal-title').text("Добавление оборудования");
+        let select_type_oborudovanie = document.getElementById("select_type_oborudovanie");
+        select_type_oborudovanie.options[0].selected = true;
+        document.getElementById('edit_cost').value = "";
+        document.getElementById('edit_date_create').value = "";
+        document.getElementById('edit_date_release').value = "";
+        document.getElementById('edit_service_organization').value = "";
+        document.getElementById('edit_date_last_TO').value = "";
+
+
+        let select_status = document.getElementById("select_status");
+        select_status.options[0].selected = true;
+
+    }
 
 }
 
@@ -177,6 +208,28 @@ function confirmDeleteEffect(id_use_efficiency) {
                 } else {
                     getEffectTable();
                 }
+            }
+        });
+    }
+}
+
+function confirmDeleteOborudovanie(idOborudovanie) {
+    if (confirm('Вы точно хотите удалить эту запись?')) {
+        $.ajax({
+            url: '/app/ajax/deleteOborudovanie.php',
+            type: 'POST',
+            data: { id_oborudovanie: idOborudovanie },
+            success: function(response) {
+                if (response === "Запись успешно удалена.") {
+                    $('#deleteModal').modal('show');
+                    $('#deleteModal').on('hidden.bs.modal', function (e) {
+                        $('#deleteModal').modal('hide');
+                        location.reload();
+                    });
+                } else {
+                    location.reload();
+                }
+
             }
         });
     }
@@ -387,6 +440,8 @@ function editOborudovanie(idOborudovanie) {
         data: { id_oborudovanie: idOborudovanie },
         dataType: 'json',
         success: function (data) {
+            $('#editBtnOb').show();
+            $('#addBtnOb').hide();
             $('#editOborudovanieModal').modal('show');
             let select_type_oborudovanie = document.getElementById("select_type_oborudovanie");
             select_type_oborudovanie.options.forEach(option => {
@@ -447,3 +502,31 @@ $('#editEffectForm').on('submit', function(event) {
     event.preventDefault();
     saveEffectData();
 });
+
+function saveAddedOborudovanie(){
+    let select_type_oborudovanie = document.getElementById("select_type_oborudovanie");
+    let select_status = document.getElementById("select_status");
+    $.ajax({
+        url: '/app/ajax/insertOborudovanie.php',
+        type: 'POST',
+        data: {
+            id_type_oborudovanie: select_type_oborudovanie.options[select_type_oborudovanie.selectedIndex].value,
+            cost: document.getElementById('edit_cost').value,
+            date_create: document.getElementById('edit_date_create').value,
+            date_release: document.getElementById('edit_date_release').value,
+            service_organization: document.getElementById('edit_service_organization').value,
+            date_last_TO: document.getElementById('edit_date_last_TO').value,
+            status: select_status.options[select_status.selectedIndex].value,
+            id_org: selectedOrg
+        },
+        success: function (data) {
+            if(data == "1") {
+                alert("Запись изменена");
+                location.reload();
+            }else{
+                alert("Ошибка в заполнении");
+            }
+
+        }
+    });
+}

@@ -1,8 +1,8 @@
 <link rel="stylesheet" href="css/minsk.css">
 <section class="content" style="margin-top: 100px; margin-left: 15px">
-    <div class="container-fluid">
-        <div class="row" id="main_row">
+    <div class="container-fluid" id="container_fluid">
 
+        <div class="row" id="main_row">
             <?php $query = "select * from uz where id_oblast = 7;";
             $result = $connectionDB->executeQuery($query);
             if($connectionDB->getNumRows($result) == 0){
@@ -49,7 +49,7 @@
                                 echo '<td>' . $row1['date_last_TO'] . '</td>';
                                 $status =  $row1['status'] === "1" ? "исправно" : "неисправно";
                                 echo '<td>' .$status. '</td>';
-                                echo '<td><a href="#" onclick="">&#10060;</a><a href="#" onclick="editOborudovanie('.$idOborudovanie.')">✏️</a></td>';
+                                echo '<td><a href="#" onclick="confirmDeleteOborudovanie('.$idOborudovanie.')">&#10060;</a><a href="#" onclick="editOborudovanie('.$idOborudovanie.')">✏️</a></td>';
                                 echo '</tr>';
                             }
 
@@ -392,7 +392,8 @@
 <!--                    <input type="hidden" id="edit_id_fault" name="id_fault">-->
 
                     <div style="margin-top: 10px">
-                        <button type="button" class="btn btn-primary" onclick="saveEditedOborudovanie()">Сохранить</button>
+                        <button type="button" class="btn btn-primary" id="addBtnOb" onclick="saveAddedOborudovanie()">Добавить</button>
+                        <button type="button" class="btn btn-primary" id="editBtnOb" onclick="saveEditedOborudovanie()">Сохранить</button>
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Закрыть</button>
                     </div>
                 </form>
