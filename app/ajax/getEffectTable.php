@@ -9,8 +9,7 @@ $result = $connectionDB->executeQuery($sql);
 if ($result->num_rows > 0) {
     $data = array();
     while ($row = $result->fetch_assoc()) {
-        $data[] = array('id_oborudovanie' => $row['id_oborudovanie']
-        , 'count_research' => $row['count_research']
+        $data[] = array('count_research' => $row['count_research']
         , 'count_patient' => $row['count_patient']
         , 'id_use_efficiency' => $row['id_use_efficiency']
         );
