@@ -21,6 +21,17 @@
                     </a>
                 </li>
 
+
+                <li class="sidebar-item" id="smeta-page">
+                    <a class="sidebar-link" href="index.php?smetaPodryad" data-page="smeta" aria-expanded="false">
+                <span>
+                  <i class="ti ti-article"></i>
+                </span>
+                        <span class="hide-menu">Смета-подряд</span>
+                    </a>
+                </li>
+
+
                 <li class="sidebar-item" id="oborud-page">
                     <a class="sidebar-link" href="index.php?oborud" data-page="oborud" aria-expanded="false">
                 <span>
