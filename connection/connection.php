@@ -6,10 +6,10 @@ ini_set('display_errors', 'on');
 
 class ConnectionDB
 {
-    private $host = '172.19.6.64';
-    private $user = 'user';
-    private $password = 'user';
-    private $database = 'medOborudovanie';
+    private $host = 'localhost';
+    private $user = 'root';
+    private $password = '';
+    private $database = 'iziscom';
     public $con;
 
     public function __construct()
@@ -20,7 +20,7 @@ class ConnectionDB
 
     function executeQuery($query)
     {
-        $result = mysqli_query($this->con, $query) or die("ошибка" . mysqli_error($con));
+        $result = mysqli_query($this->con, $query) or die("ошибка" . mysqli_error($this->con));
         return $result;
     }
 

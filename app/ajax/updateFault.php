@@ -8,9 +8,13 @@ if (!$connectionDB) {
     $date_call_service = $_POST['date_call_service'];
     $reason_fault = $_POST['reason_fault'];
     $date_procedure_purchase = $_POST['date_procedure_purchase'];
+    if (isset($_POST['date_dogovora']))
+        $date_dogovora = $_POST['date_dogovora'];
+    else
+        $date_dogovora = "NULL";
     $cost_repair = $_POST['cost_repair'];
     $time_repair = $_POST['time_repair'];
-    $downtime = $_POST['downtime'];
+
     $id_fault = $_POST['id_fault'];
 
 $sql = "UPDATE faults
@@ -18,9 +22,9 @@ $sql = "UPDATE faults
             date_call_service = '$date_call_service',
             reason_fault = '$reason_fault',
             date_procedure_purchase = '$date_procedure_purchase',
+            date_dogovora = '$date_dogovora',
             cost_repair = '$cost_repair',
-            time_repair = '$time_repair',
-            downtime = '$downtime'
+            time_repair = '$time_repair'
         WHERE id_fault = '$id_fault'";
     $result = $connectionDB->executeQuery($sql);
     echo "Запись обновлена.";

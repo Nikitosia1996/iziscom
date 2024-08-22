@@ -15,3 +15,23 @@ else if(currentUrl == "/index.php?servicemans"){
     serviceMenu.classList.add('active');
 }
 
+function getUzs(id_obl){
+    $.ajax({
+        url: "app/pages/obls/minsk.php",
+        method: "GET",
+        data: {id_obl: id_obl}
+    }).then(response => {
+        let bodywrap = document.getElementById("bodywrap");
+        bodywrap.innerHTML = response;
+    })
+}
+
+$(".region").on("click", function() {
+    var regionNumber = $(this).data("region");
+    getUzs(regionNumber);
+    $("#sidebarnav").children().removeClass("selected active");
+    $("#sidebarnav").children().children().removeClass("active");
+    $("#sidebarnav").children().eq(1).addClass("selected active");
+});
+
+
