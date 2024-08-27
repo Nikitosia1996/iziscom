@@ -1184,10 +1184,10 @@
                 <div class = "viborvischeckbox81">
                     <div class = "mainlolspace">
                         <div class = "lolspace">
-                            <input type="checkbox" id="toggleZd61" disabled onchange="toggleCheckboxesDop6()"> Конструкция фундаментов
+                            <input type="checkbox" id="toggleZd81" disabled onchange="toggleCheckboxesDop8()"> Конструкция фундаментов
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval61" disabled type="number" name="inputValue" step="1" min="0"> %
+                            <input class = "inpval" id="conval81" disabled type="number" name="inputValue" step="1" min="0"> %
                         </div>
                     </div>
 
