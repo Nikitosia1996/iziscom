@@ -65,7 +65,7 @@ if (isset($TOKEN)) {
         }
         ?>
         <footer class="main-footer">
-            <strong> © 2024 <a href="https://rnpcmt.by/">РНПЦ МТ</a></strong>
+            <strong> © 2024 <a href="https://rnpcmt.by/">ИЗИСКОМ</a></strong>
 
             <div class="float-right d-none d-sm-inline-block" style="right: 10px; position:absolute;">
                 <b >Версия</b> 1.1.1
