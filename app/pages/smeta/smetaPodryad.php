@@ -39,6 +39,16 @@
 .zakpod{
     margin-left:5%;
 }
+    .pasportzd{
+        margin-left:5%;
+        display: inline;
+    }
+    .pasportzd{
+        margin-left:1%;
+        display: inline;
+    }
+
+
 .zakpodGps{
     margin-top: 95px;
     margin-left:5%;
@@ -65,6 +75,14 @@
 .position1 {
     display:flex;
 }
+    .posfull
+    {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-left: 1%;
+        width:100%;
+    }
+
 .nameforblock{
     font-size: x-large;
     display: flex;
@@ -78,7 +96,7 @@
 .input-containerval{
     margin-left: 0%;
     margin-right: 2%;
-    display: ruby-text;
+    display: block;
 
 }
 
@@ -107,11 +125,11 @@
 }
 
 .dndb {
-    display: none; /* Скрываем содержимое по умолчанию */
+    display: none;
 }
 .nameforblock1  {
     margin-left: 1%;
-    cursor: pointer; /* Указываем, что элемент кликабельный */
+    cursor: pointer;
     background-color: #f0f0f0;
     padding: 10px;
     border: 1px solid #ccc;
@@ -122,11 +140,11 @@
 }
 
 .dndb3 {
-    display: none; /* Скрываем содержимое по умолчанию */
+    display: none;
 }
 .nameforblock3  {
     margin-left: 1%;
-    cursor: pointer; /* Указываем, что элемент кликабельный */
+    cursor: pointer;
     background-color: #f0f0f0;
     padding: 10px;
     border: 1px solid #ccc;
@@ -137,11 +155,11 @@
 }
 
     .dndb4 {
-        display: none; /* Скрываем содержимое по умолчанию */
+        display: none;
     }
     .nameforblock4  {
         margin-left: 1%;
-        cursor: pointer; /* Указываем, что элемент кликабельный */
+        cursor: pointer;
         background-color: #f0f0f0;
         padding: 10px;
         border: 1px solid #ccc;
@@ -153,11 +171,11 @@
 
 
     .dndb5 {
-        display: none; /* Скрываем содержимое по умолчанию */
+        display: none;
     }
     .nameforblock5  {
         margin-left: 1%;
-        cursor: pointer; /* Указываем, что элемент кликабельный */
+        cursor: pointer;
         background-color: #f0f0f0;
         padding: 10px;
         border: 1px solid #ccc;
@@ -168,11 +186,26 @@
     }
 
     .dndb6 {
-        display: none; /* Скрываем содержимое по умолчанию */
+        display: none;
     }
     .nameforblock6  {
         margin-left: 1%;
-        cursor: pointer; /* Указываем, что элемент кликабельный */
+        cursor: pointer;
+        background-color: #f0f0f0;
+        padding: 10px;
+        border: 1px solid #ccc;
+        margin-bottom: 10px;
+        width: 50%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .dndb7 {
+        display: none;
+    }
+    .nameforblock7  {
+        margin-left: 1%;
+        cursor: pointer;
         background-color: #f0f0f0;
         padding: 10px;
         border: 1px solid #ccc;
@@ -192,6 +225,11 @@
     margin-top: 10px;
     margin-bottom: 15px;
 }
+    .viborvisnew{
+        margin-left: 1%;
+        margin-top: 10px;
+        margin-bottom: 15px;
+    }
     .viborvischeckbox1{
         margin-left: 5%;
         margin-top: 10px;
@@ -214,6 +252,33 @@
 .mainlolspace{
     display:block;
 }
+
+.visotarad{
+    display: inline;
+}
+
+.dusl{
+    width: 92%;
+    margin-top: 10px;
+    margin-left: 1%;
+    border: 1px solid;
+    margin-bottom: 10px;
+}
+    .dusl2{
+        width: 92%;
+        margin-top: 10px;
+        margin-left: 1%;
+        margin-bottom: 10px;
+    }
+
+#toggleZdDopUsl{
+    margin-left: 15px;
+}
+    .posframech{
+        border: 1px solid;
+        display: flex;
+    }
+
 </style>
 
 <section class="col-lg-12 connectedSortable ui-sortable" style="margin-top: 90px">
@@ -307,17 +372,17 @@
 
             <div id="inputContainer" class="input-containerval">
                 <label for="SelectZakazchik" class="zakpod">Высота здания:</label>
-                <input id="visotazdani" type="number" name="inputValue" step="1" min="0">
+                <input id="visotazdani" type="number" name="inputValue" step="1" min="0">м
             </div>
 
             <div id="inputContainer" class="input-containerval">
                 <label for="SelectZakazchik" class="zakpod">Объем здания:</label>
-                <input id="obem" type="number" name="inputValue" step="1" min="0">
+                <input id="obem" type="number" name="inputValue" step="1" min="0">м³
             </div>
 
             <div id="inputContainer" class="input-containerval">
                 <label for="SelectZakazchik" class="zakpod">Высота покрытия от уровня пола:</label>
-                <input id="visotapola" type="number" name="inputValue" step="1" min="0">
+                <input id="visotapola" type="number" name="inputValue" step="1" min="0">м
             </div>
 
 </div>
@@ -326,13 +391,16 @@
 
 <div class = "viborvis">
             <input id="vis6" class="butrad" type="radio" name="daysType" value="vis6">
-            <label for="calendarDays" class="visotarad"> 1) Здание высотой до 6м</label>
+            <label for="calendarDays" class="visotarad"> 1) Здание высотой до 6м, бескрановое, однообъемное, двухпролетное</label>
             <br>
             <input id="vis614" class="butrad" type="radio" name="daysType" value="vis614">
-            <label for="workingDays" class="visotarad">2) Здание высотой от 6м до 14м</label>
+            <label for="workingDays" class="visotarad">2) Здание высотой от 6м до 14м высоты, с кранами грузоподъемностью до 50т включительно, с двумя объемами, 3-5 пролета
+            , а также различные сооружения, резервуары, тоннели, лестничные клетки, галереи
+            </label>
             <br>
             <input id="vis14" class="butrad" type="radio" name="daysType" value="vis14">
-            <label for="workingDays" class="visotarad">2) Здание высотой от 14м</label>
+            <label for="workingDays" class="visotarad">2) Здание высотой более 14м, со сложной конструктивной схемой, с двухъярусным расположением кранов, более 3
+            объемов, более 6 пролетов галереи с высотой опор более 20м и пролетом более 36м, полный монолитный каркас</label>
             <br>
 </div>
         </div>
@@ -355,7 +423,8 @@
             </select>
 
             <label>
-                <input type="checkbox" id="toggleSelect"> Работа в помещениях в зависимости от  степени агрессивности воздействия
+
+                <input type="checkbox" id="toggleSelect" onchange="toggleSelect('toggleSelect', 'selectContainer', 'options')"> Работа в помещениях в зависимости от  степени агрессивности воздействия
             </label>
 
             <div id="selectContainer" class="hidden">
@@ -454,11 +523,14 @@
 
             <div class="pos1">
                 <div class = "viborvis">
-                <label for="calendarDays" class="zakpod">Календарных дней:</label>
-                <input id="calendarDays" class="butrad" type="radio" name="daysType" value="calendar">
+                    <input id="calendarDays" class="butrad" type="radio" name="daysType" value="calendar">
+                <label for="calendarDays" class="pasportzd">1) Паспорт на здание или сооружение</label>
+
                 <br>
-                <label for="workingDays" class="zakpod">Рабочих дней:</label>
-                <input id="workingDays" class="butrad" type="radio" name="daysType" value="working">
+                    <input id="workingDays" class="butrad" type="radio" name="daysType" value="working">
+                <label for="workingDays" class="pasportzd">2) Паспорт на здание или сооружение. Проектная документация. Исполнительная документация. Эксплатуационная документация,
+                    журнал наблюдений службы эксплуатации. Документы характеризующие фактические нагрузки и воздействия. Сертификаты на стальные конструкции.</label>
+
                 <br>
                 </div>
             </div>
@@ -469,7 +541,7 @@
                         <input type="checkbox" id="toggleZd1" disabled onchange="toggleCheckboxesDop()"> Конструкция фундаментов
                    </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval1" disabled type="number" name="inputValue" step="1" min="0">
+                            <input class = "inpval" id="conval1" disabled type="number" name="inputValue" step="1" min="0"> %
                         </div>
                     </div>
 
@@ -479,7 +551,7 @@
                         <input type="checkbox" id="toggleZd2" disabled  onchange="toggleCheckboxesDop()"> Стены
                     </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval2" disabled type="number" name="inputValue" step="1" min="0">
+                            <input class = "inpval" id="conval2" disabled type="number" name="inputValue" step="1" min="0"> %
                         </div>
                     </div>
 
@@ -491,7 +563,7 @@
                         <input type="checkbox" id="toggleZd3" disabled  onchange="toggleCheckboxesDop()"> Полы
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval3" disabled type="number" name="inputValue" step="1" min="0">
+                            <input class = "inpval" id="conval3" disabled type="number" name="inputValue" step="1" min="0"> %
                         </div>
                     </div>
 
@@ -500,7 +572,7 @@
                         <input type="checkbox" id="toggleZd4" disabled  onchange="toggleCheckboxesDop()"> Колонны, столбы, стойки
                             </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval4" disabled type="number" name="inputValue" step="1" min="0">
+                            <input class = "inpval" id="conval4" disabled type="number" name="inputValue" step="1" min="0"> %
                         </div>
                     </div>
                     <div class = "mainlolspace">
@@ -508,7 +580,7 @@
                         <input type="checkbox" id="toggleZd5" disabled  onchange="toggleCheckboxesDop()"> Несущие конструкции копров,пролетных строейний галерей
                                 </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval5" disabled type="number" name="inputValue" step="1" min="0">
+                            <input class = "inpval" id="conval5" disabled type="number" name="inputValue" step="1" min="0"> %
                         </div>
                     </div>
 
@@ -522,20 +594,20 @@
                 <div class = "viborvischeckbox2">
                     <div class = "mainlolspace">
                         <div class = "lolspace">
-                            <input type="checkbox" id="toggleZd6" disabled onchange="toggleCheckboxesDop()"> Конструкция фундаментов
+                            <input type="checkbox" id="toggleZd6" disabled onchange="toggleCheckboxesDop()"> Подкрановые и тормозные конструкции
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval6" disabled type="number" name="inputValue" step="1" min="0">
+                            <input class = "inpval" id="conval6" disabled type="number" name="inputValue" step="1" min="0"> %
                         </div>
                     </div>
 
                     <div class = "mainlolspace">
                         <div class = "lolspace">
 
-                            <input type="checkbox" id="toggleZd7" disabled  onchange="toggleCheckboxesDop()"> Стены
+                            <input type="checkbox" id="toggleZd7" disabled  onchange="toggleCheckboxesDop()"> Перекрытия
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval7" disabled type="number" name="inputValue" step="1" min="0">
+                            <input class = "inpval" id="conval7" disabled type="number" name="inputValue" step="1" min="0"> %
                         </div>
                     </div>
 
@@ -544,19 +616,19 @@
                     <div class = "mainlolspace">
                         <div class = "lolspace">
 
-                            <input type="checkbox" id="toggleZd8" disabled  onchange="toggleCheckboxesDop()"> Полы
+                            <input type="checkbox" id="toggleZd8" disabled  onchange="toggleCheckboxesDop()"> Покрытие
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval8" disabled type="number" name="inputValue" step="1" min="0">
+                            <input class = "inpval" id="conval8" disabled type="number" name="inputValue" step="1" min="0"> %
                         </div>
                     </div>
 
                     <div class = "mainlolspace">
                         <div class = "lolspace">
-                            <input type="checkbox" id="toggleZd9" disabled  onchange="toggleCheckboxesDop()"> Колонны, столбы, стойки
+                            <input type="checkbox" id="toggleZd9" disabled  onchange="toggleCheckboxesDop()"> Кровля
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval9" disabled type="number" name="inputValue" step="1" min="0">
+                            <input class = "inpval" id="conval9" disabled type="number" name="inputValue" step="1" min="0"> %
                         </div>
                     </div>
                 </div>
@@ -588,12 +660,17 @@
 
             <div class="pos1">
                 <div class = "viborvis">
-                    <label for="calendarDays" class="zakpod">Календарных дней:</label>
                     <input id="calendarDays" class="butrad" type="radio" name="daysType" value="calendar">
+                    <label for="calendarDays" class="pasportzd">1) Обмеры для визуального обследования, паспортизации.:</label>
+
                     <br>
-                    <label for="workingDays" class="zakpod">Рабочих дней:</label>
                     <input id="workingDays" class="butrad" type="radio" name="daysType" value="working">
+                    <label for="workingDays" class="pasportzd">2) Обмеры для детального обследования (узлы, вскрытия и т.д.):</label>
+
                     <br>
+                    <input id="workingDays2" class="butrad" type="radio" name="daysType" value="working">
+                    <label for="workingDays2" class="pasportzd">3) Работы различной категории сложности:</label>
+
                 </div>
             </div>
             <div class="pos2">
@@ -603,17 +680,17 @@
                             <input type="checkbox" id="toggleZd41" disabled onchange="toggleCheckboxesDop4()"> Конструкция фундаментов
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval41" disabled type="number" name="inputValue" step="1" min="0">
+                            <input class = "inpval" id="conval41" disabled type="number" name="inputValue" step="1" min="0"> %
                         </div>
                     </div>
 
                     <div class = "mainlolspace">
                         <div class = "lolspace">
 
-                            <input type="checkbox" id="toggleZd42" disabled  onchange="toggleCheckboxesDop4()"> Стены
+                            <input type="checkbox" id="toggleZd42" disabled  onchange="toggleCheckboxesDop4()"> Планы этажей
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval42" disabled type="number" name="inputValue" step="1" min="0">
+                            <input class = "inpval" id="conval42" disabled type="number" name="inputValue" step="1" min="0"> %
                         </div>
                     </div>
 
@@ -622,19 +699,19 @@
                     <div class = "mainlolspace">
                         <div class = "lolspace">
 
-                            <input type="checkbox" id="toggleZd43" disabled  onchange="toggleCheckboxesDop4()"> Полы
+                            <input type="checkbox" id="toggleZd43" disabled  onchange="toggleCheckboxesDop4()"> Фасады
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval43" disabled type="number" name="inputValue" step="1" min="0">
+                            <input class = "inpval" id="conval43" disabled type="number" name="inputValue" step="1" min="0"> %
                         </div>
                     </div>
 
                     <div class = "mainlolspace">
                         <div class = "lolspace">
-                            <input type="checkbox" id="toggleZd44" disabled  onchange="toggleCheckboxesDop4()"> Колонны, столбы, стойки
+                            <input type="checkbox" id="toggleZd44" disabled  onchange="toggleCheckboxesDop4()"> Разрезы, сечения
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval44" disabled type="number" name="inputValue" step="1" min="0">
+                            <input class = "inpval" id="conval44" disabled type="number" name="inputValue" step="1" min="0"> %
                         </div>
                     </div>
                     <div class = "mainlolspace">
@@ -642,7 +719,7 @@
                             <input type="checkbox" id="toggleZd45" disabled  onchange="toggleCheckboxesDop4()"> Несущие конструкции копров,пролетных строейний галерей
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval45" disabled type="number" name="inputValue" step="1" min="0">
+                            <input class = "inpval" id="conval45" disabled type="number" name="inputValue" step="1" min="0"> %
                         </div>
                     </div>
 
@@ -656,20 +733,20 @@
                 <div class = "viborvischeckbox4">
                     <div class = "mainlolspace">
                         <div class = "lolspace">
-                            <input type="checkbox" id="toggleZd46" disabled onchange="toggleCheckboxesDop4()"> Конструкция фундаментов
+                            <input type="checkbox" id="toggleZd46" disabled onchange="toggleCheckboxesDop4()"> План кровли
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval46" disabled type="number" name="inputValue" step="1" min="0">
+                            <input class = "inpval" id="conval46" disabled type="number" name="inputValue" step="1" min="0"> %
                         </div>
                     </div>
 
                     <div class = "mainlolspace">
                         <div class = "lolspace">
 
-                            <input type="checkbox" id="toggleZd47" disabled  onchange="toggleCheckboxesDop4()"> Стены
+                            <input type="checkbox" id="toggleZd47" disabled  onchange="toggleCheckboxesDop4()"> Стропильные и подстропильные конструкции
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval47" disabled type="number" name="inputValue" step="1" min="0">
+                            <input class = "inpval" id="conval47" disabled type="number" name="inputValue" step="1" min="0"> %
                         </div>
                     </div>
 
@@ -678,23 +755,39 @@
                     <div class = "mainlolspace">
                         <div class = "lolspace">
 
-                            <input type="checkbox" id="toggleZd48" disabled  onchange="toggleCheckboxesDop4()"> Полы
+                            <input type="checkbox" id="toggleZd48" disabled  onchange="toggleCheckboxesDop4()"> Подкрановые и тормозные конструкции
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval48" disabled type="number" name="inputValue" step="1" min="0">
+                            <input class = "inpval" id="conval48" disabled type="number" name="inputValue" step="1" min="0"> %
                         </div>
                     </div>
 
                     <div class = "mainlolspace">
                         <div class = "lolspace">
-                            <input type="checkbox" id="toggleZd49" disabled  onchange="toggleCheckboxesDop4()"> Колонны, столбы, стойки
+                            <input type="checkbox" id="toggleZd49" disabled  onchange="toggleCheckboxesDop4()"> Несущие элементы перекрытий
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval49" disabled type="number" name="inputValue" step="1" min="0">
+                            <input class = "inpval" id="conval49" disabled type="number" name="inputValue" step="1" min="0"> %
                         </div>
                     </div>
+
+
+                    <div class = "mainlolspace">
+                        <div class = "lolspace">
+                            <input type="checkbox" id="toggleZd449" disabled  onchange="toggleCheckboxesDop4()"> Несущие элементы покрытий
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval449" disabled type="number" name="inputValue" step="1" min="0"> %
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
+        </div>
+        <div class = "dusl">Дополнительные условия:
+        <input type="checkbox" id="toggleZdDopUsl"> Проектная документация присутствует в полном объеме
+        <input type="checkbox" id="toggleZdDopUsl"> Выполнение детальных измерений пролетов, сечений, узлов, смещений
         </div>
     </div>
 
@@ -725,11 +818,17 @@
 
             <div class="pos1">
                 <div class = "viborvis">
-                    <label for="calendarDays" class="zakpod">Календарных дней:</label>
                     <input id="calendarDays" class="butrad" type="radio" name="daysType" value="calendar">
+                    <label for="calendarDays" class="pasportzd">Предварительный осмотр</label>
                     <br>
-                    <label for="workingDays" class="zakpod">Рабочих дней:</label>
                     <input id="workingDays" class="butrad" type="radio" name="daysType" value="working">
+                    <label for="workingDays" class="pasportzd">Общее обследование</label>
+                    <br>
+                    <input id="workingDays" class="butrad" type="radio" name="daysType" value="working">
+                    <label for="workingDays" class="pasportzd">Детальное обследование</label>
+                    <br>
+                    <input id="workingDays" class="butrad" type="radio" name="daysType" value="working">
+                    <label for="workingDays" class="pasportzd">Работы совмещающие общее и детальное обследование</label>
                     <br>
                 </div>
             </div>
@@ -750,7 +849,7 @@
                             <input type="checkbox" id="toggleZd52" disabled  onchange="toggleCheckboxesDop5()"> Стены
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval52" disabled type="number" name="inputValue" step="1" min="0">
+                            <input class = "inpval" id="conval52" disabled type="number" name="inputValue" step="1" min="0">%
                         </div>
                     </div>
 
@@ -762,7 +861,7 @@
                             <input type="checkbox" id="toggleZd53" disabled  onchange="toggleCheckboxesDop5()"> Полы
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval53" disabled type="number" name="inputValue" step="1" min="0">
+                            <input class = "inpval" id="conval53" disabled type="number" name="inputValue" step="1" min="0">%
                         </div>
                     </div>
 
@@ -771,7 +870,7 @@
                             <input type="checkbox" id="toggleZd54" disabled  onchange="toggleCheckboxesDop5()"> Колонны, столбы, стойки
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval54" disabled type="number" name="inputValue" step="1" min="0">
+                            <input class = "inpval" id="conval54" disabled type="number" name="inputValue" step="1" min="0">%
                         </div>
                     </div>
                     <div class = "mainlolspace">
@@ -779,7 +878,7 @@
                             <input type="checkbox" id="toggleZd55" disabled  onchange="toggleCheckboxesDop5()"> Несущие конструкции копров,пролетных строейний галерей
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval55" disabled type="number" name="inputValue" step="1" min="0">
+                            <input class = "inpval" id="conval55" disabled type="number" name="inputValue" step="1" min="0">%
                         </div>
                     </div>
 
@@ -793,20 +892,20 @@
                 <div class = "viborvischeckbox54">
                     <div class = "mainlolspace">
                         <div class = "lolspace">
-                            <input type="checkbox" id="toggleZd56" disabled onchange="toggleCheckboxesDop5()"> Конструкция фундаментов
+                            <input type="checkbox" id="toggleZd56" disabled onchange="toggleCheckboxesDop5()"> Подкрановые и тормозные конструкции
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval56" disabled type="number" name="inputValue" step="1" min="0">
+                            <input class = "inpval" id="conval56" disabled type="number" name="inputValue" step="1" min="0">%
                         </div>
                     </div>
 
                     <div class = "mainlolspace">
                         <div class = "lolspace">
 
-                            <input type="checkbox" id="toggleZd57" disabled  onchange="toggleCheckboxesDop5()"> Стены
+                            <input type="checkbox" id="toggleZd57" disabled  onchange="toggleCheckboxesDop5()"> Перекрытия
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval57" disabled type="number" name="inputValue" step="1" min="0">
+                            <input class = "inpval" id="conval57" disabled type="number" name="inputValue" step="1" min="0">%
                         </div>
                     </div>
 
@@ -815,24 +914,61 @@
                     <div class = "mainlolspace">
                         <div class = "lolspace">
 
-                            <input type="checkbox" id="toggleZd58" disabled  onchange="toggleCheckboxesDop5()"> Полы
+                            <input type="checkbox" id="toggleZd58" disabled  onchange="toggleCheckboxesDop5()"> Покрытие
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval58" disabled type="number" name="inputValue" step="1" min="0">
+                            <input class = "inpval" id="conval58" disabled type="number" name="inputValue" step="1" min="0">%
                         </div>
                     </div>
 
                     <div class = "mainlolspace">
                         <div class = "lolspace">
-                            <input type="checkbox" id="toggleZd59" disabled  onchange="toggleCheckboxesDop5()"> Колонны, столбы, стойки
+                            <input type="checkbox" id="toggleZd59" disabled  onchange="toggleCheckboxesDop5()"> Кровля
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval59" disabled type="number" name="inputValue" step="1" min="0">
+                            <input class = "inpval" id="conval59" disabled type="number" name="inputValue" step="1" min="0">%
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+ <div class = posframech>
+        <div class = "dusl2">Дополнительные условия:
+            <label>
+                <input type="checkbox" id="toggleSelect1" onchange="toggleSelect('toggleSelect1', 'selectContainer1', 'options1')"> Облицовка поверхностных конструкций
+            </label>
+
+            <div id="selectContainer1" class="hidden">
+                <label for="options">Выберите опцию:</label>
+                <select class="form-select" id="options1" disabled>
+                    <option value="">-- Пожалуйста, выберите --</option>
+                    <option value="1">Опция 1</option>
+                    <option value="2">Опция 2</option>
+                    <option value="3">Опция 3</option>
+                </select>
+            </div>
+            <label>
+                <input type="checkbox" id="toggleSelect2" onchange="toggleSelect('toggleSelect2', 'selectContainer2', 'options2')"> Наличие значительных дефектов
+            </label>
+
+            <div id="selectContainer2" class="hidden">
+                <label for="options">Выберите опцию:</label>
+                <select class="form-select" id="options2" disabled>
+                    <option value="">-- Пожалуйста, выберите --</option>
+                    <option value="1">Опция 1</option>
+                    <option value="2">Опция 2</option>
+                    <option value="3">Опция 3</option>
+                </select>
+            </div>
+        </div>
+        <div class ="svposch">
+            <input type="checkbox" id="povkef"> Учитывать повышающий коэффициент от объема работ если обследуется <70% <br>
+            <input type="checkbox" id="sooruzhzd"> Здание (сооружение) на просадочных грунтах
+        </div>
+ </div>
+
+
+
     </div>
 
     <hr>
@@ -861,11 +997,17 @@
 
             <div class="pos1">
                 <div class = "viborvis">
-                    <label for="calendarDays" class="zakpod">Календарных дней:</label>
                     <input id="calendarDays" class="butrad" type="radio" name="daysType" value="calendar">
+                    <label for="calendarDays" class="pasportzd">Заключение о состоянии строительных конструкций с выводами и рекомендациями</label>
                     <br>
-                    <label for="workingDays" class="zakpod">Рабочих дней:</label>
                     <input id="workingDays" class="butrad" type="radio" name="daysType" value="working">
+                    <label for="workingDays" class="pasportzd">То же, с разработкой технических решений для отдельных элементов</label>
+                    <br>
+                    <input id="workingDays" class="butrad" type="radio" name="daysType" value="working">
+                    <label for="workingDays" class="pasportzd">То же, с частичной заменой или усилением более 30% несущих элементов</label>
+                    <br>
+                    <input id="workingDays" class="butrad" type="radio" name="daysType" value="working">
+                    <label for="workingDays" class="pasportzd">Работы различной категории сложности</label>
                     <br>
                 </div>
             </div>
@@ -876,7 +1018,7 @@
                             <input type="checkbox" id="toggleZd61" disabled onchange="toggleCheckboxesDop6()"> Конструкция фундаментов
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval61" disabled type="number" name="inputValue" step="1" min="0">
+                            <input class = "inpval" id="conval61" disabled type="number" name="inputValue" step="1" min="0"> %
                         </div>
                     </div>
 
@@ -886,7 +1028,7 @@
                             <input type="checkbox" id="toggleZd62" disabled  onchange="toggleCheckboxesDop6()"> Стены
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval62" disabled type="number" name="inputValue" step="1" min="0">
+                            <input class = "inpval" id="conval62" disabled type="number" name="inputValue" step="1" min="0"> %
                         </div>
                     </div>
 
@@ -898,7 +1040,7 @@
                             <input type="checkbox" id="toggleZd63" disabled  onchange="toggleCheckboxesDop6()"> Полы
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval63" disabled type="number" name="inputValue" step="1" min="0">
+                            <input class = "inpval" id="conval63" disabled type="number" name="inputValue" step="1" min="0"> %
                         </div>
                     </div>
 
@@ -907,7 +1049,7 @@
                             <input type="checkbox" id="toggleZd64" disabled  onchange="toggleCheckboxesDop6()"> Колонны, столбы, стойки
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval64" disabled type="number" name="inputValue" step="1" min="0">
+                            <input class = "inpval" id="conval64" disabled type="number" name="inputValue" step="1" min="0"> %
                         </div>
                     </div>
                     <div class = "mainlolspace">
@@ -915,7 +1057,7 @@
                             <input type="checkbox" id="toggleZd65" disabled  onchange="toggleCheckboxesDop6()"> Несущие конструкции копров,пролетных строейний галерей
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval65" disabled type="number" name="inputValue" step="1" min="0">
+                            <input class = "inpval" id="conval65" disabled type="number" name="inputValue" step="1" min="0"> %
                         </div>
                     </div>
 
@@ -929,20 +1071,20 @@
                 <div class = "viborvischeckbox64">
                     <div class = "mainlolspace">
                         <div class = "lolspace">
-                            <input type="checkbox" id="toggleZd66" disabled onchange="toggleCheckboxesDop6()"> Конструкция фундаментов
+                            <input type="checkbox" id="toggleZd66" disabled onchange="toggleCheckboxesDop6()"> Подкрановые и тормозные конструкции
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval66" disabled type="number" name="inputValue" step="1" min="0">
+                            <input class = "inpval" id="conval66" disabled type="number" name="inputValue" step="1" min="0"> %
                         </div>
                     </div>
 
                     <div class = "mainlolspace">
                         <div class = "lolspace">
 
-                            <input type="checkbox" id="toggleZd67" disabled  onchange="toggleCheckboxesDop6()"> Стены
+                            <input type="checkbox" id="toggleZd67" disabled  onchange="toggleCheckboxesDop6()"> Перекрыия
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval67" disabled type="number" name="inputValue" step="1" min="0">
+                            <input class = "inpval" id="conval67" disabled type="number" name="inputValue" step="1" min="0"> %
                         </div>
                     </div>
 
@@ -951,29 +1093,86 @@
                     <div class = "mainlolspace">
                         <div class = "lolspace">
 
-                            <input type="checkbox" id="toggleZd68" disabled  onchange="toggleCheckboxesDop6()"> Полы
+                            <input type="checkbox" id="toggleZd68" disabled  onchange="toggleCheckboxesDop6()"> Покрытие
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval68" disabled type="number" name="inputValue" step="1" min="0">
+                            <input class = "inpval" id="conval68" disabled type="number" name="inputValue" step="1" min="0"> %
                         </div>
                     </div>
 
                     <div class = "mainlolspace">
                         <div class = "lolspace">
-                            <input type="checkbox" id="toggleZd69" disabled  onchange="toggleCheckboxesDop6()"> Колонны, столбы, стойки
+                            <input type="checkbox" id="toggleZd69" disabled  onchange="toggleCheckboxesDop6()"> Кровля
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval69" disabled type="number" name="inputValue" step="1" min="0">
+                            <input class = "inpval" id="conval69" disabled type="number" name="inputValue" step="1" min="0"> %
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class = "dusl">Дополнительные условия:
+            <input type="checkbox" id="toggleZdDopUsl"> Сейсмические условия 7 баллов и более
+            <input type="checkbox" id="toggleZdDopUsl"> Разработка временных противоаварийных мероприятий
+            <input type="checkbox" id="toggleZdDopUsl"> Разработка рекомендаций без проведения расчетов
+        </div>
     </div>
-
     <hr>
 
 
+
+
+
+
+
+    <div class="nameforblock7" onclick ="toggleDisplay('.nameforblock7', '.dndb7');">Редактор испытания конструкций <?php echo '<input class = "onCollap" type="checkbox" id="sborDann" name="sborDann" value="sborDann"> <span class="countRub">123</span>' ?></div>
+    <div class="dndb7">
+        <div style = "margin-left:1%";>Работы по определению прочности бетона и кирпичной кладки:</div>
+        <div class="position1">
+
+            <div class="posfull">
+                <div class = "viborvisnew">
+                    <div class = "mainlolspace">
+                        <div class = "lolspace">
+                            <input type="checkbox" id="toggleZd71"  onchange="toggleCheckboxesDop7()"> Определение прочности бетона в бетонных и железобетонных конструкциях
+                            механическими приборами
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval71" disabled type="number" name="inputValue" step="1" min="0">
+                        </div>
+                    </div>
+                    <div class = "mainlolspace">
+                        <div class = "lolspace">
+                            <input type="checkbox" id="toggleZd72"   onchange="toggleCheckboxesDop7()"> Определение прочности бетона в бетонных и железобетонных конструкциях
+                            ультразвуковыми приборами
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval72" disabled type="number" name="inputValue" step="1" min="0">
+                        </div>
+                    </div>
+                    <div class = "mainlolspace">
+                        <div class = "lolspace">
+                            <input type="checkbox" id="toggleZd73"   onchange="toggleCheckboxesDop7()"> Определение прочности бетона в бетонных и железобетонных конструкциях
+                            гидравлическими пресс-насосами (типа ГПНС, "Скол", и т.д.)
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval73" disabled type="number" name="inputValue" step="1" min="0">
+                        </div>
+                    </div>
+                    <div class = "mainlolspace">
+                        <div class = "lolspace">
+                            <input type="checkbox" id="toggleZd74"  onchange="toggleCheckboxesDop7()"> Определение прочности раствора и каменных материалов ультразвуковыми
+                            и ударно-импульсными методами
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval74" disabled type="number" name="inputValue" step="1" min="0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    <hr>
 
 
 
@@ -986,29 +1185,26 @@
 
 
             if (targetElement.style.display === "none" || targetElement.style.display === "") {
-                targetElement.style.display = "block"; // Показываем блок
+                targetElement.style.display = "block";
             } else {
-                targetElement.style.display = "none"; // Скрываем блок
+                targetElement.style.display = "none";
+            }
+    }
+    function toggleSelect(toggleId, selectContainerId, optionsId) {
+        const toggleSelect = document.getElementById(toggleId);
+        const selectContainer = document.getElementById(selectContainerId);
+        const optionsSelect = document.getElementById(optionsId);
+
+            if (toggleSelect.checked) {
+                selectContainer.classList.remove('hidden');
+                optionsSelect.disabled = false;
+            } else {
+                selectContainer.classList.add('hidden');
+                optionsSelect.selectedIndex = 0;
+                optionsSelect.disabled = true;
             }
     }
 
-
-    const toggleSelect = document.getElementById('toggleSelect');
-    const selectContainer = document.getElementById('selectContainer');
-    const optionsSelect = document.getElementById('options');
-
-    toggleSelect.addEventListener('change', () => {
-        if (toggleSelect.checked) {
-            // Если чекбокс выбран, показываем селект и активируем его
-            selectContainer.classList.remove('hidden');
-            optionsSelect.disabled = false;
-        } else {
-            // Если чекбокс не выбран, скрываем селект, очищаем его и блокируем
-            selectContainer.classList.add('hidden');
-            optionsSelect.selectedIndex = 0; // Сбрасываем выбор
-            optionsSelect.disabled = true; // Блокируем селект
-        }
-    });
 
 
 
@@ -1049,6 +1245,15 @@
         });
     }
 
+    function toggleCheckboxes7() {
+        const isChecked = document.getElementById('choosCunstruct7').checked;
+        const checkboxes = document.querySelectorAll('.viborvischeckbox73 input[type="checkbox"], .viborvischeckbox74 input[type="checkbox"]');
+
+        checkboxes.forEach(checkbox => {
+            checkbox.disabled = !isChecked;
+        });
+    }
+
     function toggleCheckboxesDop() {
         const checkboxes = [
             { checkbox: document.getElementById('toggleZd1'), input: document.getElementById('conval1') },
@@ -1063,7 +1268,7 @@
         ];
 
         checkboxes.forEach(item => {
-            item.input.disabled = !item.checkbox.checked; // Если чекбокс не выбран, блокируем инпут
+            item.input.disabled = !item.checkbox.checked;
         });
     }
 
@@ -1079,10 +1284,12 @@
             { checkbox: document.getElementById('toggleZd47'), input: document.getElementById('conval47') },
             { checkbox: document.getElementById('toggleZd48'), input: document.getElementById('conval48') },
             { checkbox: document.getElementById('toggleZd49'), input: document.getElementById('conval49') },
+            { checkbox: document.getElementById('toggleZd449'), input: document.getElementById('toggleZd449') },
+
         ];
 
         checkboxes.forEach(item => {
-            item.input.disabled = !item.checkbox.checked; // Если чекбокс не выбран, блокируем инпут
+            item.input.disabled = !item.checkbox.checked;
         });
     }
 
@@ -1100,7 +1307,7 @@
         ];
 
         checkboxes.forEach(item => {
-            item.input.disabled = !item.checkbox.checked; // Если чекбокс не выбран, блокируем инпут
+            item.input.disabled = !item.checkbox.checked;
         });
     }
 
@@ -1118,7 +1325,21 @@
         ];
 
         checkboxes.forEach(item => {
-            item.input.disabled = !item.checkbox.checked; // Если чекбокс не выбран, блокируем инпут
+            item.input.disabled = !item.checkbox.checked;
+        });
+    }
+
+
+    function toggleCheckboxesDop7() {
+        const checkboxes = [
+            { checkbox: document.getElementById('toggleZd71'), input: document.getElementById('conval71') },
+            { checkbox: document.getElementById('toggleZd72'), input: document.getElementById('conval72') },
+            { checkbox: document.getElementById('toggleZd73'), input: document.getElementById('conval73') },
+            { checkbox: document.getElementById('toggleZd74'), input: document.getElementById('conval74') },
+        ];
+
+        checkboxes.forEach(item => {
+            item.input.disabled = !item.checkbox.checked;
         });
     }
 
