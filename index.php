@@ -51,18 +51,8 @@ if (isset($TOKEN)) {
         if (isset($value)) {
 
             switch ($value) {
-
-                case "oborud":
-                    require_once "app/pages/oborudovanie.php";
-                    break;
-                case "effect_oborud":
-                    require_once "app/pages/effectOborudovanie.php";
-                    break;
                 case "main":
                     require_once "app/pages/main.php";
-                    break;
-                case "servicemans":
-                    require_once "app/pages/servicemans.php";
                     break;
                 case "smetaPodryad":
                     require_once "app/pages/smeta/smetaPodryad.php";
@@ -88,28 +78,6 @@ if (isset($TOKEN)) {
 </body>
 
 <script>
-    // $('.sidebar-link').on('click', function (e) {
-    //     e.preventDefault();
-    //     let url;
-    //     var page = $(this).attr('data-page');
-    //     switch (page) {
-    //         case 'main':
-    //             url = "app/pages/main.php";
-    //             break;
-    //         case 'oborud':
-    //             url = "app/pages/oborudovanie.php";
-    //             break;
-    //         default:
-    //             url = "app/pages/main.php";
-    //             break;
-    //     }
-    //     $.ajax({
-    //         url: url,
-    //     }).done(response => {
-    //         $('.app-header').nextAll().remove().end().after(response);
-    //     });
-    // });
-
 
 </script>
 

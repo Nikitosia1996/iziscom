@@ -342,7 +342,7 @@
 
     <hr>
 
-
+    <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 
 
     <div class="nameforblock1" onclick ="toggleDisplay('.nameforblock1', '.dndb');">Характеристика объекта   <?php echo '<span class="countRub">123</span>' ?></div>
@@ -495,7 +495,7 @@
     </div>
 
     <hr>
-
+    <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 
 
 
@@ -637,7 +637,7 @@
     </div>
     <hr>
 
-
+    <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 
     <div class="nameforblock4" onclick ="toggleDisplay('.nameforblock4', '.dndb4');">Обмерные работы <?php echo '<input class = "onCollap" type="checkbox" id="sborDann" name="sborDann" value="sborDann"> <span class="countRub">123</span>' ?></div>
     <div class="dndb4">
@@ -793,7 +793,7 @@
 
     <hr>
 
-
+    <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 
 
 
@@ -973,7 +973,7 @@
 
     <hr>
 
-
+    <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 
 
     <div class="nameforblock6" onclick ="toggleDisplay('.nameforblock6', '.dndb6');">Составление технического отчета <?php echo '<input class = "onCollap" type="checkbox" id="sborDann" name="sborDann" value="sborDann"> <span class="countRub">123</span>' ?></div>
@@ -1119,9 +1119,7 @@
     </div>
     <hr>
 
-
-
-
+    <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 
 
 
@@ -1174,6 +1172,174 @@
         </div>
     <hr>
 
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+    <div class="nameforblock8" onclick ="toggleDisplay('.nameforblock8', '.dndb8');">Обследование отдельных конструкций <?php echo '<input class = "onCollap" type="checkbox" id="sborDann" name="sborDann" value="sborDann"> <span class="countRub">123</span>' ?></div>
+    <div class="dndb8">
+
+
+        <div class="position1">
+
+            <div class="pos1">
+                <div class = "viborvischeckbox81">
+                    <div class = "mainlolspace">
+                        <div class = "lolspace">
+                            <input type="checkbox" id="toggleZd61" disabled onchange="toggleCheckboxesDop6()"> Конструкция фундаментов
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval61" disabled type="number" name="inputValue" step="1" min="0"> %
+                        </div>
+                    </div>
+
+                    <div class = "mainlolspace">
+                        <div class = "lolspace">
+
+                            <input type="checkbox" id="toggleZd62" disabled  onchange="toggleCheckboxesDop6()"> Стены
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval62" disabled type="number" name="inputValue" step="1" min="0"> %
+                        </div>
+                    </div>
+
+
+
+                    <div class = "mainlolspace">
+                        <div class = "lolspace">
+
+                            <input type="checkbox" id="toggleZd63" disabled  onchange="toggleCheckboxesDop6()"> Полы
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval63" disabled type="number" name="inputValue" step="1" min="0"> %
+                        </div>
+                    </div>
+
+                    <div class = "mainlolspace">
+                        <div class = "lolspace">
+                            <input type="checkbox" id="toggleZd64" disabled  onchange="toggleCheckboxesDop6()"> Колонны, столбы, стойки
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval64" disabled type="number" name="inputValue" step="1" min="0"> %
+                        </div>
+                    </div>
+                    <div class = "mainlolspace">
+                        <div class = "lolspace">
+                            <input type="checkbox" id="toggleZd65" disabled  onchange="toggleCheckboxesDop6()"> Несущие конструкции копров,пролетных строейний галерей
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval65" disabled type="number" name="inputValue" step="1" min="0"> %
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="pos2">
+                <div class = "viborvischeckbox82">
+                    <div class = "mainlolspace">
+                        <div class = "lolspace">
+                            <input type="checkbox" id="toggleZd61" disabled onchange="toggleCheckboxesDop6()"> Конструкция фундаментов
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval61" disabled type="number" name="inputValue" step="1" min="0"> %
+                        </div>
+                    </div>
+
+                    <div class = "mainlolspace">
+                        <div class = "lolspace">
+
+                            <input type="checkbox" id="toggleZd62" disabled  onchange="toggleCheckboxesDop6()"> Стены
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval62" disabled type="number" name="inputValue" step="1" min="0"> %
+                        </div>
+                    </div>
+
+
+
+                    <div class = "mainlolspace">
+                        <div class = "lolspace">
+
+                            <input type="checkbox" id="toggleZd63" disabled  onchange="toggleCheckboxesDop6()"> Полы
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval63" disabled type="number" name="inputValue" step="1" min="0"> %
+                        </div>
+                    </div>
+
+                    <div class = "mainlolspace">
+                        <div class = "lolspace">
+                            <input type="checkbox" id="toggleZd64" disabled  onchange="toggleCheckboxesDop6()"> Колонны, столбы, стойки
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval64" disabled type="number" name="inputValue" step="1" min="0"> %
+                        </div>
+                    </div>
+                    <div class = "mainlolspace">
+                        <div class = "lolspace">
+                            <input type="checkbox" id="toggleZd65" disabled  onchange="toggleCheckboxesDop6()"> Несущие конструкции копров,пролетных строейний галерей
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval65" disabled type="number" name="inputValue" step="1" min="0"> %
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+            <div class="pos3">
+
+                <div class = "viborvischeckbox83">
+                    <div class = "mainlolspace">
+                        <div class = "lolspace">
+                            <input type="checkbox" id="toggleZd66" disabled onchange="toggleCheckboxesDop6()"> Подкрановые и тормозные конструкции
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval66" disabled type="number" name="inputValue" step="1" min="0"> %
+                        </div>
+                    </div>
+
+                    <div class = "mainlolspace">
+                        <div class = "lolspace">
+
+                            <input type="checkbox" id="toggleZd67" disabled  onchange="toggleCheckboxesDop6()"> Перекрыия
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval67" disabled type="number" name="inputValue" step="1" min="0"> %
+                        </div>
+                    </div>
+
+
+
+                    <div class = "mainlolspace">
+                        <div class = "lolspace">
+
+                            <input type="checkbox" id="toggleZd68" disabled  onchange="toggleCheckboxesDop6()"> Покрытие
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval68" disabled type="number" name="inputValue" step="1" min="0"> %
+                        </div>
+                    </div>
+
+                    <div class = "mainlolspace">
+                        <div class = "lolspace">
+                            <input type="checkbox" id="toggleZd69" disabled  onchange="toggleCheckboxesDop6()"> Кровля
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval69" disabled type="number" name="inputValue" step="1" min="0"> %
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class = "dusl">Дополнительные условия:
+            <input type="checkbox" id="toggleZdDopUsl"> Сейсмические условия 7 баллов и более
+            <input type="checkbox" id="toggleZdDopUsl"> Разработка временных противоаварийных мероприятий
+            <input type="checkbox" id="toggleZdDopUsl"> Разработка рекомендаций без проведения расчетов
+        </div>
+    </div>
+    <hr>
+    <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 
 
 </section>
