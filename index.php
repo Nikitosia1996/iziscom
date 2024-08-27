@@ -57,6 +57,9 @@ if (isset($TOKEN)) {
                 case "smetaPodryad":
                     require_once "app/pages/smeta/smetaPodryad.php";
                     break;
+                case "dogovor":
+                    require_once "app/pages/smeta/dogovor.php";
+                    break;
                 default:
                     require_once "app/pages/main.php";
             }

@@ -31,6 +31,15 @@
                     </a>
                 </li>
 
+                <li class="sidebar-item" id="dogovor-page">
+                    <a class="sidebar-link" href="index.php?dogovor" data-page="dogovor" aria-expanded="false">
+                <span>
+                  <i class="ti ti-article"></i>
+                </span>
+                        <span class="hide-menu">Договор</span>
+                    </a>
+                </li>
+
 
             </ul>
 
