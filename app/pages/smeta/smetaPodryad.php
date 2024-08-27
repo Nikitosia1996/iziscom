@@ -17,6 +17,18 @@
     margin-top: 10px;
 }
 
+    .form-select-calc{
+        width: 90%;
+        height: 35px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 10px;
+        margin-left:5%;
+        margin-top: 10px;
+        font-size:12px;
+    }
+
 .form-date{
     width: 90%;
     height: 40px;
@@ -123,41 +135,11 @@
 #visotapola{
     width:15%;
 }
-
-.dndb {
-    display: none;
-}
-.nameforblock1  {
-    margin-left: 1%;
-    cursor: pointer;
-    background-color: #f0f0f0;
-    padding: 10px;
-    border: 1px solid #ccc;
-    margin-bottom: 10px;
-    width: 50%;
-    display: flex;
-    justify-content: center;
-}
-
-.dndb3 {
-    display: none;
-}
-.nameforblock3  {
-    margin-left: 1%;
-    cursor: pointer;
-    background-color: #f0f0f0;
-    padding: 10px;
-    border: 1px solid #ccc;
-    margin-bottom: 10px;
-    width: 50%;
-    display: flex;
-    justify-content: center;
-}
-
-    .dndb4 {
+    .dndb, .dndb3, .dndb4, .dndb5, .dndb6, .dndb7, .dndb8, .dndb9 {
         display: none;
     }
-    .nameforblock4  {
+    .nameforblock1, .nameforblock3, .nameforblock4, .nameforblock5,
+    .nameforblock6, .nameforblock7, .nameforblock8, .nameforblock9 {
         margin-left: 1%;
         cursor: pointer;
         background-color: #f0f0f0;
@@ -168,54 +150,6 @@
         display: flex;
         justify-content: center;
     }
-
-
-    .dndb5 {
-        display: none;
-    }
-    .nameforblock5  {
-        margin-left: 1%;
-        cursor: pointer;
-        background-color: #f0f0f0;
-        padding: 10px;
-        border: 1px solid #ccc;
-        margin-bottom: 10px;
-        width: 50%;
-        display: flex;
-        justify-content: center;
-    }
-
-    .dndb6 {
-        display: none;
-    }
-    .nameforblock6  {
-        margin-left: 1%;
-        cursor: pointer;
-        background-color: #f0f0f0;
-        padding: 10px;
-        border: 1px solid #ccc;
-        margin-bottom: 10px;
-        width: 50%;
-        display: flex;
-        justify-content: center;
-    }
-
-    .dndb7 {
-        display: none;
-    }
-    .nameforblock7  {
-        margin-left: 1%;
-        cursor: pointer;
-        background-color: #f0f0f0;
-        padding: 10px;
-        border: 1px solid #ccc;
-        margin-bottom: 10px;
-        width: 50%;
-        display: flex;
-        justify-content: center;
-    }
-
-
     .countRub{
     margin-left: 10%;
 
@@ -253,6 +187,7 @@
     display:block;
 }
 
+
 .visotarad{
     display: inline;
 }
@@ -277,6 +212,25 @@
     .posframech{
         border: 1px solid;
         display: flex;
+    }
+
+
+
+
+    .mainselspace {
+        display: flex;
+        flex-direction: column;
+    }
+    .select-input-pair {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    .form-select-calc {
+        margin-right: 10px;
+    }
+    .inpvalsel {
+        flex: 1;
     }
 
 </style>
@@ -1184,20 +1138,26 @@
                 <div class = "viborvischeckbox81">
                     <div class = "mainlolspace">
                         <div class = "lolspace">
-                            <input type="checkbox" id="toggleZd81" disabled onchange="toggleCheckboxesDop8()"> Конструкция фундаментов
+                            <input type="checkbox" id="toggleZd81"  onchange="toggleCheckboxesDop8()"> Стропильная ферма пролетом 18м
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval81" disabled type="number" name="inputValue" step="1" min="0"> %
+                            <input class = "inpval" id="conval81" disabled type="number" name="inputValue" step="1" min="0"> количество
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval811" disabled type="number" name="inputValue" step="1" min="0"> сложность
                         </div>
                     </div>
 
                     <div class = "mainlolspace">
                         <div class = "lolspace">
 
-                            <input type="checkbox" id="toggleZd62" disabled  onchange="toggleCheckboxesDop6()"> Стены
+                            <input type="checkbox" id="toggleZd82"   onchange="toggleCheckboxesDop8()"> Стропильная ферма пролетом 24м
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval62" disabled type="number" name="inputValue" step="1" min="0"> %
+                            <input class = "inpval" id="conval82" disabled type="number" name="inputValue" step="1" min="0"> количество
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval822" disabled type="number" name="inputValue" step="1" min="0"> сложность
                         </div>
                     </div>
 
@@ -1206,29 +1166,66 @@
                     <div class = "mainlolspace">
                         <div class = "lolspace">
 
-                            <input type="checkbox" id="toggleZd63" disabled  onchange="toggleCheckboxesDop6()"> Полы
+                            <input type="checkbox" id="toggleZd83"   onchange="toggleCheckboxesDop8()"> Стропильная ферма пролетом 30м
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval63" disabled type="number" name="inputValue" step="1" min="0"> %
+                            <input class = "inpval" id="conval83" disabled type="number" name="inputValue" step="1" min="0"> количество
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval833" disabled type="number" name="inputValue" step="1" min="0"> сложность
                         </div>
                     </div>
 
                     <div class = "mainlolspace">
                         <div class = "lolspace">
-                            <input type="checkbox" id="toggleZd64" disabled  onchange="toggleCheckboxesDop6()"> Колонны, столбы, стойки
+                            <input type="checkbox" id="toggleZd84"   onchange="toggleCheckboxesDop8()"> Подстропильная ферма пролетом 12м
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval64" disabled type="number" name="inputValue" step="1" min="0"> %
+                            <input class = "inpval" id="conval84" disabled type="number" name="inputValue" step="1" min="0"> количество
                         </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval844" disabled type="number" name="inputValue" step="1" min="0"> сложность
+                        </div>
+
                     </div>
                     <div class = "mainlolspace">
                         <div class = "lolspace">
-                            <input type="checkbox" id="toggleZd65" disabled  onchange="toggleCheckboxesDop6()"> Несущие конструкции копров,пролетных строейний галерей
+                            <input type="checkbox" id="toggleZd85"   onchange="toggleCheckboxesDop8()"> Подстропильная балка пролетом 12м
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval65" disabled type="number" name="inputValue" step="1" min="0"> %
+                            <input class = "inpval" id="conval85" disabled type="number" name="inputValue" step="1" min="0"> количество
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval855" disabled type="number" name="inputValue" step="1" min="0"> сложность
                         </div>
                     </div>
+
+                    <div class = "mainlolspace">
+                        <div class = "lolspace">
+                            <input type="checkbox" id="toggleZd86"   onchange="toggleCheckboxesDop8()"> Стропильная балка пролетом 9м
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval86" disabled type="number" name="inputValue" step="1" min="0"> количество
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval866" disabled type="number" name="inputValue" step="1" min="0"> сложность
+                        </div>
+                    </div>
+
+                    <div class = "mainlolspace">
+                        <div class = "lolspace">
+                            <input type="checkbox" id="toggleZd87"   onchange="toggleCheckboxesDop8()"> Стропильная балка пролетом 12м
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval87" disabled type="number" name="inputValue" step="1" min="0"> количество
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval877" disabled type="number" name="inputValue" step="1" min="0"> сложность
+                        </div>
+                    </div>
+
+
+
 
                 </div>
             </div>
@@ -1236,20 +1233,25 @@
                 <div class = "viborvischeckbox82">
                     <div class = "mainlolspace">
                         <div class = "lolspace">
-                            <input type="checkbox" id="toggleZd61" disabled onchange="toggleCheckboxesDop6()"> Конструкция фундаментов
+                            <input type="checkbox" id="toggleZd88"   onchange="toggleCheckboxesDop8()"> Стропильная балка пролетом 18м
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval61" disabled type="number" name="inputValue" step="1" min="0"> %
+                            <input class = "inpval" id="conval88" disabled type="number" name="inputValue" step="1" min="0"> количество
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval888" disabled type="number" name="inputValue" step="1" min="0"> сложность
                         </div>
                     </div>
 
                     <div class = "mainlolspace">
                         <div class = "lolspace">
-
-                            <input type="checkbox" id="toggleZd62" disabled  onchange="toggleCheckboxesDop6()"> Стены
+                            <input type="checkbox" id="toggleZd89"   onchange="toggleCheckboxesDop8()"> Подкрановая балка пролетом 6м
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval62" disabled type="number" name="inputValue" step="1" min="0"> %
+                            <input class = "inpval" id="conval89" disabled type="number" name="inputValue" step="1" min="0"> количество
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval899" disabled type="number" name="inputValue" step="1" min="0"> сложность
                         </div>
                     </div>
 
@@ -1257,28 +1259,62 @@
 
                     <div class = "mainlolspace">
                         <div class = "lolspace">
-
-                            <input type="checkbox" id="toggleZd63" disabled  onchange="toggleCheckboxesDop6()"> Полы
+                            <input type="checkbox" id="toggleZd081"   onchange="toggleCheckboxesDop8()"> Подкрановая балка пролетом 12м
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval63" disabled type="number" name="inputValue" step="1" min="0"> %
+                            <input class = "inpval" id="conval081" disabled type="number" name="inputValue" step="1" min="0"> количество
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval0811" disabled type="number" name="inputValue" step="1" min="0"> сложность
+                        </div>
+                    </div>
+
+
+                    <div class = "mainlolspace">
+                        <div class = "lolspace">
+                            <input type="checkbox" id="toggleZd082"   onchange="toggleCheckboxesDop8()"> Плиты покрытия и перекрытий размером 1,5х6 и 3х6 м
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval082" disabled type="number" name="inputValue" step="1" min="0"> количество
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval0822" disabled type="number" name="inputValue" step="1" min="0"> сложность
                         </div>
                     </div>
 
                     <div class = "mainlolspace">
                         <div class = "lolspace">
-                            <input type="checkbox" id="toggleZd64" disabled  onchange="toggleCheckboxesDop6()"> Колонны, столбы, стойки
+                            <input type="checkbox" id="toggleZd083"   onchange="toggleCheckboxesDop8()"> Плиты покрытия и перекрытий размером 1,5х12 и 3х12 м
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval64" disabled type="number" name="inputValue" step="1" min="0"> %
+                            <input class = "inpval" id="conval083" disabled type="number" name="inputValue" step="1" min="0"> количество
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval0833" disabled type="number" name="inputValue" step="1" min="0"> сложность
                         </div>
                     </div>
+
                     <div class = "mainlolspace">
                         <div class = "lolspace">
-                            <input type="checkbox" id="toggleZd65" disabled  onchange="toggleCheckboxesDop6()"> Несущие конструкции копров,пролетных строейний галерей
+                            <input type="checkbox" id="toggleZd084"   onchange="toggleCheckboxesDop8()"> Ригели и фундаментальные балки пролетом 6 м
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval65" disabled type="number" name="inputValue" step="1" min="0"> %
+                            <input class = "inpval" id="conval084" disabled type="number" name="inputValue" step="1" min="0"> количество
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval0844" disabled type="number" name="inputValue" step="1" min="0"> сложность
+                        </div>
+                    </div>
+
+                    <div class = "mainlolspace">
+                        <div class = "lolspace">
+                            <input type="checkbox" id="toggleZd085"   onchange="toggleCheckboxesDop8()"> Ригели и фундаментальные балки пролетом 9 м
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval085" disabled type="number" name="inputValue" step="1" min="0"> количество
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval0855" disabled type="number" name="inputValue" step="1" min="0"> сложность
                         </div>
                     </div>
 
@@ -1292,20 +1328,25 @@
                 <div class = "viborvischeckbox83">
                     <div class = "mainlolspace">
                         <div class = "lolspace">
-                            <input type="checkbox" id="toggleZd66" disabled onchange="toggleCheckboxesDop6()"> Подкрановые и тормозные конструкции
+                            <input type="checkbox" id="toggleZd086"   onchange="toggleCheckboxesDop8()"> Колонны одноветвевые
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval66" disabled type="number" name="inputValue" step="1" min="0"> %
+                            <input class = "inpval" id="conval086" disabled type="number" name="inputValue" step="1" min="0"> количество
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval0866" disabled type="number" name="inputValue" step="1" min="0"> сложность
                         </div>
                     </div>
 
                     <div class = "mainlolspace">
                         <div class = "lolspace">
-
-                            <input type="checkbox" id="toggleZd67" disabled  onchange="toggleCheckboxesDop6()"> Перекрыия
+                            <input type="checkbox" id="toggleZd087"   onchange="toggleCheckboxesDop8()"> Колонны двухветвевые
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval67" disabled type="number" name="inputValue" step="1" min="0"> %
+                            <input class = "inpval" id="conval087" disabled type="number" name="inputValue" step="1" min="0"> количество
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval0877" disabled type="number" name="inputValue" step="1" min="0"> сложность
                         </div>
                     </div>
 
@@ -1313,33 +1354,353 @@
 
                     <div class = "mainlolspace">
                         <div class = "lolspace">
-
-                            <input type="checkbox" id="toggleZd68" disabled  onchange="toggleCheckboxesDop6()"> Покрытие
+                            <input type="checkbox" id="toggleZd088"   onchange="toggleCheckboxesDop8()"> Капители безбалочных перекрытий
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval68" disabled type="number" name="inputValue" step="1" min="0"> %
+                            <input class = "inpval" id="conval088" disabled type="number" name="inputValue" step="1" min="0"> количество
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval0888" disabled type="number" name="inputValue" step="1" min="0"> сложность
                         </div>
                     </div>
 
                     <div class = "mainlolspace">
                         <div class = "lolspace">
-                            <input type="checkbox" id="toggleZd69" disabled  onchange="toggleCheckboxesDop6()"> Кровля
+                            <input type="checkbox" id="toggleZd089"   onchange="toggleCheckboxesDop8()"> Стеновые панели
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval69" disabled type="number" name="inputValue" step="1" min="0"> %
+                            <input class = "inpval" id="conval089" disabled type="number" name="inputValue" step="1" min="0"> количество
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval0899" disabled type="number" name="inputValue" step="1" min="0"> сложность
                         </div>
                     </div>
+
+
+                    <div class = "mainlolspace">
+                        <div class = "lolspace">
+                            <input type="checkbox" id="toggleZd0081"   onchange="toggleCheckboxesDop8()"> Панели-оболочки размером 3х18 и 3х24 м
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval0081" disabled type="number" name="inputValue" step="1" min="0"> количество
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval00811" disabled type="number" name="inputValue" step="1" min="0"> сложность
+                        </div>
+                    </div>
+
+                    <div class = "mainlolspace">
+                        <div class = "lolspace">
+                            <input type="checkbox" id="toggleZd0082"   onchange="toggleCheckboxesDop8()"> Фундаменты
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval0082" disabled type="number" name="inputValue" step="1" min="0"> количество
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval00822" disabled type="number" name="inputValue" step="1" min="0"> сложность
+                        </div>
+                    </div>
+
+
+                    <div class = "mainlolspace">
+                        <div class = "lolspace">
+                            <input type="checkbox" id="toggleZd0083"   onchange="toggleCheckboxesDop8()"> Перемычки
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval0083" disabled type="number" name="inputValue" step="1" min="0"> количество
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input class = "inpval" id="conval00833" disabled type="number" name="inputValue" step="1" min="0"> сложность
+                        </div>
+                    </div>
+
                 </div>
             </div>
-        </div>
-        <div class = "dusl">Дополнительные условия:
-            <input type="checkbox" id="toggleZdDopUsl"> Сейсмические условия 7 баллов и более
-            <input type="checkbox" id="toggleZdDopUsl"> Разработка временных противоаварийных мероприятий
-            <input type="checkbox" id="toggleZdDopUsl"> Разработка рекомендаций без проведения расчетов
         </div>
     </div>
     <hr>
     <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+    <div class="nameforblock9" onclick ="toggleDisplay('.nameforblock9', '.dndb9');">Калькуляция <?php echo '<input class = "onCollap" type="checkbox" id="sborDann" name="sborDann" value="sborDann"> <span class="countRub">123</span>' ?></div>
+    <div class="dndb9">
+        <div class="position1">
+            <div class="pos1">
+                <div class="viborvisnew">
+                    <div class="mainselspace">
+
+                        <div style = "display:flex;">
+                            <div style = "width:90%">
+                        <label for="SelectZakazchik" class="zakpod">Наименование работы (услуги)</label>
+                            </div>
+                            <div style = "width:50%">
+                        <label for="SelectZakazchik" class="zakpod">Трудоёмкость работы (услуги),чел.-дн(Т)</label>
+                            </div>
+                        </div>
+                        <div class="select-input-pair">
+                            <select class="form-select-calc" aria-label="">
+                                <option selected>-- Пожалуйста, выберите --</option>
+                                <option value="1">dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                            <input  class="inpvalsel" type="number" name="inputValue" step="1" min="0" placeholder="">
+                        </div>
+                        <div class="select-input-pair">
+                            <select class="form-select-calc" aria-label="">
+                                <option selected>-- Пожалуйста, выберите --</option>
+                                <option value="1">dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                            <input  class="inpvalsel" type="number" name="inputValue" step="1" min="0" placeholder="">
+                        </div>
+                        <div class="select-input-pair">
+                            <select class="form-select-calc" aria-label="">
+                                <option selected>-- Пожалуйста, выберите --</option>
+                                <option value="1">dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                            <input  class="inpvalsel" type="number" name="inputValue" step="1" min="0" placeholder="">
+                        </div>
+                        <div class="select-input-pair">
+                            <select class="form-select-calc" aria-label="">
+                                <option selected>-- Пожалуйста, выберите --</option>
+                                <option value="1">dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                            <input  class="inpvalsel" type="number" name="inputValue" step="1" min="0" placeholder="">
+                        </div>
+                        <div class="select-input-pair">
+                            <select class="form-select-calc" aria-label="">
+                                <option selected>-- Пожалуйста, выберите --</option>
+                                <option value="1">dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                            <input  class="inpvalsel" type="number" name="inputValue" step="1" min="0" placeholder="">
+                        </div>
+                        <div class="select-input-pair">
+                            <select class="form-select-calc" aria-label="">
+                                <option selected>-- Пожалуйста, выберите --</option>
+                                <option value="1">dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                            <input  class="inpvalsel" type="number" name="inputValue" step="1" min="0" placeholder="">
+                        </div>
+                        <div class="select-input-pair">
+                            <select class="form-select-calc" aria-label="">
+                                <option selected>-- Пожалуйста, выберите --</option>
+                                <option value="1">dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                            <input  class="inpvalsel" type="number" name="inputValue" step="1" min="0" placeholder="">
+                        </div>
+                        <div class="select-input-pair">
+                            <select class="form-select-calc" aria-label="">
+                                <option selected>-- Пожалуйста, выберите --</option>
+                                <option value="1">dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                            <input  class="inpvalsel" type="number" name="inputValue" step="1" min="0" placeholder="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pos2">
+                <div class="viborvisnew">
+                    <div class="mainselspace">
+
+                        <div style = "display:flex;">
+                            <div style = "width:100%">
+                                <label for="SelectZakazchik" class="zakpod">Должность исполнителя по КСД</label>
+                            </div>
+                            <div style = "width:30%; font-size:10px;">
+                                <label for="SelectZakazchik" class="zakpod">Тарифный разряд исполнителя по ЕТС (р)</label>
+                            </div>
+                            <div style = "width:20%; font-size:10px;">
+                                <label for="SelectZakazchik" class="zakpod">Количество исполнителей</label>
+                            </div>
+                        </div>
+                        <div class="select-input-pair">
+                            <select class="form-select-calc" aria-label="">
+                                <option selected>-- Пожалуйста, выберите --</option>
+                                <option value="1">dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                            <input style ="width: 70px;" class="inpvalsel" type="number" name="inputValue" step="1" min="0" placeholder="">
+                            <input style ="width: 70px;" class="inpvalsel" type="number" name="inputValue" step="1" min="0" placeholder="">
+                        </div>
+                        <div class="select-input-pair">
+                            <select class="form-select-calc" aria-label="">
+                                <option selected>-- Пожалуйста, выберите --</option>
+                                <option value="1">dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                            <input style ="width: 70px;" class="inpvalsel" type="number" name="inputValue" step="1" min="0" placeholder="">
+                            <input style ="width: 70px;" class="inpvalsel" type="number" name="inputValue" step="1" min="0" placeholder="">
+                        </div>
+                        <div class="select-input-pair">
+                            <select class="form-select-calc" aria-label="">
+                                <option selected>-- Пожалуйста, выберите --</option>
+                                <option value="1">dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                            <input style ="width: 70px;" class="inpvalsel" type="number" name="inputValue" step="1" min="0" placeholder="">
+                            <input style ="width: 70px;" class="inpvalsel" type="number" name="inputValue" step="1" min="0" placeholder="">
+                        </div>
+                        <div class="select-input-pair">
+                            <select class="form-select-calc" aria-label="">
+                                <option selected>-- Пожалуйста, выберите --</option>
+                                <option value="1">dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                            <input style ="width: 70px;" class="inpvalsel" type="number" name="inputValue" step="1" min="0" placeholder="">
+                            <input style ="width: 70px;" class="inpvalsel" type="number" name="inputValue" step="1" min="0" placeholder="">
+                        </div>
+                        <div class="select-input-pair">
+                            <select class="form-select-calc" aria-label="">
+                                <option selected>-- Пожалуйста, выберите --</option>
+                                <option value="1">dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                            <input style ="width: 70px;" class="inpvalsel" type="number" name="inputValue" step="1" min="0" placeholder="">
+                            <input style ="width: 70px;" class="inpvalsel" type="number" name="inputValue" step="1" min="0" placeholder="">
+                        </div>
+                        <div class="select-input-pair">
+                            <select class="form-select-calc" aria-label="">
+                                <option selected>-- Пожалуйста, выберите --</option>
+                                <option value="1">dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                            <input style ="width: 70px;" class="inpvalsel" type="number" name="inputValue" step="1" min="0" placeholder="">
+                            <input style ="width: 70px;" class="inpvalsel" type="number" name="inputValue" step="1" min="0" placeholder="">
+                        </div>
+                        <div class="select-input-pair">
+                            <select class="form-select-calc" aria-label="">
+                                <option selected>-- Пожалуйста, выберите --</option>
+                                <option value="1">dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                            <input style ="width: 70px;" class="inpvalsel" type="number" name="inputValue" step="1" min="0" placeholder="">
+                            <input style ="width: 70px;" class="inpvalsel" type="number" name="inputValue" step="1" min="0" placeholder="">
+                        </div>
+                        <div class="select-input-pair">
+                            <select class="form-select-calc" aria-label="">
+                                <option selected>-- Пожалуйста, выберите --</option>
+                                <option value="1">dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                            <input style ="width: 70px;" class="inpvalsel" type="number" name="inputValue" step="1" min="0" placeholder="">
+                            <input style ="width: 70px;" class="inpvalsel" type="number" name="inputValue" step="1" min="0" placeholder="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pos3">
+                <div class = "viborvisnew">
+                    <div style = "display: grid;
+    justify-content: center;">
+                        <label id="inputLabel" for="commonInputField">Средний тарифный разряд исполнителей</label><br>
+                        <input id="commonInputField" type="number" name="inputValue" step="1" min="0"><br>
+                    <br><br>
+                        <label id="inputLabel" for="commonInputField">Тарифный коэффициент для пересчёта стоимости</label><br>
+                        <input id="commonInputField" type="number" name="inputValue" step="1" min="0"><br>
+                    <br><br>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <hr>
+
+
+
+    <div class="position1">
+        <div class="pos1">
+            <label for="SelectZakazchik" class="zakpod">Кто подписывает смету:</label>
+            <select class="form-select" aria-label="">
+                <option selected>-- Пожалуйста, выберите --</option>
+                <option value="1">dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+
+            <label for="SelectPodryadchik" class="zakpod">Кем выступает заказчик:</label>
+            <select class="form-select" aria-label="">
+                <option selected>-- Пожалуйста, выберите --</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+
+
+            <label for="SelectPodryadchik" class="zakpod">Кем выступает ИЗИСКОМ:</label>
+            <select class="form-select" aria-label="">
+                <option selected>-- Пожалуйста, выберите --</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+
+            <label for="SelectPodryadchik" class="zakpod">Кто производит вскрытие и заделку строительных конструкций</label>
+            <select class="form-select" aria-label="">
+                <option selected>-- Пожалуйста, выберите --</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+
+            <label for="SelectPodryadchik" class="zakpod">Кто подписывает конкурсное предложение</label>
+            <select class="form-select" aria-label="">
+                <option selected>-- Пожалуйста, выберите --</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+
+
+        </div>
+        <div class="pos2">
+            <label>
+                <input type="checkbox" id="toggleSelect"> Учитывать УСН
+            </label>
+            <br>
+            <label>
+                <input type="checkbox" id="toggleSelect"> Учитывать НДС
+            </label>
+            <br>
+            <br>
+            <label id="inputLabel" for="commonInputField">Понижающий коэффициент</label><br>
+            <input id="commonInputField" type="number" name="inputValue" step="1" min="0"><br>
+            <label id="inputLabel" for="commonInputField">Стоимость работ 14 разряда</label><br>
+            <input id="commonInputField" type="number" name="inputValue" step="1" min="0"><br>
+            <br>
+            <label id="inputLabel" for="commonInputField">Значения прогнозных среднегодовых индексов изменения стоимости работ:</label><br>
+            <label id="inputLabel" for="commonInputField">на 2024 год</label><br>
+            <input id="commonInputField" type="number" name="inputValue" step="1" min="0"><br>
+            <label id="inputLabel" for="commonInputField">на 2025 год</label><br>
+            <input id="commonInputField" type="number" name="inputValue" step="1" min="0"><br>
+        </div>
+    </div>
+
+    <hr>
+
+
 
 
 </section>
@@ -1411,14 +1772,7 @@
         });
     }
 
-    function toggleCheckboxes7() {
-        const isChecked = document.getElementById('choosCunstruct7').checked;
-        const checkboxes = document.querySelectorAll('.viborvischeckbox73 input[type="checkbox"], .viborvischeckbox74 input[type="checkbox"]');
 
-        checkboxes.forEach(checkbox => {
-            checkbox.disabled = !isChecked;
-        });
-    }
 
     function toggleCheckboxesDop() {
         const checkboxes = [
@@ -1506,6 +1860,39 @@
 
         checkboxes.forEach(item => {
             item.input.disabled = !item.checkbox.checked;
+        });
+    }
+
+    function toggleCheckboxesDop8() {
+        const checkboxes = [
+            { checkbox: document.getElementById('toggleZd81'), inputs: [document.getElementById('conval81') , document.getElementById('conval811')] },
+            { checkbox: document.getElementById('toggleZd82'), inputs: [document.getElementById('conval82') , document.getElementById('conval822')] },
+            { checkbox: document.getElementById('toggleZd83'), inputs: [document.getElementById('conval83') , document.getElementById('conval833')] },
+            { checkbox: document.getElementById('toggleZd84'), inputs: [document.getElementById('conval84') , document.getElementById('conval844')] },
+            { checkbox: document.getElementById('toggleZd85'), inputs: [document.getElementById('conval85') , document.getElementById('conval855')] },
+            { checkbox: document.getElementById('toggleZd86'), inputs: [document.getElementById('conval86') , document.getElementById('conval866')] },
+            { checkbox: document.getElementById('toggleZd87'), inputs: [document.getElementById('conval87') , document.getElementById('conval877')] },
+            { checkbox: document.getElementById('toggleZd88'), inputs: [document.getElementById('conval88') , document.getElementById('conval888')] },
+            { checkbox: document.getElementById('toggleZd89'), inputs: [document.getElementById('conval89') , document.getElementById('conval899')] },
+            { checkbox: document.getElementById('toggleZd081'), inputs: [document.getElementById('conval081') , document.getElementById('conval0811')] },
+            { checkbox: document.getElementById('toggleZd082'), inputs: [document.getElementById('conval082') , document.getElementById('conval0822')] },
+            { checkbox: document.getElementById('toggleZd083'), inputs: [document.getElementById('conval083') , document.getElementById('conval0833')] },
+            { checkbox: document.getElementById('toggleZd084'), inputs: [document.getElementById('conval084') , document.getElementById('conval0844')] },
+            { checkbox: document.getElementById('toggleZd085'), inputs: [document.getElementById('conval085') , document.getElementById('conval0855')] },
+            { checkbox: document.getElementById('toggleZd086'), inputs: [document.getElementById('conval086') , document.getElementById('conval0866')] },
+            { checkbox: document.getElementById('toggleZd087'), inputs: [document.getElementById('conval087') , document.getElementById('conval0877')] },
+            { checkbox: document.getElementById('toggleZd088'), inputs: [document.getElementById('conval088') , document.getElementById('conval0888')] },
+            { checkbox: document.getElementById('toggleZd089'), inputs: [document.getElementById('conval089') , document.getElementById('conval0899')] },
+            { checkbox: document.getElementById('toggleZd0081'), inputs: [document.getElementById('conval0081') , document.getElementById('conval00811')] },
+            { checkbox: document.getElementById('toggleZd0082'), inputs: [document.getElementById('conval0082') , document.getElementById('conval00822')] },
+            { checkbox: document.getElementById('toggleZd0083'), inputs: [document.getElementById('conval0083') , document.getElementById('conval00833')] },
+
+        ];
+
+        checkboxes.forEach(item => {
+            item.inputs.forEach(input => {
+                input.disabled = !item.checkbox.checked;
+            });
         });
     }
 
