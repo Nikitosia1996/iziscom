@@ -48,8 +48,8 @@ class SmetaList
 
     public function pushSmeta($name, $id_zakazchik, $id_podryadchik,$dateNachRab,$dateOkonchRab){
         $sql = "INSERT INTO smets (`name`, `id_zakazchik`, `id_podryadchik`, `date_nach_rab`, `date_okonch_rab`) VALUES ('$name', '$id_zakazchik', '$id_podryadchik', '$dateNachRab', '$dateOkonchRab')";
-        if (mysqli_query($con, $sql)) {
-            $insertedId = mysqli_insert_id($con);
+        if (mysqli_query($connectionDB->con, $sql)) {
+            $insertedId = mysqli_insert_id($connectionDB->con);
         }
         return $insertedId;
     }
@@ -58,7 +58,7 @@ class SmetaList
     {
         $sql = "update smets set `id_zakazchik`='$id_zakazchik', `id_podryadchik`='$id_podryadchik', `date_nach_rab`='$dateNachRab', `date_okonch_rab`='$dateOkonchRab'
             where id_smeta = '$id'";
-        mysqli_query($con, $sql);
+        mysqli_query($connectionDB->con, $sql);
         return $id;
     }
 
