@@ -321,7 +321,7 @@ $harakteristikaObject = 0;
         <div class="pos1">
             <div class = "viborvis">
             <label for="SelectZakazchik" class="zakpod">Здание:</label>
-            <select class="form-select" id="buildingType" aria-label=""  >
+            <select class="form-select" id="buildingType" aria-label="" onchange="calculateFinalCoefficient();" >
                 <option value="0" selected>-- Пожалуйста, выберите --</option>
                 <option value="1.2">Жилое</option>
                 <option value="1.2">Гражданское</option>
@@ -332,7 +332,7 @@ $harakteristikaObject = 0;
                 <option value="1">Градирни, этажерки и т.д.</option>
             </select>
 
-            <select class="form-select" id="constructionType" aria-label="">
+            <select class="form-select" id="constructionType" aria-label="" onchange="calculateFinalCoefficient();">
                 <option value="0" selected>-- Пожалуйста, выберите --</option>
                 <option value="1">Существующее здание</option>
                 <option value="0.8">Незавершенное капитальное строительство</option>
@@ -403,7 +403,7 @@ $harakteristikaObject = 0;
 
             <div id="selectContainer" class="hidden">
                 <label for="options">Выберите опцию:</label>
-                <select class="form-select" id="options" disabled>
+                <select class="form-select" id="options" disabled onchange="calculateFinalCoefficient();">
                     <option value="0">-- Пожалуйста, выберите --</option>
                     <option value="1.2">Помещение со слабой степенью агрессивного воздействия (k=1.2)</option>
                     <option value="1.3">Помещение со средней степенью агрессивного воздействия (k=1.3)</option>
@@ -1738,9 +1738,12 @@ $harakteristikaObject = 0;
         }
     }
     function calculateFinalCoefficient() {
+        const buildingType = parseFloat(document.getElementById('buildingType').value) || 1;
+        const constructionType = parseFloat(document.getElementById('constructionType').value) || 1;
+        const options = parseFloat(document.getElementById('options').value) || 1;
         const temperatureMode = parseFloat(document.getElementById('temperatureMode').value) || 1;
         const equipmentSaturation = parseFloat(document.getElementById('equipmentSaturation').value) || 1;
-        const finalCoefficient = mainKoef * temperatureMode * equipmentSaturation;
+        const finalCoefficient = mainKoef * temperatureMode * equipmentSaturation * buildingType * constructionType * options ;
         document.getElementById('harakteristikaObject').innerText = finalCoefficient.toFixed(2);
     }
 
