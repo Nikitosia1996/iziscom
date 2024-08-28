@@ -70,7 +70,30 @@ class SmetaList
         $result = mysqli_query($con, $sql);
         while ($row = mysqli_fetch_assoc($result)) {
             $smeta = new Smeta($row['id_smeta'], $row['name'], $row['id_zakazchik'], $row['id_podryadchik'], $row['date_nach_rab'],$row['date_okonch_rab'],
-                new HaractObject($row['id_haract_object'],$row['type_zdanie']));
+                new HaractObject($row['id_haract_object'],
+                    $row['zdanie'],
+                    $row['type_zdanie'],
+                    $row['stage'],
+                    $row['height'],
+                    $row['obem'],
+                    $row['height_pol'],
+                    $row['radio_zdanie'],
+                    $row['temperature'],
+                    $row['nasishenost'],
+                    $row['aggresive_vozdeistvie'],
+                    $row['checkb1'],
+                    $row['checkb2'],
+                    $row['checkb3'],
+                    $row['checkb4'],
+                    $row['checkb5'],
+                    $row['checkb6'],
+                    $row['checkb7'],
+                    $row['checkb8'],
+                    $row['checkb9'],
+                    $row['checkb10'],
+                    $row['checkb11'],
+                    $row['checkb12'],
+                ));
             $this->putSmeta($smeta);
         }
     }

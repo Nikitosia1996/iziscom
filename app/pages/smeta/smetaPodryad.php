@@ -393,21 +393,21 @@ echo "<script>
             <div class = "viborvis">
             <label for="SelectZakazchik" class="zakpod">Здание:</label>
             <select class="form-select" id="buildingType" aria-label="" onchange="calculateFinalCoefficient();" >
-                <option value="0" selected>-- Пожалуйста, выберите --</option>
-                <option value="1.2">Жилое</option>
-                <option value="1.2">Гражданское</option>
-                <option value="1">Промышленное</option>
-                <option value="1">Сельскохозяйственное</option>
-                <option value="1">Галереи</option>
-                <option value="1">Коммуникационные и многоярусные эстакады</option>
-                <option value="1">Градирни, этажерки и т.д.</option>
+                <option data-id="1" value="0" selected>-- Пожалуйста, выберите --</option>
+                <option data-id="1.2" value="1">Жилое</option>
+                <option data-id="1.2" value="2">Гражданское</option>
+                <option data-id="1" value="3">Промышленное</option>
+                <option data-id="1" value="4">Сельскохозяйственное</option>
+                <option data-id="1" value="5">Галереи</option>
+                <option data-id="1" value="6">Коммуникационные и многоярусные эстакады</option>
+                <option data-id="1" value="7">Градирни, этажерки и т.д.</option>
             </select>
 
             <select class="form-select" id="constructionType" aria-label="" onchange="calculateFinalCoefficient();">
-                <option value="0" selected>-- Пожалуйста, выберите --</option>
-                <option value="1">Существующее здание</option>
-                <option value="0.8">Незавершенное капитальное строительство</option>
-                <option value="0.7">Новое строительство</option>
+                <option data-id="1" value="0" selected>-- Пожалуйста, выберите --</option>
+                <option data-id="1.2" value="1">Существующее здание</option>
+                <option data-id="0.8" value="2">Незавершенное капитальное строительство</option>
+                <option data-id="0.7" value="3">Новое строительство</option>
             </select>
 
             <div id="inputContainer" class="input-containerval">
@@ -435,14 +435,14 @@ echo "<script>
         <div class="pos2">
 
 <div class = "viborvis">
-            <input id="vis6" class="butrad" type="radio" name="daysType" value="vis6">
+            <input data-id="1.3" id="vis6" class="butrad" type="radio" name="daysType" value="vis6">
             <label for="vis6" class="visotarad"> 1) Здание высотой до 6м, бескрановое, однообъемное, двухпролетное</label>
             <br>
-            <input id="vis614" class="butrad" type="radio" name="daysType" value="vis614">
+            <input data-id="1.5" id="vis614" class="butrad" type="radio" name="daysType" value="vis614">
             <label for="vis614" class="visotarad">2) Здание высотой от 6м до 14м высоты, с кранами грузоподъемностью до 50т включительно, с двумя объемами, 3-5 пролета, а также различные сооружения, резервуары, тоннели, лестничные клетки, галереи
             </label>
             <br>
-            <input id="vis14" class="butrad" type="radio" name="daysType" value="vis14">
+            <input data-id="1.5" id="vis14" class="butrad" type="radio" name="daysType" value="vis14">
             <label for="vis14" class="visotarad">3) Здание высотой более 14м, со сложной конструктивной схемой, с двухъярусным расположением кранов, более 3
             объемов, более 6 пролетов галереи с высотой опор более 20м и пролетом более 36м, полный монолитный каркас</label>
             <br>
@@ -452,19 +452,19 @@ echo "<script>
 
             <label for="SelectZakazchik" class="zakpod">Температурно-влажностный режим:</label>
             <select class="form-select" id="temperatureMode" aria-label="" onchange="calculateFinalCoefficient();">
-                <option value="0" selected>-- Пожалуйста, выберите --</option>
-                <option value="1">Нормальный (К = 1)</option>
-                <option value="1.15">t>25° С, W>70% (K = 1.15)</option>
-                <option value="1.2">t>30° С, W>85% (K = 1.2)</option>
+                <option data-id="1" value="0" selected>-- Пожалуйста, выберите --</option>
+                <option data-id="1" value="1">Нормальный (К = 1)</option>
+                <option data-id="1.15" value="2">t>25° С, W>70% (K = 1.15)</option>
+                <option data-id="1.2" value="3">t>30° С, W>85% (K = 1.2)</option>
             </select>
 
             <label for="SelectPodryadchik" class="zakpod">Насыщенность оборудования:</label>
             <select class="form-select" id="equipmentSaturation" aria-label="" onchange="calculateFinalCoefficient();">
-                <option value="0" selected>-- Пожалуйста, выберите --</option>
-                <option value="1">Отсуствует (K = 1)</option>
-                <option value="1.1">До 30% от площади помещений (K = 1.1)</option>
-                <option value="1.2">От 30% До 50% от площади помещений (K = 1.2)</option>
-                <option value="1.3">Свыше 50% от площади помещений (K = 1.3)</option>
+                <option data-id="1" value="0" selected>-- Пожалуйста, выберите --</option>
+                <option data-id="1" value="1">Отсуствует (K = 1)</option>
+                <option data-id="1.1" value="2">До 30% от площади помещений (K = 1.1)</option>
+                <option data-id="1.2" value="3">От 30% До 50% от площади помещений (K = 1.2)</option>
+                <option data-id="1.3" value="4">Свыше 50% от площади помещений (K = 1.3)</option>
             </select>
 
             <label>
@@ -475,10 +475,10 @@ echo "<script>
             <div id="selectContainer" class="hidden">
                 <label for="options">Выберите опцию:</label>
                 <select class="form-select" id="options" disabled onchange="calculateFinalCoefficient();">
-                    <option value="0">-- Пожалуйста, выберите --</option>
-                    <option value="1.2">Помещение со слабой степенью агрессивного воздействия (k=1.2)</option>
-                    <option value="1.3">Помещение со средней степенью агрессивного воздействия (k=1.3)</option>
-                    <option value="1.4">Помещение с сильной степенью агрессивного воздействия (k=1.4)</option>
+                    <option data-id="1" value="0">-- Пожалуйста, выберите --</option>
+                    <option data-id="1.2" value="1">Помещение со слабой степенью агрессивного воздействия (k=1.2)</option>
+                    <option data-id="1.3" value="2">Помещение со средней степенью агрессивного воздействия (k=1.3)</option>
+                    <option data-id="1.4"  value="3">Помещение с сильной степенью агрессивного воздействия (k=1.4)</option>
                 </select>
             </div>
 
@@ -488,16 +488,16 @@ echo "<script>
             <div class="pos1">
                 <div class = "viborvis">
                     <label>
-                        <input value="1.5" type="checkbox" id="toggleSelect"> Выполнение работ с применением альпинисткого снаряжения (K = 1.5)
+                        <input data-id="1.5" value="1" type="checkbox" id="chekb1" onchange="calculateFinalCoefficient();"> Выполнение работ с применением альпинисткого снаряжения (K = 1.5)
                     </label>
                     <label>
-                        <input value="1.25" type="checkbox" id="toggleSelect"> Шумовые воздействия, превышающие нормативные величины (K = 1.25)
+                        <input data-id="1.25" value="2" type="checkbox" id="chekb2" onchange="calculateFinalCoefficient();"> Шумовые воздействия, превышающие нормативные величины (K = 1.25)
                     </label>
                     <label>
-                        <input value="1.2" type="checkbox" id="toggleSelect"> Выполнение работ в условиях отрицательных температур в период с 1 ноября - 1 мая (K = 1.2)
+                        <input data-id="1.2" value="3" type="checkbox" id="chekb3" onchange="calculateFinalCoefficient();"> Выполнение работ в условиях отрицательных температур в период с 1 ноября - 1 мая (K = 1.2)
                     </label>
                     <label>
-                        <input type="checkbox" id="toggleSelect"> Необходимость очистки поверхности конструкций от грязи, пыли, ржавчины. Расчет выполнять по калькуляции трудозатрат
+                        <input data-id="1.2" value="4"  type="checkbox" id="chekb4" onchange="calculateFinalCoefficient();"> Необходимость очистки поверхности конструкций от грязи, пыли, ржавчины. Расчет выполнять по калькуляции трудозатрат
                     </label>
 
                 </div>
@@ -506,32 +506,32 @@ echo "<script>
 
                 <div class = "viborvis">
                     <label>
-                        <input value="1.2" type="checkbox" id="toggleSelect"> Необходимость использования переносных источников освещения (K = 1.2)
+                        <input data-id="1.2" value="5" type="checkbox" id="chekb5" onchange="calculateFinalCoefficient();"> Необходимость использования переносных источников освещения (K = 1.2)
                     </label>
                     <label>
-                        <input value="1.02" type="checkbox" id="toggleSelect"> Здание является памятником архитектуры (K = 1.02)
+                        <input data-id="1.02" value="6" type="checkbox" id="chekb6" onchange="calculateFinalCoefficient();"> Здание является памятником архитектуры (K = 1.02)
                     </label>
                     <label>
-                        <input value="1.2" type="checkbox" id="toggleSelect"> Обследование в условиях производственного процесса (K = 1.2)
+                        <input data-id="1.2" value="7" type="checkbox" id="chekb7" onchange="calculateFinalCoefficient();"> Обследование в условиях производственного процесса (K = 1.2)
                     </label>
                     <label>
-                        <input value="1.15" type="checkbox" id="toggleSelect"> Выполнение работ с мостового крана или подмостей (K = 1.15)
+                        <input data-id="1.15" value="8" type="checkbox" id="chekb8" onchange="calculateFinalCoefficient();"> Выполнение работ с мостового крана или подмостей (K = 1.15)
                     </label>
                 </div>
             </div>
             <div class="pos3">
                 <div class = "viborvis">
                 <label>
-                    <input value="1.2" type="checkbox" id="toggleSelect"> Здание оборудовано кранами режимных групп 7К, 8К, (K = 1.2)
+                    <input data-id="1.2" value="9" type="checkbox" id="chekb9" onchange="calculateFinalCoefficient();"> Здание оборудовано кранами режимных групп 7К, 8К, (K = 1.2)
                 </label>
                 <label>
-                    <input value="1.2" type="checkbox" id="toggleSelect"> Конструкции, усиленные по ранее разработанным проектам (K = 1.2)
+                    <input data-id="1.2" value="10" type="checkbox" id="chekb10" onchange="calculateFinalCoefficient();"> Конструкции, усиленные по ранее разработанным проектам (K = 1.2)
                 </label>
                 <label>
-                    <input value="0.7" type="checkbox" id="toggleSelect"> Использование ранее выполненных обследований не более  3 лет назад (K = 0.7)
+                    <input data-id="0.7" value="11" type="checkbox" id="chekb11" onchange="calculateFinalCoefficient();"> Использование ранее выполненных обследований не более  3 лет назад (K = 0.7)
                 </label>
                 <label>
-                    <input value="1.35" type="checkbox" id="toggleSelect"> Срочное выполнение обмерно-обследовательских работ (K <= 1.35)
+                    <input data-id="1.35" value="12" type="checkbox" id="chekb12" onchange="calculateFinalCoefficient();"> Срочное выполнение обмерно-обследовательских работ (K <= 1.35)
                 </label>
                 </div>
             </div>
@@ -2026,13 +2026,37 @@ echo "<script>
         }
         calculateFinalCoefficient();
     }
+
+
+
+
     function calculateFinalCoefficient() {
-        const buildingType = parseFloat(document.getElementById('buildingType').value) || 1;
-        const constructionType = parseFloat(document.getElementById('constructionType').value) || 1;
-        const options = parseFloat(document.getElementById('options').value) || 1;
-        const temperatureMode = parseFloat(document.getElementById('temperatureMode').value) || 1;
-        const equipmentSaturation = parseFloat(document.getElementById('equipmentSaturation').value) || 1;
-        const finalCoefficient = mainKoef * temperatureMode * equipmentSaturation * buildingType * constructionType * options ;
+
+        function getCheckboxValue(checkboxId) {
+            const checkbox = document.getElementById(checkboxId);
+            return checkbox.checked ? parseFloat(checkbox.getAttribute('data-id')) || 1 : 1;
+        }
+        const chekb1 = getCheckboxValue('chekb1');
+        const chekb2 = getCheckboxValue('chekb2');
+        const chekb3 = getCheckboxValue('chekb3');
+        const chekb4 = getCheckboxValue('chekb4');
+        const chekb5 = getCheckboxValue('chekb5');
+        const chekb6 = getCheckboxValue('chekb6');
+        const chekb7 = getCheckboxValue('chekb7');
+        const chekb8 = getCheckboxValue('chekb8');
+        const chekb9 = getCheckboxValue('chekb9');
+        const chekb10 = getCheckboxValue('chekb10');
+        const chekb11 = getCheckboxValue('chekb11');
+        const chekb12 = getCheckboxValue('chekb12');
+
+        const buildingType = parseFloat(document.querySelector('#buildingType option:checked').getAttribute('data-id')) || 1;
+        const constructionType = parseFloat(document.querySelector('#constructionType option:checked').getAttribute('data-id')) || 1;
+        const options = parseFloat(document.querySelector('#options option:checked').getAttribute('data-id')) || 1;
+        const temperatureMode = parseFloat(document.querySelector('#temperatureMode option:checked').getAttribute('data-id')) || 1;
+        const equipmentSaturation = parseFloat(document.querySelector('#equipmentSaturation option:checked').getAttribute('data-id')) || 1;
+
+        const finalCoefficient = mainKoef * temperatureMode * equipmentSaturation * buildingType * constructionType * options * chekb1 * chekb2 * chekb3 * chekb4 * chekb5 * chekb6 * chekb7 * chekb8 * chekb9 * chekb10 * chekb11 * chekb12;
+
         document.getElementById('harakteristikaObject').innerText = finalCoefficient.toFixed(2);
     }
 
