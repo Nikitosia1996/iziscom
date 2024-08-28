@@ -1,4 +1,4 @@
-<?php require_once 'connection/connection.php';
+<?php include 'connection/connection.php';
 
 require_once 'app/classes/UsersList.php';
 include "app/constants/cookie.php";
@@ -80,10 +80,5 @@ if (isset($TOKEN)) {
 
 </body>
 
-<script>
-
-</script>
-
-<script src="js/minsk.js"></script>
 
 </html>

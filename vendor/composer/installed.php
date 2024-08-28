@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'vendor_name/medoborudovanie',
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
-        'reference' => 'a1835e12df2a6cad218d5dc8abaab58306df1841',
+        'pretty_version' => 'dev-AskMeOff',
+        'version' => 'dev-AskMeOff',
+        'reference' => '043e228dc4d0d1da1d609bb087cd5f2063e85f8f',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -248,9 +248,9 @@
             'dev_requirement' => false,
         ),
         'vendor_name/medoborudovanie' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
-            'reference' => 'a1835e12df2a6cad218d5dc8abaab58306df1841',
+            'pretty_version' => 'dev-AskMeOff',
+            'version' => 'dev-AskMeOff',
+            'reference' => '043e228dc4d0d1da1d609bb087cd5f2063e85f8f',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
