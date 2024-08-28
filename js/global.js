@@ -1,37 +1,57 @@
 var currentUrl = window.location.search;
 
+let idActiveSmeta;
 
-if(currentUrl == "?main" || currentUrl == ""){
-    let mainMenu = document.querySelector('[href="index.php?main"]');
-    mainMenu.classList.add('active');
-}
-else if(currentUrl == "?oborud" || currentUrl == "?grodnoobl" || currentUrl == "?minsk" || currentUrl == "?mogilevobl" ||
-        currentUrl == "?minskobl" || currentUrl == "?brestobl" || currentUrl == "?gomelobl" || currentUrl == "?vitebskobl"){
-    let oborMenu = document.querySelector('[href="index.php?oborud"]');
-    oborMenu.classList.add('active');
-}
-else if(currentUrl == "/index.php?servicemans"){
-    let serviceMenu = document.querySelector('[href="index.php?servicemans"]');
-    serviceMenu.classList.add('active');
+let selectZakazchik = $('#zakazchik');
+let selectPodryadchik = $('#podryadchik');
+let inputDateNachRab = $('#dateNachRab');
+let inputDateOkonchRab = $('#dateOkonchRab');
+let divSaveSmeta = $('#divSaveSmeta');
+let smetaName = $('#smetaName');
+
+function getSmeta(id) {
+    idActiveSmeta = id;
+    const selectedItem = smetaList.find(item => item.id == id);
+    if (selectedItem) {
+        selectZakazchik.val(selectedItem.id_zakazchik);
+        selectPodryadchik.val(selectedItem.id_podryadchik);
+        inputDateNachRab.val(selectedItem.dateNachRab);
+        inputDateOkonchRab.val(selectedItem.dateOkonchRab);
+
+    }
+    document.getElementById("myDropdown").classList.toggle("show");
+
+    return null;
 }
 
-function getUzs(id_obl){
+function saveSmeta(){
+    let smeta = {
+        id: idActiveSmeta,
+        id_zakazchik: selectZakazchik.val(),
+        id_podryadchik: selectPodryadchik.val(),
+        dateNachRab: inputDateNachRab.val(),
+        dateOkonchRab: inputDateOkonchRab.val(),
+        smetaName: smetaName.val()
+    };
+    if(idActiveSmeta){
+        smetaList.forEach((item, index) => {
+            if(item.id === idActiveSmeta){
+                smetaList[index] = smeta;
+            }
+        });
+    } else {
+        smetaList.push(smeta);
+
+    }
     $.ajax({
-        url: "app/pages/obls/minsk.php",
-        method: "GET",
-        data: {id_obl: id_obl}
-    }).then(response => {
-        let bodywrap = document.getElementById("bodywrap");
-        bodywrap.innerHTML = response;
+        url: '/app/ajax/saveSmeta.php',
+        type: 'POST',
+        data: smeta,
+        success: function(response) {
+            console.log(response);
+        }
     })
+    console.log(smetaList);
+    alert('Сохранено!');
 }
-
-$(".region").on("click", function() {
-    var regionNumber = $(this).data("region");
-    getUzs(regionNumber);
-    $("#sidebarnav").children().removeClass("selected active");
-    $("#sidebarnav").children().children().removeClass("active");
-    $("#sidebarnav").children().eq(1).addClass("selected active");
-});
-
 

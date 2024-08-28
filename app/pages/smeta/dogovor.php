@@ -88,7 +88,7 @@
 
             <div class="form-group mgtop5">
                 <label for="">Должность</label>
-                <input type="text" class="form-control" id="">
+                <input type="text" class="form-control" id="" >
             </div>
 
             <div class="form-group mgtop5">
@@ -393,7 +393,10 @@
         </div>
 
 </section>
-
+<?php
+$result = (new \MessageFormatter('ru-RU', '{n, spellout}'))->format(['n' => 45]);
+echo $result;  // сорок пять
+?>
 <script>
 </script>
 

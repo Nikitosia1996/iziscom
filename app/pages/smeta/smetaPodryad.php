@@ -1,9 +1,14 @@
 <?php
+include "app/classes/SmetaList.php";
 
 $harakteristikaObject = 0;
 
 
 
+echo "<script>
+     let smetaList = " . $smetaList->getListSmets() . ";
+     console.log(smetaList);
+</script>";
 ?>
 <style>
     .hidden {
@@ -17,138 +22,151 @@ $harakteristikaObject = 0;
         color: red;
     }
 
-.form-select{
-    width: 90%;
-    height: 40px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 10px;
-    margin-left:5%;
-    margin-top: 10px;
-}
+    .form-select {
+        width: 90%;
+        height: 40px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 10px;
+        margin-left: 5%;
+        margin-top: 10px;
+    }
 
-    .form-select-calc{
+    .form-select-calc {
         width: 90%;
         height: 35px;
         border: 1px solid #ccc;
         border-radius: 5px;
         padding: 10px;
         margin-bottom: 10px;
-        margin-left:5%;
+        margin-left: 5%;
         margin-top: 10px;
-        font-size:12px;
+        font-size: 12px;
     }
 
-.form-date{
-    width: 90%;
-    height: 40px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 10px;
-    margin-left:5%;
-    margin-top: 10px;
-}
-
-.form-outline{
-    width: 90%;
-    margin-bottom: 10px;
-    margin-left:5%;
-    margin-top: 10px;
-}
-
-
-.zakpod{
-    margin-left:5%;
-}
-    .pasportzd{
-        margin-left:5%;
-        display: inline;
+    .form-date {
+        width: 90%;
+        height: 40px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 10px;
+        margin-left: 5%;
+        margin-top: 10px;
     }
-    .pasportzd{
-        margin-left:1%;
+
+    .form-outline {
+        width: 90%;
+        margin-bottom: 10px;
+        margin-left: 5%;
+        margin-top: 10px;
+    }
+
+
+    .zakpod {
+        margin-left: 5%;
+    }
+
+    .pasportzd {
+        margin-left: 5%;
         display: inline;
     }
 
+    .pasportzd {
+        margin-left: 1%;
+        display: inline;
+    }
 
-.zakpodGps{
-    margin-top: 95px;
-    margin-left:5%;
-}
 
-.pos1{
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-left: 1%;
-    width:30%;
-}
-.pos2{
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-left: 1%;
-    width:30%;
-}
-.pos3{
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-left: 1%;
-    width:30%;
-}
-.position1 {
-    display:flex;
-}
-    .posfull
-    {
+    .zakpodGps {
+        margin-top: 95px;
+        margin-left: 5%;
+    }
+
+    .pos1 {
         border: 1px solid #ccc;
         border-radius: 5px;
         margin-left: 1%;
-        width:100%;
+        width: 30%;
     }
 
-.nameforblock{
-    font-size: x-large;
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-.input-container{
-    margin-left: 5%;
-}
-.input-containerval{
-    margin-left: 0%;
-    margin-right: 2%;
-    display: block;
+    .pos2 {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-left: 1%;
+        width: 30%;
+    }
 
-}
+    .pos3 {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-left: 1%;
+        width: 30%;
+    }
 
-.onCollap{
-    margin-left:5%;
-}
+    .position1 {
+        display: flex;
+    }
 
-#commonInputField{
-    width: 70px;
-}
+    .posfull {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-left: 1%;
+        width: 100%;
+    }
 
-#etazh{
-    width:15%;
-}
-#visotazdani{
-    width:15%;
-}
-#obem{
-    width:15%;
-}
-.inpval {
-    width:30%;
-}
-#visotapola{
-    width:15%;
-}
+    .nameforblock {
+        font-size: x-large;
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .input-container {
+        margin-left: 5%;
+    }
+
+    .input-containerval {
+        margin-left: 0%;
+        margin-right: 2%;
+        display: block;
+
+    }
+
+    .onCollap {
+        margin-left: 5%;
+    }
+
+    #commonInputField {
+        width: 70px;
+    }
+
+    #etazh {
+        width: 15%;
+    }
+
+    #visotazdani {
+        width: 15%;
+    }
+
+    #obem {
+        width: 15%;
+    }
+
+    .inpval {
+        width: 30%;
+    }
+
+    #visotapola {
+        width: 15%;
+    }
+
     .dndb, .dndb3, .dndb4, .dndb5, .dndb6, .dndb7, .dndb8, .dndb9 {
         display: none;
     }
+
     .nameforblock1, .nameforblock3, .nameforblock4, .nameforblock5,
     .nameforblock6, .nameforblock7, .nameforblock8, .nameforblock9 {
         margin-left: 1%;
@@ -161,66 +179,74 @@ $harakteristikaObject = 0;
         display: flex;
         justify-content: center;
     }
-    .countRub{
-    margin-left: 10%;
 
-}
-.viborvis{
-    margin-left: 5%;
-    margin-top: 10px;
-    margin-bottom: 15px;
-}
-    .viborvisnew{
+    .countRub {
+        margin-left: 10%;
+
+    }
+
+    .viborvis {
+        margin-left: 5%;
+        margin-top: 10px;
+        margin-bottom: 15px;
+    }
+
+    .viborvisnew {
         margin-left: 1%;
         margin-top: 10px;
         margin-bottom: 15px;
     }
-    .viborvischeckbox1{
+
+    .viborvischeckbox1 {
         margin-left: 5%;
         margin-top: 10px;
         margin-bottom: 15px;
     }
-    .viborvischeckbox2{
+
+    .viborvischeckbox2 {
         margin-left: 5%;
         margin-top: 10px;
         margin-bottom: 15px;
     }
 
-.mainfreename{
-    display: flex;
-    margin-left: 1%;
-}
+    .mainfreename {
+        display: flex;
+        margin-left: 1%;
+    }
 
-.lolspace {
+    .lolspace {
 
-}
-.mainlolspace{
-    display:block;
-}
+    }
+
+    .mainlolspace {
+        display: block;
+    }
 
 
-.visotarad{
-    display: inline;
-}
+    .visotarad {
+        display: inline;
+    }
 
-.dusl{
-    width: 92%;
-    margin-top: 10px;
-    margin-left: 1%;
-    border: 1px solid;
-    margin-bottom: 10px;
-}
-    .dusl2{
+    .dusl {
+        width: 92%;
+        margin-top: 10px;
+        margin-left: 1%;
+        border: 1px solid;
+        margin-bottom: 10px;
+    }
+
+    .dusl2 {
         width: 92%;
         margin-top: 10px;
         margin-left: 1%;
         margin-bottom: 10px;
     }
 
-#toggleZdDopUsl{
-    margin-left: 15px;
-}
-    .posframech{
+    #toggleZdDopUsl {
+        margin-left: 15px;
+    }
+
+    .posframech {
         border: 1px solid;
         display: flex;
     }
@@ -232,21 +258,55 @@ $harakteristikaObject = 0;
         display: flex;
         flex-direction: column;
     }
+
     .select-input-pair {
         display: flex;
         align-items: center;
         margin-bottom: 10px;
     }
+
     .form-select-calc {
         margin-right: 10px;
     }
+
     .inpvalsel {
         flex: 1;
     }
 
+    .mgbottom20p {
+        margin-bottom: 20px;
+    }
+
+    .mgleft5 {
+        margin-left: 2%;
+    }
 </style>
 
 <section class="col-lg-12 connectedSortable ui-sortable" style="margin-top: 90px">
+    <div class="row mgbottom20p mgleft5">
+        <div class="dropdown col-lg-2">
+            <button onclick="myFunction()" class="dropbtn">Найти смету</button>
+            <div id="myDropdown" class="dropdown-content">
+                <input type="text" placeholder="Поиск..." id="myInput" onkeyup="filterFunction()">
+                <?php
+                $smetaArray = $smetaList->getSmetaArray();
+                foreach ($smetaArray as $smeta) {
+                    echo '<a onclick="getSmeta(' . $smeta->getId() . ')">' . $smeta->getName() . '</a>';
+                }
+
+                ?>
+            </div>
+        </div>
+        <div class="col-lg-10">
+            <div id="divSaveSmeta" class="form-group mgtop5" style="display: inline-flex;
+    float: right;
+    margin-right: 9%;">
+                <input class="form-control" type="text" id="smetaName" placeholder="Новая смета" style="width: 300px; margin-right: 10%;">
+                <button id="btnSaveSmeta" class="btn btn-primary" onclick="saveSmeta()">Сохранить</button>
+            </div>
+        </div>
+    </div>
+
     <div class="position1">
 <div class="pos1">
     <label for="SelectZakazchik" class="zakpod">Заказчик:</label>
@@ -269,12 +329,12 @@ $harakteristikaObject = 0;
         ?>
     </select>
 
-    <!-- Textarea with class .w-50 -->
-    <label for="textAreaNaimRabot" class="zakpod">Наименование работ:</label>
-    <div class="form-outline">
-        <textarea class="form-control" id="textAreaNaimRabot" rows="3"></textarea>
-    </div>
-</div>
+            <!-- Textarea with class .w-50 -->
+            <label for="textAreaNaimRabot" class="zakpod">Наименование работ:</label>
+            <div class="form-outline">
+                <textarea class="form-control" id="textAreaNaimRabot" rows="3"></textarea>
+            </div>
+        </div>
         <div class="pos2">
             <label for="SelectZakazchik" class="zakpod">Дата начала выполнения работ:</label>
             <input type="date" class="form-date" id="SelectZakazchik" aria-label="" onchange="updateEndDate()">
@@ -285,6 +345,7 @@ $harakteristikaObject = 0;
                 <textarea class="form-control" id="textAreaCel" rows="3"></textarea>
             </div>
         </div>
+
 
         <div class="pos3">
             <label for="calendarDays" class="zakpod">Календарных дней:</label>
