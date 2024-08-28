@@ -1,5 +1,6 @@
 <?php
 include 'Smeta.php';
+include 'HaractObject.php';
 
 class SmetaList
 {
@@ -64,10 +65,12 @@ class SmetaList
 
     public function getListSmetaFromDB($con)
     {
-        $sql = "SELECT * FROM smets";
+        $sql = "SELECT * FROM smets s
+                left join haract_object ho on ho.id_haract_object = s.id_haract_object";
         $result = mysqli_query($con, $sql);
         while ($row = mysqli_fetch_assoc($result)) {
-            $smeta = new Smeta($row['id_smeta'], $row['name'], $row['id_zakazchik'], $row['id_podryadchik'], $row['date_nach_rab'],$row['date_okonch_rab']);
+            $smeta = new Smeta($row['id_smeta'], $row['name'], $row['id_zakazchik'], $row['id_podryadchik'], $row['date_nach_rab'],$row['date_okonch_rab'],
+                new HaractObject($row['id_haract_object'],$row['type_zdanie']));
             $this->putSmeta($smeta);
         }
     }

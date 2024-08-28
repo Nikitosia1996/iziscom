@@ -8,6 +8,7 @@ class Smeta
     private $id_zakazchik;
     private $id_podryadchik;
     private $dateNachRab;
+    private $haractObject;
 
     /**
      * @return mixed
@@ -34,6 +35,22 @@ class Smeta
     }
 
     /**
+     * @return mixed
+     */
+    public function getHaractObject()
+    {
+        return $this->haractObject;
+    }
+
+    /**
+     * @param mixed $haractObject
+     */
+    public function setHaractObject($haractObject): void
+    {
+        $this->haractObject = $haractObject;
+    }
+
+    /**
      * @param mixed $dateOkonchRab
      */
     public function setDateOkonchRab($dateOkonchRab): void
@@ -49,7 +66,7 @@ class Smeta
      * @param $id_zakazchik
      * @param $id_podryadchik
      */
-    public function __construct($id, $name, $id_zakazchik, $id_podryadchik,$dateNachRab,$dateOkonchRab)
+    public function __construct($id, $name, $id_zakazchik, $id_podryadchik,$dateNachRab,$dateOkonchRab,$haractObject)
     {
         $this->id = $id;
         $this->name = $name;
@@ -57,6 +74,7 @@ class Smeta
         $this->id_podryadchik = $id_podryadchik;
         $this->dateNachRab = $dateNachRab;
         $this->dateOkonchRab = $dateOkonchRab;
+        $this->haractObject = $haractObject;
     }
 
     /**
@@ -131,6 +149,7 @@ class Smeta
             'id_podryadchik' => $this->id_podryadchik,
             'dateNachRab' => $this->dateNachRab,
             'dateOkonchRab' => $this->dateOkonchRab,
+            'haractObject' => $this->haractObject->toJson(),
         ]);
     }
 
