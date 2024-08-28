@@ -17,41 +17,64 @@ function getSmeta(id) {
         selectPodryadchik.val(selectedItem.id_podryadchik);
         inputDateNachRab.val(selectedItem.dateNachRab);
         inputDateOkonchRab.val(selectedItem.dateOkonchRab);
-
+        smetaName.val(selectedItem.name)
     }
     document.getElementById("myDropdown").classList.toggle("show");
 
     return null;
 }
 
-function saveSmeta(){
+function saveSmeta() {
     let smeta = {
-        id: idActiveSmeta,
+        id: idActiveSmeta?.toString(),
+        name: smetaName.val(),
         id_zakazchik: selectZakazchik.val(),
         id_podryadchik: selectPodryadchik.val(),
         dateNachRab: inputDateNachRab.val(),
         dateOkonchRab: inputDateOkonchRab.val(),
-        smetaName: smetaName.val()
-    };
-    if(idActiveSmeta){
-        smetaList.forEach((item, index) => {
-            if(item.id === idActiveSmeta){
-                smetaList[index] = smeta;
-            }
-        });
-    } else {
-        smetaList.push(smeta);
 
-    }
+    };
+
     $.ajax({
         url: '/app/ajax/saveSmeta.php',
         type: 'POST',
         data: smeta,
-        success: function(response) {
-            console.log(response);
+        success: function (response) {
+            if (idActiveSmeta) {
+                smetaList.forEach((item, index) => {
+                    if (item.id == idActiveSmeta) {
+                        smetaList[index] = smeta;
+                    }
+                });
+
+            } else {
+                smeta.id = response.trim();
+                smetaList.push(smeta);
+
+            }
+            updateSmetaLinks();
         }
     })
     console.log(smetaList);
+
     alert('Сохранено!');
+}
+
+function updateSmetaLinks() {
+    const dropdown = document.getElementById('myDropdown');
+
+    // Удаляем старые ссылки
+    while (dropdown.children.length > 1) { // Оставляем только input
+        dropdown.removeChild(dropdown.lastChild);
+    }
+
+    // Добавляем новые ссылки
+    smetaList.forEach(smeta => {
+        const link = document.createElement('a');
+        link.id = `smeta-${smeta.id}`; // Устанавливаем новый ID
+        link.onclick = () => getSmeta(smeta.id); // Устанавливаем обработчик клика
+        link.textContent = smeta.name; // Устанавливаем текст ссылки
+        dropdown.appendChild(link); // Добавляем ссылку в dropdown
+    });
 }
 
