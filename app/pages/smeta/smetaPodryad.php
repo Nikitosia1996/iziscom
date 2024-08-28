@@ -2169,8 +2169,8 @@ echo "<script>
     }
 
     function updateCalendarDaysFromEnd() {
-        const endDateInput = document.getElementById('dateNachRab').value;
-        const startDateInput = document.getElementById('dateOkonchRab').value;
+        const endDateInput = document.getElementById('dateOkonchRab').value;
+        const startDateInput = document.getElementById('dateNachRab').value;
 
         if (endDateInput && startDateInput) {
             const startDate = new Date(startDateInput);
