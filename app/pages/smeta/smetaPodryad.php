@@ -298,9 +298,12 @@ echo "<script>
             </div>
         </div>
 
+
         <div class="col-lg-2">
             <button id="btnShowModalPeremen" class="btn btn-primary" >Параметры переменных</button>
         </div>
+
+
 
         <div class="col-lg-8">
             <div id="divSaveSmeta" class="form-group mgtop5" style="display: inline-flex;
@@ -2021,6 +2024,7 @@ echo "<script>
         else{
             mainKoef = 0;
         }
+        calculateFinalCoefficient();
     }
     function calculateFinalCoefficient() {
         const buildingType = parseFloat(document.getElementById('buildingType').value) || 1;
@@ -2088,6 +2092,7 @@ echo "<script>
                 vis14Label.classList.add('highlight-green');
             }
             }
+        calculateFinalCoefficient();
     }
 
 
@@ -2108,12 +2113,13 @@ echo "<script>
             calendarInput.disabled = true;
             calendarInput.value = '';
         }
+        calculateFinalCoefficient();
     }
 
     function updateWorkingDays() {
         const calendarInput = document.getElementById('commonInputField');
         const workingInput = document.getElementById('commonInputFieldWorking');
-        const startDateInput = document.getElementById('SelectZakazchik').value;
+        const startDateInput = document.getElementById('dateNachRab').value;
 
         const calendarDays = parseInt(calendarInput.value) || 0;
         const workingDays = Math.floor(calendarDays * 5 / 7);
@@ -2124,14 +2130,15 @@ echo "<script>
             const startDate = new Date(startDateInput);
             const endDate = new Date(startDate);
             endDate.setDate(startDate.getDate() + calendarDays);
-            document.getElementById('SelectPodryadchik').value = endDate.toISOString().split('T')[0];
+            document.getElementById('dateOkonchRab').value = endDate.toISOString().split('T')[0];
         }
+        calculateFinalCoefficient();
     }
 
     function updateCalendarDays() {
         const workingInput = document.getElementById('commonInputFieldWorking');
         const calendarInput = document.getElementById('commonInputField');
-        const startDateInput = document.getElementById('SelectZakazchik').value;
+        const startDateInput = document.getElementById('dateNachRab').value;
 
         const workingDays = parseInt(workingInput.value) || 0;
         const calendarDays = Math.ceil(workingDays * 7 / 5);
@@ -2142,12 +2149,13 @@ echo "<script>
             const startDate = new Date(startDateInput);
             const endDate = new Date(startDate);
             endDate.setDate(startDate.getDate() + calendarDays);
-            document.getElementById('SelectPodryadchik').value = endDate.toISOString().split('T')[0];
+            document.getElementById('dateOkonchRab').value = endDate.toISOString().split('T')[0];
         }
+        calculateFinalCoefficient();
     }
 
     function updateEndDate() {
-        const startDateInput = document.getElementById('SelectZakazchik').value;
+        const startDateInput = document.getElementById('dateNachRab').value;
         const calendarInput = document.getElementById('commonInputField').value;
 
         if (startDateInput && calendarInput) {
@@ -2155,13 +2163,14 @@ echo "<script>
             const calendarDays = parseInt(calendarInput) || 0;
             const endDate = new Date(startDate);
             endDate.setDate(startDate.getDate() + calendarDays);
-            document.getElementById('SelectPodryadchik').value = endDate.toISOString().split('T')[0];
+            document.getElementById('dateOkonchRab').value = endDate.toISOString().split('T')[0];
         }
+        calculateFinalCoefficient();
     }
 
     function updateCalendarDaysFromEnd() {
-        const endDateInput = document.getElementById('SelectPodryadchik').value;
-        const startDateInput = document.getElementById('SelectZakazchik').value;
+        const endDateInput = document.getElementById('dateNachRab').value;
+        const startDateInput = document.getElementById('dateOkonchRab').value;
 
         if (endDateInput && startDateInput) {
             const startDate = new Date(startDateInput);
@@ -2169,6 +2178,7 @@ echo "<script>
             const calendarDays = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
             document.getElementById('commonInputField').value = calendarDays;
         }
+        calculateFinalCoefficient();
     }
 
 
@@ -2183,6 +2193,7 @@ echo "<script>
         } else {
             targetElement.style.display = "none";
         }
+        calculateFinalCoefficient();
     }
 
     function toggleSelect(toggleId, selectContainerId, optionsId) {
@@ -2198,6 +2209,7 @@ echo "<script>
             optionsSelect.selectedIndex = 0;
             optionsSelect.disabled = true;
         }
+        calculateFinalCoefficient();
     }
 
 
@@ -2208,6 +2220,7 @@ echo "<script>
         checkboxes.forEach(checkbox => {
             checkbox.disabled = !isChecked;
         });
+        calculateFinalCoefficient();
     }
 
     function toggleCheckboxes4() {
@@ -2217,6 +2230,7 @@ echo "<script>
         checkboxes.forEach(checkbox => {
             checkbox.disabled = !isChecked;
         });
+        calculateFinalCoefficient();
     }
 
     function toggleCheckboxes5() {
@@ -2226,6 +2240,7 @@ echo "<script>
         checkboxes.forEach(checkbox => {
             checkbox.disabled = !isChecked;
         });
+        calculateFinalCoefficient();
     }
 
 
@@ -2236,6 +2251,7 @@ echo "<script>
         checkboxes.forEach(checkbox => {
             checkbox.disabled = !isChecked;
         });
+        calculateFinalCoefficient();
     }
 
 
@@ -2255,6 +2271,7 @@ echo "<script>
         checkboxes.forEach(item => {
             item.input.disabled = !item.checkbox.checked;
         });
+        calculateFinalCoefficient();
     }
 
 
@@ -2276,6 +2293,7 @@ echo "<script>
         checkboxes.forEach(item => {
             item.input.disabled = !item.checkbox.checked;
         });
+        calculateFinalCoefficient();
     }
 
     function toggleCheckboxesDop5() {
@@ -2294,6 +2312,7 @@ echo "<script>
         checkboxes.forEach(item => {
             item.input.disabled = !item.checkbox.checked;
         });
+        calculateFinalCoefficient();
     }
 
     function toggleCheckboxesDop6() {
@@ -2312,6 +2331,7 @@ echo "<script>
         checkboxes.forEach(item => {
             item.input.disabled = !item.checkbox.checked;
         });
+        calculateFinalCoefficient();
     }
 
 
@@ -2326,6 +2346,7 @@ echo "<script>
         checkboxes.forEach(item => {
             item.input.disabled = !item.checkbox.checked;
         });
+        calculateFinalCoefficient();
     }
 
     function toggleCheckboxesDop8() {
@@ -2359,6 +2380,7 @@ echo "<script>
                 input.disabled = !item.checkbox.checked;
             });
         });
+        calculateFinalCoefficient();
     }
 
     function myFunction() {
@@ -2390,9 +2412,72 @@ echo "<script>
         b14Input.disabled = !this.checked;
     });
     document.getElementById('btnApply').addEventListener('click', function() {
-        alert('Применено');
-        $('#modalPeremen').modal('hide'); });
+        const formData = {
+            director: $('#director').val(),
+            iODirector: $('#iODirector').val(),
+            currentIndex: $('#currentIndex').val(),
+            nextIndex: $('#nextIndex').val(),
+            usnValue: $('#usnValue').val(),
+            ndsValue: $('#ndsValue').val(),
+            workCost: $('#workCost').val(),
+            b14Index: $('#b14Input').val()
+        };
+        $.ajax({
+            url: 'app/ajax/saveParametrPeremen.php',
+            type: 'POST',
+            data: formData,
+            dataType: 'json',
+            success: function (data) {
+                if (data.success) {
+                    alert('Применено');
+                    calculateFinalCoefficient();
+                    $('#modalPeremen').modal('hide');
+                }
+                else {
+                    alert('Ошибка при сохранении параметров');
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.error('Error:', textStatus, errorThrown);
+                alert('Ошибка при сохранении параметров');
+            }
+            });
+        });
 
+    function loadParametrPeremenFromDB() {
+        $.ajax({
+            url: 'app/ajax/getParametrPeremen.php',
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                if (data.success) {
+                    $('#director').val(data.params.name_director);
+                    $('#iODirector').val(data.params.name_IOdirector);
+                    $('#currentIndex').val(data.params.index_current_year);
+                    $('#nextIndex').val(data.params.index_next_year);
+                    $('#usnValue').val(data.params.value_usn);
+                    $('#ndsValue').val(data.params.value_nds);
+                    $('#workCost').val(data.params.cost_work14);
+                    const b14Value = data.params.analizb14;
+                    $('#b14Checkbox').prop('checked', b14Value !== '');
+                    $('#b14Input').prop('disabled', !$('#b14Checkbox').is(':checked'));
+                    if (b14Value) {
+                        $('#b14Input').val(b14Value);
+                    } else {
+                        $('#b14Input').val('');
+                    }
+                    console.log("параметры переменных загружены" + data);
+                } else {
+                    console.error('Error:', data.error);
+                }
+            }
+        });
+    }
+
+    $(document).ready(function() {
+        loadParametrPeremenFromDB();
+
+    });
 
 
 
