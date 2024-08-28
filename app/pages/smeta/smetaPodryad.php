@@ -7,7 +7,6 @@ $harakteristikaObject = 0;
 
 echo "<script>
      let smetaList = " . $smetaList->getListSmets() . ";
-     console.log(smetaList);
 </script>";
 ?>
 <style>
@@ -2113,7 +2112,7 @@ echo "<script>
     function updateWorkingDays() {
         const calendarInput = document.getElementById('commonInputField');
         const workingInput = document.getElementById('commonInputFieldWorking');
-        const startDateInput = document.getElementById('SelectZakazchik').value;
+        const startDateInput = document.getElementById('dateNachRab').value;
 
         const calendarDays = parseInt(calendarInput.value) || 0;
         const workingDays = Math.floor(calendarDays * 5 / 7);
@@ -2124,14 +2123,14 @@ echo "<script>
             const startDate = new Date(startDateInput);
             const endDate = new Date(startDate);
             endDate.setDate(startDate.getDate() + calendarDays);
-            document.getElementById('SelectPodryadchik').value = endDate.toISOString().split('T')[0];
+            document.getElementById('dateOkonchRab').value = endDate.toISOString().split('T')[0];
         }
     }
 
     function updateCalendarDays() {
         const workingInput = document.getElementById('commonInputFieldWorking');
         const calendarInput = document.getElementById('commonInputField');
-        const startDateInput = document.getElementById('SelectZakazchik').value;
+        const startDateInput = document.getElementById('dateNachRab').value;
 
         const workingDays = parseInt(workingInput.value) || 0;
         const calendarDays = Math.ceil(workingDays * 7 / 5);
@@ -2142,12 +2141,12 @@ echo "<script>
             const startDate = new Date(startDateInput);
             const endDate = new Date(startDate);
             endDate.setDate(startDate.getDate() + calendarDays);
-            document.getElementById('SelectPodryadchik').value = endDate.toISOString().split('T')[0];
+            document.getElementById('dateOkonchRab').value = endDate.toISOString().split('T')[0];
         }
     }
 
     function updateEndDate() {
-        const startDateInput = document.getElementById('SelectZakazchik').value;
+        const startDateInput = document.getElementById('dateNachRab').value;
         const calendarInput = document.getElementById('commonInputField').value;
 
         if (startDateInput && calendarInput) {
@@ -2155,13 +2154,13 @@ echo "<script>
             const calendarDays = parseInt(calendarInput) || 0;
             const endDate = new Date(startDate);
             endDate.setDate(startDate.getDate() + calendarDays);
-            document.getElementById('SelectPodryadchik').value = endDate.toISOString().split('T')[0];
+            document.getElementById('dateOkonchRab').value = endDate.toISOString().split('T')[0];
         }
     }
 
     function updateCalendarDaysFromEnd() {
-        const endDateInput = document.getElementById('SelectPodryadchik').value;
-        const startDateInput = document.getElementById('SelectZakazchik').value;
+        const endDateInput = document.getElementById('dateOkonchRab').value;
+        const startDateInput = document.getElementById('dateNachRab').value;
 
         if (endDateInput && startDateInput) {
             const startDate = new Date(startDateInput);
