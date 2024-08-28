@@ -4,6 +4,9 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 'on');
 
+
+
+
 class ConnectionDB
 {
     private $host = '172.19.6.64';
@@ -33,9 +36,19 @@ class ConnectionDB
     {
         return mysqli_num_rows($result);
     }
+
 }
 
+
 $connectionDB = new ConnectionDB();
+
+$zakazchikquery = "SELECT * FROM zakazchik";
+$zakazchik = $connectionDB->executeQuery($zakazchikquery);
+
+$podryadchikquery = "SELECT * FROM podryadchik";
+$podryadchik = $connectionDB->executeQuery($podryadchikquery);
+
+?>
 
 
 

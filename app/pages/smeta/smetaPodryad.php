@@ -1,9 +1,20 @@
 <?php
 
+$harakteristikaObject = 0;
+
+
+
 ?>
 <style>
     .hidden {
-        display: none; /* Скрываем селект по умолчанию */
+        display: none;
+    }
+
+    .highlight-green {
+        color: green;
+    }
+    .highlight-red {
+        color: red;
     }
 
 .form-select{
@@ -240,18 +251,22 @@
 <div class="pos1">
     <label for="SelectZakazchik" class="zakpod">Заказчик:</label>
     <select class="form-select" aria-label="">
-        <option selected>-- Пожалуйста, выберите --</option>
-        <option value="1">dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
+        <option value="0" selected>-- Пожалуйста, выберите --</option>
+        <?php
+        while ($row = $connectionDB->getRowResult($zakazchik)) {
+            echo '<option id="zakazchik" value="' . htmlspecialchars($row['id_zakazchik']) . '">' . htmlspecialchars($row['nameZakazchik']) . '</option>';
+        }
+        ?>
     </select>
 
     <label for="SelectPodryadchik" class="zakpod">Подрядчик:</label>
     <select class="form-select" aria-label="">
-        <option selected>-- Пожалуйста, выберите --</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
+        <option id="podryadchik" value="0" selected>-- Пожалуйста, выберите --</option>
+        <?php
+        while ($row = $connectionDB->getRowResult($podryadchik)) {
+            echo '<option value="' . htmlspecialchars($row['id_podryadchik']) . '">' . htmlspecialchars($row['namePodryadchik']) . '</option>';
+        }
+        ?>
     </select>
 
     <!-- Textarea with class .w-50 -->
@@ -262,28 +277,29 @@
 </div>
         <div class="pos2">
             <label for="SelectZakazchik" class="zakpod">Дата начала выполнения работ:</label>
-            <input type="date" class="form-date" id="SelectZakazchik" aria-label="">
-
+            <input type="date" class="form-date" id="SelectZakazchik" aria-label="" onchange="updateEndDate()">
             <label for="SelectPodryadchik" class="zakpod">Дата окончания работ:</label>
-            <input type="date" class="form-date" id="SelectPodryadchik" aria-label="">
-
+            <input type="date" class="form-date" id="SelectPodryadchik" aria-label="" onchange="updateCalendarDaysFromEnd()">
             <label for="textAreaCel" class="zakpod">Цель:</label>
             <div class="form-outline">
                 <textarea class="form-control" id="textAreaCel" rows="3"></textarea>
             </div>
         </div>
 
-
         <div class="pos3">
             <label for="calendarDays" class="zakpod">Календарных дней:</label>
-            <input id="calendarDays" class="butrad" type="radio" name="daysType" value="calendar">
-            <br>
-            <label for="workingDays" class="zakpod">Рабочих дней:</label>
-            <input id="workingDays" class="butrad" type="radio" name="daysType" value="working">
+            <input id="calendarDays" class="butrad" type="radio" name="daysType" value="calendar" onclick="toggleInputs()">
             <br>
             <div id="inputContainer" class="input-container">
                 <label id="inputLabel" for="commonInputField">Введите значение:</label>
-                <input id="commonInputField" type="number" name="inputValue" step="1" min="0">
+                <input id="commonInputField" disabled type="number" name="inputValue" step="1" min="0" oninput="updateWorkingDays()">
+            </div>
+            <label for="workingDays" class="zakpod">Рабочих дней:</label>
+            <input id="workingDays" class="butrad" type="radio" name="daysType" value="working" onclick="toggleInputs()">
+            <br>
+            <div id="inputContainerWorking" class="input-container">
+                <label id="inputLabel" for="commonInputFieldWorking">Введите значение:</label>
+                <input id="commonInputFieldWorking" disabled type="number" name="inputValue" step="1" min="0" oninput="updateCalendarDays()">
             </div>
 
             <label for="textAreaMestoObj" class="zakpodGps">Местоположение объекта:</label>
@@ -299,43 +315,47 @@
     <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 
 
-    <div class="nameforblock1" onclick ="toggleDisplay('.nameforblock1', '.dndb');">Характеристика объекта   <?php echo '<span class="countRub">123</span>' ?></div>
+    <div class="nameforblock1" onclick ="toggleDisplay('.nameforblock1', '.dndb');">Характеристика объекта&nbsp;&nbsp;&nbsp;<?php echo '<span class="harakteristikaObject" id="harakteristikaObject">'; echo $harakteristikaObject; echo'</span>'; ?></div>
     <div class="dndb">
     <div class="position1">
         <div class="pos1">
             <div class = "viborvis">
             <label for="SelectZakazchik" class="zakpod">Здание:</label>
-            <select class="form-select" aria-label="">
-                <option selected>-- Пожалуйста, выберите --</option>
-                <option value="1">dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+            <select class="form-select" id="buildingType" aria-label=""  >
+                <option value="0" selected>-- Пожалуйста, выберите --</option>
+                <option value="1.2">Жилое</option>
+                <option value="1.2">Гражданское</option>
+                <option value="1">Промышленное</option>
+                <option value="1">Сельскохозяйственное</option>
+                <option value="1">Галереи</option>
+                <option value="1">Коммуникационные и многоярусные эстакады</option>
+                <option value="1">Градирни, этажерки и т.д.</option>
             </select>
 
-            <select class="form-select" aria-label="">
-                <option selected>-- Пожалуйста, выберите --</option>
-                <option value="1">dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+            <select class="form-select" id="constructionType" aria-label="">
+                <option value="0" selected>-- Пожалуйста, выберите --</option>
+                <option value="1">Существующее здание</option>
+                <option value="0.8">Незавершенное капитальное строительство</option>
+                <option value="0.7">Новое строительство</option>
             </select>
 
             <div id="inputContainer" class="input-containerval">
-                <label for="SelectZakazchik" class="zakpod">Количество этажей:</label>
-                <input id="etazh" type="number" name="inputValue" step="1" min="0">
+                <label for="etazh" class="zakpod">Количество этажей:</label>
+                <input id="etazh" type="number" name="inputValue" step="1" min="0" oninput="updateBuildingInfo()">
             </div>
 
             <div id="inputContainer" class="input-containerval">
-                <label for="SelectZakazchik" class="zakpod">Высота здания:</label>
-                <input id="visotazdani" type="number" name="inputValue" step="1" min="0">м
+                <label for="visotazdani" class="zakpod">Высота здания:</label>
+                <input id="visotazdani" type="number" name="inputValue" step="1" min="0" oninput="updateBuildingInfo()">м
             </div>
 
             <div id="inputContainer" class="input-containerval">
-                <label for="SelectZakazchik" class="zakpod">Объем здания:</label>
-                <input id="obem" type="number" name="inputValue" step="1" min="0">м³
+                <label for="obem" class="zakpod">Объем здания:</label>
+                <input id="obem" type="number" name="inputValue" step="1" min="0" oninput="calculateK()">м³
             </div>
 
             <div id="inputContainer" class="input-containerval">
-                <label for="SelectZakazchik" class="zakpod">Высота покрытия от уровня пола:</label>
+                <label for="visotapola" class="zakpod">Высота покрытия от уровня пола:</label>
                 <input id="visotapola" type="number" name="inputValue" step="1" min="0">м
             </div>
 
@@ -345,15 +365,14 @@
 
 <div class = "viborvis">
             <input id="vis6" class="butrad" type="radio" name="daysType" value="vis6">
-            <label for="calendarDays" class="visotarad"> 1) Здание высотой до 6м, бескрановое, однообъемное, двухпролетное</label>
+            <label for="vis6" class="visotarad"> 1) Здание высотой до 6м, бескрановое, однообъемное, двухпролетное</label>
             <br>
             <input id="vis614" class="butrad" type="radio" name="daysType" value="vis614">
-            <label for="workingDays" class="visotarad">2) Здание высотой от 6м до 14м высоты, с кранами грузоподъемностью до 50т включительно, с двумя объемами, 3-5 пролета
-            , а также различные сооружения, резервуары, тоннели, лестничные клетки, галереи
+            <label for="vis614" class="visotarad">2) Здание высотой от 6м до 14м высоты, с кранами грузоподъемностью до 50т включительно, с двумя объемами, 3-5 пролета, а также различные сооружения, резервуары, тоннели, лестничные клетки, галереи
             </label>
             <br>
             <input id="vis14" class="butrad" type="radio" name="daysType" value="vis14">
-            <label for="workingDays" class="visotarad">2) Здание высотой более 14м, со сложной конструктивной схемой, с двухъярусным расположением кранов, более 3
+            <label for="vis14" class="visotarad">3) Здание высотой более 14м, со сложной конструктивной схемой, с двухъярусным расположением кранов, более 3
             объемов, более 6 пролетов галереи с высотой опор более 20м и пролетом более 36м, полный монолитный каркас</label>
             <br>
 </div>
@@ -361,19 +380,20 @@
         <div class="pos3">
 
             <label for="SelectZakazchik" class="zakpod">Температурно-влажностный режим:</label>
-            <select class="form-select" aria-label="">
-                <option selected>-- Пожалуйста, выберите --</option>
-                <option value="1">dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+            <select class="form-select" id="temperatureMode" aria-label="" onchange="calculateFinalCoefficient();">
+                <option value="0" selected>-- Пожалуйста, выберите --</option>
+                <option value="1">Нормальный (К = 1)</option>
+                <option value="1.15">t>25° С, W>70% (K = 1.15)</option>
+                <option value="1.2">t>30° С, W>85% (K = 1.2)</option>
             </select>
 
             <label for="SelectPodryadchik" class="zakpod">Насыщенность оборудования:</label>
-            <select class="form-select" aria-label="">
-                <option selected>-- Пожалуйста, выберите --</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+            <select class="form-select" id="equipmentSaturation" aria-label="" onchange="calculateFinalCoefficient();">
+                <option value="0" selected>-- Пожалуйста, выберите --</option>
+                <option value="1">Отсуствует (K = 1)</option>
+                <option value="1.1">До 30% от площади помещений (K = 1.1)</option>
+                <option value="1.2">От 30% До 50% от площади помещений (K = 1.2)</option>
+                <option value="1.3">Свыше 50% от площади помещений (K = 1.3)</option>
             </select>
 
             <label>
@@ -384,10 +404,10 @@
             <div id="selectContainer" class="hidden">
                 <label for="options">Выберите опцию:</label>
                 <select class="form-select" id="options" disabled>
-                    <option value="">-- Пожалуйста, выберите --</option>
-                    <option value="1">Опция 1</option>
-                    <option value="2">Опция 2</option>
-                    <option value="3">Опция 3</option>
+                    <option value="0">-- Пожалуйста, выберите --</option>
+                    <option value="1.2">Помещение со слабой степенью агрессивного воздействия (k=1.2)</option>
+                    <option value="1.3">Помещение со средней степенью агрессивного воздействия (k=1.3)</option>
+                    <option value="1.4">Помещение с сильной степенью агрессивного воздействия (k=1.4)</option>
                 </select>
             </div>
 
@@ -397,13 +417,13 @@
             <div class="pos1">
                 <div class = "viborvis">
                     <label>
-                        <input type="checkbox" id="toggleSelect"> Выполнение работ с применением альпинисткого снаряжения (K = 1.5)
+                        <input value="1.5" type="checkbox" id="toggleSelect"> Выполнение работ с применением альпинисткого снаряжения (K = 1.5)
                     </label>
                     <label>
-                        <input type="checkbox" id="toggleSelect"> Шумовые воздействия, превышающие нормативные величины (K = 1.25)
+                        <input value="1.25" type="checkbox" id="toggleSelect"> Шумовые воздействия, превышающие нормативные величины (K = 1.25)
                     </label>
                     <label>
-                        <input type="checkbox" id="toggleSelect"> Выполнение работ в условиях отрицательных температур в период с 1 ноября - 1 мая (K = 1.2)
+                        <input value="1.2" type="checkbox" id="toggleSelect"> Выполнение работ в условиях отрицательных температур в период с 1 ноября - 1 мая (K = 1.2)
                     </label>
                     <label>
                         <input type="checkbox" id="toggleSelect"> Необходимость очистки поверхности конструкций от грязи, пыли, ржавчины. Расчет выполнять по калькуляции трудозатрат
@@ -415,32 +435,32 @@
 
                 <div class = "viborvis">
                     <label>
-                        <input type="checkbox" id="toggleSelect"> Необходимость использования переносных источников освещения (K = 1.2)
+                        <input value="1.2" type="checkbox" id="toggleSelect"> Необходимость использования переносных источников освещения (K = 1.2)
                     </label>
                     <label>
-                        <input type="checkbox" id="toggleSelect"> Здание является памятником архитектуры (K = 1.02)
+                        <input value="1.02" type="checkbox" id="toggleSelect"> Здание является памятником архитектуры (K = 1.02)
                     </label>
                     <label>
-                        <input type="checkbox" id="toggleSelect"> Обследование в условиях производственного процесса (K = 1.2)
+                        <input value="1.2" type="checkbox" id="toggleSelect"> Обследование в условиях производственного процесса (K = 1.2)
                     </label>
                     <label>
-                        <input type="checkbox" id="toggleSelect"> Выполнение работ с мостового крана или подмостей (K = 1.15)
+                        <input value="1.15" type="checkbox" id="toggleSelect"> Выполнение работ с мостового крана или подмостей (K = 1.15)
                     </label>
                 </div>
             </div>
             <div class="pos3">
                 <div class = "viborvis">
                 <label>
-                    <input type="checkbox" id="toggleSelect"> Здание оборудовано кранами режимных групп 7К, 8К, (K = 1.2)
+                    <input value="1.2" type="checkbox" id="toggleSelect"> Здание оборудовано кранами режимных групп 7К, 8К, (K = 1.2)
                 </label>
                 <label>
-                    <input type="checkbox" id="toggleSelect"> Конструкции, усиленные по ранее разработанным проектам (K = 1.2)
+                    <input value="1.2" type="checkbox" id="toggleSelect"> Конструкции, усиленные по ранее разработанным проектам (K = 1.2)
                 </label>
                 <label>
-                    <input type="checkbox" id="toggleSelect"> Использование ранее выполненных обследований не более  3 лет назад (K = 0.7)
+                    <input value="0.7" type="checkbox" id="toggleSelect"> Использование ранее выполненных обследований не более  3 лет назад (K = 0.7)
                 </label>
                 <label>
-                    <input type="checkbox" id="toggleSelect"> Срочное выполнение обмерно-обследовательских работ (K <= 1.35)
+                    <input value="1.35" type="checkbox" id="toggleSelect"> Срочное выполнение обмерно-обследовательских работ (K <= 1.35)
                 </label>
                 </div>
             </div>
@@ -1706,6 +1726,165 @@
 </section>
 
 <script>
+
+    let mainKoef = 0;
+    function calculateK() {
+        const obem = parseFloat(document.getElementById('obem').value);
+        if (obem > 0) {
+            mainKoef = 6.33 / Math.sqrt(obem);
+        }
+        else{
+            mainKoef = 0;
+        }
+    }
+    function calculateFinalCoefficient() {
+        const temperatureMode = parseFloat(document.getElementById('temperatureMode').value) || 1;
+        const equipmentSaturation = parseFloat(document.getElementById('equipmentSaturation').value) || 1;
+        const finalCoefficient = mainKoef * temperatureMode * equipmentSaturation;
+        document.getElementById('harakteristikaObject').innerText = finalCoefficient.toFixed(2);
+    }
+
+
+    function updateBuildingInfo() {
+        const etazh = parseInt(document.getElementById('etazh').value) || 0;
+        const visotazdani = parseFloat(document.getElementById('visotazdani').value) || 0;
+
+        const vis6Label = document.querySelector('label[for="vis6"]');
+        const vis614Label = document.querySelector('label[for="vis614"]');
+        const vis14Label = document.querySelector('label[for="vis14"]');
+
+
+        vis6Label.classList.remove('highlight-green', 'highlight-red');
+        vis614Label.classList.remove('highlight-green', 'highlight-red');
+        vis14Label.classList.remove('highlight-green', 'highlight-red');
+
+
+        if (etazh > 1) {
+                document.getElementById('vis6').value = 'multi_vis6';
+                vis6Label.innerText = '1) Здание с высотой этажа до 3.6м, бескрановое, до 3х этажей, этажерки высотой до 15м многоэтажные эстакады';
+
+                document.getElementById('vis614').value = 'multi_vis614';
+                vis614Label.innerText = '2) Здание с высотой этажа до 6м, бескрановое, до 2 объемов, до 4-9 этажей, сооружения высотой более 20м';
+
+                document.getElementById('vis14').value = 'multi_vis14';
+                vis14Label.innerText = '3)  Здание с высотой этажа свыше 6м, с краном, свыше 3 объемов, свыше 10 этажей, сооружения высотой более 60м, полный монолитный каркас';
+
+            if (visotazdani < 20) {
+                vis6Label.classList.add('highlight-green');
+            }
+            else if (visotazdani >= 20 && visotazdani < 60) {
+                vis614Label.classList.add('highlight-green');
+            }
+            else if (visotazdani > 60) {
+                vis14Label.classList.add('highlight-green');
+            }
+
+
+        } else {
+            document.getElementById('vis6').value = 'vis6';
+            vis6Label.innerText = '1) Здание высотой до 6м, бескрановое, однообъемное, двухпролетное';
+
+                document.getElementById('vis614').value = 'vis614';
+                vis614Label.innerText = '2) Здание высотой от 6м до 14м высоты, с кранами грузоподъемностью до 50т включительно, с двумя объемами, 3-5 пролета, а также различные сооружения, резервуары, тоннели, лестничные клетки, галереи';
+
+                document.getElementById('vis14').value = 'vis14';
+                vis14Label.innerText = '3) Здание высотой более 14м, со сложной конструктивной схемой, с двухъярусным расположением кранов, более 3 объемов, более 6 пролетов галереи с высотой опор более 20м и пролетом более 36м, полный монолитный каркас';
+
+                if (visotazdani < 6) {
+                vis6Label.classList.add('highlight-green');
+            }
+            else if (visotazdani >= 6 && visotazdani < 14) {
+                vis614Label.classList.add('highlight-green');
+            }
+            else if (visotazdani >= 14) {
+                vis14Label.classList.add('highlight-green');
+            }
+            }
+    }
+
+
+
+
+
+    function toggleInputs() {
+        const calendarInput = document.getElementById('commonInputField');
+        const workingInput = document.getElementById('commonInputFieldWorking');
+        const isCalendarSelected = document.getElementById('calendarDays').checked;
+
+        if (isCalendarSelected) {
+            calendarInput.disabled = false;
+            workingInput.disabled = true;
+            workingInput.value = '';
+        } else {
+            workingInput.disabled = false;
+            calendarInput.disabled = true;
+            calendarInput.value = '';
+        }
+    }
+
+    function updateWorkingDays() {
+        const calendarInput = document.getElementById('commonInputField');
+        const workingInput = document.getElementById('commonInputFieldWorking');
+        const startDateInput = document.getElementById('SelectZakazchik').value;
+
+        const calendarDays = parseInt(calendarInput.value) || 0;
+        const workingDays = Math.floor(calendarDays * 5 / 7);
+
+        workingInput.value = workingDays;
+
+        if (startDateInput) {
+            const startDate = new Date(startDateInput);
+            const endDate = new Date(startDate);
+            endDate.setDate(startDate.getDate() + calendarDays);
+            document.getElementById('SelectPodryadchik').value = endDate.toISOString().split('T')[0];
+        }
+    }
+
+    function updateCalendarDays() {
+        const workingInput = document.getElementById('commonInputFieldWorking');
+        const calendarInput = document.getElementById('commonInputField');
+        const startDateInput = document.getElementById('SelectZakazchik').value;
+
+        const workingDays = parseInt(workingInput.value) || 0;
+        const calendarDays = Math.ceil(workingDays * 7 / 5);
+
+        calendarInput.value = calendarDays;
+
+        if (startDateInput) {
+            const startDate = new Date(startDateInput);
+            const endDate = new Date(startDate);
+            endDate.setDate(startDate.getDate() + calendarDays);
+            document.getElementById('SelectPodryadchik').value = endDate.toISOString().split('T')[0];
+        }
+    }
+
+    function updateEndDate() {
+        const startDateInput = document.getElementById('SelectZakazchik').value;
+        const calendarInput = document.getElementById('commonInputField').value;
+
+        if (startDateInput && calendarInput) {
+            const startDate = new Date(startDateInput);
+            const calendarDays = parseInt(calendarInput) || 0;
+            const endDate = new Date(startDate);
+            endDate.setDate(startDate.getDate() + calendarDays);
+            document.getElementById('SelectPodryadchik').value = endDate.toISOString().split('T')[0];
+        }
+    }
+
+    function updateCalendarDaysFromEnd() {
+        const endDateInput = document.getElementById('SelectPodryadchik').value;
+        const startDateInput = document.getElementById('SelectZakazchik').value;
+
+        if (endDateInput && startDateInput) {
+            const startDate = new Date(startDateInput);
+            const endDate = new Date(endDateInput);
+            const calendarDays = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
+            document.getElementById('commonInputField').value = calendarDays;
+        }
+    }
+
+
+
     function toggleDisplay(triggerSelector, targetSelector) {
         const triggerElement = document.querySelector(triggerSelector);
         const targetElement = document.querySelector(targetSelector);
