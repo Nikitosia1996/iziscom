@@ -297,7 +297,12 @@ echo "<script>
                 ?>
             </div>
         </div>
-        <div class="col-lg-10">
+
+        <div class="col-lg-2">
+            <button id="btnShowModalPeremen" class="btn btn-primary" >Параметры переменных</button>
+        </div>
+
+        <div class="col-lg-8">
             <div id="divSaveSmeta" class="form-group mgtop5" style="display: inline-flex;
     float: right;
     margin-right: 9%;">
@@ -306,6 +311,8 @@ echo "<script>
             </div>
         </div>
     </div>
+
+
 
     <div class="position1">
 <div class="pos1">
@@ -337,9 +344,9 @@ echo "<script>
         </div>
         <div class="pos2">
             <label for="SelectZakazchik" class="zakpod">Дата начала выполнения работ:</label>
-            <input type="date" class="form-date" id="SelectZakazchik" aria-label="" onchange="updateEndDate()">
+            <input type="date" class="form-date"  id="dateNachRab" aria-label="" onchange="updateEndDate()">
             <label for="SelectPodryadchik" class="zakpod">Дата окончания работ:</label>
-            <input type="date" class="form-date" id="SelectPodryadchik" aria-label="" onchange="updateCalendarDaysFromEnd()">
+            <input type="date" class="form-date" id="dateOkonchRab" aria-label="" onchange="updateCalendarDaysFromEnd()">
             <label for="textAreaCel" class="zakpod">Цель:</label>
             <div class="form-outline">
                 <textarea class="form-control" id="textAreaCel" rows="3"></textarea>
@@ -1956,6 +1963,53 @@ echo "<script>
 
 </section>
 
+
+<div class="modal fade" id="modalPeremen" tabindex="-1" aria-labelledby="modalPeremenLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalPeremenLabel" style ="color:black;">Параметры переменных</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="director" class="form-label">Директор</label>
+                        <input type="text" class="form-control" id="director" placeholder="Введите директора"> </div>
+                    <div class="mb-3">
+                        <label for="iODirector" class="form-label">И.о. директора</label>
+                        <input type="text" class="form-control" id="iODirector" placeholder="Введите и.о. директора"> </div>
+                    <div class="mb-3">
+                        <label for="currentIndex" class="form-label">Индекс текущего года</label>
+                        <input type="number" step="0.01" class="form-control" id="currentIndex" placeholder="Введите индекс текущего года"> </div>
+                    <div class="mb-3">
+                        <label for="nextIndex" class="form-label">Индекс следующего года</label>
+                        <input type="number" step="0.01" class="form-control" id="nextIndex" placeholder="Введите индекс следующего года"> </div>
+                    <div class="mb-3">
+                        <label for="usnValue" class="form-label">Значение УСН, %</label>
+                        <input type="number" step="0.01" class="form-control" id="usnValue" placeholder="Введите значение УСН"> </div>
+                    <div class="mb-3">
+                        <label for="ndsValue" class="form-label">Значение НДС, %</label>
+                        <input type="number" step="0.01" class="form-control" id="ndsValue" placeholder="Введите значение НДС"> </div>
+                    <div class="mb-3">
+                        <label for="workCost" class="form-label">Стоимость работ 14 разряда:</label>
+                        <input type="number" step="0.01" class="form-control" id="workCost" placeholder="Введите стоимость работ"> </div>
+                    <div class="mb-3">
+                        <label for="b14Index" class="form-label">Прогнозный индекс B14</label>
+                        <div class="input-group">
+                            <input type="checkbox" class="form-check-input" id="b14Checkbox">
+                            <input type="number" step="0.01" class="form-control ms-2" id="b14Input" placeholder="Введите индекс B14" disabled> </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                <button type="button" class="btn btn-primary" id="btnApply">Применить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
 
     let mainKoef = 0;
@@ -2326,6 +2380,20 @@ echo "<script>
             }
         }
     }
+
+
+    document.getElementById('btnShowModalPeremen').addEventListener('click', function() {
+        $('#modalPeremen').modal('show');
+    });
+    document.getElementById('b14Checkbox').addEventListener('change', function() {
+        const b14Input = document.getElementById('b14Input');
+        b14Input.disabled = !this.checked;
+    });
+    document.getElementById('btnApply').addEventListener('click', function() {
+        alert('Применено');
+        $('#modalPeremen').modal('hide'); });
+
+
 
 
 </script>
