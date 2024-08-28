@@ -298,7 +298,7 @@ echo "<script>
         <div class="pos1">
             <label for="SelectZakazchik" class="zakpod">Заказчик:</label>
             <select class="form-select" aria-label="" id="zakazchik">
-                <option selected>-- Пожалуйста, выберите --</option>
+                <option value="0" selected>-- Пожалуйста, выберите --</option>
                 <option value="1">
                     dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg
                 </option>
@@ -308,7 +308,7 @@ echo "<script>
 
             <label for="SelectPodryadchik" class="zakpod">Подрядчик:</label>
             <select class="form-select" aria-label="" id="podryadchik">
-                <option selected>-- Пожалуйста, выберите --</option>
+                <option value="0" selected>-- Пожалуйста, выберите --</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
