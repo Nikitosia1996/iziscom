@@ -36,6 +36,7 @@ let toggleZd6 = $('#toggleZd6');
 let toggleZd7 = $('#toggleZd7');
 let toggleZd8 = $('#toggleZd8');
 let toggleZd9 = $('#toggleZd9');
+let choosCunstruct = $('#choosCunstruct');
 
 
 
@@ -73,26 +74,50 @@ function getSmeta(id) {
         chekb12.prop('checked', haract.checkb12 > 0);
 
 
+        choosCunstruct.prop('checked', ishod.choosCunstruct > 0);
+        if (ishod.choosCunstruct > 0) {
+            toggleZd1.prop('disabled', false);
+            toggleZd2.prop('disabled', false);
+            toggleZd3.prop('disabled', false);
+            toggleZd4.prop('disabled', false);
+            toggleZd5.prop('disabled', false);
+            toggleZd6.prop('disabled', false);
+            toggleZd7.prop('disabled', false);
+            toggleZd8.prop('disabled', false);
+            toggleZd9.prop('disabled', false);
+            toggleZd1.prop('checked', ishod.toggleZd1 > 0);
+            toggleZd2.prop('checked', ishod.toggleZd2 > 0);
+            toggleZd3.prop('checked', ishod.toggleZd3 > 0);
+            toggleZd4.prop('checked', ishod.toggleZd4 > 0);
+            toggleZd5.prop('checked', ishod.toggleZd5 > 0);
+            toggleZd6.prop('checked', ishod.toggleZd6 > 0);
+            toggleZd7.prop('checked', ishod.toggleZd7 > 0);
+            toggleZd8.prop('checked', ishod.toggleZd8 > 0);
+            toggleZd9.prop('checked', ishod.toggleZd9 > 0);
+            $('#conval1').val(ishod.conval1);
+            $('#conval2').val(ishod.conval2);
+            $('#conval3').val(ishod.conval3);
+            $('#conval4').val(ishod.conval4);
+            $('#conval5').val(ishod.conval5);
+            $('#conval6').val(ishod.conval6);
+            $('#conval7').val(ishod.conval7);
+            $('#conval8').val(ishod.conval8);
+            $('#conval9').val(ishod.conval9);
+        } else {
+            toggleZd1.prop('disabled', true);
+            toggleZd2.prop('disabled', true);
+            toggleZd3.prop('disabled', true);
+            toggleZd4.prop('disabled', true);
+            toggleZd5.prop('disabled', true);
+            toggleZd6.prop('disabled', true);
+            toggleZd7.prop('disabled', true);
+            toggleZd8.prop('disabled', true);
+            toggleZd9.prop('disabled', true);
 
-        toggleZd1.prop('checked', ishod.toggleZd1 > 0);
-        toggleZd2.prop('checked', ishod.toggleZd2 > 0);
-        toggleZd3.prop('checked', ishod.toggleZd3 > 0);
-        toggleZd4.prop('checked', ishod.toggleZd4 > 0);
-        toggleZd5.prop('checked', ishod.toggleZd5 > 0);
-        toggleZd6.prop('checked', ishod.toggleZd6 > 0);
-        toggleZd7.prop('checked', ishod.toggleZd7 > 0);
-        toggleZd8.prop('checked', ishod.toggleZd8 > 0);
-        toggleZd9.prop('checked', ishod.toggleZd9 > 0);
+        }
 
-        $('#conval1').val(ishod.conval1);
-        $('#conval2').val(ishod.conval2);
-        $('#conval3').val(ishod.conval3);
-        $('#conval4').val(ishod.conval4);
-        $('#conval5').val(ishod.conval5);
-        $('#conval6').val(ishod.conval6);
-        $('#conval7').val(ishod.conval7);
-        $('#conval8').val(ishod.conval8);
-        $('#conval9').val(ishod.conval9);
+
+
     }
     document.getElementById("myDropdown").classList.toggle("show");
     calculateK();

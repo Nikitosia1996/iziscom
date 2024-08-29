@@ -2022,9 +2022,12 @@ echo "<script>
 </div>
 
 <script>
-
+    let sumHarakter;
+    let sumIshod;
+    let fullSumma;
     let mainKoef = 0;
     function calculateK() {
+        fullSumma = 0;
         const obem = parseFloat(document.getElementById('obem').value);
         if (obem > 0) {
             mainKoef = 6.33 / Math.sqrt(obem);
@@ -2033,13 +2036,19 @@ echo "<script>
             mainKoef = 0;
         }
         calculateFinalCoefficient();
+        calculateFinalCoefficientSborSource();
+        fullSumma = parseFloat(sumHarakter) + parseFloat(sumIshod);
+        document.getElementById('harakteristikaObjectObsh').innerText = fullSumma;
+        document.getElementById('harakteristikaObjectSmeta').innerText = fullSumma;
+        document.getElementById('harakteristikaObjectCalc').innerText = fullSumma;
+        console.log(fullSumma);
     }
 
 
 
 
     function calculateFinalCoefficient() {
-
+        sumHarakter = 0;
         function getCheckboxValue(checkboxId) {
             const checkbox = document.getElementById(checkboxId);
             return checkbox.checked ? parseFloat(checkbox.getAttribute('data-id')) || 1 : 1;
@@ -2084,16 +2093,12 @@ echo "<script>
             chekb12;
 
         document.getElementById('harakteristikaObject').innerText = finalCoefficient.toFixed(2);
-        document.getElementById('harakteristikaObjectObsh').innerText = finalCoefficient.toFixed(2);
-        document.getElementById('harakteristikaObjectSmeta').innerText = finalCoefficient.toFixed(2);
-        document.getElementById('harakteristikaObjectCalc').innerText = finalCoefficient.toFixed(2);
-
-
+        sumHarakter  = finalCoefficient.toFixed(2);
     }
 
 
     function calculateFinalCoefficientSborSource() {
-
+        sumIshod=0;
         function getCheckboxValue(checkboxId, inputId) {
             const checkbox = document.getElementById(checkboxId);
             const inputValue = parseFloat(document.getElementById(inputId).value) || 0;
@@ -2126,7 +2131,7 @@ echo "<script>
             toggleZd9;
 
         document.getElementById('sborIshodnihDannih').innerText = finalCoefficientSborSource.toFixed(2);
-
+        sumIshod = finalCoefficientSborSource.toFixed(2);
 
     }
 
@@ -2209,7 +2214,7 @@ echo "<script>
                     document.getElementById('vis14').checked = true;
             }
             }
-        calculateFinalCoefficient();
+        calculateK();
     }
 
 
@@ -2230,7 +2235,7 @@ echo "<script>
             calendarInput.disabled = true;
             calendarInput.value = '';
         }
-        calculateFinalCoefficient();
+        calculateK();
     }
 
     function updateWorkingDays() {
@@ -2249,7 +2254,7 @@ echo "<script>
             endDate.setDate(startDate.getDate() + calendarDays);
             document.getElementById('dateOkonchRab').value = endDate.toISOString().split('T')[0];
         }
-        calculateFinalCoefficient();
+        calculateK();
     }
 
     function updateCalendarDays() {
@@ -2268,7 +2273,7 @@ echo "<script>
             endDate.setDate(startDate.getDate() + calendarDays);
             document.getElementById('dateOkonchRab').value = endDate.toISOString().split('T')[0];
         }
-        calculateFinalCoefficient();
+        calculateK();
     }
 
     function updateEndDate() {
@@ -2282,7 +2287,7 @@ echo "<script>
             endDate.setDate(startDate.getDate() + calendarDays);
             document.getElementById('dateOkonchRab').value = endDate.toISOString().split('T')[0];
         }
-        calculateFinalCoefficient();
+        calculateK();
     }
 
     function updateCalendarDaysFromEnd() {
@@ -2295,7 +2300,7 @@ echo "<script>
             const calendarDays = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
             document.getElementById('commonInputField').value = calendarDays;
         }
-        calculateFinalCoefficient();
+        calculateK();
     }
 
 
@@ -2310,7 +2315,7 @@ echo "<script>
         } else {
             targetElement.style.display = "none";
         }
-        calculateFinalCoefficient();
+        calculateK();
     }
 
     function toggleSelect(toggleId, selectContainerId, optionsId) {
@@ -2326,7 +2331,7 @@ echo "<script>
             optionsSelect.selectedIndex = 0;
             optionsSelect.disabled = true;
         }
-        calculateFinalCoefficient();
+        calculateK();
     }
 
 
@@ -2337,7 +2342,7 @@ echo "<script>
         checkboxes.forEach(checkbox => {
             checkbox.disabled = !isChecked;
         });
-        calculateFinalCoefficient();
+        calculateK();
     }
 
     function toggleCheckboxes4() {
@@ -2347,7 +2352,7 @@ echo "<script>
         checkboxes.forEach(checkbox => {
             checkbox.disabled = !isChecked;
         });
-        calculateFinalCoefficient();
+        calculateK();
     }
 
     function toggleCheckboxes5() {
@@ -2357,7 +2362,7 @@ echo "<script>
         checkboxes.forEach(checkbox => {
             checkbox.disabled = !isChecked;
         });
-        calculateFinalCoefficient();
+        calculateK();
     }
 
 
@@ -2368,7 +2373,7 @@ echo "<script>
         checkboxes.forEach(checkbox => {
             checkbox.disabled = !isChecked;
         });
-        calculateFinalCoefficient();
+        calculateK();
     }
 
 
@@ -2388,7 +2393,7 @@ echo "<script>
         checkboxes.forEach(item => {
             item.input.disabled = !item.checkbox.checked;
         });
-        calculateFinalCoefficient();
+        calculateK();
     }
 
 
@@ -2410,7 +2415,7 @@ echo "<script>
         checkboxes.forEach(item => {
             item.input.disabled = !item.checkbox.checked;
         });
-        calculateFinalCoefficient();
+        calculateK();
     }
 
     function toggleCheckboxesDop5() {
@@ -2429,7 +2434,7 @@ echo "<script>
         checkboxes.forEach(item => {
             item.input.disabled = !item.checkbox.checked;
         });
-        calculateFinalCoefficient();
+        calculateK();
     }
 
     function toggleCheckboxesDop6() {
@@ -2448,7 +2453,7 @@ echo "<script>
         checkboxes.forEach(item => {
             item.input.disabled = !item.checkbox.checked;
         });
-        calculateFinalCoefficient();
+        calculateK();
     }
 
 
@@ -2463,7 +2468,7 @@ echo "<script>
         checkboxes.forEach(item => {
             item.input.disabled = !item.checkbox.checked;
         });
-        calculateFinalCoefficient();
+        calculateK();
     }
 
     function toggleCheckboxesDop8() {
@@ -2497,7 +2502,7 @@ echo "<script>
                 input.disabled = !item.checkbox.checked;
             });
         });
-        calculateFinalCoefficient();
+        calculateK();
     }
 
     function myFunction() {

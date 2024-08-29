@@ -116,6 +116,7 @@ class SmetaList
                     $row['conval8'],
                     $row['toggleZd9'],
                     $row['conval9'],
+                    $row['choosCunstruct'],
                 ));
 
             $this->putSmeta($smeta);

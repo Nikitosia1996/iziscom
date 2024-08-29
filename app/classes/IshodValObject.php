@@ -25,6 +25,7 @@ class IshodValObject
     private $conval8;
     private $toggleZd9;
     private $conval9;
+    private $choosCunstruct;
 
 
 
@@ -58,8 +59,9 @@ class IshodValObject
      * @param $conval8
      * @param $toggleZd9
      * @param $conval9
+     * @param $choosCunstruct
      */
-    public function __construct($id, $pasport_na_zdanie, $toggleZd1, $conval1, $toggleZd2, $conval2, $toggleZd3, $conval3, $toggleZd4, $conval4, $toggleZd5, $conval5, $toggleZd6, $conval6, $toggleZd7, $conval7, $toggleZd8, $conval8, $toggleZd9, $conval9)
+    public function __construct($id, $pasport_na_zdanie, $toggleZd1, $conval1, $toggleZd2, $conval2, $toggleZd3, $conval3, $toggleZd4, $conval4, $toggleZd5, $conval5, $toggleZd6, $conval6, $toggleZd7, $conval7, $toggleZd8, $conval8, $toggleZd9, $conval9, $choosCunstruct)
     {
         $this->id = $id;
         $this->pasport_na_zdanie = $pasport_na_zdanie;
@@ -81,6 +83,7 @@ class IshodValObject
         $this->conval8 = $conval8;
         $this->toggleZd9 = $toggleZd9;
         $this->conval9 = $conval9;
+        $this->choosCunstruct = $choosCunstruct;
     }
 
     /**
@@ -403,6 +406,21 @@ class IshodValObject
         $this->conval9 = $conval9;
     }
 
+
+    public function getChoosCunstruct()
+    {
+        return $this->choosCunstruct;
+    }
+
+    /**
+     * @param mixed $conval9
+     */
+    public function setChoosCunstruct($choosCunstruct): void
+    {
+        $this->choosCunstruct = $choosCunstruct;
+    }
+
+
     public function toJson(){
         return [
             'id' => $this->id,
@@ -425,6 +443,7 @@ class IshodValObject
             'conval8' => $this->conval8,
             'toggleZd9' => $this->toggleZd9,
             'conval9' => $this->conval9,
+            'choosCunstruct' => $this->choosCunstruct,
             ];
     }
 }
