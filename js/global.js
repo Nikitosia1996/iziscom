@@ -10,10 +10,6 @@ let divSaveSmeta = $('#divSaveSmeta');
 let smetaName = $('#smetaName');
 let buildingType = $('#buildingType');
 let constructionType = $('#constructionType');
-let etazh = $('#etazh').val();
-let visotazdani = $('#visotazdani').val();
-let obem = $('#obem').val();
-let visotapola = $('#visotapola').val();
 let temperatureMode = $('#temperatureMode');
 let equipmentSaturation = $('#equipmentSaturation');
 let options = $('#options');
@@ -71,6 +67,29 @@ function getSmeta(id) {
 }
 
 function saveSmeta() {
+    haractObject = {
+        zdanie: buildingType.val(),
+        typeZdanie: constructionType.val(),
+        stage: $('#etazh').val(),
+        height: $('#visotazdani').val(),
+        obem: $('#obem').val(),
+        height_pol: $('#visotapola').val(),
+        temperature: temperatureMode.val(),
+        nasishenost: equipmentSaturation.val(),
+        aggresive_vozdeistvie: options.val(),
+        checkb1: chekb1.prop('checked')? 1 : 0,
+        checkb2: chekb2.prop('checked')? 1 : 0,
+        checkb3: chekb3.prop('checked')? 1 : 0,
+        checkb4: chekb4.prop('checked')? 1 : 0,
+        checkb5: chekb5.prop('checked')? 1 : 0,
+        checkb6: chekb6.prop('checked')? 1 : 0,
+        checkb7: chekb7.prop('checked')? 1 : 0,
+        checkb8: chekb8.prop('checked')? 1 : 0,
+        checkb9: chekb9.prop('checked')? 1 : 0,
+        checkb10: chekb10.prop('checked')? 1 : 0,
+        checkb11: chekb11.prop('checked')? 1 : 0,
+        checkb12: chekb12.prop('checked')? 1 : 0,
+    }
     let smeta = {
         id: idActiveSmeta?.toString(),
         name: smetaName.val(),
@@ -78,6 +97,7 @@ function saveSmeta() {
         id_podryadchik: selectPodryadchik.val(),
         dateNachRab: inputDateNachRab.val(),
         dateOkonchRab: inputDateOkonchRab.val(),
+        haractObject: JSON.stringify(haractObject)
 
     };
 

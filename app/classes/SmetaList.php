@@ -66,7 +66,7 @@ class SmetaList
     public function getListSmetaFromDB($con)
     {
         $sql = "SELECT * FROM smets s
-                left join haract_object ho on ho.id_haract_object = s.id_haract_object";
+                left join haract_object ho on ho.id_smeta = s.id_smeta";
         $result = mysqli_query($con, $sql);
         while ($row = mysqli_fetch_assoc($result)) {
             $smeta = new Smeta($row['id_smeta'], $row['name'], $row['id_zakazchik'], $row['id_podryadchik'], $row['date_nach_rab'],$row['date_okonch_rab'],
