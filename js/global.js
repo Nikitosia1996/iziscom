@@ -27,6 +27,16 @@ let chekb11 = $('#chekb11');
 let chekb12 = $('#chekb12');
 
 
+let toggleZd1 = $('#toggleZd1');
+let toggleZd2 = $('#toggleZd2');
+let toggleZd3 = $('#toggleZd3');
+let toggleZd4 = $('#toggleZd4');
+let toggleZd5 = $('#toggleZd5');
+let toggleZd6 = $('#toggleZd6');
+let toggleZd7 = $('#toggleZd7');
+let toggleZd8 = $('#toggleZd8');
+let toggleZd9 = $('#toggleZd9');
+
 
 
 function getSmeta(id) {
@@ -39,6 +49,7 @@ function getSmeta(id) {
         inputDateOkonchRab.val(selectedItem.dateOkonchRab);
         smetaName.val(selectedItem.name);
         const haract = selectedItem.haractObject;
+        const ishod = selectedItem.ishodValObject;
         $('#buildingType').val(haract.zdanie);
         $('#constructionType').val(haract.typeZdanie);
         $('#etazh').val(haract.stage);
@@ -60,6 +71,28 @@ function getSmeta(id) {
         chekb10.prop('checked', haract.checkb10 > 0);
         chekb11.prop('checked', haract.checkb11 > 0);
         chekb12.prop('checked', haract.checkb12 > 0);
+
+
+
+        toggleZd1.prop('checked', ishod.toggleZd1 > 0);
+        toggleZd2.prop('checked', ishod.toggleZd2 > 0);
+        toggleZd3.prop('checked', ishod.toggleZd3 > 0);
+        toggleZd4.prop('checked', ishod.toggleZd4 > 0);
+        toggleZd5.prop('checked', ishod.toggleZd5 > 0);
+        toggleZd6.prop('checked', ishod.toggleZd6 > 0);
+        toggleZd7.prop('checked', ishod.toggleZd7 > 0);
+        toggleZd8.prop('checked', ishod.toggleZd8 > 0);
+        toggleZd9.prop('checked', ishod.toggleZd9 > 0);
+
+        $('#conval1').val(ishod.conval1);
+        $('#conval2').val(ishod.conval2);
+        $('#conval3').val(ishod.conval3);
+        $('#conval4').val(ishod.conval4);
+        $('#conval5').val(ishod.conval5);
+        $('#conval6').val(ishod.conval6);
+        $('#conval7').val(ishod.conval7);
+        $('#conval8').val(ishod.conval8);
+        $('#conval9').val(ishod.conval9);
     }
     document.getElementById("myDropdown").classList.toggle("show");
     calculateK();
