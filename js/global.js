@@ -50,7 +50,7 @@ function getSmeta(id) {
         inputDateOkonchRab.val(selectedItem.dateOkonchRab);
         smetaName.val(selectedItem.name);
         const haract = selectedItem.haractObject;
-        const ishod = selectedItem.ishodValObject;
+        const ishod = selectedItem.ishod;
         $('#buildingType').val(haract.zdanie);
         $('#constructionType').val(haract.typeZdanie);
         $('#etazh').val(haract.stage);
@@ -126,6 +126,29 @@ function getSmeta(id) {
 }
 
 function saveSmeta() {
+    let ishod = {
+        toggleZd1: toggleZd1.prop('checked') ? 1 : 0,
+        toggleZd2: toggleZd2.prop('checked') ? 1 : 0,
+        toggleZd3: toggleZd3.prop('checked') ? 1 : 0,
+        toggleZd4: toggleZd4.prop('checked') ? 1 : 0,
+        toggleZd5: toggleZd5.prop('checked') ? 1 : 0,
+        toggleZd6: toggleZd6.prop('checked') ? 1 : 0,
+        toggleZd7: toggleZd7.prop('checked') ? 1 : 0,
+        toggleZd8: toggleZd8.prop('checked') ? 1 : 0,
+        toggleZd9: toggleZd9.prop('checked') ? 1 : 0,
+        conval1: $('#conval1').val(),
+        conval2: $('#conval2').val(),
+        conval3: $('#conval3').val(),
+        conval4: $('#conval4').val(),
+        conval5: $('#conval5').val(),
+        conval6: $('#conval6').val(),
+        conval7: $('#conval7').val(),
+        conval8: $('#conval8').val(),
+        conval9: $('#conval9').val()
+    };
+
+    console.log(ishod);
+
     haractObject = {
         zdanie: buildingType.val(),
         typeZdanie: constructionType.val(),
@@ -156,7 +179,8 @@ function saveSmeta() {
         id_podryadchik: selectPodryadchik.val(),
         dateNachRab: inputDateNachRab.val(),
         dateOkonchRab: inputDateOkonchRab.val(),
-        haractObject: JSON.stringify(haractObject)
+        haractObject: JSON.stringify(haractObject),
+        ishod: JSON.stringify(ishod),
 
     };
 
@@ -167,7 +191,8 @@ function saveSmeta() {
         id_podryadchik: selectPodryadchik.val(),
         dateNachRab: inputDateNachRab.val(),
         dateOkonchRab: inputDateOkonchRab.val(),
-        haractObject: haractObject
+        haractObject: haractObject,
+        ishod: ishod
 
     };
 
@@ -185,6 +210,8 @@ function saveSmeta() {
 
             } else {
                 smeta.id = response.trim();
+                if(smetaList == null)
+                    smetaList = [];
                 smetaList.push(smeta);
 
             }

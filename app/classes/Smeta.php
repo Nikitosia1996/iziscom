@@ -177,7 +177,7 @@ class Smeta
             'dateNachRab' => $this->dateNachRab,
             'dateOkonchRab' => $this->dateOkonchRab,
             'haractObject' => $this->haractObject->toJson(),
-            'ishodValObject' => $this->ishodValObject->toJson(),
+            'ishod' => $this->ishodValObject->toJson(),
         ]);
     }
 
