@@ -64,6 +64,7 @@ function getSmeta(id) {
 
     }
     document.getElementById("myDropdown").classList.toggle("show");
+    calculateK();
 
     return null;
 }
@@ -92,7 +93,7 @@ function saveSmeta() {
         checkb11: chekb11.prop('checked')? 1 : 0,
         checkb12: chekb12.prop('checked')? 1 : 0,
     }
-    let smeta = {
+    let smetaForPhp = {
         id: idActiveSmeta?.toString(),
         name: smetaName.val(),
         id_zakazchik: selectZakazchik.val(),
@@ -103,10 +104,21 @@ function saveSmeta() {
 
     };
 
+    let smeta = {
+        id: idActiveSmeta?.toString(),
+        name: smetaName.val(),
+        id_zakazchik: selectZakazchik.val(),
+        id_podryadchik: selectPodryadchik.val(),
+        dateNachRab: inputDateNachRab.val(),
+        dateOkonchRab: inputDateOkonchRab.val(),
+        haractObject: haractObject
+
+    };
+
     $.ajax({
         url: '/app/ajax/saveSmeta.php',
         type: 'POST',
-        data: smeta,
+        data: smetaForPhp,
         success: function (response) {
             if (idActiveSmeta) {
                 smetaList.forEach((item, index) => {
@@ -145,4 +157,18 @@ function updateSmetaLinks() {
         dropdown.appendChild(link); // Добавляем ссылку в dropdown
     });
 }
+
+
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////
+
+
+
 

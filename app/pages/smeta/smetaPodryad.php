@@ -2028,34 +2028,34 @@ echo "<script>
     }
 
 
-
+    function getCheckboxValue(checkboxId) {
+        let checkbox = document.getElementById(checkboxId);
+        return checkbox.checked ? parseFloat(checkbox.getAttribute('data-id')) || 1 : 1;
+    }
 
     function calculateFinalCoefficient() {
+        console.log('calcul');
 
-        function getCheckboxValue(checkboxId) {
-            const checkbox = document.getElementById(checkboxId);
-            return checkbox.checked ? parseFloat(checkbox.getAttribute('data-id')) || 1 : 1;
-        }
-        const chekb1 = getCheckboxValue('chekb1');
-        const chekb2 = getCheckboxValue('chekb2');
-        const chekb3 = getCheckboxValue('chekb3');
-        const chekb4 = getCheckboxValue('chekb4');
-        const chekb5 = getCheckboxValue('chekb5');
-        const chekb6 = getCheckboxValue('chekb6');
-        const chekb7 = getCheckboxValue('chekb7');
-        const chekb8 = getCheckboxValue('chekb8');
-        const chekb9 = getCheckboxValue('chekb9');
-        const chekb10 = getCheckboxValue('chekb10');
-        const chekb11 = getCheckboxValue('chekb11');
-        const chekb12 = getCheckboxValue('chekb12');
+        let chekb1 = getCheckboxValue('chekb1');
+        let chekb2 = getCheckboxValue('chekb2');
+        let chekb3 = getCheckboxValue('chekb3');
+        let chekb4 = getCheckboxValue('chekb4');
+        let chekb5 = getCheckboxValue('chekb5');
+        let chekb6 = getCheckboxValue('chekb6');
+        let chekb7 = getCheckboxValue('chekb7');
+        let chekb8 = getCheckboxValue('chekb8');
+        let chekb9 = getCheckboxValue('chekb9');
+        let chekb10 = getCheckboxValue('chekb10');
+        let chekb11 = getCheckboxValue('chekb11');
+        let chekb12 = getCheckboxValue('chekb12');
 
-        const buildingType = parseFloat(document.querySelector('#buildingType option:checked').getAttribute('data-id')) || 1;
-        const constructionType = parseFloat(document.querySelector('#constructionType option:checked').getAttribute('data-id')) || 1;
-        const options = parseFloat(document.querySelector('#options option:checked').getAttribute('data-id')) || 1;
-        const temperatureMode = parseFloat(document.querySelector('#temperatureMode option:checked').getAttribute('data-id')) || 1;
-        const equipmentSaturation = parseFloat(document.querySelector('#equipmentSaturation option:checked').getAttribute('data-id')) || 1;
+        let buildingType = parseFloat(document.querySelector('#buildingType option:checked').getAttribute('data-id')) || 1;
+        let constructionType = parseFloat(document.querySelector('#constructionType option:checked').getAttribute('data-id')) || 1;
+        let options = parseFloat(document.querySelector('#options option:checked').getAttribute('data-id')) || 1;
+        let temperatureMode = parseFloat(document.querySelector('#temperatureMode option:checked').getAttribute('data-id')) || 1;
+        let equipmentSaturation = parseFloat(document.querySelector('#equipmentSaturation option:checked').getAttribute('data-id')) || 1;
 
-        const finalCoefficient = mainKoef * temperatureMode * equipmentSaturation * buildingType * constructionType * options * chekb1 * chekb2 * chekb3 * chekb4 * chekb5 * chekb6 * chekb7 * chekb8 * chekb9 * chekb10 * chekb11 * chekb12;
+        let finalCoefficient = mainKoef * temperatureMode * equipmentSaturation * buildingType * constructionType * options * chekb1 * chekb2 * chekb3 * chekb4 * chekb5 * chekb6 * chekb7 * chekb8 * chekb9 * chekb10 * chekb11 * chekb12;
 
         document.getElementById('harakteristikaObject').innerText = finalCoefficient.toFixed(2);
     }
