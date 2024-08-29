@@ -652,7 +652,7 @@ echo "<script>
                             <input data-id="1" type="checkbox" id="toggleZd6" disabled onchange="toggleCheckboxesDop()"> Подкрановые и тормозные конструкции
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class = "inpval" id="conval6" disabled type="number" name="inputValue" step="1" min="0"> %
+                            <input data-id="1" class = "inpval" id="conval6" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateFinalCoefficientSborSource()"> %
                         </div>
                     </div>
 
@@ -662,7 +662,7 @@ echo "<script>
                             <input data-id="1" type="checkbox" id="toggleZd7" disabled  onchange="toggleCheckboxesDop()"> Перекрытия
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class = "inpval" id="conval7" disabled type="number" name="inputValue" step="1" min="0"> %
+                            <input data-id="1" class = "inpval" id="conval7" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateFinalCoefficientSborSource()"> %
                         </div>
                     </div>
 
@@ -673,8 +673,7 @@ echo "<script>
                             <input data-id="1" type="checkbox" id="toggleZd8" disabled onchange="toggleCheckboxesDop()"> Покрытие
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class="inpval" id="conval8" disabled type="number" name="inputValue" step="1"
-                                   min="0"> %
+                            <input data-id="1" class="inpval" id="conval8" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateFinalCoefficientSborSource()"> %
                         </div>
                     </div>
 
@@ -683,8 +682,7 @@ echo "<script>
                             <input data-id="1" type="checkbox" id="toggleZd9" disabled onchange="toggleCheckboxesDop()"> Кровля
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class="inpval" id="conval9" disabled type="number" name="inputValue" step="1"
-                                   min="0"> %
+                            <input data-id="1" class="inpval" id="conval9" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateFinalCoefficientSborSource()"> %
                         </div>
                     </div>
                 </div>
