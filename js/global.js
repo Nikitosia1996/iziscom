@@ -52,20 +52,18 @@ function getSmeta(id) {
         $('#temperatureMode').val(haract.temperature);
         $('#equipmentSaturation').val(haract.nasishenost);
         $('#options').val(haract.aggresive_vozdeistvie);
-
-        $('#checkb1').prop('checked', haract.checkb1 > 0);
-        $('#checkb2').prop('checked', haract.checkb2 > 0);
-        $('#checkb3').prop('checked', haract.checkb3 > 0);
-        $('#checkb4').prop('checked', haract.checkb4 > 0);
-        $('#checkb5').prop('checked', haract.checkb5 > 0);
-        $('#checkb6').prop('checked', haract.checkb6 > 0);
-        $('#checkb7').prop('checked', haract.checkb7 > 0);
-        $('#checkb8').prop('checked', haract.checkb8 > 0);
-        $('#checkb9').prop('checked', haract.checkb9 > 0);
-        $('#checkb10').prop('checked', haract.checkb10 > 0);
-        $('#checkb11').prop('checked', haract.checkb11 > 0);
-        $('#checkb12').prop('checked', haract.checkb12 > 0);
-        console.log(haract.checkb12);
+        chekb1.prop('checked', haract.checkb1 > 0);
+        chekb2.prop('checked', haract.checkb2 > 0);
+        chekb3.prop('checked', haract.checkb3 > 0);
+        chekb4.prop('checked', haract.checkb4 > 0);
+        chekb5.prop('checked', haract.checkb5 > 0);
+        chekb6.prop('checked', haract.checkb6 > 0);
+        chekb7.prop('checked', haract.checkb7 > 0);
+        chekb8.prop('checked', haract.checkb8 > 0);
+        chekb9.prop('checked', haract.checkb9 > 0);
+        chekb10.prop('checked', haract.checkb10 > 0);
+        chekb11.prop('checked', haract.checkb11 > 0);
+        chekb12.prop('checked', haract.checkb12 > 0);
     }
     document.getElementById("myDropdown").classList.toggle("show");
 
