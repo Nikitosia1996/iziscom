@@ -2,8 +2,7 @@
 include "app/classes/SmetaList.php";
 
 $harakteristikaObject = 0;
-
-
+$sborIshodnihDannih = 0;
 
 echo "<script>
      let smetaList = " . $smetaList->getListSmets() . ";
@@ -303,9 +302,20 @@ echo "<script>
             <button id="btnShowModalPeremen" class="btn btn-primary" >Параметры переменных</button>
         </div>
 
+        <div class="col-lg-1">
+
+            Общая сумма <?php echo ' <span class="harakteristikaObject" id="harakteristikaObjectObsh">'; echo $harakteristikaObject; echo'</span>' ?>
+        </div>
+        <div class="col-lg-1">
+            Смета <?php echo ' <span class="harakteristikaObject" id="harakteristikaObjectSmeta">'; echo $harakteristikaObject; echo'</span>' ?>
+        </div>
+        <div class="col-lg-1">
+           Калькуляция <?php echo ' <span class="harakteristikaObject" id="harakteristikaObjectCalc">'; echo $harakteristikaObject; echo'</span>' ?>
+        </div>
 
 
-        <div class="col-lg-8">
+
+        <div class="col-lg-5">
             <div id="divSaveSmeta" class="form-group mgtop5" style="display: inline-flex;
     float: right;
     margin-right: 9%;">
@@ -547,7 +557,7 @@ echo "<script>
 
 
 
-    <div class="nameforblock3" onclick ="toggleDisplay('.nameforblock3', '.dndb3');">Сбор исходных данных <?php echo '<input class = "onCollap" type="checkbox" id="sborDann" name="sborDann" value="sborDann"> <span class="countRub">123</span>' ?></div>
+    <div class="nameforblock3" onclick ="toggleDisplay('.nameforblock3', '.dndb3');">Сбор исходных данных &nbsp;&nbsp;&nbsp;<?php echo '<span class="sborIshodnihDannih" id="sborIshodnihDannih">'; echo $sborIshodnihDannih; echo'</span>'; ?></div>
     <div class="dndb3">
 
         <div class = "mainfreename">
@@ -568,12 +578,12 @@ echo "<script>
 
             <div class="pos1">
                 <div class = "viborvis">
-                    <input id="calendarDays" class="butrad" type="radio" name="daysType" value="calendar">
-                <label for="calendarDays" class="pasportzd">1) Паспорт на здание или сооружение</label>
+                    <input data-id="1.2" id="pasportNaZdanie" class="butrad" type="radio" name="daysType" value="1" onchange="calculateFinalCoefficientSborSource()">
+                <label for="pasportNaZdanie" class="pasportzd">1) Паспорт на здание или сооружение</label>
 
                 <br>
-                    <input id="workingDays" class="butrad" type="radio" name="daysType" value="working">
-                <label for="workingDays" class="pasportzd">2) Паспорт на здание или сооружение. Проектная документация. Исполнительная документация. Эксплатуационная документация,
+                    <input data-id="1.3" id="pasportNaZdanie2" class="butrad" type="radio" name="daysType" value="2" onchange="calculateFinalCoefficientSborSource()">
+                <label for="pasportNaZdanie2" class="pasportzd">2) Паспорт на здание или сооружение. Проектная документация. Исполнительная документация. Эксплатуационная документация,
                     журнал наблюдений службы эксплуатации. Документы характеризующие фактические нагрузки и воздействия. Сертификаты на стальные конструкции.</label>
 
                 <br>
@@ -583,20 +593,20 @@ echo "<script>
                 <div class = "viborvischeckbox1">
                     <div class = "mainlolspace">
                    <div class = "lolspace">
-                        <input type="checkbox" id="toggleZd1" disabled onchange="toggleCheckboxesDop()"> Конструкция фундаментов
+                        <input data-id="1" type="checkbox" id="toggleZd1" disabled onchange="toggleCheckboxesDop()"> Конструкция фундаментов
                    </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval1" disabled type="number" name="inputValue" step="1" min="0"> %
+                            <input data-id="1" class = "inpval" id="conval1" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateFinalCoefficientSborSource()"> %
                         </div>
                     </div>
 
                     <div class = "mainlolspace">
                     <div class = "lolspace">
 
-                        <input type="checkbox" id="toggleZd2" disabled  onchange="toggleCheckboxesDop()"> Стены
+                        <input data-id="1" type="checkbox" id="toggleZd2" disabled  onchange="toggleCheckboxesDop()"> Стены
                     </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval2" disabled type="number" name="inputValue" step="1" min="0"> %
+                            <input data-id="1" class = "inpval" id="conval2" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateFinalCoefficientSborSource()"> %
                         </div>
                     </div>
 
@@ -605,27 +615,27 @@ echo "<script>
                     <div class = "mainlolspace">
                         <div class = "lolspace">
 
-                        <input type="checkbox" id="toggleZd3" disabled  onchange="toggleCheckboxesDop()"> Полы
+                        <input data-id="1" type="checkbox" id="toggleZd3" disabled  onchange="toggleCheckboxesDop()"> Полы
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval3" disabled type="number" name="inputValue" step="1" min="0"> %
+                            <input data-id="1" class = "inpval" id="conval3" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateFinalCoefficientSborSource()"> %
                         </div>
                     </div>
 
                     <div class = "mainlolspace">
                             <div class = "lolspace">
-                        <input type="checkbox" id="toggleZd4" disabled  onchange="toggleCheckboxesDop()"> Колонны, столбы, стойки
+                        <input data-id="1" type="checkbox" id="toggleZd4" disabled  onchange="toggleCheckboxesDop()"> Колонны, столбы, стойки
                             </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval4" disabled type="number" name="inputValue" step="1" min="0"> %
+                            <input data-id="1" class = "inpval" id="conval4" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateFinalCoefficientSborSource()"> %
                         </div>
                     </div>
                     <div class = "mainlolspace">
                                 <div class = "lolspace">
-                        <input type="checkbox" id="toggleZd5" disabled  onchange="toggleCheckboxesDop()"> Несущие конструкции копров,пролетных строейний галерей
+                        <input data-id="1" type="checkbox" id="toggleZd5" disabled  onchange="toggleCheckboxesDop()"> Несущие конструкции копров,пролетных строейний галерей
                                 </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval5" disabled type="number" name="inputValue" step="1" min="0"> %
+                            <input data-id="1" class = "inpval" id="conval5" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateFinalCoefficientSborSource()"> %
                         </div>
                     </div>
 
@@ -639,20 +649,20 @@ echo "<script>
                 <div class = "viborvischeckbox2">
                     <div class = "mainlolspace">
                         <div class = "lolspace">
-                            <input type="checkbox" id="toggleZd6" disabled onchange="toggleCheckboxesDop()"> Подкрановые и тормозные конструкции
+                            <input data-id="1" type="checkbox" id="toggleZd6" disabled onchange="toggleCheckboxesDop()"> Подкрановые и тормозные конструкции
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval6" disabled type="number" name="inputValue" step="1" min="0"> %
+                            <input data-id="1" class = "inpval" id="conval6" disabled type="number" name="inputValue" step="1" min="0"> %
                         </div>
                     </div>
 
                     <div class = "mainlolspace">
                         <div class = "lolspace">
 
-                            <input type="checkbox" id="toggleZd7" disabled  onchange="toggleCheckboxesDop()"> Перекрытия
+                            <input data-id="1" type="checkbox" id="toggleZd7" disabled  onchange="toggleCheckboxesDop()"> Перекрытия
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class = "inpval" id="conval7" disabled type="number" name="inputValue" step="1" min="0"> %
+                            <input data-id="1" class = "inpval" id="conval7" disabled type="number" name="inputValue" step="1" min="0"> %
                         </div>
                     </div>
 
@@ -660,20 +670,20 @@ echo "<script>
                     <div class="mainlolspace">
                         <div class="lolspace">
 
-                            <input type="checkbox" id="toggleZd8" disabled onchange="toggleCheckboxesDop()"> Покрытие
+                            <input data-id="1" type="checkbox" id="toggleZd8" disabled onchange="toggleCheckboxesDop()"> Покрытие
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval8" disabled type="number" name="inputValue" step="1"
+                            <input data-id="1" class="inpval" id="conval8" disabled type="number" name="inputValue" step="1"
                                    min="0"> %
                         </div>
                     </div>
 
                     <div class="mainlolspace">
                         <div class="lolspace">
-                            <input type="checkbox" id="toggleZd9" disabled onchange="toggleCheckboxesDop()"> Кровля
+                            <input data-id="1" type="checkbox" id="toggleZd9" disabled onchange="toggleCheckboxesDop()"> Кровля
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval9" disabled type="number" name="inputValue" step="1"
+                            <input data-id="1" class="inpval" id="conval9" disabled type="number" name="inputValue" step="1"
                                    min="0"> %
                         </div>
                     </div>
@@ -2055,10 +2065,73 @@ echo "<script>
         const temperatureMode = parseFloat(document.querySelector('#temperatureMode option:checked').getAttribute('data-id')) || 1;
         const equipmentSaturation = parseFloat(document.querySelector('#equipmentSaturation option:checked').getAttribute('data-id')) || 1;
 
-        const finalCoefficient = mainKoef * temperatureMode * equipmentSaturation * buildingType * constructionType * options * chekb1 * chekb2 * chekb3 * chekb4 * chekb5 * chekb6 * chekb7 * chekb8 * chekb9 * chekb10 * chekb11 * chekb12;
+        const finalCoefficient =
+            mainKoef *
+            temperatureMode *
+            equipmentSaturation *
+            buildingType *
+            constructionType *
+            options *
+            chekb1 *
+            chekb2 *
+            chekb3 *
+            chekb4 *
+            chekb5 *
+            chekb6 *
+            chekb7 *
+            chekb8 *
+            chekb9 *
+            chekb10 *
+            chekb11 *
+            chekb12;
 
         document.getElementById('harakteristikaObject').innerText = finalCoefficient.toFixed(2);
+        document.getElementById('harakteristikaObjectObsh').innerText = finalCoefficient.toFixed(2);
+        document.getElementById('harakteristikaObjectSmeta').innerText = finalCoefficient.toFixed(2);
+        document.getElementById('harakteristikaObjectCalc').innerText = finalCoefficient.toFixed(2);
+
+
     }
+
+
+    function calculateFinalCoefficientSborSource() {
+
+        function getCheckboxValue(checkboxId, inputId) {
+            const checkbox = document.getElementById(checkboxId);
+            const inputValue = parseFloat(document.getElementById(inputId).value) || 0;
+            if (checkbox.checked) {
+                return (inputValue / 100) * (parseFloat(checkbox.getAttribute('data-id')) || 1) + 1;
+            } else {
+                return 1;
+            }
+        }
+        const toggleZd1 = getCheckboxValue('toggleZd1', 'conval1');
+        const toggleZd2 = getCheckboxValue('toggleZd2', 'conval2');
+        const toggleZd3 = getCheckboxValue('toggleZd3', 'conval3');
+        const toggleZd4 = getCheckboxValue('toggleZd4', 'conval4');
+        const toggleZd5 = getCheckboxValue('toggleZd5', 'conval5');
+        const toggleZd6 = getCheckboxValue('toggleZd6', 'conval6');
+        const toggleZd7 = getCheckboxValue('toggleZd7', 'conval7');
+        const toggleZd8 = getCheckboxValue('toggleZd8', 'conval8');
+        const toggleZd9 = getCheckboxValue('toggleZd9', 'conval9');
+
+        const finalCoefficientSborSource =
+            mainKoef *
+            toggleZd1 *
+            toggleZd2 *
+            toggleZd3 *
+            toggleZd4 *
+            toggleZd5 *
+            toggleZd6 *
+            toggleZd7 *
+            toggleZd8 *
+            toggleZd9;
+
+        document.getElementById('sborIshodnihDannih').innerText = finalCoefficientSborSource.toFixed(2);
+
+
+    }
+
 
 
     function updateBuildingInfo() {
@@ -2074,6 +2147,10 @@ echo "<script>
         vis614Label.classList.remove('highlight-green', 'highlight-red');
         vis14Label.classList.remove('highlight-green', 'highlight-red');
 
+        document.getElementById('vis6').checked = false;
+        document.getElementById('vis614').checked = false;
+        document.getElementById('vis14').checked = false;
+
 
         if (etazh > 1) {
                 document.getElementById('vis6').value = '1';
@@ -2087,12 +2164,21 @@ echo "<script>
 
             if (visotazdani < 20) {
                 vis6Label.classList.add('highlight-green');
+                vis614Label.classList.add('highlight-red');
+                vis14Label.classList.add('highlight-red');
+                document.getElementById('vis6').checked = true;
             }
             else if (visotazdani >= 20 && visotazdani < 60) {
                 vis614Label.classList.add('highlight-green');
+                vis6Label.classList.add('highlight-red');
+                vis14Label.classList.add('highlight-red');
+                document.getElementById('vis614').checked = true;
             }
             else if (visotazdani > 60) {
                 vis14Label.classList.add('highlight-green');
+                vis6Label.classList.add('highlight-red');
+                vis614Label.classList.add('highlight-red');
+                document.getElementById('vis14').checked = true;
             }
 
 
@@ -2108,12 +2194,21 @@ echo "<script>
 
                 if (visotazdani < 6) {
                 vis6Label.classList.add('highlight-green');
+                    vis14Label.classList.add('highlight-red');
+                    vis614Label.classList.add('highlight-red');
+                    document.getElementById('vis6').checked = true;
             }
             else if (visotazdani >= 6 && visotazdani < 14) {
                 vis614Label.classList.add('highlight-green');
+                    vis14Label.classList.add('highlight-red');
+                    vis6Label.classList.add('highlight-red');
+                    document.getElementById('vis614').checked = true;
             }
             else if (visotazdani >= 14) {
                 vis14Label.classList.add('highlight-green');
+                    vis614Label.classList.add('highlight-red');
+                    vis6Label.classList.add('highlight-red');
+                    document.getElementById('vis14').checked = true;
             }
             }
         calculateFinalCoefficient();
