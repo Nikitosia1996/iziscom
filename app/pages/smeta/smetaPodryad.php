@@ -435,14 +435,14 @@ echo "<script>
         <div class="pos2">
 
 <div class = "viborvis">
-            <input data-id="1.3" id="vis6" class="butrad" type="radio" name="daysType" value="vis6">
+            <input data-id="1.3" id="vis6" class="butrad" type="radio" name="daysType" value="1">
             <label for="vis6" class="visotarad"> 1) Здание высотой до 6м, бескрановое, однообъемное, двухпролетное</label>
             <br>
-            <input data-id="1.5" id="vis614" class="butrad" type="radio" name="daysType" value="vis614">
+            <input data-id="1.5" id="vis614" class="butrad" type="radio" name="daysType" value="2">
             <label for="vis614" class="visotarad">2) Здание высотой от 6м до 14м высоты, с кранами грузоподъемностью до 50т включительно, с двумя объемами, 3-5 пролета, а также различные сооружения, резервуары, тоннели, лестничные клетки, галереи
             </label>
             <br>
-            <input data-id="1.5" id="vis14" class="butrad" type="radio" name="daysType" value="vis14">
+            <input data-id="1.5" id="vis14" class="butrad" type="radio" name="daysType" value="3">
             <label for="vis14" class="visotarad">3) Здание высотой более 14м, со сложной конструктивной схемой, с двухъярусным расположением кранов, более 3
             объемов, более 6 пролетов галереи с высотой опор более 20м и пролетом более 36м, полный монолитный каркас</label>
             <br>
@@ -2076,13 +2076,13 @@ echo "<script>
 
 
         if (etazh > 1) {
-                document.getElementById('vis6').value = 'multi_vis6';
+                document.getElementById('vis6').value = '1';
                 vis6Label.innerText = '1) Здание с высотой этажа до 3.6м, бескрановое, до 3х этажей, этажерки высотой до 15м многоэтажные эстакады';
 
-                document.getElementById('vis614').value = 'multi_vis614';
+                document.getElementById('vis614').value = '2';
                 vis614Label.innerText = '2) Здание с высотой этажа до 6м, бескрановое, до 2 объемов, до 4-9 этажей, сооружения высотой более 20м';
 
-                document.getElementById('vis14').value = 'multi_vis14';
+                document.getElementById('vis14').value = '3';
                 vis14Label.innerText = '3)  Здание с высотой этажа свыше 6м, с краном, свыше 3 объемов, свыше 10 этажей, сооружения высотой более 60м, полный монолитный каркас';
 
             if (visotazdani < 20) {
@@ -2097,13 +2097,13 @@ echo "<script>
 
 
         } else {
-            document.getElementById('vis6').value = 'vis6';
+            document.getElementById('vis6').value = '1';
             vis6Label.innerText = '1) Здание высотой до 6м, бескрановое, однообъемное, двухпролетное';
 
-                document.getElementById('vis614').value = 'vis614';
+                document.getElementById('vis614').value = '2';
                 vis614Label.innerText = '2) Здание высотой от 6м до 14м высоты, с кранами грузоподъемностью до 50т включительно, с двумя объемами, 3-5 пролета, а также различные сооружения, резервуары, тоннели, лестничные клетки, галереи';
 
-                document.getElementById('vis14').value = 'vis14';
+                document.getElementById('vis14').value = '3';
                 vis14Label.innerText = '3) Здание высотой более 14м, со сложной конструктивной схемой, с двухъярусным расположением кранов, более 3 объемов, более 6 пролетов галереи с высотой опор более 20м и пролетом более 36м, полный монолитный каркас';
 
                 if (visotazdani < 6) {

@@ -8,6 +8,30 @@ let inputDateNachRab = $('#dateNachRab');
 let inputDateOkonchRab = $('#dateOkonchRab');
 let divSaveSmeta = $('#divSaveSmeta');
 let smetaName = $('#smetaName');
+let buildingType = $('#buildingType');
+let constructionType = $('#constructionType');
+let etazh = $('#etazh').val;
+let visotazdani = $('#visotazdani').val;
+let obem = $('#obem').val;
+let visotapola = $('#visotapola').val;
+let temperatureMode = $('#temperatureMode');
+let equipmentSaturation = $('#equipmentSaturation');
+let options = $('#options');
+let chekb1 = $('#chekb1');
+let chekb2 = $('#chekb2');
+let chekb3 = $('#chekb3');
+let chekb4 = $('#chekb4');
+let chekb5 = $('#chekb5');
+let chekb6 = $('#chekb6');
+let chekb7 = $('#chekb7');
+let chekb8 = $('#chekb8');
+let chekb9 = $('#chekb9');
+let chekb10 = $('#chekb10');
+let chekb11 = $('#chekb11');
+let chekb12 = $('#chekb12');
+
+
+
 
 function getSmeta(id) {
     idActiveSmeta = id;
@@ -17,7 +41,31 @@ function getSmeta(id) {
         selectPodryadchik.val(selectedItem.id_podryadchik);
         inputDateNachRab.val(selectedItem.dateNachRab);
         inputDateOkonchRab.val(selectedItem.dateOkonchRab);
-        smetaName.val(selectedItem.name)
+        smetaName.val(selectedItem.name);
+        const haract = selectedItem.haractObject;
+        $('#buildingType').val(haract.zdanie);
+        $('#constructionType').val(haract.typeZdanie);
+        $('#etazh').val(haract.stage);
+        $('#visotazdani').val(haract.height);
+        $('#obem').val(haract.obem);
+        $('#visotapola').val(haract.height_pol);
+        $('#temperatureMode').val(haract.temperature);
+        $('#equipmentSaturation').val(haract.nasishenost);
+        $('#options').val(haract.aggresive_vozdeistvie);
+
+        $('#checkb1').prop('checked', haract.checkb1 > 0);
+        $('#checkb2').prop('checked', haract.checkb2 > 0);
+        $('#checkb3').prop('checked', haract.checkb3 > 0);
+        $('#checkb4').prop('checked', haract.checkb4 > 0);
+        $('#checkb5').prop('checked', haract.checkb5 > 0);
+        $('#checkb6').prop('checked', haract.checkb6 > 0);
+        $('#checkb7').prop('checked', haract.checkb7 > 0);
+        $('#checkb8').prop('checked', haract.checkb8 > 0);
+        $('#checkb9').prop('checked', haract.checkb9 > 0);
+        $('#checkb10').prop('checked', haract.checkb10 > 0);
+        $('#checkb11').prop('checked', haract.checkb11 > 0);
+        $('#checkb12').prop('checked', haract.checkb12 > 0);
+        console.log(haract.checkb12);
     }
     document.getElementById("myDropdown").classList.toggle("show");
 
