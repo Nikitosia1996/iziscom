@@ -8,9 +8,10 @@ class Smeta
     private $id_zakazchik;
     private $id_podryadchik;
     private $dateNachRab;
+    private $dateOkonchRab;
     private $haractObject;
     private $ishodValObject;
-    private $dateOkonchRab;
+
 
     /**
      * Smeta constructor.
@@ -23,16 +24,17 @@ class Smeta
      * @param $ishodValObject
      * @param $dateOkonchRab
      */
-    public function __construct($id, $name, $id_zakazchik, $id_podryadchik, $dateNachRab, $haractObject, $ishodValObject, $dateOkonchRab)
+    public function __construct($id, $name, $id_zakazchik, $id_podryadchik, $dateNachRab, $dateOkonchRab, $haractObject, $ishodValObject)
     {
         $this->id = $id;
         $this->name = $name;
         $this->id_zakazchik = $id_zakazchik;
         $this->id_podryadchik = $id_podryadchik;
         $this->dateNachRab = $dateNachRab;
+        $this->dateOkonchRab = $dateOkonchRab;
         $this->haractObject = $haractObject;
         $this->ishodValObject = $ishodValObject;
-        $this->dateOkonchRab = $dateOkonchRab;
+
     }
 
     /**
