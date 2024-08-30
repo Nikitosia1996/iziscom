@@ -3,6 +3,7 @@ include 'Smeta.php';
 include 'HaractObject.php';
 include 'IshodValObject.php';
 include 'ObmerObject.php';
+include 'ObsledObject.php';
 
 class SmetaList
 {
@@ -67,10 +68,11 @@ class SmetaList
 
     public function getListSmetaFromDB($con)
     {
-        $sql = "SELECT s.*, ho.*, siv.*, orw.*, s.id_smeta as id_sm FROM smets s
+        $sql = "SELECT s.*, ho.*, siv.*, orw.*, obsr.*, s.id_smeta as id_sm FROM smets s
                 left join haract_object ho on ho.id_smeta = s.id_smeta
                 left join sbor_ishod_value siv on siv.id_smeta = s.id_smeta
                 left join obmernie_raboty orw on orw.id_smeta = s.id_smeta
+                left join obsled_raboty obsr on obsr.id_smeta = s.id_smeta
 ";
         $result = mysqli_query($con, $sql);
         while ($row = mysqli_fetch_assoc($result)) {
@@ -145,6 +147,32 @@ class SmetaList
                     $row['conval449'],
                     $row['toggleZdDopUsl'],
                     $row['toggleZdDopUsl1'],
+                ),
+                new ObsledObject($row['id_obsled_raboty'],
+                    $row['predvOsmotr'],
+                    $row['choosCunstruct5'],
+                    $row['toggleZd51'],
+                    $row['toggleZd52'],
+                    $row['toggleZd53'],
+                    $row['toggleZd54'],
+                    $row['toggleZd55'],
+                    $row['toggleZd56'],
+                    $row['toggleZd57'],
+                    $row['toggleZd58'],
+                    $row['toggleZd59'],
+                    $row['conval51'],
+                    $row['conval52'],
+                    $row['conval53'],
+                    $row['conval54'],
+                    $row['conval55'],
+                    $row['conval56'],
+                    $row['conval57'],
+                    $row['conval58'],
+                    $row['conval59'],
+                    $row['toggleSelect1'],
+                    $row['toggleSelect2'],
+                    $row['povkef'],
+                    $row['sooruzhzd'],
                 )
             );
 

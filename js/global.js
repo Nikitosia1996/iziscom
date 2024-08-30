@@ -52,6 +52,23 @@ let toggleZd449 = $('#toggleZd449');
 let choosCunstruct4 = $('#choosCunstruct4');
 
 
+let toggleZd51 = $('#toggleZd51');
+let toggleZd52 = $('#toggleZd52');
+let toggleZd53 = $('#toggleZd53');
+let toggleZd54 = $('#toggleZd54');
+let toggleZd55 = $('#toggleZd55');
+let toggleZd56 = $('#toggleZd56');
+let toggleZd57 = $('#toggleZd57');
+let toggleZd58 = $('#toggleZd58');
+let toggleZd59 = $('#toggleZd59');
+let choosCunstruct5 = $('#choosCunstruct5');
+let toggleSelect1 = $('#toggleSelect1');
+let toggleSelect2 = $('#toggleSelect2');
+let povkef = $('#povkef');
+let sooruzhzd = $('#sooruzhzd');
+
+
+
 
 function getSmeta(id) {
     idActiveSmeta = id;
@@ -66,6 +83,7 @@ function getSmeta(id) {
         const haract = selectedItem.haractObject;
         const ishod = selectedItem.ishod;
         const obmer = selectedItem.obmer;
+        const obsled = selectedItem.obsled;
 
 
 
@@ -134,8 +152,6 @@ function getSmeta(id) {
 
         }
 
-
-
         choosCunstruct4.prop('checked', obmer.choosCunstruct4 > 0);
         if (obmer.choosCunstruct4 > 0) {
             toggleZd41.prop('disabled', false);
@@ -179,6 +195,49 @@ function getSmeta(id) {
             toggleZd48.prop('disabled', true);
             toggleZd49.prop('disabled', true);
             toggleZd449.prop('disabled', true);
+        }
+
+
+
+        choosCunstruct5.prop('checked', obsled.choosCunstruct5 > 0);
+        if (obsled.choosCunstruct5 > 0) {
+            toggleZd51.prop('disabled', false);
+            toggleZd52.prop('disabled', false);
+            toggleZd53.prop('disabled', false);
+            toggleZd54.prop('disabled', false);
+            toggleZd55.prop('disabled', false);
+            toggleZd56.prop('disabled', false);
+            toggleZd57.prop('disabled', false);
+            toggleZd58.prop('disabled', false);
+            toggleZd59.prop('disabled', false);
+            toggleZd51.prop('checked', obsled.toggleZd51 > 0);
+            toggleZd52.prop('checked', obsled.toggleZd52 > 0);
+            toggleZd53.prop('checked', obsled.toggleZd53 > 0);
+            toggleZd54.prop('checked', obsled.toggleZd54 > 0);
+            toggleZd55.prop('checked', obsled.toggleZd55 > 0);
+            toggleZd56.prop('checked', obsled.toggleZd56 > 0);
+            toggleZd57.prop('checked', obsled.toggleZd57 > 0);
+            toggleZd58.prop('checked', obsled.toggleZd58 > 0);
+            toggleZd59.prop('checked', obsled.toggleZd59 > 0);
+            $('#conval51').val(obsled.conval51);
+            $('#conval52').val(obsled.conval52);
+            $('#conval53').val(obsled.conval53);
+            $('#conval54').val(obsled.conval54);
+            $('#conval55').val(obsled.conval55);
+            $('#conval56').val(obsled.conval56);
+            $('#conval57').val(obsled.conval57);
+            $('#conval58').val(obsled.conval58);
+            $('#conval59').val(obsled.conval59);
+        } else {
+            toggleZd51.prop('disabled', true);
+            toggleZd52.prop('disabled', true);
+            toggleZd53.prop('disabled', true);
+            toggleZd54.prop('disabled', true);
+            toggleZd55.prop('disabled', true);
+            toggleZd56.prop('disabled', true);
+            toggleZd57.prop('disabled', true);
+            toggleZd58.prop('disabled', true);
+            toggleZd59.prop('disabled', true);
 
         }
 

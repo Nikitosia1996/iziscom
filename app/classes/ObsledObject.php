@@ -1,7 +1,7 @@
 <?php
 
 
-class ObmerObject
+class ObsledObject
 {
     /////////////////////////////////
 
@@ -37,63 +37,61 @@ class ObmerObject
 
 
 
-
-
     /**
      * ObmerObject constructor.
      * @param $id
-     * @param $obmerobs
-     * @param $choosCunstruct4
-     * @param $toggleZd41
-     * @param $toggleZd42
-     * @param $toggleZd43
-     * @param $toggleZd44
-     * @param $toggleZd45
-     * @param $toggleZd46
-     * @param $toggleZd47
-     * @param $toggleZd48
-     * @param $toggleZd49
-     * @param $toggleZd449
-     * @param $conval41
-     * @param $conval42
-     * @param $conval43
-     * @param $conval44
-     * @param $conval45
-     * @param $conval46
-     * @param $conval47
-     * @param $conval48
-     * @param $conval49
-     * @param $conval449
-     * @param $toggleZdDopUsl
-     * @param $toggleZdDopUsl1
+     * @param $predvOsmotr
+     * @param $choosCunstruct5
+     * @param $toggleZd51
+     * @param $toggleZd52
+     * @param $toggleZd53
+     * @param $toggleZd54
+     * @param $toggleZd55
+     * @param $toggleZd56
+     * @param $toggleZd57
+     * @param $toggleZd58
+     * @param $toggleZd59
+     * @param $conval51
+     * @param $conval52
+     * @param $conval53
+     * @param $conval54
+     * @param $conval55
+     * @param $conval56
+     * @param $conval57
+     * @param $conval58
+     * @param $conval59
+     * @param $toggleSelect1
+     * @param $toggleSelect2
+     * @param $povkef
+     * @param $sooruzhzd
      */
-    public function __construct($id, $obmerobs, $choosCunstruct4, $toggleZd41, $toggleZd42, $toggleZd43, $toggleZd44, $toggleZd45, $toggleZd46, $toggleZd47, $toggleZd48, $toggleZd49, $toggleZd449, $conval41, $conval42, $conval43, $conval44, $conval45, $conval46, $conval47, $conval48, $conval49, $conval449, $toggleZdDopUsl, $toggleZdDopUsl1)
+    public function __construct($id, $predvOsmotr, $choosCunstruct5, $toggleZd51, $toggleZd52, $toggleZd53, $toggleZd54, $toggleZd55, $toggleZd56, $toggleZd57, $toggleZd58, $toggleZd59, $conval51, $conval52, $conval53, $conval54, $conval55, $conval56, $conval57, $conval58, $conval59, $toggleSelect1, $toggleSelect2, $povkef, $sooruzhzd)
     {
         $this->id = $id;
-        $this->obmerobs = $obmerobs;
-        $this->choosCunstruct4 = $choosCunstruct4;
-        $this->toggleZd41 = $toggleZd41;
-        $this->toggleZd42 = $toggleZd42;
-        $this->toggleZd43 = $toggleZd43;
-        $this->toggleZd44 = $toggleZd44;
-        $this->toggleZd45 = $toggleZd45;
-        $this->toggleZd46 = $toggleZd46;
-        $this->toggleZd47 = $toggleZd47;
-        $this->toggleZd48 = $toggleZd48;
-        $this->toggleZd49 = $toggleZd49;
-        $this->toggleZd449 = $toggleZd449;
-        $this->conval41 = $conval41;
-        $this->conval42 = $conval42;
-        $this->conval43 = $conval43;
-        $this->conval44 = $conval44;
-        $this->conval45 = $conval45;
-        $this->conval46 = $conval46;
-        $this->conval47 = $conval47;
-        $this->conval48 = $conval48;
-        $this->conval49 = $conval49;
-        $this->conval449 = $conval449;
-        $this->toggleZdDopUsl = $toggleZdDopUsl;
-        $this->toggleZdDopUsl1 = $toggleZdDopUsl1;
+        $this->predvOsmotr = $predvOsmotr;
+        $this->choosCunstruct5 = $choosCunstruct5;
+        $this->toggleZd51 = $toggleZd51;
+        $this->toggleZd52 = $toggleZd52;
+        $this->toggleZd53 = $toggleZd53;
+        $this->toggleZd54 = $toggleZd54;
+        $this->toggleZd55 = $toggleZd55;
+        $this->toggleZd56 = $toggleZd56;
+        $this->toggleZd57 = $toggleZd57;
+        $this->toggleZd58 = $toggleZd58;
+        $this->toggleZd59 = $toggleZd59;
+        $this->conval51 = $conval51;
+        $this->conval52 = $conval52;
+        $this->conval53 = $conval53;
+        $this->conval54 = $conval54;
+        $this->conval55 = $conval55;
+        $this->conval56 = $conval56;
+        $this->conval57 = $conval57;
+        $this->conval58 = $conval58;
+        $this->conval59 = $conval59;
+        $this->toggleSelect1 = $toggleSelect1;
+        $this->toggleSelect2 = $toggleSelect2;
+        $this->povkef = $povkef;
+        $this->sooruzhzd = $sooruzhzd;
     }
 
     /**
@@ -115,420 +113,418 @@ class ObmerObject
     /**
      * @return mixed
      */
-    public function getObmerobs()
+    public function getPredvOsmotr()
     {
-        return $this->obmerobs;
+        return $this->predvOsmotr;
     }
 
     /**
-     * @param mixed $obmerobs
+     * @param mixed $predvOsmotr
      */
-    public function setObmerobs($obmerobs): void
+    public function setPredvOsmotr($predvOsmotr): void
     {
-        $this->obmerobs = $obmerobs;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getChoosCunstruct4()
-    {
-        return $this->choosCunstruct4;
-    }
-
-    /**
-     * @param mixed $choosCunstruct4
-     */
-    public function setChoosCunstruct4($choosCunstruct4): void
-    {
-        $this->choosCunstruct4 = $choosCunstruct4;
+        $this->predvOsmotr = $predvOsmotr;
     }
 
     /**
      * @return mixed
      */
-    public function getToggleZd41()
+    public function getChoosCunstruct5()
     {
-        return $this->toggleZd41;
+        return $this->choosCunstruct5;
     }
 
     /**
-     * @param mixed $toggleZd41
+     * @param mixed $choosCunstruct5
      */
-    public function setToggleZd41($toggleZd41): void
+    public function setChoosCunstruct5($choosCunstruct5): void
     {
-        $this->toggleZd41 = $toggleZd41;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getToggleZd42()
-    {
-        return $this->toggleZd42;
-    }
-
-    /**
-     * @param mixed $toggleZd42
-     */
-    public function setToggleZd42($toggleZd42): void
-    {
-        $this->toggleZd42 = $toggleZd42;
+        $this->choosCunstruct5 = $choosCunstruct5;
     }
 
     /**
      * @return mixed
      */
-    public function getToggleZd43()
+    public function getToggleZd51()
     {
-        return $this->toggleZd43;
+        return $this->toggleZd51;
     }
 
     /**
-     * @param mixed $toggleZd43
+     * @param mixed $toggleZd51
      */
-    public function setToggleZd43($toggleZd43): void
+    public function setToggleZd51($toggleZd51): void
     {
-        $this->toggleZd43 = $toggleZd43;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getToggleZd44()
-    {
-        return $this->toggleZd44;
-    }
-
-    /**
-     * @param mixed $toggleZd44
-     */
-    public function setToggleZd44($toggleZd44): void
-    {
-        $this->toggleZd44 = $toggleZd44;
+        $this->toggleZd51 = $toggleZd51;
     }
 
     /**
      * @return mixed
      */
-    public function getToggleZd45()
+    public function getToggleZd52()
     {
-        return $this->toggleZd45;
+        return $this->toggleZd52;
     }
 
     /**
-     * @param mixed $toggleZd45
+     * @param mixed $toggleZd52
      */
-    public function setToggleZd45($toggleZd45): void
+    public function setToggleZd52($toggleZd52): void
     {
-        $this->toggleZd45 = $toggleZd45;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getToggleZd46()
-    {
-        return $this->toggleZd46;
-    }
-
-    /**
-     * @param mixed $toggleZd46
-     */
-    public function setToggleZd46($toggleZd46): void
-    {
-        $this->toggleZd46 = $toggleZd46;
+        $this->toggleZd52 = $toggleZd52;
     }
 
     /**
      * @return mixed
      */
-    public function getToggleZd47()
+    public function getToggleZd53()
     {
-        return $this->toggleZd47;
+        return $this->toggleZd53;
     }
 
     /**
-     * @param mixed $toggleZd47
+     * @param mixed $toggleZd53
      */
-    public function setToggleZd47($toggleZd47): void
+    public function setToggleZd53($toggleZd53): void
     {
-        $this->toggleZd47 = $toggleZd47;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getToggleZd48()
-    {
-        return $this->toggleZd48;
-    }
-
-    /**
-     * @param mixed $toggleZd48
-     */
-    public function setToggleZd48($toggleZd48): void
-    {
-        $this->toggleZd48 = $toggleZd48;
+        $this->toggleZd53 = $toggleZd53;
     }
 
     /**
      * @return mixed
      */
-    public function getToggleZd49()
+    public function getToggleZd54()
     {
-        return $this->toggleZd49;
+        return $this->toggleZd54;
     }
 
     /**
-     * @param mixed $toggleZd49
+     * @param mixed $toggleZd54
      */
-    public function setToggleZd49($toggleZd49): void
+    public function setToggleZd54($toggleZd54): void
     {
-        $this->toggleZd49 = $toggleZd49;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getToggleZd449()
-    {
-        return $this->toggleZd449;
-    }
-
-    /**
-     * @param mixed $toggleZd449
-     */
-    public function setToggleZd449($toggleZd449): void
-    {
-        $this->toggleZd449 = $toggleZd449;
+        $this->toggleZd54 = $toggleZd54;
     }
 
     /**
      * @return mixed
      */
-    public function getConval41()
+    public function getToggleZd55()
     {
-        return $this->conval41;
+        return $this->toggleZd55;
     }
 
     /**
-     * @param mixed $conval41
+     * @param mixed $toggleZd55
      */
-    public function setConval41($conval41): void
+    public function setToggleZd55($toggleZd55): void
     {
-        $this->conval41 = $conval41;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getConval42()
-    {
-        return $this->conval42;
-    }
-
-    /**
-     * @param mixed $conval42
-     */
-    public function setConval42($conval42): void
-    {
-        $this->conval42 = $conval42;
+        $this->toggleZd55 = $toggleZd55;
     }
 
     /**
      * @return mixed
      */
-    public function getConval43()
+    public function getToggleZd56()
     {
-        return $this->conval43;
+        return $this->toggleZd56;
     }
 
     /**
-     * @param mixed $conval43
+     * @param mixed $toggleZd56
      */
-    public function setConval43($conval43): void
+    public function setToggleZd56($toggleZd56): void
     {
-        $this->conval43 = $conval43;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getConval44()
-    {
-        return $this->conval44;
-    }
-
-    /**
-     * @param mixed $conval44
-     */
-    public function setConval44($conval44): void
-    {
-        $this->conval44 = $conval44;
+        $this->toggleZd56 = $toggleZd56;
     }
 
     /**
      * @return mixed
      */
-    public function getConval45()
+    public function getToggleZd57()
     {
-        return $this->conval45;
+        return $this->toggleZd57;
     }
 
     /**
-     * @param mixed $conval45
+     * @param mixed $toggleZd57
      */
-    public function setConval45($conval45): void
+    public function setToggleZd57($toggleZd57): void
     {
-        $this->conval45 = $conval45;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getConval46()
-    {
-        return $this->conval46;
-    }
-
-    /**
-     * @param mixed $conval46
-     */
-    public function setConval46($conval46): void
-    {
-        $this->conval46 = $conval46;
+        $this->toggleZd57 = $toggleZd57;
     }
 
     /**
      * @return mixed
      */
-    public function getConval47()
+    public function getToggleZd58()
     {
-        return $this->conval47;
+        return $this->toggleZd58;
     }
 
     /**
-     * @param mixed $conval47
+     * @param mixed $toggleZd58
      */
-    public function setConval47($conval47): void
+    public function setToggleZd58($toggleZd58): void
     {
-        $this->conval47 = $conval47;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getConval48()
-    {
-        return $this->conval48;
-    }
-
-    /**
-     * @param mixed $conval48
-     */
-    public function setConval48($conval48): void
-    {
-        $this->conval48 = $conval48;
+        $this->toggleZd58 = $toggleZd58;
     }
 
     /**
      * @return mixed
      */
-    public function getConval49()
+    public function getToggleZd59()
     {
-        return $this->conval49;
+        return $this->toggleZd59;
     }
 
     /**
-     * @param mixed $conval49
+     * @param mixed $toggleZd59
      */
-    public function setConval49($conval49): void
+    public function setToggleZd59($toggleZd59): void
     {
-        $this->conval49 = $conval49;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getConval449()
-    {
-        return $this->conval449;
-    }
-
-    /**
-     * @param mixed $conval449
-     */
-    public function setConval449($conval449): void
-    {
-        $this->conval449 = $conval449;
+        $this->toggleZd59 = $toggleZd59;
     }
 
     /**
      * @return mixed
      */
-    public function getToggleZdDopUsl()
+    public function getConval51()
     {
-        return $this->toggleZdDopUsl;
+        return $this->conval51;
     }
 
     /**
-     * @param mixed $toggleZdDopUsl
+     * @param mixed $conval51
      */
-    public function setToggleZdDopUsl($toggleZdDopUsl): void
+    public function setConval51($conval51): void
     {
-        $this->toggleZdDopUsl = $toggleZdDopUsl;
+        $this->conval51 = $conval51;
     }
 
     /**
      * @return mixed
      */
-    public function getToggleZdDopUsl1()
+    public function getConval52()
     {
-        return $this->toggleZdDopUsl1;
+        return $this->conval52;
     }
 
     /**
-     * @param mixed $toggleZdDopUsl1
+     * @param mixed $conval52
      */
-    public function setToggleZdDopUsl1($toggleZdDopUsl1): void
+    public function setConval52($conval52): void
     {
-        $this->toggleZdDopUsl1 = $toggleZdDopUsl1;
+        $this->conval52 = $conval52;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConval53()
+    {
+        return $this->conval53;
+    }
+
+    /**
+     * @param mixed $conval53
+     */
+    public function setConval53($conval53): void
+    {
+        $this->conval53 = $conval53;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConval54()
+    {
+        return $this->conval54;
+    }
+
+    /**
+     * @param mixed $conval54
+     */
+    public function setConval54($conval54): void
+    {
+        $this->conval54 = $conval54;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConval55()
+    {
+        return $this->conval55;
+    }
+
+    /**
+     * @param mixed $conval55
+     */
+    public function setConval55($conval55): void
+    {
+        $this->conval55 = $conval55;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConval56()
+    {
+        return $this->conval56;
+    }
+
+    /**
+     * @param mixed $conval56
+     */
+    public function setConval56($conval56): void
+    {
+        $this->conval56 = $conval56;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConval57()
+    {
+        return $this->conval57;
+    }
+
+    /**
+     * @param mixed $conval57
+     */
+    public function setConval57($conval57): void
+    {
+        $this->conval57 = $conval57;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConval58()
+    {
+        return $this->conval58;
+    }
+
+    /**
+     * @param mixed $conval58
+     */
+    public function setConval58($conval58): void
+    {
+        $this->conval58 = $conval58;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConval59()
+    {
+        return $this->conval59;
+    }
+
+    /**
+     * @param mixed $conval59
+     */
+    public function setConval59($conval59): void
+    {
+        $this->conval59 = $conval59;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getToggleSelect1()
+    {
+        return $this->toggleSelect1;
+    }
+
+    /**
+     * @param mixed $toggleSelect1
+     */
+    public function setToggleSelect1($toggleSelect1): void
+    {
+        $this->toggleSelect1 = $toggleSelect1;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getToggleSelect2()
+    {
+        return $this->toggleSelect2;
+    }
+
+    /**
+     * @param mixed $toggleSelect2
+     */
+    public function setToggleSelect2($toggleSelect2): void
+    {
+        $this->toggleSelect2 = $toggleSelect2;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPovkef()
+    {
+        return $this->povkef;
+    }
+
+    /**
+     * @param mixed $povkef
+     */
+    public function setPovkef($povkef): void
+    {
+        $this->povkef = $povkef;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSooruzhzd()
+    {
+        return $this->sooruzhzd;
+    }
+
+    /**
+     * @param mixed $sooruzhzd
+     */
+    public function setSooruzhzd($sooruzhzd): void
+    {
+        $this->sooruzhzd = $sooruzhzd;
     }
 
 
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-
-//////////////////////////////////////////////////////////////////
     public function toJson(){
         return [
             'id' => $this->id,
-            'obmerobs' => $this->obmerobs,
-            'choosCunstruct4' => $this->choosCunstruct4,
-            'toggleZd41' => $this->toggleZd41,
-            'toggleZd42' => $this->toggleZd42,
-            'toggleZd43' => $this->toggleZd43,
-            'toggleZd44' => $this->toggleZd44,
-            'toggleZd45' => $this->toggleZd45,
-            'toggleZd46' => $this->toggleZd46,
-            'toggleZd47' => $this->toggleZd47,
-            'toggleZd48' => $this->toggleZd48,
-            'toggleZd49' => $this->toggleZd49,
-            'toggleZd449' => $this->toggleZd449,
-            'conval41' => $this->conval41,
-            'conval42' => $this->conval42,
-            'conval43' => $this->conval43,
-            'conval44' => $this->conval44,
-            'conval45' => $this->conval45,
-            'conval46' => $this->conval46,
-            'conval47' => $this->conval47,
-            'conval48' => $this->conval48,
-            'conval49' => $this->conval49,
-            'conval449' => $this->conval449,
-            'toggleZdDopUsl' => $this->toggleZdDopUsl,
-            'toggleZdDopUsl1' => $this->toggleZdDopUsl1,
+            'predvOsmotr' => $this->predvOsmotr,
+            'choosCunstruct5' => $this->choosCunstruct5,
+            'toggleZd51' => $this->toggleZd51,
+            'toggleZd52' => $this->toggleZd52,
+            'toggleZd53' => $this->toggleZd53,
+            'toggleZd54' => $this->toggleZd54,
+            'toggleZd55' => $this->toggleZd55,
+            'toggleZd56' => $this->toggleZd56,
+            'toggleZd57' => $this->toggleZd57,
+            'toggleZd58' => $this->toggleZd58,
+            'toggleZd59' => $this->toggleZd59,
+            'conval51' => $this->conval51,
+            'conval52' => $this->conval52,
+            'conval53' => $this->conval53,
+            'conval54' => $this->conval54,
+            'conval55' => $this->conval55,
+            'conval56' => $this->conval56,
+            'conval57' => $this->conval57,
+            'conval58' => $this->conval58,
+            'conval59' => $this->conval59,
+            'toggleSelect1' => $this->toggleSelect1,
+            'toggleSelect2' => $this->toggleSelect2,
+            'povkef' => $this->povkef,
+            'sooruzhzd' => $this->sooruzhzd,
             ];
     }
 }

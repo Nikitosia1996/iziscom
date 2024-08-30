@@ -557,7 +557,7 @@ echo "<script>
 
 
 
-    <div class="nameforblock3" onclick ="toggleDisplay('.nameforblock3', '.dndb3');">Сбор исходных данных &nbsp;&nbsp;&nbsp;<?php echo '<span class="sborIshodnihDannih" id="sborIshodnihDannih">'; echo $sborIshodnihDannih; echo'</span>'; ?></div>
+    <div class="nameforblock3" onclick ="toggleDisplay('.nameforblock3', '.dndb3');"><input class = "onCollap" type="checkbox" id="sborCheck" name="obmerCheck" value="1"> &nbsp;&nbsp;&nbsp;Сбор исходных данных &nbsp;&nbsp;&nbsp;<?php echo '<span class="sborIshodnihDannih" id="sborIshodnihDannih">'; echo $sborIshodnihDannih; echo'</span>'; ?></div>
     <div class="dndb3">
 
         <div class = "mainfreename">
@@ -693,7 +693,7 @@ echo "<script>
 
     <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 
-    <div class="nameforblock4" onclick="toggleDisplay('.nameforblock4', '.dndb4');">Обмерные работы &nbsp;&nbsp;&nbsp;<?php echo '<span class="sborIshodnihDannih" id="sborIshodnihDannih">'; echo $sborIshodnihDannih; echo'</span>'; ?></div>
+    <div class="nameforblock4" onclick="toggleDisplay('.nameforblock4', '.dndb4');"><input class = "onCollap" type="checkbox" id="obmerCheck" name="obmerCheck" value="1">&nbsp;&nbsp;&nbsp;Обмерные работы &nbsp;&nbsp;&nbsp;<?php echo '<span class="sborIshodnihDannih" id="sborIshodnihDannih">'; echo $sborIshodnihDannih; echo'</span>'; ?></div>
     <div class="dndb4">
 
         <div class="mainfreename">
@@ -870,7 +870,7 @@ echo "<script>
     <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 
 
-    <div class="nameforblock5" onclick="toggleDisplay('.nameforblock5', '.dndb5');">Обследовательские работы &nbsp;&nbsp;&nbsp;<?php echo '<span class="sborIshodnihDannih" id="sborIshodnihDannih">'; echo $sborIshodnihDannih; echo'</span>'; ?></div>
+    <div class="nameforblock5" onclick="toggleDisplay('.nameforblock5', '.dndb5');"><input class = "onCollap" type="checkbox" id="obsledCheck" name="sborDann" value="1">&nbsp;&nbsp;&nbsp;Обследовательские работы &nbsp;&nbsp;&nbsp;<?php echo '<span class="sborIshodnihDannih" id="sborIshodnihDannih">'; echo $sborIshodnihDannih; echo'</span>'; ?></div>
     <div class="dndb5">
 
         <div class="mainfreename">
@@ -1065,8 +1065,7 @@ echo "<script>
     <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 
 
-    <div class="nameforblock6" onclick="toggleDisplay('.nameforblock6', '.dndb6');">Составление технического
-        отчета <?php echo '<input class = "onCollap" type="checkbox" id="sborDann" name="sborDann" value="sborDann"> <span class="countRub">123</span>' ?></div>
+    <div class="nameforblock6" onclick="toggleDisplay('.nameforblock6', '.dndb6');">Составление технического отчета <?php echo '<input class = "onCollap" type="checkbox" id="sborDann" name="sborDann" value="sborDann"> <span class="countRub">123</span>' ?></div>
     <div class="dndb6">
 
         <div class="mainfreename">
