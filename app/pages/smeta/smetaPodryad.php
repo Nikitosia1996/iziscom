@@ -693,8 +693,7 @@ echo "<script>
 
     <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 
-    <div class="nameforblock4" onclick="toggleDisplay('.nameforblock4', '.dndb4');">Обмерные
-        работы <?php echo '<input class = "onCollap" type="checkbox" id="sborDann" name="sborDann" value="sborDann"> <span class="countRub">123</span>' ?></div>
+    <div class="nameforblock4" onclick="toggleDisplay('.nameforblock4', '.dndb4');">Обмерные работы &nbsp;&nbsp;&nbsp;<?php echo '<span class="sborIshodnihDannih" id="sborIshodnihDannih">'; echo $sborIshodnihDannih; echo'</span>'; ?></div>
     <div class="dndb4">
 
         <div class="mainfreename">
@@ -716,18 +715,18 @@ echo "<script>
 
             <div class="pos1">
                 <div class="viborvis">
-                    <input id="calendarDays" class="butrad" type="radio" name="daysType" value="calendar">
-                    <label for="calendarDays" class="pasportzd">1) Обмеры для визуального обследования,
+                    <input id="obmerobsl" class="butrad" type="radio" name="daysType" value="1">
+                    <label for="obmerobsl" class="pasportzd">1) Обмеры для визуального обследования,
                         паспортизации.:</label>
 
                     <br>
-                    <input id="workingDays" class="butrad" type="radio" name="daysType" value="working">
-                    <label for="workingDays" class="pasportzd">2) Обмеры для детального обследования (узлы, вскрытия и
+                    <input id="obmerobs2" class="butrad" type="radio" name="daysType" value="2">
+                    <label for="obmerobsl2" class="pasportzd">2) Обмеры для детального обследования (узлы, вскрытия и
                         т.д.):</label>
 
                     <br>
-                    <input id="workingDays2" class="butrad" type="radio" name="daysType" value="working">
-                    <label for="workingDays2" class="pasportzd">3) Работы различной категории сложности:</label>
+                    <input id="obmerobsl3" class="butrad" type="radio" name="daysType" value="3">
+                    <label for="obmerobsl3" class="pasportzd">3) Работы различной категории сложности:</label>
 
                 </div>
             </div>
@@ -861,7 +860,7 @@ echo "<script>
         </div>
         <div class="dusl">Дополнительные условия:
             <input type="checkbox" id="toggleZdDopUsl"> Проектная документация присутствует в полном объеме
-            <input type="checkbox" id="toggleZdDopUsl"> Выполнение детальных измерений пролетов, сечений, узлов,
+            <input type="checkbox" id="toggleZdDopUsl1"> Выполнение детальных измерений пролетов, сечений, узлов,
             смещений
         </div>
     </div>
@@ -871,8 +870,7 @@ echo "<script>
     <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 
 
-    <div class="nameforblock5" onclick="toggleDisplay('.nameforblock5', '.dndb5');">Обследовательские
-        работы <?php echo '<input class = "onCollap" type="checkbox" id="sborDann" name="sborDann" value="sborDann"> <span class="countRub">123</span>' ?></div>
+    <div class="nameforblock5" onclick="toggleDisplay('.nameforblock5', '.dndb5');">Обследовательские работы &nbsp;&nbsp;&nbsp;<?php echo '<span class="sborIshodnihDannih" id="sborIshodnihDannih">'; echo $sborIshodnihDannih; echo'</span>'; ?></div>
     <div class="dndb5">
 
         <div class="mainfreename">
@@ -894,17 +892,17 @@ echo "<script>
 
             <div class="pos1">
                 <div class="viborvis">
-                    <input id="calendarDays" class="butrad" type="radio" name="daysType" value="calendar">
-                    <label for="calendarDays" class="pasportzd">Предварительный осмотр</label>
+                    <input id="predvOsmotr" class="butrad" type="radio" name="daysType" value="1">
+                    <label for="predvOsmotr" class="pasportzd">Предварительный осмотр</label>
                     <br>
-                    <input id="workingDays" class="butrad" type="radio" name="daysType" value="working">
-                    <label for="workingDays" class="pasportzd">Общее обследование</label>
+                    <input id="obshObsled" class="butrad" type="radio" name="daysType" value="2">
+                    <label for="ObshObsled" class="pasportzd">Общее обследование</label>
                     <br>
-                    <input id="workingDays" class="butrad" type="radio" name="daysType" value="working">
-                    <label for="workingDays" class="pasportzd">Детальное обследование</label>
+                    <input id="detal0bsled" class="butrad" type="radio" name="daysType" value="3">
+                    <label for="detalObsled" class="pasportzd">Детальное обследование</label>
                     <br>
-                    <input id="workingDays" class="butrad" type="radio" name="daysType" value="working">
-                    <label for="workingDays" class="pasportzd">Работы совмещающие общее и детальное обследование</label>
+                    <input id="rabotyObshDetal" class="butrad" type="radio" name="daysType" value="4">
+                    <label for="rabotyObshDetal" class="pasportzd">Работы совмещающие общее и детальное обследование</label>
                     <br>
                 </div>
             </div>

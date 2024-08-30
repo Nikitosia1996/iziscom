@@ -39,6 +39,19 @@ let toggleZd9 = $('#toggleZd9');
 let choosCunstruct = $('#choosCunstruct');
 
 
+let toggleZd41 = $('#toggleZd41');
+let toggleZd42 = $('#toggleZd42');
+let toggleZd43 = $('#toggleZd43');
+let toggleZd44 = $('#toggleZd44');
+let toggleZd45 = $('#toggleZd45');
+let toggleZd46 = $('#toggleZd46');
+let toggleZd47 = $('#toggleZd47');
+let toggleZd48 = $('#toggleZd48');
+let toggleZd49 = $('#toggleZd49');
+let toggleZd449 = $('#toggleZd449');
+let choosCunstruct4 = $('#choosCunstruct4');
+
+
 
 function getSmeta(id) {
     idActiveSmeta = id;
@@ -49,8 +62,13 @@ function getSmeta(id) {
         inputDateNachRab.val(selectedItem.dateNachRab);
         inputDateOkonchRab.val(selectedItem.dateOkonchRab);
         smetaName.val(selectedItem.name);
+
         const haract = selectedItem.haractObject;
         const ishod = selectedItem.ishod;
+        const obmer = selectedItem.obmer;
+
+
+
         $('#buildingType').val(haract.zdanie);
         $('#constructionType').val(haract.typeZdanie);
         $('#etazh').val(haract.stage);
@@ -115,6 +133,56 @@ function getSmeta(id) {
             toggleZd9.prop('disabled', true);
 
         }
+
+
+
+        choosCunstruct4.prop('checked', obmer.choosCunstruct4 > 0);
+        if (obmer.choosCunstruct4 > 0) {
+            toggleZd41.prop('disabled', false);
+            toggleZd42.prop('disabled', false);
+            toggleZd43.prop('disabled', false);
+            toggleZd44.prop('disabled', false);
+            toggleZd45.prop('disabled', false);
+            toggleZd46.prop('disabled', false);
+            toggleZd47.prop('disabled', false);
+            toggleZd48.prop('disabled', false);
+            toggleZd49.prop('disabled', false);
+            toggleZd449.prop('disabled', false);
+            toggleZd41.prop('checked', obmer.toggleZd41 > 0);
+            toggleZd42.prop('checked', obmer.toggleZd42 > 0);
+            toggleZd43.prop('checked', obmer.toggleZd43 > 0);
+            toggleZd44.prop('checked', obmer.toggleZd44 > 0);
+            toggleZd45.prop('checked', obmer.toggleZd45 > 0);
+            toggleZd46.prop('checked', obmer.toggleZd46 > 0);
+            toggleZd47.prop('checked', obmer.toggleZd47 > 0);
+            toggleZd48.prop('checked', obmer.toggleZd48 > 0);
+            toggleZd49.prop('checked', obmer.toggleZd49 > 0);
+            toggleZd449.prop('checked', obmer.toggleZd449 > 0);
+            $('#conval41').val(obmer.conval41);
+            $('#conval42').val(obmer.conval42);
+            $('#conval43').val(obmer.conval43);
+            $('#conval44').val(obmer.conval44);
+            $('#conval45').val(obmer.conval45);
+            $('#conval46').val(obmer.conval46);
+            $('#conval47').val(obmer.conval47);
+            $('#conval48').val(obmer.conval48);
+            $('#conval49').val(obmer.conval49);
+            $('#conval449').val(obmer.conval449);
+        } else {
+            toggleZd41.prop('disabled', true);
+            toggleZd42.prop('disabled', true);
+            toggleZd43.prop('disabled', true);
+            toggleZd44.prop('disabled', true);
+            toggleZd45.prop('disabled', true);
+            toggleZd46.prop('disabled', true);
+            toggleZd47.prop('disabled', true);
+            toggleZd48.prop('disabled', true);
+            toggleZd49.prop('disabled', true);
+            toggleZd449.prop('disabled', true);
+
+        }
+
+
 
 
 

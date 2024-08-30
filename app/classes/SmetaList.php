@@ -2,6 +2,7 @@
 include 'Smeta.php';
 include 'HaractObject.php';
 include 'IshodValObject.php';
+include 'ObmerObject.php';
 
 class SmetaList
 {
@@ -66,9 +67,11 @@ class SmetaList
 
     public function getListSmetaFromDB($con)
     {
-        $sql = "SELECT s.*, ho.*, siv.*, s.id_smeta as id_sm FROM smets s
+        $sql = "SELECT s.*, ho.*, siv.*, orw.*, s.id_smeta as id_sm FROM smets s
                 left join haract_object ho on ho.id_smeta = s.id_smeta
-                left join sbor_ishod_value siv on siv.id_smeta = s.id_smeta ";
+                left join sbor_ishod_value siv on siv.id_smeta = s.id_smeta
+                left join obmernie_raboty orw on orw.id_smeta = s.id_smeta
+";
         $result = mysqli_query($con, $sql);
         while ($row = mysqli_fetch_assoc($result)) {
             $smeta = new Smeta($row['id_sm'], $row['name'], $row['id_zakazchik'], $row['id_podryadchik'], $row['date_nach_rab'],$row['date_okonch_rab'],
@@ -117,7 +120,33 @@ class SmetaList
                     $row['toggleZd9'],
                     $row['conval9'],
                     $row['choosCunstruct'],
-                ));
+                ), new ObmerObject($row['id_obmernie_raboty'],
+                    $row['obmerobs'],
+                    $row['choosCunstruct4'],
+                    $row['toggleZd41'],
+                    $row['toggleZd42'],
+                    $row['toggleZd43'],
+                    $row['toggleZd44'],
+                    $row['toggleZd45'],
+                    $row['toggleZd46'],
+                    $row['toggleZd47'],
+                    $row['toggleZd48'],
+                    $row['toggleZd49'],
+                    $row['toggleZd449'],
+                    $row['conval41'],
+                    $row['conval42'],
+                    $row['conval43'],
+                    $row['conval44'],
+                    $row['conval45'],
+                    $row['conval46'],
+                    $row['conval47'],
+                    $row['conval48'],
+                    $row['conval49'],
+                    $row['conval449'],
+                    $row['toggleZdDopUsl'],
+                    $row['toggleZdDopUsl1'],
+                )
+            );
 
             $this->putSmeta($smeta);
         }

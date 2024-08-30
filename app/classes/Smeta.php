@@ -11,6 +11,7 @@ class Smeta
     private $dateOkonchRab;
     private $haractObject;
     private $ishodValObject;
+    private $obmerObject;
 
 
     /**
@@ -20,11 +21,12 @@ class Smeta
      * @param $id_zakazchik
      * @param $id_podryadchik
      * @param $dateNachRab
+     * @param $dateOkonchRab
      * @param $haractObject
      * @param $ishodValObject
-     * @param $dateOkonchRab
+     * @param $obmerObject
      */
-    public function __construct($id, $name, $id_zakazchik, $id_podryadchik, $dateNachRab, $dateOkonchRab, $haractObject, $ishodValObject)
+    public function __construct($id, $name, $id_zakazchik, $id_podryadchik, $dateNachRab, $dateOkonchRab, $haractObject, $ishodValObject, $obmerObject)
     {
         $this->id = $id;
         $this->name = $name;
@@ -34,6 +36,7 @@ class Smeta
         $this->dateOkonchRab = $dateOkonchRab;
         $this->haractObject = $haractObject;
         $this->ishodValObject = $ishodValObject;
+        $this->obmerObject = $obmerObject;
 
     }
 
@@ -167,6 +170,21 @@ class Smeta
 
 
 
+    public function getObmerObject()
+    {
+        return $this->obmerObject;
+    }
+
+    /**
+     * @param mixed $obmerObject
+     */
+    public function setObmerObject($obmerObject): void
+    {
+        $this->ishodValObject = $obmerObject;
+    }
+
+
+
 
     public function toJson() {
         return json_encode([
@@ -178,6 +196,7 @@ class Smeta
             'dateOkonchRab' => $this->dateOkonchRab,
             'haractObject' => $this->haractObject->toJson(),
             'ishod' => $this->ishodValObject->toJson(),
+            'obmer' => $this->obmerObject->toJson(),
         ]);
     }
 
