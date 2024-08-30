@@ -39,7 +39,7 @@ $toggleZd6 = isset($ishod['toggleZd6']) ? $ishod['toggleZd6'] : null;
 $toggleZd7 = isset($ishod['toggleZd7']) ? $ishod['toggleZd7'] : null;
 $toggleZd8 = isset($ishod['toggleZd8']) ? $ishod['toggleZd8'] : null;
 $toggleZd9 = isset($ishod['toggleZd9']) ? $ishod['toggleZd9'] : null;
-
+$choosCunstruct = isset($ishod['choosCunstruct']) ? $ishod['choosCunstruct'] : null;
 $conval1 = isset($ishod['conval1']) ? $ishod['conval1'] : null;
 $conval2 = isset($ishod['conval2']) ? $ishod['conval2'] : null;
 $conval3 = isset($ishod['conval3']) ? $ishod['conval3'] : null;
@@ -49,6 +49,7 @@ $conval6 = isset($ishod['conval6']) ? $ishod['conval6'] : null;
 $conval7 = isset($ishod['conval7']) ? $ishod['conval7'] : null;
 $conval8 = isset($ishod['conval8']) ? $ishod['conval8'] : null;
 $conval9 = isset($ishod['conval9']) ? $ishod['conval9'] : null;
+
 
 
 $id_zakazchik = $_POST['id_zakazchik'];
@@ -120,7 +121,8 @@ WHERE id_smeta = '$id'";
     conval6 = '" . $ishod['conval6'] . "',
     conval7 = '" . $ishod['conval7'] . "',
     conval8 = '" . $ishod['conval8'] . "',
-    conval9 = '" . $ishod['conval9'] . "'
+    conval9 = '" . $ishod['conval9'] . "',
+    choosCunstruct = '" . $ishod['choosCunstruct'] . "'
 WHERE id_smeta = '$id'";
     mysqli_query($connectionDB->con, $sql);
 
@@ -201,7 +203,8 @@ WHERE id_smeta = '$id'";
     conval7,
     conval8,
     conval9,
-    id_smeta
+    id_smeta,
+    choosCunstruct
 ) VALUES (
     '{$ishod['toggleZd1']}',
     '{$ishod['toggleZd2']}',
@@ -221,7 +224,8 @@ WHERE id_smeta = '$id'";
     '{$ishod['conval7']}',
     '{$ishod['conval8']}',
     '{$ishod['conval9']}',
-    '$insertedId'
+    '$insertedId',
+    '{$ishod['choosCunstruct']}'
 )";
 
         mysqli_query($connectionDB->con, $sql);

@@ -136,6 +136,7 @@ function saveSmeta() {
         toggleZd7: toggleZd7.prop('checked') ? 1 : 0,
         toggleZd8: toggleZd8.prop('checked') ? 1 : 0,
         toggleZd9: toggleZd9.prop('checked') ? 1 : 0,
+        choosCunstruct: choosCunstruct.prop('checked') ? 1 : 0,
         conval1: $('#conval1').val(),
         conval2: $('#conval2').val(),
         conval3: $('#conval3').val(),

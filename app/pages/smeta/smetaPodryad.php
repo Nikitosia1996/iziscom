@@ -568,7 +568,7 @@ echo "<script>
         </div>
         <div class = "freeName2" style = "    margin-left: 19%;">
             <label>
-                <input type="checkbox" id="choosCunstruct" onchange="toggleCheckboxes()"> Конструкции (если конструкции обследуются выборочно, поставьте галочку и введите проценты) :
+                <input data-id="1" value ="10" type="checkbox" id="choosCunstruct" onchange="toggleCheckboxes()"> Конструкции (если конструкции обследуются выборочно, поставьте галочку и введите проценты) :
             </label>
         </div>
         </div>
@@ -593,7 +593,7 @@ echo "<script>
                 <div class = "viborvischeckbox1">
                     <div class = "mainlolspace">
                    <div class = "lolspace">
-                        <input data-id="1" type="checkbox" id="toggleZd1" disabled onchange="toggleCheckboxesDop()"> Конструкция фундаментов
+                        <input data-id="1" value="1" type="checkbox" id="toggleZd1" disabled onchange="toggleCheckboxesDop()"> Конструкция фундаментов
                    </div>
                         <div id="inputContainer" class="input-container">
                             <input data-id="1" class = "inpval" id="conval1" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateFinalCoefficientSborSource()"> %
