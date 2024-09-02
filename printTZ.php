@@ -1,8 +1,5 @@
 <?php
 
-
-
-//echo '<tr><td colspan="4" style="font-weight: 700; text-align: center">' . $name_sub . '</td></tr>';
 echo '		
 <body>
 <style>
@@ -15,7 +12,7 @@ table {
 }
 
 .page-break {
-        page-break-before: always; /* или page-break-after: always; */
+        page-break-before: always;
     }
 
 td {
@@ -55,8 +52,9 @@ tr:hover {
 ">
 <div style="float: left">12.12.12 <br> <span style="font-size: 9pt; font-weight: normal;">(дата регистрации)</span></div>
 <!-- Шапка заявления -->
-	<div ><span style="float: right">№  12.12.12 </span><br>
-	<span style="font-size: 9pt; font-weight: normal;">(регистрационный индекс)</span></div>
+	<div ><span style="float: right">Приложение №</span><br>
+	<div ><span style="float: right">К договору №</span><br>
+	<div ><span style="float: right">От</span><br>
 	
 	</div>
 

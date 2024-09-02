@@ -324,8 +324,17 @@ echo "<script>
             </div>
         </div>
     </div>
-
-
+    <div class="row mgbottom20p mgleft5">
+        <div class="col-lg-4">
+    <button id="btnCalculationExcel" class="btn btn-primary" >Калькуляция в EXCEL</button>
+        </div>
+            <div class="col-lg-4">
+    <button id="btnTechZad" class="btn btn-primary" onclick="printTZ()">Техническое задание</button>
+            </div>
+                <div class="col-lg-4">
+    <button id="btnSmetaExcel" class="btn btn-primary">Смета в EXCEL</button>
+                </div>
+    </div>
 
     <div class="position1">
 <div class="pos1">
@@ -2600,7 +2609,28 @@ echo "<script>
 
     });
 
+function printTZ (){
+    $.ajax({
+        url:'../../printTZ.php',
+        type: 'POST',
+        data: {},
+        success: function(response) {
+            var WinPrint = window.open('', '', 'left=50,top=50,width=1200,height=860,toolbar=0,scrollbars=1,status=0');
+            WinPrint.document.write('<style>@page {\n' +
+                'margin: 1rem;\n' +
+                '}</style>');
+            WinPrint.document.write('<br/>');
+            WinPrint.document.write(response);
+            WinPrint.document.close();
+            WinPrint.focus();
+            WinPrint.print();
+            WinPrint.close();
 
+            resolve();
+        }
+
+    })
+}
 
 </script>
 
