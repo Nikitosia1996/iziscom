@@ -2640,7 +2640,6 @@ function printTZ (){
             document.querySelector(`#input2Calc${index}`),
             document.querySelector(`#input3Calc${index}`)
         ];
-
         const selectedValue = workSelect.value;
 
         if (selectedValue !== "0") {
@@ -2651,7 +2650,11 @@ function printTZ (){
         } else {
             otherInputs.forEach(input => {
                 input.disabled = true;
-                input.value = ''; // Очищаем значение
+                if (input.tagName === 'SELECT') {
+                    input.value = "0";
+                } else {
+                    input.value = '';
+                }
             });
             console.log(`Inputs for selectCalc${index} disabled`);
         }
