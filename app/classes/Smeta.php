@@ -13,6 +13,7 @@ class Smeta
     private $ishodValObject;
     private $obmerObject;
     private $obsledObject;
+    private $sostTechObject;
 
 
 
@@ -28,8 +29,9 @@ class Smeta
      * @param $ishodValObject
      * @param $obmerObject
      * @param $obsledObject
+     * @param $sostTechObject
      */
-    public function __construct($id, $name, $id_zakazchik, $id_podryadchik, $dateNachRab, $dateOkonchRab, $haractObject, $ishodValObject, $obmerObject, $obsledObject)
+    public function __construct($id, $name, $id_zakazchik, $id_podryadchik, $dateNachRab, $dateOkonchRab, $haractObject, $ishodValObject, $obmerObject, $obsledObject, $sostTechObject)
     {
         $this->id = $id;
         $this->name = $name;
@@ -41,6 +43,7 @@ class Smeta
         $this->ishodValObject = $ishodValObject;
         $this->obmerObject = $obmerObject;
         $this->obsledObject = $obsledObject;
+        $this->sostTechObject = $sostTechObject;
 
     }
 
@@ -202,6 +205,20 @@ class Smeta
     }
 
 
+    public function getSostTechObject()
+    {
+        return $this->sostTechObject;
+    }
+
+    /**
+     * @param mixed $sostTechObject
+     */
+    public function setSostTechObject($sostTechObject): void
+    {
+        $this->sostTechObject = $sostTechObject;
+    }
+
+
 
 
     public function toJson() {
@@ -216,6 +233,7 @@ class Smeta
             'ishod' => $this->ishodValObject->toJson(),
             'obmer' => $this->obmerObject->toJson(),
             'obsled' => $this->obsledObject->toJson(),
+            'sosttech' => $this->sostTechObject->toJson(),
         ]);
     }
 

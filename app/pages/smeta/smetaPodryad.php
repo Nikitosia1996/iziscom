@@ -1086,20 +1086,20 @@ echo "<script>
 
             <div class="pos1">
                 <div class="viborvis">
-                    <input id="calendarDays" class="butrad" type="radio" name="daysType" value="calendar">
-                    <label for="calendarDays" class="pasportzd">Заключение о состоянии строительных конструкций с
+                    <input id="zaklSostStr" class="butrad" type="radio" name="daysType" value="calendar">
+                    <label for="zaklSostStr" class="pasportzd">Заключение о состоянии строительных конструкций с
                         выводами и рекомендациями</label>
                     <br>
-                    <input id="workingDays" class="butrad" type="radio" name="daysType" value="working">
-                    <label for="workingDays" class="pasportzd">То же, с разработкой технических решений для отдельных
+                    <input id="razrabTech" class="butrad" type="radio" name="daysType" value="working">
+                    <label for="razrabTech" class="pasportzd">То же, с разработкой технических решений для отдельных
                         элементов</label>
                     <br>
-                    <input id="workingDays" class="butrad" type="radio" name="daysType" value="working">
-                    <label for="workingDays" class="pasportzd">То же, с частичной заменой или усилением более 30%
+                    <input id="zamenaElem" class="butrad" type="radio" name="daysType" value="working">
+                    <label for="zamenaElem" class="pasportzd">То же, с частичной заменой или усилением более 30%
                         несущих элементов</label>
                     <br>
-                    <input id="workingDays" class="butrad" type="radio" name="daysType" value="working">
-                    <label for="workingDays" class="pasportzd">Работы различной категории сложности</label>
+                    <input id="rabotCategory" class="butrad" type="radio" name="daysType" value="working">
+                    <label for="rabotCategory" class="pasportzd">Работы различной категории сложности</label>
                     <br>
                 </div>
             </div>
@@ -1214,9 +1214,9 @@ echo "<script>
             </div>
         </div>
         <div class="dusl">Дополнительные условия:
-            <input type="checkbox" id="toggleZdDopUsl"> Сейсмические условия 7 баллов и более
-            <input type="checkbox" id="toggleZdDopUsl"> Разработка временных противоаварийных мероприятий
-            <input type="checkbox" id="toggleZdDopUsl"> Разработка рекомендаций без проведения расчетов
+            <input type="checkbox" id="toggleZdDopUslseism"> Сейсмические условия 7 баллов и более
+            <input type="checkbox" id="toggleZdDopUslrazrab"> Разработка временных противоаварийных мероприятий
+            <input type="checkbox" id="toggleZdDopUslrazrabrek"> Разработка рекомендаций без проведения расчетов
         </div>
     </div>
     <hr>
@@ -1875,12 +1875,12 @@ echo "<script>
                 <div class="viborvisnew">
                     <div style="display: grid;
     justify-content: center;">
-                        <label id="inputLabel" for="commonInputField">Средний тарифный разряд исполнителей</label><br>
-                        <input id="commonInputField" type="number" name="inputValue" step="1" min="0"><br>
+                        <label id="inputLabel" for="sredRazryad">Средний тарифный разряд исполнителей</label><br>
+                        <input id="sredRazryad" type="number" name="inputValue" step="1" min="0"><br>
                         <br><br>
-                        <label id="inputLabel" for="commonInputField">Тарифный коэффициент для пересчёта
+                        <label id="inputLabel" for="tarifKoef">Тарифный коэффициент для пересчёта
                             стоимости</label><br>
-                        <input id="commonInputField" type="number" name="inputValue" step="1" min="0"><br>
+                        <input id="tarifKoef" type="number" name="inputValue" step="1" min="0"><br>
                         <br><br>
                     </div>
                 </div>
@@ -1897,69 +1897,69 @@ echo "<script>
             <select class="form-select" aria-label="">
                 <option selected>-- Пожалуйста, выберите --</option>
                 <option value="1">
-                    dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg
+                    Директор
                 </option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                <option value="2">И.О. Директора</option>
             </select>
 
             <label for="SelectPodryadchik" class="zakpod">Кем выступает заказчик:</label>
             <select class="form-select" aria-label="">
                 <option selected>-- Пожалуйста, выберите --</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                <option value="1">Заказчик</option>
+                <option value="2">Генподрядчик</option>
+                <option value="3">Подрядчик</option>
+                <option value="4">Генпроектировщик</option>
             </select>
 
 
             <label for="SelectPodryadchik" class="zakpod">Кем выступает ИЗИСКОМ:</label>
             <select class="form-select" aria-label="">
                 <option selected>-- Пожалуйста, выберите --</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                <option value="1">Подрядчик</option>
+                <option value="2">Субподрядчик</option>
+                <option value="3">Исполнитель</option>
             </select>
 
             <label for="SelectPodryadchik" class="zakpod">Кто производит вскрытие и заделку строительных
                 конструкций</label>
             <select class="form-select" aria-label="">
                 <option selected>-- Пожалуйста, выберите --</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                <option value="1">Заказчик</option>
+                <option value="2">Генподрядчик</option>
+                <option value="3">Подрядчик</option>
+                <option value="4">Генпроектировщик</option>
             </select>
 
             <label for="SelectPodryadchik" class="zakpod">Кто подписывает конкурсное предложение</label>
             <select class="form-select" aria-label="">
                 <option selected>-- Пожалуйста, выберите --</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                <option value="1">Директор</option>
+                <option value="2">И.О. Директора</option>
             </select>
 
 
         </div>
         <div class="pos2">
             <label>
-                <input type="checkbox" id="toggleSelect"> Учитывать УСН
+                <input type="checkbox" id="checkUSN"> Учитывать УСН
             </label>
             <br>
             <label>
-                <input type="checkbox" id="toggleSelect"> Учитывать НДС
+                <input type="checkbox" id="checkNDS"> Учитывать НДС
             </label>
             <br>
             <br>
-            <label id="inputLabel" for="commonInputField">Понижающий коэффициент</label><br>
-            <input id="commonInputField" type="number" name="inputValue" step="1" min="0"><br>
-            <label id="inputLabel" for="commonInputField">Стоимость работ 14 разряда</label><br>
-            <input id="commonInputField" type="number" name="inputValue" step="1" min="0"><br>
+            <label id="inputLabel" for="minuskef">Понижающий коэффициент</label><br>
+            <input id="minuskef" type="number" name="inputValue" step="1" min="0"><br>
+            <label id="inputLabel" for="costwork14">Стоимость работ 14 разряда</label><br>
+            <input id="costwork14" disabled type="number" name="inputValue" step="1" min="0"><br>
             <br>
-            <label id="inputLabel" for="commonInputField">Значения прогнозных среднегодовых индексов изменения стоимости
+            <label id="inputLabel" for="znachprognoz">Значения прогнозных среднегодовых индексов изменения стоимости
                 работ:</label><br>
-            <label id="inputLabel" for="commonInputField">на 2024 год</label><br>
-            <input id="commonInputField" type="number" name="inputValue" step="1" min="0"><br>
-            <label id="inputLabel" for="commonInputField">на 2025 год</label><br>
-            <input id="commonInputField" type="number" name="inputValue" step="1" min="0"><br>
+            <label id="inputLabel" for="znachprognoz24">на 2024 год</label><br>
+            <input id="znachprognoz24" disabled type="number" name="inputValue" step="1" min="0"><br>
+            <label id="inputLabel" for="znachprognoz25">на 2025 год</label><br>
+            <input id="znachprognoz25" disabled type="number" name="inputValue" step="1" min="0"><br>
         </div>
     </div>
 
@@ -2033,7 +2033,10 @@ echo "<script>
         }
         calculateFinalCoefficient();
         calculateFinalCoefficientSborSource();
+        updateCalendarDaysFromEnd();
+        updateWorkingDays();
         fullSumma = parseFloat(sumHarakter) + parseFloat(sumIshod);
+        fullSumma = fullSumma.toFixed(2);
         document.getElementById('harakteristikaObjectObsh').innerText = fullSumma;
         document.getElementById('harakteristikaObjectSmeta').innerText = fullSumma;
         document.getElementById('harakteristikaObjectCalc').innerText = fullSumma;
@@ -2250,7 +2253,6 @@ echo "<script>
             endDate.setDate(startDate.getDate() + calendarDays);
             document.getElementById('dateOkonchRab').value = endDate.toISOString().split('T')[0];
         }
-        calculateK();
     }
 
     function updateCalendarDays() {
@@ -2269,7 +2271,6 @@ echo "<script>
             endDate.setDate(startDate.getDate() + calendarDays);
             document.getElementById('dateOkonchRab').value = endDate.toISOString().split('T')[0];
         }
-        calculateK();
     }
 
     function updateEndDate() {
@@ -2283,7 +2284,6 @@ echo "<script>
             endDate.setDate(startDate.getDate() + calendarDays);
             document.getElementById('dateOkonchRab').value = endDate.toISOString().split('T')[0];
         }
-        calculateK();
     }
 
     function updateCalendarDaysFromEnd() {
@@ -2296,7 +2296,6 @@ echo "<script>
             const calendarDays = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
             document.getElementById('commonInputField').value = calendarDays;
         }
-        calculateK();
     }
 
 
@@ -2576,6 +2575,10 @@ echo "<script>
                     $('#usnValue').val(data.params.value_usn);
                     $('#ndsValue').val(data.params.value_nds);
                     $('#workCost').val(data.params.cost_work14);
+                    $('#costwork14').val(data.params.cost_work14);
+                    $('#znachprognoz24').val(data.params.index_current_year);
+                    $('#znachprognoz25').val(data.params.index_next_year);
+
                     const b14Value = data.params.analizb14;
                     $('#b14Checkbox').prop('checked', b14Value !== '');
                     $('#b14Input').prop('disabled', !$('#b14Checkbox').is(':checked'));

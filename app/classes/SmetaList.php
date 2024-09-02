@@ -4,6 +4,7 @@ include 'HaractObject.php';
 include 'IshodValObject.php';
 include 'ObmerObject.php';
 include 'ObsledObject.php';
+include 'SostTechObject.php';
 
 class SmetaList
 {
@@ -68,11 +69,12 @@ class SmetaList
 
     public function getListSmetaFromDB($con)
     {
-        $sql = "SELECT s.*, ho.*, siv.*, orw.*, obsr.*, s.id_smeta as id_sm FROM smets s
+        $sql = "SELECT s.*, ho.*, siv.*, orw.*, obsr.*, sost.*, s.id_smeta as id_sm FROM smets s
                 left join haract_object ho on ho.id_smeta = s.id_smeta
                 left join sbor_ishod_value siv on siv.id_smeta = s.id_smeta
                 left join obmernie_raboty orw on orw.id_smeta = s.id_smeta
                 left join obsled_raboty obsr on obsr.id_smeta = s.id_smeta
+                left join sost_tech_otchet sost on sost.id_smeta = s.id_smeta
 ";
         $result = mysqli_query($con, $sql);
         while ($row = mysqli_fetch_assoc($result)) {
@@ -173,6 +175,30 @@ class SmetaList
                     $row['toggleSelect2'],
                     $row['povkef'],
                     $row['sooruzhzd'],
+                ),
+                new SostTechObject($row['id_sost_tech_otchet'],
+                    $row['zaklSostStr'],
+                    $row['toggleZd61'],
+                    $row['toggleZd62'],
+                    $row['toggleZd63'],
+                    $row['toggleZd64'],
+                    $row['toggleZd65'],
+                    $row['toggleZd66'],
+                    $row['toggleZd67'],
+                    $row['toggleZd68'],
+                    $row['toggleZd69'],
+                    $row['conval61'],
+                    $row['conval62'],
+                    $row['conval63'],
+                    $row['conval64'],
+                    $row['conval65'],
+                    $row['conval66'],
+                    $row['conval67'],
+                    $row['conval68'],
+                    $row['conval69'],
+                    $row['toggleZdDopUslseism'],
+                    $row['toggleZdDopUslrazrab'],
+                    $row['toggleZdDopUslrazrabrek'],
                 )
             );
 

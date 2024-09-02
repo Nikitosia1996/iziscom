@@ -69,6 +69,20 @@ let sooruzhzd = $('#sooruzhzd');
 
 
 
+let toggleZd61 = $('#toggleZd61');
+let toggleZd62 = $('#toggleZd62');
+let toggleZd63 = $('#toggleZd63');
+let toggleZd64 = $('#toggleZd64');
+let toggleZd65 = $('#toggleZd65');
+let toggleZd66 = $('#toggleZd66');
+let toggleZd67 = $('#toggleZd67');
+let toggleZd68 = $('#toggleZd68');
+let toggleZd69 = $('#toggleZd69');
+let choosCunstruct6 = $('#choosCunstruct6');
+let toggleZdDopUslseism = $('#toggleZdDopUslseism');
+let toggleZdDopUslrazrab = $('#toggleZdDopUslrazrab');
+let toggleZdDopUslrazrabrek = $('#toggleZdDopUslrazrabrek');
+
 
 function getSmeta(id) {
     idActiveSmeta = id;
@@ -84,6 +98,7 @@ function getSmeta(id) {
         const ishod = selectedItem.ishod;
         const obmer = selectedItem.obmer;
         const obsled = selectedItem.obsled;
+        const sosttech = selectedItem.sosttech;
 
 
 
@@ -242,9 +257,46 @@ function getSmeta(id) {
         }
 
 
-
-
-
+        choosCunstruct6.prop('checked', sosttech.choosCunstruct6 > 0);
+        if (sosttech.choosCunstruct6 > 0) {
+            toggleZd61.prop('disabled', false);
+            toggleZd62.prop('disabled', false);
+            toggleZd63.prop('disabled', false);
+            toggleZd64.prop('disabled', false);
+            toggleZd65.prop('disabled', false);
+            toggleZd66.prop('disabled', false);
+            toggleZd67.prop('disabled', false);
+            toggleZd68.prop('disabled', false);
+            toggleZd69.prop('disabled', false);
+            toggleZd61.prop('checked', sosttech.toggleZd61 > 0);
+            toggleZd62.prop('checked', sosttech.toggleZd62 > 0);
+            toggleZd63.prop('checked', sosttech.toggleZd63 > 0);
+            toggleZd64.prop('checked', sosttech.toggleZd64 > 0);
+            toggleZd65.prop('checked', sosttech.toggleZd65 > 0);
+            toggleZd66.prop('checked', sosttech.toggleZd66 > 0);
+            toggleZd67.prop('checked', sosttech.toggleZd67 > 0);
+            toggleZd68.prop('checked', sosttech.toggleZd68 > 0);
+            toggleZd69.prop('checked', sosttech.toggleZd69 > 0);
+            $('#conval61').val(sosttech.conval61);
+            $('#conval62').val(sosttech.conval62);
+            $('#conval63').val(sosttech.conval63);
+            $('#conval64').val(sosttech.conval64);
+            $('#conval65').val(sosttech.conval65);
+            $('#conval66').val(sosttech.conval66);
+            $('#conval67').val(sosttech.conval67);
+            $('#conval68').val(sosttech.conval68);
+            $('#conval69').val(sosttech.conval69);
+        } else {
+            toggleZd61.prop('disabled', true);
+            toggleZd62.prop('disabled', true);
+            toggleZd63.prop('disabled', true);
+            toggleZd64.prop('disabled', true);
+            toggleZd65.prop('disabled', true);
+            toggleZd66.prop('disabled', true);
+            toggleZd67.prop('disabled', true);
+            toggleZd68.prop('disabled', true);
+            toggleZd69.prop('disabled', true);
+        }
     }
     document.getElementById("myDropdown").classList.toggle("show");
     calculateK();
