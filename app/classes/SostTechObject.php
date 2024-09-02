@@ -28,6 +28,8 @@ class SostTechObject
     private $toggleZdDopUslseism;
     private $toggleZdDopUslrazrab;
     private $toggleZdDopUslrazrabrek;
+    private $choosCunstruct6;
+
 
 
 /////////////////////////////////
@@ -57,8 +59,9 @@ class SostTechObject
      * @param $toggleZdDopUslseism
      * @param $toggleZdDopUslrazrab
      * @param $toggleZdDopUslrazrabrek
+     * @param $choosCunstruct6
      */
-    public function __construct($id, $zaklSostStr, $toggleZd61, $toggleZd62, $toggleZd63, $toggleZd64, $toggleZd65, $toggleZd66, $toggleZd67, $toggleZd68, $toggleZd69, $conval61, $conval62, $conval63, $conval64, $conval65, $conval66, $conval67, $conval68, $conval69, $toggleZdDopUslseism, $toggleZdDopUslrazrab, $toggleZdDopUslrazrabrek)
+    public function __construct($id, $zaklSostStr, $toggleZd61, $toggleZd62, $toggleZd63, $toggleZd64, $toggleZd65, $toggleZd66, $toggleZd67, $toggleZd68, $toggleZd69, $conval61, $conval62, $conval63, $conval64, $conval65, $conval66, $conval67, $conval68, $conval69, $toggleZdDopUslseism, $toggleZdDopUslrazrab, $toggleZdDopUslrazrabrek, $choosCunstruct6)
     {
         $this->id = $id;
         $this->zaklSostStr = $zaklSostStr;
@@ -83,6 +86,7 @@ class SostTechObject
         $this->toggleZdDopUslseism = $toggleZdDopUslseism;
         $this->toggleZdDopUslrazrab = $toggleZdDopUslrazrab;
         $this->toggleZdDopUslrazrabrek = $toggleZdDopUslrazrabrek;
+        $this->choosCunstruct6 = $choosCunstruct6;
     }
 
     /**
@@ -454,6 +458,19 @@ class SostTechObject
     }
 
 
+    public function getChoosCunstruct6()
+    {
+        return $this->choosCunstruct6;
+    }
+
+    /**
+     * @param mixed $ChoosCunstruct6
+     */
+    public function setChoosCunstruct6($choosCunstruct6): void
+    {
+        $this->choosCunstruct6 = $choosCunstruct6;
+    }
+
 
 
     public function toJson(){
@@ -481,6 +498,7 @@ class SostTechObject
             'toggleZdDopUslseism' => $this->toggleZdDopUslseism,
             'toggleZdDopUslrazrab' => $this->toggleZdDopUslrazrab,
             'toggleZdDopUslrazrabrek' => $this->toggleZdDopUslrazrabrek,
+            'choosCunstruct6' => $this->choosCunstruct6,
             ];
     }
 }

@@ -199,6 +199,7 @@ class SmetaList
                     $row['toggleZdDopUslseism'],
                     $row['toggleZdDopUslrazrab'],
                     $row['toggleZdDopUslrazrabrek'],
+                    $row['choosCunstruct6'],
                 )
             );
 

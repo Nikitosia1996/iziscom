@@ -332,7 +332,7 @@ echo "<script>
     <button id="btnTechZad" class="btn btn-primary" onclick="printTZ()">Техническое задание</button>
             </div>
                 <div class="col-lg-4">
-    <button id="btnSmetaExcel" class="btn btn-primary">Смета в EXCEL</button>
+                    <a href="../../excel.php" class="btn btn-primary">Смета в EXCEL</a>
                 </div>
     </div>
 
@@ -1073,7 +1073,7 @@ echo "<script>
 
     <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 
-    <div class="nameforblock6" onclick="toggleDisplay('.nameforblock6', '.dndb6');">Составление технического отчета <?php echo '<input class = "onCollap" type="checkbox" id="sborDann" name="sborDann" value="sborDann"> <span class="countRub">123</span>' ?></div>
+    <div class="nameforblock6" onclick="toggleDisplay('.nameforblock6', '.dndb6');"><input class = "onCollap" type="checkbox" id="sostTechOtchetCheck" name="sostTechOtchetCheck" value="1">&nbsp;&nbsp;&nbsp;Составление технического отчета &nbsp;&nbsp;&nbsp;<?php echo '<span class="sborIshodnihDannih" id="sborIshodnihDannih">'; echo $sborIshodnihDannih; echo'</span>'; ?></div>
     <div class="dndb6">
 
         <div class="mainfreename">
@@ -1233,8 +1233,7 @@ echo "<script>
     <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 
 
-    <div class="nameforblock7" onclick="toggleDisplay('.nameforblock7', '.dndb7');">Редактор испытания
-        конструкций <?php echo '<input class = "onCollap" type="checkbox" id="sborDann" name="sborDann" value="sborDann"> <span class="countRub">123</span>' ?></div>
+    <div class="nameforblock7" onclick="toggleDisplay('.nameforblock7', '.dndb7');">Редактор испытания конструкций <?php echo '<input class = "onCollap" type="checkbox" id="sborDann" name="sborDann" value="sborDann"> <span class="countRub">123</span>' ?></div>
     <div class="dndb7">
         <div style="margin-left:1%" ;>Работы по определению прочности бетона и кирпичной кладки:</div>
         <div class="position1">
@@ -1293,8 +1292,7 @@ echo "<script>
 
 
     <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
-    <div class="nameforblock8" onclick="toggleDisplay('.nameforblock8', '.dndb8');">Обследование отдельных
-        конструкций <?php echo '<input class = "onCollap" type="checkbox" id="sborDann" name="sborDann" value="sborDann"> <span class="countRub">123</span>' ?></div>
+    <div class="nameforblock8" onclick="toggleDisplay('.nameforblock8', '.dndb8');">Обследование отдельных  конструкций <?php echo '<input class = "onCollap" type="checkbox" id="sborDann" name="sborDann" value="sborDann"> <span class="countRub">123</span>' ?></div>
     <div class="dndb8">
 
 
@@ -1657,29 +1655,29 @@ echo "<script>
                             </div>
                         </div>
                         <div class="select-input-pair">
-                            <select class="form-select-calc" aria-label="">
-                                <option selected>-- Пожалуйста, выберите --</option>
+                            <select class="form-select-calc" id="selectCalc1" aria-label="" onchange = "selectCalculation(1)">
+                                <option  value="0" selected>-- Пожалуйста, выберите --</option>
                                 <option value="1">
                                     dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg
                                 </option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                <option value="2">1111</option>
+                                <option value="3">Th2222ree</option>
                             </select>
-                            <input class="inpvalsel" type="number" name="inputValue" step="1" min="0" placeholder="">
+                            <input class="inpvalsel" disabled type="number" id="inputCalc1" name="inputValue" step="1" min="0" placeholder="">
                         </div>
                         <div class="select-input-pair">
-                            <select class="form-select-calc" aria-label="">
-                                <option selected>-- Пожалуйста, выберите --</option>
+                            <select class="form-select-calc" id="selectCalc2" aria-label="" onchange = "selectCalculation(2)">
+                                <option value="0" selected>-- Пожалуйста, выберите --</option>
                                 <option value="1">
                                     dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg
                                 </option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                <option value="2">Tw4444o</option>
+                                <option value="3">Thr4444ee</option>
                             </select>
-                            <input class="inpvalsel" type="number" name="inputValue" step="1" min="0" placeholder="">
+                            <input class="inpvalsel" disabled type="number" id="inputCalc2" name="inputValue" step="1" min="0" placeholder="">
                         </div>
                         <div class="select-input-pair">
-                            <select class="form-select-calc" aria-label="">
+                            <select class="form-select-calc" aria-label="" id="selectCalc3" onchange = "selectCalculation(3)">
                                 <option selected>-- Пожалуйста, выберите --</option>
                                 <option value="1">
                                     dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg
@@ -1687,10 +1685,10 @@ echo "<script>
                                 <option value="2">Two</option>
                                 <option value="3">Three</option>
                             </select>
-                            <input class="inpvalsel" type="number" name="inputValue" step="1" min="0" placeholder="">
+                            <input class="inpvalsel" type="number" disabled id="inputCalc3" name="inputValue" step="1" min="0" placeholder="">
                         </div>
                         <div class="select-input-pair">
-                            <select class="form-select-calc" aria-label="">
+                            <select class="form-select-calc" aria-label="" id="selectCalc4" onchange = "selectCalculation(4)">
                                 <option selected>-- Пожалуйста, выберите --</option>
                                 <option value="1">
                                     dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg
@@ -1698,10 +1696,10 @@ echo "<script>
                                 <option value="2">Two</option>
                                 <option value="3">Three</option>
                             </select>
-                            <input class="inpvalsel" type="number" name="inputValue" step="1" min="0" placeholder="">
+                            <input class="inpvalsel" type="number" name="inputValue" disabled id="inputCalc4" step="1" min="0" placeholder="">
                         </div>
                         <div class="select-input-pair">
-                            <select class="form-select-calc" aria-label="">
+                            <select class="form-select-calc" aria-label="" id="selectCalc5" onchange = "selectCalculation(5)">
                                 <option selected>-- Пожалуйста, выберите --</option>
                                 <option value="1">
                                     dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg
@@ -1709,10 +1707,10 @@ echo "<script>
                                 <option value="2">Two</option>
                                 <option value="3">Three</option>
                             </select>
-                            <input class="inpvalsel" type="number" name="inputValue" step="1" min="0" placeholder="">
+                            <input class="inpvalsel" type="number" disabled id="inputCalc5" name="inputValue" step="1" min="0" placeholder="">
                         </div>
                         <div class="select-input-pair">
-                            <select class="form-select-calc" aria-label="">
+                            <select class="form-select-calc" aria-label="" id="selectCalc6" onchange = "selectCalculation(6)">
                                 <option selected>-- Пожалуйста, выберите --</option>
                                 <option value="1">
                                     dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg
@@ -1720,10 +1718,10 @@ echo "<script>
                                 <option value="2">Two</option>
                                 <option value="3">Three</option>
                             </select>
-                            <input class="inpvalsel" type="number" name="inputValue" step="1" min="0" placeholder="">
+                            <input class="inpvalsel" type="number" disabled id="inputCalc6" name="inputValue" step="1" min="0" placeholder="">
                         </div>
                         <div class="select-input-pair">
-                            <select class="form-select-calc" aria-label="">
+                            <select class="form-select-calc" aria-label="" id="selectCalc7" onchange = "selectCalculation(7)">
                                 <option selected>-- Пожалуйста, выберите --</option>
                                 <option value="1">
                                     dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg
@@ -1731,10 +1729,10 @@ echo "<script>
                                 <option value="2">Two</option>
                                 <option value="3">Three</option>
                             </select>
-                            <input class="inpvalsel" type="number" name="inputValue" step="1" min="0" placeholder="">
+                            <input class="inpvalsel" type="number" disabled id="inputCalc7" name="inputValue" step="1" min="0" placeholder="">
                         </div>
                         <div class="select-input-pair">
-                            <select class="form-select-calc" aria-label="">
+                            <select class="form-select-calc" aria-label="" id="selectCalc8" onchange = "selectCalculation(8)">
                                 <option selected>-- Пожалуйста, выберите --</option>
                                 <option value="1">
                                     dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg
@@ -1742,7 +1740,7 @@ echo "<script>
                                 <option value="2">Two</option>
                                 <option value="3">Three</option>
                             </select>
-                            <input class="inpvalsel" type="number" name="inputValue" step="1" min="0" placeholder="">
+                            <input class="inpvalsel" type="number" disabled id="inputCalc8" name="inputValue" step="1" min="0" placeholder="">
                         </div>
                     </div>
                 </div>
@@ -1765,7 +1763,7 @@ echo "<script>
                             </div>
                         </div>
                         <div class="select-input-pair">
-                            <select class="form-select-calc" aria-label="">
+                            <select class="form-select-calc" id="select2Calc1" disabled aria-label="">
                                 <option selected>-- Пожалуйста, выберите --</option>
                                 <option value="1">
                                     dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg
@@ -1773,13 +1771,14 @@ echo "<script>
                                 <option value="2">Two</option>
                                 <option value="3">Three</option>
                             </select>
-                            <input style="width: 70px;" class="inpvalsel" type="number" name="inputValue" step="1"
+
+                            <input style="width: 70px;" class="inpvalsel" disabled id ="input2Calc1" type="number" name="inputValue" step="1"
                                    min="0" placeholder="">
-                            <input style="width: 70px;" class="inpvalsel" type="number" name="inputValue" step="1"
+                            <input style="width: 70px;" class="inpvalsel" disabled id="input3Calc1" type="number" name="inputValue" step="1"
                                    min="0" placeholder="">
                         </div>
                         <div class="select-input-pair">
-                            <select class="form-select-calc" aria-label="">
+                            <select class="form-select-calc" aria-label="" disabled id="select2Calc2">
                                 <option selected>-- Пожалуйста, выберите --</option>
                                 <option value="1">
                                     dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg
@@ -1787,13 +1786,13 @@ echo "<script>
                                 <option value="2">Two</option>
                                 <option value="3">Three</option>
                             </select>
-                            <input style="width: 70px;" class="inpvalsel" type="number" name="inputValue" step="1"
+                            <input style="width: 70px;" class="inpvalsel" disabled id ="input2Calc2" type="number" name="inputValue" step="1"
                                    min="0" placeholder="">
-                            <input style="width: 70px;" class="inpvalsel" type="number" name="inputValue" step="1"
+                            <input style="width: 70px;" class="inpvalsel" disabled id="input3Calc2" type="number" name="inputValue" step="1"
                                    min="0" placeholder="">
                         </div>
                         <div class="select-input-pair">
-                            <select class="form-select-calc" aria-label="">
+                            <select class="form-select-calc" aria-label="" id="select2Calc3" disabled>
                                 <option selected>-- Пожалуйста, выберите --</option>
                                 <option value="1">
                                     dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg
@@ -1801,13 +1800,13 @@ echo "<script>
                                 <option value="2">Two</option>
                                 <option value="3">Three</option>
                             </select>
-                            <input style="width: 70px;" class="inpvalsel" type="number" name="inputValue" step="1"
+                            <input style="width: 70px;" class="inpvalsel" disabled id ="input2Calc3" type="number" name="inputValue" step="1"
                                    min="0" placeholder="">
-                            <input style="width: 70px;" class="inpvalsel" type="number" name="inputValue" step="1"
+                            <input style="width: 70px;" class="inpvalsel" disabled id="input3Calc3" type="number" name="inputValue" step="1"
                                    min="0" placeholder="">
                         </div>
                         <div class="select-input-pair">
-                            <select class="form-select-calc" aria-label="">
+                            <select class="form-select-calc" aria-label="" id="select2Calc4" disabled>
                                 <option selected>-- Пожалуйста, выберите --</option>
                                 <option value="1">
                                     dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg
@@ -1815,13 +1814,13 @@ echo "<script>
                                 <option value="2">Two</option>
                                 <option value="3">Three</option>
                             </select>
-                            <input style="width: 70px;" class="inpvalsel" type="number" name="inputValue" step="1"
+                            <input style="width: 70px;" class="inpvalsel" disabled id ="input2Calc4" type="number" name="inputValue" step="1"
                                    min="0" placeholder="">
-                            <input style="width: 70px;" class="inpvalsel" type="number" name="inputValue" step="1"
+                            <input style="width: 70px;" class="inpvalsel" disabled id ="input3Calc4" type="number" name="inputValue" step="1"
                                    min="0" placeholder="">
                         </div>
                         <div class="select-input-pair">
-                            <select class="form-select-calc" aria-label="">
+                            <select class="form-select-calc" aria-label="" id="select2Calc5" disabled>
                                 <option selected>-- Пожалуйста, выберите --</option>
                                 <option value="1">
                                     dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg
@@ -1829,13 +1828,13 @@ echo "<script>
                                 <option value="2">Two</option>
                                 <option value="3">Three</option>
                             </select>
-                            <input style="width: 70px;" class="inpvalsel" type="number" name="inputValue" step="1"
+                            <input style="width: 70px;" class="inpvalsel" disabled id ="input2Calc5" type="number" name="inputValue" step="1"
                                    min="0" placeholder="">
-                            <input style="width: 70px;" class="inpvalsel" type="number" name="inputValue" step="1"
+                            <input style="width: 70px;" class="inpvalsel" disabled id ="input3Calc5" type="number" name="inputValue" step="1"
                                    min="0" placeholder="">
                         </div>
                         <div class="select-input-pair">
-                            <select class="form-select-calc" aria-label="">
+                            <select class="form-select-calc" aria-label="" id="select2Calc6" disabled>
                                 <option selected>-- Пожалуйста, выберите --</option>
                                 <option value="1">
                                     dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg
@@ -1843,13 +1842,13 @@ echo "<script>
                                 <option value="2">Two</option>
                                 <option value="3">Three</option>
                             </select>
-                            <input style="width: 70px;" class="inpvalsel" type="number" name="inputValue" step="1"
+                            <input style="width: 70px;" class="inpvalsel" disabled id ="input2Calc6" type="number" name="inputValue" step="1"
                                    min="0" placeholder="">
-                            <input style="width: 70px;" class="inpvalsel" type="number" name="inputValue" step="1"
+                            <input style="width: 70px;" class="inpvalsel" disabled id ="input3Calc6" type="number" name="inputValue" step="1"
                                    min="0" placeholder="">
                         </div>
                         <div class="select-input-pair">
-                            <select class="form-select-calc" aria-label="">
+                            <select class="form-select-calc" aria-label="" id="select2Calc7" disabled>
                                 <option selected>-- Пожалуйста, выберите --</option>
                                 <option value="1">
                                     dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg
@@ -1857,13 +1856,13 @@ echo "<script>
                                 <option value="2">Two</option>
                                 <option value="3">Three</option>
                             </select>
-                            <input style="width: 70px;" class="inpvalsel" type="number" name="inputValue" step="1"
+                            <input style="width: 70px;" class="inpvalsel" disabled id ="input2Calc7" type="number" name="inputValue" step="1"
                                    min="0" placeholder="">
-                            <input style="width: 70px;" class="inpvalsel" type="number" name="inputValue" step="1"
+                            <input style="width: 70px;" class="inpvalsel" disabled id ="input3Calc7" type="number" name="inputValue" step="1"
                                    min="0" placeholder="">
                         </div>
                         <div class="select-input-pair">
-                            <select class="form-select-calc" aria-label="">
+                            <select class="form-select-calc" aria-label="" id="select2Calc8" disabled>
                                 <option selected>-- Пожалуйста, выберите --</option>
                                 <option value="1">
                                     dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg
@@ -1871,9 +1870,9 @@ echo "<script>
                                 <option value="2">Two</option>
                                 <option value="3">Three</option>
                             </select>
-                            <input style="width: 70px;" class="inpvalsel" type="number" name="inputValue" step="1"
+                            <input style="width: 70px;" class="inpvalsel" type="number" disabled id ="input2Calc8" name="inputValue" step="1"
                                    min="0" placeholder="">
-                            <input style="width: 70px;" class="inpvalsel" type="number" name="inputValue" step="1"
+                            <input style="width: 70px;" class="inpvalsel" type="number" disabled id ="input3Calc8" name="inputValue" step="1"
                                    min="0" placeholder="">
                         </div>
                     </div>
@@ -2631,6 +2630,34 @@ function printTZ (){
 
     })
 }
+
+
+    function selectCalculation(index) {
+        const workSelect = document.querySelector(`#selectCalc${index}`);
+        const otherInputs = [
+            document.querySelector(`#inputCalc${index}`),
+            document.querySelector(`#select2Calc${index}`),
+            document.querySelector(`#input2Calc${index}`),
+            document.querySelector(`#input3Calc${index}`)
+        ];
+
+        const selectedValue = workSelect.value;
+
+        if (selectedValue !== "0") {
+            otherInputs.forEach(input => {
+                input.disabled = false;
+            });
+            console.log(`Inputs for selectCalc${index} enabled`);
+        } else {
+            otherInputs.forEach(input => {
+                input.disabled = true;
+                input.value = ''; // Очищаем значение
+            });
+            console.log(`Inputs for selectCalc${index} disabled`);
+        }
+    }
+
+
 
 </script>
 
