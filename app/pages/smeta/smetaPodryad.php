@@ -332,7 +332,7 @@ echo "<script>
     <button id="btnTechZad" class="btn btn-primary" onclick="printTZ()">Техническое задание</button>
             </div>
                 <div class="col-lg-4">
-                    <a href="../../excel.php" class="btn btn-primary">Смета в EXCEL</a>
+                    <a href="../smeta/excel.php" class="btn btn-primary">Смета в EXCEL</a>
                 </div>
     </div>
 
@@ -2610,7 +2610,7 @@ echo "<script>
 
 function printTZ (){
     $.ajax({
-        url:'../../printTZ.php',
+        url:'../smeta/printTZ.php',
         type: 'POST',
         data: {},
         success: function(response) {

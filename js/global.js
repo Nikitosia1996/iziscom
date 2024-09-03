@@ -165,6 +165,26 @@ function getSmeta(id) {
             toggleZd8.prop('disabled', true);
             toggleZd9.prop('disabled', true);
 
+
+            toggleZd1.prop('checked', false);
+            toggleZd2.prop('checked', false);
+            toggleZd3.prop('checked', false);
+            toggleZd4.prop('checked', false);
+            toggleZd5.prop('checked', false);
+            toggleZd6.prop('checked', false);
+            toggleZd7.prop('checked', false);
+            toggleZd8.prop('checked', false);
+            toggleZd9.prop('checked', false);
+            $('#conval1').val('');
+            $('#conval2').val('');
+            $('#conval3').val('');
+            $('#conval4').val('');
+            $('#conval5').val('');
+            $('#conval6').val('');
+            $('#conval7').val('');
+            $('#conval8').val('');
+            $('#conval9').val('');
+
         }
 
         choosCunstruct4.prop('checked', obmer.choosCunstruct4 > 0);
@@ -210,6 +230,30 @@ function getSmeta(id) {
             toggleZd48.prop('disabled', true);
             toggleZd49.prop('disabled', true);
             toggleZd449.prop('disabled', true);
+
+
+
+            toggleZd41.prop('checked', false);
+            toggleZd42.prop('checked', false);
+            toggleZd43.prop('checked', false);
+            toggleZd44.prop('checked', false);
+            toggleZd45.prop('checked', false);
+            toggleZd46.prop('checked', false);
+            toggleZd47.prop('checked', false);
+            toggleZd48.prop('checked', false);
+            toggleZd49.prop('checked', false);
+            toggleZd449.prop('checked', false);
+            $('#conval41').val('');
+            $('#conval42').val('');
+            $('#conval43').val('');
+            $('#conval44').val('');
+            $('#conval45').val('');
+            $('#conval46').val('');
+            $('#conval47').val('');
+            $('#conval48').val('');
+            $('#conval49').val('');
+            $('#conval449').val('');
+
         }
 
 
@@ -254,6 +298,26 @@ function getSmeta(id) {
             toggleZd58.prop('disabled', true);
             toggleZd59.prop('disabled', true);
 
+            toggleZd51.prop('checked', false);
+            toggleZd52.prop('checked', false);
+            toggleZd53.prop('checked', false);
+            toggleZd54.prop('checked', false);
+            toggleZd55.prop('checked', false);
+            toggleZd56.prop('checked', false);
+            toggleZd57.prop('checked', false);
+            toggleZd58.prop('checked', false);
+            toggleZd59.prop('checked', false);
+            $('#conval51').val('');
+            $('#conval52').val('');
+            $('#conval53').val('');
+            $('#conval54').val('');
+            $('#conval55').val('');
+            $('#conval56').val('');
+            $('#conval57').val('');
+            $('#conval58').val('');
+            $('#conval59').val('');
+
+
         }
 
 
@@ -296,6 +360,26 @@ function getSmeta(id) {
             toggleZd67.prop('disabled', true);
             toggleZd68.prop('disabled', true);
             toggleZd69.prop('disabled', true);
+
+            toggleZd61.prop('checked', false);
+            toggleZd62.prop('checked', false);
+            toggleZd63.prop('checked', false);
+            toggleZd64.prop('checked', false);
+            toggleZd65.prop('checked', false);
+            toggleZd66.prop('checked', false);
+            toggleZd67.prop('checked', false);
+            toggleZd68.prop('checked', false);
+            toggleZd69.prop('checked', false);
+            $('#conval61').val('');
+            $('#conval62').val('');
+            $('#conval63').val('');
+            $('#conval64').val('');
+            $('#conval65').val('');
+            $('#conval66').val('');
+            $('#conval67').val('');
+            $('#conval68').val('');
+            $('#conval69').val('');
+
         }
     }
     document.getElementById("myDropdown").classList.toggle("show");
@@ -406,18 +490,16 @@ function saveSmeta() {
 function updateSmetaLinks() {
     const dropdown = document.getElementById('myDropdown');
 
-    // Удаляем старые ссылки
-    while (dropdown.children.length > 1) { // Оставляем только input
+    while (dropdown.children.length > 1) {
         dropdown.removeChild(dropdown.lastChild);
     }
 
-    // Добавляем новые ссылки
     smetaList.forEach(smeta => {
         const link = document.createElement('a');
-        link.id = `smeta-${smeta.id}`; // Устанавливаем новый ID
-        link.onclick = () => getSmeta(smeta.id); // Устанавливаем обработчик клика
-        link.textContent = smeta.name; // Устанавливаем текст ссылки
-        dropdown.appendChild(link); // Добавляем ссылку в dropdown
+        link.id = `smeta-${smeta.id}`;
+        link.onclick = () => getSmeta(smeta.id);
+        link.textContent = smeta.name;
+        dropdown.appendChild(link);
     });
 }
 
