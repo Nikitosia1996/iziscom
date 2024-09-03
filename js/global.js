@@ -461,7 +461,7 @@ function saveSmeta() {
     };
 
     $.ajax({
-        url: '/app/ajax/saveSmeta.php',
+        url: 'app/ajax/saveSmeta.php',
         type: 'POST',
         data: smetaForPhp,
         success: function (response) {
