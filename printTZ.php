@@ -1,7 +1,13 @@
 <?php
 
-
-
+$obem = $_POST['obem'];
+$etazh = $_POST['etazh'];
+$visotazdani = $_POST['visotazdani'];
+$visotapola = $_POST['visotapola'];
+$zakazchik = $_POST['zakazchik'];
+$podryadchik = $_POST['podryadchik'];
+$toggleZd1 = $_POST['toggleZd1'];
+$toggleZd1Text = $toggleZd1 > 0 ? 'Да' : 'Нет';
 //echo '<tr><td colspan="4" style="font-weight: 700; text-align: center">' . $name_sub . '</td></tr>';
 echo '		
 <body>
@@ -63,11 +69,11 @@ tr:hover {
     <br>
     <div class="container" style="margin-left: 3%;">
     <div class="left-block" style="text-align: left; line-height: 18pt; padding-left: 0px;">
-        УТВЕРЖДАЮ<br><strong>Заказчик</strong><br>Белорусский государственный университет<br>
+        УТВЕРЖДАЮ<br><strong>Заказчик</strong><br>'.$zakazchik.'<br>
         Проректор по экономике и материально-<br>техническому развитию
     </div>
     <div class="right-block" style="text-align: left; line-height: 18pt;">
-        СОГЛАСОВАНО<br><strong>Подрядчик</strong><br>ООО «ИЗИСКОМ»<br><p>Директор</p>
+        СОГЛАСОВАНО<br><strong>Подрядчик</strong><br>'.$podryadchik.'<br><p>Директор</p>
     </div>
 </div>
 <div class="container" style="margin-left: 3%;">
@@ -117,29 +123,29 @@ echo ' <tr>
     <tr>
         <td style = " width: 10%; text-align: center;">2</td>
         <td style = "width: 70%; text-align: left;">Строительный объем, м.куб</td>
-        <td style="width: 20%;    word-break: break-word; text-align: center;">10</td>
+        <td style="width: 20%;    word-break: break-word; text-align: center;">' . $obem . '</td>
 </tr>
     
     <tr>
         <td style = " width: 10%; text-align: center;">3</td>
         <td style = "width: 70%; text-align: left;">Этажность</td>
-        <td style="width: 20%;    word-break: break-word; text-align: center;">1</td>
+        <td style="width: 20%;    word-break: break-word; text-align: center;">'.$etazh.'</td>
 </tr>
     
     <tr>
         <td style = " width: 10%; text-align: center;">4</td>
         <td style = "width: 70%; text-align: left;">Высота здания, м</td>
-        <td style="width: 20%;    word-break: break-word; text-align: center;">6</td>
+        <td style="width: 20%;    word-break: break-word; text-align: center;">'.$visotazdani.'</td>
 </tr>
     
     <tr>
         <td style = " width: 10%; text-align: center;">5</td>
         <td style = "width: 70%; text-align: left;">Высота этажа , м</td>
-        <td style="width: 20%;    word-break: break-word; text-align: center;">1</td>
+        <td style="width: 20%;    word-break: break-word; text-align: center;">'.$visotapola.'</td>
 </tr>';
 echo' </tbody></table>
-<p style="font-size: 11pt; margin-bottom: 5px; margin-top: 5px;"> 4. Заказчик: Белорусский государственный университет<br>
-5. Подрядчик: ООО «ИЗИСКОМ»<br>
+<p style="font-size: 11pt; margin-bottom: 5px; margin-top: 5px;"> 4. Заказчик: '.$zakazchik.'<br>
+5. Подрядчик: '.$podryadchik.'<br>
 6. Количество экземпляров технического заключения по результатам выполнения работ, необходимые<br>
 Заказчику: 01 (один) на бумажном носителе.<br>
 7. Перечень выполняемых работ по сбору исходных данных:</p>
@@ -164,7 +170,7 @@ echo '
  
         <td style = " width: 10%; text-align: center;">1</td>
         <td style = "width: 70%; text-align: left;">Фундаменты </td>
-        <td style="width: 20%;  text-align: center;  word-break: break-word;">Да</td>
+        <td style="width: 20%;  text-align: center;  word-break: break-word;">'.$toggleZd1Text.'</td>
     </tr>
     
     <tr>

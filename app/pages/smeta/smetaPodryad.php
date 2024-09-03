@@ -2609,10 +2609,20 @@ echo "<script>
     });
 
 function printTZ (){
+    let obem = document.getElementById('obem').value;
+    let etazh = document.getElementById('etazh').value;
+    let visotazdani = document.getElementById('visotazdani').value;
+    let visotapola = document.getElementById('visotapola').value;
+    let zakazchikSelect = document.getElementById('zakazchik');
+    let podryadchikSelect = document.getElementById('podryadchik');
+    let zakazchik = zakazchikSelect.value > 0 ? zakazchikSelect.options[zakazchikSelect.selectedIndex].text : '';
+    let podryadchik = podryadchikSelect.value > 0 ? podryadchikSelect.options[podryadchikSelect.selectedIndex].text : '';
+    let toggleZd1 = document.getElementById('toggleZd1').value;
     $.ajax({
-        url:'../smeta/printTZ.php',
+        url:'/smeta/printTZ.php',
         type: 'POST',
-        data: {},
+        data: {obem: obem, etazh: etazh, visotazdani: visotazdani, visotapola: visotapola, zakazchik: zakazchik,
+            podryadchik: podryadchik, toggleZd1: toggleZd1},
         success: function(response) {
             var WinPrint = window.open('', '', 'left=50,top=50,width=1200,height=860,toolbar=0,scrollbars=1,status=0');
             WinPrint.document.write('<style>@page {\n' +
