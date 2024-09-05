@@ -6,7 +6,7 @@ $sborIshodnihDannih = 0;
 
 echo "<script>
      let smetaList = " . $smetaList->getListSmets() . ";
-     console.log(smetaList);
+   
 </script>";
 ?>
 <style>
@@ -431,12 +431,12 @@ echo "<script>
 
             <div id="inputContainer" class="input-containerval">
                 <label for="etazh" class="zakpod">Количество этажей:</label>
-                <input data-id="1" id="etazh" type="number" name="inputValue" step="1" min="0" oninput="updateBuildingInfo()">
+                <input data-id="1" id="etazh" type="number" name="inputValue" step="1" min="0" oninput="calculateK()">
             </div>
 
             <div id="inputContainer" class="input-containerval">
                 <label for="visotazdani" class="zakpod">Высота здания:</label>
-                <input data-id="1" id="visotazdani" type="number" name="inputValue" step="1" min="0" oninput="updateBuildingInfo()">м
+                <input data-id="1" id="visotazdani" type="number" name="inputValue" step="1" min="0" oninput="calculateK()">м
             </div>
 
             <div id="inputContainer" class="input-containerval">
@@ -2026,6 +2026,8 @@ echo "<script>
 </div>
 
 <script>
+
+
     let sumHarakter;
     let sumIshod = 0;
     let fullSumma=0;
@@ -2051,11 +2053,13 @@ echo "<script>
         updateCalendarDaysFromEnd();
         updateWorkingDays();
         updateBuildingInfo();
+         toggleCheckboxesDop();
+
 
          fullSumma = parseFloat(sumHarakter) + parseFloat(sumIshod);
          fullSumma = fullSumma.toFixed(2);
 
-        console.log (fullSumma  + "fullSumma " );
+
         document.getElementById('harakteristikaObjectObsh').innerText = fullSumma;
         document.getElementById('harakteristikaObjectSmeta').innerText = fullSumma;
         document.getElementById('harakteristikaObjectCalc').innerText = fullSumma;
@@ -2153,27 +2157,7 @@ echo "<script>
             kefVisota *
             visotaPolaVal;
 
-        console.log("Расчет формула: " +
-            mainKoef + ":mainKoef + " +
-            temperatureMode + ":temperatureMode + " +
-            equipmentSaturation + ":equipmentSaturation + " +
-            buildingType + ":buildingType + " +
-            constructionType + ":constructionType + " +
-            options + ":options + " +
-            chekb1 + ":chekb1 + " +
-            chekb2 + ":chekb2 + " +
-            chekb3 + ":chekb3 + " +
-            chekb4 + ":chekb4 + " +
-            chekb5 + ":chekb5 + " +
-            chekb6 + ":chekb6 + " +
-            chekb7 + ":chekb7 + " +
-            chekb8 + ":chekb8 + " +
-            chekb9 + ":chekb9 + " +
-            chekb10 + ":chekb10 + " +
-            chekb11 + ":chekb11 + " +
-            chekb12 + ":chekb12 + " +
-            kefVisota + ":kefVisota + " +
-            visotaPolaVal + ":visotaPolaVal");
+
 
         document.getElementById('harakteristikaObject').innerText = finalCoefficient.toFixed(2);
         sumHarakter  = finalCoefficient.toFixed(2);
@@ -2204,7 +2188,7 @@ echo "<script>
         const toggleZd8 = getCheckboxValue('toggleZd8', 'conval8');
         const toggleZd9 = getCheckboxValue('toggleZd9', 'conval9');
         mainvisotazdani = parseFloat(document.getElementById('visotazdani').value) || 0;
-        console.log (mainvisotazdani +"dasdasdasdasa11111111111111");
+
         const etazh = parseFloat(document.getElementById('etazh').value) || 0;
         let valVisZd;
         if (etazh == 1) {
@@ -2298,12 +2282,9 @@ echo "<script>
                     },
                     success: function (response) {
                         koefIshod = parseFloat(response.trim());
-                        console.log(selectedRadio.value + " - " +
-                            hardZdanie + " - " +
-                            valVisZd
-                        );
+
                         sumIshod = koefIshod;
-                        console.log(koefIshod + "  koefIshod + ");
+
                         if (sumIshod > 0) {
                             sumIshod = mainKoef * buildingType * toggleZd1 *
                                 toggleZd2 *
@@ -2314,6 +2295,7 @@ echo "<script>
                                 toggleZd7 *
                                 toggleZd8 *
                                 toggleZd9 * costwork14 * koefIshod;
+
                             document.getElementById('sborIshodnihDannih').innerText = sumIshod.toFixed(2);
                         }
                         resolve();
@@ -2431,7 +2413,7 @@ echo "<script>
                 }
             }
 
-            console.log('Выводимое значение:', hardZdanie);
+
         }
     }
 
@@ -2522,6 +2504,8 @@ echo "<script>
     function toggleDisplay(triggerSelector, targetSelector) {
         const triggerElement = document.querySelector(triggerSelector);
         const targetElement = document.querySelector(targetSelector);
+        const checkbox = document.getElementById('sborCheck');
+        let ishdan = document.getElementById('sborIshodnihDannih');
 
 
         if (targetElement.style.display === "none" || targetElement.style.display === "") {
@@ -2529,7 +2513,7 @@ echo "<script>
         } else {
             targetElement.style.display = "none";
         }
-        calculateK();
+
     }
 
     function toggleSelect(toggleId, selectContainerId, optionsId) {
@@ -2548,14 +2532,23 @@ echo "<script>
         calculateK();
     }
 
-
     function toggleCheckboxes() {
         const isChecked = document.getElementById('choosCunstruct').checked;
         const checkboxes = document.querySelectorAll('.viborvischeckbox1 input[type="checkbox"], .viborvischeckbox2 input[type="checkbox"]');
 
-        checkboxes.forEach(checkbox => {
-            checkbox.disabled = !isChecked;
-        });
+        if (!isChecked) {
+
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = false;
+                checkbox.disabled = true;
+            });
+        } else {
+
+            checkboxes.forEach(checkbox => {
+                checkbox.disabled = false;
+            });
+        }
+
         calculateK();
     }
 
@@ -2605,9 +2598,15 @@ echo "<script>
         ];
 
         checkboxes.forEach(item => {
-            item.input.disabled = !item.checkbox.checked;
+            if (item.checkbox.checked) {
+                item.input.disabled = false;
+            }
+            else {
+                item.input.disabled = true;
+                item.input.value = 100;
+            }
         });
-        calculateK();
+        calculateFinalCoefficientSborSource();
     }
 
 
@@ -2806,7 +2805,7 @@ echo "<script>
                     } else {
                         $('#b14Input').val('');
                     }
-                    console.log("параметры переменных загружены" + data);
+
                 } else {
                     console.error('Error:', data.error);
                 }
@@ -2867,7 +2866,7 @@ function printTZ (){
             otherInputs.forEach(input => {
                 input.disabled = false;
             });
-            console.log(`Inputs for selectCalc${index} enabled`);
+
         } else {
             otherInputs.forEach(input => {
                 input.disabled = true;
@@ -2877,7 +2876,7 @@ function printTZ (){
                     input.value = '';
                 }
             });
-            console.log(`Inputs for selectCalc${index} disabled`);
+
         }
     }
 

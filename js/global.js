@@ -125,6 +125,7 @@ function getSmeta(id) {
         chekb12.prop('checked', haract.checkb12 > 0);
 
 
+
         choosCunstruct.prop('checked', ishod.choosCunstruct > 0);
         if (ishod.choosCunstruct > 0) {
             toggleZd1.prop('disabled', false);
@@ -385,6 +386,7 @@ function getSmeta(id) {
     document.getElementById("myDropdown").classList.toggle("show");
     calculateK();
 
+
     return null;
 }
 
@@ -411,7 +413,7 @@ function saveSmeta() {
         conval9: $('#conval9').val()
     };
 
-    console.log(ishod);
+
 
     haractObject = {
         zdanie: buildingType.val(),
@@ -482,7 +484,7 @@ function saveSmeta() {
             updateSmetaLinks();
         }
     })
-    console.log(smetaList);
+
 
     alert('Сохранено!');
 }

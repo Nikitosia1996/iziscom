@@ -3,7 +3,6 @@ var socket = new WebSocket("ws://172.19.6.64:8889");
 socket.onmessage = function(event) {
     let users;
     users = JSON.parse(event.data);
-    console.log(users);
     updateTable(users);
 };
 
