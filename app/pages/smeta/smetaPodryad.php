@@ -411,7 +411,7 @@ echo "<script>
         <div class="pos1">
             <div class = "viborvis">
             <label for="SelectZakazchik" class="zakpod">Здание:</label>
-            <select class="form-select" id="buildingType" aria-label="" onchange="calculateFinalCoefficient();" >
+            <select class="form-select" id="buildingType" aria-label="" onchange="calculateK();" >
                 <option data-id="1" value="0" selected>-- Пожалуйста, выберите --</option>
                 <option data-id="1.2" value="1">Жилое</option>
                 <option data-id="1.2" value="2">Гражданское</option>
@@ -422,7 +422,7 @@ echo "<script>
                 <option data-id="1" value="7">Градирни, этажерки и т.д.</option>
             </select>
 
-            <select class="form-select" id="constructionType" aria-label="" onchange="calculateFinalCoefficient();">
+            <select class="form-select" id="constructionType" aria-label="" onchange="calculateK();">
                 <option data-id="1" value="0" selected>-- Пожалуйста, выберите --</option>
                 <option data-id="1.2" value="1">Существующее здание</option>
                 <option data-id="0.8" value="2">Незавершенное капитальное строительство</option>
@@ -431,12 +431,12 @@ echo "<script>
 
             <div id="inputContainer" class="input-containerval">
                 <label for="etazh" class="zakpod">Количество этажей:</label>
-                <input id="etazh" type="number" name="inputValue" step="1" min="0" oninput="updateBuildingInfo()">
+                <input data-id="1" id="etazh" type="number" name="inputValue" step="1" min="0" oninput="updateBuildingInfo()">
             </div>
 
             <div id="inputContainer" class="input-containerval">
                 <label for="visotazdani" class="zakpod">Высота здания:</label>
-                <input id="visotazdani" type="number" name="inputValue" step="1" min="0" oninput="updateBuildingInfo()">м
+                <input data-id="1" id="visotazdani" type="number" name="inputValue" step="1" min="0" oninput="updateBuildingInfo()">м
             </div>
 
             <div id="inputContainer" class="input-containerval">
@@ -446,7 +446,7 @@ echo "<script>
 
             <div id="inputContainer" class="input-containerval">
                 <label for="visotapola" class="zakpod">Высота покрытия от уровня пола:</label>
-                <input id="visotapola" type="number" name="inputValue" step="1" min="0">м
+                <input data-id="1" id="visotapola" type="number" name="inputValue" step="1" min="0" oninput="calculateK()" >м
             </div>
 
 </div>
@@ -454,14 +454,14 @@ echo "<script>
         <div class="pos2">
 
 <div class = "viborvis">
-            <input data-id="1.3" id="vis6" class="butrad" type="radio" name="daysType" value="1">
+            <input data-id="1.3" id="vis6" class="butrad" type="radio" name="zdvis" value="1">
             <label for="vis6" class="visotarad"> 1) Здание высотой до 6м, бескрановое, однообъемное, двухпролетное</label>
             <br>
-            <input data-id="1.5" id="vis614" class="butrad" type="radio" name="daysType" value="2">
+            <input data-id="1.5" id="vis614" class="butrad" type="radio" name="zdvis" value="2">
             <label for="vis614" class="visotarad">2) Здание высотой от 6м до 14м высоты, с кранами грузоподъемностью до 50т включительно, с двумя объемами, 3-5 пролета, а также различные сооружения, резервуары, тоннели, лестничные клетки, галереи
             </label>
             <br>
-            <input data-id="1.5" id="vis14" class="butrad" type="radio" name="daysType" value="3">
+            <input data-id="1.5" id="vis14" class="butrad" type="radio" name="zdvis" value="3">
             <label for="vis14" class="visotarad">3) Здание высотой более 14м, со сложной конструктивной схемой, с двухъярусным расположением кранов, более 3
             объемов, более 6 пролетов галереи с высотой опор более 20м и пролетом более 36м, полный монолитный каркас</label>
             <br>
@@ -470,7 +470,7 @@ echo "<script>
         <div class="pos3">
 
             <label for="SelectZakazchik" class="zakpod">Температурно-влажностный режим:</label>
-            <select class="form-select" id="temperatureMode" aria-label="" onchange="calculateFinalCoefficient();">
+            <select class="form-select" id="temperatureMode" aria-label="" onchange="calculateK();">
                 <option data-id="1" value="0" selected>-- Пожалуйста, выберите --</option>
                 <option data-id="1" value="1">Нормальный (К = 1)</option>
                 <option data-id="1.15" value="2">t>25° С, W>70% (K = 1.15)</option>
@@ -478,7 +478,7 @@ echo "<script>
             </select>
 
             <label for="SelectPodryadchik" class="zakpod">Насыщенность оборудования:</label>
-            <select class="form-select" id="equipmentSaturation" aria-label="" onchange="calculateFinalCoefficient();">
+            <select class="form-select" id="equipmentSaturation" aria-label="" onchange="calculateK();">
                 <option data-id="1" value="0" selected>-- Пожалуйста, выберите --</option>
                 <option data-id="1" value="1">Отсуствует (K = 1)</option>
                 <option data-id="1.1" value="2">До 30% от площади помещений (K = 1.1)</option>
@@ -493,7 +493,7 @@ echo "<script>
 
             <div id="selectContainer" class="hidden">
                 <label for="options">Выберите опцию:</label>
-                <select class="form-select" id="options" disabled onchange="calculateFinalCoefficient();">
+                <select class="form-select" id="options" disabled onchange="calculateK();">
                     <option data-id="1" value="0">-- Пожалуйста, выберите --</option>
                     <option data-id="1.2" value="1">Помещение со слабой степенью агрессивного воздействия (k=1.2)</option>
                     <option data-id="1.3" value="2">Помещение со средней степенью агрессивного воздействия (k=1.3)</option>
@@ -507,16 +507,16 @@ echo "<script>
             <div class="pos1">
                 <div class = "viborvis">
                     <label>
-                        <input data-id="1.5" value="1" type="checkbox" id="chekb1" onchange="calculateFinalCoefficient();"> Выполнение работ с применением альпинисткого снаряжения (K = 1.5)
+                        <input data-id="1.5" value="1" type="checkbox" id="chekb1" onchange="calculateK();"> Выполнение работ с применением альпинисткого снаряжения (K = 1.5)
                     </label>
                     <label>
-                        <input data-id="1.25" value="2" type="checkbox" id="chekb2" onchange="calculateFinalCoefficient();"> Шумовые воздействия, превышающие нормативные величины (K = 1.25)
+                        <input data-id="1.25" value="2" type="checkbox" id="chekb2" onchange="calculateK();"> Шумовые воздействия, превышающие нормативные величины (K = 1.25)
                     </label>
                     <label>
-                        <input data-id="1.2" value="3" type="checkbox" id="chekb3" onchange="calculateFinalCoefficient();"> Выполнение работ в условиях отрицательных температур в период с 1 ноября - 1 мая (K = 1.2)
+                        <input data-id="1.2" value="3" type="checkbox" id="chekb3" onchange="calculateK();"> Выполнение работ в условиях отрицательных температур в период с 1 ноября - 1 мая (K = 1.2)
                     </label>
                     <label>
-                        <input data-id="1.2" value="4"  type="checkbox" id="chekb4" onchange="calculateFinalCoefficient();"> Необходимость очистки поверхности конструкций от грязи, пыли, ржавчины. Расчет выполнять по калькуляции трудозатрат
+                        <input data-id="1.2" value="4"  type="checkbox" id="chekb4" onchange="calculateK();"> Необходимость очистки поверхности конструкций от грязи, пыли, ржавчины. Расчет выполнять по калькуляции трудозатрат
                     </label>
 
                 </div>
@@ -525,32 +525,32 @@ echo "<script>
 
                 <div class = "viborvis">
                     <label>
-                        <input data-id="1.2" value="5" type="checkbox" id="chekb5" onchange="calculateFinalCoefficient();"> Необходимость использования переносных источников освещения (K = 1.2)
+                        <input data-id="1.2" value="5" type="checkbox" id="chekb5" onchange="calculateK();"> Необходимость использования переносных источников освещения (K = 1.2)
                     </label>
                     <label>
-                        <input data-id="1.02" value="6" type="checkbox" id="chekb6" onchange="calculateFinalCoefficient();"> Здание является памятником архитектуры (K = 1.02)
+                        <input data-id="1.02" value="6" type="checkbox" id="chekb6" onchange="calculateK();"> Здание является памятником архитектуры (K = 1.02)
                     </label>
                     <label>
-                        <input data-id="1.2" value="7" type="checkbox" id="chekb7" onchange="calculateFinalCoefficient();"> Обследование в условиях производственного процесса (K = 1.2)
+                        <input data-id="1.2" value="7" type="checkbox" id="chekb7" onchange="calculateK();"> Обследование в условиях производственного процесса (K = 1.2)
                     </label>
                     <label>
-                        <input data-id="1.15" value="8" type="checkbox" id="chekb8" onchange="calculateFinalCoefficient();"> Выполнение работ с мостового крана или подмостей (K = 1.15)
+                        <input data-id="1.15" value="8" type="checkbox" id="chekb8" onchange="calculateK();"> Выполнение работ с мостового крана или подмостей (K = 1.15)
                     </label>
                 </div>
             </div>
             <div class="pos3">
                 <div class = "viborvis">
                 <label>
-                    <input data-id="1.2" value="9" type="checkbox" id="chekb9" onchange="calculateFinalCoefficient();"> Здание оборудовано кранами режимных групп 7К, 8К, (K = 1.2)
+                    <input data-id="1.2" value="9" type="checkbox" id="chekb9" onchange="calculateK();"> Здание оборудовано кранами режимных групп 7К, 8К, (K = 1.2)
                 </label>
                 <label>
-                    <input data-id="1.2" value="10" type="checkbox" id="chekb10" onchange="calculateFinalCoefficient();"> Конструкции, усиленные по ранее разработанным проектам (K = 1.2)
+                    <input data-id="1.2" value="10" type="checkbox" id="chekb10" onchange="calculateK();"> Конструкции, усиленные по ранее разработанным проектам (K = 1.2)
                 </label>
                 <label>
-                    <input data-id="0.7" value="11" type="checkbox" id="chekb11" onchange="calculateFinalCoefficient();"> Использование ранее выполненных обследований не более  3 лет назад (K = 0.7)
+                    <input data-id="0.7" value="11" type="checkbox" id="chekb11" onchange="calculateK();"> Использование ранее выполненных обследований не более  3 лет назад (K = 0.7)
                 </label>
                 <label>
-                    <input data-id="1.35" value="12" type="checkbox" id="chekb12" onchange="calculateFinalCoefficient();"> Срочное выполнение обмерно-обследовательских работ (K <= 1.35)
+                    <input data-id="1.35" value="12" type="checkbox" id="chekb12" onchange="calculateK();"> Срочное выполнение обмерно-обследовательских работ (K <= 1.35)
                 </label>
                 </div>
             </div>
@@ -587,11 +587,11 @@ echo "<script>
 
             <div class="pos1">
                 <div class = "viborvis">
-                    <input data-id="1.2" id="pasportNaZdanie" class="butrad" type="radio" name="daysType" value="1" onchange="calculateFinalCoefficientSborSource()">
+                    <input data-id="1" id="pasportNaZdanie" class="butrad" type="radio" name="pasportNaZdanie" value="1" onchange="calculateK()">
                 <label for="pasportNaZdanie" class="pasportzd">1) Паспорт на здание или сооружение</label>
 
                 <br>
-                    <input data-id="1.3" id="pasportNaZdanie2" class="butrad" type="radio" name="daysType" value="2" onchange="calculateFinalCoefficientSborSource()">
+                    <input data-id="1" id="pasportNaZdanie2" class="butrad" type="radio" name="pasportNaZdanie" value="2" onchange="calculateK()">
                 <label for="pasportNaZdanie2" class="pasportzd">2) Паспорт на здание или сооружение. Проектная документация. Исполнительная документация. Эксплатуационная документация,
                     журнал наблюдений службы эксплуатации. Документы характеризующие фактические нагрузки и воздействия. Сертификаты на стальные конструкции.</label>
 
@@ -605,7 +605,7 @@ echo "<script>
                         <input data-id="1" value="1" type="checkbox" id="toggleZd1" disabled onchange="toggleCheckboxesDop()"> Конструкция фундаментов
                    </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class = "inpval" id="conval1" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateFinalCoefficientSborSource()"> %
+                            <input data-id="1" class = "inpval" id="conval1" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateK()"> %
                         </div>
                     </div>
 
@@ -615,7 +615,7 @@ echo "<script>
                         <input data-id="1" type="checkbox" id="toggleZd2" disabled  onchange="toggleCheckboxesDop()"> Стены
                     </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class = "inpval" id="conval2" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateFinalCoefficientSborSource()"> %
+                            <input data-id="1" class = "inpval" id="conval2" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateK()"> %
                         </div>
                     </div>
 
@@ -627,7 +627,7 @@ echo "<script>
                         <input data-id="1" type="checkbox" id="toggleZd3" disabled  onchange="toggleCheckboxesDop()"> Полы
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class = "inpval" id="conval3" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateFinalCoefficientSborSource()"> %
+                            <input data-id="1" class = "inpval" id="conval3" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateK()"> %
                         </div>
                     </div>
 
@@ -636,7 +636,7 @@ echo "<script>
                         <input data-id="1" type="checkbox" id="toggleZd4" disabled  onchange="toggleCheckboxesDop()"> Колонны, столбы, стойки
                             </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class = "inpval" id="conval4" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateFinalCoefficientSborSource()"> %
+                            <input data-id="1" class = "inpval" id="conval4" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateK()"> %
                         </div>
                     </div>
                     <div class = "mainlolspace">
@@ -644,7 +644,7 @@ echo "<script>
                         <input data-id="1" type="checkbox" id="toggleZd5" disabled  onchange="toggleCheckboxesDop()"> Несущие конструкции копров,пролетных строейний галерей
                                 </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class = "inpval" id="conval5" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateFinalCoefficientSborSource()"> %
+                            <input data-id="1" class = "inpval" id="conval5" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateK()"> %
                         </div>
                     </div>
 
@@ -661,7 +661,7 @@ echo "<script>
                             <input data-id="1" type="checkbox" id="toggleZd6" disabled onchange="toggleCheckboxesDop()"> Подкрановые и тормозные конструкции
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class = "inpval" id="conval6" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateFinalCoefficientSborSource()"> %
+                            <input data-id="1" class = "inpval" id="conval6" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateK()"> %
                         </div>
                     </div>
 
@@ -671,7 +671,7 @@ echo "<script>
                             <input data-id="1" type="checkbox" id="toggleZd7" disabled  onchange="toggleCheckboxesDop()"> Перекрытия
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class = "inpval" id="conval7" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateFinalCoefficientSborSource()"> %
+                            <input data-id="1" class = "inpval" id="conval7" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateK()"> %
                         </div>
                     </div>
 
@@ -682,7 +682,7 @@ echo "<script>
                             <input data-id="1" type="checkbox" id="toggleZd8" disabled onchange="toggleCheckboxesDop()"> Покрытие
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class="inpval" id="conval8" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateFinalCoefficientSborSource()"> %
+                            <input data-id="1" class="inpval" id="conval8" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateK()"> %
                         </div>
                     </div>
 
@@ -691,7 +691,7 @@ echo "<script>
                             <input data-id="1" type="checkbox" id="toggleZd9" disabled onchange="toggleCheckboxesDop()"> Кровля
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class="inpval" id="conval9" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateFinalCoefficientSborSource()"> %
+                            <input data-id="1" class="inpval" id="conval9" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateK()"> %
                         </div>
                     </div>
                 </div>
@@ -2030,9 +2030,13 @@ echo "<script>
     let sumIshod;
     let fullSumma;
     let mainKoef = 0;
+    let hardZdanie;
+    let radVal;
+    let mainvisotazdani;
+    let koefIshod=0;
     function calculateK() {
         fullSumma = 0;
-        const obem = parseFloat(document.getElementById('obem').value);
+        const obem = parseFloat(document.getElementById('obem').value)/1000;
         if (obem > 0) {
             mainKoef = 6.33 / Math.sqrt(obem);
         }
@@ -2072,12 +2076,54 @@ echo "<script>
         const chekb10 = getCheckboxValue('chekb10');
         const chekb11 = getCheckboxValue('chekb11');
         const chekb12 = getCheckboxValue('chekb12');
-
+        let kefVisota = 1;
+        const visotazdani = parseFloat(document.getElementById('visotazdani').value) || 0;
+        const etazh = parseFloat(document.getElementById('etazh').value) || 0;
+        const visotapola = parseFloat(document.getElementById('visotapola').value) || 0;
+        let visotaPolaVal = 1;
         const buildingType = parseFloat(document.querySelector('#buildingType option:checked').getAttribute('data-id')) || 1;
         const constructionType = parseFloat(document.querySelector('#constructionType option:checked').getAttribute('data-id')) || 1;
         const options = parseFloat(document.querySelector('#options option:checked').getAttribute('data-id')) || 1;
         const temperatureMode = parseFloat(document.querySelector('#temperatureMode option:checked').getAttribute('data-id')) || 1;
         const equipmentSaturation = parseFloat(document.querySelector('#equipmentSaturation option:checked').getAttribute('data-id')) || 1;
+
+
+        if (etazh <=1  ) {
+            if (visotazdani <= 4.2 && visotazdani > 0) {
+                kefVisota = 1;
+            } else if (visotazdani > 4.2 && visotazdani <= 4.8) {
+                kefVisota = 1.1;
+            } else if (visotazdani > 4.8 && visotazdani <= 5.4) {
+                kefVisota = 1.2;
+            } else if (visotazdani > 5.4 && visotazdani <= 6.0) {
+                kefVisota = 1.3;
+            } else if (visotazdani > 6.0 && visotazdani <= 6.6) {
+                kefVisota = 1.4;
+            } else if (visotazdani > 6.6) {
+                kefVisota = 1.5;
+            }
+        } else {
+            if (visotazdani <= 3.6) {
+                kefVisota = 1;
+            } else if (visotazdani > 3.6 && visotazdani <= 4.2) {
+                kefVisota = 1.15;
+            } else if (visotazdani > 4.2 && visotazdani <= 4.8) {
+                kefVisota = 1.3;
+            } else if (visotazdani > 4.8 && visotazdani <= 5.4) {
+                kefVisota = 1.45;
+            } else if (visotazdani > 5.4 && visotazdani <= 6.0) {
+                kefVisota = 1.5;
+            } else if (visotazdani > 6) {
+                kefVisota = 1.65;
+            }
+        }
+
+        if (visotapola > 0 && visotapola <= 1.6){
+            visotaPolaVal = 1.3;
+        }else {
+            visotaPolaVal = 1;
+        }
+
 
         const finalCoefficient =
             mainKoef *
@@ -2097,7 +2143,31 @@ echo "<script>
             chekb9 *
             chekb10 *
             chekb11 *
-            chekb12;
+            chekb12 *
+            kefVisota *
+            visotaPolaVal;
+
+        console.log("Расчет формула: " +
+            mainKoef + ":mainKoef + " +
+            temperatureMode + ":temperatureMode + " +
+            equipmentSaturation + ":equipmentSaturation + " +
+            buildingType + ":buildingType + " +
+            constructionType + ":constructionType + " +
+            options + ":options + " +
+            chekb1 + ":chekb1 + " +
+            chekb2 + ":chekb2 + " +
+            chekb3 + ":chekb3 + " +
+            chekb4 + ":chekb4 + " +
+            chekb5 + ":chekb5 + " +
+            chekb6 + ":chekb6 + " +
+            chekb7 + ":chekb7 + " +
+            chekb8 + ":chekb8 + " +
+            chekb9 + ":chekb9 + " +
+            chekb10 + ":chekb10 + " +
+            chekb11 + ":chekb11 + " +
+            chekb12 + ":chekb12 + " +
+            kefVisota + ":kefVisota + " +
+            visotaPolaVal + ":visotaPolaVal");
 
         document.getElementById('harakteristikaObject').innerText = finalCoefficient.toFixed(2);
         sumHarakter  = finalCoefficient.toFixed(2);
@@ -2106,6 +2176,7 @@ echo "<script>
 
     function calculateFinalCoefficientSborSource() {
         sumIshod=0;
+
         function getCheckboxValue(checkboxId, inputId) {
             const checkbox = document.getElementById(checkboxId);
             const inputValue = parseFloat(document.getElementById(inputId).value) || 0;
@@ -2124,21 +2195,82 @@ echo "<script>
         const toggleZd7 = getCheckboxValue('toggleZd7', 'conval7');
         const toggleZd8 = getCheckboxValue('toggleZd8', 'conval8');
         const toggleZd9 = getCheckboxValue('toggleZd9', 'conval9');
+        mainvisotazdani = parseFloat(document.getElementById('visotazdani').value) || 0;
+        let valVisZd;
+        if (mainvisotazdani < 6 && mainvisotazdani > 0) {
+            valVisZd = 1;
+        } else if (mainvisotazdani => 6 && mainvisotazdani < 7) {
+            valVisZd = 2;
+        } else if (mainvisotazdani => 7 && mainvisotazdani < 8) {
+            valVisZd = 3;
+        }
+        else if (mainvisotazdani => 8 && mainvisotazdani < 9) {
+            valVisZd = 4;
+        }
+        else if (mainvisotazdani => 9 && mainvisotazdani < 10) {
+            valVisZd = 5;
+        }
+        else if (mainvisotazdani => 10 && mainvisotazdani < 12) {
+            valVisZd = 6;
+        }
+        else if (mainvisotazdani => 12 && mainvisotazdani < 14) {
+            valVisZd = 7;
+        }
+        else if (mainvisotazdani => 14 && mainvisotazdani < 16) {
+            valVisZd = 8;
+        }
+        else if (mainvisotazdani => 16 && mainvisotazdani < 18) {
+            valVisZd = 9;
+        }
+        else if (mainvisotazdani => 18 && mainvisotazdani < 20) {
+            valVisZd = 10;
+        }
+        else if (mainvisotazdani => 20 && mainvisotazdani < 23) {
+            valVisZd = 11;
+        }
+        else if (mainvisotazdani => 23 && mainvisotazdani < 26) {
+            valVisZd = 12;
+        }
+        else if (mainvisotazdani => 26 && mainvisotazdani < 30) {
+            valVisZd = 13;
+        }
+        else if (mainvisotazdani => 30 && mainvisotazdani < 35) {
+            valVisZd = 14;
+        }
+        else if (mainvisotazdani => 35 && mainvisotazdani < 40) {
+            valVisZd = 15;
+        }
+        else if (mainvisotazdani => 40 && mainvisotazdani < 45) {
+            valVisZd = 16;
+        }
+        else if (mainvisotazdani => 45 && mainvisotazdani < 50) {
+            valVisZd = 17;
+        }        else if (mainvisotazdani => 50 ) {
+            valVisZd = 18;
+        }
 
-        const finalCoefficientSborSource =
-            mainKoef *
-            toggleZd1 *
-            toggleZd2 *
-            toggleZd3 *
-            toggleZd4 *
-            toggleZd5 *
-            toggleZd6 *
-            toggleZd7 *
-            toggleZd8 *
-            toggleZd9;
 
-        document.getElementById('sborIshodnihDannih').innerText = finalCoefficientSborSource.toFixed(2);
-        sumIshod = finalCoefficientSborSource.toFixed(2);
+        const selectedRadio = document.querySelector('input[name="pasportNaZdanie"]:checked');
+        if (selectedRadio) {
+
+            $.ajax ({
+                url: 'app/ajax/getIshodDannih.php',
+                method: 'POST',
+                data: {
+                    pasportZD:   selectedRadio.value,
+                    hardZdanie: hardZdanie,
+                    valVisZd: valVisZd,
+                },
+                success: function(response) {
+                    koefIshod = response;
+                    console.log (koefIshod);
+                    document.getElementById('sborIshodnihDannih').innerText = koefIshod;
+                    sumIshod = koefIshod;
+                },
+            })
+        }
+
+
 
     }
 
@@ -2162,15 +2294,21 @@ echo "<script>
         document.getElementById('vis14').checked = false;
 
 
+
         if (etazh > 1) {
+
+
                 document.getElementById('vis6').value = '1';
                 vis6Label.innerText = '1) Здание с высотой этажа до 3.6м, бескрановое, до 3х этажей, этажерки высотой до 15м многоэтажные эстакады';
+
 
                 document.getElementById('vis614').value = '2';
                 vis614Label.innerText = '2) Здание с высотой этажа до 6м, бескрановое, до 2 объемов, до 4-9 этажей, сооружения высотой более 20м';
 
                 document.getElementById('vis14').value = '3';
                 vis14Label.innerText = '3)  Здание с высотой этажа свыше 6м, с краном, свыше 3 объемов, свыше 10 этажей, сооружения высотой более 60м, полный монолитный каркас';
+
+
 
             if (visotazdani < 20) {
                 vis6Label.classList.add('highlight-green');
@@ -2221,6 +2359,30 @@ echo "<script>
                     document.getElementById('vis14').checked = true;
             }
             }
+
+        const selectedRadioZdvis = document.querySelector('input[name="zdvis"]:checked');
+
+        if (selectedRadioZdvis) {
+            if (etazh > 1) {
+                if (selectedRadioZdvis.id === 'vis6') {
+                    hardZdanie = 1;
+                } else if (selectedRadioZdvis.id === 'vis614') {
+                    hardZdanie = 2;
+                } else if (selectedRadioZdvis.id === 'vis14') {
+                    hardZdanie = 3;
+                }
+            } else {
+                if (selectedRadioZdvis.id === 'vis6') {
+                    hardZdanie = 1;
+                } else if (selectedRadioZdvis.id === 'vis614') {
+                    hardZdanie = 2;
+                } else if (selectedRadioZdvis.id === 'vis14') {
+                    hardZdanie = 3;
+                }
+            }
+
+            console.log('Выводимое значение:', hardZdanie);
+        }
         calculateK();
     }
 
