@@ -2027,15 +2027,18 @@ echo "<script>
 
 <script>
     let sumHarakter;
-    let sumIshod;
-    let fullSumma;
+    let sumIshod = 0;
+    let fullSumma=0;
     let mainKoef = 0;
     let hardZdanie;
     let radVal;
     let mainvisotazdani;
     let koefIshod=0;
-    function calculateK() {
-        fullSumma = 0;
+
+
+
+
+     async function calculateK() {
         const obem = parseFloat(document.getElementById('obem').value)/1000;
         if (obem > 0) {
             mainKoef = 6.33 / Math.sqrt(obem);
@@ -2043,22 +2046,25 @@ echo "<script>
         else{
             mainKoef = 0;
         }
-        calculateFinalCoefficient();
-        calculateFinalCoefficientSborSource();
+        await calculateFinalCoefficient();
+        await calculateFinalCoefficientSborSource();
         updateCalendarDaysFromEnd();
         updateWorkingDays();
-        fullSumma = parseFloat(sumHarakter) + parseFloat(sumIshod);
-        fullSumma = fullSumma.toFixed(2);
+        updateBuildingInfo();
+
+         fullSumma = parseFloat(sumHarakter) + parseFloat(sumIshod);
+         fullSumma = fullSumma.toFixed(2);
+
+        console.log (fullSumma  + "fullSumma " );
         document.getElementById('harakteristikaObjectObsh').innerText = fullSumma;
         document.getElementById('harakteristikaObjectSmeta').innerText = fullSumma;
         document.getElementById('harakteristikaObjectCalc').innerText = fullSumma;
-        console.log(fullSumma);
     }
 
 
 
 
-    function calculateFinalCoefficient() {
+    async function  calculateFinalCoefficient() {
         sumHarakter = 0;
         function getCheckboxValue(checkboxId) {
             const checkbox = document.getElementById(checkboxId);
@@ -2171,11 +2177,13 @@ echo "<script>
 
         document.getElementById('harakteristikaObject').innerText = finalCoefficient.toFixed(2);
         sumHarakter  = finalCoefficient.toFixed(2);
+
     }
 
 
-    function calculateFinalCoefficientSborSource() {
-        sumIshod=0;
+    async function calculateFinalCoefficientSborSource() {
+        const buildingType = parseFloat(document.querySelector('#buildingType option:checked').getAttribute('data-id')) || 1;
+        const costwork14 = parseFloat(document.getElementById('costwork14').value) || 1;
 
         function getCheckboxValue(checkboxId, inputId) {
             const checkbox = document.getElementById(checkboxId);
@@ -2196,81 +2204,123 @@ echo "<script>
         const toggleZd8 = getCheckboxValue('toggleZd8', 'conval8');
         const toggleZd9 = getCheckboxValue('toggleZd9', 'conval9');
         mainvisotazdani = parseFloat(document.getElementById('visotazdani').value) || 0;
+        console.log (mainvisotazdani +"dasdasdasdasa11111111111111");
+        const etazh = parseFloat(document.getElementById('etazh').value) || 0;
         let valVisZd;
-        if (mainvisotazdani < 6 && mainvisotazdani > 0) {
-            valVisZd = 1;
-        } else if (mainvisotazdani => 6 && mainvisotazdani < 7) {
-            valVisZd = 2;
-        } else if (mainvisotazdani => 7 && mainvisotazdani < 8) {
-            valVisZd = 3;
+        if (etazh == 1) {
+            if (mainvisotazdani < 6 && mainvisotazdani > 0) {
+                valVisZd = 1;
+            } else if (mainvisotazdani >= 6 && mainvisotazdani < 7) {
+                valVisZd = 2;
+            } else if (mainvisotazdani >= 7 && mainvisotazdani < 8) {
+                valVisZd = 3;
+            } else if (mainvisotazdani >= 8 && mainvisotazdani < 9) {
+                valVisZd = 4;
+            } else if (mainvisotazdani >= 9 && mainvisotazdani < 10) {
+                valVisZd = 5;
+            } else if (mainvisotazdani >= 10 && mainvisotazdani < 12) {
+                valVisZd = 6;
+            } else if (mainvisotazdani >= 12 && mainvisotazdani < 14) {
+                valVisZd = 7;
+            } else if (mainvisotazdani >= 14 && mainvisotazdani < 16) {
+                valVisZd = 8;
+            } else if (mainvisotazdani >= 16 && mainvisotazdani < 18) {
+                valVisZd = 9;
+            } else if (mainvisotazdani >= 18 && mainvisotazdani < 20) {
+                valVisZd = 10;
+            } else if (mainvisotazdani >= 20 && mainvisotazdani < 23) {
+                valVisZd = 11;
+            } else if (mainvisotazdani >= 23 && mainvisotazdani < 26) {
+                valVisZd = 12;
+            } else if (mainvisotazdani >= 26 && mainvisotazdani < 30) {
+                valVisZd = 13;
+            } else if (mainvisotazdani >= 30 && mainvisotazdani < 35) {
+                valVisZd = 14;
+            } else if (mainvisotazdani >= 35 && mainvisotazdani < 40) {
+                valVisZd = 15;
+            } else if (mainvisotazdani >= 40 && mainvisotazdani < 45) {
+                valVisZd = 16;
+            } else if (mainvisotazdani >= 45 && mainvisotazdani < 50) {
+                valVisZd = 17;
+            } else if (mainvisotazdani >= 50) {
+                valVisZd = 18;
+            }
         }
-        else if (mainvisotazdani => 8 && mainvisotazdani < 9) {
-            valVisZd = 4;
-        }
-        else if (mainvisotazdani => 9 && mainvisotazdani < 10) {
-            valVisZd = 5;
-        }
-        else if (mainvisotazdani => 10 && mainvisotazdani < 12) {
-            valVisZd = 6;
-        }
-        else if (mainvisotazdani => 12 && mainvisotazdani < 14) {
-            valVisZd = 7;
-        }
-        else if (mainvisotazdani => 14 && mainvisotazdani < 16) {
-            valVisZd = 8;
-        }
-        else if (mainvisotazdani => 16 && mainvisotazdani < 18) {
-            valVisZd = 9;
-        }
-        else if (mainvisotazdani => 18 && mainvisotazdani < 20) {
-            valVisZd = 10;
-        }
-        else if (mainvisotazdani => 20 && mainvisotazdani < 23) {
-            valVisZd = 11;
-        }
-        else if (mainvisotazdani => 23 && mainvisotazdani < 26) {
-            valVisZd = 12;
-        }
-        else if (mainvisotazdani => 26 && mainvisotazdani < 30) {
-            valVisZd = 13;
-        }
-        else if (mainvisotazdani => 30 && mainvisotazdani < 35) {
-            valVisZd = 14;
-        }
-        else if (mainvisotazdani => 35 && mainvisotazdani < 40) {
-            valVisZd = 15;
-        }
-        else if (mainvisotazdani => 40 && mainvisotazdani < 45) {
-            valVisZd = 16;
-        }
-        else if (mainvisotazdani => 45 && mainvisotazdani < 50) {
-            valVisZd = 17;
-        }        else if (mainvisotazdani => 50 ) {
-            valVisZd = 18;
+        else {
+
+            if (mainvisotazdani < 8 && mainvisotazdani > 0) {
+                valVisZd = 1;
+            } else if (mainvisotazdani >= 8 && mainvisotazdani < 8) {
+                valVisZd = 2;
+            } else if (mainvisotazdani >= 9 && mainvisotazdani < 10) {
+                valVisZd = 3;
+            } else if (mainvisotazdani >= 10 && mainvisotazdani < 12) {
+                valVisZd = 4;
+            } else if (mainvisotazdani >= 12 && mainvisotazdani < 14) {
+                valVisZd = 5;
+            } else if (mainvisotazdani >= 14 && mainvisotazdani < 16) {
+                valVisZd = 6;
+            } else if (mainvisotazdani >= 16 && mainvisotazdani < 18) {
+                valVisZd = 7;
+            } else if (mainvisotazdani >= 18 && mainvisotazdani < 20) {
+                valVisZd = 8;
+            } else if (mainvisotazdani >= 20 && mainvisotazdani < 23) {
+                valVisZd = 9;
+            } else if (mainvisotazdani >= 23 && mainvisotazdani < 26) {
+                valVisZd = 10;
+            } else if (mainvisotazdani >= 26 && mainvisotazdani < 30) {
+                valVisZd = 11;
+            } else if (mainvisotazdani >= 30 && mainvisotazdani < 35) {
+                valVisZd = 12;
+            } else if (mainvisotazdani >= 35 && mainvisotazdani < 40) {
+                valVisZd = 13;
+            } else if (mainvisotazdani >= 40 && mainvisotazdani < 45) {
+                valVisZd = 14;
+            } else if (mainvisotazdani >= 45 && mainvisotazdani < 50) {
+                valVisZd = 15;
+            } else if (mainvisotazdani >= 50) {
+                valVisZd = 16;
+            }
         }
 
 
         const selectedRadio = document.querySelector('input[name="pasportNaZdanie"]:checked');
         if (selectedRadio) {
-
-            $.ajax ({
-                url: 'app/ajax/getIshodDannih.php',
-                method: 'POST',
-                data: {
-                    pasportZD:   selectedRadio.value,
-                    hardZdanie: hardZdanie,
-                    valVisZd: valVisZd,
-                },
-                success: function(response) {
-                    koefIshod = response;
-                    console.log (koefIshod);
-                    document.getElementById('sborIshodnihDannih').innerText = koefIshod;
-                    sumIshod = koefIshod;
-                },
+            return new Promise((resolve, reject) => {
+                $.ajax({
+                    url: 'app/ajax/getIshodDannih.php',
+                    method: 'POST',
+                    data: {
+                        pasportZD: selectedRadio.value,
+                        hardZdanie: hardZdanie,
+                        valVisZd: valVisZd,
+                        etazh: document.getElementById('etazh').value,
+                    },
+                    success: function (response) {
+                        koefIshod = parseFloat(response.trim());
+                        console.log(selectedRadio.value + " - " +
+                            hardZdanie + " - " +
+                            valVisZd
+                        );
+                        sumIshod = koefIshod;
+                        console.log(koefIshod + "  koefIshod + ");
+                        if (sumIshod > 0) {
+                            sumIshod = mainKoef * buildingType * toggleZd1 *
+                                toggleZd2 *
+                                toggleZd3 *
+                                toggleZd4 *
+                                toggleZd5 *
+                                toggleZd6 *
+                                toggleZd7 *
+                                toggleZd8 *
+                                toggleZd9 * costwork14 * koefIshod;
+                            document.getElementById('sborIshodnihDannih').innerText = sumIshod.toFixed(2);
+                        }
+                        resolve();
+                    },
+                })
             })
         }
-
-
 
     }
 
@@ -2383,7 +2433,6 @@ echo "<script>
 
             console.log('Выводимое значение:', hardZdanie);
         }
-        calculateK();
     }
 
 
