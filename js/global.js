@@ -94,6 +94,9 @@ function getSmeta(id) {
         inputDateOkonchRab.val(selectedItem.dateOkonchRab);
         smetaName.val(selectedItem.name);
 
+
+
+
         const haract = selectedItem.haractObject;
         const ishod = selectedItem.ishod;
         const obmer = selectedItem.obmer;
@@ -127,6 +130,17 @@ function getSmeta(id) {
 
 
         choosCunstruct.prop('checked', ishod.choosCunstruct > 0);
+        const pasportValue = ishod.pasport_na_zdanie;
+        console.log (pasportValue)
+
+        if (pasportValue == 1) {
+            $('#pasportNaZdanie[value="1"]').prop('checked', true);
+        } else if (pasportValue == 2) {
+            $('#pasportNaZdanie[value="2"]').prop('checked', true);
+        } else {
+            $('input[name="pasportNaZdanie"]').prop('checked', false);
+        }
+
         if (ishod.choosCunstruct > 0) {
             toggleZd1.prop('disabled', false);
             toggleZd2.prop('disabled', false);

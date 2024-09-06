@@ -591,8 +591,8 @@ echo "<script>
                 <label for="pasportNaZdanie" class="pasportzd">1) Паспорт на здание или сооружение</label>
 
                 <br>
-                    <input data-id="1" id="pasportNaZdanie2" class="butrad" type="radio" name="pasportNaZdanie" value="2" onchange="calculateK()">
-                <label for="pasportNaZdanie2" class="pasportzd">2) Паспорт на здание или сооружение. Проектная документация. Исполнительная документация. Эксплатуационная документация,
+                    <input data-id="1" id="pasportNaZdanie" class="butrad" type="radio" name="pasportNaZdanie" value="2" onchange="calculateK()">
+                <label for="pasportNaZdanie" class="pasportzd">2) Паспорт на здание или сооружение. Проектная документация. Исполнительная документация. Эксплатуационная документация,
                     журнал наблюдений службы эксплуатации. Документы характеризующие фактические нагрузки и воздействия. Сертификаты на стальные конструкции.</label>
 
                 <br>
