@@ -396,11 +396,14 @@ function getSmeta(id) {
     }
     document.getElementById("myDropdown").classList.toggle("show");
     calculateK();
-    calculateHaracterCoefficient();
-    calculateFinalCoefficientSborSource();
-    calcIshod2();
-    updateBuildingInfo();
     updateCalendarDaysFromEnd();
+    calculateHaracterCoefficient();
+    calcIshod2();
+    calculateFinalCoefficientSborSource();
+    calcObmerWorksPart1();
+    calcObmerWorksPart2();
+    updateBuildingInfo();
+
     return null;
 }
 
