@@ -2446,12 +2446,12 @@ echo "<script>
 
         workingInput.value = workingDays;
 
-        if (startDateInput) {
-            const startDate = new Date(startDateInput);
-            const endDate = new Date(startDate);
-            endDate.setDate(startDate.getDate() + calendarDays);
-            document.getElementById('dateOkonchRab').value = endDate.toISOString().split('T')[0];
-        }
+        // if (startDateInput) {
+        //     const startDate = new Date(startDateInput);
+        //     const endDate = new Date(startDate);
+        //     endDate.setDate(startDate.getDate() + calendarDays);
+        //     document.getElementById('dateOkonchRab').value = endDate.toISOString().split('T')[0];
+        // }
         console.log (4 + "updateWorkingDays")
     }
 
@@ -2502,47 +2502,42 @@ echo "<script>
         console.log (3 + "updateCalendarDaysFromEnd")
     }
 
-    function updateCalendarDaysFromEndWorking() {
-        const endDateInput = document.getElementById('dateOkonchRab').value;
-        const startDateInput = document.getElementById('dateNachRab').value;
-
-        if (endDateInput && startDateInput) {
-            const startDate = new Date(startDateInput);
-            const endDate = new Date(endDateInput);
-            const calendarDays = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
-            document.getElementById('commonInputFieldWorking').value = calendarDays;
-        }
-        console.log (3 + "updateCalendarDaysFromEnd")
-    }
-
-
-    function updateAllDates() {
-        toggleInputs();
-         updateWorkingDays();
-         updateCalendarDays();
-        updateEndDate();
-        updateCalendarDaysFromEnd(); // Устанавливает календарные дни в зависимости от выбранных дат в календаре.   document.getElementById('commonInputField').value = calendarDays;
-    }
-
     $('#dateNachRab').on('change', function(){
         updateCalendarDaysFromEnd();
-        updateCalendarDaysFromEndWorking();
+        updateWorkingDays();
     });
 
     $('#dateOkonchRab').on('change', function(){
         updateCalendarDaysFromEnd();
-        updateCalendarDaysFromEndWorking();
+        updateWorkingDays();
     });
 
     $('#calendarDays').on('change', function(){
         toggleInputs();
     });
+
+    $('#workingDays').on('change', function(){
+        toggleInputs();
+    });
+
+
     $('#commonInputField').on('change', function(){
         toggleInputs();
         updateEndDate();
-        updateCalendarDaysFromEnd();
         updateWorkingDays();
+        updateCalendarDaysFromEnd();
     });
+
+    $('#commonInputFieldWorking').on('change', function(){
+        toggleInputs();
+        updateEndDate();
+        updateCalendarDays();
+        updateCalendarDaysFromEnd();
+
+
+    });
+
+
 
 
 
