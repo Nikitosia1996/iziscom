@@ -724,17 +724,17 @@ echo "<script>
 
             <div class="pos1">
                 <div class="viborvis">
-                    <input id="obmerobsl" class="butrad" type="radio" name="daysType" value="1">
+                    <input id="obmerobsl" class="butrad kat_sl_rab" type="radio" name="kat_sl_rab" value="1">
                     <label for="obmerobsl" class="pasportzd">1) Обмеры для визуального обследования,
                         паспортизации.:</label>
 
                     <br>
-                    <input id="obmerobs2" class="butrad" type="radio" name="daysType" value="2">
-                    <label for="obmerobsl2" class="pasportzd">2) Обмеры для детального обследования (узлы, вскрытия и
+                    <input id="obmerobs2" class="butrad kat_sl_rab" type="radio" name="kat_sl_rab" value="2">
+                    <label for="obmerobsl2" class="pasportzd ">2) Обмеры для детального обследования (узлы, вскрытия и
                         т.д.):</label>
 
                     <br>
-                    <input id="obmerobsl3" class="butrad" type="radio" name="daysType" value="3">
+                    <input id="obmerobsl3" class="butrad kat_sl_rab" type="radio" name="kat_sl_rab" value="3">
                     <label for="obmerobsl3" class="pasportzd">3) Работы различной категории сложности:</label>
 
                 </div>
@@ -815,24 +815,14 @@ echo "<script>
                         </div>
                     </div>
 
-                    <div class="mainlolspace">
-                        <div class="lolspace">
 
-                            <input type="checkbox" id="toggleZd47" disabled onchange="toggleCheckboxesDop4()">
-                            Стропильные и подстропильные конструкции
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval47" disabled type="number" name="inputValue" step="1"
-                                   min="0"> %
-                        </div>
-                    </div>
 
 
                     <div class="mainlolspace">
                         <div class="lolspace">
 
                             <input type="checkbox" id="toggleZd48" disabled onchange="toggleCheckboxesDop4()">
-                            Подкрановые и тормозные конструкции
+                            Стропильные и подстропильные конструкции, подкрановые и тормозные конструкции
                         </div>
                         <div id="inputContainer" class="input-container">
                             <input class="inpval" id="conval48" disabled type="number" name="inputValue" step="1"
@@ -2192,42 +2182,14 @@ echo "<script>
         const etazh = parseFloat(document.getElementById('etazh').value) || 0;
         let valVisZd;
         if (etazh == 1) {
-            if (mainvisotazdani < 6 && mainvisotazdani > 0) {
-                valVisZd = 1;
-            } else if (mainvisotazdani >= 6 && mainvisotazdani < 7) {
-                valVisZd = 2;
-            } else if (mainvisotazdani >= 7 && mainvisotazdani < 8) {
-                valVisZd = 3;
-            } else if (mainvisotazdani >= 8 && mainvisotazdani < 9) {
-                valVisZd = 4;
-            } else if (mainvisotazdani >= 9 && mainvisotazdani < 10) {
-                valVisZd = 5;
-            } else if (mainvisotazdani >= 10 && mainvisotazdani < 12) {
-                valVisZd = 6;
-            } else if (mainvisotazdani >= 12 && mainvisotazdani < 14) {
-                valVisZd = 7;
-            } else if (mainvisotazdani >= 14 && mainvisotazdani < 16) {
-                valVisZd = 8;
-            } else if (mainvisotazdani >= 16 && mainvisotazdani < 18) {
-                valVisZd = 9;
-            } else if (mainvisotazdani >= 18 && mainvisotazdani < 20) {
-                valVisZd = 10;
-            } else if (mainvisotazdani >= 20 && mainvisotazdani < 23) {
-                valVisZd = 11;
-            } else if (mainvisotazdani >= 23 && mainvisotazdani < 26) {
-                valVisZd = 12;
-            } else if (mainvisotazdani >= 26 && mainvisotazdani < 30) {
-                valVisZd = 13;
-            } else if (mainvisotazdani >= 30 && mainvisotazdani < 35) {
-                valVisZd = 14;
-            } else if (mainvisotazdani >= 35 && mainvisotazdani < 40) {
-                valVisZd = 15;
-            } else if (mainvisotazdani >= 40 && mainvisotazdani < 45) {
-                valVisZd = 16;
-            } else if (mainvisotazdani >= 45 && mainvisotazdani < 50) {
-                valVisZd = 17;
-            } else if (mainvisotazdani >= 50) {
-                valVisZd = 18;
+            if (mainvisotazdani < 1) {
+                valVisZd = 0; // Если значение меньше 1, можно задать значение по умолчанию
+            } else {
+                const thresholds = [0, 6, 7, 8, 9, 10, 12, 14, 16, 18, 20, 23, 26, 30, 35, 40, 45, 50];
+                valVisZd = thresholds.findIndex(threshold => mainvisotazdani < threshold);
+                if (valVisZd === -1) {
+                    valVisZd = 18; // Если значение больше 50
+                }
             }
         }
         else {
@@ -2618,7 +2580,6 @@ echo "<script>
             {checkbox: document.getElementById('toggleZd44'), input: document.getElementById('conval44')},
             {checkbox: document.getElementById('toggleZd45'), input: document.getElementById('conval45')},
             {checkbox: document.getElementById('toggleZd46'), input: document.getElementById('conval46')},
-            {checkbox: document.getElementById('toggleZd47'), input: document.getElementById('conval47')},
             {checkbox: document.getElementById('toggleZd48'), input: document.getElementById('conval48')},
             {checkbox: document.getElementById('toggleZd49'), input: document.getElementById('conval49')},
             {checkbox: document.getElementById('toggleZd449'), input: document.getElementById('toggleZd449')},

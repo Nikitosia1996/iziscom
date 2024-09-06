@@ -45,7 +45,6 @@ let toggleZd43 = $('#toggleZd43');
 let toggleZd44 = $('#toggleZd44');
 let toggleZd45 = $('#toggleZd45');
 let toggleZd46 = $('#toggleZd46');
-let toggleZd47 = $('#toggleZd47');
 let toggleZd48 = $('#toggleZd48');
 let toggleZd49 = $('#toggleZd49');
 let toggleZd449 = $('#toggleZd449');
@@ -82,6 +81,10 @@ let choosCunstruct6 = $('#choosCunstruct6');
 let toggleZdDopUslseism = $('#toggleZdDopUslseism');
 let toggleZdDopUslrazrab = $('#toggleZdDopUslrazrab');
 let toggleZdDopUslrazrabrek = $('#toggleZdDopUslrazrabrek');
+
+
+let koefObmerWork1;
+let koefObmerWork2;
 
 
 function getSmeta(id) {
@@ -210,7 +213,6 @@ function getSmeta(id) {
             toggleZd44.prop('disabled', false);
             toggleZd45.prop('disabled', false);
             toggleZd46.prop('disabled', false);
-            toggleZd47.prop('disabled', false);
             toggleZd48.prop('disabled', false);
             toggleZd49.prop('disabled', false);
             toggleZd449.prop('disabled', false);
@@ -220,7 +222,6 @@ function getSmeta(id) {
             toggleZd44.prop('checked', obmer.toggleZd44 > 0);
             toggleZd45.prop('checked', obmer.toggleZd45 > 0);
             toggleZd46.prop('checked', obmer.toggleZd46 > 0);
-            toggleZd47.prop('checked', obmer.toggleZd47 > 0);
             toggleZd48.prop('checked', obmer.toggleZd48 > 0);
             toggleZd49.prop('checked', obmer.toggleZd49 > 0);
             toggleZd449.prop('checked', obmer.toggleZd449 > 0);
@@ -230,7 +231,6 @@ function getSmeta(id) {
             $('#conval44').val(obmer.conval44);
             $('#conval45').val(obmer.conval45);
             $('#conval46').val(obmer.conval46);
-            $('#conval47').val(obmer.conval47);
             $('#conval48').val(obmer.conval48);
             $('#conval49').val(obmer.conval49);
             $('#conval449').val(obmer.conval449);
@@ -241,7 +241,6 @@ function getSmeta(id) {
             toggleZd44.prop('disabled', true);
             toggleZd45.prop('disabled', true);
             toggleZd46.prop('disabled', true);
-            toggleZd47.prop('disabled', true);
             toggleZd48.prop('disabled', true);
             toggleZd49.prop('disabled', true);
             toggleZd449.prop('disabled', true);
@@ -254,7 +253,6 @@ function getSmeta(id) {
             toggleZd44.prop('checked', false);
             toggleZd45.prop('checked', false);
             toggleZd46.prop('checked', false);
-            toggleZd47.prop('checked', false);
             toggleZd48.prop('checked', false);
             toggleZd49.prop('checked', false);
             toggleZd449.prop('checked', false);
@@ -264,7 +262,6 @@ function getSmeta(id) {
             $('#conval44').val('');
             $('#conval45').val('');
             $('#conval46').val('');
-            $('#conval47').val('');
             $('#conval48').val('');
             $('#conval49').val('');
             $('#conval449').val('');
@@ -521,7 +518,135 @@ function updateSmetaLinks() {
 
 
 
+async function calcObmerWorksPart1() {
 
+    let etazh = parseFloat(document.getElementById('etazh').value) || 0;
+    let kat_sl_zd = hardZdanie;
+    const kat_sl_rabs = document.querySelector('input[name="kat_sl_rab"]:checked');
+    let kat_sl_rab = kat_sl_rabs.getAttribute('value');
+    let vysota;
+    if (etazh < 2) {
+        if (mainvisotazdani < 1) {
+            vysota = 0; // Если значение меньше 1, можно задать значение по умолчанию
+        } else {
+            const thresholds = [0, 6, 9, 12, 15, 18, 21];
+            vysota = thresholds.findIndex(threshold => mainvisotazdani < threshold);
+            if (vysota === -1) {
+                vysota = 7; // Если значение больше 50
+            }
+        }
+    }else{
+
+            const thresholds = [0, 2, 3, 4, 6];
+            vysota = thresholds.findIndex(threshold => etazh < threshold);
+            if (vysota === -1) {
+                vysota = 5; // Если значение больше 50
+            }
+
+    }
+
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: "app/ajax/getKoefObmerWork1.php",
+            method: "POST",
+            data: {
+                etazh: etazh,
+                kat_sl_zd: kat_sl_zd,
+                kat_sl_rab: kat_sl_rab,
+                vysota: vysota
+            },
+
+        }).then(response => {
+            koefObmerWork1 = response.trim();
+            resolve();
+        })
+    })
+}
+
+
+async function calcObmerWorksPart2() {
+
+    let etazh = parseFloat(document.getElementById('etazh').value) || 0;
+    let typeW;
+    let koefObmerRab = 0;
+    if($("#choosCunstruct4").prop("checked")){
+        typeW = $("#buildingType").val();
+        switch(typeW){
+            case 6:
+                typeW = 4;
+                break;
+            case 5:
+                typeW = 3;
+                break;
+            case 7:
+                typeW = 2;
+                break;
+            default:
+                typeW = etazh > 1 ? 2 : 1;
+        }
+
+
+        let koef1 = $("#toggleZd41").prop("checked") ? $("#conval41").val() / 100 : 0;
+        let koef2 = $("#toggleZd42").prop("checked") ? $("#conval42").val() / 100 : 0;
+        let koef3 = $("#toggleZd43").prop("checked") ? $("#conval43").val() / 100 : 0;
+        let koef4 = $("#toggleZd44").prop("checked") ? $("#conval44").val() / 100 : 0;
+        let koef5 = $("#toggleZd45").prop("checked") ? $("#conval45").val() / 100 : 0;
+        let koef6 = $("#toggleZd46").prop("checked") ? $("#conval46").val() / 100 : 0;
+        let koef7 = $("#toggleZd48").prop("checked") ? $("#conval48").val() / 100 : 0;
+        let koef8 = $("#toggleZd49").prop("checked") ? $("#conval49").val() / 100 : 0;
+        let koef9 = $("#toggleZd449").prop("checked") ? $("#conval449").val() / 100 : 0;
+
+        let arKoef = [koef1, koef2, koef3, koef4, koef5, koef6, koef7, koef8, koef9];
+
+        let myAr = [
+            koef1 == 0 ? 0 : 1,
+             koef2 == 0 ? 0 : 2,
+            koef3 == 0 ? 0 : 3,
+             koef4 == 0 ? 0 : 4,
+            koef5 == 0 ? 0 : 9,
+             koef6 == 0 ? 0 : 5,
+            koef7 == 0 ? 0 : 6,
+             koef8 == 0 ? 0 : 7,
+             koef9 == 0 ? 0 : 8
+        ];
+        let newAr = myAr.filter(item => item != 0);
+
+
+        return new Promise(function(resolve, reject) {
+            $.ajax({
+                url: "app/ajax/getKoefObmerWork2.php",
+                method: "POST",
+                data: {
+                    typeW: typeW,
+                    myAr: JSON.stringify(newAr)
+                },
+            }).then(function(response) {
+                let gettedAr = JSON.parse(response);
+                let sum = 0;
+                let index = 0;
+                arKoef.map(item => {
+                    if(item != 0){
+                        sum += gettedAr[index] * item;
+                        index++;
+                    }
+                })
+                koefObmerWork2 = sum;
+            })
+        })
+
+
+    }else{
+        koefObmerWork2 = 0;
+    }
+}
+
+$(".kat_sl_rab").on('change', async function(){
+    await calcObmerWorksPart1();
+})
+
+$("#choosCunstruct4").on("click", async function(){
+    await calcObmerWorksPart2();
+})
 
 
 
