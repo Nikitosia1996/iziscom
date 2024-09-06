@@ -2028,14 +2028,14 @@ echo "<script>
 <script>
 
 
-    let sumHarakter;
-    let sumIshod = 0;
-    let fullSumma=0;
-    let mainKoef = 0;
-    let hardZdanie;
-    let radVal;
-    let mainvisotazdani;
-    let koefIshod=0;
+    let sumHarakter; // СУММА ВКЛАДКИ ХАРАКТЕРИСТИКА ОБЪЕКТА
+    let sumIshod = 0; // СУММА ВКЛАДКИ СБОР ИСХОДНЫХ ДАННЫХ
+    let fullSumma=0; // ОБЩАЯ СУММА ВСЕХ ВКЛАДОК
+    let mainKoef = 0; // Общий  К18.об
+    let hardZdanie; // КАТЕГОРИЯ СЛОЖНОСТИ ЗДАНИЯ
+    let mainvisotazdani; // ВЫСОТА ЗДАНИЯ
+    let koefIshod=0; // КОЭФИЦИЕНТ НЗТ1 (табл.2.3)
+    let selectedRadio; // КАТЕГОРИЯ СЛОЖНОСТИ РАБОТ
 
 
 
@@ -2268,7 +2268,7 @@ echo "<script>
         }
 
 
-        const selectedRadio = document.querySelector('input[name="pasportNaZdanie"]:checked');
+        selectedRadio = document.querySelector('input[name="pasportNaZdanie"]:checked');
         if (selectedRadio) {
             return new Promise((resolve, reject) => {
                 $.ajax({
@@ -2294,7 +2294,7 @@ echo "<script>
                                 toggleZd6 *
                                 toggleZd7 *
                                 toggleZd8 *
-                                toggleZd9 * costwork14 * koefIshod;
+                                toggleZd9  * koefIshod;
 
                             document.getElementById('sborIshodnihDannih').innerText = sumIshod.toFixed(2);
                         }
