@@ -4,6 +4,7 @@ include "app/classes/SmetaList.php";
 $harakteristikaObject = 0;
 $sborIshodnihDannih = 0;
 
+
 echo "<script>
      let smetaList = " . $smetaList->getListSmets() . ";
    
@@ -366,9 +367,9 @@ echo "<script>
         </div>
         <div class="pos2">
             <label for="SelectZakazchik" class="zakpod">Дата начала выполнения работ:</label>
-            <input type="date" class="form-date"  id="dateNachRab" aria-label="" onchange="updateEndDate()">
+            <input type="date" class="form-date"  id="dateNachRab" aria-label="" >
             <label for="SelectPodryadchik" class="zakpod">Дата окончания работ:</label>
-            <input type="date" class="form-date" id="dateOkonchRab" aria-label="" onchange="updateCalendarDaysFromEnd()">
+            <input type="date" class="form-date" id="dateOkonchRab" aria-label="" >
             <label for="textAreaCel" class="zakpod">Цель:</label>
             <div class="form-outline">
                 <textarea class="form-control" id="textAreaCel" rows="3"></textarea>
@@ -378,18 +379,18 @@ echo "<script>
 
         <div class="pos3">
             <label for="calendarDays" class="zakpod">Календарных дней:</label>
-            <input id="calendarDays" class="butrad" type="radio" name="daysType" value="calendar" onclick="toggleInputs()">
+            <input id="calendarDays" class="butrad" type="radio" name="daysType" value="calendar">
             <br>
             <div id="inputContainer" class="input-container">
                 <label id="inputLabel" for="commonInputField">Введите значение:</label>
-                <input id="commonInputField" disabled type="number" name="inputValue" step="1" min="0" oninput="updateWorkingDays()">
+                <input id="commonInputField" disabled type="number" name="inputValue" step="1" min="0" >
             </div>
             <label for="workingDays" class="zakpod">Рабочих дней:</label>
-            <input id="workingDays" class="butrad" type="radio" name="daysType" value="working" onclick="toggleInputs()">
+            <input id="workingDays" class="butrad" type="radio" name="daysType" value="working">
             <br>
             <div id="inputContainerWorking" class="input-container">
                 <label id="inputLabel" for="commonInputFieldWorking">Введите значение:</label>
-                <input id="commonInputFieldWorking" disabled type="number" name="inputValue" step="1" min="0" oninput="updateCalendarDays()">
+                <input id="commonInputFieldWorking" disabled type="number" name="inputValue" step="1" min="0" >
             </div>
 
             <label for="textAreaMestoObj" class="zakpodGps">Местоположение объекта:</label>
@@ -411,7 +412,7 @@ echo "<script>
         <div class="pos1">
             <div class = "viborvis">
             <label for="SelectZakazchik" class="zakpod">Здание:</label>
-            <select class="form-select" id="buildingType" aria-label="" onchange="calculateK();" >
+            <select class="form-select" id="buildingType" aria-label="" onchange="calculateHaracterCoefficient();" >
                 <option data-id="1" value="0" selected>-- Пожалуйста, выберите --</option>
                 <option data-id="1.2" value="1">Жилое</option>
                 <option data-id="1.2" value="2">Гражданское</option>
@@ -422,7 +423,7 @@ echo "<script>
                 <option data-id="1" value="7">Градирни, этажерки и т.д.</option>
             </select>
 
-            <select class="form-select" id="constructionType" aria-label="" onchange="calculateK();">
+            <select class="form-select" id="constructionType" aria-label="" onchange="calculateHaracterCoefficient();">
                 <option data-id="1" value="0" selected>-- Пожалуйста, выберите --</option>
                 <option data-id="1.2" value="1">Существующее здание</option>
                 <option data-id="0.8" value="2">Незавершенное капитальное строительство</option>
@@ -431,22 +432,22 @@ echo "<script>
 
             <div id="inputContainer" class="input-containerval">
                 <label for="etazh" class="zakpod">Количество этажей:</label>
-                <input data-id="1" id="etazh" type="number" name="inputValue" step="1" min="0" oninput="calculateK()">
+                <input data-id="1" id="etazh" type="number" name="inputValue" step="1" min="0" oninput="calculateHaracterCoefficient()">
             </div>
 
             <div id="inputContainer" class="input-containerval">
                 <label for="visotazdani" class="zakpod">Высота здания:</label>
-                <input data-id="1" id="visotazdani" type="number" name="inputValue" step="1" min="0" oninput="calculateK()">м
+                <input data-id="1" id="visotazdani" type="number" name="inputValue" step="1" min="0" oninput="calculateHaracterCoefficient()">м
             </div>
 
             <div id="inputContainer" class="input-containerval">
                 <label for="obem" class="zakpod">Объем здания:</label>
-                <input id="obem" type="number" name="inputValue" step="1" min="0" oninput="calculateK()">м³
+                <input id="obem" type="number" name="inputValue" step="1" min="0" oninput="calculateHaracterCoefficient()">м³
             </div>
 
             <div id="inputContainer" class="input-containerval">
                 <label for="visotapola" class="zakpod">Высота покрытия от уровня пола:</label>
-                <input data-id="1" id="visotapola" type="number" name="inputValue" step="1" min="0" oninput="calculateK()" >м
+                <input data-id="1" id="visotapola" type="number" name="inputValue" step="1" min="0" oninput="calculateHaracterCoefficient()" >м
             </div>
 
 </div>
@@ -454,14 +455,14 @@ echo "<script>
         <div class="pos2">
 
 <div class = "viborvis">
-            <input data-id="1.3" id="vis6" class="butrad" type="radio" name="zdvis" value="1">
+            <input data-id="1.3" id="vis6" class="butrad" type="radio" name="zdvis" value="1" onchange ="calculateHaracterCoefficient()">
             <label for="vis6" class="visotarad"> 1) Здание высотой до 6м, бескрановое, однообъемное, двухпролетное</label>
             <br>
-            <input data-id="1.5" id="vis614" class="butrad" type="radio" name="zdvis" value="2">
+            <input data-id="1.5" id="vis614" class="butrad" type="radio" name="zdvis" value="2" onchange ="calculateHaracterCoefficient()">
             <label for="vis614" class="visotarad">2) Здание высотой от 6м до 14м высоты, с кранами грузоподъемностью до 50т включительно, с двумя объемами, 3-5 пролета, а также различные сооружения, резервуары, тоннели, лестничные клетки, галереи
             </label>
             <br>
-            <input data-id="1.5" id="vis14" class="butrad" type="radio" name="zdvis" value="3">
+            <input data-id="1.5" id="vis14" class="butrad" type="radio" name="zdvis" value="3" onchange ="calculateHaracterCoefficient()">
             <label for="vis14" class="visotarad">3) Здание высотой более 14м, со сложной конструктивной схемой, с двухъярусным расположением кранов, более 3
             объемов, более 6 пролетов галереи с высотой опор более 20м и пролетом более 36м, полный монолитный каркас</label>
             <br>
@@ -470,7 +471,7 @@ echo "<script>
         <div class="pos3">
 
             <label for="SelectZakazchik" class="zakpod">Температурно-влажностный режим:</label>
-            <select class="form-select" id="temperatureMode" aria-label="" onchange="calculateK();">
+            <select class="form-select" id="temperatureMode" aria-label="" onchange="calculateHaracterCoefficient();">
                 <option data-id="1" value="0" selected>-- Пожалуйста, выберите --</option>
                 <option data-id="1" value="1">Нормальный (К = 1)</option>
                 <option data-id="1.15" value="2">t>25° С, W>70% (K = 1.15)</option>
@@ -478,7 +479,7 @@ echo "<script>
             </select>
 
             <label for="SelectPodryadchik" class="zakpod">Насыщенность оборудования:</label>
-            <select class="form-select" id="equipmentSaturation" aria-label="" onchange="calculateK();">
+            <select class="form-select" id="equipmentSaturation" aria-label="" onchange="calculateHaracterCoefficient();">
                 <option data-id="1" value="0" selected>-- Пожалуйста, выберите --</option>
                 <option data-id="1" value="1">Отсуствует (K = 1)</option>
                 <option data-id="1.1" value="2">До 30% от площади помещений (K = 1.1)</option>
@@ -493,7 +494,7 @@ echo "<script>
 
             <div id="selectContainer" class="hidden">
                 <label for="options">Выберите опцию:</label>
-                <select class="form-select" id="options" disabled onchange="calculateK();">
+                <select class="form-select" id="options" disabled onchange="calculateHaracterCoefficient();">
                     <option data-id="1" value="0">-- Пожалуйста, выберите --</option>
                     <option data-id="1.2" value="1">Помещение со слабой степенью агрессивного воздействия (k=1.2)</option>
                     <option data-id="1.3" value="2">Помещение со средней степенью агрессивного воздействия (k=1.3)</option>
@@ -507,16 +508,16 @@ echo "<script>
             <div class="pos1">
                 <div class = "viborvis">
                     <label>
-                        <input data-id="1.5" value="1" type="checkbox" id="chekb1" onchange="calculateK();"> Выполнение работ с применением альпинисткого снаряжения (K = 1.5)
+                        <input data-id="1.5" value="1" type="checkbox" id="chekb1" onchange="calculateHaracterCoefficient();"> Выполнение работ с применением альпинисткого снаряжения (K = 1.5)
                     </label>
                     <label>
-                        <input data-id="1.25" value="2" type="checkbox" id="chekb2" onchange="calculateK();"> Шумовые воздействия, превышающие нормативные величины (K = 1.25)
+                        <input data-id="1.25" value="2" type="checkbox" id="chekb2" onchange="calculateHaracterCoefficient();"> Шумовые воздействия, превышающие нормативные величины (K = 1.25)
                     </label>
                     <label>
-                        <input data-id="1.2" value="3" type="checkbox" id="chekb3" onchange="calculateK();"> Выполнение работ в условиях отрицательных температур в период с 1 ноября - 1 мая (K = 1.2)
+                        <input data-id="1.2" value="3" type="checkbox" id="chekb3" onchange="calculateHaracterCoefficient();"> Выполнение работ в условиях отрицательных температур в период с 1 ноября - 1 мая (K = 1.2)
                     </label>
                     <label>
-                        <input data-id="1.2" value="4"  type="checkbox" id="chekb4" onchange="calculateK();"> Необходимость очистки поверхности конструкций от грязи, пыли, ржавчины. Расчет выполнять по калькуляции трудозатрат
+                        <input data-id="1.2" value="4"  type="checkbox" id="chekb4" onchange="calculateHaracterCoefficient();"> Необходимость очистки поверхности конструкций от грязи, пыли, ржавчины. Расчет выполнять по калькуляции трудозатрат
                     </label>
 
                 </div>
@@ -525,32 +526,32 @@ echo "<script>
 
                 <div class = "viborvis">
                     <label>
-                        <input data-id="1.2" value="5" type="checkbox" id="chekb5" onchange="calculateK();"> Необходимость использования переносных источников освещения (K = 1.2)
+                        <input data-id="1.2" value="5" type="checkbox" id="chekb5" onchange="calculateHaracterCoefficient();"> Необходимость использования переносных источников освещения (K = 1.2)
                     </label>
                     <label>
-                        <input data-id="1.02" value="6" type="checkbox" id="chekb6" onchange="calculateK();"> Здание является памятником архитектуры (K = 1.02)
+                        <input data-id="1.02" value="6" type="checkbox" id="chekb6" onchange="calculateHaracterCoefficient();"> Здание является памятником архитектуры (K = 1.02)
                     </label>
                     <label>
-                        <input data-id="1.2" value="7" type="checkbox" id="chekb7" onchange="calculateK();"> Обследование в условиях производственного процесса (K = 1.2)
+                        <input data-id="1.2" value="7" type="checkbox" id="chekb7" onchange="calculateHaracterCoefficient();"> Обследование в условиях производственного процесса (K = 1.2)
                     </label>
                     <label>
-                        <input data-id="1.15" value="8" type="checkbox" id="chekb8" onchange="calculateK();"> Выполнение работ с мостового крана или подмостей (K = 1.15)
+                        <input data-id="1.15" value="8" type="checkbox" id="chekb8" onchange="calculateHaracterCoefficient();"> Выполнение работ с мостового крана или подмостей (K = 1.15)
                     </label>
                 </div>
             </div>
             <div class="pos3">
                 <div class = "viborvis">
                 <label>
-                    <input data-id="1.2" value="9" type="checkbox" id="chekb9" onchange="calculateK();"> Здание оборудовано кранами режимных групп 7К, 8К, (K = 1.2)
+                    <input data-id="1.2" value="9" type="checkbox" id="chekb9" onchange="calculateHaracterCoefficient();"> Здание оборудовано кранами режимных групп 7К, 8К, (K = 1.2)
                 </label>
                 <label>
-                    <input data-id="1.2" value="10" type="checkbox" id="chekb10" onchange="calculateK();"> Конструкции, усиленные по ранее разработанным проектам (K = 1.2)
+                    <input data-id="1.2" value="10" type="checkbox" id="chekb10" onchange="calculateHaracterCoefficient();"> Конструкции, усиленные по ранее разработанным проектам (K = 1.2)
                 </label>
                 <label>
-                    <input data-id="0.7" value="11" type="checkbox" id="chekb11" onchange="calculateK();"> Использование ранее выполненных обследований не более  3 лет назад (K = 0.7)
+                    <input data-id="0.7" value="11" type="checkbox" id="chekb11" onchange="calculateHaracterCoefficient();"> Использование ранее выполненных обследований не более  3 лет назад (K = 0.7)
                 </label>
                 <label>
-                    <input data-id="1.35" value="12" type="checkbox" id="chekb12" onchange="calculateK();"> Срочное выполнение обмерно-обследовательских работ (K <= 1.35)
+                    <input data-id="1.35" value="12" type="checkbox" id="chekb12" onchange="calculateHaracterCoefficient();"> Срочное выполнение обмерно-обследовательских работ (K <= 1.35)
                 </label>
                 </div>
             </div>
@@ -587,11 +588,11 @@ echo "<script>
 
             <div class="pos1">
                 <div class = "viborvis">
-                    <input data-id="1" id="pasportNaZdanie" class="butrad" type="radio" name="pasportNaZdanie" value="1" onchange="calculateK()">
+                    <input data-id="1" id="pasportNaZdanie" class="butrad" type="radio" name="pasportNaZdanie" value="1" onchange="calculateFinalCoefficientSborSource()">
                 <label for="pasportNaZdanie" class="pasportzd">1) Паспорт на здание или сооружение</label>
 
                 <br>
-                    <input data-id="1" id="pasportNaZdanie" class="butrad" type="radio" name="pasportNaZdanie" value="2" onchange="calculateK()">
+                    <input data-id="1" id="pasportNaZdanie" class="butrad" type="radio" name="pasportNaZdanie" value="2" onchange="calculateFinalCoefficientSborSource()">
                 <label for="pasportNaZdanie" class="pasportzd">2) Паспорт на здание или сооружение. Проектная документация. Исполнительная документация. Эксплатуационная документация,
                     журнал наблюдений службы эксплуатации. Документы характеризующие фактические нагрузки и воздействия. Сертификаты на стальные конструкции.</label>
 
@@ -605,7 +606,7 @@ echo "<script>
                         <input data-id="1" value="1" type="checkbox" id="toggleZd1" disabled onchange="toggleCheckboxesDop()"> Конструкция фундаментов
                    </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class = "inpval" id="conval1" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateK()"> %
+                            <input data-id="1" class = "inpval" id="conval1" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateFinalCoefficientSborSource()"> %
                         </div>
                     </div>
 
@@ -615,7 +616,7 @@ echo "<script>
                         <input data-id="1" type="checkbox" id="toggleZd2" disabled  onchange="toggleCheckboxesDop()"> Стены
                     </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class = "inpval" id="conval2" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateK()"> %
+                            <input data-id="1" class = "inpval" id="conval2" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateFinalCoefficientSborSource()"> %
                         </div>
                     </div>
 
@@ -627,7 +628,7 @@ echo "<script>
                         <input data-id="1" type="checkbox" id="toggleZd3" disabled  onchange="toggleCheckboxesDop()"> Полы
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class = "inpval" id="conval3" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateK()"> %
+                            <input data-id="1" class = "inpval" id="conval3" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateFinalCoefficientSborSource()"> %
                         </div>
                     </div>
 
@@ -636,7 +637,7 @@ echo "<script>
                         <input data-id="1" type="checkbox" id="toggleZd4" disabled  onchange="toggleCheckboxesDop()"> Колонны, столбы, стойки
                             </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class = "inpval" id="conval4" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateK()"> %
+                            <input data-id="1" class = "inpval" id="conval4" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateFinalCoefficientSborSource()"> %
                         </div>
                     </div>
                     <div class = "mainlolspace">
@@ -644,7 +645,7 @@ echo "<script>
                         <input data-id="1" type="checkbox" id="toggleZd5" disabled  onchange="toggleCheckboxesDop()"> Несущие конструкции копров,пролетных строейний галерей
                                 </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class = "inpval" id="conval5" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateK()"> %
+                            <input data-id="1" class = "inpval" id="conval5" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateFinalCoefficientSborSource()"> %
                         </div>
                     </div>
 
@@ -661,7 +662,7 @@ echo "<script>
                             <input data-id="1" type="checkbox" id="toggleZd6" disabled onchange="toggleCheckboxesDop()"> Подкрановые и тормозные конструкции
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class = "inpval" id="conval6" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateK()"> %
+                            <input data-id="1" class = "inpval" id="conval6" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateFinalCoefficientSborSource()"> %
                         </div>
                     </div>
 
@@ -671,7 +672,7 @@ echo "<script>
                             <input data-id="1" type="checkbox" id="toggleZd7" disabled  onchange="toggleCheckboxesDop()"> Перекрытия
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class = "inpval" id="conval7" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateK()"> %
+                            <input data-id="1" class = "inpval" id="conval7" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateFinalCoefficientSborSource()"> %
                         </div>
                     </div>
 
@@ -682,7 +683,7 @@ echo "<script>
                             <input data-id="1" type="checkbox" id="toggleZd8" disabled onchange="toggleCheckboxesDop()"> Покрытие
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class="inpval" id="conval8" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateK()"> %
+                            <input data-id="1" class="inpval" id="conval8" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateFinalCoefficientSborSource()"> %
                         </div>
                     </div>
 
@@ -691,7 +692,7 @@ echo "<script>
                             <input data-id="1" type="checkbox" id="toggleZd9" disabled onchange="toggleCheckboxesDop()"> Кровля
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class="inpval" id="conval9" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateK()"> %
+                            <input data-id="1" class="inpval" id="conval9" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateFinalCoefficientSborSource()"> %
                         </div>
                     </div>
                 </div>
@@ -2021,35 +2022,21 @@ echo "<script>
     let sumHarakter; // СУММА ВКЛАДКИ ХАРАКТЕРИСТИКА ОБЪЕКТА
     let sumIshod = 0; // СУММА ВКЛАДКИ СБОР ИСХОДНЫХ ДАННЫХ
     let fullSumma=0; // ОБЩАЯ СУММА ВСЕХ ВКЛАДОК
-    let mainKoef = 0; // Общий  К18.об
+    let K18ob = 0; // Общий  К18.об
     let hardZdanie; // КАТЕГОРИЯ СЛОЖНОСТИ ЗДАНИЯ
     let mainvisotazdani; // ВЫСОТА ЗДАНИЯ
     let koefIshod=0; // КОЭФИЦИЕНТ НЗТ1 (табл.2.3)
     let selectedRadio; // КАТЕГОРИЯ СЛОЖНОСТИ РАБОТ
+    let $koefIshod2=0; // КОЭФИЦИЕНТ НЗТ1 (табл.2.4)
+
 
 
 
 
      async function calculateK() {
-        const obem = parseFloat(document.getElementById('obem').value)/1000;
-        if (obem > 0) {
-            mainKoef = 6.33 / Math.sqrt(obem);
-        }
-        else{
-            mainKoef = 0;
-        }
-        await calculateFinalCoefficient();
-        await calculateFinalCoefficientSborSource();
-        updateCalendarDaysFromEnd();
-        updateWorkingDays();
-        updateBuildingInfo();
-         toggleCheckboxesDop();
-
-
+         sumIshod = koefIshod + $koefIshod2;
          fullSumma = parseFloat(sumHarakter) + parseFloat(sumIshod);
          fullSumma = fullSumma.toFixed(2);
-
-
         document.getElementById('harakteristikaObjectObsh').innerText = fullSumma;
         document.getElementById('harakteristikaObjectSmeta').innerText = fullSumma;
         document.getElementById('harakteristikaObjectCalc').innerText = fullSumma;
@@ -2058,7 +2045,7 @@ echo "<script>
 
 
 
-    async function  calculateFinalCoefficient() {
+    async function  calculateHaracterCoefficient() {
         sumHarakter = 0;
         function getCheckboxValue(checkboxId) {
             const checkbox = document.getElementById(checkboxId);
@@ -2086,6 +2073,14 @@ echo "<script>
         const options = parseFloat(document.querySelector('#options option:checked').getAttribute('data-id')) || 1;
         const temperatureMode = parseFloat(document.querySelector('#temperatureMode option:checked').getAttribute('data-id')) || 1;
         const equipmentSaturation = parseFloat(document.querySelector('#equipmentSaturation option:checked').getAttribute('data-id')) || 1;
+       //РАСЧЕТ ОСНОВНОГО  КОЭФИЦИЕНТА К18.об ОТ ОБЪЕМА
+        const obem = parseFloat(document.getElementById('obem').value)/1000;
+        if (obem > 0) {
+            K18ob = 6.33 / Math.sqrt(obem);
+        }
+        else{
+            K18ob = 0;
+        }
 
 
         if (etazh <=1  ) {
@@ -2126,7 +2121,7 @@ echo "<script>
 
 
         const finalCoefficient =
-            mainKoef *
+            K18ob *
             temperatureMode *
             equipmentSaturation *
             buildingType *
@@ -2152,43 +2147,26 @@ echo "<script>
         document.getElementById('harakteristikaObject').innerText = finalCoefficient.toFixed(2);
         sumHarakter  = finalCoefficient.toFixed(2);
 
+        updateBuildingInfo();
+        calculateK();
     }
 
 
     async function calculateFinalCoefficientSborSource() {
         const buildingType = parseFloat(document.querySelector('#buildingType option:checked').getAttribute('data-id')) || 1;
         const costwork14 = parseFloat(document.getElementById('costwork14').value) || 1;
-
-        function getCheckboxValue(checkboxId, inputId) {
-            const checkbox = document.getElementById(checkboxId);
-            const inputValue = parseFloat(document.getElementById(inputId).value) || 0;
-            if (checkbox.checked) {
-                return (inputValue / 100) * (parseFloat(checkbox.getAttribute('data-id')) || 1) + 1;
-            } else {
-                return 1;
-            }
-        }
-        const toggleZd1 = getCheckboxValue('toggleZd1', 'conval1');
-        const toggleZd2 = getCheckboxValue('toggleZd2', 'conval2');
-        const toggleZd3 = getCheckboxValue('toggleZd3', 'conval3');
-        const toggleZd4 = getCheckboxValue('toggleZd4', 'conval4');
-        const toggleZd5 = getCheckboxValue('toggleZd5', 'conval5');
-        const toggleZd6 = getCheckboxValue('toggleZd6', 'conval6');
-        const toggleZd7 = getCheckboxValue('toggleZd7', 'conval7');
-        const toggleZd8 = getCheckboxValue('toggleZd8', 'conval8');
-        const toggleZd9 = getCheckboxValue('toggleZd9', 'conval9');
         mainvisotazdani = parseFloat(document.getElementById('visotazdani').value) || 0;
 
         const etazh = parseFloat(document.getElementById('etazh').value) || 0;
         let valVisZd;
         if (etazh == 1) {
             if (mainvisotazdani < 1) {
-                valVisZd = 0; // Если значение меньше 1, можно задать значение по умолчанию
+                valVisZd = 0;
             } else {
                 const thresholds = [0, 6, 7, 8, 9, 10, 12, 14, 16, 18, 20, 23, 26, 30, 35, 40, 45, 50];
                 valVisZd = thresholds.findIndex(threshold => mainvisotazdani < threshold);
                 if (valVisZd === -1) {
-                    valVisZd = 18; // Если значение больше 50
+                    valVisZd = 18;
                 }
             }
         }
@@ -2244,31 +2222,88 @@ echo "<script>
                     },
                     success: function (response) {
                         koefIshod = parseFloat(response.trim());
-
-                        sumIshod = koefIshod;
-
-                        if (sumIshod > 0) {
-                            sumIshod = mainKoef * buildingType * toggleZd1 *
-                                toggleZd2 *
-                                toggleZd3 *
-                                toggleZd4 *
-                                toggleZd5 *
-                                toggleZd6 *
-                                toggleZd7 *
-                                toggleZd8 *
-                                toggleZd9  * koefIshod;
-
-                            document.getElementById('sborIshodnihDannih').innerText = sumIshod.toFixed(2);
-                        }
+                        $('#sborIshodnihDannih').html(koefIshod);
                         resolve();
                     },
                 })
             })
         }
-
+        await calcIshod2();
+        calculateK();
     }
 
 
+
+    async function calcIshod2() {
+        let etazh = parseFloat(document.getElementById('etazh').value) || 0;
+        let typeW;
+        let koefObmerRab = 0;
+        if($("#choosCunstruct").prop("checked")){
+            typeW = $("#buildingType").val();
+            switch(typeW){
+                case 6:
+                    typeW = 4;
+                    break;
+                case 5:
+                    typeW = 3;
+                    break;
+                case 7:
+                    typeW = 2;
+                    break;
+                default:
+                    typeW = etazh > 1 ? 2 : 1;
+            }
+            let arKoef = [];
+            let myAr = [];
+            for (let i = 1; i <= 9; i++) {
+                let koef = $("#toggleZd" + i).prop("checked") ? $("#conval" + i).val() / 100 : 0;
+                arKoef.push(koef);
+                if (koef != 0) {
+                    myAr.push(i);
+                }
+            }
+
+            if (myAr.length === 0) {
+                koefIshod2 = 0;
+                console.log(koefIshod2 + " koefIshod2");
+                return;
+            }
+
+
+            return new Promise(function(resolve, reject) {
+                $.ajax({
+                    url: "app/ajax/getKoefIshod2.php",
+                    method: "POST",
+                    data: {
+                        typeW: typeW,
+                        myAr: JSON.stringify(myAr)
+                    },
+                }).then(function(response) {
+                    let gettedAr = JSON.parse(response);
+                    let sum = 0;
+                    let index = 0;
+                    arKoef.map(item => {
+                        if(item != 0){
+                            sum += gettedAr[index] * item;
+                            index++;
+                        }
+                    });
+                    koefIshod2 = sum;
+                    console.log(koefIshod2 + " koefIshod2");
+                    resolve();
+                }).catch(function(error) {
+                    reject(error);
+                });
+            });
+        } else {
+            koefIshod2 = 0;
+            console.log(koefIshod2 + " koefIshod2");
+        }
+    }
+
+    $("#choosCunstruct").on("click", async function(){
+        await calcIshod2();
+    })
 
     function updateBuildingInfo() {
         const etazh = parseInt(document.getElementById('etazh').value) || 0;
@@ -2398,6 +2433,7 @@ echo "<script>
             calendarInput.value = '';
         }
         calculateK();
+        console.log (5 + "updateWorkingDays");
     }
 
     function updateWorkingDays() {
@@ -2416,6 +2452,7 @@ echo "<script>
             endDate.setDate(startDate.getDate() + calendarDays);
             document.getElementById('dateOkonchRab').value = endDate.toISOString().split('T')[0];
         }
+        console.log (4 + "updateWorkingDays")
     }
 
     function updateCalendarDays() {
@@ -2434,6 +2471,8 @@ echo "<script>
             endDate.setDate(startDate.getDate() + calendarDays);
             document.getElementById('dateOkonchRab').value = endDate.toISOString().split('T')[0];
         }
+
+        console.log (1 + "updateCalendarDays")
     }
 
     function updateEndDate() {
@@ -2447,8 +2486,9 @@ echo "<script>
             endDate.setDate(startDate.getDate() + calendarDays);
             document.getElementById('dateOkonchRab').value = endDate.toISOString().split('T')[0];
         }
+        console.log (2 + "updateEndDate")
     }
-
+ // Устанавливает календарные дни в зависимости от выбранных дат в календаре.
     function updateCalendarDaysFromEnd() {
         const endDateInput = document.getElementById('dateOkonchRab').value;
         const startDateInput = document.getElementById('dateNachRab').value;
@@ -2459,7 +2499,52 @@ echo "<script>
             const calendarDays = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
             document.getElementById('commonInputField').value = calendarDays;
         }
+        console.log (3 + "updateCalendarDaysFromEnd")
     }
+
+    function updateCalendarDaysFromEndWorking() {
+        const endDateInput = document.getElementById('dateOkonchRab').value;
+        const startDateInput = document.getElementById('dateNachRab').value;
+
+        if (endDateInput && startDateInput) {
+            const startDate = new Date(startDateInput);
+            const endDate = new Date(endDateInput);
+            const calendarDays = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
+            document.getElementById('commonInputFieldWorking').value = calendarDays;
+        }
+        console.log (3 + "updateCalendarDaysFromEnd")
+    }
+
+
+    function updateAllDates() {
+        toggleInputs();
+         updateWorkingDays();
+         updateCalendarDays();
+        updateEndDate();
+        updateCalendarDaysFromEnd(); // Устанавливает календарные дни в зависимости от выбранных дат в календаре.   document.getElementById('commonInputField').value = calendarDays;
+    }
+
+    $('#dateNachRab').on('change', function(){
+        updateCalendarDaysFromEnd();
+        updateCalendarDaysFromEndWorking();
+    });
+
+    $('#dateOkonchRab').on('change', function(){
+        updateCalendarDaysFromEnd();
+        updateCalendarDaysFromEndWorking();
+    });
+
+    $('#calendarDays').on('change', function(){
+        toggleInputs();
+    });
+    $('#commonInputField').on('change', function(){
+        toggleInputs();
+        updateEndDate();
+        updateCalendarDaysFromEnd();
+        updateWorkingDays();
+    });
+
+
 
 
 
@@ -2568,7 +2653,8 @@ echo "<script>
                 item.input.value = 100;
             }
         });
-        calculateFinalCoefficientSborSource();
+
+        calcIshod2();
     }
 
 
