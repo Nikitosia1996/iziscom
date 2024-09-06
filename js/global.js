@@ -400,10 +400,6 @@ function getSmeta(id) {
     calculateFinalCoefficientSborSource();
     calcIshod2();
     updateBuildingInfo();
-    toggleInputs();
-    updateWorkingDays();
-    updateCalendarDays();
-    updateEndDate();
     updateCalendarDaysFromEnd();
     return null;
 }
