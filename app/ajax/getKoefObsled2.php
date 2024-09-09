@@ -26,6 +26,6 @@ if ($result && mysqli_num_rows($result) > 0) {
 }
     echo json_encode($myarray);
 }else{
-    echo 0;
+    echo 1;
 }
 ?>

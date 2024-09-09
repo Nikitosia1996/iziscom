@@ -26,7 +26,7 @@ if($flag) {
     }
     echo json_encode($myarray);
 }else{
-    echo 0;
+    echo 1;
 }
 
 

@@ -22,7 +22,7 @@ if ($result && mysqli_num_rows($result) > 0) {
     echo $row['ishod_value'];
 }
 else {
-    echo 0;
+    echo 1;
 }
 }
 

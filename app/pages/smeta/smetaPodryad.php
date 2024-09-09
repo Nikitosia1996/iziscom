@@ -2002,7 +2002,7 @@ echo "<script>
 <script>
 
 
-    let sumHarakter; // СУММА ВКЛАДКИ ХАРАКТЕРИСТИКА ОБЪЕКТА
+    let sumHarakter = 0; // СУММА ВКЛАДКИ ХАРАКТЕРИСТИКА ОБЪЕКТА
     let sumIshod = 0; // СУММА ВКЛАДКИ СБОР ИСХОДНЫХ ДАННЫХ
     let sumObmer = 0; // СУММА ВКЛАДКИ обмера
     let sumObsled = 0; // СУММА ВКЛАДКИ обcледа
@@ -2010,9 +2010,9 @@ echo "<script>
     let K18ob = 0; // Общий  К18.об
     let hardZdanie; // КАТЕГОРИЯ СЛОЖНОСТИ ЗДАНИЯ
     let mainvisotazdani; // ВЫСОТА ЗДАНИЯ
-    let koefIshod=0; // КОЭФИЦИЕНТ НЗТ1 (табл.2.3)
+    let koefIshod=1; // КОЭФИЦИЕНТ НЗТ1 (табл.2.3)
     let selectedRadio; // КАТЕГОРИЯ СЛОЖНОСТИ РАБОТ
-    let koefIshod2=0; // КОЭФИЦИЕНТ НЗТ1 (табл.2.4)
+    let koefIshod2=1; // КОЭФИЦИЕНТ НЗТ1 (табл.2.4)
     let costwork14; // СРЕДНИЙ РАЗРЯД  14
 
 
@@ -2026,11 +2026,12 @@ echo "<script>
          koefObmerWork2 = koefObmerWork2 == 0 ? 1 : koefObmerWork2;
          koefObsled2 = koefObsled2 == 0 ? 1 : koefObsled2;
          koefObsled1 = koefObsled1 == 0 ? 1 : koefObsled1;
+
          sumIshod = koefIshod * koefIshod2 * costwork14 * K18ob;
          sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * K18ob;
          sumObsled = koefObsled1 * koefObsled2 * costwork14 * K18ob;
          fullSumma = parseFloat(sumHarakter) + parseFloat(sumIshod) + parseFloat(sumObmer) +  parseFloat(sumObsled);
-         fullSumma = fullSumma.toFixed(2);
+         fullSumma = fullSumma.toFixed(3);
         document.getElementById('harakteristikaObjectObsh').innerText = fullSumma;
         document.getElementById('harakteristikaObjectSmeta').innerText = fullSumma;
         document.getElementById('harakteristikaObjectCalc').innerText = fullSumma;
@@ -2216,9 +2217,8 @@ echo "<script>
                     },
                     success: function (response) {
                         koefIshod = parseFloat(response.trim());
-                        console.log(koefIshod)
-                        console.log(koefIshod2)
-                        $('#sborIshodnihDannih').html(koefIshod + koefIshod2);
+                        sumIshod = koefIshod * koefIshod2 * costwork14 * K18ob;
+                        $('#sborIshodnihDannih').html(sumIshod.toFixed(3));
                         resolve();
                     },
                 })
@@ -2233,7 +2233,6 @@ echo "<script>
     async function calcIshod2() {
         let etazh = parseFloat(document.getElementById('etazh').value) || 0;
         let typeW;
-        let koefIshodRab = 0;
         if($("#choosCunstruct").prop("checked")){
             typeW = $("#buildingType").val();
             switch(typeW){
@@ -2274,7 +2273,7 @@ echo "<script>
             ];
 
             if (myAr.length === 0) {
-                koefIshod2 = 0;
+                koefIshod2 = 1;
                 console.log(koefIshod2 + " koefIshod2");
                 return;
             }
@@ -2292,8 +2291,8 @@ echo "<script>
                         myAr: JSON.stringify(newAr)
                     },
                 }).then(function(response) {
-                    if(response == 0){
-                        koefIshod2 = 0;
+                    if(response.trim() == 1){
+                        koefIshod2 = 1;
                     }else{
                         let gettedAr = JSON.parse(response);
                         let sum = 0;
@@ -2307,14 +2306,15 @@ echo "<script>
                         koefIshod2 = sum;
                         console.log(koefIshod2);
                     }
-                    $('#sborIshodnihDannih').html(koefIshod + koefIshod2);
+                    sumIshod = koefIshod * koefIshod2 * costwork14 * K18ob;
+                    $('#sborIshodnihDannih').html(sumIshod.toFixed(3));
                     resolve();
                 }).catch(function(error) {
                     reject(error);
                 });
             });
         } else {
-            koefIshod2 = 0;
+            koefIshod2 = 1;
         }
 
     }
@@ -2325,9 +2325,10 @@ echo "<script>
             await calcIshod2();
         }
         else{
-            koefIshod2 = 0;
+            koefIshod2 = 1;
         }
-        $('#sborIshodnihDannih').html(koefIshod + koefIshod2);
+        sumIshod = koefIshod * koefIshod2 * costwork14 * K18ob;
+        $('#sborIshodnihDannih').html(sumIshod.toFixed(3));
         await calculateK();
     })
 

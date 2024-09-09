@@ -22,7 +22,7 @@ if ($result && mysqli_num_rows($result) > 0) {
     echo $row['koef'];
 }
 else {
-    echo 0;
+    echo 1;
 }
 }
 

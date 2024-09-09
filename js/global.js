@@ -2,10 +2,10 @@ var currentUrl = window.location.search;
 
 
 
-let koefObmerWork1 = 0;
-let koefObmerWork2 = 0;
-let koefObsled1 = 0;
-let koefObsled2 = 0;
+let koefObmerWork1 = 1;
+let koefObmerWork2 = 1;
+let koefObsled1 = 1;
+let koefObsled2 = 1;
 
 let idActiveSmeta;
 
@@ -413,8 +413,7 @@ async function getSmeta(id) {
     await calcObmerWorksPart2();
     await calcObsled1();
     await calcObsled2();
-
-
+    await calculateK();
 }
 
 function saveSmeta() {
@@ -633,7 +632,7 @@ async function calcObmerWorksPart2() {
         ];
 
         if (myAr.length === 0) {
-            koefObmerWork2 = 0;
+            koefObmerWork2 = 1;
             console.log(koefObmerWork2 + " koefObmerWork2");
             return;
         }
@@ -650,8 +649,8 @@ async function calcObmerWorksPart2() {
                     myAr: JSON.stringify(newAr)
                 },
             }).then(function(response) {
-                if(response == 0){
-                    koefObmerWork2 = 0;
+                if(response.trim() == 1){
+                    koefObmerWork2 = 1;
                 }else {
                     let gettedAr = JSON.parse(response);
                     let sum = 0;
@@ -666,14 +665,14 @@ async function calcObmerWorksPart2() {
                 }
                 sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * K18ob;
 
-                $('#obmerRaboty').html(sumObmer);
+                $('#obmerRaboty').html(sumObmer.toFixed(3));
                 resolve();
             }).catch(function(error) {
                 reject(error);
             });
         });
     } else {
-        koefObmerWork2 = 0;
+        koefObmerWork2 = 1;
     }
     await calculateK();
 
@@ -688,10 +687,10 @@ $("#choosCunstruct4").on("change", async function(event){
         await calcObmerWorksPart2();
     }
     else{
-        koefObmerWork2 = 0;
+        koefObmerWork2 = 1;
     }
     sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * K18ob;
-    $('#obmerRaboty').html(sumObmer);
+    $('#obmerRaboty').html(sumObmer.toFixed(3));
     await calculateK();
 });
 
@@ -800,8 +799,7 @@ async function calcObsled2() {
         ];
 
         if (myAr.length === 0) {
-            koefObsled2 = 0;
-            console.log(koefObsled2 + " koefObsled2");
+            koefObsled2 = 1;
             return;
         }
 
@@ -817,8 +815,8 @@ async function calcObsled2() {
                     myAr: JSON.stringify(newAr)
                 },
             }).then(function(response) {
-                if(response == 0){
-                    koefObsled2 = 0;
+                if(response.trim() == 1){
+                    koefObsled2 = 1;
                 }else {
                     let gettedAr = JSON.parse(response);
                     let sum = 0;
@@ -832,14 +830,14 @@ async function calcObsled2() {
                     koefObsled2 = sum;
                 }
                 sumObsled = koefObsled1 * koefObsled2 * costwork14 * K18ob;
-                $('#obsledRab').html(sumObsled);
+                $('#obsledRab').html(sumObsled.toFixed(3));
                 resolve();
             }).catch(function(error) {
                 reject(error);
             });
         });
     } else {
-        koefObsled1 = 0;
+        koefObsled1 = 1;
     }
     await calculateK();
 
@@ -853,7 +851,7 @@ $("#choosCunstruct5").on("change", async function(event){
         await calcObsled2();
     }
     else{
-        koefObsled2 = 0;
+        koefObsled2 = 1;
     }
     sumObsled = koefObsled1 * koefObsled2 * costwork14 * K18ob;
     $('#obsledRab').html(sumObsled.toFixed(3));
