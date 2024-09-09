@@ -291,7 +291,7 @@ echo "<script>
                 <?php
                 $smetaArray = $smetaList->getSmetaArray();
                 foreach ($smetaArray as $smeta) {
-                    echo '<a onclick="getSmeta(' . $smeta->getId() . ')">' . $smeta->getName() . '</a>';
+                    echo '<a onclick=" getSmeta(' . $smeta->getId() . ')">' . $smeta->getName() . '</a>';
                 }
 
                 ?>
@@ -588,11 +588,11 @@ echo "<script>
 
             <div class="pos1">
                 <div class = "viborvis">
-                    <input data-id="1" id="pasportNaZdanie" class="butrad" type="radio" name="pasportNaZdanie" value="1" onchange="calculateFinalCoefficientSborSource()">
+                    <input data-id="1" id="pasportNaZdanie" class="butrad" type="radio" name="pasportNaZdanie" value="1" onchange="calcIshod1()">
                 <label for="pasportNaZdanie" class="pasportzd">1) Паспорт на здание или сооружение</label>
 
                 <br>
-                    <input data-id="1" id="pasportNaZdanie" class="butrad" type="radio" name="pasportNaZdanie" value="2" onchange="calculateFinalCoefficientSborSource()">
+                    <input data-id="1" id="pasportNaZdanie" class="butrad" type="radio" name="pasportNaZdanie" value="2" onchange="calcIshod1()">
                 <label for="pasportNaZdanie" class="pasportzd">2) Паспорт на здание или сооружение. Проектная документация. Исполнительная документация. Эксплатуационная документация,
                     журнал наблюдений службы эксплуатации. Документы характеризующие фактические нагрузки и воздействия. Сертификаты на стальные конструкции.</label>
 
@@ -603,20 +603,20 @@ echo "<script>
                 <div class = "viborvischeckbox1">
                     <div class = "mainlolspace">
                    <div class = "lolspace">
-                        <input data-id="1" value="1" type="checkbox" id="toggleZd1" disabled onchange="toggleCheckboxesDop()"> Конструкция фундаментов
+                        <input data-id="1" value="1" type="checkbox" class="ishod2check" id="toggleZd1" disabled onchange="toggleCheckboxesDop()"> Конструкция фундаментов
                    </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class = "inpval" id="conval1" disabled type="number" name="inputValue" step="1" min="0" oninput="calculateFinalCoefficientSborSource()"> %
+                            <input data-id="1" class = "inpval" id="conval1"  disabled type="number" name="inputValue" step="1" min="0" oninput="calcIshod2()"> %
                         </div>
                     </div>
 
                     <div class = "mainlolspace">
                     <div class = "lolspace">
 
-                        <input data-id="1" type="checkbox" id="toggleZd2" disabled  onchange="toggleCheckboxesDop()"> Стены
+                        <input data-id="1" type="checkbox" id="toggleZd2" class="ishod2check" disabled  onchange="toggleCheckboxesDop()"> Стены
                     </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class = "inpval" id="conval2" disabled type="number" name="inputValue" step="1" min="0" oninput="calculateFinalCoefficientSborSource()"> %
+                            <input data-id="1" class = "inpval" id="conval2" disabled type="number" name="inputValue" step="1" min="0" oninput="calcIshod2()"> %
                         </div>
                     </div>
 
@@ -625,27 +625,27 @@ echo "<script>
                     <div class = "mainlolspace">
                         <div class = "lolspace">
 
-                        <input data-id="1" type="checkbox" id="toggleZd3" disabled  onchange="toggleCheckboxesDop()"> Полы
+                        <input data-id="1" type="checkbox" id="toggleZd3" class="ishod2check" disabled  onchange="toggleCheckboxesDop()"> Полы
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class = "inpval" id="conval3" disabled type="number" name="inputValue" step="1" min="0" oninput="calculateFinalCoefficientSborSource()"> %
+                            <input data-id="1" class = "inpval" id="conval3" disabled type="number" name="inputValue" step="1" min="0" oninput="calcIshod2()"> %
                         </div>
                     </div>
 
                     <div class = "mainlolspace">
                             <div class = "lolspace">
-                        <input data-id="1" type="checkbox" id="toggleZd4" disabled  onchange="toggleCheckboxesDop()"> Колонны, столбы, стойки
+                        <input data-id="1" type="checkbox" id="toggleZd4" class="ishod2check" disabled  onchange="toggleCheckboxesDop()"> Колонны, столбы, стойки
                             </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class = "inpval" id="conval4" disabled type="number" name="inputValue" step="1" min="0" oninput="calculateFinalCoefficientSborSource()"> %
+                            <input data-id="1" class = "inpval" id="conval4" disabled type="number" name="inputValue" step="1" min="0" oninput="calcIshod2()"> %
                         </div>
                     </div>
                     <div class = "mainlolspace">
                                 <div class = "lolspace">
-                        <input data-id="1" type="checkbox" id="toggleZd5" disabled  onchange="toggleCheckboxesDop()"> Несущие конструкции копров,пролетных строейний галерей
+                        <input data-id="1" type="checkbox" id="toggleZd5" class="ishod2check"  disabled  onchange="toggleCheckboxesDop()"> Несущие конструкции копров,пролетных строейний галерей
                                 </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class = "inpval" id="conval5" disabled type="number" name="inputValue" step="1" min="0" oninput="calculateFinalCoefficientSborSource()"> %
+                            <input data-id="1" class = "inpval" id="conval5" disabled type="number" name="inputValue" step="1" min="0" oninput="calcIshod2()"> %
                         </div>
                     </div>
 
@@ -659,20 +659,20 @@ echo "<script>
                 <div class = "viborvischeckbox2">
                     <div class = "mainlolspace">
                         <div class = "lolspace">
-                            <input data-id="1" type="checkbox" id="toggleZd6" disabled onchange="toggleCheckboxesDop()"> Подкрановые и тормозные конструкции
+                            <input data-id="1" type="checkbox" id="toggleZd6" class="ishod2check" disabled onchange="toggleCheckboxesDop()"> Подкрановые и тормозные конструкции
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class = "inpval" id="conval6" disabled type="number" name="inputValue" step="1" min="0" oninput="calculateFinalCoefficientSborSource()"> %
+                            <input data-id="1" class = "inpval" id="conval6" disabled type="number" name="inputValue" step="1" min="0" oninput="calcIshod2()"> %
                         </div>
                     </div>
 
                     <div class = "mainlolspace">
                         <div class = "lolspace">
 
-                            <input data-id="1" type="checkbox" id="toggleZd7" disabled  onchange="toggleCheckboxesDop()"> Перекрытия
+                            <input data-id="1" type="checkbox" id="toggleZd7" class="ishod2check" disabled  onchange="toggleCheckboxesDop()"> Перекрытия
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class = "inpval" id="conval7" disabled type="number" name="inputValue" step="1" min="0" oninput="calculateFinalCoefficientSborSource()"> %
+                            <input data-id="1" class = "inpval" id="conval7" disabled type="number" name="inputValue" step="1" min="0" oninput="calcIshod2()"> %
                         </div>
                     </div>
 
@@ -680,19 +680,19 @@ echo "<script>
                     <div class="mainlolspace">
                         <div class="lolspace">
 
-                            <input data-id="1" type="checkbox" id="toggleZd8" disabled onchange="toggleCheckboxesDop()"> Покрытие
+                            <input data-id="1" type="checkbox" id="toggleZd8" class="ishod2check" disabled onchange="toggleCheckboxesDop()"> Покрытие
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class="inpval" id="conval8" disabled type="number" name="inputValue" step="1" min="0" oninput="calculateFinalCoefficientSborSource()"> %
+                            <input data-id="1" class="inpval" id="conval8" disabled type="number" name="inputValue" step="1" min="0" oninput="calcIshod2()"> %
                         </div>
                     </div>
 
                     <div class="mainlolspace">
                         <div class="lolspace">
-                            <input data-id="1" type="checkbox" id="toggleZd9" disabled onchange="toggleCheckboxesDop()"> Кровля
+                            <input data-id="1" type="checkbox" id="toggleZd9" class="ishod2check" disabled onchange="toggleCheckboxesDop()"> Кровля
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class="inpval" id="conval9" disabled type="number" name="inputValue" step="1" min="0" oninput="calculateFinalCoefficientSborSource()"> %
+                            <input data-id="1" class="inpval" id="conval9" disabled type="number" name="inputValue" step="1" min="0" oninput="calcIshod2()"> %
                         </div>
                     </div>
                 </div>
@@ -2045,7 +2045,7 @@ echo "<script>
 
 
 
-    async function  calculateHaracterCoefficient() {
+    async function calculateHaracterCoefficient() {
         sumHarakter = 0;
         function getCheckboxValue(checkboxId) {
             const checkbox = document.getElementById(checkboxId);
@@ -2148,11 +2148,11 @@ echo "<script>
         sumHarakter  = finalCoefficient.toFixed(2);
 
         updateBuildingInfo();
-        calculateK();
+        await calculateK();
     }
 
 
-    async function calculateFinalCoefficientSborSource() {
+    async function calcIshod1() {
         const buildingType = parseFloat(document.querySelector('#buildingType option:checked').getAttribute('data-id')) || 1;
         const costwork14 = parseFloat(document.getElementById('costwork14').value) || 1;
         mainvisotazdani = parseFloat(document.getElementById('visotazdani').value) || 0;
@@ -2222,13 +2222,15 @@ echo "<script>
                     },
                     success: function (response) {
                         koefIshod = parseFloat(response.trim());
+                        console.log(koefIshod)
+                        console.log(koefIshod2)
                         $('#sborIshodnihDannih').html(koefIshod + koefIshod2);
                         resolve();
                     },
                 })
             })
         }
-        calculateK();
+        await calculateK();
 
     }
 
@@ -2253,21 +2255,38 @@ echo "<script>
                 default:
                     typeW = etazh > 1 ? 2 : 1;
             }
-            let arKoef = [];
-            let myAr = [];
-            for (let i = 1; i <= 9; i++) {
-                let koef = $("#toggleZd" + i).prop("checked") ? $("#conval" + i).val() / 100 : 0;
-                arKoef.push(koef);
-                if (koef != 0) {
-                    myAr.push(i);
-                }
-            }
+            let koef1 = $("#toggleZd1").prop("checked") ? $("#conval1").val() / 100 : 0;
+            let koef2 = $("#toggleZd2").prop("checked") ? $("#conval2").val() / 100 : 0;
+            let koef3 = $("#toggleZd3").prop("checked") ? $("#conval3").val() / 100 : 0;
+            let koef4 = $("#toggleZd4").prop("checked") ? $("#conval4").val() / 100 : 0;
+            let koef5 = $("#toggleZd5").prop("checked") ? $("#conval5").val() / 100 : 0;
+            let koef6 = $("#toggleZd6").prop("checked") ? $("#conval6").val() / 100 : 0;
+            let koef7 = $("#toggleZd7").prop("checked") ? $("#conval7").val() / 100 : 0;
+            let koef8 = $("#toggleZd8").prop("checked") ? $("#conval8").val() / 100 : 0;
+            let koef9 = $("#toggleZd9").prop("checked") ? $("#conval9").val() / 100 : 0;
+
+            let arKoef = [koef1, koef2, koef3, koef4, koef5, koef6, koef7, koef8, koef9];
+
+            let myAr = [
+                koef1 == 0 ? 0 : 1,
+                koef2 == 0 ? 0 : 2,
+                koef3 == 0 ? 0 : 3,
+                koef4 == 0 ? 0 : 4,
+                koef5 == 0 ? 0 : 9,
+                koef6 == 0 ? 0 : 5,
+                koef7 == 0 ? 0 : 6,
+                koef8 == 0 ? 0 : 7,
+                koef9 == 0 ? 0 : 8
+            ];
 
             if (myAr.length === 0) {
                 koefIshod2 = 0;
                 console.log(koefIshod2 + " koefIshod2");
                 return;
             }
+
+            let newAr = myAr.filter(item => item != 0);
+
 
 
             return new Promise(function(resolve, reject) {
@@ -2276,20 +2295,25 @@ echo "<script>
                     method: "POST",
                     data: {
                         typeW: typeW,
-                        myAr: JSON.stringify(myAr)
+                        myAr: JSON.stringify(newAr)
                     },
                 }).then(function(response) {
-                    let gettedAr = JSON.parse(response);
-                    let sum = 0;
-                    let index = 0;
-                    arKoef.map(item => {
-                        if(item != 0){
-                            sum += gettedAr[index] * item;
-                            index++;
-                        }
-                    });
-                    koefIshod2 = sum;
-                    console.log(koefIshod2 + " koefIshod2");
+                    if(response == 0){
+                        koefIshod2 = 0;
+                    }else{
+                        let gettedAr = JSON.parse(response);
+                        let sum = 0;
+                        let index = 0;
+                        arKoef.map(item => {
+                            if(item != 0){
+                                sum += gettedAr[index] * item;
+                                index++;
+                            }
+                        });
+                        koefIshod2 = sum;
+                        console.log(koefIshod2);
+                    }
+                    $('#sborIshodnihDannih').html(koefIshod + koefIshod2);
                     resolve();
                 }).catch(function(error) {
                     reject(error);
@@ -2297,13 +2321,27 @@ echo "<script>
             });
         } else {
             koefIshod2 = 0;
-            console.log(koefIshod2 + " koefIshod2");
         }
 
     }
 
-    $("#choosCunstruct").on("click", async function(){
+    $("#choosCunstruct").on("change", async function(event){
+        if(event.target.checked){
+            await calcIshod1();
+            await calcIshod2();
+        }
+        else{
+            koefIshod2 = 0;
+        }
+        $('#sborIshodnihDannih').html(koefIshod + koefIshod2);
+        await calculateK();
+    })
+
+    $(".ishod2check").on("change", async function(){
+
         await calcIshod2();
+        await calculateK();
+
     })
 
     function updateBuildingInfo() {
@@ -2419,7 +2457,7 @@ echo "<script>
 
 
 
-    function toggleInputs() {
+    async function toggleInputs() {
         const calendarInput = document.getElementById('commonInputField');
         const workingInput = document.getElementById('commonInputFieldWorking');
         const isCalendarSelected = document.getElementById('calendarDays').checked;
@@ -2433,7 +2471,7 @@ echo "<script>
             calendarInput.disabled = true;
             calendarInput.value = '';
         }
-        calculateK();
+        await calculateK();
         console.log (5 + "updateWorkingDays");
     }
 
@@ -2559,7 +2597,7 @@ echo "<script>
 
     }
 
-    function toggleSelect(toggleId, selectContainerId, optionsId) {
+    async function toggleSelect(toggleId, selectContainerId, optionsId) {
         const toggleSelect = document.getElementById(toggleId);
         const selectContainer = document.getElementById(selectContainerId);
         const optionsSelect = document.getElementById(optionsId);
@@ -2572,10 +2610,10 @@ echo "<script>
             optionsSelect.selectedIndex = 0;
             optionsSelect.disabled = true;
         }
-        calculateK();
+        await calculateK();
     }
 
-    function toggleCheckboxes() {
+   async function toggleCheckboxes() {
         const isChecked = document.getElementById('choosCunstruct').checked;
         const checkboxes = document.querySelectorAll('.viborvischeckbox1 input[type="checkbox"], .viborvischeckbox2 input[type="checkbox"]');
 
@@ -2609,42 +2647,42 @@ echo "<script>
         }
         }
 
-        calculateK();
+        await calculateK();
     }
 
-    function toggleCheckboxes4() {
+    async function toggleCheckboxes4() {
         const isChecked = document.getElementById('choosCunstruct4').checked;
         const checkboxes = document.querySelectorAll('.viborvischeckbox3 input[type="checkbox"], .viborvischeckbox4 input[type="checkbox"]');
 
         checkboxes.forEach(checkbox => {
             checkbox.disabled = !isChecked;
         });
-        calculateK();
+        await calculateK();
     }
 
-    function toggleCheckboxes5() {
+    async function toggleCheckboxes5() {
         const isChecked = document.getElementById('choosCunstruct5').checked;
         const checkboxes = document.querySelectorAll('.viborvischeckbox53 input[type="checkbox"], .viborvischeckbox54 input[type="checkbox"]');
 
         checkboxes.forEach(checkbox => {
             checkbox.disabled = !isChecked;
         });
-        calculateK();
+        await calculateK();
     }
 
 
-    function toggleCheckboxes6() {
+    async function toggleCheckboxes6() {
         const isChecked = document.getElementById('choosCunstruct6').checked;
         const checkboxes = document.querySelectorAll('.viborvischeckbox63 input[type="checkbox"], .viborvischeckbox64 input[type="checkbox"]');
 
         checkboxes.forEach(checkbox => {
             checkbox.disabled = !isChecked;
         });
-        calculateK();
+        await calculateK();
     }
 
 
-    function toggleCheckboxesDop() {
+    async function toggleCheckboxesDop() {
         const checkboxes = [
             {checkbox: document.getElementById('toggleZd1'), input: document.getElementById('conval1')},
             {checkbox: document.getElementById('toggleZd2'), input: document.getElementById('conval2')},
@@ -2667,11 +2705,11 @@ echo "<script>
             }
         });
 
-        calcIshod2();
+        await calcIshod2();
     }
 
 
-    function toggleCheckboxesDop4() {
+    async function toggleCheckboxesDop4() {
         const checkboxes = [
             {checkbox: document.getElementById('toggleZd41'), input: document.getElementById('conval41')},
             {checkbox: document.getElementById('toggleZd42'), input: document.getElementById('conval42')},
@@ -2688,7 +2726,7 @@ echo "<script>
         checkboxes.forEach(item => {
             item.input.disabled = !item.checkbox.checked;
         });
-        calculateK();
+        await calculateK();
     }
 
     function toggleCheckboxesDop5() {
@@ -2939,6 +2977,8 @@ function printTZ (){
 
         }
     }
+
+
 
 
 

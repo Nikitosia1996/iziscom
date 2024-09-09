@@ -87,7 +87,7 @@ let koefObmerWork1;
 let koefObmerWork2;
 
 
-function getSmeta(id) {
+async function getSmeta(id) {
     idActiveSmeta = id;
     const selectedItem = smetaList.find(item => item.id == id);
     if (selectedItem) {
@@ -396,16 +396,16 @@ function getSmeta(id) {
     }
     document.getElementById("myDropdown").classList.toggle("show");
     updateCalendarDaysFromEnd();
-    calculateHaracterCoefficient();
-    calcIshod2();
-    calculateFinalCoefficientSborSource();
-    calcObmerWorksPart1();
-    calcObmerWorksPart2();
-    updateBuildingInfo();
-    calculateK();
-    toggleCheckboxesDop();
 
-    return null;
+    updateBuildingInfo();
+    await toggleCheckboxesDop();
+    await calculateHaracterCoefficient();
+    await calcIshod1();
+    await calcIshod2();
+    await calcObmerWorksPart1();
+    await calcObmerWorksPart2();
+
+
 }
 
 function saveSmeta() {
@@ -517,10 +517,12 @@ function updateSmetaLinks() {
     smetaList.forEach(smeta => {
         const link = document.createElement('a');
         link.id = `smeta-${smeta.id}`;
-        link.onclick = () => getSmeta(smeta.id);
+        link.onclick = async () => await getSmeta(smeta.id);
         link.textContent = smeta.name;
         dropdown.appendChild(link);
     });
+
+
 }
 
 
@@ -530,7 +532,9 @@ async function calcObmerWorksPart1() {
     let etazh = parseFloat(document.getElementById('etazh').value) || 0;
     let kat_sl_zd = hardZdanie;
     const kat_sl_rabs = document.querySelector('input[name="kat_sl_rab"]:checked');
-    let kat_sl_rab = kat_sl_rabs.getAttribute('value');
+    let kat_sl_rab;
+    if(kat_sl_rabs)
+        kat_sl_rab = kat_sl_rabs.getAttribute('value');
     let vysota;
     if (etazh < 2) {
         if (mainvisotazdani < 1) {
