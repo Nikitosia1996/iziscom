@@ -2304,7 +2304,6 @@ echo "<script>
                             }
                         });
                         koefIshod2 = sum;
-                        console.log(koefIshod2);
                     }
                     sumIshod = koefIshod * koefIshod2 * costwork14 * K18ob;
                     $('#sborIshodnihDannih').html(sumIshod.toFixed(3));

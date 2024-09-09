@@ -414,6 +414,10 @@ async function getSmeta(id) {
     await calcObsled1();
     await calcObsled2();
     await calculateK();
+    console.log("koefObmerWork1 = " + koefObmerWork1);
+    console.log("koefObmerWork2 = " + koefObmerWork2);
+    console.log("obmer = " + sumObmer);
+
 }
 
 function saveSmeta() {
@@ -663,6 +667,7 @@ async function calcObmerWorksPart2() {
                     })
                     koefObmerWork2 = sum;
                 }
+
                 sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * K18ob;
 
                 $('#obmerRaboty').html(sumObmer.toFixed(3));
@@ -689,7 +694,11 @@ $("#choosCunstruct4").on("change", async function(event){
     else{
         koefObmerWork2 = 1;
     }
-    sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * K18ob;
+    if(koefObmerWork1 == 1 && koefObmerWork2 == 1){
+        sumObmer = 0;
+    }else {
+        sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * K18ob;
+    }
     $('#obmerRaboty').html(sumObmer.toFixed(3));
     await calculateK();
 });
@@ -856,6 +865,10 @@ $("#choosCunstruct5").on("change", async function(event){
     sumObsled = koefObsled1 * koefObsled2 * costwork14 * K18ob;
     $('#obsledRab').html(sumObsled.toFixed(3));
     await calculateK();
+})
+
+$(".obmer2check").on("change", async () => {
+    await calcObmerWorksPart2()
 })
 
 
