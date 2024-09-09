@@ -724,18 +724,18 @@ async function calcObsled1() {
         if (mainvisotazdani < 1) {
             vysota = 0; // Если значение меньше 1, можно задать значение по умолчанию
         } else {
-            const thresholds = [0, 6, 9, 12, 15, 18, 21];
+            const thresholds = [0, 6, 7, 8, 9, 10, 12, 14, 16, 18, 20, 23, 26, 30, 35, 40, 45, 50];
             vysota = thresholds.findIndex(threshold => mainvisotazdani < threshold);
             if (vysota === -1) {
-                vysota = 7; // Если значение больше 50
+                vysota = 18; // Если значение больше 50
             }
         }
     }else{
 
-        const thresholds = [0, 2, 3, 4, 6];
+        const thresholds = [0, 8, 9, 10, 12, 14, 16, 18, 20, 23, 26, 30,  35, 40, 45, 50];
         vysota = thresholds.findIndex(threshold => etazh < threshold);
         if (vysota === -1) {
-            vysota = 5; // Если значение больше 50
+            vysota = 16; // Если значение больше 50
         }
 
     }
