@@ -2215,7 +2215,11 @@ echo "<script>
                     },
                     success: function (response) {
                         koefIshod = parseFloat(response.trim());
-                        sumIshod = koefIshod * koefIshod2 * costwork14 * K18ob;
+                        if(koefIshod == 1 && koefIshod2 == 1){
+                            sumIshod = 0;
+                        }else {
+                            sumIshod = koefIshod * koefIshod2 * costwork14 * K18ob;
+                        }
                         $('#sborIshodnihDannih').html(sumIshod.toFixed(3));
                         resolve();
                     },
@@ -2269,11 +2273,11 @@ echo "<script>
                 koef8 == 0 ? 0 : 7,
                 koef9 == 0 ? 0 : 8
             ];
-
-            if (myAr.length === 0) {
+            let count0 = 0;
+            myAr.map(item => {item == 0 ? count0++ : count0});
+            if (myAr.length == count0) {
                 koefIshod2 = 1;
-                console.log(koefIshod2 + " koefIshod2");
-                return;
+
             }
 
             let newAr = myAr.filter(item => item != 0);
@@ -2303,7 +2307,13 @@ echo "<script>
                         });
                         koefIshod2 = sum;
                     }
-                    sumIshod = koefIshod * koefIshod2 * costwork14 * K18ob;
+                    console.log("koefIshod = " + koefIshod);
+                    console.log("koefIshod2 = " + koefIshod2);
+                    if(koefIshod == 1 && koefIshod2 == 1){
+                        sumIshod = 0;
+                    }else {
+                        sumIshod = koefIshod * koefIshod2 * costwork14 * K18ob;
+                    }
                     $('#sborIshodnihDannih').html(sumIshod.toFixed(3));
                     resolve();
                 }).catch(function(error) {

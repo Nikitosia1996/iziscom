@@ -585,7 +585,11 @@ async function calcObmerWorksPart1() {
 
         }).then(response => {
             koefObmerWork1 = parseFloat(response.trim());
-            sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * K18ob;
+            if(koefObmerWork1 == 1 && koefObmerWork2 == 1){
+                sumObmer = 0;
+            }else {
+                sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * K18ob;
+            }
             $('#obmerRaboty').html(sumObmer.toFixed(3));
             resolve();
         })
@@ -639,9 +643,17 @@ async function calcObmerWorksPart2() {
              koef9 == 0 ? 0 : 8
         ];
 
-        if (myAr.length === 0) {
+        let count0 = 0;
+        myAr.map(item => {item == 0 ? count0++ : count0});
+
+        if (myAr.length == count0) {
             koefObmerWork2 = 1;
-            console.log(koefObmerWork2 + " koefObmerWork2");
+            console.log("myAr.length = " + myAr.length);
+            console.log("count0 = " + count0);
+            console.log("costwork14 = " + costwork14);
+            console.log("K18ob = " + K18ob);
+            console.log("koefObmerWork1 = " + koefObmerWork1);
+            console.log("koefObmerWork2 = " + koefObmerWork2);
             return;
         }
 
@@ -672,7 +684,11 @@ async function calcObmerWorksPart2() {
                     koefObmerWork2 = sum;
                 }
 
-                sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * K18ob;
+                if(koefObmerWork1 == 1 && koefObmerWork2 == 1){
+                    sumObmer = 0;
+                }else {
+                    sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * K18ob;
+                }
 
                 $('#obmerRaboty').html(sumObmer.toFixed(3));
                 resolve();
@@ -761,7 +777,11 @@ async function calcObsled1() {
 
         }).then(response => {
             koefObsled1 = parseFloat(response.trim());
-            sumObsled = koefObsled1 * koefObsled2 * costwork14 * K18ob;
+            if(koefObsled1 == 1 && koefObsled2 == 1){
+                sumObsled = 0;
+            }else {
+                sumObsled = koefObsled1 * koefObsled2 * costwork14 * K18ob;
+            }
             $('#obsledRab').html(sumObsled.toFixed(3));
             resolve();
         })
@@ -814,7 +834,9 @@ async function calcObsled2() {
             koef9 == 0 ? 0 : 8
         ];
 
-        if (myAr.length === 0) {
+        let count0 = 0;
+        myAr.map(item => {item == 0 ? count0++ : count0});
+        if (myAr.length == count0) {
             koefObsled2 = 1;
             return;
         }
@@ -845,7 +867,11 @@ async function calcObsled2() {
                     })
                     koefObsled2 = sum;
                 }
-                sumObsled = koefObsled1 * koefObsled2 * costwork14 * K18ob;
+                if(koefObsled1 == 1 && koefObsled2 == 1){
+                    sumObsled = 0;
+                }else {
+                    sumObsled = koefObsled1 * koefObsled2 * costwork14 * K18ob;
+                }
                 $('#obsledRab').html(sumObsled.toFixed(3));
                 resolve();
             }).catch(function(error) {
@@ -985,7 +1011,9 @@ async function calcSosttech2() {
             koef9 == 0 ? 0 : 8
         ];
 
-        if (myAr.length === 0) {
+        let count0 = 0;
+        myAr.map(item => {item == 0 ? count0++ : count0});
+        if (myAr.length == count0) {
             koefSosttech2 = 1;
             return;
         }

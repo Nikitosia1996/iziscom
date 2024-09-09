@@ -6,7 +6,7 @@ $visota_zdanie = $_POST['valVisZd'] ?? '';
 $etazh = $_POST['etazh'] ?? '';
 
 if (empty($pasport_zdanie) || empty($hard_zdanie) || empty($visota_zdanie)) {
-    echo 0;
+    echo 1;
 } else{
 
     if ($etazh <2 )
