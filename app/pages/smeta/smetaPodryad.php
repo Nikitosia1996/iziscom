@@ -4,6 +4,7 @@ include "app/classes/SmetaList.php";
 $harakteristikaObject = 0;
 $sborIshodnihDannih = 0;
 $obmerRaboty = 0;
+$obsledRab = 0;
 
 
 echo "<script>
@@ -861,7 +862,7 @@ echo "<script>
     <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 
 
-    <div class="nameforblock5" onclick="toggleDisplay('.nameforblock5', '.dndb5');"><input class = "onCollap" type="checkbox" id="obsledCheck" name="sborDann" value="1">&nbsp;&nbsp;&nbsp;Обследовательские работы &nbsp;&nbsp;&nbsp;<?php echo '<span class="sborIshodnihDannih" id="sborIshodnihDannih">'; echo $sborIshodnihDannih; echo'</span>'; ?></div>
+    <div class="nameforblock5" onclick="toggleDisplay('.nameforblock5', '.dndb5');"><input class = "onCollap" type="checkbox" id="obsledCheck" name="sborDann" value="1">&nbsp;&nbsp;&nbsp;Обследовательские работы &nbsp;&nbsp;&nbsp;<?php echo '<span class="sborIshodnihDannih" id="obsledRab">'; echo $obsledRab; echo'</span>'; ?></div>
     <div class="dndb5">
 
         <div class="mainfreename">
@@ -883,18 +884,18 @@ echo "<script>
 
             <div class="pos1">
                 <div class="viborvis">
-                    <input id="predvOsmotr" class="butrad" type="radio" name="daysType" value="1">
-                    <label for="predvOsmotr" class="pasportzd">Предварительный осмотр</label>
+                    <input id="obsledObs1" class="butrad kat_sl_rab_obsled" type="radio" name="kat_sl_rab_obsled" value="1" onchange="calcObsled1()">
+                    <label for="obsledObs1" class="pasportzd kat_sl_rab">Предварительный осмотр</label>
                     <br>
-                    <input id="obshObsled" class="butrad" type="radio" name="daysType" value="2">
-                    <label for="ObshObsled" class="pasportzd">Общее обследование</label>
+                    <input id="obsledObs2" class="butrad kat_sl_rab_obsled" type="radio" name="kat_sl_rab_obsled" value="2" onchange="calcObsled1()">
+                    <label for="obsledObs2" class="pasportzd">Общее обследование</label>
                     <br>
-                    <input id="detal0bsled" class="butrad" type="radio" name="daysType" value="3">
-                    <label for="detalObsled" class="pasportzd">Детальное обследование</label>
+                    <input id="obsledObs3" class="butrad kat_sl_rab_obsled" type="radio" name="kat_sl_rab_obsled" value="3" onchange="calcObsled1()">
+                    <label for="obsledObs3" class="pasportzd">Детальное обследование</label>
                     <br>
-                    <input id="rabotyObshDetal" class="butrad" type="radio" name="daysType" value="4">
-                    <label for="rabotyObshDetal" class="pasportzd">Работы совмещающие общее и детальное обследование</label>
-                    <br>
+<!--                    <input id="rabotyObshDetal" class="butrad" type="radio" name="daysType" value="4">-->
+<!--                    <label for="rabotyObshDetal" class="pasportzd">Работы совмещающие общее и детальное обследование</label>-->
+<!--                    <br>-->
                 </div>
             </div>
             <div class="pos2">
@@ -905,8 +906,7 @@ echo "<script>
                             Конструкция фундаментов
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval51" disabled type="number" name="inputValue" step="1"
-                                   min="0">
+                            <input class="inpval" id="conval51" disabled type="number" name="inputValue" step="1" min="0" oninput="calcObsled2()">
                         </div>
                     </div>
 
@@ -916,8 +916,7 @@ echo "<script>
                             <input type="checkbox" id="toggleZd52" disabled onchange="toggleCheckboxesDop5()"> Стены
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval52" disabled type="number" name="inputValue" step="1"
-                                   min="0">%
+                            <input class="inpval" id="conval52" disabled type="number" name="inputValue" step="1" min="0" oninput="calcObsled2()">%
                         </div>
                     </div>
 
@@ -928,8 +927,7 @@ echo "<script>
                             <input type="checkbox" id="toggleZd53" disabled onchange="toggleCheckboxesDop5()"> Полы
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval53" disabled type="number" name="inputValue" step="1"
-                                   min="0">%
+                            <input class="inpval" id="conval53" disabled type="number" name="inputValue" step="1" min="0" oninput="calcObsled2()">%
                         </div>
                     </div>
 
@@ -939,8 +937,7 @@ echo "<script>
                             столбы, стойки
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval54" disabled type="number" name="inputValue" step="1"
-                                   min="0">%
+                            <input class="inpval" id="conval54" disabled type="number" name="inputValue" step="1" min="0" oninput="calcObsled2()">%
                         </div>
                     </div>
                     <div class="mainlolspace">
@@ -949,8 +946,7 @@ echo "<script>
                             конструкции копров,пролетных строейний галерей
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval55" disabled type="number" name="inputValue" step="1"
-                                   min="0">%
+                            <input class="inpval" id="conval55" disabled type="number" name="inputValue" step="1"  min="0" oninput="calcObsled2()">%
                         </div>
                     </div>
 
@@ -967,8 +963,7 @@ echo "<script>
                             Подкрановые и тормозные конструкции
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval56" disabled type="number" name="inputValue" step="1"
-                                   min="0">%
+                            <input class="inpval" id="conval56" disabled type="number" name="inputValue" step="1"  min="0" oninput="calcObsled2()">%
                         </div>
                     </div>
 
@@ -979,8 +974,7 @@ echo "<script>
                             Перекрытия
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval57" disabled type="number" name="inputValue" step="1"
-                                   min="0">%
+                            <input class="inpval" id="conval57" disabled type="number" name="inputValue" step="1"  min="0" oninput="calcObsled2()">%
                         </div>
                     </div>
 
@@ -991,8 +985,7 @@ echo "<script>
                             <input type="checkbox" id="toggleZd58" disabled onchange="toggleCheckboxesDop5()"> Покрытие
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval58" disabled type="number" name="inputValue" step="1"
-                                   min="0">%
+                            <input class="inpval" id="conval58" disabled type="number" name="inputValue" step="1" min="0" oninput="calcObsled2()">%
                         </div>
                     </div>
 
@@ -1001,8 +994,7 @@ echo "<script>
                             <input type="checkbox" id="toggleZd59" disabled onchange="toggleCheckboxesDop5()"> Кровля
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval59" disabled type="number" name="inputValue" step="1"
-                                   min="0">%
+                            <input class="inpval" id="conval59" disabled type="number" name="inputValue" step="1" min="0" oninput="calcObsled2()">%
                         </div>
                     </div>
                 </div>
@@ -2013,6 +2005,7 @@ echo "<script>
     let sumHarakter; // СУММА ВКЛАДКИ ХАРАКТЕРИСТИКА ОБЪЕКТА
     let sumIshod = 0; // СУММА ВКЛАДКИ СБОР ИСХОДНЫХ ДАННЫХ
     let sumObmer = 0; // СУММА ВКЛАДКИ обмера
+    let sumObsled = 0; // СУММА ВКЛАДКИ обcледа
     let fullSumma=0; // ОБЩАЯ СУММА ВСЕХ ВКЛАДОК
     let K18ob = 0; // Общий  К18.об
     let hardZdanie; // КАТЕГОРИЯ СЛОЖНОСТИ ЗДАНИЯ
@@ -2027,13 +2020,10 @@ echo "<script>
 
 
      async function calculateK() {
-         const toggleZdDopUsl = getCheckboxValue('toggleZdDopUsl');
-         const toggleZdDopUsl1 = getCheckboxValue('toggleZdDopUsl1');
-
-
          sumIshod = koefIshod + koefIshod2;
          sumObmer = koefObmerWork1 + koefObmerWork2;
-         fullSumma = parseFloat(sumHarakter) + parseFloat(sumIshod) + parseFloat(sumObmer);
+         sumObsled = koefObsled1 + koefObsled2;
+         fullSumma = parseFloat(sumHarakter) + parseFloat(sumIshod) + parseFloat(sumObmer) +  parseFloat(sumObsled);
          fullSumma = fullSumma.toFixed(2);
         document.getElementById('harakteristikaObjectObsh').innerText = fullSumma;
         document.getElementById('harakteristikaObjectSmeta').innerText = fullSumma;
@@ -2682,13 +2672,33 @@ echo "<script>
     async function toggleCheckboxes5() {
         const isChecked = document.getElementById('choosCunstruct5').checked;
         const checkboxes = document.querySelectorAll('.viborvischeckbox53 input[type="checkbox"], .viborvischeckbox54 input[type="checkbox"]');
-
-        checkboxes.forEach(checkbox => {
-            checkbox.disabled = !isChecked;
-        });
+        if (!isChecked) {
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = false;
+                checkbox.disabled = true;
+            });
+            const inputIds = ['conval51', 'conval52', 'conval53', 'conval54', 'conval55', 'conval56', 'conval57', 'conval58', 'conval59'];
+            inputIds.forEach(id => {
+                const input = document.getElementById(id);
+                if (input) {
+                    input.disabled = true;
+                    input.value = '100';
+                }
+            });
+        } else {
+            checkboxes.forEach(checkbox => {
+                checkbox.disabled = false;
+            });
+            const inputIds = ['conval51', 'conval52', 'conval53', 'conval54', 'conval55', 'conval56', 'conval57', 'conval58', 'conval59'];
+            inputIds.forEach(id => {
+                const input = document.getElementById(id);
+                if (input) {
+                    input.value = '100';
+                }
+            });
+        }
         await calculateK();
     }
-
 
     async function toggleCheckboxes6() {
         const isChecked = document.getElementById('choosCunstruct6').checked;
@@ -2750,7 +2760,7 @@ echo "<script>
         await calculateK();
     }
 
-    function toggleCheckboxesDop5() {
+   async function toggleCheckboxesDop5() {
         const checkboxes = [
             {checkbox: document.getElementById('toggleZd51'), input: document.getElementById('conval51')},
             {checkbox: document.getElementById('toggleZd52'), input: document.getElementById('conval52')},
@@ -2766,7 +2776,9 @@ echo "<script>
         checkboxes.forEach(item => {
             item.input.disabled = !item.checkbox.checked;
         });
-        calculateK();
+        await calcObsled1();
+        await calcObsled2();
+        await calculateK();
     }
 
     function toggleCheckboxesDop6() {

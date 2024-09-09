@@ -1,5 +1,12 @@
 var currentUrl = window.location.search;
 
+
+
+let koefObmerWork1 = 0;
+let koefObmerWork2 = 0;
+let koefObsled1 = 0;
+let koefObsled2 = 0;
+
 let idActiveSmeta;
 
 let selectZakazchik = $('#zakazchik');
@@ -83,8 +90,7 @@ let toggleZdDopUslrazrab = $('#toggleZdDopUslrazrab');
 let toggleZdDopUslrazrabrek = $('#toggleZdDopUslrazrabrek');
 
 
-let koefObmerWork1 = 0;
-let koefObmerWork2 = 0;
+
 
 
 async function getSmeta(id) {
@@ -399,11 +405,14 @@ async function getSmeta(id) {
     updateBuildingInfo();
     await toggleCheckboxesDop();
     await toggleCheckboxesDop4();
+    await toggleCheckboxesDop5();
     await calculateHaracterCoefficient();
     await calcIshod1();
     await calcIshod2();
     await calcObmerWorksPart1();
     await calcObmerWorksPart2();
+    await calcObsled1();
+    await calcObsled2();
 
 
 }
@@ -528,10 +537,6 @@ function updateSmetaLinks() {
 
 
 async function calcObmerWorksPart1() {
-
-
-
-
 
     let etazh = parseFloat(document.getElementById('etazh').value) || 0;
     let kat_sl_zd = hardZdanie;
@@ -695,8 +700,181 @@ $("#choosCunstruct4").on("change", async function(event){
     }
     $('#obmerRaboty').html(koefObmerWork1 + koefObmerWork2);
     await calculateK();
-})
+});
 
+
+
+
+
+//------------------------------------------------------------------------------
+
+
+
+
+async function calcObsled1() {
+
+    let etazh = parseFloat(document.getElementById('etazh').value) || 0;
+    let kat_sl_zd = hardZdanie;
+    const kat_sl_rabs = document.querySelector('input[name="kat_sl_rab_obsled"]:checked');
+    let kat_sl_rab;
+    if(kat_sl_rabs)
+        kat_sl_rab = kat_sl_rabs.getAttribute('value');
+    let vysota;
+    if (etazh < 2) {
+        if (mainvisotazdani < 1) {
+            vysota = 0; // Если значение меньше 1, можно задать значение по умолчанию
+        } else {
+            const thresholds = [0, 6, 7, 8, 9, 10, 12, 14, 16, 18, 20, 23, 26, 30, 35, 40, 45, 50];
+            vysota = thresholds.findIndex(threshold => mainvisotazdani < threshold);
+            if (vysota === -1) {
+                vysota = 18; // Если значение больше 50
+            }
+        }
+    }else{
+
+        const thresholds = [0, 8, 9, 10, 12, 14, 16, 18, 20, 23, 26, 30,  35, 40, 45, 50];
+        vysota = thresholds.findIndex(threshold => etazh < threshold);
+        if (vysota === -1) {
+            vysota = 16; // Если значение больше 50
+        }
+
+    }
+
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: "app/ajax/getKoefObsled1.php",
+            method: "POST",
+            data: {
+                etazh: etazh,
+                kat_sl_zd: kat_sl_zd,
+                kat_sl_rab: kat_sl_rab,
+                vysota: vysota
+            },
+
+        }).then(response => {
+            koefObsled1 = parseFloat(response.trim());
+            sumObsled = koefObsled1 + koefObsled2;
+            $('#obsledRab').html(sumObmer.toFixed(3));
+            resolve();
+        })
+    })
+}
+
+
+async function calcObsled2() {
+
+    let etazh = parseFloat(document.getElementById('etazh').value) || 0;
+    let typeW;
+    if($("#choosCunstruct5").prop("checked")){
+        typeW = $("#buildingType").val();
+        switch(typeW){
+            case 6:
+                typeW = 4;
+                break;
+            case 5:
+                typeW = 3;
+                break;
+            case 7:
+                typeW = 2;
+                break;
+            default:
+                typeW = etazh > 1 ? 2 : 1;
+        }
+
+
+        let koef1 = $("#toggleZd51").prop("checked") ? $("#conval51").val() / 100 : 0;
+        let koef2 = $("#toggleZd52").prop("checked") ? $("#conval52").val() / 100 : 0;
+        let koef3 = $("#toggleZd53").prop("checked") ? $("#conval53").val() / 100 : 0;
+        let koef4 = $("#toggleZd54").prop("checked") ? $("#conval54").val() / 100 : 0;
+        let koef5 = $("#toggleZd55").prop("checked") ? $("#conval55").val() / 100 : 0;
+        let koef6 = $("#toggleZd56").prop("checked") ? $("#conval56").val() / 100 : 0;
+        let koef7 = $("#toggleZd57").prop("checked") ? $("#conval57").val() / 100 : 0;
+        let koef8 = $("#toggleZd58").prop("checked") ? $("#conval58").val() / 100 : 0;
+        let koef9 = $("#toggleZd59").prop("checked") ? $("#conval59").val() / 100 : 0;
+
+        let arKoef = [koef1, koef2, koef3, koef4, koef5, koef6, koef7, koef8, koef9];
+
+        let myAr = [
+            koef1 == 0 ? 0 : 1,
+            koef2 == 0 ? 0 : 2,
+            koef3 == 0 ? 0 : 3,
+            koef4 == 0 ? 0 : 4,
+            koef5 == 0 ? 0 : 9,
+            koef6 == 0 ? 0 : 5,
+            koef7 == 0 ? 0 : 6,
+            koef8 == 0 ? 0 : 7,
+            koef9 == 0 ? 0 : 8
+        ];
+
+        if (myAr.length === 0) {
+            koefObsled2 = 0;
+            console.log(koefObsled2 + " koefObsled2");
+            return;
+        }
+
+        let newAr = myAr.filter(item => item != 0);
+
+
+        return new Promise(function(resolve, reject) {
+            $.ajax({
+                url: "app/ajax/getKoefObsled2.php",
+                method: "POST",
+                data: {
+                    typeW: typeW,
+                    myAr: JSON.stringify(newAr)
+                },
+            }).then(function(response) {
+                if(response == 0){
+                    koefObsled2 = 0;
+                }else {
+                    let gettedAr = JSON.parse(response);
+                    let sum = 0;
+                    let index = 0;
+                    arKoef.map(item => {
+                        if (item != 0) {
+                            sum += gettedAr[index] * item;
+                            index++;
+                        }
+                    })
+                    koefObsled2 = sum;
+                }
+                $('#obsledRab').html(koefObsled1 + koefObsled2);
+                resolve();
+            }).catch(function(error) {
+                reject(error);
+            });
+        });
+    } else {
+        koefObsled1 = 0;
+    }
+    await calculateK();
+
+}
+
+
+
+$("#choosCunstruct5").on("click", async function(){
+    await calcObsled2();
+});
+
+// $(".obmer2check").on("change", async function(){
+//
+//
+//
+// });
+
+
+$("#choosCunstruct5").on("change", async function(event){
+    if(event.target.checked){
+        await calcObsled1();
+        await calcObsled2();
+    }
+    else{
+        koefObsled2 = 0;
+    }
+    $('#obsledRab').html(koefObsled1 + koefObsled2);
+    await calculateK();
+})
 
 
 
