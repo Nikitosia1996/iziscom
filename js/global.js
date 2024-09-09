@@ -6,6 +6,9 @@ let koefObmerWork1 = 1;
 let koefObmerWork2 = 1;
 let koefObsled1 = 1;
 let koefObsled2 = 1;
+let koefSosttech1 = 1;
+let koefSosttech2 = 1;
+
 
 let idActiveSmeta;
 
@@ -406,6 +409,7 @@ async function getSmeta(id) {
     await toggleCheckboxesDop();
     await toggleCheckboxesDop4();
     await toggleCheckboxesDop5();
+    await toggleCheckboxesDop6();
     await calculateHaracterCoefficient();
     await calcIshod1();
     await calcIshod2();
@@ -413,10 +417,10 @@ async function getSmeta(id) {
     await calcObmerWorksPart2();
     await calcObsled1();
     await calcObsled2();
+    await calcSosttech1();
+    await calcSosttech2();
     await calculateK();
-    console.log("koefObmerWork1 = " + koefObmerWork1);
-    console.log("koefObmerWork2 = " + koefObmerWork2);
-    console.log("obmer = " + sumObmer);
+
 
 }
 
@@ -706,6 +710,9 @@ $("#choosCunstruct4").on("change", async function(event){
 
 
 
+$(".obmer2check").on("change", async () => {
+    await calcObmerWorksPart2()
+})
 
 //------------------------------------------------------------------------------
 
@@ -878,4 +885,168 @@ $(".obmer2check").on("change", async () => {
 
 
 
+//------------------------------------------------------------------------------
 
+
+
+
+async function calcSosttech1() {
+
+    let etazh = parseFloat(document.getElementById('etazh').value) || 0;
+    let kat_sl_zd = hardZdanie;
+    const kat_sl_rabs = document.querySelector('input[name="kat_sl_rab_sosttech"]:checked');
+    let kat_sl_rab;
+    if(kat_sl_rabs)
+        kat_sl_rab = kat_sl_rabs.getAttribute('value');
+    let vysota;
+    if (etazh < 2) {
+        if (mainvisotazdani < 1) {
+            vysota = 0; // Если значение меньше 1, можно задать значение по умолчанию
+        } else {
+            const thresholds = [0, 6, 7, 8, 9, 10, 12, 14, 16, 18, 20, 23, 26, 30, 35, 40, 45, 50];
+            vysota = thresholds.findIndex(threshold => mainvisotazdani < threshold);
+            if (vysota === -1) {
+                vysota = 18; // Если значение больше 50
+            }
+        }
+    }else{
+
+        const thresholds = [0, 8, 9, 10, 12, 14, 16, 18, 20, 23, 26, 30,  35, 40, 45, 50];
+        vysota = thresholds.findIndex(threshold => etazh < threshold);
+        if (vysota === -1) {
+            vysota = 16; // Если значение больше 50
+        }
+
+    }
+
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: "app/ajax/getKoefSosttech1.php",
+            method: "POST",
+            data: {
+                etazh: etazh,
+                kat_sl_zd: kat_sl_zd,
+                kat_sl_rab: kat_sl_rab,
+                vysota: vysota
+            },
+
+        }).then(response => {
+            koefSosttech1 = parseFloat(response.trim());
+            sumSosttech = koefSosttech1 * koefSosttech2 * costwork14 * K18ob;
+            $('#sostTech').html(sumSosttech.toFixed(3));
+            resolve();
+        })
+    })
+}
+
+
+async function calcSosttech2() {
+
+    let etazh = parseFloat(document.getElementById('etazh').value) || 0;
+    let typeW;
+    if($("#choosCunstruct6").prop("checked")){
+        typeW = $("#buildingType").val();
+        switch(typeW){
+            case 6:
+                typeW = 4;
+                break;
+            case 5:
+                typeW = 3;
+                break;
+            case 7:
+                typeW = 2;
+                break;
+            default:
+                typeW = etazh > 1 ? 2 : 1;
+        }
+
+
+        let koef1 = $("#toggleZd61").prop("checked") ? $("#conval61").val() / 100 : 0;
+        let koef2 = $("#toggleZd62").prop("checked") ? $("#conval62").val() / 100 : 0;
+        let koef3 = $("#toggleZd63").prop("checked") ? $("#conval63").val() / 100 : 0;
+        let koef4 = $("#toggleZd64").prop("checked") ? $("#conval64").val() / 100 : 0;
+        let koef5 = $("#toggleZd65").prop("checked") ? $("#conval65").val() / 100 : 0;
+        let koef6 = $("#toggleZd66").prop("checked") ? $("#conval66").val() / 100 : 0;
+        let koef7 = $("#toggleZd67").prop("checked") ? $("#conval67").val() / 100 : 0;
+        let koef8 = $("#toggleZd68").prop("checked") ? $("#conval68").val() / 100 : 0;
+        let koef9 = $("#toggleZd69").prop("checked") ? $("#conval69").val() / 100 : 0;
+
+        let arKoef = [koef1, koef2, koef3, koef4, koef5, koef6, koef7, koef8, koef9];
+
+        let myAr = [
+            koef1 == 0 ? 0 : 1,
+            koef2 == 0 ? 0 : 2,
+            koef3 == 0 ? 0 : 3,
+            koef4 == 0 ? 0 : 4,
+            koef5 == 0 ? 0 : 9,
+            koef6 == 0 ? 0 : 5,
+            koef7 == 0 ? 0 : 6,
+            koef8 == 0 ? 0 : 7,
+            koef9 == 0 ? 0 : 8
+        ];
+
+        if (myAr.length === 0) {
+            koefSosttech2 = 1;
+            return;
+        }
+
+        let newAr = myAr.filter(item => item != 0);
+
+
+        return new Promise(function(resolve, reject) {
+            $.ajax({
+                url: "app/ajax/getKoefSosttech2.php",
+                method: "POST",
+                data: {
+                    typeW: typeW,
+                    myAr: JSON.stringify(newAr)
+                },
+            }).then(function(response) {
+                if(response.trim() == 1){
+                    koefSosttech2 = 1;
+                }else {
+                    let gettedAr = JSON.parse(response);
+                    let sum = 0;
+                    let index = 0;
+                    arKoef.map(item => {
+                        if (item != 0) {
+                            sum += gettedAr[index] * item;
+                            index++;
+                        }
+                    })
+                    koefSosttech2 = sum;
+                }
+                sumSosttech = koefSosttech1 * koefSosttech2 * costwork14 * K18ob;
+                $('#sostTech').html(sumSosttech.toFixed(3));
+                resolve();
+            }).catch(function(error) {
+                reject(error);
+            });
+        });
+    } else {
+        koefSosttech1 = 1;
+    }
+    await calculateK();
+
+}
+
+
+
+$("#choosCunstruct6").on("change", async function(event){
+    if(event.target.checked){
+        await calcSosttech1();
+        await calcSosttech2();
+    }
+    else{
+        koefSosttech2 = 1;
+    }
+    sumSosttech = koefSosttech1 * koefSosttech2 * costwork14 * K18ob;
+    $('#sostTech').html(sumSosttech.toFixed(3));
+    await calculateK();
+})
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////

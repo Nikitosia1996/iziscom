@@ -5,6 +5,7 @@ $harakteristikaObject = 0;
 $sborIshodnihDannih = 0;
 $obmerRaboty = 0;
 $obsledRab = 0;
+$sostTech = 0;
 
 
 echo "<script>
@@ -1047,7 +1048,7 @@ echo "<script>
 
     <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 
-    <div class="nameforblock6" onclick="toggleDisplay('.nameforblock6', '.dndb6');"><input class = "onCollap" type="checkbox" id="sostTechOtchetCheck" name="sostTechOtchetCheck" value="1">&nbsp;&nbsp;&nbsp;Составление технического отчета &nbsp;&nbsp;&nbsp;<?php echo '<span class="sborIshodnihDannih" id="sborIshodnihDannih">'; echo $sborIshodnihDannih; echo'</span>'; ?></div>
+    <div class="nameforblock6" onclick="toggleDisplay('.nameforblock6', '.dndb6');"><input class = "onCollap" type="checkbox" id="sostTechOtchetCheck" name="sostTechOtchetCheck" value="1">&nbsp;&nbsp;&nbsp;Составление технического отчета &nbsp;&nbsp;&nbsp;<?php echo '<span class="sborIshodnihDannih" id="sostTech">'; echo $sostTech; echo'</span>'; ?></div>
     <div class="dndb6">
 
         <div class="mainfreename">
@@ -1069,21 +1070,21 @@ echo "<script>
 
             <div class="pos1">
                 <div class="viborvis">
-                    <input id="zaklSostStr" class="butrad" type="radio" name="daysType" value="calendar">
-                    <label for="zaklSostStr" class="pasportzd">Заключение о состоянии строительных конструкций с
+                    <input id="sosttech1" class="butrad kat_sl_rab_sosttech" type="radio" name="kat_sl_rab_sosttech" value="1" onchange="calcSosttech1()">
+                    <label for="sosttech1" class="pasportzd">Заключение о состоянии строительных конструкций с
                         выводами и рекомендациями</label>
                     <br>
-                    <input id="razrabTech" class="butrad" type="radio" name="daysType" value="working">
-                    <label for="razrabTech" class="pasportzd">То же, с разработкой технических решений для отдельных
+                    <input id="sosttech2" class="butrad kat_sl_rab_sosttech" type="radio" name="kat_sl_rab_sosttech" value="2" onchange="calcSosttech1()">
+                    <label for="sosttech2" class="pasportzd">То же, с разработкой технических решений для отдельных
                         элементов</label>
                     <br>
-                    <input id="zamenaElem" class="butrad" type="radio" name="daysType" value="working">
-                    <label for="zamenaElem" class="pasportzd">То же, с частичной заменой или усилением более 30%
+                    <input id="sosttech3" class="butrad kat_sl_rab_sosttech" type="radio" name="kat_sl_rab_sosttech" value="3" onchange="calcSosttech1()">
+                    <label for="sosttech3" class="pasportzd">То же, с частичной заменой или усилением более 30%
                         несущих элементов</label>
                     <br>
-                    <input id="rabotCategory" class="butrad" type="radio" name="daysType" value="working">
-                    <label for="rabotCategory" class="pasportzd">Работы различной категории сложности</label>
-                    <br>
+<!--                    <input id="rabotCategory" class="butrad" type="radio" name="daysType" value="working">-->
+<!--                    <label for="rabotCategory" class="pasportzd">Работы различной категории сложности</label>-->
+<!--                    <br>-->
                 </div>
             </div>
             <div class="pos2">
@@ -1094,8 +1095,7 @@ echo "<script>
                             Конструкция фундаментов
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval61" disabled type="number" name="inputValue" step="1"
-                                   min="0"> %
+                            <input class="inpval" id="conval61" disabled type="number" name="inputValue" step="1" min="0" oninput="calcSosttech2()"> %
                         </div>
                     </div>
 
@@ -1105,8 +1105,7 @@ echo "<script>
                             <input type="checkbox" id="toggleZd62" disabled onchange="toggleCheckboxesDop6()"> Стены
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval62" disabled type="number" name="inputValue" step="1"
-                                   min="0"> %
+                            <input class="inpval" id="conval62" disabled type="number" name="inputValue" step="1" min="0" oninput="calcSosttech2()"> %
                         </div>
                     </div>
 
@@ -1117,8 +1116,7 @@ echo "<script>
                             <input type="checkbox" id="toggleZd63" disabled onchange="toggleCheckboxesDop6()"> Полы
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval63" disabled type="number" name="inputValue" step="1"
-                                   min="0"> %
+                            <input class="inpval" id="conval63" disabled type="number" name="inputValue" step="1"  min="0" oninput="calcSosttech2()"> %
                         </div>
                     </div>
 
@@ -1128,8 +1126,7 @@ echo "<script>
                             столбы, стойки
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval64" disabled type="number" name="inputValue" step="1"
-                                   min="0"> %
+                            <input class="inpval" id="conval64" disabled type="number" name="inputValue" step="1"  min="0" oninput="calcSosttech2()"> %
                         </div>
                     </div>
                     <div class="mainlolspace">
@@ -1138,8 +1135,7 @@ echo "<script>
                             конструкции копров,пролетных строейний галерей
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval65" disabled type="number" name="inputValue" step="1"
-                                   min="0"> %
+                            <input class="inpval" id="conval65" disabled type="number" name="inputValue" step="1"  min="0" oninput="calcSosttech2()"> %
                         </div>
                     </div>
 
@@ -1156,8 +1152,7 @@ echo "<script>
                             Подкрановые и тормозные конструкции
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval66" disabled type="number" name="inputValue" step="1"
-                                   min="0"> %
+                            <input class="inpval" id="conval66" disabled type="number" name="inputValue" step="1"  min="0" oninput="calcSosttech2()"> %
                         </div>
                     </div>
 
@@ -1167,8 +1162,7 @@ echo "<script>
                             <input type="checkbox" id="toggleZd67" disabled onchange="toggleCheckboxesDop6()"> Перекрыия
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval67" disabled type="number" name="inputValue" step="1"
-                                   min="0"> %
+                            <input class="inpval" id="conval67" disabled type="number" name="inputValue" step="1" min="0" oninput="calcSosttech2()"> %
                         </div>
                     </div>
 
@@ -1179,8 +1173,7 @@ echo "<script>
                             <input type="checkbox" id="toggleZd68" disabled onchange="toggleCheckboxesDop6()"> Покрытие
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval68" disabled type="number" name="inputValue" step="1"
-                                   min="0"> %
+                            <input class="inpval" id="conval68" disabled type="number" name="inputValue" step="1"  min="0" oninput="calcSosttech2()"> %
                         </div>
                     </div>
 
@@ -1189,8 +1182,7 @@ echo "<script>
                             <input type="checkbox" id="toggleZd69" disabled onchange="toggleCheckboxesDop6()"> Кровля
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval69" disabled type="number" name="inputValue" step="1"
-                                   min="0"> %
+                            <input class="inpval" id="conval69" disabled type="number" name="inputValue" step="1" min="0" oninput="calcSosttech2()"> %
                         </div>
                     </div>
                 </div>
@@ -2006,6 +1998,7 @@ echo "<script>
     let sumIshod = 0; // СУММА ВКЛАДКИ СБОР ИСХОДНЫХ ДАННЫХ
     let sumObmer = 0; // СУММА ВКЛАДКИ обмера
     let sumObsled = 0; // СУММА ВКЛАДКИ обcледа
+    let sumSosttech = 0; // СУММА ВКЛАДКИ обcледа
     let fullSumma=0; // ОБЩАЯ СУММА ВСЕХ ВКЛАДОК
     let K18ob = 0; // Общий  К18.об
     let hardZdanie; // КАТЕГОРИЯ СЛОЖНОСТИ ЗДАНИЯ
@@ -2028,9 +2021,14 @@ echo "<script>
          koefObsled1 = koefObsled1 == 0 ? 1 : koefObsled1;
 
          sumIshod = koefIshod * koefIshod2 * costwork14 * K18ob;
+
          sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * K18ob;
+
          sumObsled = koefObsled1 * koefObsled2 * costwork14 * K18ob;
-         fullSumma = parseFloat(sumHarakter) + parseFloat(sumIshod) + parseFloat(sumObmer) +  parseFloat(sumObsled);
+
+         sumSosttech  = koefSosttech1 * koefSosttech2 * costwork14 * K18ob;
+
+         fullSumma = parseFloat(sumHarakter) + parseFloat(sumIshod) + parseFloat(sumObmer) +  parseFloat(sumObsled) + parseFloat(sumSosttech);
          fullSumma = fullSumma.toFixed(3);
         document.getElementById('harakteristikaObjectObsh').innerText = fullSumma;
         document.getElementById('harakteristikaObjectSmeta').innerText = fullSumma;
@@ -2709,10 +2707,31 @@ echo "<script>
     async function toggleCheckboxes6() {
         const isChecked = document.getElementById('choosCunstruct6').checked;
         const checkboxes = document.querySelectorAll('.viborvischeckbox63 input[type="checkbox"], .viborvischeckbox64 input[type="checkbox"]');
-
-        checkboxes.forEach(checkbox => {
-            checkbox.disabled = !isChecked;
-        });
+        if (!isChecked) {
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = false;
+                checkbox.disabled = true;
+            });
+            const inputIds = ['conval61', 'conval62', 'conval63', 'conval64', 'conval65', 'conval66', 'conval67', 'conval68', 'conval69'];
+            inputIds.forEach(id => {
+                const input = document.getElementById(id);
+                if (input) {
+                    input.disabled = true;
+                    input.value = '100';
+                }
+            });
+        } else {
+            checkboxes.forEach(checkbox => {
+                checkbox.disabled = false;
+            });
+            const inputIds = ['conval61', 'conval62', 'conval63', 'conval64', 'conval65', 'conval66', 'conval67', 'conval68', 'conval69'];
+            inputIds.forEach(id => {
+                const input = document.getElementById(id);
+                if (input) {
+                    input.value = '100';
+                }
+            });
+        }
         await calculateK();
     }
 
@@ -2787,7 +2806,7 @@ echo "<script>
         await calculateK();
     }
 
-    function toggleCheckboxesDop6() {
+    async function toggleCheckboxesDop6() {
         const checkboxes = [
             {checkbox: document.getElementById('toggleZd61'), input: document.getElementById('conval61')},
             {checkbox: document.getElementById('toggleZd62'), input: document.getElementById('conval62')},
@@ -2803,7 +2822,9 @@ echo "<script>
         checkboxes.forEach(item => {
             item.input.disabled = !item.checkbox.checked;
         });
-        calculateK();
+        await calcSosttech1();
+        await calcSosttech2();
+        await calculateK();
     }
 
 
