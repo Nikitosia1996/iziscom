@@ -606,7 +606,7 @@ echo "<script>
                         <input data-id="1" value="1" type="checkbox" id="toggleZd1" disabled onchange="toggleCheckboxesDop()"> Конструкция фундаментов
                    </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class = "inpval" id="conval1" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateFinalCoefficientSborSource()"> %
+                            <input data-id="1" class = "inpval" id="conval1" disabled type="number" name="inputValue" step="1" min="0" oninput="calculateFinalCoefficientSborSource()"> %
                         </div>
                     </div>
 
@@ -616,7 +616,7 @@ echo "<script>
                         <input data-id="1" type="checkbox" id="toggleZd2" disabled  onchange="toggleCheckboxesDop()"> Стены
                     </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class = "inpval" id="conval2" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateFinalCoefficientSborSource()"> %
+                            <input data-id="1" class = "inpval" id="conval2" disabled type="number" name="inputValue" step="1" min="0" oninput="calculateFinalCoefficientSborSource()"> %
                         </div>
                     </div>
 
@@ -628,7 +628,7 @@ echo "<script>
                         <input data-id="1" type="checkbox" id="toggleZd3" disabled  onchange="toggleCheckboxesDop()"> Полы
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class = "inpval" id="conval3" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateFinalCoefficientSborSource()"> %
+                            <input data-id="1" class = "inpval" id="conval3" disabled type="number" name="inputValue" step="1" min="0" oninput="calculateFinalCoefficientSborSource()"> %
                         </div>
                     </div>
 
@@ -637,7 +637,7 @@ echo "<script>
                         <input data-id="1" type="checkbox" id="toggleZd4" disabled  onchange="toggleCheckboxesDop()"> Колонны, столбы, стойки
                             </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class = "inpval" id="conval4" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateFinalCoefficientSborSource()"> %
+                            <input data-id="1" class = "inpval" id="conval4" disabled type="number" name="inputValue" step="1" min="0" oninput="calculateFinalCoefficientSborSource()"> %
                         </div>
                     </div>
                     <div class = "mainlolspace">
@@ -645,7 +645,7 @@ echo "<script>
                         <input data-id="1" type="checkbox" id="toggleZd5" disabled  onchange="toggleCheckboxesDop()"> Несущие конструкции копров,пролетных строейний галерей
                                 </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class = "inpval" id="conval5" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateFinalCoefficientSborSource()"> %
+                            <input data-id="1" class = "inpval" id="conval5" disabled type="number" name="inputValue" step="1" min="0" oninput="calculateFinalCoefficientSborSource()"> %
                         </div>
                     </div>
 
@@ -662,7 +662,7 @@ echo "<script>
                             <input data-id="1" type="checkbox" id="toggleZd6" disabled onchange="toggleCheckboxesDop()"> Подкрановые и тормозные конструкции
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class = "inpval" id="conval6" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateFinalCoefficientSborSource()"> %
+                            <input data-id="1" class = "inpval" id="conval6" disabled type="number" name="inputValue" step="1" min="0" oninput="calculateFinalCoefficientSborSource()"> %
                         </div>
                     </div>
 
@@ -672,7 +672,7 @@ echo "<script>
                             <input data-id="1" type="checkbox" id="toggleZd7" disabled  onchange="toggleCheckboxesDop()"> Перекрытия
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class = "inpval" id="conval7" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateFinalCoefficientSborSource()"> %
+                            <input data-id="1" class = "inpval" id="conval7" disabled type="number" name="inputValue" step="1" min="0" oninput="calculateFinalCoefficientSborSource()"> %
                         </div>
                     </div>
 
@@ -683,7 +683,7 @@ echo "<script>
                             <input data-id="1" type="checkbox" id="toggleZd8" disabled onchange="toggleCheckboxesDop()"> Покрытие
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class="inpval" id="conval8" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateFinalCoefficientSborSource()"> %
+                            <input data-id="1" class="inpval" id="conval8" disabled type="number" name="inputValue" step="1" min="0" oninput="calculateFinalCoefficientSborSource()"> %
                         </div>
                     </div>
 
@@ -692,7 +692,7 @@ echo "<script>
                             <input data-id="1" type="checkbox" id="toggleZd9" disabled onchange="toggleCheckboxesDop()"> Кровля
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class="inpval" id="conval9" disabled type="number" name="inputValue" step="1" min="0" onchange="calculateFinalCoefficientSborSource()"> %
+                            <input data-id="1" class="inpval" id="conval9" disabled type="number" name="inputValue" step="1" min="0" oninput="calculateFinalCoefficientSborSource()"> %
                         </div>
                     </div>
                 </div>
@@ -2027,14 +2027,14 @@ echo "<script>
     let mainvisotazdani; // ВЫСОТА ЗДАНИЯ
     let koefIshod=0; // КОЭФИЦИЕНТ НЗТ1 (табл.2.3)
     let selectedRadio; // КАТЕГОРИЯ СЛОЖНОСТИ РАБОТ
-    let $koefIshod2=0; // КОЭФИЦИЕНТ НЗТ1 (табл.2.4)
+    let koefIshod2=0; // КОЭФИЦИЕНТ НЗТ1 (табл.2.4)
 
 
 
 
 
      async function calculateK() {
-         sumIshod = koefIshod + $koefIshod2;
+         sumIshod = koefIshod + koefIshod2;
          fullSumma = parseFloat(sumHarakter) + parseFloat(sumIshod);
          fullSumma = fullSumma.toFixed(2);
         document.getElementById('harakteristikaObjectObsh').innerText = fullSumma;
@@ -2222,14 +2222,14 @@ echo "<script>
                     },
                     success: function (response) {
                         koefIshod = parseFloat(response.trim());
-                        $('#sborIshodnihDannih').html(koefIshod);
+                        $('#sborIshodnihDannih').html(koefIshod + koefIshod2);
                         resolve();
                     },
                 })
             })
         }
-        await calcIshod2();
         calculateK();
+
     }
 
 
@@ -2237,7 +2237,7 @@ echo "<script>
     async function calcIshod2() {
         let etazh = parseFloat(document.getElementById('etazh').value) || 0;
         let typeW;
-        let koefObmerRab = 0;
+        let koefIshodRab = 0;
         if($("#choosCunstruct").prop("checked")){
             typeW = $("#buildingType").val();
             switch(typeW){
@@ -2299,6 +2299,7 @@ echo "<script>
             koefIshod2 = 0;
             console.log(koefIshod2 + " koefIshod2");
         }
+
     }
 
     $("#choosCunstruct").on("click", async function(){
@@ -2584,11 +2585,28 @@ echo "<script>
                 checkbox.checked = false;
                 checkbox.disabled = true;
             });
+
+            for (let i = 1; i <= 9; i++) {
+                const input = document.getElementById(`conval${i}`);
+                if (input) {
+                    input.disabled = true;
+                    input.value = '100';
+                }
+            }
+
         } else {
 
             checkboxes.forEach(checkbox => {
                 checkbox.disabled = false;
             });
+
+            for (let i = 1; i <= 9; i++) {
+                const input = document.getElementById(`conval${i}`);
+                if (input) {
+                    input.value = '100';
+                }
+
+        }
         }
 
         calculateK();

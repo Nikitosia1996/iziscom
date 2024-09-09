@@ -395,7 +395,6 @@ function getSmeta(id) {
         }
     }
     document.getElementById("myDropdown").classList.toggle("show");
-    calculateK();
     updateCalendarDaysFromEnd();
     calculateHaracterCoefficient();
     calcIshod2();
@@ -403,6 +402,8 @@ function getSmeta(id) {
     calcObmerWorksPart1();
     calcObmerWorksPart2();
     updateBuildingInfo();
+    calculateK();
+    toggleCheckboxesDop();
 
     return null;
 }
