@@ -1934,7 +1934,7 @@ echo "<script>
             <label id="inputLabel" for="minuskef">Понижающий коэффициент</label><br>
             <input id="minuskef" type="number" name="inputValue" step="1" min="0"><br>
             <label id="inputLabel" for="costwork14">Стоимость работ 14 разряда</label><br>
-            <input id="costwork14" disabled type="number" name="inputValue" step="1" min="0"><br>
+            <input id="costwork14" disabled type="text" name="inputValue" step="1" min="0"><br>
             <br>
             <label id="inputLabel" for="znachprognoz">Значения прогнозных среднегодовых индексов изменения стоимости
                 работ:</label><br>
@@ -2013,16 +2013,22 @@ echo "<script>
     let koefIshod=0; // КОЭФИЦИЕНТ НЗТ1 (табл.2.3)
     let selectedRadio; // КАТЕГОРИЯ СЛОЖНОСТИ РАБОТ
     let koefIshod2=0; // КОЭФИЦИЕНТ НЗТ1 (табл.2.4)
-    const costwork14 = parseFloat(document.getElementById('costwork14').value) || 1; // СРЕДНИЙ РАЗРЯД  14
+    let costwork14; // СРЕДНИЙ РАЗРЯД  14
 
 
 
 
 
      async function calculateK() {
-         sumIshod = koefIshod + koefIshod2;
-         sumObmer = koefObmerWork1 + koefObmerWork2;
-         sumObsled = koefObsled1 + koefObsled2;
+         koefIshod = koefIshod == 0 ? 1 : koefIshod;
+         koefIshod2 = koefIshod2 == 0 ? 1 : koefIshod2;
+         koefObmerWork1 = koefObmerWork1 == 0 ? 1 : koefObmerWork1;
+         koefObmerWork2 = koefObmerWork2 == 0 ? 1 : koefObmerWork2;
+         koefObsled2 = koefObsled2 == 0 ? 1 : koefObsled2;
+         koefObsled1 = koefObsled1 == 0 ? 1 : koefObsled1;
+         sumIshod = koefIshod * koefIshod2 * costwork14 * K18ob;
+         sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * K18ob;
+         sumObsled = koefObsled1 * koefObsled2 * costwork14 * K18ob;
          fullSumma = parseFloat(sumHarakter) + parseFloat(sumIshod) + parseFloat(sumObmer) +  parseFloat(sumObsled);
          fullSumma = fullSumma.toFixed(2);
         document.getElementById('harakteristikaObjectObsh').innerText = fullSumma;
@@ -2893,10 +2899,10 @@ echo "<script>
             type: 'POST',
             data: formData,
             dataType: 'json',
-            success: function (data) {
+            success: async function (data) {
                 if (data.success) {
                     alert('Применено');
-                    calculateK();
+                    await calculateK();
                     $('#modalPeremen').modal('hide');
                 }
                 else {
@@ -2927,7 +2933,7 @@ echo "<script>
                     $('#costwork14').val(data.params.cost_work14);
                     $('#znachprognoz24').val(data.params.index_current_year);
                     $('#znachprognoz25').val(data.params.index_next_year);
-
+                    costwork14 = data.params.cost_work14;
                     const b14Value = data.params.analizb14;
                     $('#b14Checkbox').prop('checked', b14Value !== '');
                     $('#b14Input').prop('disabled', !$('#b14Checkbox').is(':checked'));

@@ -578,7 +578,7 @@ async function calcObmerWorksPart1() {
 
         }).then(response => {
             koefObmerWork1 = parseFloat(response.trim());
-            sumObmer = koefObmerWork1 + koefObmerWork2;
+            sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * K18ob;
             $('#obmerRaboty').html(sumObmer.toFixed(3));
             resolve();
         })
@@ -664,7 +664,9 @@ async function calcObmerWorksPart2() {
                     })
                     koefObmerWork2 = sum;
                 }
-                $('#obmerRaboty').html(koefObmerWork1 + koefObmerWork2);
+                sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * K18ob;
+
+                $('#obmerRaboty').html(sumObmer);
                 resolve();
             }).catch(function(error) {
                 reject(error);
@@ -679,16 +681,6 @@ async function calcObmerWorksPart2() {
 
 
 
-$("#choosCunstruct4").on("click", async function(){
-    await calcObmerWorksPart2();
-});
-
-// $(".obmer2check").on("change", async function(){
-//
-//
-//
-// });
-
 
 $("#choosCunstruct4").on("change", async function(event){
     if(event.target.checked){
@@ -698,7 +690,8 @@ $("#choosCunstruct4").on("change", async function(event){
     else{
         koefObmerWork2 = 0;
     }
-    $('#obmerRaboty').html(koefObmerWork1 + koefObmerWork2);
+    sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * K18ob;
+    $('#obmerRaboty').html(sumObmer);
     await calculateK();
 });
 
@@ -753,8 +746,8 @@ async function calcObsled1() {
 
         }).then(response => {
             koefObsled1 = parseFloat(response.trim());
-            sumObsled = koefObsled1 + koefObsled2;
-            $('#obsledRab').html(sumObmer.toFixed(3));
+            sumObsled = koefObsled1 * koefObsled2 * costwork14 * K18ob;
+            $('#obsledRab').html(sumObsled.toFixed(3));
             resolve();
         })
     })
@@ -838,7 +831,8 @@ async function calcObsled2() {
                     })
                     koefObsled2 = sum;
                 }
-                $('#obsledRab').html(koefObsled1 + koefObsled2);
+                sumObsled = koefObsled1 * koefObsled2 * costwork14 * K18ob;
+                $('#obsledRab').html(sumObsled);
                 resolve();
             }).catch(function(error) {
                 reject(error);
@@ -853,17 +847,6 @@ async function calcObsled2() {
 
 
 
-$("#choosCunstruct5").on("click", async function(){
-    await calcObsled2();
-});
-
-// $(".obmer2check").on("change", async function(){
-//
-//
-//
-// });
-
-
 $("#choosCunstruct5").on("change", async function(event){
     if(event.target.checked){
         await calcObsled1();
@@ -872,7 +855,8 @@ $("#choosCunstruct5").on("change", async function(event){
     else{
         koefObsled2 = 0;
     }
-    $('#obsledRab').html(koefObsled1 + koefObsled2);
+    sumObsled = koefObsled1 * koefObsled2 * costwork14 * K18ob;
+    $('#obsledRab').html(sumObsled.toFixed(3));
     await calculateK();
 })
 
