@@ -83,8 +83,8 @@ let toggleZdDopUslrazrab = $('#toggleZdDopUslrazrab');
 let toggleZdDopUslrazrabrek = $('#toggleZdDopUslrazrabrek');
 
 
-let koefObmerWork1;
-let koefObmerWork2;
+let koefObmerWork1 = 0;
+let koefObmerWork2 = 0;
 
 
 async function getSmeta(id) {
@@ -396,9 +396,9 @@ async function getSmeta(id) {
     }
     document.getElementById("myDropdown").classList.toggle("show");
     updateCalendarDaysFromEnd();
-
     updateBuildingInfo();
     await toggleCheckboxesDop();
+    await toggleCheckboxesDop4();
     await calculateHaracterCoefficient();
     await calcIshod1();
     await calcIshod2();
@@ -529,6 +529,10 @@ function updateSmetaLinks() {
 
 async function calcObmerWorksPart1() {
 
+
+
+
+
     let etazh = parseFloat(document.getElementById('etazh').value) || 0;
     let kat_sl_zd = hardZdanie;
     const kat_sl_rabs = document.querySelector('input[name="kat_sl_rab"]:checked');
@@ -568,7 +572,9 @@ async function calcObmerWorksPart1() {
             },
 
         }).then(response => {
-            koefObmerWork1 = response.trim();
+            koefObmerWork1 = parseFloat(response.trim());
+            sumObmer = koefObmerWork1 + koefObmerWork2;
+            $('#obmerRaboty').html(sumObmer.toFixed(3));
             resolve();
         })
     })
@@ -620,6 +626,13 @@ async function calcObmerWorksPart2() {
              koef8 == 0 ? 0 : 7,
              koef9 == 0 ? 0 : 8
         ];
+
+        if (myAr.length === 0) {
+            koefObmerWork2 = 0;
+            console.log(koefObmerWork2 + " koefObmerWork2");
+            return;
+        }
+
         let newAr = myAr.filter(item => item != 0);
 
 
@@ -632,33 +645,57 @@ async function calcObmerWorksPart2() {
                     myAr: JSON.stringify(newAr)
                 },
             }).then(function(response) {
-                let gettedAr = JSON.parse(response);
-                let sum = 0;
-                let index = 0;
-                arKoef.map(item => {
-                    if(item != 0){
-                        sum += gettedAr[index] * item;
-                        index++;
-                    }
-                })
-                koefObmerWork2 = sum;
-            })
-        })
-
-
-    }else{
+                if(response == 0){
+                    koefObmerWork2 = 0;
+                }else {
+                    let gettedAr = JSON.parse(response);
+                    let sum = 0;
+                    let index = 0;
+                    arKoef.map(item => {
+                        if (item != 0) {
+                            sum += gettedAr[index] * item;
+                            index++;
+                        }
+                    })
+                    koefObmerWork2 = sum;
+                }
+                $('#obmerRaboty').html(koefObmerWork1 + koefObmerWork2);
+                resolve();
+            }).catch(function(error) {
+                reject(error);
+            });
+        });
+    } else {
         koefObmerWork2 = 0;
     }
+    await calculateK();
+
 }
 
-$(".kat_sl_rab").on('change', async function(){
-    await calcObmerWorksPart1();
-})
+
 
 $("#choosCunstruct4").on("click", async function(){
     await calcObmerWorksPart2();
-})
+});
 
+// $(".obmer2check").on("change", async function(){
+//
+//
+//
+// });
+
+
+$("#choosCunstruct4").on("change", async function(event){
+    if(event.target.checked){
+        await calcObmerWorksPart1();
+        await calcObmerWorksPart2();
+    }
+    else{
+        koefObmerWork2 = 0;
+    }
+    $('#obmerRaboty').html(koefObmerWork1 + koefObmerWork2);
+    await calculateK();
+})
 
 
 
