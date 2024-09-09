@@ -6,7 +6,7 @@ $vysota = $_POST['vysota'] ?? '';
 $etazh = $_POST['etazh'] ?? '';
 
 if (empty($kat_sl_zd) || empty($kat_sl_rab) || empty($vysota)) {
-    echo 0;
+    echo 1;
 } else{
 
     if ($etazh < 2)
