@@ -2334,7 +2334,11 @@ echo "<script>
         else{
             koefIshod2 = 1;
         }
-        sumIshod = koefIshod * koefIshod2 * costwork14 * K18ob;
+        if(koefIshod == 1 && koefIshod2 == 1){
+            sumIshod = 0;
+        }else {
+            sumIshod = koefIshod * koefIshod2 * costwork14 * K18ob;
+        }
         $('#sborIshodnihDannih').html(sumIshod.toFixed(3));
         await calculateK();
     })
@@ -2620,11 +2624,11 @@ echo "<script>
         const checkboxes = document.querySelectorAll('.viborvischeckbox1 input[type="checkbox"], .viborvischeckbox2 input[type="checkbox"]');
 
         if (!isChecked) {
-
             checkboxes.forEach(checkbox => {
                 checkbox.checked = false;
                 checkbox.disabled = true;
             });
+
 
             for (let i = 1; i <= 9; i++) {
                 const input = document.getElementById(`conval${i}`);
