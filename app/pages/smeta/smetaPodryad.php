@@ -6,6 +6,7 @@ $sborIshodnihDannih = 0;
 $obmerRaboty = 0;
 $obsledRab = 0;
 $sostTech = 0;
+$redaktorCons = 0;
 
 
 echo "<script>
@@ -256,6 +257,8 @@ echo "<script>
     }
 
 
+
+
     .mainselspace {
         display: flex;
         flex-direction: column;
@@ -321,6 +324,7 @@ echo "<script>
             echo $harakteristikaObject;
             echo '</span>' ?>
         </div>
+
 
 
         <div class="col-lg-5">
@@ -1339,8 +1343,7 @@ echo "<script>
     <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 
 
-    <div class="nameforblock7" onclick="toggleDisplay('.nameforblock7', '.dndb7');">Редактор испытания
-        конструкций <?php echo '<input class = "onCollap" type="checkbox" id="sborDann" name="sborDann" value="sborDann"> <span class="countRub">123</span>' ?></div>
+    <div class="nameforblock7" onclick="toggleDisplay('.nameforblock7', '.dndb7');"><input class = "onCollap" type="checkbox" id="redaktorIspConstr" name="redaktorIspConstr" value="1">&nbsp;&nbsp;&nbsp;Редактор испытания конструкций &nbsp;&nbsp;&nbsp;<?php echo '<span class="sborIshodnihDannih" id="redaktorCons">'; echo $redaktorCons; echo'</span>'; ?></div>
     <div class="dndb7">
         <div style="margin-left:1%" ;>Работы по определению прочности бетона и кирпичной кладки:</div>
         <div class="position1">
@@ -1349,46 +1352,42 @@ echo "<script>
                 <div class="viborvisnew">
                     <div class="mainlolspace">
                         <div class="lolspace">
-                            <input type="checkbox" id="toggleZd71" onchange="toggleCheckboxesDop7()"> Определение
+                            <input type="checkbox" id="toggleZd71" onchange="toggleCheckboxesDop7('toggleZd71')"> Определение
                             прочности бетона в бетонных и железобетонных конструкциях
                             механическими приборами
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval71" disabled type="number" name="inputValue" step="1"
-                                   min="0">
+                            <input class="inpval" id="conval71" disabled type="number" name="inputValue" step="1" min="0" oninput="sumKoefRedaktor()">
                         </div>
                     </div>
                     <div class="mainlolspace">
                         <div class="lolspace">
-                            <input type="checkbox" id="toggleZd72" onchange="toggleCheckboxesDop7()"> Определение
+                            <input type="checkbox" id="toggleZd72" onchange="toggleCheckboxesDop7('toggleZd72')"> Определение
                             прочности бетона в бетонных и железобетонных конструкциях
                             ультразвуковыми приборами
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval72" disabled type="number" name="inputValue" step="1"
-                                   min="0">
+                            <input class="inpval" id="conval72" disabled type="number" name="inputValue" step="1" min="0" oninput="sumKoefRedaktor()">
                         </div>
                     </div>
                     <div class="mainlolspace">
                         <div class="lolspace">
-                            <input type="checkbox" id="toggleZd73" onchange="toggleCheckboxesDop7()"> Определение
+                            <input type="checkbox" id="toggleZd73" onchange="toggleCheckboxesDop7('toggleZd73')"> Определение
                             прочности бетона в бетонных и железобетонных конструкциях
                             гидравлическими пресс-насосами (типа ГПНС, "Скол", и т.д.)
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval73" disabled type="number" name="inputValue" step="1"
-                                   min="0">
+                            <input class="inpval" id="conval73" disabled type="number" name="inputValue" step="1" min="0" oninput="sumKoefRedaktor()">
                         </div>
                     </div>
                     <div class="mainlolspace">
                         <div class="lolspace">
-                            <input type="checkbox" id="toggleZd74" onchange="toggleCheckboxesDop7()"> Определение
+                            <input type="checkbox" id="toggleZd74" onchange="toggleCheckboxesDop7('toggleZd74')"> Определение
                             прочности раствора и каменных материалов ультразвуковыми
                             и ударно-импульсными методами
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval74" disabled type="number" name="inputValue" step="1"
-                                   min="0">
+                            <input class="inpval" id="conval74" disabled type="number" name="inputValue" step="1" min="0" oninput="sumKoefRedaktor()">
                         </div>
                     </div>
                 </div>
@@ -1399,8 +1398,7 @@ echo "<script>
 
 
     <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
-    <div class="nameforblock8" onclick="toggleDisplay('.nameforblock8', '.dndb8');">Обследование отдельных
-        конструкций <?php echo '<input class = "onCollap" type="checkbox" id="sborDann" name="sborDann" value="sborDann"> <span class="countRub">123</span>' ?></div>
+    <div class="nameforblock8" onclick="toggleDisplay('.nameforblock8', '.dndb8');">Обследование отдельных  конструкций <?php echo '<input class = "onCollap" type="checkbox" id="sborDann" name="sborDann" value="sborDann"> <span class="countRub">123</span>' ?></div>
     <div class="dndb8">
 
 
@@ -2166,6 +2164,8 @@ echo "<script>
     <hr>
 
 
+
+
 </section>
 
 
@@ -2224,7 +2224,7 @@ echo "<script>
 
 <script>
 
-
+    let sumRedaktor = 0; // СУММА ВКЛАДКИ РедАКТОР
     let sumHarakter = 0; // СУММА ВКЛАДКИ ХАРАКТЕРИСТИКА ОБЪЕКТА
     let sumIshod = 0; // СУММА ВКЛАДКИ СБОР ИСХОДНЫХ ДАННЫХ
     let sumObmer = 0; // СУММА ВКЛАДКИ обмера
@@ -2363,6 +2363,7 @@ echo "<script>
             visotaPolaVal;
 
 
+
         document.getElementById('harakteristikaObject').innerText = finalCoefficient.toFixed(3);
         sumHarakter = finalCoefficient.toFixed(3);
 
@@ -2454,6 +2455,7 @@ echo "<script>
         await calculateK();
 
     }
+
 
 
     async function calcIshod2() {
@@ -2592,6 +2594,7 @@ echo "<script>
         document.getElementById('vis14').checked = false;
 
 
+
         if (etazh > 1) {
 
 
@@ -2604,6 +2607,7 @@ echo "<script>
 
             document.getElementById('vis14').value = '3';
             vis14Label.innerText = '3)  Здание с высотой этажа свыше 6м, с краном, свыше 3 объемов, свыше 10 этажей, сооружения высотой более 60м, полный монолитный каркас';
+
 
 
             if (visotazdani < 20) {
@@ -2676,6 +2680,9 @@ echo "<script>
 
         }
     }
+
+
+
 
 
     async function toggleInputs() {
@@ -2797,6 +2804,11 @@ echo "<script>
 
 
     });
+
+
+
+
+
 
 
     function toggleDisplay(triggerSelector, targetSelector) {
@@ -3052,19 +3064,90 @@ echo "<script>
     }
 
 
-    function toggleCheckboxesDop7() {
+    async function toggleCheckboxesDop7(checkboxId) {
         const checkboxes = [
-            {checkbox: document.getElementById('toggleZd71'), input: document.getElementById('conval71')},
-            {checkbox: document.getElementById('toggleZd72'), input: document.getElementById('conval72')},
-            {checkbox: document.getElementById('toggleZd73'), input: document.getElementById('conval73')},
-            {checkbox: document.getElementById('toggleZd74'), input: document.getElementById('conval74')},
+            { checkbox: document.getElementById('toggleZd71'), input: document.getElementById('conval71') },
+            { checkbox: document.getElementById('toggleZd72'), input: document.getElementById('conval72') },
+            { checkbox: document.getElementById('toggleZd73'), input: document.getElementById('conval73') },
+            { checkbox: document.getElementById('toggleZd74'), input: document.getElementById('conval74') },
         ];
 
-        checkboxes.forEach(item => {
-            item.input.disabled = !item.checkbox.checked;
-        });
-        calculateK();
+        const currentCheckbox = checkboxes.find(item => item.checkbox.id === checkboxId);
+
+        if (currentCheckbox) {
+            if (currentCheckbox.checkbox.checked) {
+                currentCheckbox.input.disabled = false;
+                currentCheckbox.input.value = 0;
+            } else {
+                currentCheckbox.input.disabled = true;
+                currentCheckbox.input.value = '';
+            }
+        }
+        await sumKoefRedaktor();
     }
+
+    async function sumKoefRedaktor() {
+        let koefRedaktor1 = 0;
+        let koefRedaktor2 = 0;
+        let koefRedaktor3 = 0;
+        let koefRedaktor4 = 0;
+
+        const val1 = parseFloat(document.getElementById('conval71').value) || 0;
+        const val2 = parseFloat(document.getElementById('conval72').value) || 0;
+        const val3 = parseFloat(document.getElementById('conval73').value) || 0;
+        const val4 = parseFloat(document.getElementById('conval74').value) || 0;
+
+        let val1kef = 0;
+        let val2kef = 0;
+        let val3kef = 1.24;
+        let val4kef = 0;
+
+        if (val1 > 0) {
+            if (val1 <= 50) {
+                val1kef = 0.066;
+            } else if (val1 <= 200) {
+                val1kef = 0.054;
+            } else {
+                val1kef = 0.045;
+            }
+            koefRedaktor1 = costwork14 * val1kef * val1;
+        }
+
+        if (val2 > 0) {
+            if (val2 <= 50) {
+                val2kef = 0.061;
+            } else if (val2 <= 200) {
+                val2kef = 0.048;
+            } else {
+                val2kef = 0.043;
+            }
+            koefRedaktor2 = costwork14 * val2kef * val2;
+        }
+
+        if (val3 > 0) {
+            koefRedaktor3 = costwork14 * val3kef * val3;
+        }
+
+        if (val4 > 0) {
+            if (val4 <= 50) {
+                val4kef = 0.071;
+            } else if (val4 <= 200) {
+                val4kef = 0.059;
+            } else {
+                val4kef = 0.048;
+            }
+            koefRedaktor4 = costwork14 * val4kef * val4;
+        }
+
+        let sumRedaktor1 = koefRedaktor1 + koefRedaktor2 + koefRedaktor3 + koefRedaktor4;
+        sumRedaktor = sumRedaktor1;
+
+        console.log("koefRedaktor1=" + koefRedaktor1 + " koefRedaktor2=" + koefRedaktor2 + " koefRedaktor3=" + koefRedaktor3 + " koefRedaktor4=" + koefRedaktor4 + " === " + "sumRedaktor=" + sumRedaktor);
+        document.getElementById('redaktorCons').innerText = sumRedaktor1.toFixed(3);
+        await calculateK();
+    }
+
+
 
     function toggleCheckboxesDop8() {
         const checkboxes = [
