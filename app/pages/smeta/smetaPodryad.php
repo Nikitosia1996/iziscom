@@ -2247,16 +2247,32 @@ echo "<script>
         koefObmerWork2 = koefObmerWork2 == 0 ? 1 : koefObmerWork2;
         koefObsled2 = koefObsled2 == 0 ? 1 : koefObsled2;
         koefObsled1 = koefObsled1 == 0 ? 1 : koefObsled1;
+        if (koefIshod == 1 && koefIshod2 == 1) {
+            sumIshod = 0;
+        } else {
+            sumIshod = koefIshod * koefIshod2 * costwork14 * K18ob;
+        }
 
-        sumIshod = koefIshod * koefIshod2 * costwork14 * K18ob;
+        if (koefObmerWork1 == 1 && koefObmerWork2 == 1) {
+            sumObmer = 0;
+        } else {
+            sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * K18ob;
+        }
 
-        sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * K18ob;
+        if (koefObsled1 == 1 && koefObsled2 == 1) {
+            sumObsled = 0;
+        } else {
+            sumObsled = koefObsled1 * koefObsled2 * costwork14 * K18ob;
+        }
 
-        sumObsled = koefObsled1 * koefObsled2 * costwork14 * K18ob;
-
-        sumSosttech = koefSosttech1 * koefSosttech2 * costwork14 * K18ob;
+        if (koefSosttech1 == 1 && koefSosttech2 == 1) {
+            sumSosttech = 0;
+        } else {
+            sumSosttech = koefSosttech1 * koefSosttech2 * costwork14 * K18ob;
+        }
 
         fullSumma = parseFloat(sumHarakter) + parseFloat(sumIshod) + parseFloat(sumObmer) + parseFloat(sumObsled) + parseFloat(sumSosttech);
+
         fullSumma = fullSumma.toFixed(3);
         document.getElementById('harakteristikaObjectObsh').innerText = fullSumma;
         document.getElementById('harakteristikaObjectSmeta').innerText = fullSumma;
