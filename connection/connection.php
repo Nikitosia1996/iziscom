@@ -48,6 +48,9 @@ $zakazchik = $connectionDB->executeQuery($zakazchikquery);
 $podryadchikquery = "SELECT * FROM podryadchik";
 $podryadchik = $connectionDB->executeQuery($podryadchikquery);
 
+$doljnosti_KSD_query = "SELECT * FROM doljnosti_KSD";
+$doljnosti_KSD = $connectionDB->executeQuery($doljnosti_KSD_query);
+
 ?>
 
 

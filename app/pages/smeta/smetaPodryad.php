@@ -21,6 +21,7 @@ echo "<script>
     .highlight-green {
         color: green;
     }
+
     .highlight-red {
         color: red;
     }
@@ -255,8 +256,6 @@ echo "<script>
     }
 
 
-
-
     .mainselspace {
         display: flex;
         flex-direction: column;
@@ -303,64 +302,70 @@ echo "<script>
 
 
         <div class="col-lg-2">
-            <button id="btnShowModalPeremen" class="btn btn-primary" >Параметры переменных</button>
+            <button id="btnShowModalPeremen" class="btn btn-primary">Параметры переменных</button>
         </div>
 
         <div class="col-lg-1">
 
-            Общая сумма <?php echo ' <span class="harakteristikaObject" id="harakteristikaObjectObsh">'; echo $harakteristikaObject; echo'</span>' ?>
+            Общая сумма <?php echo ' <span class="harakteristikaObject" id="harakteristikaObjectObsh">';
+            echo $harakteristikaObject;
+            echo '</span>' ?>
         </div>
         <div class="col-lg-1">
-            Смета <?php echo ' <span class="harakteristikaObject" id="harakteristikaObjectSmeta">'; echo $harakteristikaObject; echo'</span>' ?>
+            Смета <?php echo ' <span class="harakteristikaObject" id="harakteristikaObjectSmeta">';
+            echo $harakteristikaObject;
+            echo '</span>' ?>
         </div>
         <div class="col-lg-1">
-           Калькуляция <?php echo ' <span class="harakteristikaObject" id="harakteristikaObjectCalc">'; echo $harakteristikaObject; echo'</span>' ?>
+            Калькуляция <?php echo ' <span class="harakteristikaObject" id="harakteristikaObjectCalc">';
+            echo $harakteristikaObject;
+            echo '</span>' ?>
         </div>
-
 
 
         <div class="col-lg-5">
             <div id="divSaveSmeta" class="form-group mgtop5" style="display: inline-flex;
     float: right;
     margin-right: 9%;">
-                <input class="form-control" type="text" id="smetaName" placeholder="Новая смета" style="width: 300px; margin-right: 10%;">
+                <input class="form-control" type="text" id="smetaName" placeholder="Новая смета"
+                       style="width: 300px; margin-right: 10%;">
                 <button id="btnSaveSmeta" class="btn btn-primary" onclick="saveSmeta()">Сохранить</button>
             </div>
         </div>
     </div>
     <div class="row mgbottom20p mgleft5">
         <div class="col-lg-4">
-    <button id="btnCalculationExcel" class="btn btn-primary" >Калькуляция в EXCEL</button>
+            <button id="btnCalculationExcel" class="btn btn-primary">Калькуляция в EXCEL</button>
         </div>
-            <div class="col-lg-4">
-    <button id="btnTechZad" class="btn btn-primary" onclick="printTZ()">Техническое задание</button>
-            </div>
-                <div class="col-lg-4">
-                    <a href="../smeta/excel.php" class="btn btn-primary">Смета в EXCEL</a>
-                </div>
+        <div class="col-lg-4">
+            <button id="btnTechZad" class="btn btn-primary" onclick="printTZ()">Техническое задание</button>
+        </div>
+        <div class="col-lg-4">
+            <a href="../smeta/excel.php" class="btn btn-primary">Смета в EXCEL</a>
+        </div>
     </div>
 
     <div class="position1">
-<div class="pos1">
-    <label for="SelectZakazchik" class="zakpod">Заказчик:</label>
-    <select class="form-select" aria-label="" id="zakazchik">
-        <option value="0" selected>-- Пожалуйста, выберите --</option>
-        <?php
-        while ($row = $connectionDB->getRowResult($zakazchik)) {
-            echo '<option id="zakazchik" value="' . htmlspecialchars($row['id_zakazchik']) . '">' . htmlspecialchars($row['nameZakazchik']) . '</option>';
-        }
-        ?>
-    </select>
+        <div class="pos1">
+            <label for="SelectZakazchik" class="zakpod">Заказчик:</label>
+            <select class="form-select" aria-label="" id="zakazchik">
+                <option value="0" selected>-- Пожалуйста, выберите --</option>
+                <?php
+                while ($row = $connectionDB->getRowResult($zakazchik)) {
+                    echo '<option id="zakazchik" value="' . htmlspecialchars($row['id_zakazchik']) . '">' . htmlspecialchars($row['nameZakazchik']) . '</option>';
+                }
+                ?>
+            </select>
 
-    <label for="SelectPodryadchik" class="zakpod">Подрядчик:</label>
-    <select class="form-select" aria-label="" id="podryadchik">
-        <option id="podryadchik" value="0" selected>-- Пожалуйста, выберите --</option>
-        <?php
-        while ($row = $connectionDB->getRowResult($podryadchik)) {
-            echo '<option value="' . htmlspecialchars($row['id_podryadchik']) . '">' . htmlspecialchars($row['namePodryadchik']) . '</option>';
-        }
-        ?>
-    </select>
+            <label for="SelectPodryadchik" class="zakpod">Подрядчик:</label>
+            <select class="form-select" aria-label="" id="podryadchik">
+                <option id="podryadchik" value="0" selected>-- Пожалуйста, выберите --</option>
+                <?php
+                while ($row = $connectionDB->getRowResult($podryadchik)) {
+                    echo '<option value="' . htmlspecialchars($row['id_podryadchik']) . '">' . htmlspecialchars($row['namePodryadchik']) . '</option>';
+                }
+                ?>
+            </select>
 
             <!-- Textarea with class .w-50 -->
             <label for="textAreaNaimRabot" class="zakpod">Наименование работ:</label>
@@ -370,9 +375,9 @@ echo "<script>
         </div>
         <div class="pos2">
             <label for="SelectZakazchik" class="zakpod">Дата начала выполнения работ:</label>
-            <input type="date" class="form-date"  id="dateNachRab" aria-label="" >
+            <input type="date" class="form-date" id="dateNachRab" aria-label="">
             <label for="SelectPodryadchik" class="zakpod">Дата окончания работ:</label>
-            <input type="date" class="form-date" id="dateOkonchRab" aria-label="" >
+            <input type="date" class="form-date" id="dateOkonchRab" aria-label="">
             <label for="textAreaCel" class="zakpod">Цель:</label>
             <div class="form-outline">
                 <textarea class="form-control" id="textAreaCel" rows="3"></textarea>
@@ -386,14 +391,14 @@ echo "<script>
             <br>
             <div id="inputContainer" class="input-container">
                 <label id="inputLabel" for="commonInputField">Введите значение:</label>
-                <input id="commonInputField" disabled type="number" name="inputValue" step="1" min="0" >
+                <input id="commonInputField" disabled type="number" name="inputValue" step="1" min="0">
             </div>
             <label for="workingDays" class="zakpod">Рабочих дней:</label>
             <input id="workingDays" class="butrad" type="radio" name="daysType" value="working">
             <br>
             <div id="inputContainerWorking" class="input-container">
                 <label id="inputLabel" for="commonInputFieldWorking">Введите значение:</label>
-                <input id="commonInputFieldWorking" disabled type="number" name="inputValue" step="1" min="0" >
+                <input id="commonInputFieldWorking" disabled type="number" name="inputValue" step="1" min="0">
             </div>
 
             <label for="textAreaMestoObj" class="zakpodGps">Местоположение объекта:</label>
@@ -409,153 +414,200 @@ echo "<script>
     <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 
 
-    <div class="nameforblock1" onclick ="toggleDisplay('.nameforblock1', '.dndb');">Характеристика объекта&nbsp;&nbsp;&nbsp;<?php echo '<span class="harakteristikaObject" id="harakteristikaObject">'; echo $harakteristikaObject; echo'</span>'; ?></div>
+    <div class="nameforblock1" onclick="toggleDisplay('.nameforblock1', '.dndb');">Характеристика объекта&nbsp;&nbsp;&nbsp;<?php echo '<span class="harakteristikaObject" id="harakteristikaObject">';
+        echo $harakteristikaObject;
+        echo '</span>'; ?></div>
     <div class="dndb">
-    <div class="position1">
-        <div class="pos1">
-            <div class = "viborvis">
-            <label for="SelectZakazchik" class="zakpod">Здание:</label>
-            <select class="form-select" id="buildingType" aria-label="" onchange="calculateHaracterCoefficient();" >
-                <option data-id="1" value="0" selected>-- Пожалуйста, выберите --</option>
-                <option data-id="1.2" value="1">Жилое</option>
-                <option data-id="1.2" value="2">Гражданское</option>
-                <option data-id="1" value="3">Промышленное</option>
-                <option data-id="1" value="4">Сельскохозяйственное</option>
-                <option data-id="1" value="5">Галереи</option>
-                <option data-id="1" value="6">Коммуникационные и многоярусные эстакады</option>
-                <option data-id="1" value="7">Градирни, этажерки и т.д.</option>
-            </select>
+        <div class="position1">
+            <div class="pos1">
+                <div class="viborvis">
+                    <label for="SelectZakazchik" class="zakpod">Здание:</label>
+                    <select class="form-select" id="buildingType" aria-label=""
+                            onchange="calculateHaracterCoefficient();">
+                        <option data-id="1" value="0" selected>-- Пожалуйста, выберите --</option>
+                        <option data-id="1.2" value="1">Жилое</option>
+                        <option data-id="1.2" value="2">Гражданское</option>
+                        <option data-id="1" value="3">Промышленное</option>
+                        <option data-id="1" value="4">Сельскохозяйственное</option>
+                        <option data-id="1" value="5">Галереи</option>
+                        <option data-id="1" value="6">Коммуникационные и многоярусные эстакады</option>
+                        <option data-id="1" value="7">Градирни, этажерки и т.д.</option>
+                    </select>
 
-            <select class="form-select" id="constructionType" aria-label="" onchange="calculateHaracterCoefficient();">
-                <option data-id="1" value="0" selected>-- Пожалуйста, выберите --</option>
-                <option data-id="1.2" value="1">Существующее здание</option>
-                <option data-id="0.8" value="2">Незавершенное капитальное строительство</option>
-                <option data-id="0.7" value="3">Новое строительство</option>
-            </select>
+                    <select class="form-select" id="constructionType" aria-label=""
+                            onchange="calculateHaracterCoefficient();">
+                        <option data-id="1" value="0" selected>-- Пожалуйста, выберите --</option>
+                        <option data-id="1.2" value="1">Существующее здание</option>
+                        <option data-id="0.8" value="2">Незавершенное капитальное строительство</option>
+                        <option data-id="0.7" value="3">Новое строительство</option>
+                    </select>
 
-            <div id="inputContainer" class="input-containerval">
-                <label for="etazh" class="zakpod">Количество этажей:</label>
-                <input data-id="1" id="etazh" type="number" name="inputValue" step="1" min="0" oninput="calculateHaracterCoefficient()">
+                    <div id="inputContainer" class="input-containerval">
+                        <label for="etazh" class="zakpod">Количество этажей:</label>
+                        <input data-id="1" id="etazh" type="number" name="inputValue" step="1" min="0"
+                               oninput="calculateHaracterCoefficient()">
+                    </div>
+
+                    <div id="inputContainer" class="input-containerval">
+                        <label for="visotazdani" class="zakpod">Высота здания:</label>
+                        <input data-id="1" id="visotazdani" type="number" name="inputValue" step="1" min="0"
+                               oninput="calculateHaracterCoefficient()">м
+                    </div>
+
+                    <div id="inputContainer" class="input-containerval">
+                        <label for="obem" class="zakpod">Объем здания:</label>
+                        <input id="obem" type="number" name="inputValue" step="1" min="0"
+                               oninput="calculateHaracterCoefficient()">м³
+                    </div>
+
+                    <div id="inputContainer" class="input-containerval">
+                        <label for="visotapola" class="zakpod">Высота покрытия от уровня пола:</label>
+                        <input data-id="1" id="visotapola" type="number" name="inputValue" step="1" min="0"
+                               oninput="calculateHaracterCoefficient()">м
+                    </div>
+
+                </div>
             </div>
+            <div class="pos2">
 
-            <div id="inputContainer" class="input-containerval">
-                <label for="visotazdani" class="zakpod">Высота здания:</label>
-                <input data-id="1" id="visotazdani" type="number" name="inputValue" step="1" min="0" oninput="calculateHaracterCoefficient()">м
+                <div class="viborvis">
+                    <input data-id="1.3" id="vis6" class="butrad" type="radio" name="zdvis" value="1"
+                           onchange="calculateHaracterCoefficient()">
+                    <label for="vis6" class="visotarad"> 1) Здание высотой до 6м, бескрановое, однообъемное,
+                        двухпролетное</label>
+                    <br>
+                    <input data-id="1.5" id="vis614" class="butrad" type="radio" name="zdvis" value="2"
+                           onchange="calculateHaracterCoefficient()">
+                    <label for="vis614" class="visotarad">2) Здание высотой от 6м до 14м высоты, с кранами
+                        грузоподъемностью до 50т включительно, с двумя объемами, 3-5 пролета, а также различные
+                        сооружения, резервуары, тоннели, лестничные клетки, галереи
+                    </label>
+                    <br>
+                    <input data-id="1.5" id="vis14" class="butrad" type="radio" name="zdvis" value="3"
+                           onchange="calculateHaracterCoefficient()">
+                    <label for="vis14" class="visotarad">3) Здание высотой более 14м, со сложной конструктивной схемой,
+                        с двухъярусным расположением кранов, более 3
+                        объемов, более 6 пролетов галереи с высотой опор более 20м и пролетом более 36м, полный
+                        монолитный каркас</label>
+                    <br>
+                </div>
             </div>
+            <div class="pos3">
 
-            <div id="inputContainer" class="input-containerval">
-                <label for="obem" class="zakpod">Объем здания:</label>
-                <input id="obem" type="number" name="inputValue" step="1" min="0" oninput="calculateHaracterCoefficient()">м³
-            </div>
-
-            <div id="inputContainer" class="input-containerval">
-                <label for="visotapola" class="zakpod">Высота покрытия от уровня пола:</label>
-                <input data-id="1" id="visotapola" type="number" name="inputValue" step="1" min="0" oninput="calculateHaracterCoefficient()" >м
-            </div>
-
-</div>
-        </div>
-        <div class="pos2">
-
-<div class = "viborvis">
-            <input data-id="1.3" id="vis6" class="butrad" type="radio" name="zdvis" value="1" onchange ="calculateHaracterCoefficient()">
-            <label for="vis6" class="visotarad"> 1) Здание высотой до 6м, бескрановое, однообъемное, двухпролетное</label>
-            <br>
-            <input data-id="1.5" id="vis614" class="butrad" type="radio" name="zdvis" value="2" onchange ="calculateHaracterCoefficient()">
-            <label for="vis614" class="visotarad">2) Здание высотой от 6м до 14м высоты, с кранами грузоподъемностью до 50т включительно, с двумя объемами, 3-5 пролета, а также различные сооружения, резервуары, тоннели, лестничные клетки, галереи
-            </label>
-            <br>
-            <input data-id="1.5" id="vis14" class="butrad" type="radio" name="zdvis" value="3" onchange ="calculateHaracterCoefficient()">
-            <label for="vis14" class="visotarad">3) Здание высотой более 14м, со сложной конструктивной схемой, с двухъярусным расположением кранов, более 3
-            объемов, более 6 пролетов галереи с высотой опор более 20м и пролетом более 36м, полный монолитный каркас</label>
-            <br>
-</div>
-        </div>
-        <div class="pos3">
-
-            <label for="SelectZakazchik" class="zakpod">Температурно-влажностный режим:</label>
-            <select class="form-select" id="temperatureMode" aria-label="" onchange="calculateHaracterCoefficient();">
-                <option data-id="1" value="0" selected>-- Пожалуйста, выберите --</option>
-                <option data-id="1" value="1">Нормальный (К = 1)</option>
-                <option data-id="1.15" value="2">t>25° С, W>70% (K = 1.15)</option>
-                <option data-id="1.2" value="3">t>30° С, W>85% (K = 1.2)</option>
-            </select>
-
-            <label for="SelectPodryadchik" class="zakpod">Насыщенность оборудования:</label>
-            <select class="form-select" id="equipmentSaturation" aria-label="" onchange="calculateHaracterCoefficient();">
-                <option data-id="1" value="0" selected>-- Пожалуйста, выберите --</option>
-                <option data-id="1" value="1">Отсуствует (K = 1)</option>
-                <option data-id="1.1" value="2">До 30% от площади помещений (K = 1.1)</option>
-                <option data-id="1.2" value="3">От 30% До 50% от площади помещений (K = 1.2)</option>
-                <option data-id="1.3" value="4">Свыше 50% от площади помещений (K = 1.3)</option>
-            </select>
-
-            <label>
-
-                <input type="checkbox" id="toggleSelect" onchange="toggleSelect('toggleSelect', 'selectContainer', 'options')"> Работа в помещениях в зависимости от  степени агрессивности воздействия
-            </label>
-
-            <div id="selectContainer" class="hidden">
-                <label for="options">Выберите опцию:</label>
-                <select class="form-select" id="options" disabled onchange="calculateHaracterCoefficient();">
-                    <option data-id="1" value="0">-- Пожалуйста, выберите --</option>
-                    <option data-id="1.2" value="1">Помещение со слабой степенью агрессивного воздействия (k=1.2)</option>
-                    <option data-id="1.3" value="2">Помещение со средней степенью агрессивного воздействия (k=1.3)</option>
-                    <option data-id="1.4"  value="3">Помещение с сильной степенью агрессивного воздействия (k=1.4)</option>
+                <label for="SelectZakazchik" class="zakpod">Температурно-влажностный режим:</label>
+                <select class="form-select" id="temperatureMode" aria-label=""
+                        onchange="calculateHaracterCoefficient();">
+                    <option data-id="1" value="0" selected>-- Пожалуйста, выберите --</option>
+                    <option data-id="1" value="1">Нормальный (К = 1)</option>
+                    <option data-id="1.15" value="2">t>25° С, W>70% (K = 1.15)</option>
+                    <option data-id="1.2" value="3">t>30° С, W>85% (K = 1.2)</option>
                 </select>
-            </div>
 
-        </div>
+                <label for="SelectPodryadchik" class="zakpod">Насыщенность оборудования:</label>
+                <select class="form-select" id="equipmentSaturation" aria-label=""
+                        onchange="calculateHaracterCoefficient();">
+                    <option data-id="1" value="0" selected>-- Пожалуйста, выберите --</option>
+                    <option data-id="1" value="1">Отсуствует (K = 1)</option>
+                    <option data-id="1.1" value="2">До 30% от площади помещений (K = 1.1)</option>
+                    <option data-id="1.2" value="3">От 30% До 50% от площади помещений (K = 1.2)</option>
+                    <option data-id="1.3" value="4">Свыше 50% от площади помещений (K = 1.3)</option>
+                </select>
+
+                <label>
+
+                    <input type="checkbox" id="toggleSelect"
+                           onchange="toggleSelect('toggleSelect', 'selectContainer', 'options')"> Работа в помещениях в
+                    зависимости от степени агрессивности воздействия
+                </label>
+
+                <div id="selectContainer" class="hidden">
+                    <label for="options">Выберите опцию:</label>
+                    <select class="form-select" id="options" disabled onchange="calculateHaracterCoefficient();">
+                        <option data-id="1" value="0">-- Пожалуйста, выберите --</option>
+                        <option data-id="1.2" value="1">Помещение со слабой степенью агрессивного воздействия (k=1.2)
+                        </option>
+                        <option data-id="1.3" value="2">Помещение со средней степенью агрессивного воздействия (k=1.3)
+                        </option>
+                        <option data-id="1.4" value="3">Помещение с сильной степенью агрессивного воздействия (k=1.4)
+                        </option>
+                    </select>
+                </div>
+
+            </div>
         </div>
         <div class="position1">
             <div class="pos1">
-                <div class = "viborvis">
+                <div class="viborvis">
                     <label>
-                        <input data-id="1.5" value="1" type="checkbox" id="chekb1" onchange="calculateHaracterCoefficient();"> Выполнение работ с применением альпинисткого снаряжения (K = 1.5)
+                        <input data-id="1.5" value="1" type="checkbox" id="chekb1"
+                               onchange="calculateHaracterCoefficient();"> Выполнение работ с применением альпинисткого
+                        снаряжения (K = 1.5)
                     </label>
                     <label>
-                        <input data-id="1.25" value="2" type="checkbox" id="chekb2" onchange="calculateHaracterCoefficient();"> Шумовые воздействия, превышающие нормативные величины (K = 1.25)
+                        <input data-id="1.25" value="2" type="checkbox" id="chekb2"
+                               onchange="calculateHaracterCoefficient();"> Шумовые воздействия, превышающие нормативные
+                        величины (K = 1.25)
                     </label>
                     <label>
-                        <input data-id="1.2" value="3" type="checkbox" id="chekb3" onchange="calculateHaracterCoefficient();"> Выполнение работ в условиях отрицательных температур в период с 1 ноября - 1 мая (K = 1.2)
+                        <input data-id="1.2" value="3" type="checkbox" id="chekb3"
+                               onchange="calculateHaracterCoefficient();"> Выполнение работ в условиях отрицательных
+                        температур в период с 1 ноября - 1 мая (K = 1.2)
                     </label>
                     <label>
-                        <input data-id="1.2" value="4"  type="checkbox" id="chekb4" onchange="calculateHaracterCoefficient();"> Необходимость очистки поверхности конструкций от грязи, пыли, ржавчины. Расчет выполнять по калькуляции трудозатрат
+                        <input data-id="1.2" value="4" type="checkbox" id="chekb4"
+                               onchange="calculateHaracterCoefficient();"> Необходимость очистки поверхности конструкций
+                        от грязи, пыли, ржавчины. Расчет выполнять по калькуляции трудозатрат
                     </label>
 
                 </div>
             </div>
             <div class="pos2">
 
-                <div class = "viborvis">
+                <div class="viborvis">
                     <label>
-                        <input data-id="1.2" value="5" type="checkbox" id="chekb5" onchange="calculateHaracterCoefficient();"> Необходимость использования переносных источников освещения (K = 1.2)
+                        <input data-id="1.2" value="5" type="checkbox" id="chekb5"
+                               onchange="calculateHaracterCoefficient();"> Необходимость использования переносных
+                        источников освещения (K = 1.2)
                     </label>
                     <label>
-                        <input data-id="1.02" value="6" type="checkbox" id="chekb6" onchange="calculateHaracterCoefficient();"> Здание является памятником архитектуры (K = 1.02)
+                        <input data-id="1.02" value="6" type="checkbox" id="chekb6"
+                               onchange="calculateHaracterCoefficient();"> Здание является памятником архитектуры (K =
+                        1.02)
                     </label>
                     <label>
-                        <input data-id="1.2" value="7" type="checkbox" id="chekb7" onchange="calculateHaracterCoefficient();"> Обследование в условиях производственного процесса (K = 1.2)
+                        <input data-id="1.2" value="7" type="checkbox" id="chekb7"
+                               onchange="calculateHaracterCoefficient();"> Обследование в условиях производственного
+                        процесса (K = 1.2)
                     </label>
                     <label>
-                        <input data-id="1.15" value="8" type="checkbox" id="chekb8" onchange="calculateHaracterCoefficient();"> Выполнение работ с мостового крана или подмостей (K = 1.15)
+                        <input data-id="1.15" value="8" type="checkbox" id="chekb8"
+                               onchange="calculateHaracterCoefficient();"> Выполнение работ с мостового крана или
+                        подмостей (K = 1.15)
                     </label>
                 </div>
             </div>
             <div class="pos3">
-                <div class = "viborvis">
-                <label>
-                    <input data-id="1.2" value="9" type="checkbox" id="chekb9" onchange="calculateHaracterCoefficient();"> Здание оборудовано кранами режимных групп 7К, 8К, (K = 1.2)
-                </label>
-                <label>
-                    <input data-id="1.2" value="10" type="checkbox" id="chekb10" onchange="calculateHaracterCoefficient();"> Конструкции, усиленные по ранее разработанным проектам (K = 1.2)
-                </label>
-                <label>
-                    <input data-id="0.7" value="11" type="checkbox" id="chekb11" onchange="calculateHaracterCoefficient();"> Использование ранее выполненных обследований не более  3 лет назад (K = 0.7)
-                </label>
-                <label>
-                    <input data-id="1.35" value="12" type="checkbox" id="chekb12" onchange="calculateHaracterCoefficient();"> Срочное выполнение обмерно-обследовательских работ (K <= 1.35)
-                </label>
+                <div class="viborvis">
+                    <label>
+                        <input data-id="1.2" value="9" type="checkbox" id="chekb9"
+                               onchange="calculateHaracterCoefficient();"> Здание оборудовано кранами режимных групп 7К,
+                        8К, (K = 1.2)
+                    </label>
+                    <label>
+                        <input data-id="1.2" value="10" type="checkbox" id="chekb10"
+                               onchange="calculateHaracterCoefficient();"> Конструкции, усиленные по ранее разработанным
+                        проектам (K = 1.2)
+                    </label>
+                    <label>
+                        <input data-id="0.7" value="11" type="checkbox" id="chekb11"
+                               onchange="calculateHaracterCoefficient();"> Использование ранее выполненных обследований
+                        не более 3 лет назад (K = 0.7)
+                    </label>
+                    <label>
+                        <input data-id="1.35" value="12" type="checkbox" id="chekb12"
+                               onchange="calculateHaracterCoefficient();"> Срочное выполнение обмерно-обследовательских
+                        работ (K <= 1.35)
+                    </label>
                 </div>
             </div>
         </div>
@@ -566,116 +618,137 @@ echo "<script>
     <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 
 
-
-
-
-
-    <div class="nameforblock3" onclick ="toggleDisplay('.nameforblock3', '.dndb3');"><input class = "onCollap" type="checkbox" id="sborCheck" name="obmerCheck" value="1"> &nbsp;&nbsp;&nbsp;Сбор исходных данных &nbsp;&nbsp;&nbsp;<?php echo '<span class="sborIshodnihDannih" id="sborIshodnihDannih">'; echo $sborIshodnihDannih; echo'</span>'; ?></div>
+    <div class="nameforblock3" onclick="toggleDisplay('.nameforblock3', '.dndb3');"><input class="onCollap"
+                                                                                           type="checkbox"
+                                                                                           id="sborCheck"
+                                                                                           name="obmerCheck" value="1">
+        &nbsp;&nbsp;&nbsp;Сбор исходных данных
+        &nbsp;&nbsp;&nbsp;<?php echo '<span class="sborIshodnihDannih" id="sborIshodnihDannih">';
+        echo $sborIshodnihDannih;
+        echo '</span>'; ?></div>
     <div class="dndb3">
 
-        <div class = "mainfreename">
-        <div class = "freeName" style = "margin-left: 1%;">
-            <label>
-                Категория сложности работ:
-            </label>
-        </div>
-        <div class = "freeName2" style = "    margin-left: 19%;">
-            <label>
-                <input data-id="1" value ="10" type="checkbox" id="choosCunstruct" onchange="toggleCheckboxes()"> Конструкции (если конструкции обследуются выборочно, поставьте галочку и введите проценты) :
-            </label>
-        </div>
+        <div class="mainfreename">
+            <div class="freeName" style="margin-left: 1%;">
+                <label>
+                    Категория сложности работ:
+                </label>
+            </div>
+            <div class="freeName2" style="    margin-left: 19%;">
+                <label>
+                    <input data-id="1" value="10" type="checkbox" id="choosCunstruct" onchange="toggleCheckboxes()">
+                    Конструкции (если конструкции обследуются выборочно, поставьте галочку и введите проценты) :
+                </label>
+            </div>
         </div>
 
 
         <div class="position1">
 
             <div class="pos1">
-                <div class = "viborvis">
-                    <input data-id="1" id="pasportNaZdanie" class="butrad" type="radio" name="pasportNaZdanie" value="1" onchange="calcIshod1()">
-                <label for="pasportNaZdanie" class="pasportzd">1) Паспорт на здание или сооружение</label>
+                <div class="viborvis">
+                    <input data-id="1" id="pasportNaZdanie" class="butrad" type="radio" name="pasportNaZdanie" value="1"
+                           onchange="calcIshod1()">
+                    <label for="pasportNaZdanie" class="pasportzd">1) Паспорт на здание или сооружение</label>
 
-                <br>
-                    <input data-id="1" id="pasportNaZdanie" class="butrad" type="radio" name="pasportNaZdanie" value="2" onchange="calcIshod1()">
-                <label for="pasportNaZdanie" class="pasportzd">2) Паспорт на здание или сооружение. Проектная документация. Исполнительная документация. Эксплатуационная документация,
-                    журнал наблюдений службы эксплуатации. Документы характеризующие фактические нагрузки и воздействия. Сертификаты на стальные конструкции.</label>
+                    <br>
+                    <input data-id="1" id="pasportNaZdanie" class="butrad" type="radio" name="pasportNaZdanie" value="2"
+                           onchange="calcIshod1()">
+                    <label for="pasportNaZdanie" class="pasportzd">2) Паспорт на здание или сооружение. Проектная
+                        документация. Исполнительная документация. Эксплатуационная документация,
+                        журнал наблюдений службы эксплуатации. Документы характеризующие фактические нагрузки и
+                        воздействия. Сертификаты на стальные конструкции.</label>
 
-                <br>
+                    <br>
                 </div>
             </div>
             <div class="pos2">
-                <div class = "viborvischeckbox1">
-                    <div class = "mainlolspace">
-                   <div class = "lolspace">
-                        <input data-id="1" value="1" type="checkbox" class="ishod2check" id="toggleZd1" disabled onchange="toggleCheckboxesDop()"> Конструкция фундаментов
-                   </div>
+                <div class="viborvischeckbox1">
+                    <div class="mainlolspace">
+                        <div class="lolspace">
+                            <input data-id="1" value="1" type="checkbox" class="ishod2check" id="toggleZd1" disabled
+                                   onchange="toggleCheckboxesDop()"> Конструкция фундаментов
+                        </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class = "inpval" id="conval1"  disabled type="number" name="inputValue" step="1" min="0" oninput="calcIshod2()"> %
+                            <input data-id="1" class="inpval" id="conval1" disabled type="number" name="inputValue"
+                                   step="1" min="0" oninput="calcIshod2()"> %
                         </div>
                     </div>
 
-                    <div class = "mainlolspace">
-                    <div class = "lolspace">
+                    <div class="mainlolspace">
+                        <div class="lolspace">
 
-                        <input data-id="1" type="checkbox" id="toggleZd2" class="ishod2check" disabled  onchange="toggleCheckboxesDop()"> Стены
-                    </div>
+                            <input data-id="1" type="checkbox" id="toggleZd2" class="ishod2check" disabled
+                                   onchange="toggleCheckboxesDop()"> Стены
+                        </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class = "inpval" id="conval2" disabled type="number" name="inputValue" step="1" min="0" oninput="calcIshod2()"> %
+                            <input data-id="1" class="inpval" id="conval2" disabled type="number" name="inputValue"
+                                   step="1" min="0" oninput="calcIshod2()"> %
                         </div>
                     </div>
 
 
+                    <div class="mainlolspace">
+                        <div class="lolspace">
 
-                    <div class = "mainlolspace">
-                        <div class = "lolspace">
-
-                        <input data-id="1" type="checkbox" id="toggleZd3" class="ishod2check" disabled  onchange="toggleCheckboxesDop()"> Полы
+                            <input data-id="1" type="checkbox" id="toggleZd3" class="ishod2check" disabled
+                                   onchange="toggleCheckboxesDop()"> Полы
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class = "inpval" id="conval3" disabled type="number" name="inputValue" step="1" min="0" oninput="calcIshod2()"> %
-                        </div>
-                    </div>
-
-                    <div class = "mainlolspace">
-                            <div class = "lolspace">
-                        <input data-id="1" type="checkbox" id="toggleZd4" class="ishod2check" disabled  onchange="toggleCheckboxesDop()"> Колонны, столбы, стойки
-                            </div>
-                        <div id="inputContainer" class="input-container">
-                            <input data-id="1" class = "inpval" id="conval4" disabled type="number" name="inputValue" step="1" min="0" oninput="calcIshod2()"> %
+                            <input data-id="1" class="inpval" id="conval3" disabled type="number" name="inputValue"
+                                   step="1" min="0" oninput="calcIshod2()"> %
                         </div>
                     </div>
-                    <div class = "mainlolspace">
-                                <div class = "lolspace">
-                        <input data-id="1" type="checkbox" id="toggleZd5" class="ishod2check"  disabled  onchange="toggleCheckboxesDop()"> Несущие конструкции копров,пролетных строейний галерей
-                                </div>
+
+                    <div class="mainlolspace">
+                        <div class="lolspace">
+                            <input data-id="1" type="checkbox" id="toggleZd4" class="ishod2check" disabled
+                                   onchange="toggleCheckboxesDop()"> Колонны, столбы, стойки
+                        </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class = "inpval" id="conval5" disabled type="number" name="inputValue" step="1" min="0" oninput="calcIshod2()"> %
+                            <input data-id="1" class="inpval" id="conval4" disabled type="number" name="inputValue"
+                                   step="1" min="0" oninput="calcIshod2()"> %
+                        </div>
+                    </div>
+                    <div class="mainlolspace">
+                        <div class="lolspace">
+                            <input data-id="1" type="checkbox" id="toggleZd5" class="ishod2check" disabled
+                                   onchange="toggleCheckboxesDop()"> Несущие конструкции копров,пролетных строейний
+                            галерей
+                        </div>
+                        <div id="inputContainer" class="input-container">
+                            <input data-id="1" class="inpval" id="conval5" disabled type="number" name="inputValue"
+                                   step="1" min="0" oninput="calcIshod2()"> %
                         </div>
                     </div>
 
                 </div>
             </div>
-
 
 
             <div class="pos3">
 
-                <div class = "viborvischeckbox2">
-                    <div class = "mainlolspace">
-                        <div class = "lolspace">
-                            <input data-id="1" type="checkbox" id="toggleZd6" class="ishod2check" disabled onchange="toggleCheckboxesDop()"> Подкрановые и тормозные конструкции
+                <div class="viborvischeckbox2">
+                    <div class="mainlolspace">
+                        <div class="lolspace">
+                            <input data-id="1" type="checkbox" id="toggleZd6" class="ishod2check" disabled
+                                   onchange="toggleCheckboxesDop()"> Подкрановые и тормозные конструкции
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class = "inpval" id="conval6" disabled type="number" name="inputValue" step="1" min="0" oninput="calcIshod2()"> %
+                            <input data-id="1" class="inpval" id="conval6" disabled type="number" name="inputValue"
+                                   step="1" min="0" oninput="calcIshod2()"> %
                         </div>
                     </div>
 
-                    <div class = "mainlolspace">
-                        <div class = "lolspace">
+                    <div class="mainlolspace">
+                        <div class="lolspace">
 
-                            <input data-id="1" type="checkbox" id="toggleZd7" class="ishod2check" disabled  onchange="toggleCheckboxesDop()"> Перекрытия
+                            <input data-id="1" type="checkbox" id="toggleZd7" class="ishod2check" disabled
+                                   onchange="toggleCheckboxesDop()"> Перекрытия
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class = "inpval" id="conval7" disabled type="number" name="inputValue" step="1" min="0" oninput="calcIshod2()"> %
+                            <input data-id="1" class="inpval" id="conval7" disabled type="number" name="inputValue"
+                                   step="1" min="0" oninput="calcIshod2()"> %
                         </div>
                     </div>
 
@@ -683,19 +756,23 @@ echo "<script>
                     <div class="mainlolspace">
                         <div class="lolspace">
 
-                            <input data-id="1" type="checkbox" id="toggleZd8" class="ishod2check" disabled onchange="toggleCheckboxesDop()"> Покрытие
+                            <input data-id="1" type="checkbox" id="toggleZd8" class="ishod2check" disabled
+                                   onchange="toggleCheckboxesDop()"> Покрытие
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class="inpval" id="conval8" disabled type="number" name="inputValue" step="1" min="0" oninput="calcIshod2()"> %
+                            <input data-id="1" class="inpval" id="conval8" disabled type="number" name="inputValue"
+                                   step="1" min="0" oninput="calcIshod2()"> %
                         </div>
                     </div>
 
                     <div class="mainlolspace">
                         <div class="lolspace">
-                            <input data-id="1" type="checkbox" id="toggleZd9" class="ishod2check" disabled onchange="toggleCheckboxesDop()"> Кровля
+                            <input data-id="1" type="checkbox" id="toggleZd9" class="ishod2check" disabled
+                                   onchange="toggleCheckboxesDop()"> Кровля
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input data-id="1" class="inpval" id="conval9" disabled type="number" name="inputValue" step="1" min="0" oninput="calcIshod2()"> %
+                            <input data-id="1" class="inpval" id="conval9" disabled type="number" name="inputValue"
+                                   step="1" min="0" oninput="calcIshod2()"> %
                         </div>
                     </div>
                 </div>
@@ -706,7 +783,13 @@ echo "<script>
 
     <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 
-    <div class="nameforblock4" onclick="toggleDisplay('.nameforblock4', '.dndb4');"><input class = "onCollap" type="checkbox" id="obmerCheck" name="obmerCheck" value="1">&nbsp;&nbsp;&nbsp;Обмерные работы &nbsp;&nbsp;&nbsp;<?php echo '<span class="sborIshodnihDannih" id="obmerRaboty">'; echo $obmerRaboty; echo'</span>'; ?></div>
+    <div class="nameforblock4" onclick="toggleDisplay('.nameforblock4', '.dndb4');"><input class="onCollap"
+                                                                                           type="checkbox"
+                                                                                           id="obmerCheck"
+                                                                                           name="obmerCheck" value="1">&nbsp;&nbsp;&nbsp;Обмерные
+        работы &nbsp;&nbsp;&nbsp;<?php echo '<span class="sborIshodnihDannih" id="obmerRaboty">';
+        echo $obmerRaboty;
+        echo '</span>'; ?></div>
     <div class="dndb4">
 
         <div class="mainfreename">
@@ -728,18 +811,20 @@ echo "<script>
 
             <div class="pos1">
                 <div class="viborvis">
-                    <input id="obmerobsl" class="butrad kat_sl_rab" type="radio" name="kat_sl_rab" value="1" onchange="calcObmerWorksPart1()">
+                    <input id="obmerobsl" class="butrad kat_sl_rab" type="radio" name="kat_sl_rab" value="1"
+                           onchange="calcObmerWorksPart1()">
                     <label for="obmerobsl" class="pasportzd">1) Обмеры для визуального обследования,
                         паспортизации.:</label>
 
                     <br>
-                    <input id="obmerobs2" class="butrad kat_sl_rab" type="radio" name="kat_sl_rab" value="2" onchange="calcObmerWorksPart1()">
+                    <input id="obmerobs2" class="butrad kat_sl_rab" type="radio" name="kat_sl_rab" value="2"
+                           onchange="calcObmerWorksPart1()">
                     <label for="obmerobsl2" class="pasportzd ">2) Обмеры для детального обследования (узлы, вскрытия и
                         т.д.):</label>
 
-<!--                    <br>-->
-<!--                    <input id="obmerobsl3" class="butrad kat_sl_rab" type="radio" name="kat_sl_rab" value="3" onchange="calcObmerWorksPart1()">-->
-<!--                    <label for="obmerobsl3" class="pasportzd">3) Работы различной категории сложности:</label>-->
+                    <!--                    <br>-->
+                    <!--                    <input id="obmerobsl3" class="butrad kat_sl_rab" type="radio" name="kat_sl_rab" value="3" onchange="calcObmerWorksPart1()">-->
+                    <!--                    <label for="obmerobsl3" class="pasportzd">3) Работы различной категории сложности:</label>-->
 
                 </div>
             </div>
@@ -747,22 +832,26 @@ echo "<script>
                 <div class="viborvischeckbox3">
                     <div class="mainlolspace">
                         <div class="lolspace">
-                            <input type="checkbox" id="toggleZd41" class="obmer2check" disabled onchange="toggleCheckboxesDop4()">
+                            <input type="checkbox" id="toggleZd41" class="obmer2check" disabled
+                                   onchange="toggleCheckboxesDop4()">
                             Конструкция фундаментов
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval41" disabled type="number" name="inputValue" step="1"  min="0" oninput="calcObmerWorksPart2()"> %
+                            <input class="inpval" id="conval41" disabled type="number" name="inputValue" step="1"
+                                   min="0" oninput="calcObmerWorksPart2()"> %
                         </div>
                     </div>
 
                     <div class="mainlolspace">
                         <div class="lolspace">
 
-                            <input type="checkbox" id="toggleZd42" class="obmer2check" disabled onchange="toggleCheckboxesDop4()"> Планы
+                            <input type="checkbox" id="toggleZd42" class="obmer2check" disabled
+                                   onchange="toggleCheckboxesDop4()"> Планы
                             этажей
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval42" disabled type="number" name="inputValue" step="1"  min="0" oninput="calcObmerWorksPart2()"> %
+                            <input class="inpval" id="conval42" disabled type="number" name="inputValue" step="1"
+                                   min="0" oninput="calcObmerWorksPart2()"> %
                         </div>
                     </div>
 
@@ -770,29 +859,35 @@ echo "<script>
                     <div class="mainlolspace">
                         <div class="lolspace">
 
-                            <input type="checkbox" id="toggleZd43" class="obmer2check" disabled onchange="toggleCheckboxesDop4()"> Фасады
+                            <input type="checkbox" id="toggleZd43" class="obmer2check" disabled
+                                   onchange="toggleCheckboxesDop4()"> Фасады
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval43" disabled type="number" name="inputValue" step="1"  min="0" oninput="calcObmerWorksPart2()"> %
+                            <input class="inpval" id="conval43" disabled type="number" name="inputValue" step="1"
+                                   min="0" oninput="calcObmerWorksPart2()"> %
                         </div>
                     </div>
 
                     <div class="mainlolspace">
                         <div class="lolspace">
-                            <input type="checkbox" id="toggleZd44" class="obmer2check" disabled onchange="toggleCheckboxesDop4()"> Разрезы,
+                            <input type="checkbox" id="toggleZd44" class="obmer2check" disabled
+                                   onchange="toggleCheckboxesDop4()"> Разрезы,
                             сечения
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval44" disabled type="number" name="inputValue" step="1"  min="0" oninput="calcObmerWorksPart2()"> %
+                            <input class="inpval" id="conval44" disabled type="number" name="inputValue" step="1"
+                                   min="0" oninput="calcObmerWorksPart2()"> %
                         </div>
                     </div>
                     <div class="mainlolspace">
                         <div class="lolspace">
-                            <input type="checkbox" id="toggleZd45" class="obmer2check" disabled onchange="toggleCheckboxesDop4()"> Несущие
+                            <input type="checkbox" id="toggleZd45" class="obmer2check" disabled
+                                   onchange="toggleCheckboxesDop4()"> Несущие
                             конструкции копров,пролетных строейний галерей
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval45" disabled type="number" name="inputValue" step="1"  min="0" oninput="calcObmerWorksPart2()"> %
+                            <input class="inpval" id="conval45" disabled type="number" name="inputValue" step="1"
+                                   min="0" oninput="calcObmerWorksPart2()"> %
                         </div>
                     </div>
 
@@ -805,46 +900,52 @@ echo "<script>
                 <div class="viborvischeckbox4">
                     <div class="mainlolspace">
                         <div class="lolspace">
-                            <input type="checkbox" id="toggleZd46" class="obmer2check" disabled onchange="toggleCheckboxesDop4()"> План
+                            <input type="checkbox" id="toggleZd46" class="obmer2check" disabled
+                                   onchange="toggleCheckboxesDop4()"> План
                             кровли
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval46" disabled type="number" name="inputValue" step="1"  min="0" oninput="calcObmerWorksPart2()"> %
+                            <input class="inpval" id="conval46" disabled type="number" name="inputValue" step="1"
+                                   min="0" oninput="calcObmerWorksPart2()"> %
                         </div>
                     </div>
-
-
 
 
                     <div class="mainlolspace">
                         <div class="lolspace">
 
-                            <input type="checkbox" id="toggleZd48" class="obmer2check" disabled onchange="toggleCheckboxesDop4()">
+                            <input type="checkbox" id="toggleZd48" class="obmer2check" disabled
+                                   onchange="toggleCheckboxesDop4()">
                             Стропильные и подстропильные конструкции, подкрановые и тормозные конструкции
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval48" disabled type="number" name="inputValue" step="1"  min="0" oninput="calcObmerWorksPart2()"> %
+                            <input class="inpval" id="conval48" disabled type="number" name="inputValue" step="1"
+                                   min="0" oninput="calcObmerWorksPart2()"> %
                         </div>
                     </div>
 
                     <div class="mainlolspace">
                         <div class="lolspace">
-                            <input type="checkbox" id="toggleZd49" class="obmer2check" disabled onchange="toggleCheckboxesDop4()"> Несущие
+                            <input type="checkbox" id="toggleZd49" class="obmer2check" disabled
+                                   onchange="toggleCheckboxesDop4()"> Несущие
                             элементы перекрытий
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval49" disabled type="number" name="inputValue" step="1"  min="0" oninput="calcObmerWorksPart2()"> %
+                            <input class="inpval" id="conval49" disabled type="number" name="inputValue" step="1"
+                                   min="0" oninput="calcObmerWorksPart2()"> %
                         </div>
                     </div>
 
 
                     <div class="mainlolspace">
                         <div class="lolspace">
-                            <input type="checkbox" id="toggleZd449" class="obmer2check" disabled onchange="toggleCheckboxesDop4()"> Несущие
+                            <input type="checkbox" id="toggleZd449" class="obmer2check" disabled
+                                   onchange="toggleCheckboxesDop4()"> Несущие
                             элементы покрытий
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval449" disabled type="number" name="inputValue" step="1"  min="0" oninput="calcObmerWorksPart2()"> %
+                            <input class="inpval" id="conval449" disabled type="number" name="inputValue" step="1"
+                                   min="0" oninput="calcObmerWorksPart2()"> %
                         </div>
                     </div>
 
@@ -853,8 +954,10 @@ echo "<script>
             </div>
         </div>
         <div class="dusl">Дополнительные условия:
-            <input data-id="0.7" type="checkbox" id="toggleZdDopUsl"> Проектная документация присутствует в полном объеме (K = 0.7)
-            <input data-id="1.25" type="checkbox" id="toggleZdDopUsl1"> Выполнение детальных измерений пролетов, сечений, узлов, смещений (K = 1.25)
+            <input data-id="0.7" type="checkbox" id="toggleZdDopUsl"> Проектная документация присутствует в полном
+            объеме (K = 0.7)
+            <input data-id="1.25" type="checkbox" id="toggleZdDopUsl1"> Выполнение детальных измерений пролетов,
+            сечений, узлов, смещений (K = 1.25)
         </div>
     </div>
 
@@ -863,7 +966,13 @@ echo "<script>
     <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 
 
-    <div class="nameforblock5" onclick="toggleDisplay('.nameforblock5', '.dndb5');"><input class = "onCollap" type="checkbox" id="obsledCheck" name="sborDann" value="1">&nbsp;&nbsp;&nbsp;Обследовательские работы &nbsp;&nbsp;&nbsp;<?php echo '<span class="sborIshodnihDannih" id="obsledRab">'; echo $obsledRab; echo'</span>'; ?></div>
+    <div class="nameforblock5" onclick="toggleDisplay('.nameforblock5', '.dndb5');"><input class="onCollap"
+                                                                                           type="checkbox"
+                                                                                           id="obsledCheck"
+                                                                                           name="sborDann" value="1">&nbsp;&nbsp;&nbsp;Обследовательские
+        работы &nbsp;&nbsp;&nbsp;<?php echo '<span class="sborIshodnihDannih" id="obsledRab">';
+        echo $obsledRab;
+        echo '</span>'; ?></div>
     <div class="dndb5">
 
         <div class="mainfreename">
@@ -885,18 +994,21 @@ echo "<script>
 
             <div class="pos1">
                 <div class="viborvis">
-                    <input id="obsledObs1" class="butrad kat_sl_rab_obsled" type="radio" name="kat_sl_rab_obsled" value="1" onchange="calcObsled1()">
+                    <input id="obsledObs1" class="butrad kat_sl_rab_obsled" type="radio" name="kat_sl_rab_obsled"
+                           value="1" onchange="calcObsled1()">
                     <label for="obsledObs1" class="pasportzd kat_sl_rab">Предварительный осмотр</label>
                     <br>
-                    <input id="obsledObs2" class="butrad kat_sl_rab_obsled" type="radio" name="kat_sl_rab_obsled" value="2" onchange="calcObsled1()">
+                    <input id="obsledObs2" class="butrad kat_sl_rab_obsled" type="radio" name="kat_sl_rab_obsled"
+                           value="2" onchange="calcObsled1()">
                     <label for="obsledObs2" class="pasportzd">Общее обследование</label>
                     <br>
-                    <input id="obsledObs3" class="butrad kat_sl_rab_obsled" type="radio" name="kat_sl_rab_obsled" value="3" onchange="calcObsled1()">
+                    <input id="obsledObs3" class="butrad kat_sl_rab_obsled" type="radio" name="kat_sl_rab_obsled"
+                           value="3" onchange="calcObsled1()">
                     <label for="obsledObs3" class="pasportzd">Детальное обследование</label>
                     <br>
-<!--                    <input id="rabotyObshDetal" class="butrad" type="radio" name="daysType" value="4">-->
-<!--                    <label for="rabotyObshDetal" class="pasportzd">Работы совмещающие общее и детальное обследование</label>-->
-<!--                    <br>-->
+                    <!--                    <input id="rabotyObshDetal" class="butrad" type="radio" name="daysType" value="4">-->
+                    <!--                    <label for="rabotyObshDetal" class="pasportzd">Работы совмещающие общее и детальное обследование</label>-->
+                    <!--                    <br>-->
                 </div>
             </div>
             <div class="pos2">
@@ -907,7 +1019,8 @@ echo "<script>
                             Конструкция фундаментов
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval51" disabled type="number" name="inputValue" step="1" min="0" oninput="calcObsled2()">
+                            <input class="inpval" id="conval51" disabled type="number" name="inputValue" step="1"
+                                   min="0" oninput="calcObsled2()">
                         </div>
                     </div>
 
@@ -917,7 +1030,8 @@ echo "<script>
                             <input type="checkbox" id="toggleZd52" disabled onchange="toggleCheckboxesDop5()"> Стены
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval52" disabled type="number" name="inputValue" step="1" min="0" oninput="calcObsled2()">%
+                            <input class="inpval" id="conval52" disabled type="number" name="inputValue" step="1"
+                                   min="0" oninput="calcObsled2()">%
                         </div>
                     </div>
 
@@ -928,7 +1042,8 @@ echo "<script>
                             <input type="checkbox" id="toggleZd53" disabled onchange="toggleCheckboxesDop5()"> Полы
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval53" disabled type="number" name="inputValue" step="1" min="0" oninput="calcObsled2()">%
+                            <input class="inpval" id="conval53" disabled type="number" name="inputValue" step="1"
+                                   min="0" oninput="calcObsled2()">%
                         </div>
                     </div>
 
@@ -938,7 +1053,8 @@ echo "<script>
                             столбы, стойки
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval54" disabled type="number" name="inputValue" step="1" min="0" oninput="calcObsled2()">%
+                            <input class="inpval" id="conval54" disabled type="number" name="inputValue" step="1"
+                                   min="0" oninput="calcObsled2()">%
                         </div>
                     </div>
                     <div class="mainlolspace">
@@ -947,7 +1063,8 @@ echo "<script>
                             конструкции копров,пролетных строейний галерей
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval55" disabled type="number" name="inputValue" step="1"  min="0" oninput="calcObsled2()">%
+                            <input class="inpval" id="conval55" disabled type="number" name="inputValue" step="1"
+                                   min="0" oninput="calcObsled2()">%
                         </div>
                     </div>
 
@@ -964,7 +1081,8 @@ echo "<script>
                             Подкрановые и тормозные конструкции
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval56" disabled type="number" name="inputValue" step="1"  min="0" oninput="calcObsled2()">%
+                            <input class="inpval" id="conval56" disabled type="number" name="inputValue" step="1"
+                                   min="0" oninput="calcObsled2()">%
                         </div>
                     </div>
 
@@ -975,7 +1093,8 @@ echo "<script>
                             Перекрытия
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval57" disabled type="number" name="inputValue" step="1"  min="0" oninput="calcObsled2()">%
+                            <input class="inpval" id="conval57" disabled type="number" name="inputValue" step="1"
+                                   min="0" oninput="calcObsled2()">%
                         </div>
                     </div>
 
@@ -986,7 +1105,8 @@ echo "<script>
                             <input type="checkbox" id="toggleZd58" disabled onchange="toggleCheckboxesDop5()"> Покрытие
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval58" disabled type="number" name="inputValue" step="1" min="0" oninput="calcObsled2()">%
+                            <input class="inpval" id="conval58" disabled type="number" name="inputValue" step="1"
+                                   min="0" oninput="calcObsled2()">%
                         </div>
                     </div>
 
@@ -995,7 +1115,8 @@ echo "<script>
                             <input type="checkbox" id="toggleZd59" disabled onchange="toggleCheckboxesDop5()"> Кровля
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval59" disabled type="number" name="inputValue" step="1" min="0" oninput="calcObsled2()">%
+                            <input class="inpval" id="conval59" disabled type="number" name="inputValue" step="1"
+                                   min="0" oninput="calcObsled2()">%
                         </div>
                     </div>
                 </div>
@@ -1048,7 +1169,14 @@ echo "<script>
 
     <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 
-    <div class="nameforblock6" onclick="toggleDisplay('.nameforblock6', '.dndb6');"><input class = "onCollap" type="checkbox" id="sostTechOtchetCheck" name="sostTechOtchetCheck" value="1">&nbsp;&nbsp;&nbsp;Составление технического отчета &nbsp;&nbsp;&nbsp;<?php echo '<span class="sborIshodnihDannih" id="sostTech">'; echo $sostTech; echo'</span>'; ?></div>
+    <div class="nameforblock6" onclick="toggleDisplay('.nameforblock6', '.dndb6');"><input class="onCollap"
+                                                                                           type="checkbox"
+                                                                                           id="sostTechOtchetCheck"
+                                                                                           name="sostTechOtchetCheck"
+                                                                                           value="1">&nbsp;&nbsp;&nbsp;Составление
+        технического отчета &nbsp;&nbsp;&nbsp;<?php echo '<span class="sborIshodnihDannih" id="sostTech">';
+        echo $sostTech;
+        echo '</span>'; ?></div>
     <div class="dndb6">
 
         <div class="mainfreename">
@@ -1070,21 +1198,24 @@ echo "<script>
 
             <div class="pos1">
                 <div class="viborvis">
-                    <input id="sosttech1" class="butrad kat_sl_rab_sosttech" type="radio" name="kat_sl_rab_sosttech" value="1" onchange="calcSosttech1()">
+                    <input id="sosttech1" class="butrad kat_sl_rab_sosttech" type="radio" name="kat_sl_rab_sosttech"
+                           value="1" onchange="calcSosttech1()">
                     <label for="sosttech1" class="pasportzd">Заключение о состоянии строительных конструкций с
                         выводами и рекомендациями</label>
                     <br>
-                    <input id="sosttech2" class="butrad kat_sl_rab_sosttech" type="radio" name="kat_sl_rab_sosttech" value="2" onchange="calcSosttech1()">
+                    <input id="sosttech2" class="butrad kat_sl_rab_sosttech" type="radio" name="kat_sl_rab_sosttech"
+                           value="2" onchange="calcSosttech1()">
                     <label for="sosttech2" class="pasportzd">То же, с разработкой технических решений для отдельных
                         элементов</label>
                     <br>
-                    <input id="sosttech3" class="butrad kat_sl_rab_sosttech" type="radio" name="kat_sl_rab_sosttech" value="3" onchange="calcSosttech1()">
+                    <input id="sosttech3" class="butrad kat_sl_rab_sosttech" type="radio" name="kat_sl_rab_sosttech"
+                           value="3" onchange="calcSosttech1()">
                     <label for="sosttech3" class="pasportzd">То же, с частичной заменой или усилением более 30%
                         несущих элементов</label>
                     <br>
-<!--                    <input id="rabotCategory" class="butrad" type="radio" name="daysType" value="working">-->
-<!--                    <label for="rabotCategory" class="pasportzd">Работы различной категории сложности</label>-->
-<!--                    <br>-->
+                    <!--                    <input id="rabotCategory" class="butrad" type="radio" name="daysType" value="working">-->
+                    <!--                    <label for="rabotCategory" class="pasportzd">Работы различной категории сложности</label>-->
+                    <!--                    <br>-->
                 </div>
             </div>
             <div class="pos2">
@@ -1095,7 +1226,8 @@ echo "<script>
                             Конструкция фундаментов
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval61" disabled type="number" name="inputValue" step="1" min="0" oninput="calcSosttech2()"> %
+                            <input class="inpval" id="conval61" disabled type="number" name="inputValue" step="1"
+                                   min="0" oninput="calcSosttech2()"> %
                         </div>
                     </div>
 
@@ -1105,7 +1237,8 @@ echo "<script>
                             <input type="checkbox" id="toggleZd62" disabled onchange="toggleCheckboxesDop6()"> Стены
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval62" disabled type="number" name="inputValue" step="1" min="0" oninput="calcSosttech2()"> %
+                            <input class="inpval" id="conval62" disabled type="number" name="inputValue" step="1"
+                                   min="0" oninput="calcSosttech2()"> %
                         </div>
                     </div>
 
@@ -1116,7 +1249,8 @@ echo "<script>
                             <input type="checkbox" id="toggleZd63" disabled onchange="toggleCheckboxesDop6()"> Полы
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval63" disabled type="number" name="inputValue" step="1"  min="0" oninput="calcSosttech2()"> %
+                            <input class="inpval" id="conval63" disabled type="number" name="inputValue" step="1"
+                                   min="0" oninput="calcSosttech2()"> %
                         </div>
                     </div>
 
@@ -1126,7 +1260,8 @@ echo "<script>
                             столбы, стойки
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval64" disabled type="number" name="inputValue" step="1"  min="0" oninput="calcSosttech2()"> %
+                            <input class="inpval" id="conval64" disabled type="number" name="inputValue" step="1"
+                                   min="0" oninput="calcSosttech2()"> %
                         </div>
                     </div>
                     <div class="mainlolspace">
@@ -1135,7 +1270,8 @@ echo "<script>
                             конструкции копров,пролетных строейний галерей
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval65" disabled type="number" name="inputValue" step="1"  min="0" oninput="calcSosttech2()"> %
+                            <input class="inpval" id="conval65" disabled type="number" name="inputValue" step="1"
+                                   min="0" oninput="calcSosttech2()"> %
                         </div>
                     </div>
 
@@ -1152,7 +1288,8 @@ echo "<script>
                             Подкрановые и тормозные конструкции
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval66" disabled type="number" name="inputValue" step="1"  min="0" oninput="calcSosttech2()"> %
+                            <input class="inpval" id="conval66" disabled type="number" name="inputValue" step="1"
+                                   min="0" oninput="calcSosttech2()"> %
                         </div>
                     </div>
 
@@ -1162,7 +1299,8 @@ echo "<script>
                             <input type="checkbox" id="toggleZd67" disabled onchange="toggleCheckboxesDop6()"> Перекрыия
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval67" disabled type="number" name="inputValue" step="1" min="0" oninput="calcSosttech2()"> %
+                            <input class="inpval" id="conval67" disabled type="number" name="inputValue" step="1"
+                                   min="0" oninput="calcSosttech2()"> %
                         </div>
                     </div>
 
@@ -1173,7 +1311,8 @@ echo "<script>
                             <input type="checkbox" id="toggleZd68" disabled onchange="toggleCheckboxesDop6()"> Покрытие
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval68" disabled type="number" name="inputValue" step="1"  min="0" oninput="calcSosttech2()"> %
+                            <input class="inpval" id="conval68" disabled type="number" name="inputValue" step="1"
+                                   min="0" oninput="calcSosttech2()"> %
                         </div>
                     </div>
 
@@ -1182,7 +1321,8 @@ echo "<script>
                             <input type="checkbox" id="toggleZd69" disabled onchange="toggleCheckboxesDop6()"> Кровля
                         </div>
                         <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval69" disabled type="number" name="inputValue" step="1" min="0" oninput="calcSosttech2()"> %
+                            <input class="inpval" id="conval69" disabled type="number" name="inputValue" step="1"
+                                   min="0" oninput="calcSosttech2()"> %
                         </div>
                     </div>
                 </div>
@@ -1199,7 +1339,8 @@ echo "<script>
     <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 
 
-    <div class="nameforblock7" onclick="toggleDisplay('.nameforblock7', '.dndb7');">Редактор испытания конструкций <?php echo '<input class = "onCollap" type="checkbox" id="sborDann" name="sborDann" value="sborDann"> <span class="countRub">123</span>' ?></div>
+    <div class="nameforblock7" onclick="toggleDisplay('.nameforblock7', '.dndb7');">Редактор испытания
+        конструкций <?php echo '<input class = "onCollap" type="checkbox" id="sborDann" name="sborDann" value="sborDann"> <span class="countRub">123</span>' ?></div>
     <div class="dndb7">
         <div style="margin-left:1%" ;>Работы по определению прочности бетона и кирпичной кладки:</div>
         <div class="position1">
@@ -1258,7 +1399,8 @@ echo "<script>
 
 
     <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
-    <div class="nameforblock8" onclick="toggleDisplay('.nameforblock8', '.dndb8');">Обследование отдельных  конструкций <?php echo '<input class = "onCollap" type="checkbox" id="sborDann" name="sborDann" value="sborDann"> <span class="countRub">123</span>' ?></div>
+    <div class="nameforblock8" onclick="toggleDisplay('.nameforblock8', '.dndb8');">Обследование отдельных
+        конструкций <?php echo '<input class = "onCollap" type="checkbox" id="sborDann" name="sborDann" value="sborDann"> <span class="countRub">123</span>' ?></div>
     <div class="dndb8">
 
 
@@ -1604,7 +1746,8 @@ echo "<script>
     </div>
     <hr>
     <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
-    <div class="nameforblock9" onclick ="toggleDisplay('.nameforblock9', '.dndb9');">Калькуляция <?php echo '<input class = "onCollap" type="checkbox" id="sborDann" name="sborDann" value="sborDann"> <span class="countRub">123</span>' ?></div>
+    <div class="nameforblock9" onclick="toggleDisplay('.nameforblock9', '.dndb9');">
+        Калькуляция <?php echo '<input class = "onCollap" type="checkbox" id="sborDann" name="sborDann" value="sborDann"> <span class="countRub">123</span>' ?></div>
     <div class="dndb9">
         <div class="position1">
             <div class="pos1">
@@ -1621,92 +1764,148 @@ echo "<script>
                             </div>
                         </div>
                         <div class="select-input-pair">
-                            <select class="form-select-calc" id="selectCalc1" aria-label="" onchange = "selectCalculation(1)">
-                                <option  value="0" selected>-- Пожалуйста, выберите --</option>
-                                <option value="1">
-                                    dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg
-                                </option>
-                                <option value="2">1111</option>
-                                <option value="3">Th2222ree</option>
-                            </select>
-                            <input class="inpvalsel" disabled type="number" id="inputCalc1" name="inputValue" step="1" min="0" placeholder="">
-                        </div>
-                        <div class="select-input-pair">
-                            <select class="form-select-calc" id="selectCalc2" aria-label="" onchange = "selectCalculation(2)">
+                            <select class="form-select-calc" id="selectCalc1" aria-label=""
+                                    onchange="selectCalculation(1)">
                                 <option value="0" selected>-- Пожалуйста, выберите --</option>
                                 <option value="1">
-                                    dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg
+                                    Обследование строительных конструкций. Оформление отчета.
                                 </option>
-                                <option value="2">Tw4444o</option>
-                                <option value="3">Thr4444ee</option>
+                                <option value="2">Обмерные работы. Оформление чертежей.</option>
+                                <option value="3">Отрывка шурфов</option>
+                                <option value="4">Обследование сетей. Водопровод, канализация</option>
+                                <option value="5">Обследование сетей. Электроснабжение, слаботочные сети, автоматика
+                                </option>
+                                <option value="6">Обследование сетей. Электроснабжение</option>
+                                <option value="7">Обследование сетей. Отопление и вентиляция</option>
                             </select>
-                            <input class="inpvalsel" disabled type="number" id="inputCalc2" name="inputValue" step="1" min="0" placeholder="">
+                            <input class="inpvalsel trud" disabled type="number" id="inputCalc1" name="inputValue" step="1"
+                                   min="0" placeholder="">
                         </div>
                         <div class="select-input-pair">
-                            <select class="form-select-calc" aria-label="" id="selectCalc3" onchange = "selectCalculation(3)">
-                                <option selected>-- Пожалуйста, выберите --</option>
+                            <select class="form-select-calc" id="selectCalc2" aria-label=""
+                                    onchange="selectCalculation(2)">
+                                <option value="0" selected>-- Пожалуйста, выберите --</option>
                                 <option value="1">
-                                    dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg
+                                    Обследование строительных конструкций. Оформление отчета.
                                 </option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                <option value="2">Обмерные работы. Оформление чертежей.</option>
+                                <option value="3">Отрывка шурфов</option>
+                                <option value="4">Обследование сетей. Водопровод, канализация</option>
+                                <option value="5">Обследование сетей. Электроснабжение, слаботочные сети, автоматика
+                                </option>
+                                <option value="6">Обследование сетей. Электроснабжение</option>
+                                <option value="7">Обследование сетей. Отопление и вентиляция</option>
                             </select>
-                            <input class="inpvalsel" type="number" disabled id="inputCalc3" name="inputValue" step="1" min="0" placeholder="">
+                            <input class="inpvalsel trud" disabled type="number" id="inputCalc2" name="inputValue" step="1"
+                                   min="0" placeholder="">
                         </div>
                         <div class="select-input-pair">
-                            <select class="form-select-calc" aria-label="" id="selectCalc4" onchange = "selectCalculation(4)">
+                            <select class="form-select-calc" aria-label="" id="selectCalc3"
+                                    onchange="selectCalculation(3)">
                                 <option selected>-- Пожалуйста, выберите --</option>
                                 <option value="1">
-                                    dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg
+                                    Обследование строительных конструкций. Оформление отчета.
                                 </option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                <option value="2">Обмерные работы. Оформление чертежей.</option>
+                                <option value="3">Отрывка шурфов</option>
+                                <option value="4">Обследование сетей. Водопровод, канализация</option>
+                                <option value="5">Обследование сетей. Электроснабжение, слаботочные сети, автоматика
+                                </option>
+                                <option value="6">Обследование сетей. Электроснабжение</option>
+                                <option value="7">Обследование сетей. Отопление и вентиляция</option>
                             </select>
-                            <input class="inpvalsel" type="number" name="inputValue" disabled id="inputCalc4" step="1" min="0" placeholder="">
+                            <input class="inpvalsel trud" type="number" disabled id="inputCalc3" name="inputValue" step="1"
+                                   min="0" placeholder="">
                         </div>
                         <div class="select-input-pair">
-                            <select class="form-select-calc" aria-label="" id="selectCalc5" onchange = "selectCalculation(5)">
+                            <select class="form-select-calc" aria-label="" id="selectCalc4"
+                                    onchange="selectCalculation(4)">
                                 <option selected>-- Пожалуйста, выберите --</option>
                                 <option value="1">
-                                    dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg
+                                    Обследование строительных конструкций. Оформление отчета.
                                 </option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                <option value="2">Обмерные работы. Оформление чертежей.</option>
+                                <option value="3">Отрывка шурфов</option>
+                                <option value="4">Обследование сетей. Водопровод, канализация</option>
+                                <option value="5">Обследование сетей. Электроснабжение, слаботочные сети, автоматика
+                                </option>
+                                <option value="6">Обследование сетей. Электроснабжение</option>
+                                <option value="7">Обследование сетей. Отопление и вентиляция</option>
                             </select>
-                            <input class="inpvalsel" type="number" disabled id="inputCalc5" name="inputValue" step="1" min="0" placeholder="">
+                            <input class="inpvalsel trud" type="number" name="inputValue" disabled id="inputCalc4" step="1"
+                                   min="0" placeholder="">
                         </div>
                         <div class="select-input-pair">
-                            <select class="form-select-calc" aria-label="" id="selectCalc6" onchange = "selectCalculation(6)">
+                            <select class="form-select-calc" aria-label="" id="selectCalc5"
+                                    onchange="selectCalculation(5)">
                                 <option selected>-- Пожалуйста, выберите --</option>
                                 <option value="1">
-                                    dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg
+                                    Обследование строительных конструкций. Оформление отчета.
                                 </option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                <option value="2">Обмерные работы. Оформление чертежей.</option>
+                                <option value="3">Отрывка шурфов</option>
+                                <option value="4">Обследование сетей. Водопровод, канализация</option>
+                                <option value="5">Обследование сетей. Электроснабжение, слаботочные сети, автоматика
+                                </option>
+                                <option value="6">Обследование сетей. Электроснабжение</option>
+                                <option value="7">Обследование сетей. Отопление и вентиляция</option>
                             </select>
-                            <input class="inpvalsel" type="number" disabled id="inputCalc6" name="inputValue" step="1" min="0" placeholder="">
+                            <input class="inpvalsel trud" type="number" disabled id="inputCalc5" name="inputValue" step="1"
+                                   min="0" placeholder="">
                         </div>
                         <div class="select-input-pair">
-                            <select class="form-select-calc" aria-label="" id="selectCalc7" onchange = "selectCalculation(7)">
+                            <select class="form-select-calc" aria-label="" id="selectCalc6"
+                                    onchange="selectCalculation(6)">
                                 <option selected>-- Пожалуйста, выберите --</option>
                                 <option value="1">
-                                    dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg
+                                    Обследование строительных конструкций. Оформление отчета.
                                 </option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                <option value="2">Обмерные работы. Оформление чертежей.</option>
+                                <option value="3">Отрывка шурфов</option>
+                                <option value="4">Обследование сетей. Водопровод, канализация</option>
+                                <option value="5">Обследование сетей. Электроснабжение, слаботочные сети, автоматика
+                                </option>
+                                <option value="6">Обследование сетей. Электроснабжение</option>
+                                <option value="7">Обследование сетей. Отопление и вентиляция</option>
                             </select>
-                            <input class="inpvalsel" type="number" disabled id="inputCalc7" name="inputValue" step="1" min="0" placeholder="">
+                            <input class="inpvalsel trud" type="number" disabled id="inputCalc6" name="inputValue" step="1"
+                                   min="0" placeholder="">
                         </div>
                         <div class="select-input-pair">
-                            <select class="form-select-calc" aria-label="" id="selectCalc8" onchange = "selectCalculation(8)">
+                            <select class="form-select-calc" aria-label="" id="selectCalc7"
+                                    onchange="selectCalculation(7)">
                                 <option selected>-- Пожалуйста, выберите --</option>
                                 <option value="1">
-                                    dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg
+                                    Обследование строительных конструкций. Оформление отчета.
                                 </option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                <option value="2">Обмерные работы. Оформление чертежей.</option>
+                                <option value="3">Отрывка шурфов</option>
+                                <option value="4">Обследование сетей. Водопровод, канализация</option>
+                                <option value="5">Обследование сетей. Электроснабжение, слаботочные сети, автоматика
+                                </option>
+                                <option value="6">Обследование сетей. Электроснабжение</option>
+                                <option value="7">Обследование сетей. Отопление и вентиляция</option>
                             </select>
-                            <input class="inpvalsel" type="number" disabled id="inputCalc8" name="inputValue" step="1" min="0" placeholder="">
+                            <input class="inpvalsel trud" type="number" disabled id="inputCalc7" name="inputValue" step="1"
+                                   min="0" placeholder="">
+                        </div>
+                        <div class="select-input-pair">
+                            <select class="form-select-calc" aria-label="" id="selectCalc8"
+                                    onchange="selectCalculation(8)">
+                                <option selected>-- Пожалуйста, выберите --</option>
+                                <option value="1">
+                                    Обследование строительных конструкций. Оформление отчета.
+                                </option>
+                                <option value="2">Обмерные работы. Оформление чертежей.</option>
+                                <option value="3">Отрывка шурфов</option>
+                                <option value="4">Обследование сетей. Водопровод, канализация</option>
+                                <option value="5">Обследование сетей. Электроснабжение, слаботочные сети, автоматика
+                                </option>
+                                <option value="6">Обследование сетей. Электроснабжение</option>
+                                <option value="7">Обследование сетей. Отопление и вентиляция</option>
+                            </select>
+                            <input class="inpvalsel trud" type="number" disabled id="inputCalc8" name="inputValue" step="1"
+                                   min="0" placeholder="">
                         </div>
                     </div>
                 </div>
@@ -1729,116 +1928,143 @@ echo "<script>
                             </div>
                         </div>
                         <div class="select-input-pair">
-                            <select class="form-select-calc" id="select2Calc1" disabled aria-label="">
+                            <select class="form-select-calc doljnosti_KSD" id="select2Calc1" disabled aria-label="">
                                 <option selected>-- Пожалуйста, выберите --</option>
-                                <option value="1">
-                                    dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg
-                                </option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                <?php
+                                $doljnosti_array = array();
+                                while ($row = $connectionDB->getRowResult($doljnosti_KSD)) {
+                                    $KSD = [
+                                        'id' => $row['id'],
+                                        'name' => $row['name'],
+                                        'koef' => $row['koef']
+
+                                    ];
+                                    array_push($doljnosti_array, $KSD);
+                                }
+                                foreach ($doljnosti_array as $row) {
+                                    echo "<option value='" . $row['id'] . "' data-koef='" . $row['koef'] . "'>" . $row['name'] . "</option>";
+                                }
+
+                                ?>
                             </select>
 
-                            <input style="width: 70px;" class="inpvalsel" disabled id ="input2Calc1" type="number" name="inputValue" step="1"
+                            <input style="width: 70px;" class="inpvalsel tarif" disabled id="input2Calc1" type="number"
+                                   name="inputValue" step="1"
                                    min="0" placeholder="">
-                            <input style="width: 70px;" class="inpvalsel" disabled id="input3Calc1" type="number" name="inputValue" step="1"
-                                   min="0" placeholder="">
-                        </div>
-                        <div class="select-input-pair">
-                            <select class="form-select-calc" aria-label="" disabled id="select2Calc2">
-                                <option selected>-- Пожалуйста, выберите --</option>
-                                <option value="1">
-                                    dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg
-                                </option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                            <input style="width: 70px;" class="inpvalsel" disabled id ="input2Calc2" type="number" name="inputValue" step="1"
-                                   min="0" placeholder="">
-                            <input style="width: 70px;" class="inpvalsel" disabled id="input3Calc2" type="number" name="inputValue" step="1"
+                            <input style="width: 70px;" class="inpvalsel kol_isp" disabled id="input3Calc1" type="number"
+                                   name="inputValue" step="1"
                                    min="0" placeholder="">
                         </div>
                         <div class="select-input-pair">
-                            <select class="form-select-calc" aria-label="" id="select2Calc3" disabled>
+                            <select class="form-select-calc doljnosti_KSD" aria-label="" disabled id="select2Calc2">
                                 <option selected>-- Пожалуйста, выберите --</option>
-                                <option value="1">
-                                    dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg
-                                </option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                <?php
+                                foreach ($doljnosti_array as $row) {
+                                    echo "<option value='" . $row['id'] . "' data-koef='" . $row['koef'] . "'>" . $row['name'] . "</option>";
+                                }
+                                ?>
                             </select>
-                            <input style="width: 70px;" class="inpvalsel" disabled id ="input2Calc3" type="number" name="inputValue" step="1"
+                            <input style="width: 70px;" class="inpvalsel tarif" disabled id="input2Calc2" type="number"
+                                   name="inputValue" step="1"
                                    min="0" placeholder="">
-                            <input style="width: 70px;" class="inpvalsel" disabled id="input3Calc3" type="number" name="inputValue" step="1"
+                            <input style="width: 70px;" class="inpvalsel kol_isp" disabled id="input3Calc2" type="number"
+                                   name="inputValue" step="1"
                                    min="0" placeholder="">
                         </div>
                         <div class="select-input-pair">
-                            <select class="form-select-calc" aria-label="" id="select2Calc4" disabled>
+                            <select class="form-select-calc doljnosti_KSD" aria-label="" id="select2Calc3" disabled>
                                 <option selected>-- Пожалуйста, выберите --</option>
-                                <option value="1">
-                                    dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg
-                                </option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                <?php
+                                foreach ($doljnosti_array as $row) {
+                                    echo "<option value='" . $row['id'] . "' data-koef='" . $row['koef'] . "'>" . $row['name'] . "</option>";
+                                }
+                                ?>
                             </select>
-                            <input style="width: 70px;" class="inpvalsel" disabled id ="input2Calc4" type="number" name="inputValue" step="1"
+                            <input style="width: 70px;" class="inpvalsel tarif" disabled id="input2Calc3" type="number"
+                                   name="inputValue" step="1"
                                    min="0" placeholder="">
-                            <input style="width: 70px;" class="inpvalsel" disabled id ="input3Calc4" type="number" name="inputValue" step="1"
+                            <input style="width: 70px;" class="inpvalsel kol_isp" disabled id="input3Calc3" type="number"
+                                   name="inputValue" step="1"
                                    min="0" placeholder="">
                         </div>
                         <div class="select-input-pair">
-                            <select class="form-select-calc" aria-label="" id="select2Calc5" disabled>
+                            <select class="form-select-calc doljnosti_KSD" aria-label="" id="select2Calc4" disabled>
                                 <option selected>-- Пожалуйста, выберите --</option>
-                                <option value="1">
-                                    dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg
-                                </option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                <?php
+                                foreach ($doljnosti_array as $row) {
+                                    echo "<option value='" . $row['id'] . "' data-koef='" . $row['koef'] . "'>" . $row['name'] . "</option>";
+                                }
+                                ?>
                             </select>
-                            <input style="width: 70px;" class="inpvalsel" disabled id ="input2Calc5" type="number" name="inputValue" step="1"
+                            <input style="width: 70px;" class="inpvalsel tarif" disabled id="input2Calc4" type="number"
+                                   name="inputValue" step="1"
                                    min="0" placeholder="">
-                            <input style="width: 70px;" class="inpvalsel" disabled id ="input3Calc5" type="number" name="inputValue" step="1"
+                            <input style="width: 70px;" class="inpvalsel kol_isp" disabled id="input3Calc4" type="number"
+                                   name="inputValue" step="1"
                                    min="0" placeholder="">
                         </div>
                         <div class="select-input-pair">
-                            <select class="form-select-calc" aria-label="" id="select2Calc6" disabled>
+                            <select class="form-select-calc doljnosti_KSD" aria-label="" id="select2Calc5" disabled>
                                 <option selected>-- Пожалуйста, выберите --</option>
-                                <option value="1">
-                                    dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg
-                                </option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                <?php
+                                foreach ($doljnosti_array as $row) {
+                                    echo "<option value='" . $row['id'] . "' data-koef='" . $row['koef'] . "'>" . $row['name'] . "</option>";
+                                }
+                                ?>
                             </select>
-                            <input style="width: 70px;" class="inpvalsel" disabled id ="input2Calc6" type="number" name="inputValue" step="1"
+                            <input style="width: 70px;" class="inpvalsel tarif" disabled id="input2Calc5" type="number"
+                                   name="inputValue" step="1"
                                    min="0" placeholder="">
-                            <input style="width: 70px;" class="inpvalsel" disabled id ="input3Calc6" type="number" name="inputValue" step="1"
+                            <input style="width: 70px;" class="inpvalsel kol_isp" disabled id="input3Calc5" type="number"
+                                   name="inputValue" step="1"
                                    min="0" placeholder="">
                         </div>
                         <div class="select-input-pair">
-                            <select class="form-select-calc" aria-label="" id="select2Calc7" disabled>
+                            <select class="form-select-calc doljnosti_KSD" aria-label="" id="select2Calc6" disabled>
                                 <option selected>-- Пожалуйста, выберите --</option>
-                                <option value="1">
-                                    dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg
-                                </option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                <?php
+                                foreach ($doljnosti_array as $row) {
+                                    echo "<option value='" . $row['id'] . "' data-koef='" . $row['koef'] . "'>" . $row['name'] . "</option>";
+                                }
+                                ?>
                             </select>
-                            <input style="width: 70px;" class="inpvalsel" disabled id ="input2Calc7" type="number" name="inputValue" step="1"
+                            <input style="width: 70px;" class="inpvalsel tarif" disabled id="input2Calc6" type="number"
+                                   name="inputValue" step="1"
                                    min="0" placeholder="">
-                            <input style="width: 70px;" class="inpvalsel" disabled id ="input3Calc7" type="number" name="inputValue" step="1"
+                            <input style="width: 70px;" class="inpvalsel kol_isp" disabled id="input3Calc6" type="number"
+                                   name="inputValue" step="1"
                                    min="0" placeholder="">
                         </div>
                         <div class="select-input-pair">
-                            <select class="form-select-calc" aria-label="" id="select2Calc8" disabled>
+                            <select class="form-select-calc doljnosti_KSD" aria-label="" id="select2Calc7" disabled>
                                 <option selected>-- Пожалуйста, выберите --</option>
-                                <option value="1">
-                                    dasdasdasdagsdgahsgdhkgadhkagsdkagkgsdjagsdjgjkasgkfafsgjkfgasfgjasgjfkgasfgjkafgkasgfjakgafg
-                                </option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                <?php
+                                foreach ($doljnosti_array as $row) {
+                                    echo "<option value='" . $row['id'] . "' data-koef='" . $row['koef'] . "'>" . $row['name'] . "</option>";
+                                }
+                                ?>
                             </select>
-                            <input style="width: 70px;" class="inpvalsel" type="number" disabled id ="input2Calc8" name="inputValue" step="1"
+                            <input style="width: 70px;" class="inpvalsel tarif" disabled id="input2Calc7" type="number"
+                                   name="inputValue" step="1"
                                    min="0" placeholder="">
-                            <input style="width: 70px;" class="inpvalsel" type="number" disabled id ="input3Calc8" name="inputValue" step="1"
+                            <input style="width: 70px;" class="inpvalsel kol_isp" disabled id="input3Calc7" type="number"
+                                   name="inputValue" step="1"
+                                   min="0" placeholder="">
+                        </div>
+                        <div class="select-input-pair">
+                            <select class="form-select-calc doljnosti_KSD" aria-label="" id="select2Calc8" disabled>
+                                <option selected>-- Пожалуйста, выберите --</option>
+                                <?php
+                                foreach ($doljnosti_array as $row) {
+                                    echo "<option value='" . $row['id'] . "' data-koef='" . $row['koef'] . "'>" . $row['name'] . "</option>";
+                                }
+                                ?>
+                            </select>
+                            <input style="width: 70px;" class="inpvalsel tarif" type="number" disabled id="input2Calc8"
+                                   name="inputValue" step="1"
+                                   min="0" placeholder="">
+                            <input style="width: 70px;" class="inpvalsel kol_isp" type="number" disabled id="input3Calc8"
+                                   name="inputValue" step="1"
                                    min="0" placeholder="">
                         </div>
                     </div>
@@ -1940,8 +2166,6 @@ echo "<script>
     <hr>
 
 
-
-
 </section>
 
 
@@ -1949,37 +2173,44 @@ echo "<script>
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalPeremenLabel" style ="color:black;">Параметры переменных</h5>
+                <h5 class="modal-title" id="modalPeremenLabel" style="color:black;">Параметры переменных</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form>
                     <div class="mb-3">
                         <label for="director" class="form-label">Директор</label>
-                        <input type="text" class="form-control" id="director" placeholder="Введите директора"> </div>
+                        <input type="text" class="form-control" id="director" placeholder="Введите директора"></div>
                     <div class="mb-3">
                         <label for="iODirector" class="form-label">И.о. директора</label>
-                        <input type="text" class="form-control" id="iODirector" placeholder="Введите и.о. директора"> </div>
+                        <input type="text" class="form-control" id="iODirector" placeholder="Введите и.о. директора">
+                    </div>
                     <div class="mb-3">
                         <label for="currentIndex" class="form-label">Индекс текущего года</label>
-                        <input type="number" step="0.01" class="form-control" id="currentIndex" placeholder="Введите индекс текущего года"> </div>
+                        <input type="number" step="0.01" class="form-control" id="currentIndex"
+                               placeholder="Введите индекс текущего года"></div>
                     <div class="mb-3">
                         <label for="nextIndex" class="form-label">Индекс следующего года</label>
-                        <input type="number" step="0.01" class="form-control" id="nextIndex" placeholder="Введите индекс следующего года"> </div>
+                        <input type="number" step="0.01" class="form-control" id="nextIndex"
+                               placeholder="Введите индекс следующего года"></div>
                     <div class="mb-3">
                         <label for="usnValue" class="form-label">Значение УСН, %</label>
-                        <input type="number" step="0.01" class="form-control" id="usnValue" placeholder="Введите значение УСН"> </div>
+                        <input type="number" step="0.01" class="form-control" id="usnValue"
+                               placeholder="Введите значение УСН"></div>
                     <div class="mb-3">
                         <label for="ndsValue" class="form-label">Значение НДС, %</label>
-                        <input type="number" step="0.01" class="form-control" id="ndsValue" placeholder="Введите значение НДС"> </div>
+                        <input type="number" step="0.01" class="form-control" id="ndsValue"
+                               placeholder="Введите значение НДС"></div>
                     <div class="mb-3">
                         <label for="workCost" class="form-label">Стоимость работ 14 разряда:</label>
-                        <input type="number" step="0.01" class="form-control" id="workCost" placeholder="Введите стоимость работ"> </div>
+                        <input type="number" step="0.01" class="form-control" id="workCost"
+                               placeholder="Введите стоимость работ"></div>
                     <div class="mb-3">
                         <label for="b14Index" class="form-label">Прогнозный индекс B14</label>
                         <div class="input-group">
                             <input type="checkbox" class="form-check-input" id="b14Checkbox">
-                            <input type="number" step="0.01" class="form-control ms-2" id="b14Input" placeholder="Введите индекс B14" disabled> </div>
+                            <input type="number" step="0.01" class="form-control ms-2" id="b14Input"
+                                   placeholder="Введите индекс B14" disabled></div>
                     </div>
                 </form>
             </div>
@@ -1999,37 +2230,34 @@ echo "<script>
     let sumObmer = 0; // СУММА ВКЛАДКИ обмера
     let sumObsled = 0; // СУММА ВКЛАДКИ обcледа
     let sumSosttech = 0; // СУММА ВКЛАДКИ обcледа
-    let fullSumma=0; // ОБЩАЯ СУММА ВСЕХ ВКЛАДОК
+    let fullSumma = 0; // ОБЩАЯ СУММА ВСЕХ ВКЛАДОК
     let K18ob = 0; // Общий  К18.об
     let hardZdanie; // КАТЕГОРИЯ СЛОЖНОСТИ ЗДАНИЯ
     let mainvisotazdani; // ВЫСОТА ЗДАНИЯ
-    let koefIshod=1; // КОЭФИЦИЕНТ НЗТ1 (табл.2.3)
+    let koefIshod = 1; // КОЭФИЦИЕНТ НЗТ1 (табл.2.3)
     let selectedRadio; // КАТЕГОРИЯ СЛОЖНОСТИ РАБОТ
-    let koefIshod2=1; // КОЭФИЦИЕНТ НЗТ1 (табл.2.4)
+    let koefIshod2 = 1; // КОЭФИЦИЕНТ НЗТ1 (табл.2.4)
     let costwork14; // СРЕДНИЙ РАЗРЯД  14
 
 
+    async function calculateK() {
+        koefIshod = koefIshod == 0 ? 1 : koefIshod;
+        koefIshod2 = koefIshod2 == 0 ? 1 : koefIshod2;
+        koefObmerWork1 = koefObmerWork1 == 0 ? 1 : koefObmerWork1;
+        koefObmerWork2 = koefObmerWork2 == 0 ? 1 : koefObmerWork2;
+        koefObsled2 = koefObsled2 == 0 ? 1 : koefObsled2;
+        koefObsled1 = koefObsled1 == 0 ? 1 : koefObsled1;
 
+        sumIshod = koefIshod * koefIshod2 * costwork14 * K18ob;
 
+        sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * K18ob;
 
-     async function calculateK() {
-         koefIshod = koefIshod == 0 ? 1 : koefIshod;
-         koefIshod2 = koefIshod2 == 0 ? 1 : koefIshod2;
-         koefObmerWork1 = koefObmerWork1 == 0 ? 1 : koefObmerWork1;
-         koefObmerWork2 = koefObmerWork2 == 0 ? 1 : koefObmerWork2;
-         koefObsled2 = koefObsled2 == 0 ? 1 : koefObsled2;
-         koefObsled1 = koefObsled1 == 0 ? 1 : koefObsled1;
+        sumObsled = koefObsled1 * koefObsled2 * costwork14 * K18ob;
 
-         sumIshod = koefIshod * koefIshod2 * costwork14 * K18ob;
+        sumSosttech = koefSosttech1 * koefSosttech2 * costwork14 * K18ob;
 
-         sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * K18ob;
-
-         sumObsled = koefObsled1 * koefObsled2 * costwork14 * K18ob;
-
-         sumSosttech  = koefSosttech1 * koefSosttech2 * costwork14 * K18ob;
-
-         fullSumma = parseFloat(sumHarakter) + parseFloat(sumIshod) + parseFloat(sumObmer) +  parseFloat(sumObsled) + parseFloat(sumSosttech);
-         fullSumma = fullSumma.toFixed(3);
+        fullSumma = parseFloat(sumHarakter) + parseFloat(sumIshod) + parseFloat(sumObmer) + parseFloat(sumObsled) + parseFloat(sumSosttech);
+        fullSumma = fullSumma.toFixed(3);
         document.getElementById('harakteristikaObjectObsh').innerText = fullSumma;
         document.getElementById('harakteristikaObjectSmeta').innerText = fullSumma;
         document.getElementById('harakteristikaObjectCalc').innerText = fullSumma;
@@ -2066,17 +2294,16 @@ echo "<script>
         const options = parseFloat(document.querySelector('#options option:checked').getAttribute('data-id')) || 1;
         const temperatureMode = parseFloat(document.querySelector('#temperatureMode option:checked').getAttribute('data-id')) || 1;
         const equipmentSaturation = parseFloat(document.querySelector('#equipmentSaturation option:checked').getAttribute('data-id')) || 1;
-       //РАСЧЕТ ОСНОВНОГО  КОЭФИЦИЕНТА К18.об ОТ ОБЪЕМА
-        const obem = parseFloat(document.getElementById('obem').value)/1000;
+        //РАСЧЕТ ОСНОВНОГО  КОЭФИЦИЕНТА К18.об ОТ ОБЪЕМА
+        const obem = parseFloat(document.getElementById('obem').value) / 1000;
         if (obem > 0) {
             K18ob = 6.33 / Math.sqrt(obem);
-        }
-        else{
+        } else {
             K18ob = 0;
         }
 
 
-        if (etazh <=1  ) {
+        if (etazh <= 1) {
             if (visotazdani <= 4.2 && visotazdani > 0) {
                 kefVisota = 1;
             } else if (visotazdani > 4.2 && visotazdani <= 4.8) {
@@ -2106,9 +2333,9 @@ echo "<script>
             }
         }
 
-        if (visotapola > 0 && visotapola <= 1.6){
+        if (visotapola > 0 && visotapola <= 1.6) {
             visotaPolaVal = 1.3;
-        }else {
+        } else {
             visotaPolaVal = 1;
         }
 
@@ -2136,9 +2363,8 @@ echo "<script>
             visotaPolaVal;
 
 
-
         document.getElementById('harakteristikaObject').innerText = finalCoefficient.toFixed(3);
-        sumHarakter  = finalCoefficient.toFixed(3);
+        sumHarakter = finalCoefficient.toFixed(3);
 
         updateBuildingInfo();
         await calculateK();
@@ -2162,8 +2388,7 @@ echo "<script>
                     valVisZd = 18;
                 }
             }
-        }
-        else {
+        } else {
 
             if (mainvisotazdani < 8 && mainvisotazdani > 0) {
                 valVisZd = 1;
@@ -2215,9 +2440,9 @@ echo "<script>
                     },
                     success: function (response) {
                         koefIshod = parseFloat(response.trim());
-                        if(koefIshod == 1 && koefIshod2 == 1){
+                        if (koefIshod == 1 && koefIshod2 == 1) {
                             sumIshod = 0;
-                        }else {
+                        } else {
                             sumIshod = koefIshod * koefIshod2 * costwork14 * K18ob;
                         }
                         $('#sborIshodnihDannih').html(sumIshod.toFixed(3));
@@ -2231,13 +2456,12 @@ echo "<script>
     }
 
 
-
     async function calcIshod2() {
         let etazh = parseFloat(document.getElementById('etazh').value) || 0;
         let typeW;
-        if($("#choosCunstruct").prop("checked")){
+        if ($("#choosCunstruct").prop("checked")) {
             typeW = $("#buildingType").val();
-            switch(typeW){
+            switch (typeW) {
                 case 6:
                     typeW = 4;
                     break;
@@ -2274,7 +2498,9 @@ echo "<script>
                 koef9 == 0 ? 0 : 8
             ];
             let count0 = 0;
-            myAr.map(item => {item == 0 ? count0++ : count0});
+            myAr.map(item => {
+                item == 0 ? count0++ : count0
+            });
             if (myAr.length == count0) {
                 koefIshod2 = 1;
 
@@ -2283,8 +2509,7 @@ echo "<script>
             let newAr = myAr.filter(item => item != 0);
 
 
-
-            return new Promise(function(resolve, reject) {
+            return new Promise(function (resolve, reject) {
                 $.ajax({
                     url: "app/ajax/getKoefIshod2.php",
                     method: "POST",
@@ -2292,15 +2517,15 @@ echo "<script>
                         typeW: typeW,
                         myAr: JSON.stringify(newAr)
                     },
-                }).then(function(response) {
-                    if(response.trim() == 1){
+                }).then(function (response) {
+                    if (response.trim() == 1) {
                         koefIshod2 = 1;
-                    }else{
+                    } else {
                         let gettedAr = JSON.parse(response);
                         let sum = 0;
                         let index = 0;
                         arKoef.map(item => {
-                            if(item != 0){
+                            if (item != 0) {
                                 sum += gettedAr[index] * item;
                                 index++;
                             }
@@ -2309,14 +2534,14 @@ echo "<script>
                     }
                     console.log("koefIshod = " + koefIshod);
                     console.log("koefIshod2 = " + koefIshod2);
-                    if(koefIshod == 1 && koefIshod2 == 1){
+                    if (koefIshod == 1 && koefIshod2 == 1) {
                         sumIshod = 0;
-                    }else {
+                    } else {
                         sumIshod = koefIshod * koefIshod2 * costwork14 * K18ob;
                     }
                     $('#sborIshodnihDannih').html(sumIshod.toFixed(3));
                     resolve();
-                }).catch(function(error) {
+                }).catch(function (error) {
                     reject(error);
                 });
             });
@@ -2326,24 +2551,23 @@ echo "<script>
 
     }
 
-    $("#choosCunstruct").on("change", async function(event){
-        if(event.target.checked){
+    $("#choosCunstruct").on("change", async function (event) {
+        if (event.target.checked) {
             await calcIshod1();
             await calcIshod2();
-        }
-        else{
+        } else {
             koefIshod2 = 1;
         }
-        if(koefIshod == 1 && koefIshod2 == 1){
+        if (koefIshod == 1 && koefIshod2 == 1) {
             sumIshod = 0;
-        }else {
+        } else {
             sumIshod = koefIshod * koefIshod2 * costwork14 * K18ob;
         }
         $('#sborIshodnihDannih').html(sumIshod.toFixed(3));
         await calculateK();
     })
 
-    $(".ishod2check").on("change", async function(){
+    $(".ishod2check").on("change", async function () {
 
         await calcIshod2();
         await calculateK();
@@ -2368,20 +2592,18 @@ echo "<script>
         document.getElementById('vis14').checked = false;
 
 
-
         if (etazh > 1) {
 
 
-                document.getElementById('vis6').value = '1';
-                vis6Label.innerText = '1) Здание с высотой этажа до 3.6м, бескрановое, до 3х этажей, этажерки высотой до 15м многоэтажные эстакады';
+            document.getElementById('vis6').value = '1';
+            vis6Label.innerText = '1) Здание с высотой этажа до 3.6м, бескрановое, до 3х этажей, этажерки высотой до 15м многоэтажные эстакады';
 
 
-                document.getElementById('vis614').value = '2';
-                vis614Label.innerText = '2) Здание с высотой этажа до 6м, бескрановое, до 2 объемов, до 4-9 этажей, сооружения высотой более 20м';
+            document.getElementById('vis614').value = '2';
+            vis614Label.innerText = '2) Здание с высотой этажа до 6м, бескрановое, до 2 объемов, до 4-9 этажей, сооружения высотой более 20м';
 
-                document.getElementById('vis14').value = '3';
-                vis14Label.innerText = '3)  Здание с высотой этажа свыше 6м, с краном, свыше 3 объемов, свыше 10 этажей, сооружения высотой более 60м, полный монолитный каркас';
-
+            document.getElementById('vis14').value = '3';
+            vis14Label.innerText = '3)  Здание с высотой этажа свыше 6м, с краном, свыше 3 объемов, свыше 10 этажей, сооружения высотой более 60м, полный монолитный каркас';
 
 
             if (visotazdani < 20) {
@@ -2389,14 +2611,12 @@ echo "<script>
                 vis614Label.classList.add('highlight-red');
                 vis14Label.classList.add('highlight-red');
                 document.getElementById('vis6').checked = true;
-            }
-            else if (visotazdani >= 20 && visotazdani < 60) {
+            } else if (visotazdani >= 20 && visotazdani < 60) {
                 vis614Label.classList.add('highlight-green');
                 vis6Label.classList.add('highlight-red');
                 vis14Label.classList.add('highlight-red');
                 document.getElementById('vis614').checked = true;
-            }
-            else if (visotazdani > 60) {
+            } else if (visotazdani > 60) {
                 vis14Label.classList.add('highlight-green');
                 vis6Label.classList.add('highlight-red');
                 vis614Label.classList.add('highlight-red');
@@ -2408,31 +2628,29 @@ echo "<script>
             document.getElementById('vis6').value = '1';
             vis6Label.innerText = '1) Здание высотой до 6м, бескрановое, однообъемное, двухпролетное';
 
-                document.getElementById('vis614').value = '2';
-                vis614Label.innerText = '2) Здание высотой от 6м до 14м высоты, с кранами грузоподъемностью до 50т включительно, с двумя объемами, 3-5 пролета, а также различные сооружения, резервуары, тоннели, лестничные клетки, галереи';
+            document.getElementById('vis614').value = '2';
+            vis614Label.innerText = '2) Здание высотой от 6м до 14м высоты, с кранами грузоподъемностью до 50т включительно, с двумя объемами, 3-5 пролета, а также различные сооружения, резервуары, тоннели, лестничные клетки, галереи';
 
-                document.getElementById('vis14').value = '3';
-                vis14Label.innerText = '3) Здание высотой более 14м, со сложной конструктивной схемой, с двухъярусным расположением кранов, более 3 объемов, более 6 пролетов галереи с высотой опор более 20м и пролетом более 36м, полный монолитный каркас';
+            document.getElementById('vis14').value = '3';
+            vis14Label.innerText = '3) Здание высотой более 14м, со сложной конструктивной схемой, с двухъярусным расположением кранов, более 3 объемов, более 6 пролетов галереи с высотой опор более 20м и пролетом более 36м, полный монолитный каркас';
 
-                if (visotazdani < 6) {
+            if (visotazdani < 6) {
                 vis6Label.classList.add('highlight-green');
-                    vis14Label.classList.add('highlight-red');
-                    vis614Label.classList.add('highlight-red');
-                    document.getElementById('vis6').checked = true;
-            }
-            else if (visotazdani >= 6 && visotazdani < 14) {
+                vis14Label.classList.add('highlight-red');
+                vis614Label.classList.add('highlight-red');
+                document.getElementById('vis6').checked = true;
+            } else if (visotazdani >= 6 && visotazdani < 14) {
                 vis614Label.classList.add('highlight-green');
-                    vis14Label.classList.add('highlight-red');
-                    vis6Label.classList.add('highlight-red');
-                    document.getElementById('vis614').checked = true;
-            }
-            else if (visotazdani >= 14) {
+                vis14Label.classList.add('highlight-red');
+                vis6Label.classList.add('highlight-red');
+                document.getElementById('vis614').checked = true;
+            } else if (visotazdani >= 14) {
                 vis14Label.classList.add('highlight-green');
-                    vis614Label.classList.add('highlight-red');
-                    vis6Label.classList.add('highlight-red');
-                    document.getElementById('vis14').checked = true;
+                vis614Label.classList.add('highlight-red');
+                vis6Label.classList.add('highlight-red');
+                document.getElementById('vis14').checked = true;
             }
-            }
+        }
 
         const selectedRadioZdvis = document.querySelector('input[name="zdvis"]:checked');
 
@@ -2460,9 +2678,6 @@ echo "<script>
     }
 
 
-
-
-
     async function toggleInputs() {
         const calendarInput = document.getElementById('commonInputField');
         const workingInput = document.getElementById('commonInputFieldWorking');
@@ -2478,7 +2693,7 @@ echo "<script>
             calendarInput.value = '';
         }
         await calculateK();
-        console.log (5 + "updateWorkingDays");
+        console.log(5 + "updateWorkingDays");
     }
 
     function updateWorkingDays() {
@@ -2497,7 +2712,7 @@ echo "<script>
         //     endDate.setDate(startDate.getDate() + calendarDays);
         //     document.getElementById('dateOkonchRab').value = endDate.toISOString().split('T')[0];
         // }
-        console.log (4 + "updateWorkingDays")
+        console.log(4 + "updateWorkingDays")
     }
 
     function updateCalendarDays() {
@@ -2517,7 +2732,7 @@ echo "<script>
             document.getElementById('dateOkonchRab').value = endDate.toISOString().split('T')[0];
         }
 
-        console.log (1 + "updateCalendarDays")
+        console.log(1 + "updateCalendarDays")
     }
 
     function updateEndDate() {
@@ -2531,9 +2746,10 @@ echo "<script>
             endDate.setDate(startDate.getDate() + calendarDays);
             document.getElementById('dateOkonchRab').value = endDate.toISOString().split('T')[0];
         }
-        console.log (2 + "updateEndDate")
+        console.log(2 + "updateEndDate")
     }
- // Устанавливает календарные дни в зависимости от выбранных дат в календаре.
+
+    // Устанавливает календарные дни в зависимости от выбранных дат в календаре.
     function updateCalendarDaysFromEnd() {
         const endDateInput = document.getElementById('dateOkonchRab').value;
         const startDateInput = document.getElementById('dateNachRab').value;
@@ -2544,36 +2760,36 @@ echo "<script>
             const calendarDays = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
             document.getElementById('commonInputField').value = calendarDays;
         }
-        console.log (3 + "updateCalendarDaysFromEnd")
+        console.log(3 + "updateCalendarDaysFromEnd")
     }
 
-    $('#dateNachRab').on('change', function(){
+    $('#dateNachRab').on('change', function () {
         updateCalendarDaysFromEnd();
         updateWorkingDays();
     });
 
-    $('#dateOkonchRab').on('change', function(){
+    $('#dateOkonchRab').on('change', function () {
         updateCalendarDaysFromEnd();
         updateWorkingDays();
     });
 
-    $('#calendarDays').on('change', function(){
+    $('#calendarDays').on('change', function () {
         toggleInputs();
     });
 
-    $('#workingDays').on('change', function(){
+    $('#workingDays').on('change', function () {
         toggleInputs();
     });
 
 
-    $('#commonInputField').on('change', function(){
+    $('#commonInputField').on('change', function () {
         toggleInputs();
         updateEndDate();
         updateWorkingDays();
         updateCalendarDaysFromEnd();
     });
 
-    $('#commonInputFieldWorking').on('change', function(){
+    $('#commonInputFieldWorking').on('change', function () {
         toggleInputs();
         updateEndDate();
         updateCalendarDays();
@@ -2581,11 +2797,6 @@ echo "<script>
 
 
     });
-
-
-
-
-
 
 
     function toggleDisplay(triggerSelector, targetSelector) {
@@ -2619,7 +2830,7 @@ echo "<script>
         await calculateK();
     }
 
-   async function toggleCheckboxes() {
+    async function toggleCheckboxes() {
         const isChecked = document.getElementById('choosCunstruct').checked;
         const checkboxes = document.querySelectorAll('.viborvischeckbox1 input[type="checkbox"], .viborvischeckbox2 input[type="checkbox"]');
 
@@ -2650,7 +2861,7 @@ echo "<script>
                     input.value = '100';
                 }
 
-        }
+            }
         }
 
         await calculateK();
@@ -2766,8 +2977,7 @@ echo "<script>
         checkboxes.forEach(item => {
             if (item.checkbox.checked) {
                 item.input.disabled = false;
-            }
-            else {
+            } else {
                 item.input.disabled = true;
                 item.input.value = 100;
             }
@@ -2799,7 +3009,7 @@ echo "<script>
         await calculateK();
     }
 
-   async function toggleCheckboxesDop5() {
+    async function toggleCheckboxesDop5() {
         const checkboxes = [
             {checkbox: document.getElementById('toggleZd51'), input: document.getElementById('conval51')},
             {checkbox: document.getElementById('toggleZd52'), input: document.getElementById('conval52')},
@@ -2858,27 +3068,90 @@ echo "<script>
 
     function toggleCheckboxesDop8() {
         const checkboxes = [
-            { checkbox: document.getElementById('toggleZd81'), inputs: [document.getElementById('conval81') , document.getElementById('conval811')] },
-            { checkbox: document.getElementById('toggleZd82'), inputs: [document.getElementById('conval82') , document.getElementById('conval822')] },
-            { checkbox: document.getElementById('toggleZd83'), inputs: [document.getElementById('conval83') , document.getElementById('conval833')] },
-            { checkbox: document.getElementById('toggleZd84'), inputs: [document.getElementById('conval84') , document.getElementById('conval844')] },
-            { checkbox: document.getElementById('toggleZd85'), inputs: [document.getElementById('conval85') , document.getElementById('conval855')] },
-            { checkbox: document.getElementById('toggleZd86'), inputs: [document.getElementById('conval86') , document.getElementById('conval866')] },
-            { checkbox: document.getElementById('toggleZd87'), inputs: [document.getElementById('conval87') , document.getElementById('conval877')] },
-            { checkbox: document.getElementById('toggleZd88'), inputs: [document.getElementById('conval88') , document.getElementById('conval888')] },
-            { checkbox: document.getElementById('toggleZd89'), inputs: [document.getElementById('conval89') , document.getElementById('conval899')] },
-            { checkbox: document.getElementById('toggleZd081'), inputs: [document.getElementById('conval081') , document.getElementById('conval0811')] },
-            { checkbox: document.getElementById('toggleZd082'), inputs: [document.getElementById('conval082') , document.getElementById('conval0822')] },
-            { checkbox: document.getElementById('toggleZd083'), inputs: [document.getElementById('conval083') , document.getElementById('conval0833')] },
-            { checkbox: document.getElementById('toggleZd084'), inputs: [document.getElementById('conval084') , document.getElementById('conval0844')] },
-            { checkbox: document.getElementById('toggleZd085'), inputs: [document.getElementById('conval085') , document.getElementById('conval0855')] },
-            { checkbox: document.getElementById('toggleZd086'), inputs: [document.getElementById('conval086') , document.getElementById('conval0866')] },
-            { checkbox: document.getElementById('toggleZd087'), inputs: [document.getElementById('conval087') , document.getElementById('conval0877')] },
-            { checkbox: document.getElementById('toggleZd088'), inputs: [document.getElementById('conval088') , document.getElementById('conval0888')] },
-            { checkbox: document.getElementById('toggleZd089'), inputs: [document.getElementById('conval089') , document.getElementById('conval0899')] },
-            { checkbox: document.getElementById('toggleZd0081'), inputs: [document.getElementById('conval0081') , document.getElementById('conval00811')] },
-            { checkbox: document.getElementById('toggleZd0082'), inputs: [document.getElementById('conval0082') , document.getElementById('conval00822')] },
-            { checkbox: document.getElementById('toggleZd0083'), inputs: [document.getElementById('conval0083') , document.getElementById('conval00833')] },
+            {
+                checkbox: document.getElementById('toggleZd81'),
+                inputs: [document.getElementById('conval81'), document.getElementById('conval811')]
+            },
+            {
+                checkbox: document.getElementById('toggleZd82'),
+                inputs: [document.getElementById('conval82'), document.getElementById('conval822')]
+            },
+            {
+                checkbox: document.getElementById('toggleZd83'),
+                inputs: [document.getElementById('conval83'), document.getElementById('conval833')]
+            },
+            {
+                checkbox: document.getElementById('toggleZd84'),
+                inputs: [document.getElementById('conval84'), document.getElementById('conval844')]
+            },
+            {
+                checkbox: document.getElementById('toggleZd85'),
+                inputs: [document.getElementById('conval85'), document.getElementById('conval855')]
+            },
+            {
+                checkbox: document.getElementById('toggleZd86'),
+                inputs: [document.getElementById('conval86'), document.getElementById('conval866')]
+            },
+            {
+                checkbox: document.getElementById('toggleZd87'),
+                inputs: [document.getElementById('conval87'), document.getElementById('conval877')]
+            },
+            {
+                checkbox: document.getElementById('toggleZd88'),
+                inputs: [document.getElementById('conval88'), document.getElementById('conval888')]
+            },
+            {
+                checkbox: document.getElementById('toggleZd89'),
+                inputs: [document.getElementById('conval89'), document.getElementById('conval899')]
+            },
+            {
+                checkbox: document.getElementById('toggleZd081'),
+                inputs: [document.getElementById('conval081'), document.getElementById('conval0811')]
+            },
+            {
+                checkbox: document.getElementById('toggleZd082'),
+                inputs: [document.getElementById('conval082'), document.getElementById('conval0822')]
+            },
+            {
+                checkbox: document.getElementById('toggleZd083'),
+                inputs: [document.getElementById('conval083'), document.getElementById('conval0833')]
+            },
+            {
+                checkbox: document.getElementById('toggleZd084'),
+                inputs: [document.getElementById('conval084'), document.getElementById('conval0844')]
+            },
+            {
+                checkbox: document.getElementById('toggleZd085'),
+                inputs: [document.getElementById('conval085'), document.getElementById('conval0855')]
+            },
+            {
+                checkbox: document.getElementById('toggleZd086'),
+                inputs: [document.getElementById('conval086'), document.getElementById('conval0866')]
+            },
+            {
+                checkbox: document.getElementById('toggleZd087'),
+                inputs: [document.getElementById('conval087'), document.getElementById('conval0877')]
+            },
+            {
+                checkbox: document.getElementById('toggleZd088'),
+                inputs: [document.getElementById('conval088'), document.getElementById('conval0888')]
+            },
+            {
+                checkbox: document.getElementById('toggleZd089'),
+                inputs: [document.getElementById('conval089'), document.getElementById('conval0899')]
+            },
+            {
+                checkbox: document.getElementById('toggleZd0081'),
+                inputs: [document.getElementById('conval0081'), document.getElementById('conval00811')]
+            },
+            {
+                checkbox: document.getElementById('toggleZd0082'),
+                inputs: [document.getElementById('conval0082'), document.getElementById('conval00822')]
+            },
+            {
+                checkbox: document.getElementById('toggleZd0083'),
+                inputs: [document.getElementById('conval0083'), document.getElementById('conval00833')]
+            },
 
         ];
 
@@ -2911,14 +3184,14 @@ echo "<script>
     }
 
 
-    document.getElementById('btnShowModalPeremen').addEventListener('click', function() {
+    document.getElementById('btnShowModalPeremen').addEventListener('click', function () {
         $('#modalPeremen').modal('show');
     });
-    document.getElementById('b14Checkbox').addEventListener('change', function() {
+    document.getElementById('b14Checkbox').addEventListener('change', function () {
         const b14Input = document.getElementById('b14Input');
         b14Input.disabled = !this.checked;
     });
-    document.getElementById('btnApply').addEventListener('click', function() {
+    document.getElementById('btnApply').addEventListener('click', function () {
         const formData = {
             director: $('#director').val(),
             iODirector: $('#iODirector').val(),
@@ -2939,24 +3212,23 @@ echo "<script>
                     alert('Применено');
                     await calculateK();
                     $('#modalPeremen').modal('hide');
-                }
-                else {
+                } else {
                     alert('Ошибка при сохранении параметров');
                 }
             },
-            error: function(jqXHR, textStatus, errorThrown) {
+            error: function (jqXHR, textStatus, errorThrown) {
                 console.error('Error:', textStatus, errorThrown);
                 alert('Ошибка при сохранении параметров');
             }
-            });
         });
+    });
 
     function loadParametrPeremenFromDB() {
         $.ajax({
             url: 'app/ajax/getParametrPeremen.php',
             type: 'GET',
             dataType: 'json',
-            success: function(data) {
+            success: function (data) {
                 if (data.success) {
                     $('#director').val(data.params.name_director);
                     $('#iODirector').val(data.params.name_IOdirector);
@@ -2985,43 +3257,45 @@ echo "<script>
         });
     }
 
-    $(document).ready(function() {
+    $(document).ready(function () {
         loadParametrPeremenFromDB();
 
     });
 
-function printTZ (){
-    let obem = document.getElementById('obem').value;
-    let etazh = document.getElementById('etazh').value;
-    let visotazdani = document.getElementById('visotazdani').value;
-    let visotapola = document.getElementById('visotapola').value;
-    let zakazchikSelect = document.getElementById('zakazchik');
-    let podryadchikSelect = document.getElementById('podryadchik');
-    let zakazchik = zakazchikSelect.value > 0 ? zakazchikSelect.options[zakazchikSelect.selectedIndex].text : '';
-    let podryadchik = podryadchikSelect.value > 0 ? podryadchikSelect.options[podryadchikSelect.selectedIndex].text : '';
-    let toggleZd1 = document.getElementById('toggleZd1').value;
-    $.ajax({
-        url:'/smeta/printTZ.php',
-        type: 'POST',
-        data: {obem: obem, etazh: etazh, visotazdani: visotazdani, visotapola: visotapola, zakazchik: zakazchik,
-            podryadchik: podryadchik, toggleZd1: toggleZd1},
-        success: function(response) {
-            var WinPrint = window.open('', '', 'left=50,top=50,width=1200,height=860,toolbar=0,scrollbars=1,status=0');
-            WinPrint.document.write('<style>@page {\n' +
-                'margin: 1rem;\n' +
-                '}</style>');
-            WinPrint.document.write('<br/>');
-            WinPrint.document.write(response);
-            WinPrint.document.close();
-            WinPrint.focus();
-            WinPrint.print();
-            WinPrint.close();
+    function printTZ() {
+        let obem = document.getElementById('obem').value;
+        let etazh = document.getElementById('etazh').value;
+        let visotazdani = document.getElementById('visotazdani').value;
+        let visotapola = document.getElementById('visotapola').value;
+        let zakazchikSelect = document.getElementById('zakazchik');
+        let podryadchikSelect = document.getElementById('podryadchik');
+        let zakazchik = zakazchikSelect.value > 0 ? zakazchikSelect.options[zakazchikSelect.selectedIndex].text : '';
+        let podryadchik = podryadchikSelect.value > 0 ? podryadchikSelect.options[podryadchikSelect.selectedIndex].text : '';
+        let toggleZd1 = document.getElementById('toggleZd1').value;
+        $.ajax({
+            url: '/smeta/printTZ.php',
+            type: 'POST',
+            data: {
+                obem: obem, etazh: etazh, visotazdani: visotazdani, visotapola: visotapola, zakazchik: zakazchik,
+                podryadchik: podryadchik, toggleZd1: toggleZd1
+            },
+            success: function (response) {
+                var WinPrint = window.open('', '', 'left=50,top=50,width=1200,height=860,toolbar=0,scrollbars=1,status=0');
+                WinPrint.document.write('<style>@page {\n' +
+                    'margin: 1rem;\n' +
+                    '}</style>');
+                WinPrint.document.write('<br/>');
+                WinPrint.document.write(response);
+                WinPrint.document.close();
+                WinPrint.focus();
+                WinPrint.print();
+                WinPrint.close();
 
-            resolve();
-        }
+                resolve();
+            }
 
-    })
-}
+        })
+    }
 
 
     function selectCalculation(index) {
@@ -3029,7 +3303,7 @@ function printTZ (){
         const otherInputs = [
             document.querySelector(`#inputCalc${index}`),
             document.querySelector(`#select2Calc${index}`),
-            document.querySelector(`#input2Calc${index}`),
+            // document.querySelector(`#input2Calc${index}`),
             document.querySelector(`#input3Calc${index}`)
         ];
         const selectedValue = workSelect.value;
@@ -3051,9 +3325,6 @@ function printTZ (){
 
         }
     }
-
-
-
 
 
 </script>

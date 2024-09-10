@@ -1082,6 +1082,43 @@ $("#choosCunstruct6").on("change", async function(event){
     await calculateK();
 })
 
+$(".doljnosti_KSD").on('change', (event) => {
+    let thisTarget = event.target;
+    let doljnostKoef = thisTarget.options[thisTarget.options.selectedIndex].getAttribute('data-koef');
+    let nextInput = thisTarget.nextElementSibling;
+    nextInput.value = doljnostKoef;
+    calcCalkulation()
+})
+
+function calcCalkulation(){
+    let truds = $(".trud:not([disabled])");
+    let tarifs = $(".tarif");
+    let kol_isps = $(".kol_isp:not([disabled])");
+    let trudsFiltered = truds.filter((index, item) => item.value.trim() !== "");
+    let tarifsFiltered = tarifs.filter((index, item) => item.value.trim() !== "");
+    // let kol_ispsFiltered = kol_isps.filter((index, item) => item.value.trim() !== "");
+    let size = Math.min(trudsFiltered.length, tarifsFiltered.length);
+    let chilsitel = 0;
+    let znamenatel = 0;
+    for(let i = 0; i < size; i++){
+        let trud = parseFloat(trudsFiltered[i].value);
+        let tarif = parseFloat(tarifsFiltered[i].value);
+        chilsitel += trud * tarif;
+        znamenatel += trud;
+    }
+    let resultElement = chilsitel/znamenatel;
+    let result = resultElement.toFixed(2);
+    $('#sredRazryad').val(result);
+}
+
+$(".trud").on('change', () => {
+    calcCalkulation();
+})
+
+$(".tarif").on('change', () => {
+    calcCalkulation();
+})
+
 
 
 
