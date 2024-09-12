@@ -1932,7 +1932,7 @@ echo "<script>
                                 $doljnosti_array = array();
                                 while ($row = $connectionDB->getRowResult($doljnosti_KSD)) {
                                     $KSD = [
-                                        'id' => $row['id'],
+                                        'id' => $row['id_doljnostiKSD'],
                                         'name' => $row['name'],
                                         'koef' => $row['koef']
 
