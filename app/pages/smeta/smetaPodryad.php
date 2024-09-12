@@ -958,9 +958,9 @@ echo "<script>
             </div>
         </div>
         <div class="dusl">Дополнительные условия:
-            <input data-id="0.7" type="checkbox" id="toggleZdDopUsl"> Проектная документация присутствует в полном
+            <input data-id="0.7" type="checkbox" id="toggleZdDopUsl" onchange ="toggleCheckboxesDopDusl(this)"> Проектная документация присутствует в полном
             объеме (K = 0.7)
-            <input data-id="1.25" type="checkbox" id="toggleZdDopUsl1"> Выполнение детальных измерений пролетов,
+            <input data-id="1.25" type="checkbox" id="toggleZdDopUsl1" onchange ="toggleCheckboxesDopDusl(this)"> Выполнение детальных измерений пролетов,
             сечений, узлов, смещений (K = 1.25)
         </div>
     </div>
@@ -1136,12 +1136,13 @@ echo "<script>
 
                 <div id="selectContainer1" class="hidden">
                     <label for="options">Выберите опцию:</label>
-                    <select class="form-select" id="options1" disabled>
-                        <option value="">-- Пожалуйста, выберите --</option>
-                        <option value="1">Опция 1</option>
-                        <option value="2">Опция 2</option>
-                        <option value="3">Опция 3</option>
+                    <select class="form-select" id="options1" disabled onchange = "obsledDataidSelect(this)">
+                        <option data-id="1" value="">-- Пожалуйста, выберите --</option>
+                        <option data-id="1.2" value="1">Поверхность конструкций обшиты листовыми материалами или плиткой</option>
+                        <option data-id="1.1" value="2">Поверхность конструкций оштукатурена</option>
+                        <option data-id="1.05" value="3">Поверхность конструкций окрашены или побелены</option>
                     </select>
+                    <input type="hidden" id="dataId1" value="1">
                 </div>
                 <label>
                     <input type="checkbox" id="toggleSelect2"
@@ -1151,18 +1152,23 @@ echo "<script>
 
                 <div id="selectContainer2" class="hidden">
                     <label for="options">Выберите опцию:</label>
-                    <select class="form-select" id="options2" disabled>
-                        <option value="">-- Пожалуйста, выберите --</option>
-                        <option value="1">Опция 1</option>
-                        <option value="2">Опция 2</option>
-                        <option value="3">Опция 3</option>
+                    <select class="form-select" id="options2" disabled onchange = "obsledDataidSelect(this)">
+                        <option data-id="1" value="">-- Пожалуйста, выберите --</option>
+                        <option data-id="1" value="1">Значительные дефекты отсутствуют</option>
+                        <option data-id="1" value="2">До 33% элементов в неудовлетворительном состоянии</option>
+                        <option data-id="1.1" value="3">От 34% до 66% элементов в неудовлетворительном состоянии</option>
+                        <option data-id="1.2" value="4">Свыше 66% элементов в неудовлетворительном состоянии</option>
+                        <option data-id="1.1" value="5">До 33% элементов в предаварийном состоянии</option>
+                        <option data-id="1.2" value="6">От 34% до 66% элементов в предаварийном состоянии</option>
+                        <option data-id="1.3" value="7">Свыше 66% элементов в предаварийном состоянии</option>
                     </select>
+                    <input type="hidden" id="dataId2" value="1">
                 </div>
             </div>
             <div class="svposch">
                 <input type="checkbox" id="povkef"> Учитывать повышающий коэффициент от объема работ если обследуется
                 <70% <br>
-                <input type="checkbox" id="sooruzhzd"> Здание (сооружение) на просадочных грунтах
+                <input data-id="1.15"  value="1" type="checkbox" id="sooruzhzd"> Здание (сооружение) на просадочных грунтах
             </div>
         </div>
 
@@ -2238,6 +2244,10 @@ echo "<script>
     let selectedRadio; // КАТЕГОРИЯ СЛОЖНОСТИ РАБОТ
     let koefIshod2 = 1; // КОЭФИЦИЕНТ НЗТ1 (табл.2.4)
     let costwork14; // СРЕДНИЙ РАЗРЯД  14
+    let obmerDop1 = 1; // доп чекбокс2
+    let obmerDop2 = 1; // доп чекбокс2
+    let obsledDop1 = 1; //
+    let obsledDop2 = 1; //
 
 
     async function calculateK() {
@@ -2256,13 +2266,14 @@ echo "<script>
         if (koefObmerWork1 == 1 && koefObmerWork2 == 1) {
             sumObmer = 0;
         } else {
-            sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * K18ob;
+            sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * K18ob * obmerDop1 * obmerDop2;
+            console.log (sumObmer , obmerDop1 , obmerDop2);
         }
 
         if (koefObsled1 == 1 && koefObsled2 == 1) {
             sumObsled = 0;
         } else {
-            sumObsled = koefObsled1 * koefObsled2 * costwork14 * K18ob;
+            sumObsled = koefObsled1 * koefObsled2 * costwork14 * K18ob * obsledDop1 * obsledDop2;
         }
 
         if (koefSosttech1 == 1 && koefSosttech2 == 1) {
@@ -2854,6 +2865,22 @@ echo "<script>
             selectContainer.classList.add('hidden');
             optionsSelect.selectedIndex = 0;
             optionsSelect.disabled = true;
+            document.getElementById('dataId' + optionsId.charAt(optionsId.length - 1)).value = 1;
+
+
+
+            if (optionsId === 'options1') {
+                obsledDop1 = 1;
+            } else if (optionsId === 'options2') {
+                obsledDop2 = 1;
+            }
+            if (koefObsled1 == 1 && koefObsled2 == 1) {
+                sumObsled = 0;
+            } else {
+                sumObsled = koefObsled1 * koefObsled2 * costwork14 * K18ob * obsledDop1 * obsledDop2;
+            }
+            $('#obsledRab').html(sumObsled.toFixed(3));
+
         }
         await calculateK();
     }
@@ -3425,6 +3452,60 @@ echo "<script>
         }
     }
 
+
+   async function toggleCheckboxesDopDusl(checkbox) {
+        const dataId = parseFloat(checkbox.getAttribute('data-id'));
+
+        if (checkbox.checked) {
+            if (checkbox.id === 'toggleZdDopUsl') {
+                obmerDop1 = dataId;
+            } else if (checkbox.id === 'toggleZdDopUsl1') {
+                obmerDop2 = dataId;
+            }
+        } else {
+            if (checkbox.id === 'toggleZdDopUsl') {
+                obmerDop1 = 1;
+            } else if (checkbox.id === 'toggleZdDopUsl1') {
+                obmerDop2 = 1;
+            }
+        }
+       if(koefObmerWork1 == 1 && koefObmerWork2 == 1){
+           sumObmer = 0;
+       }else {
+           sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * K18ob * obmerDop1 * obmerDop2;
+       }
+       $('#obmerRaboty').html(sumObmer.toFixed(3));
+        await calculateK();
+    }
+
+    function obsledDataidSelect(selectElement) {
+        const selectedOption = selectElement.options[selectElement.selectedIndex];
+        return selectedOption.value === "" ? "1" : selectedOption.getAttribute('data-id');
+    }
+
+    document.getElementById('options1').onchange = function() {
+        obsledDop1 = obsledDataidSelect(this);
+        if (koefObsled1 == 1 && koefObsled2 == 1) {
+            sumObsled = 0;
+        } else {
+            sumObsled = koefObsled1 * koefObsled2 * costwork14 * K18ob * obsledDop1 * obsledDop2;
+        }
+        $('#obsledRab').html(sumObsled.toFixed(3));
+
+
+        calculateK();
+    };
+
+    document.getElementById('options2').onchange = function() {
+        obsledDop2 = obsledDataidSelect(this);
+        if (koefObsled1 == 1 && koefObsled2 == 1) {
+            sumObsled = 0;
+        } else {
+            sumObsled = koefObsled1 * koefObsled2 * costwork14 * K18ob * obsledDop1 * obsledDop2;
+        }
+        $('#obsledRab').html(sumObsled.toFixed(3));
+        calculateK();
+    };
 
 </script>
 

@@ -588,7 +588,7 @@ async function calcObmerWorksPart1() {
             if(koefObmerWork1 == 1 && koefObmerWork2 == 1){
                 sumObmer = 0;
             }else {
-                sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * K18ob;
+                sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * K18ob * obmerDop1 * obmerDop2;
             }
             $('#obmerRaboty').html(sumObmer.toFixed(3));
             resolve();
@@ -681,7 +681,7 @@ async function calcObmerWorksPart2() {
                 if(koefObmerWork1 == 1 && koefObmerWork2 == 1){
                     sumObmer = 0;
                 }else {
-                    sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * K18ob;
+                    sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * K18ob * obmerDop1 * obmerDop2;
                 }
 
                 $('#obmerRaboty').html(sumObmer.toFixed(3));
@@ -711,7 +711,7 @@ $("#choosCunstruct4").on("change", async function(event){
     if(koefObmerWork1 == 1 && koefObmerWork2 == 1){
         sumObmer = 0;
     }else {
-        sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * K18ob;
+        sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * K18ob * obmerDop1 * obmerDop2;
     }
     $('#obmerRaboty').html(sumObmer.toFixed(3));
     await calculateK();
