@@ -625,7 +625,7 @@ echo "<script>
     <div class="nameforblock3" onclick="toggleDisplay('.nameforblock3', '.dndb3');"><input class="onCollap"
                                                                                            type="checkbox"
                                                                                            id="sborCheck"
-                                                                                           name="obmerCheck" value="1">
+                                                                                           name="obmerCheck" value="1" onchange="calculateK()">
         &nbsp;&nbsp;&nbsp;Сбор исходных данных
         &nbsp;&nbsp;&nbsp;<?php echo '<span class="sborIshodnihDannih" id="sborIshodnihDannih">';
         echo $sborIshodnihDannih;
@@ -790,7 +790,7 @@ echo "<script>
     <div class="nameforblock4" onclick="toggleDisplay('.nameforblock4', '.dndb4');"><input class="onCollap"
                                                                                            type="checkbox"
                                                                                            id="obmerCheck"
-                                                                                           name="obmerCheck" value="1">&nbsp;&nbsp;&nbsp;Обмерные
+                                                                                           name="obmerCheck" value="1" onchange="calculateK()">&nbsp;&nbsp;&nbsp;Обмерные
         работы &nbsp;&nbsp;&nbsp;<?php echo '<span class="sborIshodnihDannih" id="obmerRaboty">';
         echo $obmerRaboty;
         echo '</span>'; ?></div>
@@ -973,7 +973,7 @@ echo "<script>
     <div class="nameforblock5" onclick="toggleDisplay('.nameforblock5', '.dndb5');"><input class="onCollap"
                                                                                            type="checkbox"
                                                                                            id="obsledCheck"
-                                                                                           name="sborDann" value="1">&nbsp;&nbsp;&nbsp;Обследовательские
+                                                                                           name="sborDann" value="1" onchange="calculateK()">&nbsp;&nbsp;&nbsp;Обследовательские
         работы &nbsp;&nbsp;&nbsp;<?php echo '<span class="sborIshodnihDannih" id="obsledRab">';
         echo $obsledRab;
         echo '</span>'; ?></div>
@@ -1183,7 +1183,7 @@ echo "<script>
                                                                                            type="checkbox"
                                                                                            id="sostTechOtchetCheck"
                                                                                            name="sostTechOtchetCheck"
-                                                                                           value="1">&nbsp;&nbsp;&nbsp;Составление
+                                                                                           value="1" onchange="calculateK()">&nbsp;&nbsp;&nbsp;Составление
         технического отчета &nbsp;&nbsp;&nbsp;<?php echo '<span class="sborIshodnihDannih" id="sostTech">';
         echo $sostTech;
         echo '</span>'; ?></div>
@@ -1349,7 +1349,7 @@ echo "<script>
     <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 
 
-    <div class="nameforblock7" onclick="toggleDisplay('.nameforblock7', '.dndb7');"><input class = "onCollap" type="checkbox" id="redaktorIspConstr" name="redaktorIspConstr" value="1">&nbsp;&nbsp;&nbsp;Редактор испытания конструкций &nbsp;&nbsp;&nbsp;<?php echo '<span class="sborIshodnihDannih" id="redaktorCons">'; echo $redaktorCons; echo'</span>'; ?></div>
+    <div class="nameforblock7" onclick="toggleDisplay('.nameforblock7', '.dndb7');"><input class = "onCollap" type="checkbox" id="redaktorIspConstr" name="redaktorIspConstr" value="1" onchange="calculateK()">&nbsp;&nbsp;&nbsp;Редактор испытания конструкций &nbsp;&nbsp;&nbsp;<?php echo '<span class="sborIshodnihDannih" id="redaktorCons">'; echo $redaktorCons; echo'</span>'; ?></div>
     <div class="dndb7">
         <div style="margin-left:1%" ;>Работы по определению прочности бетона и кирпичной кладки:</div>
         <div class="position1">
@@ -1404,7 +1404,7 @@ echo "<script>
 
 
     <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
-    <div class="nameforblock8" onclick="toggleDisplay('.nameforblock8', '.dndb8');">Обследование отдельных  конструкций <?php echo '<input class = "onCollap" type="checkbox" id="sborDann" name="sborDann" value="sborDann"> <span class="countRub">123</span>' ?></div>
+    <div class="nameforblock8" onclick="toggleDisplay('.nameforblock8', '.dndb8');">Обследование отдельных  конструкций <?php echo '<input onchange="calculateK()" class = "onCollap" type="checkbox" id="sborDann" name="sborDann" value="sborDann"> <span class="countRub">123</span>' ?></div>
     <div class="dndb8">
 
 
@@ -1751,7 +1751,7 @@ echo "<script>
     <hr>
     <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
     <div class="nameforblock9" onclick="toggleDisplay('.nameforblock9', '.dndb9');">
-        Калькуляция <?php echo '<input class = "onCollap" type="checkbox" id="sborDann" name="sborDann" value="sborDann"> <span class="countRub">123</span>' ?></div>
+        Калькуляция <?php echo '<input onchange="calculateK()" class = "onCollap" type="checkbox" id="sborDann" name="sborDann" value="sborDann"> <span class="countRub">123</span>' ?></div>
     <div class="dndb9">
         <div class="position1">
             <div class="pos1">
@@ -2251,6 +2251,14 @@ echo "<script>
 
 
     async function calculateK() {
+
+        const isSborIshodnihDannihChecked = document.getElementById('sborCheck').checked;
+        const isObmerRabotyChecked = document.getElementById('obmerCheck').checked;
+        const isObsledRabChecked = document.getElementById('obsledCheck').checked;
+        const isSostTechOtchetCheck = document.getElementById('sostTechOtchetCheck').checked;
+        const isRedaktorIspConstr = document.getElementById('redaktorIspConstr').checked;
+
+
         koefIshod = koefIshod == 0 ? 1 : koefIshod;
         koefIshod2 = koefIshod2 == 0 ? 1 : koefIshod2;
         koefObmerWork1 = koefObmerWork1 == 0 ? 1 : koefObmerWork1;
@@ -2282,12 +2290,22 @@ echo "<script>
             sumSosttech = koefSosttech1 * koefSosttech2 * costwork14 * K18ob;
         }
 
-        fullSumma = parseFloat(sumHarakter) + parseFloat(sumIshod) + parseFloat(sumObmer) + parseFloat(sumObsled) + parseFloat(sumSosttech) + parseFloat(sumRedaktor);
+        fullSumma = parseFloat(sumHarakter); //+ parseFloat(sumIshod) + parseFloat(sumObmer) + parseFloat(sumObsled) + parseFloat(sumSosttech) + parseFloat(sumRedaktor);
+        if (isSborIshodnihDannihChecked) fullSumma += parseFloat(sumIshod);
+        if (isObmerRabotyChecked) fullSumma += parseFloat(sumObmer);
+        if (isObsledRabChecked) fullSumma += parseFloat(sumObsled);
+        if (isSostTechOtchetCheck) fullSumma += parseFloat(sumSosttech);
+        if (isRedaktorIspConstr) fullSumma += parseFloat(sumSosttech);
 
         fullSumma = fullSumma.toFixed(3);
         document.getElementById('harakteristikaObjectObsh').innerText = fullSumma;
         document.getElementById('harakteristikaObjectSmeta').innerText = fullSumma;
         document.getElementById('harakteristikaObjectCalc').innerText = fullSumma;
+        console.log (fullSumma);
+        // fullSumma = fullSumma.toFixed(3);
+        // document.getElementById('harakteristikaObjectObsh').innerText = fullSumma;
+        // document.getElementById('harakteristikaObjectSmeta').innerText = fullSumma;
+        // document.getElementById('harakteristikaObjectCalc').innerText = fullSumma;
     }
 
 
@@ -3338,6 +3356,22 @@ echo "<script>
                     alert('Применено');
                     await calculateK();
                     $('#modalPeremen').modal('hide');
+                    updateCalendarDaysFromEnd();
+                    updateBuildingInfo();
+                    await toggleCheckboxesDop();
+                    await toggleCheckboxesDop4();
+                    await toggleCheckboxesDop5();
+                    await toggleCheckboxesDop6();
+                    await calculateHaracterCoefficient();
+                    await calcIshod1();
+                    await calcIshod2();
+                    await calcObmerWorksPart1();
+                    await calcObmerWorksPart2();
+                    await calcObsled1();
+                    await calcObsled2();
+                    await calcSosttech1();
+                    await calcSosttech2();
+                    await calculateK();
                 } else {
                     alert('Ошибка при сохранении параметров');
                 }
@@ -3506,6 +3540,9 @@ echo "<script>
         $('#obsledRab').html(sumObsled.toFixed(3));
         calculateK();
     };
+
+
+
 
 </script>
 
