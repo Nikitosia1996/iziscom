@@ -303,7 +303,7 @@ echo "<script>
     }
 </style>
 <div class="sticky">
-<div class="col-lg-12 connectedSortable ui-sortable" style="margin-top: 90px">
+<div class="col-lg-12 connectedSortable ui-sortable" style="margin-top: 10px">
     <div class="row mgbottom20p mgleft5">
         <div class="dropdown col-lg-2">
             <button onclick="myFunction()" class="dropbtn">Найти смету</button>
@@ -361,7 +361,7 @@ echo "<script>
             <button id="btnTechZad" class="btn btn-primary" onclick="printTZ()">Техническое задание</button>
         </div>
         <div class="col-lg-4">
-            <a href="../smeta/excel.php" class="btn btn-primary">Смета в EXCEL</a>
+            <a onclick="printExcel()" class="btn btn-primary">Смета в EXCEL</a>
         </div>
     </div>
 </div>
@@ -2256,9 +2256,9 @@ echo "<script>
     let sumSosttech = 0; // СУММА ВКЛАДКИ тех отчета
     let sumIspConstr = 0; // СУММА ВКЛАДКИ испытания конструкций
     let fullSumma = 0; // ОБЩАЯ СУММА ВСЕХ ВКЛАДОК
-    let K18ob = 0; // Общий  К18.об
+    let k18ob = 0; // Общий  К18.об
     let hardZdanie; // КАТЕГОРИЯ СЛОЖНОСТИ ЗДАНИЯ
-    let mainvisotazdani; // ВЫСОТА ЗДАНИЯ
+    let mainvisotazdani = 1; // ВЫСОТА ЗДАНИЯ
     let koefIshod = 1; // КОЭФИЦИЕНТ НЗТ1 (табл.2.3)
     let selectedRadio; // КАТЕГОРИЯ СЛОЖНОСТИ РАБОТ
     let koefIshod2 = 1; // КОЭФИЦИЕНТ НЗТ1 (табл.2.4)
@@ -2277,6 +2277,7 @@ echo "<script>
     let ki242 = 1; // Значение тарифного коэффициента п 2.4.2
     let Vdiv100 = 1; // Значение тарифного коэффициента п 2.1.2
     let k18101 = 1; // Тип здания
+    let V = 1;
 
 
     async function calculateK() {
@@ -2297,7 +2298,7 @@ echo "<script>
         if (koefIshod == 1 && koefIshod2 == 1) {
             sumIshod = 0;
         } else {
-            sumIshod =  Vdiv100 * k18101 * koefIshod * koefIshod2 * costwork14 * K18ob * ki212;
+            sumIshod =  Vdiv100 * k18101 * koefIshod * koefIshod2 * costwork14 * k18ob * ki212;
             console.log(sumIshod + " =  koefIshod: " + koefIshod + " koefIshod2: " + koefIshod2 + " costwork14: " + costwork14 + " K18ob:" + K18ob + " ki212: " + ki212);
         }
 
@@ -2305,21 +2306,21 @@ echo "<script>
         if (koefObmerWork1 == 1 && koefObmerWork2 == 1) {
             sumObmer = 0;
         } else {
-            sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * K18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222;
+            sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * k18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222;
             console.log(sumObmer + " =  koefObmerWork1: " + koefObmerWork1 + " koefObmerWork2: " + koefObmerWork2 + " K18ob: " + K18ob + " obmerDop1:" + obmerDop1 + " obmerDop2: " + obmerDop2 + " Vdiv100: " + Vdiv100 + " k18101: " + k18101 + " ki222: " + ki222);
         }
 
         if (koefObsled1 == 1 && koefObsled2 == 1) {
             sumObsled = 0;
         } else {
-            sumObsled = koefObsled1 * koefObsled2 * costwork14 * K18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223;
+            sumObsled = koefObsled1 * koefObsled2 * costwork14 * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223;
             console.log(sumObsled + " =  koefObsled1: " + koefObsled1 + " koefObsled2: " + koefObsled2 + " K18ob: " + K18ob + " obsledDop1:" + obsledDop1 + " obsledDop2: " + obsledDop2 + " Vdiv100: " + Vdiv100 + " k18101: " + k18101 + " ki223: " + ki223);
         }
 
         if (koefSosttech1 == 1 && koefSosttech2 == 1) {
             sumSosttech = 0;
         } else {
-            sumSosttech = koefSosttech1 * koefSosttech2 * costwork14 * K18ob * Vdiv100 * k18101 * ki242;
+            sumSosttech = koefSosttech1 * koefSosttech2 * costwork14 * k18ob * Vdiv100 * k18101 * ki242;
             console.log(sumSosttech + " =  koefSosttech1: " + koefSosttech1 + " koefSosttech2: " + koefSosttech2 + " costwork14: " + costwork14 + " K18ob:" + K18ob + " Vdiv100: " + Vdiv100 + " Vdiv100: " + Vdiv100 + " k18101: " + k18101 + " ki223: " + ki223);
         }
 
@@ -2364,8 +2365,8 @@ echo "<script>
         const chekb12 = getCheckboxValue('chekb12');
         let kefVisota = 1;
         const visotazdani = parseFloat(document.getElementById('visotazdani').value) || 0;
-        const etazh = parseFloat(document.getElementById('etazh').value) || 0;
-        const visotapola = parseFloat(document.getElementById('visotapola').value) || 0;
+        etazh = parseFloat(document.getElementById('etazh').value) || 0;
+        visotapola = parseFloat(document.getElementById('visotapola').value) || 0;
         let visotaPolaVal = 1;
         const buildingType = parseFloat(document.querySelector('#buildingType option:checked').getAttribute('data-id')) || 1;
         const constructionType = parseFloat(document.querySelector('#constructionType option:checked').getAttribute('data-id')) || 1;
@@ -2376,14 +2377,15 @@ echo "<script>
         k18101 = buildingType;
         //РАСЧЕТ ОСНОВНОГО  КОЭФИЦИЕНТА К18.об ОТ ОБЪЕМА
         const obem = parseFloat(document.getElementById('obem').value) / 1000;
+        V = parseFloat(document.getElementById('obem').value);
         if (obem > 0) {
-            K18ob = 6.33 / Math.sqrt(obem);
-            if(K18ob > 8){
-                K18ob = 8;
+            k18ob = 6.33 / Math.sqrt(obem);
+            if(k18ob > 8){
+                k18ob = 8;
             }
             Vdiv100 = obem * 10;
         } else {
-            K18ob = 0;
+            k18ob = 0;
         }
 
 
@@ -2425,7 +2427,7 @@ echo "<script>
 
 
         const finalCoefficient =
-            K18ob *
+            k18ob *
             temperatureMode *
             equipmentSaturation *
             buildingType *
@@ -2462,7 +2464,7 @@ echo "<script>
 
         mainvisotazdani = parseFloat(document.getElementById('visotazdani').value) || 0;
 
-        const etazh = parseFloat(document.getElementById('etazh').value) || 0;
+        etazh = parseFloat(document.getElementById('etazh').value) || 0;
         let valVisZd;
         if (etazh == 1) {
 
@@ -2535,7 +2537,7 @@ echo "<script>
                         if (koefIshod == 1 && koefIshod2 == 1) {
                             sumIshod = 0;
                         } else {
-                            sumIshod = Vdiv100 * k18101 * koefIshod * koefIshod2 * costwork14 * K18ob * ki212;
+                            sumIshod = Vdiv100 * k18101 * koefIshod * koefIshod2 * costwork14 * k18ob * ki212;
                         }
                         $('#sborIshodnihDannih').html(sumIshod.toFixed(3));
 
@@ -2631,7 +2633,7 @@ echo "<script>
                     if (koefIshod == 1 && koefIshod2 == 1) {
                         sumIshod = 0;
                     } else {
-                        sumIshod = Vdiv100 * k18101 * koefIshod * koefIshod2 * costwork14 * K18ob * ki212;
+                        sumIshod = Vdiv100 * k18101 * koefIshod * koefIshod2 * costwork14 * k18ob * ki212;
                     }
                     $('#sborIshodnihDannih').html(sumIshod.toFixed(3));
                     resolve();
@@ -2655,7 +2657,7 @@ echo "<script>
         if (koefIshod == 1 && koefIshod2 == 1) {
             sumIshod = 0;
         } else {
-            sumIshod = Vdiv100 * k18101 * koefIshod * koefIshod2 * costwork14 * K18ob * ki212;
+            sumIshod = Vdiv100 * k18101 * koefIshod * koefIshod2 * costwork14 * k18ob * ki212;
         }
         $('#sborIshodnihDannih').html(sumIshod.toFixed(3));
         await calculateK();
@@ -2669,7 +2671,7 @@ echo "<script>
     })
 
     function updateBuildingInfo() {
-        const etazh = parseInt(document.getElementById('etazh').value) || 0;
+        etazh = parseInt(document.getElementById('etazh').value) || 0;
         const visotazdani = parseFloat(document.getElementById('visotazdani').value) || 0;
 
         const vis6Label = document.querySelector('label[for="vis6"]');
@@ -2942,7 +2944,7 @@ echo "<script>
             if (koefObsled1 == 1 && koefObsled2 == 1) {
                 sumObsled = 0;
             } else {
-                sumObsled = koefObsled1 * koefObsled2 * costwork14 * K18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223;
+                sumObsled = koefObsled1 * koefObsled2 * costwork14 * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223;
             }
             $('#obsledRab').html(sumObsled.toFixed(3));
 
@@ -3473,7 +3475,7 @@ echo "<script>
         let obem = document.getElementById('obem').value;
         let etazh = document.getElementById('etazh').value;
         let visotazdani = document.getElementById('visotazdani').value;
-        let visotapola = document.getElementById('visotapola').value;
+        visotapola = document.getElementById('visotapola').value;
         let zakazchikSelect = document.getElementById('zakazchik');
         let podryadchikSelect = document.getElementById('podryadchik');
         let zakazchik = zakazchikSelect.value > 0 ? zakazchikSelect.options[zakazchikSelect.selectedIndex].text : '';
@@ -3553,7 +3555,7 @@ echo "<script>
        if(koefObmerWork1 == 1 && koefObmerWork2 == 1){
            sumObmer = 0;
        }else {
-           sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * K18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222;
+           sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * k18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222;
        }
        $('#obmerRaboty').html(sumObmer.toFixed(3));
         await calculateK();
@@ -3569,7 +3571,7 @@ echo "<script>
         if (koefObsled1 == 1 && koefObsled2 == 1) {
             sumObsled = 0;
         } else {
-            sumObsled = koefObsled1 * koefObsled2 * costwork14 * K18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223;
+            sumObsled = koefObsled1 * koefObsled2 * costwork14 * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223;
         }
         $('#obsledRab').html(sumObsled.toFixed(3));
 
@@ -3582,7 +3584,7 @@ echo "<script>
         if (koefObsled1 == 1 && koefObsled2 == 1) {
             sumObsled = 0;
         } else {
-            sumObsled = koefObsled1 * koefObsled2 * costwork14 * K18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223;
+            sumObsled = koefObsled1 * koefObsled2 * costwork14 * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223;
         }
         $('#obsledRab').html(sumObsled.toFixed(3));
         calculateK();

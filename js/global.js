@@ -1,5 +1,7 @@
 var currentUrl = window.location.search;
 
+let etazh = 1;
+let visotapola = 1;
 
 
 let koefObmerWork1 = 1;
@@ -545,7 +547,7 @@ function updateSmetaLinks() {
 
 async function calcObmerWorksPart1() {
 
-    let etazh = parseFloat(document.getElementById('etazh').value) || 0;
+    etazh = parseFloat(document.getElementById('etazh').value) || 0;
     let kat_sl_zd = hardZdanie;
     const kat_sl_rabs = document.querySelector('input[name="kat_sl_rab"]:checked');
     let kat_sl_rab;
@@ -598,7 +600,7 @@ async function calcObmerWorksPart1() {
             if(koefObmerWork1 == 1 && koefObmerWork2 == 1){
                 sumObmer = 0;
             }else {
-                sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * K18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222;
+                sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * k18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222;
             }
             $('#obmerRaboty').html(sumObmer.toFixed(3));
             resolve();
@@ -609,7 +611,7 @@ async function calcObmerWorksPart1() {
 
 async function calcObmerWorksPart2() {
 
-    let etazh = parseFloat(document.getElementById('etazh').value) || 0;
+    etazh = parseFloat(document.getElementById('etazh').value) || 0;
     let typeW;
     let koefObmerRab = 0;
     if($("#choosCunstruct4").prop("checked")){
@@ -691,7 +693,7 @@ async function calcObmerWorksPart2() {
                 if(koefObmerWork1 == 1 && koefObmerWork2 == 1){
                     sumObmer = 0;
                 }else {
-                    sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * K18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222;
+                    sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * k18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222;
                 }
 
                 $('#obmerRaboty').html(sumObmer.toFixed(3));
@@ -721,7 +723,7 @@ $("#choosCunstruct4").on("change", async function(event){
     if(koefObmerWork1 == 1 && koefObmerWork2 == 1){
         sumObmer = 0;
     }else {
-        sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * K18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222;
+        sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * k18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222;
     }
     $('#obmerRaboty').html(sumObmer.toFixed(3));
     await calculateK();
@@ -741,7 +743,7 @@ $(".obmer2check").on("change", async () => {
 
 async function calcObsled1() {
 
-    let etazh = parseFloat(document.getElementById('etazh').value) || 0;
+    etazh = parseFloat(document.getElementById('etazh').value) || 0;
     let kat_sl_zd = hardZdanie;
     const kat_sl_rabs = document.querySelector('input[name="kat_sl_rab_obsled"]:checked');
     let kat_sl_rab;
@@ -794,7 +796,7 @@ if (kat_sl_rab == 1)
             if(koefObsled1 == 1 && koefObsled2 == 1){
                 sumObsled = 0;
             }else {
-                sumObsled = koefObsled1 * koefObsled2 * costwork14 * K18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223;
+                sumObsled = koefObsled1 * koefObsled2 * costwork14 * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223;
             }
             $('#obsledRab').html(sumObsled.toFixed(3));
             resolve();
@@ -805,7 +807,7 @@ if (kat_sl_rab == 1)
 
 async function calcObsled2() {
 
-    let etazh = parseFloat(document.getElementById('etazh').value) || 0;
+    etazh = parseFloat(document.getElementById('etazh').value) || 0;
     let typeW;
     if($("#choosCunstruct5").prop("checked")){
         typeW = $("#buildingType").val();
@@ -884,7 +886,7 @@ async function calcObsled2() {
                 if(koefObsled1 == 1 && koefObsled2 == 1){
                     sumObsled = 0;
                 }else {
-                    sumObsled = koefObsled1 * koefObsled2 * costwork14 * K18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223;
+                    sumObsled = koefObsled1 * koefObsled2 * costwork14 * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223;
                 }
                 $('#obsledRab').html(sumObsled.toFixed(3));
                 resolve();
@@ -912,7 +914,7 @@ $("#choosCunstruct5").on("change", async function(event){
     if(koefObsled1 == 1 && koefObsled2 == 1){
         sumObsled = 0;
     }else {
-        sumObsled = koefObsled1 * koefObsled2 * costwork14 * K18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223;
+        sumObsled = koefObsled1 * koefObsled2 * costwork14 * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223;
     }
     $('#obsledRab').html(sumObsled.toFixed(3));
     await calculateK();
@@ -936,7 +938,7 @@ $(".obmer2check").on("change", async () => {
 
 async function calcSosttech1() {
 
-    let etazh = parseFloat(document.getElementById('etazh').value) || 0;
+    etazh = parseFloat(document.getElementById('etazh').value) || 0;
     let kat_sl_zd = hardZdanie;
     const kat_sl_rabs = document.querySelector('input[name="kat_sl_rab_sosttech"]:checked');
     let kat_sl_rab;
@@ -989,7 +991,7 @@ async function calcSosttech1() {
             if(koefSosttech1 == 1 && koefSosttech2 == 1){
                 sumSosttech = 0;
             }else {
-                sumSosttech = koefSosttech1 * koefSosttech2 * costwork14 * K18ob * Vdiv100 * k18101 * ki242;
+                sumSosttech = koefSosttech1 * koefSosttech2 * costwork14 * k18ob * Vdiv100 * k18101 * ki242;
             }
             $('#sostTech').html(sumSosttech.toFixed(3));
             resolve();
@@ -1000,7 +1002,7 @@ async function calcSosttech1() {
 
 async function calcSosttech2() {
 
-    let etazh = parseFloat(document.getElementById('etazh').value) || 0;
+    etazh = parseFloat(document.getElementById('etazh').value) || 0;
     let typeW;
     if($("#choosCunstruct6").prop("checked")){
         typeW = $("#buildingType").val();
@@ -1078,7 +1080,7 @@ async function calcSosttech2() {
                 if(koefSosttech1 == 1 && koefSosttech2 == 1){
                     sumSosttech = 0;
                 }else {
-                    sumSosttech = koefSosttech1 * koefSosttech2 * costwork14 * K18ob * Vdiv100 * k18101 * ki242;
+                    sumSosttech = koefSosttech1 * koefSosttech2 * costwork14 * k18ob * Vdiv100 * k18101 * ki242;
                 }
                 $('#sostTech').html(sumSosttech.toFixed(3));
                 resolve();
@@ -1106,7 +1108,7 @@ $("#choosCunstruct6").on("change", async function(event){
     if(koefSosttech1 == 1 && koefSosttech2 == 1){
         sumSosttech = 0;
     }else {
-        sumSosttech = koefSosttech1 * koefSosttech2 * costwork14 * K18ob * Vdiv100 * k18101 * ki242;
+        sumSosttech = koefSosttech1 * koefSosttech2 * costwork14 * k18ob * Vdiv100 * k18101 * ki242;
     }
     $('#sostTech').html(sumSosttech.toFixed(3));
     await calculateK();
@@ -1150,7 +1152,22 @@ $(".tarif").on('change', () => {
 })
 
 
+function printExcel(){
+     console.log("V=" + V + "; n=" + etazh + "; h=" + mainvisotazdani + "; het=" + visotapola + ";");
+    new Promise((resolve, reject) => {
+        document.cookie = "V=" + V + ";";
+        document.cookie =  "n=" + etazh + ";";
+        document.cookie = "h=" + mainvisotazdani + ";";
+        document.cookie = " het=" + visotapola + ";";
+        document.cookie = " k18101=" + k18101 + ";";
+        document.cookie = " k18ob=" + k18ob + ";";
 
+        resolve();
+    }).then(() => {
+        location.href = "excel.php";
+    })
+
+}
 
 
 ///////////////////////////////////////////////////////////////////////////

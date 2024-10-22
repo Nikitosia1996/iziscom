@@ -3,6 +3,8 @@ require 'vendor/autoload.php';
 
 
 
+
+
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Style\Border;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
@@ -15,6 +17,10 @@ $sheet = $spreadsheet->getActiveSheet();
 $sheet->setTitle("Новый лист");
 
 const COEFF = 1.053423626787058;
+$V = $_COOKIE['V'];
+$n = $_COOKIE['n'];
+$h = $_COOKIE['h'];
+$het = $_COOKIE['het'];
 
 $sheet->getStyle('A1:Z1000')->getFont()->setName('Arial');
 $sheet->getStyle('A1:Z1000')->getFont()->setSize(14);
@@ -83,9 +89,13 @@ $sheet->setCellValue("A13", "Высота здания");
 $sheet->setCellValue("A14", "Высота этажа");
 
 $sheet->setCellValue("E11", "V =");
+$sheet->setCellValue("F11", $V);
 $sheet->setCellValue("E12", "n =");
+$sheet->setCellValue("F12", $n);
 $sheet->setCellValue("E13", "h =");
+$sheet->setCellValue("F13", $h);
 $sheet->setCellValue("E14", "h =");
+$sheet->setCellValue("F14", $het);
 
 $sheet->setCellValue("G11", "м3");
 $sheet->setCellValue("G12", "эт.");
