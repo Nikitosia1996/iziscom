@@ -2339,8 +2339,6 @@ echo "<script>
         if (isSostTechOtchetCheck) fullSumma += parseFloat(sumSosttech);
         if (isRedaktorIspConstr) fullSumma += parseFloat(sumIspConstr);
 
-
-
         fullSumma = fullSumma.toFixed(3);
         let totalSum = (parseFloat(fullSumma) + parseFloat(calculacia)).toFixed(2);
         document.getElementById('harakteristikaObjectObsh').innerText = totalSum;

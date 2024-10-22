@@ -1152,11 +1152,8 @@ async function calcCalkulation(){
                 inputValue: result  },
                 success: function(response) {
                     console.log(response);
-
                     $('#tarifKoef').val(response.trim());
                     calculacia = (parseFloat(response.trim()) * costwork14).toFixed(2);
-
-
                 },
                 error: function(xhr, status, error) {
 
