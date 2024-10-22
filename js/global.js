@@ -1152,7 +1152,7 @@ $(".tarif").on('change', () => {
 })
 
 function printExcel(){
-     console.log("V=" + V + "; n=" + etazh + "; h=" + mainvisotazdani + "; het=" + visotapola + ";");
+    console.log("V=" + V + "; n=" + etazh + "; h=" + mainvisotazdani + "; het=" + visotapola + ";");
     new Promise((resolve, reject) => {
         document.cookie = "V=" + V + ";";
         document.cookie =  "n=" + etazh + ";";
@@ -1162,6 +1162,31 @@ function printExcel(){
         document.cookie = " k18ob=" + k18ob + ";";
         document.cookie = " zakazchik=" + selectZakazchik.find('option:selected').text() + ";";
         document.cookie = " podradchik=" + selectPodryadchik.find('option:selected').text() + ";";
+        document.cookie = " chacked1=" + isSborIshodnihDannihChecked + ";";
+        document.cookie = " chacked2=" + isObmerRabotyChecked + ";";
+        document.cookie = " chacked3=" + isObsledRabChecked + ";";
+        document.cookie = " chacked4=" + isSostTechOtchetCheck + ";";
+        document.cookie = " chacked5=" + isRedaktorIspConstr + ";";
+
+        document.cookie = " h3tp_212=" + koefIshod + ";";
+        document.cookie = " ph3_212=" + koefIshod2 + ";";
+        document.cookie = " ki212=" + ki212 + ";";
+        document.cookie = " p212=" + P212 + ";";
+
+        document.cookie = " h3tp_222=" + koefObmerWork1 + ";";
+        document.cookie = " ph3_222=" + koefObmerWork2 + ";";
+        document.cookie = " ki222=" + ki222 + ";";
+        document.cookie = " p222=" + P222 + ";";
+
+        document.cookie = " h3tp_223=" + koefObsled1 + ";";
+        document.cookie = " ph3_223=" + koefObsled2 + ";";
+        document.cookie = " ki223=" + ki223 + ";";
+        document.cookie = " p223=" + P223 + ";";
+
+        document.cookie = " h3tp_242=" + koefSosttech1 + ";";
+        document.cookie = " ph3_242=" + koefSosttech2 + ";";
+        document.cookie = " ki242=" + ki242 + ";";
+        document.cookie = " p242=" + P242 + ";";
 
         resolve();
     }).then(() => {

@@ -2279,14 +2279,20 @@ echo "<script>
     let k18101 = 1; // Тип здания
     let V = 1;
 
+    let isSborIshodnihDannihChecked;
+    let isObmerRabotyChecked;
+    let isObsledRabChecked;
+    let isSostTechOtchetCheck;
+    let isRedaktorIspConstr;
+
 
     async function calculateK() {
 
-        const isSborIshodnihDannihChecked = document.getElementById('sborCheck').checked;
-        const isObmerRabotyChecked = document.getElementById('obmerCheck').checked;
-        const isObsledRabChecked = document.getElementById('obsledCheck').checked;
-        const isSostTechOtchetCheck = document.getElementById('sostTechOtchetCheck').checked;
-        const isRedaktorIspConstr = document.getElementById('redaktorIspConstr').checked;
+        isSborIshodnihDannihChecked = document.getElementById('sborCheck').checked;
+        isObmerRabotyChecked = document.getElementById('obmerCheck').checked;
+        isObsledRabChecked = document.getElementById('obsledCheck').checked;
+        isSostTechOtchetCheck = document.getElementById('sostTechOtchetCheck').checked;
+        isRedaktorIspConstr = document.getElementById('redaktorIspConstr').checked;
 
 
         koefIshod = koefIshod == 0 ? 1 : koefIshod;
