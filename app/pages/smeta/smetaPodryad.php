@@ -3481,13 +3481,107 @@ echo "<script>
         let podryadchikSelect = document.getElementById('podryadchik');
         let zakazchik = zakazchikSelect.value > 0 ? zakazchikSelect.options[zakazchikSelect.selectedIndex].text : '';
         let podryadchik = podryadchikSelect.value > 0 ? podryadchikSelect.options[podryadchikSelect.selectedIndex].text : '';
-        let toggleZd1 = document.getElementById('toggleZd1').value;
+        let cel = document.getElementById('textAreaCel').value;
+        let mestoObj = document.getElementById('textAreaMestoObj').value;
+        let naimRabot = document.getElementById('textAreaNaimRabot').value;
+
+
+        let toggleZd1 = document.getElementById('toggleZd1').checked ? 1 : 0;
+        let toggleZd2 = document.getElementById('toggleZd2').checked ? 1 : 0;
+        let toggleZd3 = document.getElementById('toggleZd3').checked ? 1 : 0;
+        let toggleZd4 = document.getElementById('toggleZd4').checked ? 1 : 0;
+        let toggleZd5 = document.getElementById('toggleZd5').checked ? 1 : 0;
+        let toggleZd6 = document.getElementById('toggleZd6').checked ? 1 : 0;
+        let toggleZd7 = document.getElementById('toggleZd7').checked ? 1 : 0;
+        let toggleZd8 = document.getElementById('toggleZd8').checked ? 1 : 0;
+        let toggleZd9 = document.getElementById('toggleZd9').checked ? 1 : 0;
+
+        let toggleZd41 = document.getElementById('toggleZd41').checked ? 1 : 0;
+        let toggleZd42 = document.getElementById('toggleZd42').checked ? 1 : 0;
+        let toggleZd43 = document.getElementById('toggleZd43').checked ? 1 : 0;
+        let toggleZd44 = document.getElementById('toggleZd44').checked ? 1 : 0;
+        let toggleZd45 = document.getElementById('toggleZd45').checked ? 1 : 0;
+        let toggleZd46 = document.getElementById('toggleZd46').checked ? 1 : 0;
+        let toggleZd48 = document.getElementById('toggleZd48').checked ? 1 : 0;
+        let toggleZd49 = document.getElementById('toggleZd49').checked ? 1 : 0;
+        let toggleZd449 = document.getElementById('toggleZd449').checked ? 1 : 0;
+
+        let toggleZd51 = document.getElementById('toggleZd51').checked ? 1 : 0;
+        let toggleZd52 = document.getElementById('toggleZd52').checked ? 1 : 0;
+        let toggleZd53 = document.getElementById('toggleZd53').checked ? 1 : 0;
+        let toggleZd54 = document.getElementById('toggleZd54').checked ? 1 : 0;
+        let toggleZd55 = document.getElementById('toggleZd55').checked ? 1 : 0;
+        let toggleZd56 = document.getElementById('toggleZd56').checked ? 1 : 0;
+        let toggleZd57 = document.getElementById('toggleZd57').checked ? 1 : 0;
+        let toggleZd58 = document.getElementById('toggleZd58').checked ? 1 : 0;
+        let toggleZd59 = document.getElementById('toggleZd59').checked ? 1 : 0;
+
+        let toggleZd61 = document.getElementById('toggleZd61').checked ? 1 : 0;
+        let toggleZd62 = document.getElementById('toggleZd62').checked ? 1 : 0;
+        let toggleZd63 = document.getElementById('toggleZd63').checked ? 1 : 0;
+        let toggleZd64 = document.getElementById('toggleZd64').checked ? 1 : 0;
+        let toggleZd65 = document.getElementById('toggleZd65').checked ? 1 : 0;
+        let toggleZd66 = document.getElementById('toggleZd66').checked ? 1 : 0;
+        let toggleZd67 = document.getElementById('toggleZd67').checked ? 1 : 0;
+        let toggleZd68 = document.getElementById('toggleZd68').checked ? 1 : 0;
+        let toggleZd69 = document.getElementById('toggleZd69').checked ? 1 : 0;
+
+
+
+
+
+
+         let selectedRadio = document.querySelector('input[name="zdvis"]:checked');
+        let zdvisValue = selectedRadio ? selectedRadio.value : '';
+        let selectedRadioSlRab = document.querySelector('input[name="pasportNaZdanie"]:checked');
+        let zdvisValueSlRab = selectedRadioSlRab ? selectedRadioSlRab.value : '';
+
         $.ajax({
-            url: '/smeta/printTZ.php',
+            url: 'printTZ.php',
             type: 'POST',
             data: {
-                obem: obem, etazh: etazh, visotazdani: visotazdani, visotapola: visotapola, zakazchik: zakazchik,
-                podryadchik: podryadchik, toggleZd1: toggleZd1
+                obem: obem, etazh: etazh, visotazdani: visotazdani, visotapola: visotapola, zakazchik: zakazchik,cel: cel, mestoObj: mestoObj, naimRabot:naimRabot,
+                podryadchik: podryadchik, toggleZd1: toggleZd1, toggleZd2: toggleZd2,
+                toggleZd3: toggleZd3,
+                toggleZd4: toggleZd4,
+                toggleZd5: toggleZd5,
+                toggleZd6: toggleZd6,
+                toggleZd7: toggleZd7,
+                toggleZd8: toggleZd8,
+                toggleZd9: toggleZd9,
+
+                toggleZd41: toggleZd41,
+                toggleZd42: toggleZd42,
+                toggleZd43: toggleZd43,
+                toggleZd44: toggleZd44,
+                toggleZd45: toggleZd45,
+                toggleZd46: toggleZd46,
+                toggleZd48: toggleZd48,
+                toggleZd49: toggleZd49,
+                toggleZd449: toggleZd449,
+
+                toggleZd51: toggleZd51,
+                toggleZd52: toggleZd52,
+                toggleZd53: toggleZd53,
+                toggleZd54: toggleZd54,
+                toggleZd55: toggleZd55,
+                toggleZd56: toggleZd56,
+                toggleZd57: toggleZd57,
+                toggleZd58: toggleZd58,
+                toggleZd59: toggleZd59,
+
+                toggleZd61: toggleZd61,
+                toggleZd62: toggleZd62,
+                toggleZd63: toggleZd63,
+                toggleZd64: toggleZd64,
+                toggleZd65: toggleZd65,
+                toggleZd66: toggleZd66,
+                toggleZd67: toggleZd67,
+                toggleZd68: toggleZd68,
+                toggleZd69: toggleZd69,
+
+                zdvisValue:zdvisValue,
+                zdvisValueSlRab: zdvisValueSlRab
             },
             success: function (response) {
                 var WinPrint = window.open('', '', 'left=50,top=50,width=1200,height=860,toolbar=0,scrollbars=1,status=0');
