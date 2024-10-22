@@ -285,9 +285,25 @@ echo "<script>
     .mgleft5 {
         margin-left: 2%;
     }
+    .sticky {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        background-color: #f1f1f1;
+        padding: 10px;
+        font-size: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        margin-bottom: 50px;
+        z-index: 999;
+        margin-top: 70px;
+    }
+    .hr{
+        z-index: 1;
+        position: relative;
+    }
 </style>
-
-<section class="col-lg-12 connectedSortable ui-sortable" style="margin-top: 90px">
+<div class="sticky">
+<div class="col-lg-12 connectedSortable ui-sortable" style="margin-top: 90px">
     <div class="row mgbottom20p mgleft5">
         <div class="dropdown col-lg-2">
             <button onclick="myFunction()" class="dropbtn">Найти смету</button>
@@ -348,6 +364,8 @@ echo "<script>
             <a href="../smeta/excel.php" class="btn btn-primary">Смета в EXCEL</a>
         </div>
     </div>
+</div>
+</div>
 
     <div class="position1">
         <div class="pos1">
