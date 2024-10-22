@@ -17,10 +17,46 @@ $sheet = $spreadsheet->getActiveSheet();
 $sheet->setTitle("Новый лист");
 
 const COEFF = 1.053423626787058;
+$zakazchik = $_COOKIE['zakazchik'];
+$podradchik = $_COOKIE['podradchik'];
 $V = $_COOKIE['V'];
 $n = $_COOKIE['n'];
 $h = $_COOKIE['h'];
 $het = $_COOKIE['het'];
+$k18101 = $_COOKIE['k18101'];
+$k18ob = $_COOKIE['k18ob'];
+
+class Table {
+    public $tableName;
+    public $chacked;
+    public $h3tp;
+    public $ki;
+    public $p;
+    public $ph3;
+
+    public function __construct($tableName, $chacked, $h3tp, $ki, $p, $ph3) {
+        $this->tableName = $tableName;
+        $this->chacked = $chacked;
+        $this->h3tp = $h3tp;
+        $this->ki = $ki;
+        $this->p = $p;
+        $this->ph3 = $ph3;
+    }
+}
+
+$isSborIshodnihDannihChecked = new Table("Сбор исходных данных", $_COOKIE['chacked1'], $_COOKIE['h3tp_212'], $_COOKIE['ki212'], $_COOKIE['p212'], $_COOKIE['ph3_212']);
+$isObmerRabotyChecked = new Table("Обмерные работы",$_COOKIE['chacked2'], $_COOKIE['h3tp_222'], $_COOKIE['ki222'], $_COOKIE['p222'], $_COOKIE['ph3_222']);
+$isObsledRabChecked = new Table("Обследовательские работы", $_COOKIE['chacked3'], $_COOKIE['h3tp_223'], $_COOKIE['ki223'], $_COOKIE['p223'], $_COOKIE['ph3_223']);
+$isSostTechOtchetCheck = new Table("Составление технического отчета ", $_COOKIE['chacked4'], $_COOKIE['h3tp_242'], $_COOKIE['ki242'], $_COOKIE['p242'], $_COOKIE['ph3_242']);
+//$isRedaktorIspConstr = new Table("Редактор испытания конструкций", $_COOKIE['chacked5'], $_COOKIE['h3tp_212'], $_COOKIE['ki212'], $_COOKIE['p212'], $_COOKIE['ph3_212']);
+
+$arrTables = array();
+array_push($arrTables, $isSborIshodnihDannihChecked);
+array_push($arrTables, $isObmerRabotyChecked);
+array_push($arrTables, $isObsledRabChecked);
+array_push($arrTables, $isSostTechOtchetCheck);
+//array_push($arrTables, $isRedaktorIspConstr);
+
 
 $sheet->getStyle('A1:Z1000')->getFont()->setName('Arial');
 $sheet->getStyle('A1:Z1000')->getFont()->setSize(14);
@@ -65,7 +101,9 @@ $sheet->setCellValue("E4", "на выполнение обследователь
 $sheet->getStyle('E4')->getFont()->setSize(16);
 
 $sheet->setCellValue("A6", "Заказчик: ");
+$sheet->setCellValue("C6", $zakazchik);
 $sheet->setCellValue("A7", "Подрядчик: ");
+$sheet->setCellValue("C7", $podradchik);
 $sheet->getStyle('A6:A14')->getFont()->setSize(16);
 
 
@@ -122,6 +160,8 @@ $subscriptText->getFont()->setSubscript(true);
 $richText->addText($subscriptText);
 $richText->addText($ravno);
 $sheet->setCellValue("B15", $richText);
+$sheet->setCellValue("C15", $k18101);
+
 
 $richText = new RichText();
 $richText->createText("К");
@@ -146,6 +186,7 @@ $subscriptText->getFont()->setSubscript(true);
 $richText->addText($subscriptText);
 $richText->addText($ravno);
 $sheet->setCellValue("B18", $richText);
+$sheet->setCellValue("C18", $k18ob);
 
 $richText = new RichText();
 $richText->createText("К");
@@ -426,6 +467,46 @@ $sheet->getStyle("M23")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment:
 $sheet->getStyle("M23")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
 $sheet->getStyle("N22")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 $sheet->getStyle("N22")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
+
+
+$startedCell = 24;
+foreach ($arrTables as $item) {
+    if($item->chacked == "true"){
+        $sheet->setCellValue("C" . ($startedCell + 1), $item->tableName);
+        $sheet->setCellValue("G" . ($startedCell + 1), "НЗТР=");
+        $sheet->setCellValue("G" . ($startedCell + 2), "Ki=");
+        $sheet->setCellValue("G" . ($startedCell + 3), "P=");
+        $sheet->setCellValue("G" . ($startedCell + 4), "РНЗ=");
+
+        $sheet->setCellValue("H" . ($startedCell + 1), $item->h3tp);
+        $sheet->setCellValue("H" . ($startedCell + 2), $item->ki);
+        $sheet->setCellValue("H" . ($startedCell + 3), $item->p);
+        $sheet->setCellValue("H" . ($startedCell + 4), $item->ph3);
+
+        $sheet->setCellValue("E" . ($startedCell), "Категория сложности");
+        $sheet->setCellValue("E" . ($startedCell + 1), "Распределение норм затрат");
+        $sheet->setCellValue("E" . ($startedCell + 2), "Значение тарифного коэф.");
+        $sheet->setCellValue("E" . ($startedCell + 3), "Разряд исполнителя работ");
+        $sheet->setCellValue("E" . ($startedCell + 4), "Удельный вес работ");
+
+        $sheet->getStyle("C" . ($startedCell + 1))->getFont()->setBold(true);
+        $sheet->getStyle('C' . ($startedCell + 1))->getFont()->setSize(14);
+        $endCell = $startedCell + 4;
+        $sheet->getStyle('K' . $startedCell . ':M' . $endCell)->applyFromArray($styleArray);
+        $sheet->getStyle('A' . $startedCell . ':A' . $endCell)->applyFromArray($styleArray);
+        $sheet->getStyle('B' . $startedCell . ':D' . $endCell)->applyFromArray($styleArray);
+        $sheet->getStyle('E' . $startedCell . ':F' . $endCell)->applyFromArray($styleArray);
+        $sheet->getStyle('G' . $startedCell . ':H' . $endCell)->applyFromArray($styleArray);
+        $sheet->getStyle('I' . $startedCell . ':J' . $endCell)->applyFromArray($styleArray);
+        $sheet->getStyle('N' . $startedCell . ':O' . $endCell)->applyFromArray($styleArray);
+        $sheet->getStyle('E' . $startedCell . ':E' . $endCell)->getFont()->setSize(11);
+        $sheet->getStyle('G' . $startedCell . ':G' . $endCell)->getFont()->setSize(11);
+
+
+        $startedCell = $endCell + 1;
+
+    }
+}
 
 
 
