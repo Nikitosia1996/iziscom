@@ -571,6 +571,13 @@ async function calcObmerWorksPart1() {
             }
 
     }
+    if (kat_sl_rab == 1)
+    {
+        P222 = 10
+    }
+    else if (kat_sl_rab == 2){
+        P222 = 14
+    }
 
     return new Promise((resolve, reject) => {
         $.ajax({
@@ -580,15 +587,18 @@ async function calcObmerWorksPart1() {
                 etazh: etazh,
                 kat_sl_zd: kat_sl_zd,
                 kat_sl_rab: kat_sl_rab,
-                vysota: vysota
+                vysota: vysota,
+                P222: P222
             },
 
         }).then(response => {
-            koefObmerWork1 = parseFloat(response.trim());
+            let unparseRepsonse = JSON.parse(response);
+            ki222 = parseFloat(unparseRepsonse[1].trim());
+            koefObmerWork1 = parseFloat(unparseRepsonse[0].trim());
             if(koefObmerWork1 == 1 && koefObmerWork2 == 1){
                 sumObmer = 0;
             }else {
-                sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * K18ob * obmerDop1 * obmerDop2;
+                sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * K18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222;
             }
             $('#obmerRaboty').html(sumObmer.toFixed(3));
             resolve();
@@ -681,7 +691,7 @@ async function calcObmerWorksPart2() {
                 if(koefObmerWork1 == 1 && koefObmerWork2 == 1){
                     sumObmer = 0;
                 }else {
-                    sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * K18ob * obmerDop1 * obmerDop2;
+                    sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * K18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222;
                 }
 
                 $('#obmerRaboty').html(sumObmer.toFixed(3));
@@ -711,7 +721,7 @@ $("#choosCunstruct4").on("change", async function(event){
     if(koefObmerWork1 == 1 && koefObmerWork2 == 1){
         sumObmer = 0;
     }else {
-        sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * K18ob * obmerDop1 * obmerDop2;
+        sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * K18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222;
     }
     $('#obmerRaboty').html(sumObmer.toFixed(3));
     await calculateK();
@@ -757,7 +767,14 @@ async function calcObsled1() {
         }
 
     }
-
+if (kat_sl_rab == 1)
+{
+    P223 = 12.5;
+}else if (kat_sl_rab == 2){
+    P223 = 14;
+}else if (kat_sl_rab == 3){
+    P223 = 15.5;
+}
     return new Promise((resolve, reject) => {
         $.ajax({
             url: "app/ajax/getKoefObsled1.php",
@@ -766,15 +783,18 @@ async function calcObsled1() {
                 etazh: etazh,
                 kat_sl_zd: kat_sl_zd,
                 kat_sl_rab: kat_sl_rab,
-                vysota: vysota
+                vysota: vysota,
+                P223: P223
             },
 
         }).then(response => {
-            koefObsled1 = parseFloat(response.trim());
+            let unparseRepsonse = JSON.parse(response);
+            koefObsled1 = parseFloat(unparseRepsonse[0].trim());
+            ki223 = parseFloat(unparseRepsonse[1].trim());
             if(koefObsled1 == 1 && koefObsled2 == 1){
                 sumObsled = 0;
             }else {
-                sumObsled = koefObsled1 * koefObsled2 * costwork14 * K18ob;
+                sumObsled = koefObsled1 * koefObsled2 * costwork14 * K18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223;
             }
             $('#obsledRab').html(sumObsled.toFixed(3));
             resolve();
@@ -864,7 +884,7 @@ async function calcObsled2() {
                 if(koefObsled1 == 1 && koefObsled2 == 1){
                     sumObsled = 0;
                 }else {
-                    sumObsled = koefObsled1 * koefObsled2 * costwork14 * K18ob;
+                    sumObsled = koefObsled1 * koefObsled2 * costwork14 * K18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223;
                 }
                 $('#obsledRab').html(sumObsled.toFixed(3));
                 resolve();
@@ -892,7 +912,7 @@ $("#choosCunstruct5").on("change", async function(event){
     if(koefObsled1 == 1 && koefObsled2 == 1){
         sumObsled = 0;
     }else {
-        sumObsled = koefObsled1 * koefObsled2 * costwork14 * K18ob;
+        sumObsled = koefObsled1 * koefObsled2 * costwork14 * K18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223;
     }
     $('#obsledRab').html(sumObsled.toFixed(3));
     await calculateK();
@@ -942,7 +962,14 @@ async function calcSosttech1() {
         }
 
     }
-
+    if (kat_sl_rab == 1)
+    {
+        P242 = 12.5;
+    }else if (kat_sl_rab == 2){
+        P242 = 14;
+    }else if (kat_sl_rab == 3){
+        P242 = 15.5;
+    }
     return new Promise((resolve, reject) => {
         $.ajax({
             url: "app/ajax/getKoefSosttech1.php",
@@ -951,15 +978,18 @@ async function calcSosttech1() {
                 etazh: etazh,
                 kat_sl_zd: kat_sl_zd,
                 kat_sl_rab: kat_sl_rab,
-                vysota: vysota
+                vysota: vysota,
+                P242: P242
             },
 
         }).then(response => {
-            koefSosttech1 = parseFloat(response.trim());
+            let unparseRepsonse = JSON.parse(response);
+            koefSosttech1 = parseFloat(unparseRepsonse[0].trim());
+            ki242 = parseFloat(unparseRepsonse[1].trim());
             if(koefSosttech1 == 1 && koefSosttech2 == 1){
                 sumSosttech = 0;
             }else {
-                sumSosttech = koefSosttech1 * koefSosttech2 * costwork14 * K18ob;
+                sumSosttech = koefSosttech1 * koefSosttech2 * costwork14 * K18ob * Vdiv100 * k18101 * ki242;
             }
             $('#sostTech').html(sumSosttech.toFixed(3));
             resolve();
@@ -1048,7 +1078,7 @@ async function calcSosttech2() {
                 if(koefSosttech1 == 1 && koefSosttech2 == 1){
                     sumSosttech = 0;
                 }else {
-                    sumSosttech = koefSosttech1 * koefSosttech2 * costwork14 * K18ob;
+                    sumSosttech = koefSosttech1 * koefSosttech2 * costwork14 * K18ob * Vdiv100 * k18101 * ki242;
                 }
                 $('#sostTech').html(sumSosttech.toFixed(3));
                 resolve();
@@ -1076,7 +1106,7 @@ $("#choosCunstruct6").on("change", async function(event){
     if(koefSosttech1 == 1 && koefSosttech2 == 1){
         sumSosttech = 0;
     }else {
-        sumSosttech = koefSosttech1 * koefSosttech2 * costwork14 * K18ob;
+        sumSosttech = koefSosttech1 * koefSosttech2 * costwork14 * K18ob * Vdiv100 * k18101 * ki242;
     }
     $('#sostTech').html(sumSosttech.toFixed(3));
     await calculateK();

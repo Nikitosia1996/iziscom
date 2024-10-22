@@ -21,7 +21,7 @@ $result = mysqli_query($connectionDB->con, $query);
 $myarray = array();
 if ($result && mysqli_num_rows($result) > 0) {
     while($row = mysqli_fetch_assoc($result)){
-        array_push($myarray, $row['koef']*100);
+        array_push($myarray, $row['koef']);
     }
 }
     echo json_encode($myarray);

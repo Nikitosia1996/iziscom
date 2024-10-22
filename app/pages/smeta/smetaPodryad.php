@@ -833,13 +833,13 @@ echo "<script>
 
             <div class="pos1">
                 <div class="viborvis">
-                    <input id="obmerobsl" class="butrad kat_sl_rab" type="radio" name="kat_sl_rab" value="1"
+                    <input data-id="10"  id="obmerobsl" class="butrad kat_sl_rab" type="radio" name="kat_sl_rab" value="1"
                            onchange="calcObmerWorksPart1()">
                     <label for="obmerobsl" class="pasportzd">1) Обмеры для визуального обследования,
                         паспортизации.:</label>
 
                     <br>
-                    <input id="obmerobs2" class="butrad kat_sl_rab" type="radio" name="kat_sl_rab" value="2"
+                    <input data-id="14"  id="obmerobs2" class="butrad kat_sl_rab" type="radio" name="kat_sl_rab" value="2"
                            onchange="calcObmerWorksPart1()">
                     <label for="obmerobsl2" class="pasportzd ">2) Обмеры для детального обследования (узлы, вскрытия и
                         т.д.):</label>
@@ -2253,7 +2253,8 @@ echo "<script>
     let sumIshod = 0; // СУММА ВКЛАДКИ СБОР ИСХОДНЫХ ДАННЫХ
     let sumObmer = 0; // СУММА ВКЛАДКИ обмера
     let sumObsled = 0; // СУММА ВКЛАДКИ обcледа
-    let sumSosttech = 0; // СУММА ВКЛАДКИ обcледа
+    let sumSosttech = 0; // СУММА ВКЛАДКИ тех отчета
+    let sumIspConstr = 0; // СУММА ВКЛАДКИ испытания конструкций
     let fullSumma = 0; // ОБЩАЯ СУММА ВСЕХ ВКЛАДОК
     let K18ob = 0; // Общий  К18.об
     let hardZdanie; // КАТЕГОРИЯ СЛОЖНОСТИ ЗДАНИЯ
@@ -2267,7 +2268,13 @@ echo "<script>
     let obsledDop1 = 1; //
     let obsledDop2 = 1; //
     let P212 = 1; // Средний разряд рабочих п 2.1.2
+    let P222 = 1; // Средний разряд рабочих п 2.2.2
+    let P223 = 1; // Средний разряд рабочих п 2.2.3
+    let P242 = 1; // Средний разряд рабочих п 2.4.2
     let ki212 = 1; // Значение тарифного коэффициента п 2.1.2
+    let ki222 = 1; // Значение тарифного коэффициента п 2.2.2
+    let ki223 = 1; // Значение тарифного коэффициента п 2.2.2
+    let ki242 = 1; // Значение тарифного коэффициента п 2.4.2
     let Vdiv100 = 1; // Значение тарифного коэффициента п 2.1.2
     let k18101 = 1; // Тип здания
 
@@ -2291,26 +2298,29 @@ echo "<script>
             sumIshod = 0;
         } else {
             sumIshod =  Vdiv100 * k18101 * koefIshod * koefIshod2 * costwork14 * K18ob * ki212;
+            console.log(sumIshod + " =  koefIshod: " + koefIshod + " koefIshod2: " + koefIshod2 + " costwork14: " + costwork14 + " K18ob:" + K18ob + " ki212: " + ki212);
         }
-        console.log(sumIshod + " =  koefIshod: " + koefIshod + " koefIshod2: " + koefIshod2 + " costwork14: " + costwork14 + " K18ob:" + K18ob + " ki212: " + ki212);
+
 
         if (koefObmerWork1 == 1 && koefObmerWork2 == 1) {
             sumObmer = 0;
         } else {
-            sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * K18ob * obmerDop1 * obmerDop2;
-            console.log (sumObmer , obmerDop1 , obmerDop2);
+            sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * K18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222;
+            console.log(sumObmer + " =  koefObmerWork1: " + koefObmerWork1 + " koefObmerWork2: " + koefObmerWork2 + " K18ob: " + K18ob + " obmerDop1:" + obmerDop1 + " obmerDop2: " + obmerDop2 + " Vdiv100: " + Vdiv100 + " k18101: " + k18101 + " ki222: " + ki222);
         }
 
         if (koefObsled1 == 1 && koefObsled2 == 1) {
             sumObsled = 0;
         } else {
-            sumObsled = koefObsled1 * koefObsled2 * costwork14 * K18ob * obsledDop1 * obsledDop2;
+            sumObsled = koefObsled1 * koefObsled2 * costwork14 * K18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223;
+            console.log(sumObsled + " =  koefObsled1: " + koefObsled1 + " koefObsled2: " + koefObsled2 + " K18ob: " + K18ob + " obsledDop1:" + obsledDop1 + " obsledDop2: " + obsledDop2 + " Vdiv100: " + Vdiv100 + " k18101: " + k18101 + " ki223: " + ki223);
         }
 
         if (koefSosttech1 == 1 && koefSosttech2 == 1) {
             sumSosttech = 0;
         } else {
-            sumSosttech = koefSosttech1 * koefSosttech2 * costwork14 * K18ob;
+            sumSosttech = koefSosttech1 * koefSosttech2 * costwork14 * K18ob * Vdiv100 * k18101 * ki242;
+            console.log(sumSosttech + " =  koefSosttech1: " + koefSosttech1 + " koefSosttech2: " + koefSosttech2 + " costwork14: " + costwork14 + " K18ob:" + K18ob + " Vdiv100: " + Vdiv100 + " Vdiv100: " + Vdiv100 + " k18101: " + k18101 + " ki223: " + ki223);
         }
 
         fullSumma = parseFloat(sumHarakter); //+ parseFloat(sumIshod) + parseFloat(sumObmer) + parseFloat(sumObsled) + parseFloat(sumSosttech) + parseFloat(sumRedaktor);
@@ -2318,7 +2328,7 @@ echo "<script>
         if (isObmerRabotyChecked) fullSumma += parseFloat(sumObmer);
         if (isObsledRabChecked) fullSumma += parseFloat(sumObsled);
         if (isSostTechOtchetCheck) fullSumma += parseFloat(sumSosttech);
-        if (isRedaktorIspConstr) fullSumma += parseFloat(sumSosttech);
+        if (isRedaktorIspConstr) fullSumma += parseFloat(sumIspConstr);
 
         fullSumma = fullSumma.toFixed(3);
         document.getElementById('harakteristikaObjectObsh').innerText = fullSumma;
@@ -2932,7 +2942,7 @@ echo "<script>
             if (koefObsled1 == 1 && koefObsled2 == 1) {
                 sumObsled = 0;
             } else {
-                sumObsled = koefObsled1 * koefObsled2 * costwork14 * K18ob * obsledDop1 * obsledDop2;
+                sumObsled = koefObsled1 * koefObsled2 * costwork14 * K18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223;
             }
             $('#obsledRab').html(sumObsled.toFixed(3));
 
@@ -3543,7 +3553,7 @@ echo "<script>
        if(koefObmerWork1 == 1 && koefObmerWork2 == 1){
            sumObmer = 0;
        }else {
-           sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * K18ob * obmerDop1 * obmerDop2;
+           sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * K18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222;
        }
        $('#obmerRaboty').html(sumObmer.toFixed(3));
         await calculateK();
@@ -3559,7 +3569,7 @@ echo "<script>
         if (koefObsled1 == 1 && koefObsled2 == 1) {
             sumObsled = 0;
         } else {
-            sumObsled = koefObsled1 * koefObsled2 * costwork14 * K18ob * obsledDop1 * obsledDop2;
+            sumObsled = koefObsled1 * koefObsled2 * costwork14 * K18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223;
         }
         $('#obsledRab').html(sumObsled.toFixed(3));
 
@@ -3572,7 +3582,7 @@ echo "<script>
         if (koefObsled1 == 1 && koefObsled2 == 1) {
             sumObsled = 0;
         } else {
-            sumObsled = koefObsled1 * koefObsled2 * costwork14 * K18ob * obsledDop1 * obsledDop2;
+            sumObsled = koefObsled1 * koefObsled2 * costwork14 * K18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223;
         }
         $('#obsledRab').html(sumObsled.toFixed(3));
         calculateK();
