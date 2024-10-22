@@ -288,7 +288,7 @@ echo "<script>
     .sticky {
         position: -webkit-sticky;
         position: sticky;
-        top: 0;
+        top: 30;
         background-color: #f1f1f1;
         padding: 10px;
         font-size: 20px;
@@ -324,18 +324,18 @@ echo "<script>
             <button id="btnShowModalPeremen" class="btn btn-primary">Параметры переменных</button>
         </div>
 
-        <div class="col-lg-1">
+        <div class="col-lg-2">
 
             Общая сумма <?php echo ' <span class="harakteristikaObject" id="harakteristikaObjectObsh">';
             echo $harakteristikaObject;
             echo '</span>' ?>
         </div>
-        <div class="col-lg-1">
+        <div class="col-lg-2">
             Смета <?php echo ' <span class="harakteristikaObject" id="harakteristikaObjectSmeta">';
             echo $harakteristikaObject;
             echo '</span>' ?>
         </div>
-        <div class="col-lg-1">
+        <div class="col-lg-3">
             Калькуляция <?php echo ' <span class="harakteristikaObject" id="harakteristikaObjectCalc">';
             echo $harakteristikaObject;
             echo '</span>' ?>
@@ -343,6 +343,18 @@ echo "<script>
 
 
 
+
+    </div>
+    <div class="row mgbottom20p mgleft5">
+        <div class="col-lg-2">
+            <button id="btnCalculationExcel" class="btn btn-primary">Калькуляция в EXCEL</button>
+        </div>
+        <div class="col-lg-2">
+            <button id="btnTechZad" class="btn btn-primary" onclick="printTZ()">Техническое задание</button>
+        </div>
+        <div class="col-lg-2">
+            <a onclick="printExcel()" class="btn btn-primary">Смета в EXCEL</a>
+        </div>
         <div class="col-lg-5">
             <div id="divSaveSmeta" class="form-group mgtop5" style="display: inline-flex;
     float: right;
@@ -351,17 +363,6 @@ echo "<script>
                        style="width: 300px; margin-right: 10%;">
                 <button id="btnSaveSmeta" class="btn btn-primary" onclick="saveSmeta()">Сохранить</button>
             </div>
-        </div>
-    </div>
-    <div class="row mgbottom20p mgleft5">
-        <div class="col-lg-4">
-            <button id="btnCalculationExcel" class="btn btn-primary">Калькуляция в EXCEL</button>
-        </div>
-        <div class="col-lg-4">
-            <button id="btnTechZad" class="btn btn-primary" onclick="printTZ()">Техническое задание</button>
-        </div>
-        <div class="col-lg-4">
-            <a onclick="printExcel()" class="btn btn-primary">Смета в EXCEL</a>
         </div>
     </div>
 </div>
