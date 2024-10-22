@@ -289,7 +289,7 @@ echo "<script>
     .sticky {
         position: -webkit-sticky;
         position: sticky;
-        top: 30;
+        top: 30px;
         background-color: #f1f1f1;
         padding: 10px;
         font-size: 20px;
