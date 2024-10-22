@@ -4,7 +4,7 @@ let etazh = 1;
 let visotapola = 1;
 
 
-let calculacia = 0;
+let calculacia = 1;
 
 let koefObmerWork1 = 1;
 let koefObmerWork2 = 1;
@@ -1124,7 +1124,7 @@ $(".doljnosti_KSD").on('change', (event) => {
     calcCalkulation()
 })
 
-function calcCalkulation(){
+async function calcCalkulation(){
     let truds = $(".trud:not([disabled])");
     let tarifs = $(".tarif");
     let kol_isps = $(".kol_isp:not([disabled])");
@@ -1145,7 +1145,7 @@ function calcCalkulation(){
     console.log (chilsitel,znamenatel);
     $('#sredRazryad').val(result);
     if (result) {
-        $.ajax({
+       $.ajax({
             url: 'app/ajax/getTarifKef.php',
             type: 'POST',
             data: {
@@ -1154,14 +1154,21 @@ function calcCalkulation(){
                     console.log(response);
 
                     $('#tarifKoef').val(response.trim());
-                    calculacia = response.trim() * costwork14;
-                    document.getElementById('harakteristikaObjectCalc').innerText = calculacia.toFixed(2);
+                    calculacia = (parseFloat(response.trim()) * costwork14).toFixed(2);
+
+
                 },
                 error: function(xhr, status, error) {
 
                 }
             });
-
+        if (calculacia == 1){
+            document.getElementById('harakteristikaObjectCalc').innerText = '0.00';
+        }
+        else{
+            document.getElementById('harakteristikaObjectCalc').innerText = calculacia;
+            await calculateK();
+        }
 
     }
 }

@@ -2336,9 +2336,10 @@ echo "<script>
 
 
         fullSumma = fullSumma.toFixed(3);
-        document.getElementById('harakteristikaObjectObsh').innerText = fullSumma;
+        let totalSum = (parseFloat(fullSumma) + parseFloat(calculacia)).toFixed(2);
+        document.getElementById('harakteristikaObjectObsh').innerText = totalSum;
         document.getElementById('harakteristikaObjectSmeta').innerText = fullSumma;
-        document.getElementById('harakteristikaObjectCalc').innerText = calculacia;
+        document.getElementById('harakteristikaObjectCalc').innerText = calculacia.toFixed(2);
         console.log (fullSumma);
         // fullSumma = fullSumma.toFixed(3);
         // document.getElementById('harakteristikaObjectObsh').innerText = fullSumma;
