@@ -81,7 +81,6 @@ let povkef = $('#povkef');
 let sooruzhzd = $('#sooruzhzd');
 
 
-
 let toggleZd61 = $('#toggleZd61');
 let toggleZd62 = $('#toggleZd62');
 let toggleZd63 = $('#toggleZd63');
@@ -97,9 +96,6 @@ let toggleZdDopUslrazrab = $('#toggleZdDopUslrazrab');
 let toggleZdDopUslrazrabrek = $('#toggleZdDopUslrazrabrek');
 
 
-
-
-
 async function getSmeta(id) {
     idActiveSmeta = id;
     const selectedItem = smetaList.find(item => item.id == id);
@@ -111,14 +107,11 @@ async function getSmeta(id) {
         smetaName.val(selectedItem.name);
 
 
-
-
         const haract = selectedItem.haractObject;
         const ishod = selectedItem.ishod;
         const obmer = selectedItem.obmer;
         const obsled = selectedItem.obsled;
         const sosttech = selectedItem.sosttech;
-
 
 
         $('#buildingType').val(haract.zdanie);
@@ -144,10 +137,9 @@ async function getSmeta(id) {
         chekb12.prop('checked', haract.checkb12 > 0);
 
 
-
         choosCunstruct.prop('checked', ishod.choosCunstruct > 0);
         const pasportValue = ishod.pasport_na_zdanie;
-        console.log (pasportValue)
+        console.log(pasportValue)
 
         if (pasportValue == 1) {
             $('#pasportNaZdanie[value="1"]').prop('checked', true);
@@ -259,7 +251,6 @@ async function getSmeta(id) {
             toggleZd449.prop('disabled', true);
 
 
-
             toggleZd41.prop('checked', false);
             toggleZd42.prop('checked', false);
             toggleZd43.prop('checked', false);
@@ -280,7 +271,6 @@ async function getSmeta(id) {
             $('#conval449').val('');
 
         }
-
 
 
         choosCunstruct5.prop('checked', obsled.choosCunstruct5 > 0);
@@ -452,7 +442,6 @@ function saveSmeta() {
     };
 
 
-
     haractObject = {
         zdanie: buildingType.val(),
         typeZdanie: constructionType.val(),
@@ -463,18 +452,18 @@ function saveSmeta() {
         temperature: temperatureMode.val(),
         nasishenost: equipmentSaturation.val(),
         aggresive_vozdeistvie: options.val(),
-        checkb1: chekb1.prop('checked')? 1 : 0,
-        checkb2: chekb2.prop('checked')? 1 : 0,
-        checkb3: chekb3.prop('checked')? 1 : 0,
-        checkb4: chekb4.prop('checked')? 1 : 0,
-        checkb5: chekb5.prop('checked')? 1 : 0,
-        checkb6: chekb6.prop('checked')? 1 : 0,
-        checkb7: chekb7.prop('checked')? 1 : 0,
-        checkb8: chekb8.prop('checked')? 1 : 0,
-        checkb9: chekb9.prop('checked')? 1 : 0,
-        checkb10: chekb10.prop('checked')? 1 : 0,
-        checkb11: chekb11.prop('checked')? 1 : 0,
-        checkb12: chekb12.prop('checked')? 1 : 0,
+        checkb1: chekb1.prop('checked') ? 1 : 0,
+        checkb2: chekb2.prop('checked') ? 1 : 0,
+        checkb3: chekb3.prop('checked') ? 1 : 0,
+        checkb4: chekb4.prop('checked') ? 1 : 0,
+        checkb5: chekb5.prop('checked') ? 1 : 0,
+        checkb6: chekb6.prop('checked') ? 1 : 0,
+        checkb7: chekb7.prop('checked') ? 1 : 0,
+        checkb8: chekb8.prop('checked') ? 1 : 0,
+        checkb9: chekb9.prop('checked') ? 1 : 0,
+        checkb10: chekb10.prop('checked') ? 1 : 0,
+        checkb11: chekb11.prop('checked') ? 1 : 0,
+        checkb12: chekb12.prop('checked') ? 1 : 0,
     }
     let smetaForPhp = {
         id: idActiveSmeta?.toString(),
@@ -514,7 +503,7 @@ function saveSmeta() {
 
             } else {
                 smeta.id = response.trim();
-                if(smetaList == null)
+                if (smetaList == null)
                     smetaList = [];
                 smetaList.push(smeta);
 
@@ -546,14 +535,13 @@ function updateSmetaLinks() {
 }
 
 
-
 async function calcObmerWorksPart1() {
 
     etazh = parseFloat(document.getElementById('etazh').value) || 0;
     let kat_sl_zd = hardZdanie;
     const kat_sl_rabs = document.querySelector('input[name="kat_sl_rab"]:checked');
     let kat_sl_rab;
-    if(kat_sl_rabs)
+    if (kat_sl_rabs)
         kat_sl_rab = kat_sl_rabs.getAttribute('value');
     let vysota;
     if (etazh < 2) {
@@ -566,20 +554,18 @@ async function calcObmerWorksPart1() {
                 vysota = 7; // Если значение больше 50
             }
         }
-    }else{
+    } else {
 
-            const thresholds = [0, 2, 3, 4, 6];
-            vysota = thresholds.findIndex(threshold => etazh < threshold);
-            if (vysota === -1) {
-                vysota = 5; // Если значение больше 50
-            }
+        const thresholds = [0, 2, 3, 4, 6];
+        vysota = thresholds.findIndex(threshold => etazh < threshold);
+        if (vysota === -1) {
+            vysota = 5; // Если значение больше 50
+        }
 
     }
-    if (kat_sl_rab == 1)
-    {
+    if (kat_sl_rab == 1) {
         P222 = 10
-    }
-    else if (kat_sl_rab == 2){
+    } else if (kat_sl_rab == 2) {
         P222 = 14
     }
 
@@ -599,9 +585,9 @@ async function calcObmerWorksPart1() {
             let unparseRepsonse = JSON.parse(response);
             ki222 = parseFloat(unparseRepsonse[1].trim());
             koefObmerWork1 = parseFloat(unparseRepsonse[0].trim());
-            if(koefObmerWork1 == 1 && koefObmerWork2 == 1){
+            if (koefObmerWork1 == 1 && koefObmerWork2 == 1) {
                 sumObmer = 0;
-            }else {
+            } else {
                 sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * k18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222;
             }
             $('#obmerRaboty').html(sumObmer.toFixed(3));
@@ -616,9 +602,9 @@ async function calcObmerWorksPart2() {
     etazh = parseFloat(document.getElementById('etazh').value) || 0;
     let typeW;
     let koefObmerRab = 0;
-    if($("#choosCunstruct4").prop("checked")){
+    if ($("#choosCunstruct4").prop("checked")) {
         typeW = $("#buildingType").val();
-        switch(typeW){
+        switch (typeW) {
             case 6:
                 typeW = 4;
                 break;
@@ -647,18 +633,20 @@ async function calcObmerWorksPart2() {
 
         let myAr = [
             koef1 == 0 ? 0 : 1,
-             koef2 == 0 ? 0 : 2,
+            koef2 == 0 ? 0 : 2,
             koef3 == 0 ? 0 : 3,
-             koef4 == 0 ? 0 : 4,
+            koef4 == 0 ? 0 : 4,
             koef5 == 0 ? 0 : 9,
-             koef6 == 0 ? 0 : 5,
+            koef6 == 0 ? 0 : 5,
             koef7 == 0 ? 0 : 6,
-             koef8 == 0 ? 0 : 7,
-             koef9 == 0 ? 0 : 8
+            koef8 == 0 ? 0 : 7,
+            koef9 == 0 ? 0 : 8
         ];
 
         let count0 = 0;
-        myAr.map(item => {item == 0 ? count0++ : count0});
+        myAr.map(item => {
+            item == 0 ? count0++ : count0
+        });
 
         if (myAr.length == count0) {
             koefObmerWork2 = 1;
@@ -668,7 +656,7 @@ async function calcObmerWorksPart2() {
         let newAr = myAr.filter(item => item != 0);
 
 
-        return new Promise(function(resolve, reject) {
+        return new Promise(function (resolve, reject) {
             $.ajax({
                 url: "app/ajax/getKoefObmerWork2.php",
                 method: "POST",
@@ -676,10 +664,10 @@ async function calcObmerWorksPart2() {
                     typeW: typeW,
                     myAr: JSON.stringify(newAr)
                 },
-            }).then(function(response) {
-                if(response.trim() == 1){
+            }).then(function (response) {
+                if (response.trim() == 1) {
                     koefObmerWork2 = 1;
-                }else {
+                } else {
                     let gettedAr = JSON.parse(response);
                     let sum = 0;
                     let index = 0;
@@ -692,15 +680,15 @@ async function calcObmerWorksPart2() {
                     koefObmerWork2 = sum;
                 }
 
-                if(koefObmerWork1 == 1 && koefObmerWork2 == 1){
+                if (koefObmerWork1 == 1 && koefObmerWork2 == 1) {
                     sumObmer = 0;
-                }else {
+                } else {
                     sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * k18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222;
                 }
 
                 $('#obmerRaboty').html(sumObmer.toFixed(3));
                 resolve();
-            }).catch(function(error) {
+            }).catch(function (error) {
                 reject(error);
             });
         });
@@ -712,26 +700,21 @@ async function calcObmerWorksPart2() {
 }
 
 
-
-
-$("#choosCunstruct4").on("change", async function(event){
-    if(event.target.checked){
+$("#choosCunstruct4").on("change", async function (event) {
+    if (event.target.checked) {
         await calcObmerWorksPart1();
         await calcObmerWorksPart2();
-    }
-    else{
+    } else {
         koefObmerWork2 = 1;
     }
-    if(koefObmerWork1 == 1 && koefObmerWork2 == 1){
+    if (koefObmerWork1 == 1 && koefObmerWork2 == 1) {
         sumObmer = 0;
-    }else {
+    } else {
         sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * k18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222;
     }
     $('#obmerRaboty').html(sumObmer.toFixed(3));
     await calculateK();
 });
-
-
 
 
 $(".obmer2check").on("change", async () => {
@@ -741,15 +724,13 @@ $(".obmer2check").on("change", async () => {
 //------------------------------------------------------------------------------
 
 
-
-
 async function calcObsled1() {
 
     etazh = parseFloat(document.getElementById('etazh').value) || 0;
     let kat_sl_zd = hardZdanie;
     const kat_sl_rabs = document.querySelector('input[name="kat_sl_rab_obsled"]:checked');
     let kat_sl_rab;
-    if(kat_sl_rabs)
+    if (kat_sl_rabs)
         kat_sl_rab = kat_sl_rabs.getAttribute('value');
     let vysota;
     if (etazh < 2) {
@@ -762,23 +743,22 @@ async function calcObsled1() {
                 vysota = 18; // Если значение больше 50
             }
         }
-    }else{
+    } else {
 
-        const thresholds = [0, 8, 9, 10, 12, 14, 16, 18, 20, 23, 26, 30,  35, 40, 45, 50];
+        const thresholds = [0, 8, 9, 10, 12, 14, 16, 18, 20, 23, 26, 30, 35, 40, 45, 50];
         vysota = thresholds.findIndex(threshold => etazh < threshold);
         if (vysota === -1) {
             vysota = 16; // Если значение больше 50
         }
 
     }
-if (kat_sl_rab == 1)
-{
-    P223 = 12.5;
-}else if (kat_sl_rab == 2){
-    P223 = 14;
-}else if (kat_sl_rab == 3){
-    P223 = 15.5;
-}
+    if (kat_sl_rab == 1) {
+        P223 = 12.5;
+    } else if (kat_sl_rab == 2) {
+        P223 = 14;
+    } else if (kat_sl_rab == 3) {
+        P223 = 15.5;
+    }
     return new Promise((resolve, reject) => {
         $.ajax({
             url: "app/ajax/getKoefObsled1.php",
@@ -795,9 +775,9 @@ if (kat_sl_rab == 1)
             let unparseRepsonse = JSON.parse(response);
             koefObsled1 = parseFloat(unparseRepsonse[0].trim());
             ki223 = parseFloat(unparseRepsonse[1].trim());
-            if(koefObsled1 == 1 && koefObsled2 == 1){
+            if (koefObsled1 == 1 && koefObsled2 == 1) {
                 sumObsled = 0;
-            }else {
+            } else {
                 sumObsled = koefObsled1 * koefObsled2 * costwork14 * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223;
             }
             $('#obsledRab').html(sumObsled.toFixed(3));
@@ -811,9 +791,9 @@ async function calcObsled2() {
 
     etazh = parseFloat(document.getElementById('etazh').value) || 0;
     let typeW;
-    if($("#choosCunstruct5").prop("checked")){
+    if ($("#choosCunstruct5").prop("checked")) {
         typeW = $("#buildingType").val();
-        switch(typeW){
+        switch (typeW) {
             case 6:
                 typeW = 4;
                 break;
@@ -853,7 +833,9 @@ async function calcObsled2() {
         ];
 
         let count0 = 0;
-        myAr.map(item => {item == 0 ? count0++ : count0});
+        myAr.map(item => {
+            item == 0 ? count0++ : count0
+        });
         if (myAr.length == count0) {
             koefObsled2 = 1;
 
@@ -862,7 +844,7 @@ async function calcObsled2() {
         let newAr = myAr.filter(item => item != 0);
 
 
-        return new Promise(function(resolve, reject) {
+        return new Promise(function (resolve, reject) {
             $.ajax({
                 url: "app/ajax/getKoefObsled2.php",
                 method: "POST",
@@ -870,10 +852,10 @@ async function calcObsled2() {
                     typeW: typeW,
                     myAr: JSON.stringify(newAr)
                 },
-            }).then(function(response) {
-                if(response.trim() == 1){
+            }).then(function (response) {
+                if (response.trim() == 1) {
                     koefObsled2 = 1;
-                }else {
+                } else {
                     let gettedAr = JSON.parse(response);
                     let sum = 0;
                     let index = 0;
@@ -885,14 +867,14 @@ async function calcObsled2() {
                     })
                     koefObsled2 = sum;
                 }
-                if(koefObsled1 == 1 && koefObsled2 == 1){
+                if (koefObsled1 == 1 && koefObsled2 == 1) {
                     sumObsled = 0;
-                }else {
+                } else {
                     sumObsled = koefObsled1 * koefObsled2 * costwork14 * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223;
                 }
                 $('#obsledRab').html(sumObsled.toFixed(3));
                 resolve();
-            }).catch(function(error) {
+            }).catch(function (error) {
                 reject(error);
             });
         });
@@ -904,18 +886,16 @@ async function calcObsled2() {
 }
 
 
-
-$("#choosCunstruct5").on("change", async function(event){
-    if(event.target.checked){
+$("#choosCunstruct5").on("change", async function (event) {
+    if (event.target.checked) {
         await calcObsled1();
         await calcObsled2();
-    }
-    else{
+    } else {
         koefObsled2 = 1;
     }
-    if(koefObsled1 == 1 && koefObsled2 == 1){
+    if (koefObsled1 == 1 && koefObsled2 == 1) {
         sumObsled = 0;
-    }else {
+    } else {
         sumObsled = koefObsled1 * koefObsled2 * costwork14 * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223;
     }
     $('#obsledRab').html(sumObsled.toFixed(3));
@@ -927,15 +907,10 @@ $(".obmer2check").on("change", async () => {
 })
 
 
-
-
 ///////////////////////////////////////////////////////////////////////////
 
 
-
 //------------------------------------------------------------------------------
-
-
 
 
 async function calcSosttech1() {
@@ -944,7 +919,7 @@ async function calcSosttech1() {
     let kat_sl_zd = hardZdanie;
     const kat_sl_rabs = document.querySelector('input[name="kat_sl_rab_sosttech"]:checked');
     let kat_sl_rab;
-    if(kat_sl_rabs)
+    if (kat_sl_rabs)
         kat_sl_rab = kat_sl_rabs.getAttribute('value');
     let vysota;
     if (etazh < 2) {
@@ -957,21 +932,20 @@ async function calcSosttech1() {
                 vysota = 18; // Если значение больше 50
             }
         }
-    }else{
+    } else {
 
-        const thresholds = [0, 8, 9, 10, 12, 14, 16, 18, 20, 23, 26, 30,  35, 40, 45, 50];
+        const thresholds = [0, 8, 9, 10, 12, 14, 16, 18, 20, 23, 26, 30, 35, 40, 45, 50];
         vysota = thresholds.findIndex(threshold => etazh < threshold);
         if (vysota === -1) {
             vysota = 16; // Если значение больше 50
         }
 
     }
-    if (kat_sl_rab == 1)
-    {
+    if (kat_sl_rab == 1) {
         P242 = 12.5;
-    }else if (kat_sl_rab == 2){
+    } else if (kat_sl_rab == 2) {
         P242 = 14;
-    }else if (kat_sl_rab == 3){
+    } else if (kat_sl_rab == 3) {
         P242 = 15.5;
     }
     return new Promise((resolve, reject) => {
@@ -990,9 +964,9 @@ async function calcSosttech1() {
             let unparseRepsonse = JSON.parse(response);
             koefSosttech1 = parseFloat(unparseRepsonse[0].trim());
             ki242 = parseFloat(unparseRepsonse[1].trim());
-            if(koefSosttech1 == 1 && koefSosttech2 == 1){
+            if (koefSosttech1 == 1 && koefSosttech2 == 1) {
                 sumSosttech = 0;
-            }else {
+            } else {
                 sumSosttech = koefSosttech1 * koefSosttech2 * costwork14 * k18ob * Vdiv100 * k18101 * ki242;
             }
             $('#sostTech').html(sumSosttech.toFixed(3));
@@ -1006,9 +980,9 @@ async function calcSosttech2() {
 
     etazh = parseFloat(document.getElementById('etazh').value) || 0;
     let typeW;
-    if($("#choosCunstruct6").prop("checked")){
+    if ($("#choosCunstruct6").prop("checked")) {
         typeW = $("#buildingType").val();
-        switch(typeW){
+        switch (typeW) {
             case 6:
                 typeW = 4;
                 break;
@@ -1048,7 +1022,9 @@ async function calcSosttech2() {
         ];
 
         let count0 = 0;
-        myAr.map(item => {item == 0 ? count0++ : count0});
+        myAr.map(item => {
+            item == 0 ? count0++ : count0
+        });
         if (myAr.length == count0) {
             koefSosttech2 = 1;
         }
@@ -1056,7 +1032,7 @@ async function calcSosttech2() {
         let newAr = myAr.filter(item => item != 0);
 
 
-        return new Promise(function(resolve, reject) {
+        return new Promise(function (resolve, reject) {
             $.ajax({
                 url: "app/ajax/getKoefSosttech2.php",
                 method: "POST",
@@ -1064,10 +1040,10 @@ async function calcSosttech2() {
                     typeW: typeW,
                     myAr: JSON.stringify(newAr)
                 },
-            }).then(function(response) {
-                if(response.trim() == 1){
+            }).then(function (response) {
+                if (response.trim() == 1) {
                     koefSosttech2 = 1;
-                }else {
+                } else {
                     let gettedAr = JSON.parse(response);
                     let sum = 0;
                     let index = 0;
@@ -1079,14 +1055,14 @@ async function calcSosttech2() {
                     })
                     koefSosttech2 = sum;
                 }
-                if(koefSosttech1 == 1 && koefSosttech2 == 1){
+                if (koefSosttech1 == 1 && koefSosttech2 == 1) {
                     sumSosttech = 0;
-                }else {
+                } else {
                     sumSosttech = koefSosttech1 * koefSosttech2 * costwork14 * k18ob * Vdiv100 * k18101 * ki242;
                 }
                 $('#sostTech').html(sumSosttech.toFixed(3));
                 resolve();
-            }).catch(function(error) {
+            }).catch(function (error) {
                 reject(error);
             });
         });
@@ -1098,73 +1074,73 @@ async function calcSosttech2() {
 }
 
 
-
-$("#choosCunstruct6").on("change", async function(event){
-    if(event.target.checked){
+$("#choosCunstruct6").on("change", async function (event) {
+    if (event.target.checked) {
         await calcSosttech1();
         await calcSosttech2();
-    }
-    else{
+    } else {
         koefSosttech2 = 1;
     }
-    if(koefSosttech1 == 1 && koefSosttech2 == 1){
+    if (koefSosttech1 == 1 && koefSosttech2 == 1) {
         sumSosttech = 0;
-    }else {
+    } else {
         sumSosttech = koefSosttech1 * koefSosttech2 * costwork14 * k18ob * Vdiv100 * k18101 * ki242;
     }
     $('#sostTech').html(sumSosttech.toFixed(3));
     await calculateK();
 })
 
-$(".doljnosti_KSD").on('change', (event) => {
+$(".doljnosti_KSD").on('change', async (event) => {
     let thisTarget = event.target;
     let doljnostKoef = thisTarget.options[thisTarget.options.selectedIndex].getAttribute('data-koef');
     let nextInput = thisTarget.nextElementSibling;
     nextInput.value = doljnostKoef;
-    calcCalkulation()
+    await calcCalkulation()
 })
 
-async function calcCalkulation(){
-    let truds = $(".trud:not([disabled])");
-    let tarifs = $(".tarif");
-    let kol_isps = $(".kol_isp:not([disabled])");
-    let trudsFiltered = truds.filter((index, item) => item.value.trim() !== "");
-    let tarifsFiltered = tarifs.filter((index, item) => item.value.trim() !== "");
-    // let kol_ispsFiltered = kol_isps.filter((index, item) => item.value.trim() !== "");
-    let size = Math.min(trudsFiltered.length, tarifsFiltered.length);
-    let chilsitel = 0;
-    let znamenatel = 0;
-    for(let i = 0; i < size; i++){
-        let trud = parseFloat(trudsFiltered[i].value);
-        let tarif = parseFloat(tarifsFiltered[i].value);
-        chilsitel += trud * tarif;
-        znamenatel += trud;
-    }
-    let resultElement = chilsitel/znamenatel;
-    let result = resultElement.toFixed(2);
-    console.log (chilsitel,znamenatel);
-    $('#sredRazryad').val(result);
-    if (result) {
-       $.ajax({
-            url: 'app/ajax/getTarifKef.php',
-            type: 'POST',
-            data: {
-                inputValue: result  },
-                success: function(response) {
-                    console.log(response);
-                    $('#tarifKoef').val(response.trim());
-                    calculacia = (parseFloat(response.trim()) * costwork14).toFixed(2);
-                },
-                error: function(xhr, status, error) {
-
-                }
-            });
-
-            document.getElementById('harakteristikaObjectCalc').innerText = calculacia;
-            await calculateK();
+async function calcCalkulation() {
 
 
-    }
+    let result = await new Promise((resolve, reject) => {
+        let truds = $(".trud:not([disabled])");
+        let tarifs = $(".tarif");
+        let kol_isps = $(".kol_isp:not([disabled])");
+        let trudsFiltered = truds.filter((index, item) => item.value.trim() !== "");
+        let tarifsFiltered = tarifs.filter((index, item) => item.value.trim() !== "");
+        // let kol_ispsFiltered = kol_isps.filter((index, item) => item.value.trim() !== "");
+        let size = Math.min(trudsFiltered.length, tarifsFiltered.length);
+        let chilsitel = 0;
+        let znamenatel = 0;
+        for (let i = 0; i < size; i++) {
+            let trud = parseFloat(trudsFiltered[i].value);
+            let tarif = parseFloat(tarifsFiltered[i].value);
+            chilsitel += trud * tarif;
+            znamenatel += trud;
+        }
+        let resultElement = chilsitel / znamenatel;
+        let result = resultElement.toFixed(2);
+        console.log(chilsitel, znamenatel);
+        $('#sredRazryad').val(result);
+        resolve(result);
+    })
+    let response = await $.ajax({
+        url: 'app/ajax/getTarifKef.php',
+        type: 'POST',
+        data: {
+            inputValue: result
+        },
+
+    });
+
+    console.log(response);
+    $('#tarifKoef').val(response.trim());
+    console.log("xyu: ", calculacia);
+    calculacia = (parseFloat(response.trim()) * costwork14).toFixed(2);
+
+    document.getElementById('harakteristikaObjectCalc').innerText = calculacia;
+    calculateK();
+
+
 }
 
 $(".trud").on('change', () => {
@@ -1175,11 +1151,11 @@ $(".tarif").on('change', () => {
     calcCalkulation();
 })
 
-function printExcel(){
+function printExcel() {
     console.log("V=" + V + "; n=" + etazh + "; h=" + mainvisotazdani + "; het=" + visotapola + ";");
     new Promise((resolve, reject) => {
         document.cookie = "V=" + V + ";";
-        document.cookie =  "n=" + etazh + ";";
+        document.cookie = "n=" + etazh + ";";
         document.cookie = "h=" + mainvisotazdani + ";";
         document.cookie = " het=" + visotapola + ";";
         document.cookie = " k18101=" + k18101 + ";";
