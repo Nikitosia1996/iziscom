@@ -4,6 +4,8 @@ let etazh = 1;
 let visotapola = 1;
 
 
+let calculacia = 0;
+
 let koefObmerWork1 = 1;
 let koefObmerWork2 = 1;
 let koefObsled1 = 1;
@@ -1140,7 +1142,28 @@ function calcCalkulation(){
     }
     let resultElement = chilsitel/znamenatel;
     let result = resultElement.toFixed(2);
+    console.log (chilsitel,znamenatel);
     $('#sredRazryad').val(result);
+    if (result) {
+        $.ajax({
+            url: 'app/ajax/getTarifKef.php',
+            type: 'POST',
+            data: {
+                inputValue: result  },
+                success: function(response) {
+                    console.log(response);
+
+                    $('#tarifKoef').val(response.trim());
+                    calculacia = response.trim() * costwork14;
+                    document.getElementById('harakteristikaObjectCalc').innerText = calculacia.toFixed(2);
+                },
+                error: function(xhr, status, error) {
+
+                }
+            });
+
+
+    }
 }
 
 $(".trud").on('change', () => {

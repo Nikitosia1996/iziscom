@@ -7,6 +7,7 @@ $obmerRaboty = 0;
 $obsledRab = 0;
 $sostTech = 0;
 $redaktorCons = 0;
+$calculacia = 0;
 
 
 echo "<script>
@@ -337,7 +338,7 @@ echo "<script>
         </div>
         <div class="col-lg-3">
             Калькуляция <?php echo ' <span class="harakteristikaObject" id="harakteristikaObjectCalc">';
-            echo $harakteristikaObject;
+            echo $calculacia;
             echo '</span>' ?>
         </div>
 
@@ -2099,11 +2100,11 @@ echo "<script>
                     <div style="display: grid;
     justify-content: center;">
                         <label id="inputLabel" for="sredRazryad">Средний тарифный разряд исполнителей</label><br>
-                        <input id="sredRazryad" type="number" name="inputValue" step="1" min="0"><br>
+                        <input id="sredRazryad" disabled type="number" name="inputValue" step="1" min="0"><br>
                         <br><br>
                         <label id="inputLabel" for="tarifKoef">Тарифный коэффициент для пересчёта
                             стоимости</label><br>
-                        <input id="tarifKoef" type="number" name="inputValue" step="1" min="0"><br>
+                        <input disabled id="tarifKoef" type="number" name="inputValue" step="1" min="0"><br>
                         <br><br>
                     </div>
                 </div>
@@ -2332,10 +2333,12 @@ echo "<script>
         if (isSostTechOtchetCheck) fullSumma += parseFloat(sumSosttech);
         if (isRedaktorIspConstr) fullSumma += parseFloat(sumIspConstr);
 
+
+
         fullSumma = fullSumma.toFixed(3);
         document.getElementById('harakteristikaObjectObsh').innerText = fullSumma;
         document.getElementById('harakteristikaObjectSmeta').innerText = fullSumma;
-        document.getElementById('harakteristikaObjectCalc').innerText = fullSumma;
+        document.getElementById('harakteristikaObjectCalc').innerText = calculacia;
         console.log (fullSumma);
         // fullSumma = fullSumma.toFixed(3);
         // document.getElementById('harakteristikaObjectObsh').innerText = fullSumma;
