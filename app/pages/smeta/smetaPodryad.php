@@ -669,12 +669,12 @@ echo "<script>
 
             <div class="pos1">
                 <div class="viborvis">
-                    <input data-id="1" id="pasportNaZdanie" class="butrad" type="radio" name="pasportNaZdanie" value="1"
+                    <input data-id="12" id="pasportNaZdanie" class="butrad" type="radio" name="pasportNaZdanie" value="1"
                            onchange="calcIshod1()">
                     <label for="pasportNaZdanie" class="pasportzd">1) Паспорт на здание или сооружение</label>
 
                     <br>
-                    <input data-id="1" id="pasportNaZdanie" class="butrad" type="radio" name="pasportNaZdanie" value="2"
+                    <input data-id="14" id="pasportNaZdanie" class="butrad" type="radio" name="pasportNaZdanie" value="2"
                            onchange="calcIshod1()">
                     <label for="pasportNaZdanie" class="pasportzd">2) Паспорт на здание или сооружение. Проектная
                         документация. Исполнительная документация. Эксплатуационная документация,
@@ -2266,6 +2266,10 @@ echo "<script>
     let obmerDop2 = 1; // доп чекбокс2
     let obsledDop1 = 1; //
     let obsledDop2 = 1; //
+    let P212 = 1; // Средний разряд рабочих п 2.1.2
+    let ki212 = 1; // Значение тарифного коэффициента п 2.1.2
+    let Vdiv100 = 1; // Значение тарифного коэффициента п 2.1.2
+    let k18101 = 1; // Тип здания
 
 
     async function calculateK() {
@@ -2286,8 +2290,9 @@ echo "<script>
         if (koefIshod == 1 && koefIshod2 == 1) {
             sumIshod = 0;
         } else {
-            sumIshod = koefIshod * koefIshod2 * costwork14 * K18ob;
+            sumIshod =  Vdiv100 * k18101 * koefIshod * koefIshod2 * costwork14 * K18ob * ki212;
         }
+        console.log(sumIshod + " =  koefIshod: " + koefIshod + " koefIshod2: " + koefIshod2 + " costwork14: " + costwork14 + " K18ob:" + K18ob + " ki212: " + ki212);
 
         if (koefObmerWork1 == 1 && koefObmerWork2 == 1) {
             sumObmer = 0;
@@ -2357,10 +2362,16 @@ echo "<script>
         const options = parseFloat(document.querySelector('#options option:checked').getAttribute('data-id')) || 1;
         const temperatureMode = parseFloat(document.querySelector('#temperatureMode option:checked').getAttribute('data-id')) || 1;
         const equipmentSaturation = parseFloat(document.querySelector('#equipmentSaturation option:checked').getAttribute('data-id')) || 1;
+
+        k18101 = buildingType;
         //РАСЧЕТ ОСНОВНОГО  КОЭФИЦИЕНТА К18.об ОТ ОБЪЕМА
         const obem = parseFloat(document.getElementById('obem').value) / 1000;
         if (obem > 0) {
             K18ob = 6.33 / Math.sqrt(obem);
+            if(K18ob > 8){
+                K18ob = 8;
+            }
+            Vdiv100 = obem * 10;
         } else {
             K18ob = 0;
         }
@@ -2436,6 +2447,7 @@ echo "<script>
 
 
     async function calcIshod1() {
+
         const buildingType = parseFloat(document.querySelector('#buildingType option:checked').getAttribute('data-id')) || 1;
 
         mainvisotazdani = parseFloat(document.getElementById('visotazdani').value) || 0;
@@ -2443,6 +2455,7 @@ echo "<script>
         const etazh = parseFloat(document.getElementById('etazh').value) || 0;
         let valVisZd;
         if (etazh == 1) {
+
             if (mainvisotazdani < 1) {
                 valVisZd = 0;
             } else {
@@ -2492,6 +2505,8 @@ echo "<script>
 
         selectedRadio = document.querySelector('input[name="pasportNaZdanie"]:checked');
         if (selectedRadio) {
+            P212 = selectedRadio.getAttribute('data-id');
+
             return new Promise((resolve, reject) => {
                 $.ajax({
                     url: 'app/ajax/getIshodDannih.php',
@@ -2501,15 +2516,19 @@ echo "<script>
                         hardZdanie: hardZdanie,
                         valVisZd: valVisZd,
                         etazh: document.getElementById('etazh').value,
+                        P212: P212
                     },
                     success: function (response) {
-                        koefIshod = parseFloat(response.trim());
+                        let unparseRepsonse = JSON.parse(response);
+                        koefIshod = parseFloat(unparseRepsonse[0].trim());
+                        ki212 = parseFloat(unparseRepsonse[1].trim());
                         if (koefIshod == 1 && koefIshod2 == 1) {
                             sumIshod = 0;
                         } else {
-                            sumIshod = koefIshod * koefIshod2 * costwork14 * K18ob;
+                            sumIshod = Vdiv100 * k18101 * koefIshod * koefIshod2 * costwork14 * K18ob * ki212;
                         }
                         $('#sborIshodnihDannih').html(sumIshod.toFixed(3));
+
                         resolve();
                     },
                 })
@@ -2602,7 +2621,7 @@ echo "<script>
                     if (koefIshod == 1 && koefIshod2 == 1) {
                         sumIshod = 0;
                     } else {
-                        sumIshod = koefIshod * koefIshod2 * costwork14 * K18ob;
+                        sumIshod = Vdiv100 * k18101 * koefIshod * koefIshod2 * costwork14 * K18ob * ki212;
                     }
                     $('#sborIshodnihDannih').html(sumIshod.toFixed(3));
                     resolve();
@@ -2626,7 +2645,7 @@ echo "<script>
         if (koefIshod == 1 && koefIshod2 == 1) {
             sumIshod = 0;
         } else {
-            sumIshod = koefIshod * koefIshod2 * costwork14 * K18ob;
+            sumIshod = Vdiv100 * k18101 * koefIshod * koefIshod2 * costwork14 * K18ob * ki212;
         }
         $('#sborIshodnihDannih').html(sumIshod.toFixed(3));
         await calculateK();

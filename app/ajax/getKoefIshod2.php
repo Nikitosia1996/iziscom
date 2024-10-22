@@ -21,7 +21,7 @@ if($flag) {
     $myarray = array();
     if ($result && mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
-            array_push($myarray, $row['koef']);
+            array_push($myarray, $row['koef']/100);
         }
     }
     echo json_encode($myarray);
