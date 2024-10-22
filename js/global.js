@@ -4,7 +4,7 @@ let etazh = 1;
 let visotapola = 1;
 
 
-let calculacia = 1;
+let calculacia = 0;
 
 let koefObmerWork1 = 1;
 let koefObmerWork2 = 1;
@@ -1159,13 +1159,10 @@ async function calcCalkulation(){
 
                 }
             });
-        if (calculacia == 1){
-            document.getElementById('harakteristikaObjectCalc').innerText = '0.00';
-        }
-        else{
+
             document.getElementById('harakteristikaObjectCalc').innerText = calculacia;
             await calculateK();
-        }
+
 
     }
 }
