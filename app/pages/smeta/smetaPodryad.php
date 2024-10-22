@@ -2284,6 +2284,7 @@ echo "<script>
     let isObsledRabChecked;
     let isSostTechOtchetCheck;
     let isRedaktorIspConstr;
+    let isSborDann;
 
 
     async function calculateK() {
@@ -2293,6 +2294,7 @@ echo "<script>
         isObsledRabChecked = document.getElementById('obsledCheck').checked;
         isSostTechOtchetCheck = document.getElementById('sostTechOtchetCheck').checked;
         isRedaktorIspConstr = document.getElementById('redaktorIspConstr').checked;
+        isSborDann = document.getElementById('sborDann').checked;
 
 
         koefIshod = koefIshod == 0 ? 1 : koefIshod;

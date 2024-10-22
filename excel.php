@@ -2,9 +2,6 @@
 require 'vendor/autoload.php';
 
 
-
-
-
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Style\Border;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
@@ -26,7 +23,8 @@ $het = $_COOKIE['het'];
 $k18101 = $_COOKIE['k18101'];
 $k18ob = $_COOKIE['k18ob'];
 
-class Table {
+class Table
+{
     public $tableName;
     public $chacked;
     public $h3tp;
@@ -34,7 +32,8 @@ class Table {
     public $p;
     public $ph3;
 
-    public function __construct($tableName, $chacked, $h3tp, $ki, $p, $ph3) {
+    public function __construct($tableName, $chacked, $h3tp, $ki, $p, $ph3)
+    {
         $this->tableName = $tableName;
         $this->chacked = $chacked;
         $this->h3tp = $h3tp;
@@ -45,10 +44,11 @@ class Table {
 }
 
 $isSborIshodnihDannihChecked = new Table("Сбор исходных данных", $_COOKIE['chacked1'], $_COOKIE['h3tp_212'], $_COOKIE['ki212'], $_COOKIE['p212'], $_COOKIE['ph3_212']);
-$isObmerRabotyChecked = new Table("Обмерные работы",$_COOKIE['chacked2'], $_COOKIE['h3tp_222'], $_COOKIE['ki222'], $_COOKIE['p222'], $_COOKIE['ph3_222']);
+$isObmerRabotyChecked = new Table("Обмерные работы", $_COOKIE['chacked2'], $_COOKIE['h3tp_222'], $_COOKIE['ki222'], $_COOKIE['p222'], $_COOKIE['ph3_222']);
 $isObsledRabChecked = new Table("Обследовательские работы", $_COOKIE['chacked3'], $_COOKIE['h3tp_223'], $_COOKIE['ki223'], $_COOKIE['p223'], $_COOKIE['ph3_223']);
 $isSostTechOtchetCheck = new Table("Составление технического отчета ", $_COOKIE['chacked4'], $_COOKIE['h3tp_242'], $_COOKIE['ki242'], $_COOKIE['p242'], $_COOKIE['ph3_242']);
-//$isRedaktorIspConstr = new Table("Редактор испытания конструкций", $_COOKIE['chacked5'], $_COOKIE['h3tp_212'], $_COOKIE['ki212'], $_COOKIE['p212'], $_COOKIE['ph3_212']);
+$isRedaktorIspConstr = new Table("Расчет стоимости испытания материалов", $_COOKIE['chacked5'], 0, 0, 0, 0);
+$isSborDann = new Table("Обследование отдельных жб конструкций", $_COOKIE['chacked6'], 0, 0, 0, 0);
 
 $arrTables = array();
 array_push($arrTables, $isSborIshodnihDannihChecked);
@@ -61,21 +61,21 @@ array_push($arrTables, $isSostTechOtchetCheck);
 $sheet->getStyle('A1:Z1000')->getFont()->setName('Arial');
 $sheet->getStyle('A1:Z1000')->getFont()->setSize(14);
 
-$sheet ->getColumnDimension("A")->setWidth(14*COEFF);
-$sheet ->getColumnDimension("B")->setWidth(9.57*COEFF);
-$sheet ->getColumnDimension("C")->setWidth(21.29*COEFF);
-$sheet ->getColumnDimension("D")->setWidth(25.71*COEFF);
-$sheet ->getColumnDimension("E")->setWidth(12.86*COEFF);
-$sheet ->getColumnDimension("F")->setWidth(21.29*COEFF);
-$sheet ->getColumnDimension("G")->setWidth(8.43*COEFF);
-$sheet ->getColumnDimension("H")->setWidth(14.14*COEFF);
-$sheet ->getColumnDimension("I")->setWidth(13.86*COEFF);
-$sheet ->getColumnDimension("J")->setWidth(13.57*COEFF);
-$sheet ->getColumnDimension("K")->setWidth(8.14*COEFF);
-$sheet ->getColumnDimension("L")->setWidth(8.14*COEFF);
-$sheet ->getColumnDimension("M")->setWidth(9.71*COEFF);
-$sheet ->getColumnDimension("N")->setWidth(10.43*COEFF);
-$sheet ->getColumnDimension("O")->setWidth(12.71*COEFF);
+$sheet->getColumnDimension("A")->setWidth(14 * COEFF);
+$sheet->getColumnDimension("B")->setWidth(9.57 * COEFF);
+$sheet->getColumnDimension("C")->setWidth(21.29 * COEFF);
+$sheet->getColumnDimension("D")->setWidth(25.71 * COEFF);
+$sheet->getColumnDimension("E")->setWidth(12.86 * COEFF);
+$sheet->getColumnDimension("F")->setWidth(21.29 * COEFF);
+$sheet->getColumnDimension("G")->setWidth(8.43 * COEFF);
+$sheet->getColumnDimension("H")->setWidth(14.14 * COEFF);
+$sheet->getColumnDimension("I")->setWidth(13.86 * COEFF);
+$sheet->getColumnDimension("J")->setWidth(13.57 * COEFF);
+$sheet->getColumnDimension("K")->setWidth(8.14 * COEFF);
+$sheet->getColumnDimension("L")->setWidth(8.14 * COEFF);
+$sheet->getColumnDimension("M")->setWidth(9.71 * COEFF);
+$sheet->getColumnDimension("N")->setWidth(10.43 * COEFF);
+$sheet->getColumnDimension("O")->setWidth(12.71 * COEFF);
 foreach (range('P', 'U') as $column) {
     $sheet->getColumnDimension($column)->setWidth(8.14);
 }
@@ -83,7 +83,7 @@ for ($row = 1; $row <= 1000; $row++) {
     $sheet->getRowDimension($row)->setRowHeight(24);
 }
 
-$sheet ->getRowDimension("5")->setRowHeight(47);
+$sheet->getRowDimension("5")->setRowHeight(47);
 
 
 $sheet->setCellValue("N1", "Приложение №");
@@ -471,7 +471,7 @@ $sheet->getStyle("N22")->getAlignment()->setVertical(PHPExcel_Style_Alignment::V
 
 $startedCell = 24;
 foreach ($arrTables as $item) {
-    if($item->chacked == "true"){
+    if ($item->chacked == "true") {
         $sheet->setCellValue("C" . ($startedCell + 1), $item->tableName);
         $sheet->setCellValue("G" . ($startedCell + 1), "НЗТР=");
         $sheet->setCellValue("G" . ($startedCell + 2), "Ki=");
@@ -491,7 +491,9 @@ foreach ($arrTables as $item) {
 
         $sheet->getStyle("C" . ($startedCell + 1))->getFont()->setBold(true);
         $sheet->getStyle('C' . ($startedCell + 1))->getFont()->setSize(14);
+
         $endCell = $startedCell + 4;
+
         $sheet->getStyle('K' . $startedCell . ':M' . $endCell)->applyFromArray($styleArray);
         $sheet->getStyle('A' . $startedCell . ':A' . $endCell)->applyFromArray($styleArray);
         $sheet->getStyle('B' . $startedCell . ':D' . $endCell)->applyFromArray($styleArray);
@@ -508,13 +510,17 @@ foreach ($arrTables as $item) {
     }
 }
 
+if($isRedaktorIspConstr->chacked == "true"){
+    $sheet->setCellValue("E" . $startedCell, $isRedaktorIspConstr->tableName);
+    $sheet->getStyle("E" . $startedCell)->getFont()->setBold(true);
+    $sheet->getStyle('E' . $startedCell)->getFont()->setSize(14);
+}
 
-
-
-
-
-
-
+if($isSborDann->chacked == "true"){
+    $sheet->setCellValue("E" . $startedCell + 9, $isSborDann->tableName);
+    $sheet->getStyle("E" . $startedCell + 9)->getFont()->setBold(true);
+    $sheet->getStyle('E' . $startedCell + 9)->getFont()->setSize(14);
+}
 
 header("Expires: Mon, 1 Apr 1974 05:00:00 GMT");
 header("Last-Modified: " . gmdate("D,d M Y H:i:s") . " GMT");

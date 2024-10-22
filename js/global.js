@@ -1167,6 +1167,7 @@ function printExcel(){
         document.cookie = " chacked3=" + isObsledRabChecked + ";";
         document.cookie = " chacked4=" + isSostTechOtchetCheck + ";";
         document.cookie = " chacked5=" + isRedaktorIspConstr + ";";
+        document.cookie = " chacked6=" + isSborDann + ";";
 
         document.cookie = " h3tp_212=" + koefIshod + ";";
         document.cookie = " ph3_212=" + koefIshod2 + ";";
