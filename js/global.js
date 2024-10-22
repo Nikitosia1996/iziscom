@@ -1151,7 +1151,6 @@ $(".tarif").on('change', () => {
     calcCalkulation();
 })
 
-
 function printExcel(){
      console.log("V=" + V + "; n=" + etazh + "; h=" + mainvisotazdani + "; het=" + visotapola + ";");
     new Promise((resolve, reject) => {
@@ -1161,6 +1160,8 @@ function printExcel(){
         document.cookie = " het=" + visotapola + ";";
         document.cookie = " k18101=" + k18101 + ";";
         document.cookie = " k18ob=" + k18ob + ";";
+        document.cookie = " zakazchik=" + selectZakazchik.find('option:selected').text() + ";";
+        document.cookie = " podradchik=" + selectPodryadchik.find('option:selected').text() + ";";
 
         resolve();
     }).then(() => {

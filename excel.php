@@ -17,10 +17,14 @@ $sheet = $spreadsheet->getActiveSheet();
 $sheet->setTitle("Новый лист");
 
 const COEFF = 1.053423626787058;
+$zakazchik = $_COOKIE['zakazchik'];
+$podradchik = $_COOKIE['podradchik'];
 $V = $_COOKIE['V'];
 $n = $_COOKIE['n'];
 $h = $_COOKIE['h'];
 $het = $_COOKIE['het'];
+$k18101 = $_COOKIE['k18101'];
+$k18ob = $_COOKIE['k18ob'];
 
 $sheet->getStyle('A1:Z1000')->getFont()->setName('Arial');
 $sheet->getStyle('A1:Z1000')->getFont()->setSize(14);
@@ -65,7 +69,9 @@ $sheet->setCellValue("E4", "на выполнение обследователь
 $sheet->getStyle('E4')->getFont()->setSize(16);
 
 $sheet->setCellValue("A6", "Заказчик: ");
+$sheet->setCellValue("C6", $zakazchik);
 $sheet->setCellValue("A7", "Подрядчик: ");
+$sheet->setCellValue("C7", $podradchik);
 $sheet->getStyle('A6:A14')->getFont()->setSize(16);
 
 
@@ -122,6 +128,8 @@ $subscriptText->getFont()->setSubscript(true);
 $richText->addText($subscriptText);
 $richText->addText($ravno);
 $sheet->setCellValue("B15", $richText);
+$sheet->setCellValue("C15", $k18101);
+
 
 $richText = new RichText();
 $richText->createText("К");
@@ -146,6 +154,7 @@ $subscriptText->getFont()->setSubscript(true);
 $richText->addText($subscriptText);
 $richText->addText($ravno);
 $sheet->setCellValue("B18", $richText);
+$sheet->setCellValue("C18", $k18ob);
 
 $richText = new RichText();
 $richText->createText("К");
