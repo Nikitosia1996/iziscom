@@ -2333,7 +2333,6 @@ echo "<script>
             sumSosttech = koefSosttech1 * koefSosttech2 * costwork14 * k18ob * Vdiv100 * k18101 * ki242;
             console.log(sumSosttech + " =  koefSosttech1: " + koefSosttech1 + " koefSosttech2: " + koefSosttech2 + " costwork14: " + costwork14 + " K18ob:" + k18ob + " Vdiv100: " + Vdiv100 + " Vdiv100: " + Vdiv100 + " k18101: " + k18101 + " ki223: " + ki223);
         }
-
         fullSumma = parseFloat(sumHarakter); //+ parseFloat(sumIshod) + parseFloat(sumObmer) + parseFloat(sumObsled) + parseFloat(sumSosttech) + parseFloat(sumRedaktor);
         if (isSborIshodnihDannihChecked) fullSumma += parseFloat(sumIshod);
         if (isObmerRabotyChecked) fullSumma += parseFloat(sumObmer);
@@ -2347,6 +2346,7 @@ echo "<script>
         document.getElementById('harakteristikaObjectSmeta').innerText = fullSumma;
         document.getElementById('harakteristikaObjectCalc').innerText = calculacia.toFixed(2);
         console.log (fullSumma);
+
         // fullSumma = fullSumma.toFixed(3);
         // document.getElementById('harakteristikaObjectObsh').innerText = fullSumma;
         // document.getElementById('harakteristikaObjectSmeta').innerText = fullSumma;

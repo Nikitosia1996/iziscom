@@ -108,7 +108,6 @@ table {
   border-collapse: collapse;
   
 }
-
 .page-break {
         page-break-before: always; 
     }
