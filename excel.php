@@ -23,6 +23,8 @@ $het = $_COOKIE['het'];
 $k18101 = $_COOKIE['k18101'];
 $k18ob = $_COOKIE['k18ob'];
 
+$fullSumma = $_COOKIE['fullSumma'];
+
 class Table
 {
     public $tableName;
@@ -31,8 +33,9 @@ class Table
     public $ki;
     public $p;
     public $ph3;
+    public $sumKoef;
 
-    public function __construct($tableName, $chacked, $h3tp, $ki, $p, $ph3)
+    public function __construct($tableName, $chacked, $h3tp, $ki, $p, $ph3, $sumKoef)
     {
         $this->tableName = $tableName;
         $this->chacked = $chacked;
@@ -40,15 +43,18 @@ class Table
         $this->ki = $ki;
         $this->p = $p;
         $this->ph3 = $ph3;
+        $this->sumKoef = $sumKoef;
     }
 }
 
-$isSborIshodnihDannihChecked = new Table("Сбор исходных данных", $_COOKIE['chacked1'], $_COOKIE['h3tp_212'], $_COOKIE['ki212'], $_COOKIE['p212'], $_COOKIE['ph3_212']);
-$isObmerRabotyChecked = new Table("Обмерные работы", $_COOKIE['chacked2'], $_COOKIE['h3tp_222'], $_COOKIE['ki222'], $_COOKIE['p222'], $_COOKIE['ph3_222']);
-$isObsledRabChecked = new Table("Обследовательские работы", $_COOKIE['chacked3'], $_COOKIE['h3tp_223'], $_COOKIE['ki223'], $_COOKIE['p223'], $_COOKIE['ph3_223']);
-$isSostTechOtchetCheck = new Table("Составление технического отчета ", $_COOKIE['chacked4'], $_COOKIE['h3tp_242'], $_COOKIE['ki242'], $_COOKIE['p242'], $_COOKIE['ph3_242']);
-$isRedaktorIspConstr = new Table("Расчет стоимости испытания материалов", $_COOKIE['chacked5'], 0, 0, 0, 0);
-$isSborDann = new Table("Обследование отдельных жб конструкций", $_COOKIE['chacked6'], 0, 0, 0, 0);
+
+
+$isSborIshodnihDannihChecked = new Table("Сбор исходных данных", $_COOKIE['chacked1'], $_COOKIE['h3tp_212'], $_COOKIE['ki212'], $_COOKIE['p212'], $_COOKIE['ph3_212'], $_COOKIE['sumIshod']);
+$isObmerRabotyChecked = new Table("Обмерные работы", $_COOKIE['chacked2'], $_COOKIE['h3tp_222'], $_COOKIE['ki222'], $_COOKIE['p222'], $_COOKIE['ph3_222'], $_COOKIE['sumObmer']);
+$isObsledRabChecked = new Table("Обследовательские работы", $_COOKIE['chacked3'], $_COOKIE['h3tp_223'], $_COOKIE['ki223'], $_COOKIE['p223'], $_COOKIE['ph3_223'], $_COOKIE['sumObsled']);
+$isSostTechOtchetCheck = new Table("Составление технического отчета ", $_COOKIE['chacked4'], $_COOKIE['h3tp_242'], $_COOKIE['ki242'], $_COOKIE['p242'], $_COOKIE['ph3_242'], $_COOKIE['sumSosttech']);
+$isRedaktorIspConstr = new Table("Расчет стоимости испытания материалов", $_COOKIE['chacked5'], 0, 0, 0, 0, $_COOKIE['sumRedaktor']);
+$isSborDann = new Table("Обследование отдельных жб конструкций", $_COOKIE['chacked6'], 0, 0, 0, 0, 0);
 
 $arrTables = array();
 array_push($arrTables, $isSborIshodnihDannihChecked);
@@ -119,6 +125,8 @@ $styleArray = [
 // Применяем стиль к диапазону A9:O9
 $sheet->getStyle('A9:O9')->applyFromArray($styleArray);
 $sheet->setCellValue("F9", "Общие положения и коэффициенты");
+$sheet->getStyle("F9")->getFont()->setBold(true);
+
 
 $sheet->setCellValue("A10", "Категория сложности здания");
 $sheet->setCellValue("A11", "Объем здания в целом (для К18.об)");
@@ -472,7 +480,7 @@ $sheet->getStyle("N22")->getAlignment()->setVertical(PHPExcel_Style_Alignment::V
 $startedCell = 24;
 foreach ($arrTables as $item) {
     if ($item->chacked == "true") {
-        $sheet->setCellValue("C" . ($startedCell + 1), $item->tableName);
+        $sheet->setCellValue("B" . ($startedCell + 1), $item->tableName);
         $sheet->setCellValue("G" . ($startedCell + 1), "НЗТР=");
         $sheet->setCellValue("G" . ($startedCell + 2), "Ki=");
         $sheet->setCellValue("G" . ($startedCell + 3), "P=");
@@ -488,6 +496,8 @@ foreach ($arrTables as $item) {
         $sheet->setCellValue("E" . ($startedCell + 2), "Значение тарифного коэф.");
         $sheet->setCellValue("E" . ($startedCell + 3), "Разряд исполнителя работ");
         $sheet->setCellValue("E" . ($startedCell + 4), "Удельный вес работ");
+
+        $sheet->setCellValue("N" . ($startedCell + 2), $item->sumKoef);
 
         $sheet->getStyle("C" . ($startedCell + 1))->getFont()->setBold(true);
         $sheet->getStyle('C' . ($startedCell + 1))->getFont()->setSize(14);
@@ -510,17 +520,100 @@ foreach ($arrTables as $item) {
     }
 }
 
+$toggleZd71 = $_COOKIE['toggleZd71'];
+$toggleZd72 = $_COOKIE['toggleZd72'];
+$toggleZd73 = $_COOKIE['toggleZd73'];
+$toggleZd74 = $_COOKIE['toggleZd74'];
+
+$conval71 = $_COOKIE['conval71'];
+$conval72 = $_COOKIE['conval72'];
+$conval73 = $_COOKIE['conval73'];
+$conval74 = $_COOKIE['conval74'];
+
+$koef1 = $_COOKIE['koefRedaktor1'];
+$koef2 = $_COOKIE['koefRedaktor2'];
+$koef3 = $_COOKIE['koefRedaktor3'];
+$koef4= $_COOKIE['koefRedaktor4'];
+
+
+class PodTable{
+    public $checked;
+    public $val;
+    public $koef;
+    public $part1;
+    public $part2;
+
+    public function __construct($checked, $val, $koef, $part1, $part2){
+        $this->checked = $checked;
+        $this->val = $val;
+        $this->koef = $koef;
+        $this->part1 = $part1;
+        $this->part2 = $part2;
+    }
+}
+
+$arrPodTable = [new PodTable($toggleZd71, $conval71, $koef1, "Определение прочности бетона", "механическими приборами"),
+    new PodTable($toggleZd72, $conval72, $koef2,"Определение прочности бетона", "ультразвуковыми приборами"),
+    new PodTable($toggleZd73, $conval73, $koef3,"Определение прочности бетона", 'гидравлич. пресс-насосами (типа ГПНС, "Скол" и т.д.)'),
+    new PodTable($toggleZd74, $conval74, $koef4,"Определение прочности раствора и каменных", "материалов ультразв. и ударно-импульсными методами")];
+
 if($isRedaktorIspConstr->chacked == "true"){
     $sheet->setCellValue("E" . $startedCell, $isRedaktorIspConstr->tableName);
     $sheet->getStyle("E" . $startedCell)->getFont()->setBold(true);
     $sheet->getStyle('E' . $startedCell)->getFont()->setSize(14);
+    $sheet->getStyle('A' . $startedCell . ':O' . $startedCell)->applyFromArray($styleArray);
+    $startedRed = $startedCell;
+
+    foreach($arrPodTable as $podTable){
+        if($podTable->checked == "true"){
+            $sheet->setCellValue("B" . $startedCell + 1, $podTable->part1);
+            $sheet->setCellValue("B" . $startedCell + 2, $podTable->part2);
+
+            $sheet->setCellValue("E" . $startedCell + 1, "колич. испытаний");
+            $sheet->setCellValue("E" . $startedCell + 2, "трудоёмкость на ед.");
+
+            $sheet->setCellValue("G" . $startedCell + 1, "N=");
+            $sheet->setCellValue("G" . $startedCell + 2, "НЗТР=");
+
+            $sheet->setCellValue("H" . $startedCell + 1, $podTable->val);
+            $sheet->setCellValue("H" . $startedCell + 2, $podTable->koef);
+            $startedCell += 2;
+        }
+
+    }
+
+    $endCell = $startedCell;
+    $sheet->getStyle('A' . $startedRed + 1 . ':A' . $endCell)->applyFromArray($styleArray);
+    $sheet->getStyle('B' . $startedRed + 1 . ':D' . $endCell)->applyFromArray($styleArray);
+    $sheet->getStyle('E' . $startedRed + 1 . ':F' . $endCell)->applyFromArray($styleArray);
+    $sheet->getStyle('G' . $startedRed + 1 . ':H' . $endCell)->applyFromArray($styleArray);
+    $sheet->getStyle('I' . $startedRed + 1 . ':J' . $endCell)->applyFromArray($styleArray);
+    $sheet->getStyle('K' . $startedRed + 1 . ':M' . $endCell)->applyFromArray($styleArray);
+    $sheet->getStyle('N' . $startedRed + 1 . ':O' . $endCell)->applyFromArray($styleArray);
+
+    $sheet->getStyle('B' . $startedRed + 1 . ':B' . $endCell)->getFont()->setBold(true);
+    $sheet->getStyle('B' . $startedRed + 1 . ':B' . $endCell)->getFont()->setSize(11);
+    $sheet->setCellValue("N" . $startedRed + ($endCell-$startedRed)/2, $isRedaktorIspConstr->sumKoef);
 }
 
-if($isSborDann->chacked == "true"){
-    $sheet->setCellValue("E" . $startedCell + 9, $isSborDann->tableName);
-    $sheet->getStyle("E" . $startedCell + 9)->getFont()->setBold(true);
-    $sheet->getStyle('E' . $startedCell + 9)->getFont()->setSize(14);
-}
+$sheet->setCellValue("B" . ++$endCell, "Итого стоимость работ");
+$sheet->getStyle('B' . $endCell)->getFont()->setBold(true);
+$sheet->getStyle('B' . $endCell)->getFont()->setItalic(true);
+$sheet->getStyle('A' . $endCell . ':A' . $endCell)->applyFromArray($styleArray);
+$sheet->getStyle('B' . $endCell . ':M' . $endCell)->applyFromArray($styleArray);
+$sheet->getStyle('N' . $endCell . ':O' . $endCell)->applyFromArray($styleArray);
+$sheet->setCellValue("N" . $endCell, $fullSumma);
+
+
+
+
+
+
+//if($isSborDann->chacked == "true"){
+//    $sheet->setCellValue("E" . $startedCell + 9, $isSborDann->tableName);
+//    $sheet->getStyle("E" . $startedCell + 9)->getFont()->setBold(true);
+//    $sheet->getStyle('E' . $startedCell + 9)->getFont()->setSize(14);
+//}
 
 header("Expires: Mon, 1 Apr 1974 05:00:00 GMT");
 header("Last-Modified: " . gmdate("D,d M Y H:i:s") . " GMT");
