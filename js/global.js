@@ -1118,7 +1118,7 @@ async function calcCalkulation() {
             znamenatel += trud;
         }
         let resultElement = chilsitel / znamenatel;
-        let result = resultElement.toFixed(2);
+        let result = resultElement.toFixed(1);
         console.log(chilsitel, znamenatel);
         $('#sredRazryad').val(result);
         resolve(result);
@@ -1137,6 +1137,7 @@ async function calcCalkulation() {
 
     $('#tarifKoef').val(response.trim());
     calculacia = (parseFloat(response.trim()) * costwork14).toFixed(2);
+    console.log("xyu: ", calculacia);
 
     document.getElementById('harakteristikaObjectCalc').innerText = calculacia;
     document.getElementById('calcalcres').innerText = calculacia;
@@ -1154,7 +1155,6 @@ $(".tarif").on('change', () => {
 })
 
 function printExcel() {
-    console.log("V=" + V + "; n=" + etazh + "; h=" + mainvisotazdani + "; het=" + visotapola + ";");
     new Promise((resolve, reject) => {
         document.cookie = "V=" + V + ";";
         document.cookie = "n=" + etazh + ";";
@@ -1218,6 +1218,47 @@ function printExcel() {
         resolve();
     }).then(() => {
         location.href = "excel.php";
+    })
+
+}
+
+function printCalculExcel() {
+    new Promise((resolve, reject) => {
+        document.cookie = "costwork14=" + costwork14 + ";";
+        document.cookie = "p_avg=" + $('#sredRazryad').val() + ";";
+        document.cookie = "t_k=" + $('#tarifKoef').val() + ";";
+
+        document.cookie = " zakazchik=" + selectZakazchik.find('option:selected').text() + ";";
+        document.cookie = " podradchik=" + selectPodryadchik.find('option:selected').text() + ";";
+        let count = 0;
+        $('.trud').each((index, item) => {
+            if($(item).val().length > 0){
+                let sel = $(item).prev('select').find('option:selected').text();
+                document.cookie = "name_rab" + (index + 1) + "=" + sel + ";";
+                document.cookie = "trud" + (index + 1) + "=" + $(item).val() + ";";
+                count++;
+            }
+
+        })
+
+        $('.tarif').each((index, item) => {
+            if($(item).val().length > 0){
+                let sel = $(item).prev('select').find('option:selected').text();
+                let inp = $(item).next('input').val();
+                document.cookie = "doljnost" + (index + 1) + "=" + sel + ";";
+                document.cookie = "tarif" + (index + 1) + "=" + $(item).val() + ";";
+                document.cookie = "kol_isp" + (index + 1) + "=" + inp + ";";
+            }
+
+        })
+
+        document.cookie = " countCalc=" + count + ";";
+        document.cookie = " calculacia=" + calculacia + ";";
+        document.cookie = " fullSumma=" + fullSumma + ";";
+
+        resolve();
+    }).then(() => {
+       location.href = "calculExcel.php";
     })
 
 }

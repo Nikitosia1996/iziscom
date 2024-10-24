@@ -350,7 +350,7 @@ echo "<script>
     </div>
     <div class="row mgbottom20p mgleft5">
         <div class="col-lg-2">
-            <button id="btnCalculationExcel" class="btn btn-primary">Калькуляция в EXCEL</button>
+            <button onclick="printCalculExcel()" id="btnCalculationExcel" class="btn btn-primary">Калькуляция в EXCEL</button>
         </div>
         <div class="col-lg-2">
             <button id="btnTechZad" class="btn btn-primary" onclick="printTZ()">Техническое задание</button>
