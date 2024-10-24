@@ -3620,6 +3620,8 @@ echo "<script>
     }
 
 
+
+
     function selectCalculation(index) {
         const workSelect = document.querySelector(`#selectCalc${index}`);
         const otherInputs = [
