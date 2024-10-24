@@ -11,7 +11,7 @@ use PhpOffice\PhpSpreadsheet\RichText\Run;
 $spreadsheet = new Spreadsheet();
 $sheet = $spreadsheet->getActiveSheet();
 
-$sheet->setTitle("Новый лист");
+$sheet->setTitle("Смета");
 
 const COEFF = 1.053423626787058;
 $zakazchik = $_COOKIE['zakazchik'];
