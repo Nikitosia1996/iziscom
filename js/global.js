@@ -1138,6 +1138,7 @@ async function calcCalkulation() {
     calculacia = (parseFloat(response.trim()) * costwork14).toFixed(2);
 
     document.getElementById('harakteristikaObjectCalc').innerText = calculacia;
+    document.getElementById('calcalcres').innerText = calculacia;
     calculateK();
 
 

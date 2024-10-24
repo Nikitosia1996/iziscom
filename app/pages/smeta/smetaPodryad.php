@@ -8,6 +8,8 @@ $obsledRab = 0;
 $sostTech = 0;
 $redaktorCons = 0;
 $calculacia = 0;
+$calcalcres = 0;
+
 
 
 echo "<script>
@@ -439,7 +441,7 @@ echo "<script>
 
 
     <div class="nameforblock1" onclick="toggleDisplay('.nameforblock1', '.dndb');">Характеристика объекта&nbsp;&nbsp;&nbsp;<?php echo '<span class="harakteristikaObject" id="harakteristikaObject">';
-        echo $harakteristikaObject;
+     //   echo $harakteristikaObject;
         echo '</span>'; ?></div>
     <div class="dndb">
         <div class="position1">
@@ -993,7 +995,7 @@ echo "<script>
     <div class="nameforblock5" onclick="toggleDisplay('.nameforblock5', '.dndb5');"><input class="onCollap"
                                                                                            type="checkbox"
                                                                                            id="obsledCheck"
-                                                                                           name="sborDann" value="1" onchange="calculateK()">&nbsp;&nbsp;&nbsp;Обследовательские
+                                                                                           name="obsledCheck" value="1" onchange="calculateK()">&nbsp;&nbsp;&nbsp;Обследовательские
         работы &nbsp;&nbsp;&nbsp;<?php echo '<span class="sborIshodnihDannih" id="obsledRab">';
         echo $obsledRab;
         echo '</span>'; ?></div>
@@ -1424,7 +1426,7 @@ echo "<script>
 
 
     <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
-    <div class="nameforblock8" onclick="toggleDisplay('.nameforblock8', '.dndb8');">Обследование отдельных  конструкций <?php echo '<input onchange="calculateK()" class = "onCollap" type="checkbox" id="sborDann" name="sborDann" value="sborDann"> <span class="countRub">123</span>' ?></div>
+    <div class="nameforblock8" onclick="toggleDisplay('.nameforblock8', '.dndb8');">Обследование отдельных  конструкций <?php echo '<input onchange="calculateK()" class = "onCollap" type="checkbox" id="sborDann" name="sborDann" value="sborDann"> <span class="countRub">0</span>' ?></div>
     <div class="dndb8">
 
 
@@ -1771,7 +1773,11 @@ echo "<script>
     <hr>
     <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
     <div class="nameforblock9" onclick="toggleDisplay('.nameforblock9', '.dndb9');">
-        Калькуляция <?php echo '<input onchange="calculateK()" class = "onCollap" type="checkbox" id="sborDann" name="sborDann" value="sborDann"> <span class="countRub">123</span>' ?></div>
+        <?php echo '<input onchange="calculateK()" class = "onCollap" type="checkbox" id="calcalc" name="calcalc" value="1"> 
+&nbsp;&nbsp;&nbsp;Калькуляция &nbsp;&nbsp;&nbsp;
+<span class="calcalc" id="calcalcres">';
+        echo $calculacia;
+        echo '</span>'; ?></div>
     <div class="dndb9">
         <div class="position1">
             <div class="pos1">
@@ -2287,6 +2293,7 @@ echo "<script>
     let isSostTechOtchetCheck;
     let isRedaktorIspConstr;
     let isSborDann;
+    let isCalc;
 
 
     async function calculateK() {
@@ -2297,6 +2304,7 @@ echo "<script>
         isSostTechOtchetCheck = document.getElementById('sostTechOtchetCheck').checked;
         isRedaktorIspConstr = document.getElementById('redaktorIspConstr').checked;
         isSborDann = document.getElementById('sborDann').checked;
+        isCalc = document.getElementById('calcalc').checked;
 
 
         koefIshod = koefIshod == 0 ? 1 : koefIshod;
@@ -2333,7 +2341,7 @@ echo "<script>
             sumSosttech = koefSosttech1 * koefSosttech2 * costwork14 * k18ob * Vdiv100 * k18101 * ki242;
             console.log(sumSosttech + " =  koefSosttech1: " + koefSosttech1 + " koefSosttech2: " + koefSosttech2 + " costwork14: " + costwork14 + " K18ob:" + k18ob + " Vdiv100: " + Vdiv100 + " Vdiv100: " + Vdiv100 + " k18101: " + k18101 + " ki223: " + ki223);
         }
-        fullSumma = parseFloat(sumHarakter); //+ parseFloat(sumIshod) + parseFloat(sumObmer) + parseFloat(sumObsled) + parseFloat(sumSosttech) + parseFloat(sumRedaktor);
+        fullSumma = 0; //+ parseFloat(sumIshod) + parseFloat(sumObmer) + parseFloat(sumObsled) + parseFloat(sumSosttech) + parseFloat(sumRedaktor);
         if (isSborIshodnihDannihChecked) fullSumma += parseFloat(sumIshod);
         if (isObmerRabotyChecked) fullSumma += parseFloat(sumObmer);
         if (isObsledRabChecked) fullSumma += parseFloat(sumObsled);
@@ -2461,7 +2469,7 @@ echo "<script>
 
 
 
-        document.getElementById('harakteristikaObject').innerText = finalCoefficient.toFixed(3);
+        //document.getElementById('harakteristikaObject').innerText = finalCoefficient.toFixed(3);
         sumHarakter = finalCoefficient.toFixed(3);
 
         updateBuildingInfo();
