@@ -1,6 +1,9 @@
 <?php
 
 ?>
+
+
+<script src="/js/global.js"></script>
 <style>
     .input-group .input-buttons {
         position: relative;
@@ -73,16 +76,26 @@
 </style>
 
 <section class="col-lg-12 connectedSortable ui-sortable" style="margin-top: 90px; margin-bottom: 20px;">
+
     <div class="row ">
+        <div style = "display:flex;">
+            <div style = "margin-left:30px;">
+                <button id="btnTechZad" class="btn btn-primary" onclick="printAkt()">Акт, накладная в Word</button>
+            </div>
+            <div style = "margin-left:30px;">
+                <button id="btnTechZad" class="btn btn-primary" onclick="printDogovor()">Договор в Word</button>
+            </div>
+        </div>
         <div class="col-lg-3 mgleft2">
             <div class="form-group mgtop5">
                 <label for="exampleFormControlSelect1">Заказчик</label>
                 <select class="form-control" id="exampleFormControlSelect1">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                    <option value="0" selected>-- Пожалуйста, выберите --</option>
+                    <?php
+                    while ($row = $connectionDB->getRowResult($zakazchik)) {
+                        echo '<option id="zakazchik" value="' . htmlspecialchars($row['id_zakazchik']) . '">' . htmlspecialchars($row['nameZakazchik']) . '</option>';
+                    }
+                    ?>
                 </select>
             </div>
 
@@ -111,11 +124,12 @@
             <div class="form-group mgtop5">
                 <label for="">Источник финансирования</label>
                 <select class="form-control" id="">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                    <option>-- Пожалуйста, выберите --</option>
+                    <option>Собственные средства заказчика</option>
+                    <option>Местный бюджет</option>
+                    <option>Республиканский бюджет</option>
+                    <option>Государственный целевой бюджетный фонд</option>
+                    <option>Государственный целевой внебюджетный фонд</option>
                 </select>
             </div>
 
@@ -142,11 +156,8 @@
             <div class="form-group mgtop5">
                 <label for="">Основание для обследования:</label>
                 <select class="form-control" id="">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                    <option>Техническое задание заказчика</option>
+                    <option>Обращение заказчика</option>
                 </select>
             </div>
         </div>
@@ -180,6 +191,36 @@
                 <label for="">Номер договора:</label>
                 <input type="text" class="form-control" id="">
             </div>
+
+
+            <div class="form-group mgtop5">
+                <label for="">Дата заключения договора:</label>
+                <input type="date" class="form-control" id="">
+            </div>
+
+            <div class="form-group mgtop5">
+                <label for="">Кто подписывает договор:</label>
+                <select class="form-control" id="">
+                    <option>Техническое задание заказчика</option>
+                    <option>Обращение заказчика</option>
+                </select>
+            </div>
+
+
+            <div class="form-group mgtop5">
+                <label for="">Срок и вид оплаты:</label>
+                <select class="form-control" id="">
+                    <option>Техническое задание заказчика</option>
+                    <option>Обращение заказчика</option>
+                </select>
+            </div>
+
+
+            <div class="form-group mgtop5">
+                <label for="">Количество дней:</label>
+                <input type="number" class="form-control" id="">
+            </div>
+
         </div>
         <div class="col-lg-7 mgleft8 ">
             <h3 class="mgtop20p">К договору прилагается:</h3>
@@ -274,13 +315,11 @@
             </div>
 
             <div class="form-group mgtop5">
-                <label for="">Основание для обследования:</label>
+                <label for="">Кто подписывает накладную и акт</label>
                 <select class="form-control" id="">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                    <option>Директор</option>
+                    <option>И.О. Директора</option>
+
                 </select>
             </div>
         </div>
@@ -361,7 +400,7 @@
 
             <div class="col-lg-4 mgtop20p">
                 <div class="form-group ">
-                    <label for="">Кто подписывает договор:</label>
+                    <label for="">Кто подписывает титул:</label>
                     <select class="form-control" id="">
                         <option>1</option>
                         <option>2</option>
