@@ -153,7 +153,6 @@ tr:hover {
     margin-right:80px;
     " 
     >
-<!-- Преамбула заявления -->
     Приложение № <br> К договору № <br> От</div>
     <br>
     <div class="container" style="margin-left: 3%;">

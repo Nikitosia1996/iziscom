@@ -2349,12 +2349,10 @@ echo "<script>
         if (isObsledRabChecked) fullSumma += parseFloat(sumObsled);
         if (isSostTechOtchetCheck) fullSumma += parseFloat(sumSosttech);
         if (isRedaktorIspConstr) fullSumma += parseFloat(sumRedaktor);
-
          fullSumma = fullSumma.toFixed(3);
          totalSum = 0;
         totalSum += parseFloat(fullSumma)
         if (isCalc) totalSum += parseFloat(calculacia);
-
         document.getElementById('harakteristikaObjectObsh').innerText = totalSum;
         document.getElementById('harakteristikaObjectSmeta').innerText = fullSumma;
         if (isCalc)
