@@ -2346,7 +2346,7 @@ echo "<script>
         if (isObmerRabotyChecked) fullSumma += parseFloat(sumObmer);
         if (isObsledRabChecked) fullSumma += parseFloat(sumObsled);
         if (isSostTechOtchetCheck) fullSumma += parseFloat(sumSosttech);
-        if (isRedaktorIspConstr) fullSumma += parseFloat(sumIspConstr);
+        if (isRedaktorIspConstr) fullSumma += parseFloat(sumRedaktor);
 
         fullSumma = fullSumma.toFixed(3);
         let totalSum = (parseFloat(fullSumma) + parseFloat(calculacia)).toFixed(2);
@@ -3192,8 +3192,21 @@ echo "<script>
         await calculateK();
     }
 
+    let toggleZd71;
+    let toggleZd72 ;
+    let toggleZd73;
+    let toggleZd74;
+
+    let conval71;
+    let conval72;
+    let conval73;
+    let conval74;
 
     async function toggleCheckboxesDop7(checkboxId) {
+        toggleZd71 = document.getElementById('toggleZd71').checked;
+        toggleZd72 = document.getElementById('toggleZd72').checked;
+        toggleZd73 = document.getElementById('toggleZd73').checked;
+        toggleZd74 = document.getElementById('toggleZd74').checked;
         const checkboxes = [
             { checkbox: document.getElementById('toggleZd71'), input: document.getElementById('conval71') },
             { checkbox: document.getElementById('toggleZd72'), input: document.getElementById('conval72') },
@@ -3216,10 +3229,10 @@ echo "<script>
     }
 
     async function sumKoefRedaktor() {
-        let koefRedaktor1 = 0;
-        let koefRedaktor2 = 0;
-        let koefRedaktor3 = 0;
-        let koefRedaktor4 = 0;
+        conval71 = document.getElementById('conval71').value;
+        conval72 = document.getElementById('conval72').value;
+        conval73 = document.getElementById('conval73').value;
+        conval74 = document.getElementById('conval74').value;
 
         const val1 = parseFloat(document.getElementById('conval71').value) || 0;
         const val2 = parseFloat(document.getElementById('conval72').value) || 0;
@@ -3275,6 +3288,8 @@ echo "<script>
         document.getElementById('redaktorCons').innerText = sumRedaktor1.toFixed(3);
         await calculateK();
     }
+
+    let koefRedaktor1=0, koefRedaktor2=0, koefRedaktor3=0, koefRedaktor4=0;
 
 
 

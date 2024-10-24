@@ -1190,6 +1190,30 @@ function printExcel() {
         document.cookie = " ki242=" + ki242 + ";";
         document.cookie = " p242=" + P242 + ";";
 
+        document.cookie = " toggleZd71=" + toggleZd71 + ";";
+        document.cookie = " toggleZd72=" + toggleZd72 + ";";
+        document.cookie = " toggleZd73=" + toggleZd73 + ";";
+        document.cookie = " toggleZd74=" + toggleZd74 + ";";
+
+        document.cookie = " conval71=" + conval71 + ";";
+        document.cookie = " conval72=" + conval72 + ";";
+        document.cookie = " conval73=" + conval73 + ";";
+        document.cookie = " conval74=" + conval74 + ";";
+
+        document.cookie = " koefRedaktor1=" + koefRedaktor1 + ";";
+        document.cookie = " koefRedaktor2=" + koefRedaktor2 + ";";
+        document.cookie = " koefRedaktor3=" + koefRedaktor3 + ";";
+        document.cookie = " koefRedaktor4=" + koefRedaktor4 + ";";
+
+        document.cookie = " sumIshod=" + sumIshod + ";";
+        document.cookie = " sumObmer=" + sumObmer + ";";
+        document.cookie = " sumObsled=" + sumObsled + ";";
+        document.cookie = " sumSosttech=" + sumSosttech + ";";
+        document.cookie = " sumRedaktor=" + sumRedaktor + ";";
+
+        document.cookie = " fullSumma=" + fullSumma + ";";
+
+
         resolve();
     }).then(() => {
         location.href = "excel.php";
