@@ -2294,6 +2294,7 @@ echo "<script>
     let isRedaktorIspConstr;
     let isSborDann;
     let isCalc;
+    let totalSum = 0;
 
 
     async function calculateK() {
@@ -2305,6 +2306,7 @@ echo "<script>
         isRedaktorIspConstr = document.getElementById('redaktorIspConstr').checked;
         isSborDann = document.getElementById('sborDann').checked;
         isCalc = document.getElementById('calcalc').checked;
+
 
 
         koefIshod = koefIshod == 0 ? 1 : koefIshod;
@@ -2348,11 +2350,18 @@ echo "<script>
         if (isSostTechOtchetCheck) fullSumma += parseFloat(sumSosttech);
         if (isRedaktorIspConstr) fullSumma += parseFloat(sumRedaktor);
 
-        fullSumma = fullSumma.toFixed(3);
-        let totalSum = (parseFloat(fullSumma) + parseFloat(calculacia)).toFixed(2);
+         fullSumma = fullSumma.toFixed(3);
+         totalSum = 0;
+        totalSum += parseFloat(fullSumma)
+        if (isCalc) totalSum += parseFloat(calculacia);
+
         document.getElementById('harakteristikaObjectObsh').innerText = totalSum;
         document.getElementById('harakteristikaObjectSmeta').innerText = fullSumma;
+        if (isCalc)
         document.getElementById('harakteristikaObjectCalc').innerText = parseFloat(calculacia).toFixed(2);
+        else
+        document.getElementById('harakteristikaObjectCalc').innerText = 0;
+
         console.log (fullSumma);
 
         // fullSumma = fullSumma.toFixed(3);

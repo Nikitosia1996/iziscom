@@ -1132,9 +1132,10 @@ async function calcCalkulation() {
 
     });
 
-    console.log(response);
+    isCalc = document.getElementById('calcalc').checked;
+
+
     $('#tarifKoef').val(response.trim());
-    console.log("xyu: ", calculacia);
     calculacia = (parseFloat(response.trim()) * costwork14).toFixed(2);
 
     document.getElementById('harakteristikaObjectCalc').innerText = calculacia;
