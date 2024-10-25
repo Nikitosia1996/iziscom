@@ -14,6 +14,7 @@ class Smeta
     private $obmerObject;
     private $obsledObject;
     private $sostTechObject;
+    private $calculationObject;
 
 
 
@@ -31,7 +32,7 @@ class Smeta
      * @param $obsledObject
      * @param $sostTechObject
      */
-    public function __construct($id, $name, $id_zakazchik, $id_podryadchik, $dateNachRab, $dateOkonchRab, $haractObject, $ishodValObject, $obmerObject, $obsledObject, $sostTechObject)
+    public function __construct($id, $name, $id_zakazchik, $id_podryadchik, $dateNachRab, $dateOkonchRab, $haractObject, $ishodValObject, $obmerObject, $obsledObject, $sostTechObject, $calculationObject)
     {
         $this->id = $id;
         $this->name = $name;
@@ -44,6 +45,7 @@ class Smeta
         $this->obmerObject = $obmerObject;
         $this->obsledObject = $obsledObject;
         $this->sostTechObject = $sostTechObject;
+        $this->calculationObject = $calculationObject;
 
     }
 
@@ -219,6 +221,21 @@ class Smeta
     }
 
 
+    public function getCalculationObject()
+    {
+        return $this->calculationObject;
+    }
+
+    /**
+     * @param mixed $calculationObject
+     */
+    public function setCalculationObject($calculationObject): void
+    {
+        $this->calculationObject = $calculationObject;
+    }
+
+
+
 
 
     public function toJson() {
@@ -234,6 +251,7 @@ class Smeta
             'obmer' => $this->obmerObject->toJson(),
             'obsled' => $this->obsledObject->toJson(),
             'sosttech' => $this->sostTechObject->toJson(),
+            'calculator' => $this->calculationObject->toJson(),
         ]);
     }
 

@@ -112,6 +112,7 @@ async function getSmeta(id) {
         const obmer = selectedItem.obmer;
         const obsled = selectedItem.obsled;
         const sosttech = selectedItem.sosttech;
+        const calculator = selectedItem.calculator;
 
 
         $('#buildingType').val(haract.zdanie);
@@ -1266,6 +1267,31 @@ function printCalculExcel() {
 function printDogovor() {
     $.ajax({
         url: 'printDogovor.php',
+        type: 'POST',
+        data: {
+        },
+        success: function (response) {
+            var WinPrint = window.open('', '', 'left=50,top=50,width=1200,height=860,toolbar=0,scrollbars=1,status=0');
+            WinPrint.document.write('<style>@page {\n' +
+                'margin: 1rem;\n' +
+                '}</style>');
+            WinPrint.document.write('<br/>');
+            WinPrint.document.write(response);
+            WinPrint.document.close();
+            WinPrint.focus();
+            WinPrint.print();
+            WinPrint.close();
+
+            resolve();
+        }
+
+    })
+}
+
+
+function printAkt() {
+    $.ajax({
+        url: 'printAkt.php',
         type: 'POST',
         data: {
         },
