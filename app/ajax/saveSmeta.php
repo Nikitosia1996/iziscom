@@ -2,8 +2,10 @@
 
 include '../../connection/connection.php';
 
-$haractObject = json_decode($_POST['haractObject'], true);
+$haractObject = json_decode($_POST['haractObject'], true);  // классы
 $ishod = json_decode($_POST['ishod'], true);
+$obmerObject = json_decode($_POST['obmerObject'], true);
+$obsledObject = json_decode($_POST['obsledObject'], true);
 
 $zdanie = isset($haractObject['zdanie']) ? $haractObject['zdanie'] : null;
 $typeZdanie = isset($haractObject['typeZdanie']) ? $haractObject['typeZdanie'] : null;
@@ -49,6 +51,49 @@ $conval6 = isset($ishod['conval6']) ? $ishod['conval6'] : null;
 $conval7 = isset($ishod['conval7']) ? $ishod['conval7'] : null;
 $conval8 = isset($ishod['conval8']) ? $ishod['conval8'] : null;
 $conval9 = isset($ishod['conval9']) ? $ishod['conval9'] : null;
+
+
+$toggleZd41 = isset($obmerObject['toggleZd41']) ? $obmerObject['toggleZd41'] : null;
+$toggleZd42 = isset($obmerObject['toggleZd42']) ? $obmerObject['toggleZd42'] : null;
+$toggleZd43 = isset($obmerObject['toggleZd43']) ? $obmerObject['toggleZd43'] : null;
+$toggleZd44 = isset($obmerObject['toggleZd44']) ? $obmerObject['toggleZd44'] : null;
+$toggleZd45 = isset($obmerObject['toggleZd45']) ? $obmerObject['toggleZd45'] : null;
+$toggleZd46 = isset($obmerObject['toggleZd46']) ? $obmerObject['toggleZd46'] : null;
+$toggleZd48 = isset($obmerObject['toggleZd48']) ? $obmerObject['toggleZd48'] : null;
+$toggleZd49 = isset($obmerObject['toggleZd49']) ? $obmerObject['toggleZd49'] : null;
+$toggleZd449 = isset($obmerObject['toggleZd449']) ? $obmerObject['toggleZd449'] : null;
+$choosCunstruct4 = isset($obmerObject['choosCunstruct4']) ? $obmerObject['choosCunstruct4'] : null;
+$conval41 = isset($obmerObject['conval41']) ? $obmerObject['conval41'] : null;
+$conval42 = isset($obmerObject['conval42']) ? $obmerObject['conval42'] : null;
+$conval43 = isset($obmerObject['conval43']) ? $obmerObject['conval43'] : null;
+$conval44 = isset($obmerObject['conval44']) ? $obmerObject['conval44'] : null;
+$conval45 = isset($obmerObject['conval45']) ? $obmerObject['conval45'] : null;
+$conval46 = isset($obmerObject['conval46']) ? $obmerObject['conval46'] : null;
+$conval48 = isset($obmerObject['conval48']) ? $obmerObject['conval48'] : null;
+$conval49 = isset($obmerObject['conval49']) ? $obmerObject['conval49'] : null;
+$conval449 = isset($obmerObject['conval449']) ? $obmerObject['conval449'] : null;
+$obmerobs = isset($obmerObject['obmerobs']) ? $obmerObject['obmerobs'] : null;
+
+$toggleZd51 = isset($obsledObject['toggleZd51']) ? $obsledObject['toggleZd51'] : null;
+$toggleZd52 = isset($obsledObject['toggleZd52']) ? $obsledObject['toggleZd52'] : null;
+$toggleZd53 = isset($obsledObject['toggleZd53']) ? $obsledObject['toggleZd53'] : null;
+$toggleZd54 = isset($obsledObject['toggleZd54']) ? $obsledObject['toggleZd54'] : null;
+$toggleZd55 = isset($obsledObject['toggleZd55']) ? $obsledObject['toggleZd55'] : null;
+$toggleZd56 = isset($obsledObject['toggleZd56']) ? $obsledObject['toggleZd56'] : null;
+$toggleZd57 = isset($obsledObject['toggleZd57']) ? $obsledObject['toggleZd57'] : null;
+$toggleZd58 = isset($obsledObject['toggleZd58']) ? $obsledObject['toggleZd58'] : null;
+$toggleZd59 = isset($obsledObject['toggleZd59']) ? $obsledObject['toggleZd59'] : null;
+$choosCunstruct5 = isset($obsledObject['choosCunstruct5']) ? $obsledObject['choosCunstruct5'] : null;
+$conval51 = isset($obsledObject['conval51']) ? $obsledObject['conval51'] : null;
+$conval52 = isset($obsledObject['conval52']) ? $obsledObject['conval52'] : null;
+$conval53 = isset($obsledObject['conval53']) ? $obsledObject['conval53'] : null;
+$conval54 = isset($obsledObject['conval54']) ? $obsledObject['conval54'] : null;
+$conval55 = isset($obsledObject['conval55']) ? $obsledObject['conval55'] : null;
+$conval56 = isset($obsledObject['conval56']) ? $obsledObject['conval56'] : null;
+$conval57 = isset($obsledObject['conval57']) ? $obsledObject['conval57'] : null;
+$conval58 = isset($obsledObject['conval58']) ? $obsledObject['conval58'] : null;
+$conval59 = isset($obsledObject['conval59']) ? $obsledObject['conval59'] : null;
+$obsledobs = isset($obmerObject['obsledobs']) ? $obmerObject['obsledobs'] : null;
 
 
 
@@ -126,6 +171,56 @@ WHERE id_smeta = '$id'";
 WHERE id_smeta = '$id'";
     mysqli_query($connectionDB->con, $sql);
 
+
+    $sql = "UPDATE obmernie_raboty SET
+    obmerobs = '$obmerobs',
+      toggleZd41 = '" . $toggleZd41 . "',
+    toggleZd42 = '" . $toggleZd42 . "',
+    toggleZd43 = '" . $toggleZd43 . "',
+    toggleZd44 = '" . $toggleZd44 . "',
+    toggleZd45 = '" . $toggleZd45 . "',
+    toggleZd46 = '" . $toggleZd46 . "',
+    toggleZd48 = '" . $toggleZd48 . "',
+    toggleZd49 = '" . $toggleZd49 . "',
+    toggleZd449 = '" . $toggleZd449 . "',
+    conval41 = '" . $conval41 . "',
+    conval42 = '" . $conval42 . "',
+    conval43 = '" . $conval43 . "',
+    conval44 = '" . $conval44 . "',
+    conval45 = '" . $conval45 . "',
+    conval46 = '" . $conval46 . "',
+    conval48 = '" . $conval48 . "',
+    conval49 = '" . $conval49 . "',
+    conval449 = '" . $conval449 . "',
+    choosCunstruct4 = '" . $choosCunstruct4 . "'
+WHERE id_smeta = '$id'";
+
+    mysqli_query($connectionDB->con, $sql);
+
+    $sql = "UPDATE obsled_raboty SET
+    predvOsmotr = '$obsledobs',
+      toggleZd51 = '" . $toggleZd51 . "',
+    toggleZd52 = '" . $toggleZd52 . "',
+    toggleZd53 = '" . $toggleZd53 . "',
+    toggleZd54 = '" . $toggleZd54 . "',
+    toggleZd55 = '" . $toggleZd55 . "',
+    toggleZd56 = '" . $toggleZd56 . "',
+    toggleZd57 = '" . $toggleZd57 . "',
+    toggleZd58 = '" . $toggleZd58 . "',
+    toggleZd59 = '" . $toggleZd59 . "',
+    conval51 = '" . $conval51 . "',
+    conval52 = '" . $conval52 . "',
+    conval53 = '" . $conval53 . "',
+    conval54 = '" . $conval54 . "',
+    conval55 = '" . $conval55 . "',
+    conval56 = '" . $conval56 . "',
+    conval57 = '" . $conval57 . "',
+    conval58 = '" . $conval58 . "',
+    conval59 = '" . $conval59 . "',
+    choosCunstruct5 = '" . $choosCunstruct5 . "'
+WHERE id_smeta = '$id'";
+
+    mysqli_query($connectionDB->con, $sql);
 
     echo $id;
 
@@ -230,6 +325,101 @@ WHERE id_smeta = '$id'";
 
         mysqli_query($connectionDB->con, $sql);
 
+        $sql = "INSERT INTO obmernie_raboty (
+    obmerobs,
+    toggleZd41,
+    toggleZd42,
+    toggleZd43,
+    toggleZd44,
+    toggleZd45,
+    toggleZd46,
+    toggleZd48,
+    toggleZd49,
+    toggleZd449,
+    conval41,
+    conval42,
+    conval43,
+    conval44,
+    conval45,
+    conval46,
+    conval48,
+    conval49,
+    conval449,
+    id_smeta,
+    choosCunstruct
+) VALUES (
+    '{$obmerobs}',
+    '{$toggleZd41}',
+    '{$toggleZd42}',
+    '{$toggleZd43}',
+    '{$toggleZd44}',
+    '{$toggleZd45}',
+    '{$toggleZd46}',
+    '{$toggleZd48}',
+    '{$toggleZd48}',
+    '{$toggleZd449}',
+    '{$conval41}',
+    '{$conval42}',
+    '{$conval43}',
+    '{$conval44}',
+    '{$conval45}',
+    '{$conval46}',
+    '{$conval48}',
+    '{$conval49}',
+    '{$conval449}',
+    '$insertedId',
+    '{$choosCunstruct4}'
+)";
+
+        mysqli_query($connectionDB->con, $sql);
+
+        $sql = "INSERT INTO obsled_raboty (
+    predvOsmotr,
+    toggleZd51,
+    toggleZd52,
+    toggleZd53,
+    toggleZd54,
+    toggleZd55,
+    toggleZd56,
+    toggleZd57,
+    toggleZd58,
+    toggleZd59,
+    conval51,
+    conval52,
+    conval53,
+    conval54,
+    conval55,
+    conval56,
+    conval57,
+    conval58,
+    conval59,
+    id_smeta,
+    choosCunstruct5
+) VALUES (
+    '{$obsledobs}',
+    '{$toggleZd51}',
+    '{$toggleZd52}',
+    '{$toggleZd53}',
+           '{$toggleZd54}',
+           '{$toggleZd55}',
+           '{$toggleZd56}',
+           '{$toggleZd57}',
+           '{$toggleZd58}',
+           '{$toggleZd59}',
+           '{$conval51}',
+           '{$conval52}',
+           '{$conval53}',
+           '{$conval54}',
+           '{$conval55}',
+           '{$conval56}',
+           '{$conval57}',
+           '{$conval58}',
+           '{$conval59}',
+           '$insertedId',
+           '{$choosCunstruct5}'
+)";
+
+        mysqli_query($connectionDB->con, $sql);
     }
     echo $insertedId;
 

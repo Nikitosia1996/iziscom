@@ -53,6 +53,7 @@ let toggleZd9 = $('#toggleZd9');
 let choosCunstruct = $('#choosCunstruct');
 
 
+let kat_sl_rab = $('.kat_sl_rab');
 let toggleZd41 = $('#toggleZd41');
 let toggleZd42 = $('#toggleZd42');
 let toggleZd43 = $('#toggleZd43');
@@ -64,7 +65,7 @@ let toggleZd49 = $('#toggleZd49');
 let toggleZd449 = $('#toggleZd449');
 let choosCunstruct4 = $('#choosCunstruct4');
 
-
+let kat_sl_rab_obsled = $('.kat_sl_rab_obsled');
 let toggleZd51 = $('#toggleZd51');
 let toggleZd52 = $('#toggleZd52');
 let toggleZd53 = $('#toggleZd53');
@@ -209,7 +210,12 @@ async function getSmeta(id) {
             $('#conval9').val('');
 
         }
-
+        const obmerElement = $("#obmerobs" + obmer.obmerobs);
+        if (obmerElement.length) {
+            obmerElement.prop('checked', true);
+        } else {
+            console.error("Элемент не найден");
+        }
         choosCunstruct4.prop('checked', obmer.choosCunstruct4 > 0);
         if (obmer.choosCunstruct4 > 0) {
             toggleZd41.prop('disabled', false);
@@ -419,6 +425,8 @@ async function getSmeta(id) {
 }
 
 function saveSmeta() {
+    let selectedObmerKatSl;
+
     let ishod = {
         toggleZd1: toggleZd1.prop('checked') ? 1 : 0,
         toggleZd2: toggleZd2.prop('checked') ? 1 : 0,
@@ -465,6 +473,62 @@ function saveSmeta() {
         checkb11: chekb11.prop('checked') ? 1 : 0,
         checkb12: chekb12.prop('checked') ? 1 : 0,
     }
+    kat_sl_rab.each(function() {
+        if ($(this).prop('checked')) {
+            selectedObmerKatSl = $(this).val();
+        }
+    });
+    obmerObject = {
+        obmerobs: selectedObmerKatSl,
+        choosCunstruct4: choosCunstruct4.prop('checked') ? 1 : 0,
+        toggleZd41: toggleZd41.prop('checked') ? 1 : 0,
+        toggleZd42: toggleZd42.prop('checked') ? 1 : 0,
+        toggleZd43: toggleZd43.prop('checked') ? 1 : 0,
+        toggleZd44: toggleZd44.prop('checked') ? 1 : 0,
+        toggleZd45: toggleZd45.prop('checked') ? 1 : 0,
+        toggleZd46: toggleZd46.prop('checked') ? 1 : 0,
+        toggleZd48: toggleZd48.prop('checked') ? 1 : 0,
+        toggleZd49: toggleZd49.prop('checked') ? 1 : 0,
+        toggleZd449: toggleZd449.prop('checked') ? 1 : 0,
+        conval41: $('#conval41').val(),
+        conval42: $('#conval42').val(),
+        conval43: $('#conval43').val(),
+        conval44: $('#conval44').val(),
+        conval45: $('#conval45').val(),
+        conval46: $('#conval46').val(),
+        conval48: $('#conval48').val(),
+        conval49: $('#conval49').val(),
+        conval449: $('#conval449').val()
+
+    }
+    kat_sl_rab_obsled.each(function() {
+        if ($(this).prop('checked')) {
+            kat_sl_rab_obsled = $(this).val();
+        }
+    });
+    obsledObject = {
+        obsledobs: kat_sl_rab_obsled,
+        choosCunstruct5: choosCunstruct5.prop('checked') ? 1 : 0,
+        toggleZd51: toggleZd51.prop('checked') ? 1 : 0,
+        toggleZd52: toggleZd52.prop('checked') ? 1 : 0,
+        toggleZd53: toggleZd53.prop('checked') ? 1 : 0,
+        toggleZd54: toggleZd54.prop('checked') ? 1 : 0,
+        toggleZd55: toggleZd55.prop('checked') ? 1 : 0,
+        toggleZd56: toggleZd56.prop('checked') ? 1 : 0,
+        toggleZd57: toggleZd57.prop('checked') ? 1 : 0,
+        toggleZd58: toggleZd58.prop('checked') ? 1 : 0,
+        toggleZd59: toggleZd59.prop('checked') ? 1 : 0,
+        conval51: $('#conval51').val(),
+        conval52: $('#conval52').val(),
+        conval53: $('#conval53').val(),
+        conval54: $('#conval54').val(),
+        conval55: $('#conval55').val(),
+        conval56: $('#conval56').val(),
+        conval57: $('#conval57').val(),
+        conval58: $('#conval58').val(),
+        conval59: $('#conval59').val()
+    }
+
     let smetaForPhp = {
         id: idActiveSmeta?.toString(),
         name: smetaName.val(),
@@ -474,6 +538,8 @@ function saveSmeta() {
         dateOkonchRab: inputDateOkonchRab.val(),
         haractObject: JSON.stringify(haractObject),
         ishod: JSON.stringify(ishod),
+        obmerObject: JSON.stringify(obmerObject),
+        obsledObject: JSON.stringify(obsledObject),
 
     };
 
@@ -485,7 +551,9 @@ function saveSmeta() {
         dateNachRab: inputDateNachRab.val(),
         dateOkonchRab: inputDateOkonchRab.val(),
         haractObject: haractObject,
-        ishod: ishod
+        ishod: ishod,
+        obmerObject: obmerObject,
+        obsledObject: obsledObject,
 
     };
 
@@ -1135,7 +1203,6 @@ async function calcCalkulation() {
     console.log(response);
     $('#tarifKoef').val(response.trim());
     calculacia = (parseFloat(response.trim()) * costwork14).toFixed(2);
-    console.log("xyu: ", calculacia);
 
     document.getElementById('harakteristikaObjectCalc').innerText = calculacia;
     document.getElementById('calcalcres').innerText = calculacia;
