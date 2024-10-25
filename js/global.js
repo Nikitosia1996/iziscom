@@ -341,8 +341,6 @@ async function getSmeta(id) {
 
 
         }
-
-
         choosCunstruct6.prop('checked', sosttech.choosCunstruct6 > 0);
         if (sosttech.choosCunstruct6 > 0) {
             toggleZd61.prop('disabled', false);
