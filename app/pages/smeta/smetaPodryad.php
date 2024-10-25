@@ -837,9 +837,9 @@ echo "<script>
 
             <div class="pos1">
                 <div class="viborvis">
-                    <input data-id="10"  id="obmerobsl" class="butrad kat_sl_rab" type="radio" name="kat_sl_rab" value="1"
+                    <input data-id="10"  id="obmerobs1" class="butrad kat_sl_rab" type="radio" name="kat_sl_rab" value="1"
                            onchange="calcObmerWorksPart1()">
-                    <label for="obmerobsl" class="pasportzd">1) Обмеры для визуального обследования,
+                    <label for="obmerobs1" class="pasportzd">1) Обмеры для визуального обследования,
                         паспортизации.:</label>
 
                     <br>
