@@ -403,13 +403,17 @@ async function getSmeta(id) {
         }
     }
     document.getElementById("myDropdown").classList.toggle("show");
+    executeFunctions();
+}
+
+async function executeFunctions() {
+    await calculateHaracterCoefficient();
     updateCalendarDaysFromEnd();
     updateBuildingInfo();
     await toggleCheckboxesDop();
     await toggleCheckboxesDop4();
     await toggleCheckboxesDop5();
     await toggleCheckboxesDop6();
-    await calculateHaracterCoefficient();
     await calcIshod1();
     await calcIshod2();
     await calcObmerWorksPart1();
@@ -418,9 +422,6 @@ async function getSmeta(id) {
     await calcObsled2();
     await calcSosttech1();
     await calcSosttech2();
-    await calculateK();
-
-
 }
 
 function saveSmeta() {
