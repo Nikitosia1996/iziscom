@@ -6,6 +6,7 @@ $haractObject = json_decode($_POST['haractObject'], true);  // классы
 $ishod = json_decode($_POST['ishod'], true);
 $obmerObject = json_decode($_POST['obmerObject'], true);
 $obsledObject = json_decode($_POST['obsledObject'], true);
+$sostTechObject = json_decode($_POST['sostTechObject'], true);
 
 $zdanie = isset($haractObject['zdanie']) ? $haractObject['zdanie'] : null;
 $typeZdanie = isset($haractObject['typeZdanie']) ? $haractObject['typeZdanie'] : null;
@@ -51,6 +52,7 @@ $conval6 = isset($ishod['conval6']) ? $ishod['conval6'] : null;
 $conval7 = isset($ishod['conval7']) ? $ishod['conval7'] : null;
 $conval8 = isset($ishod['conval8']) ? $ishod['conval8'] : null;
 $conval9 = isset($ishod['conval9']) ? $ishod['conval9'] : null;
+$selectedButrad = isset($ishod['selectedButrad']) ? $ishod['selectedButrad'] : null;
 
 
 $toggleZd41 = isset($obmerObject['toggleZd41']) ? $obmerObject['toggleZd41'] : null;
@@ -93,7 +95,28 @@ $conval56 = isset($obsledObject['conval56']) ? $obsledObject['conval56'] : null;
 $conval57 = isset($obsledObject['conval57']) ? $obsledObject['conval57'] : null;
 $conval58 = isset($obsledObject['conval58']) ? $obsledObject['conval58'] : null;
 $conval59 = isset($obsledObject['conval59']) ? $obsledObject['conval59'] : null;
-$obsledobs = isset($obmerObject['obsledobs']) ? $obmerObject['obsledobs'] : null;
+$obsledobs = isset($obsledObject['obsledobs']) ? $obsledObject['obsledobs'] : null;
+
+$toggleZd61 = isset($sostTechObject['toggleZd61']) ? $sostTechObject['toggleZd61'] : null;
+$toggleZd62 = isset($sostTechObject['toggleZd62']) ? $obsledObject['toggleZd62'] : null;
+$toggleZd63 = isset($sostTechObject['toggleZd63']) ? $obsledObject['toggleZd63'] : null;
+$toggleZd64 = isset($sostTechObject['toggleZd64']) ? $obsledObject['toggleZd64'] : null;
+$toggleZd65 = isset($sostTechObject['toggleZd65']) ? $obsledObject['toggleZd65'] : null;
+$toggleZd66 = isset($sostTechObject['toggleZd66']) ? $obsledObject['toggleZd66'] : null;
+$toggleZd67 = isset($sostTechObject['toggleZd67']) ? $obsledObject['toggleZd67'] : null;
+$toggleZd68 = isset($sostTechObject['toggleZd68']) ? $obsledObject['toggleZd68'] : null;
+$toggleZd69 = isset($sostTechObject['toggleZd69']) ? $obsledObject['toggleZd69'] : null;
+$choosCunstruct6 = isset($sostTechObject['choosCunstruct6']) ? $obsledObject['choosCunstruct6'] : null;
+$conval61 = isset($sostTechObject['conval61']) ? $sostTechObject['conval61'] : null;
+$conval62 = isset($sostTechObject['conval62']) ? $sostTechObject['conval62'] : null;
+$conval63 = isset($sostTechObject['conval63']) ? $sostTechObject['conval63'] : null;
+$conval64 = isset($sostTechObject['conval64']) ? $sostTechObject['conval64'] : null;
+$conval65 = isset($sostTechObject['conval65']) ? $sostTechObject['conval65'] : null;
+$conval66 = isset($sostTechObject['conval66']) ? $sostTechObject['conval66'] : null;
+$conval67 = isset($sostTechObject['conval67']) ? $sostTechObject['conval67'] : null;
+$conval68 = isset($sostTechObject['conval68']) ? $sostTechObject['conval68'] : null;
+$conval69 = isset($sostTechObject['conval69']) ? $sostTechObject['conval69'] : null;
+$zaklSostStr = isset($sostTechObject['selectedSosttech']) ? $sostTechObject['selectedSosttech'] : null;
 
 
 
@@ -167,7 +190,8 @@ WHERE id_smeta = '$id'";
     conval7 = '" . $ishod['conval7'] . "',
     conval8 = '" . $ishod['conval8'] . "',
     conval9 = '" . $ishod['conval9'] . "',
-    choosCunstruct = '" . $ishod['choosCunstruct'] . "'
+    choosCunstruct = '" . $ishod['choosCunstruct'] . "',
+    pasport_na_zdanie = '$selectedButrad'
 WHERE id_smeta = '$id'";
     mysqli_query($connectionDB->con, $sql);
 
@@ -218,6 +242,31 @@ WHERE id_smeta = '$id'";
     conval58 = '" . $conval58 . "',
     conval59 = '" . $conval59 . "',
     choosCunstruct5 = '" . $choosCunstruct5 . "'
+WHERE id_smeta = '$id'";
+
+    mysqli_query($connectionDB->con, $sql);
+
+    $sql = "UPDATE sost_tech_otchet SET
+    zaklSostStr = '$zaklSostStr',
+      toggleZd61 = '" . $toggleZd61 . "',
+    toggleZd62 = '" . $toggleZd62 . "',
+    toggleZd63 = '" . $toggleZd63 . "',
+    toggleZd64 = '" . $toggleZd64 . "',
+    toggleZd65 = '" . $toggleZd65 . "',
+    toggleZd66 = '" . $toggleZd66 . "',
+    toggleZd67 = '" . $toggleZd67 . "',
+    toggleZd68 = '" . $toggleZd68 . "',
+    toggleZd69 = '" . $toggleZd69 . "',
+    conval61 = '" . $conval61 . "',
+    conval62 = '" . $conval62 . "',
+    conval63 = '" . $conval63 . "',
+    conval64 = '" . $conval64 . "',
+    conval65 = '" . $conval65 . "',
+    conval66 = '" . $conval66 . "',
+    conval67 = '" . $conval67 . "',
+    conval68 = '" . $conval68 . "',
+    conval69 = '" . $conval69 . "',
+    choosCunstruct6 = '" . $choosCunstruct6 . "'
 WHERE id_smeta = '$id'";
 
     mysqli_query($connectionDB->con, $sql);
@@ -299,7 +348,8 @@ WHERE id_smeta = '$id'";
     conval8,
     conval9,
     id_smeta,
-    choosCunstruct
+    choosCunstruct,
+    pasport_na_zdanie
 ) VALUES (
     '{$ishod['toggleZd1']}',
     '{$ishod['toggleZd2']}',
@@ -320,7 +370,8 @@ WHERE id_smeta = '$id'";
     '{$ishod['conval8']}',
     '{$ishod['conval9']}',
     '$insertedId',
-    '{$ishod['choosCunstruct']}'
+    '{$ishod['choosCunstruct']}',
+    '{$selectedButrad}'
 )";
 
         mysqli_query($connectionDB->con, $sql);
@@ -346,7 +397,7 @@ WHERE id_smeta = '$id'";
     conval49,
     conval449,
     id_smeta,
-    choosCunstruct
+    choosCunstruct4
 ) VALUES (
     '{$obmerobs}',
     '{$toggleZd41}',
@@ -417,6 +468,54 @@ WHERE id_smeta = '$id'";
            '{$conval59}',
            '$insertedId',
            '{$choosCunstruct5}'
+)";
+
+        mysqli_query($connectionDB->con, $sql);
+
+        $sql = "INSERT INTO sost_tech_otchet (
+    zaklSostStr,
+    toggleZd61,
+    toggleZd62,
+    toggleZd63,
+    toggleZd64,
+    toggleZd65,
+    toggleZd66,
+    toggleZd67,
+    toggleZd68,
+    toggleZd69,
+    conval61,
+    conval62,
+    conval63,
+    conval64,
+    conval65,
+    conval66,
+    conval67,
+    conval68,
+    conval69,
+    id_smeta,
+    choosCunstruct6
+) VALUES (
+    '{$zaklSostStr}',
+    '{$toggleZd61}',
+    '{$toggleZd62}',
+    '{$toggleZd63}',
+           '{$toggleZd64}',
+           '{$toggleZd65}',
+           '{$toggleZd66}',
+           '{$toggleZd67}',
+           '{$toggleZd68}',
+           '{$toggleZd69}',
+           '{$conval61}',
+           '{$conval62}',
+           '{$conval63}',
+           '{$conval64}',
+           '{$conval65}',
+           '{$conval66}',
+           '{$conval67}',
+           '{$conval68}',
+           '{$conval69}',
+           '$insertedId',
+           '{$choosCunstruct6}'
 )";
 
         mysqli_query($connectionDB->con, $sql);

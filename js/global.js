@@ -150,7 +150,12 @@ async function getSmeta(id) {
         } else {
             $('input[name="pasportNaZdanie"]').prop('checked', false);
         }
-
+        const pasportNaZdanie = $("#pasportNaZdanie" + ishod.pasport_na_zdanie);
+        if (pasportNaZdanie.length) {
+            pasportNaZdanie.prop('checked', true);
+        } else {
+            console.error("Элемент не найден");
+        }
         if (ishod.choosCunstruct > 0) {
             toggleZd1.prop('disabled', false);
             toggleZd2.prop('disabled', false);
@@ -279,7 +284,12 @@ async function getSmeta(id) {
 
         }
 
-
+        const obsledElement = $("#obsledObs" + obsled.predvOsmotr);
+        if (obsledElement.length) {
+            obsledElement.prop('checked', true);
+        } else {
+            console.error("Элемент не найден");
+        }
         choosCunstruct5.prop('checked', obsled.choosCunstruct5 > 0);
         if (obsled.choosCunstruct5 > 0) {
             toggleZd51.prop('disabled', false);
@@ -340,6 +350,13 @@ async function getSmeta(id) {
             $('#conval59').val('');
 
 
+        }
+
+        const kat_sl_rab_sosttech = $("#sosttech" + sosttech.zaklSostStr);
+        if (kat_sl_rab_sosttech.length) {
+            kat_sl_rab_sosttech.prop('checked', true);
+        } else {
+            console.error("Элемент не найден");
         }
         choosCunstruct6.prop('checked', sosttech.choosCunstruct6 > 0);
         if (sosttech.choosCunstruct6 > 0) {
@@ -427,7 +444,18 @@ async function executeFunctions() {
 
 function saveSmeta() {
     let selectedObmerKatSl;
-
+    let selectedButrad;
+    let selectedSosttech;
+    $(".kat_sl_rab_sosttech").each(function() {
+        if ($(this).prop('checked')) {
+            selectedSosttech = $(this).val();
+        }
+    });
+    $(".butrad").each(function() {
+        if ($(this).prop('checked')) {
+            selectedButrad = $(this).val();
+        }
+    });
     let ishod = {
         toggleZd1: toggleZd1.prop('checked') ? 1 : 0,
         toggleZd2: toggleZd2.prop('checked') ? 1 : 0,
@@ -447,7 +475,8 @@ function saveSmeta() {
         conval6: $('#conval6').val(),
         conval7: $('#conval7').val(),
         conval8: $('#conval8').val(),
-        conval9: $('#conval9').val()
+        conval9: $('#conval9').val(),
+        selectedButrad: selectedButrad
     };
 
 
@@ -507,7 +536,7 @@ function saveSmeta() {
             kat_sl_rab_obsled = $(this).val();
         }
     });
-    obsledObject = {
+    let obsledObject = {
         obsledobs: kat_sl_rab_obsled,
         choosCunstruct5: choosCunstruct5.prop('checked') ? 1 : 0,
         toggleZd51: toggleZd51.prop('checked') ? 1 : 0,
@@ -530,6 +559,29 @@ function saveSmeta() {
         conval59: $('#conval59').val()
     }
 
+    let sostTechObject = {
+        selectedSosttech: selectedSosttech,
+        choosCunstruct6: choosCunstruct6.prop('checked') ? 1 : 0,
+        toggleZd51: toggleZd61.prop('checked') ? 1 : 0,
+        toggleZd52: toggleZd62.prop('checked') ? 1 : 0,
+        toggleZd53: toggleZd63.prop('checked') ? 1 : 0,
+        toggleZd54: toggleZd64.prop('checked') ? 1 : 0,
+        toggleZd55: toggleZd65.prop('checked') ? 1 : 0,
+        toggleZd56: toggleZd66.prop('checked') ? 1 : 0,
+        toggleZd57: toggleZd67.prop('checked') ? 1 : 0,
+        toggleZd58: toggleZd68.prop('checked') ? 1 : 0,
+        toggleZd59: toggleZd69.prop('checked') ? 1 : 0,
+        conval51: $('#conval61').val(),
+        conval52: $('#conval62').val(),
+        conval53: $('#conval63').val(),
+        conval54: $('#conval64').val(),
+        conval55: $('#conval65').val(),
+        conval56: $('#conval66').val(),
+        conval57: $('#conval67').val(),
+        conval58: $('#conval68').val(),
+        conval59: $('#conval69').val()
+    }
+
     let smetaForPhp = {
         id: idActiveSmeta?.toString(),
         name: smetaName.val(),
@@ -541,6 +593,7 @@ function saveSmeta() {
         ishod: JSON.stringify(ishod),
         obmerObject: JSON.stringify(obmerObject),
         obsledObject: JSON.stringify(obsledObject),
+        sostTechObject: JSON.stringify(sostTechObject),
 
     };
 
@@ -555,6 +608,7 @@ function saveSmeta() {
         ishod: ishod,
         obmerObject: obmerObject,
         obsledObject: obsledObject,
+        sostTechObject: sostTechObject,
 
     };
 
