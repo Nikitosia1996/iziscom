@@ -2360,7 +2360,6 @@ echo "<script>
         else
         document.getElementById('harakteristikaObjectCalc').innerText = 0;
 
-        console.log (fullSumma);
 
         // fullSumma = fullSumma.toFixed(3);
         // document.getElementById('harakteristikaObjectObsh').innerText = fullSumma;
@@ -2394,11 +2393,24 @@ echo "<script>
         etazh = parseFloat(document.getElementById('etazh').value) || 0;
         visotapola = parseFloat(document.getElementById('visotapola').value) || 0;
         let visotaPolaVal = 1;
-        const buildingType = parseFloat(document.querySelector('#buildingType option:checked').getAttribute('data-id')) || 1;
-        const constructionType = parseFloat(document.querySelector('#constructionType option:checked').getAttribute('data-id')) || 1;
-        const options = parseFloat(document.querySelector('#options option:checked').getAttribute('data-id')) || 1;
-        const temperatureMode = parseFloat(document.querySelector('#temperatureMode option:checked').getAttribute('data-id')) || 1;
-        const equipmentSaturation = parseFloat(document.querySelector('#equipmentSaturation option:checked').getAttribute('data-id')) || 1;
+        const selectedOption = document.querySelector('#buildingType option:checked');
+
+        let buildingType;
+        if (selectedOption) {
+            buildingType = parseFloat(selectedOption.getAttribute('data-id')) || 1;
+        } else {
+            buildingType = 1; // Значение по умолчанию, если элемент не найден
+            console.warn("Элемент не найден, используется значение по умолчанию: 1");
+        }
+        const getSelectedDataId = (selector) => {
+            const selectedOption = document.querySelector(`${selector} option:checked`);
+            return selectedOption ? parseFloat(selectedOption.getAttribute('data-id')) || 1 : 1;
+        };
+
+        const constructionType = getSelectedDataId('#constructionType');
+        const options = getSelectedDataId('#options');
+        const temperatureMode = getSelectedDataId('#temperatureMode');
+        const equipmentSaturation = getSelectedDataId('#equipmentSaturation');
 
         k18101 = buildingType;
         //РАСЧЕТ ОСНОВНОГО  КОЭФИЦИЕНТА К18.об ОТ ОБЪЕМА
@@ -2486,7 +2498,15 @@ echo "<script>
 
     async function calcIshod1() {
 
-        const buildingType = parseFloat(document.querySelector('#buildingType option:checked').getAttribute('data-id')) || 1;
+        const selectedOption = document.querySelector('#buildingType option:checked');
+
+        let buildingType;
+        if (selectedOption) {
+            buildingType = parseFloat(selectedOption.getAttribute('data-id')) || 1;
+        } else {
+            buildingType = 1; // Значение по умолчанию, если элемент не найден
+            console.warn("Элемент не найден, используется значение по умолчанию: 1");
+        }
 
         mainvisotazdani = parseFloat(document.getElementById('visotazdani').value) || 0;
 
@@ -2887,7 +2907,6 @@ echo "<script>
             const calendarDays = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
             document.getElementById('commonInputField').value = calendarDays;
         }
-        console.log(3 + "updateCalendarDaysFromEnd")
     }
 
     $('#dateNachRab').on('change', function () {

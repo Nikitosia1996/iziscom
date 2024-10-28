@@ -10,10 +10,10 @@ $sostTechObject = json_decode($_POST['sostTechObject'], true);
 
 $zdanie = isset($haractObject['zdanie']) ? $haractObject['zdanie'] : null;
 $typeZdanie = isset($haractObject['typeZdanie']) ? $haractObject['typeZdanie'] : null;
-$stage = isset($haractObject['stage']) ? $haractObject['stage'] : null;
-$height = isset($haractObject['height']) ? $haractObject['height'] : null;
-$obem = isset($haractObject['obem']) ? $haractObject['obem'] : null;
-$height_pol = isset($haractObject['height_pol']) ? $haractObject['height_pol'] : null;
+$stage = $haractObject['stage'] != "" ? $haractObject['stage'] : 0;
+$height = $haractObject['height'] != "" ? $haractObject['height'] : 0;
+$obem = $haractObject['obem'] != "" ? $haractObject['obem'] : 0;
+$height_pol = $haractObject['height_pol'] != "" ? $haractObject['height_pol'] : 0;
 $temperature = isset($haractObject['temperature']) ? $haractObject['temperature'] : null;
 $nasishenost = isset($haractObject['nasishenost']) ? $haractObject['nasishenost'] : null;
 $aggresive_vozdeistvie = isset($haractObject['aggresive_vozdeistvie']) ? $haractObject['aggresive_vozdeistvie'] : null;
@@ -120,8 +120,8 @@ $zaklSostStr = isset($sostTechObject['selectedSosttech']) ? $sostTechObject['sel
 
 
 
-$id_zakazchik = $_POST['id_zakazchik'];
-$id_podryadchik = $_POST['id_podryadchik'];
+$id_zakazchik = isset($_POST['id_zakazchik']) ? $_POST['id_zakazchik'] : null;
+$id_podryadchik = isset($_POST['id_podryadchik']) ? $_POST['id_podryadchik'] : null;
 if ($_POST['dateNachRab'] === "")
     $dateNachRab = "2000-01-01";
 else {
@@ -142,7 +142,7 @@ if (isset($_POST['id'])) {
     $id = $_POST['id'];
     $sql = "update smets set `name` = '$smetaName',`id_zakazchik`='$id_zakazchik', `id_podryadchik`='$id_podryadchik', `date_nach_rab`='$dateNachRab', `date_okonch_rab`='$dateOkonchRab'
             where id_smeta = '$id'";
-    mysqli_query($connectionDB->con, $sql);
+    mysqli_query($connectionDB->con, $sql)  or mysqli_error($connectionDB->con);
 
     $sql = "UPDATE haract_object SET
     zdanie = '$zdanie',
@@ -168,7 +168,7 @@ if (isset($_POST['id'])) {
     checkb12 = '$checkb12'
 WHERE id_smeta = '$id'";
 
-    mysqli_query($connectionDB->con, $sql);
+    mysqli_query($connectionDB->con, $sql)  or mysqli_error($connectionDB->con);
 
 
     $sql = "UPDATE sbor_ishod_value SET
@@ -193,7 +193,7 @@ WHERE id_smeta = '$id'";
     choosCunstruct = '" . $ishod['choosCunstruct'] . "',
     pasport_na_zdanie = '$selectedButrad'
 WHERE id_smeta = '$id'";
-    mysqli_query($connectionDB->con, $sql);
+    mysqli_query($connectionDB->con, $sql)  or mysqli_error($connectionDB->con);
 
 
     $sql = "UPDATE obmernie_raboty SET
@@ -219,10 +219,10 @@ WHERE id_smeta = '$id'";
     choosCunstruct4 = '" . $choosCunstruct4 . "'
 WHERE id_smeta = '$id'";
 
-    mysqli_query($connectionDB->con, $sql);
+    mysqli_query($connectionDB->con, $sql)  or mysqli_error($connectionDB->con);
 
     $sql = "UPDATE obsled_raboty SET
-    predvOsmotr = '$obsledobs',
+    predvOsmotr = '" . $obsledobs . "',
       toggleZd51 = '" . $toggleZd51 . "',
     toggleZd52 = '" . $toggleZd52 . "',
     toggleZd53 = '" . $toggleZd53 . "',
@@ -244,7 +244,7 @@ WHERE id_smeta = '$id'";
     choosCunstruct5 = '" . $choosCunstruct5 . "'
 WHERE id_smeta = '$id'";
 
-    mysqli_query($connectionDB->con, $sql);
+    mysqli_query($connectionDB->con, $sql)  or mysqli_error($connectionDB->con);
 
     $sql = "UPDATE sost_tech_otchet SET
     zaklSostStr = '$zaklSostStr',
@@ -269,7 +269,7 @@ WHERE id_smeta = '$id'";
     choosCunstruct6 = '" . $choosCunstruct6 . "'
 WHERE id_smeta = '$id'";
 
-    mysqli_query($connectionDB->con, $sql);
+    mysqli_query($connectionDB->con, $sql)  or mysqli_error($connectionDB->con);
 
     echo $id;
 
@@ -325,7 +325,7 @@ WHERE id_smeta = '$id'";
     '$checkb12',
     '$insertedId'
 )";
-        mysqli_query($connectionDB->con, $sql);
+        mysqli_query($connectionDB->con, $sql)  or mysqli_error($connectionDB->con);
 
 
         $sql = "INSERT INTO sbor_ishod_value (
@@ -374,7 +374,7 @@ WHERE id_smeta = '$id'";
     '{$selectedButrad}'
 )";
 
-        mysqli_query($connectionDB->con, $sql);
+        mysqli_query($connectionDB->con, $sql)   or mysqli_error($connectionDB->con);
 
         $sql = "INSERT INTO obmernie_raboty (
     obmerobs,
@@ -407,7 +407,7 @@ WHERE id_smeta = '$id'";
     '{$toggleZd45}',
     '{$toggleZd46}',
     '{$toggleZd48}',
-    '{$toggleZd48}',
+    '{$toggleZd49}',
     '{$toggleZd449}',
     '{$conval41}',
     '{$conval42}',
@@ -422,7 +422,7 @@ WHERE id_smeta = '$id'";
     '{$choosCunstruct4}'
 )";
 
-        mysqli_query($connectionDB->con, $sql);
+        mysqli_query($connectionDB->con, $sql)  or mysqli_error($connectionDB->con);
 
         $sql = "INSERT INTO obsled_raboty (
     predvOsmotr,
@@ -470,7 +470,7 @@ WHERE id_smeta = '$id'";
            '{$choosCunstruct5}'
 )";
 
-        mysqli_query($connectionDB->con, $sql);
+        mysqli_query($connectionDB->con, $sql)  or mysqli_error($connectionDB->con);
 
         $sql = "INSERT INTO sost_tech_otchet (
     zaklSostStr,
@@ -518,7 +518,7 @@ WHERE id_smeta = '$id'";
            '{$choosCunstruct6}'
 )";
 
-        mysqli_query($connectionDB->con, $sql);
+        mysqli_query($connectionDB->con, $sql) or mysqli_error($connectionDB->con);
     }
     echo $insertedId;
 

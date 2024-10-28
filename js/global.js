@@ -445,6 +445,7 @@ async function executeFunctions() {
 function saveSmeta() {
     let selectedObmerKatSl;
     let selectedButrad;
+    let selectedObsled;
     let selectedSosttech;
     $(".kat_sl_rab_sosttech").each(function() {
         if ($(this).prop('checked')) {
@@ -533,11 +534,11 @@ function saveSmeta() {
     }
     kat_sl_rab_obsled.each(function() {
         if ($(this).prop('checked')) {
-            kat_sl_rab_obsled = $(this).val();
+            selectedObsled = $(this).val();
         }
     });
     let obsledObject = {
-        obsledobs: kat_sl_rab_obsled,
+        obsledobs: selectedObsled,
         choosCunstruct5: choosCunstruct5.prop('checked') ? 1 : 0,
         toggleZd51: toggleZd51.prop('checked') ? 1 : 0,
         toggleZd52: toggleZd52.prop('checked') ? 1 : 0,
@@ -705,15 +706,20 @@ async function calcObmerWorksPart1() {
             },
 
         }).then(response => {
-            let unparseRepsonse = JSON.parse(response);
-            ki222 = parseFloat(unparseRepsonse[1].trim());
-            koefObmerWork1 = parseFloat(unparseRepsonse[0].trim());
-            if (koefObmerWork1 == 1 && koefObmerWork2 == 1) {
-                sumObmer = 0;
-            } else {
-                sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * k18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222;
+            if(response.trim().length > 0) {
+                let unparseRepsonse = JSON.parse(response);
+                ki222 = parseFloat(unparseRepsonse[1].trim());
+                koefObmerWork1 = parseFloat(unparseRepsonse[0].trim());
+                if (koefObmerWork1 == 1 && koefObmerWork2 == 1) {
+                    sumObmer = 0;
+                } else {
+                    sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * k18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222;
+                }
+                $('#obmerRaboty').html(sumObmer.toFixed(3));
+
+            }else{
+
             }
-            $('#obmerRaboty').html(sumObmer.toFixed(3));
             resolve();
         })
     })
@@ -895,15 +901,17 @@ async function calcObsled1() {
             },
 
         }).then(response => {
-            let unparseRepsonse = JSON.parse(response);
-            koefObsled1 = parseFloat(unparseRepsonse[0].trim());
-            ki223 = parseFloat(unparseRepsonse[1].trim());
-            if (koefObsled1 == 1 && koefObsled2 == 1) {
-                sumObsled = 0;
-            } else {
-                sumObsled = koefObsled1 * koefObsled2 * costwork14 * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223;
-            }
-            $('#obsledRab').html(sumObsled.toFixed(3));
+            if(response.trim().length > 0) {
+                let unparseRepsonse = JSON.parse(response);
+                koefObsled1 = parseFloat(unparseRepsonse[0].trim());
+                ki223 = parseFloat(unparseRepsonse[1].trim());
+                if (koefObsled1 == 1 && koefObsled2 == 1) {
+                    sumObsled = 0;
+                } else {
+                    sumObsled = koefObsled1 * koefObsled2 * costwork14 * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223;
+                }
+                $('#obsledRab').html(sumObsled.toFixed(3));
+            }else{}
             resolve();
         })
     })
@@ -1084,15 +1092,18 @@ async function calcSosttech1() {
             },
 
         }).then(response => {
-            let unparseRepsonse = JSON.parse(response);
-            koefSosttech1 = parseFloat(unparseRepsonse[0].trim());
-            ki242 = parseFloat(unparseRepsonse[1].trim());
-            if (koefSosttech1 == 1 && koefSosttech2 == 1) {
-                sumSosttech = 0;
-            } else {
-                sumSosttech = koefSosttech1 * koefSosttech2 * costwork14 * k18ob * Vdiv100 * k18101 * ki242;
+            if(response.trim().length > 0) {
+                let unparseRepsonse = JSON.parse(response);
+                koefSosttech1 = parseFloat(unparseRepsonse[0].trim());
+                ki242 = parseFloat(unparseRepsonse[1].trim());
+                if (koefSosttech1 == 1 && koefSosttech2 == 1) {
+                    sumSosttech = 0;
+                } else {
+                    sumSosttech = koefSosttech1 * koefSosttech2 * costwork14 * k18ob * Vdiv100 * k18101 * ki242;
+                }
+                $('#sostTech').html(sumSosttech.toFixed(3));
+
             }
-            $('#sostTech').html(sumSosttech.toFixed(3));
             resolve();
         })
     })
