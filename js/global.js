@@ -422,6 +422,7 @@ async function executeFunctions() {
     await calcObsled2();
     await calcSosttech1();
     await calcSosttech2();
+    await calculateK();
 }
 
 function saveSmeta() {
