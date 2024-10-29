@@ -34,8 +34,9 @@ class Table
     public $p;
     public $ph3;
     public $sumKoef;
+    public $formula;
 
-    public function __construct($tableName, $chacked, $h3tp, $ki, $p, $ph3, $sumKoef)
+    public function __construct($tableName, $chacked, $h3tp, $ki, $p, $ph3, $sumKoef, $formula)
     {
         $this->tableName = $tableName;
         $this->chacked = $chacked;
@@ -44,17 +45,18 @@ class Table
         $this->p = $p;
         $this->ph3 = $ph3;
         $this->sumKoef = $sumKoef;
+        $this->formula = $formula;
     }
 }
 
 
 
-$isSborIshodnihDannihChecked = new Table("Сбор исходных данных", $_COOKIE['chacked1'], $_COOKIE['h3tp_212'], $_COOKIE['ki212'], $_COOKIE['p212'], $_COOKIE['ph3_212'], $_COOKIE['sumIshod']);
-$isObmerRabotyChecked = new Table("Обмерные работы", $_COOKIE['chacked2'], $_COOKIE['h3tp_222'], $_COOKIE['ki222'], $_COOKIE['p222'], $_COOKIE['ph3_222'], $_COOKIE['sumObmer']);
-$isObsledRabChecked = new Table("Обследовательские работы", $_COOKIE['chacked3'], $_COOKIE['h3tp_223'], $_COOKIE['ki223'], $_COOKIE['p223'], $_COOKIE['ph3_223'], $_COOKIE['sumObsled']);
-$isSostTechOtchetCheck = new Table("Составление технического отчета ", $_COOKIE['chacked4'], $_COOKIE['h3tp_242'], $_COOKIE['ki242'], $_COOKIE['p242'], $_COOKIE['ph3_242'], $_COOKIE['sumSosttech']);
-$isRedaktorIspConstr = new Table("Расчет стоимости испытания материалов", $_COOKIE['chacked5'], 0, 0, 0, 0, $_COOKIE['sumRedaktor']);
-$isSborDann = new Table("Обследование отдельных жб конструкций", $_COOKIE['chacked6'], 0, 0, 0, 0, 0);
+$isSborIshodnihDannihChecked = new Table("Сбор исходных данных", $_COOKIE['chacked1'], $_COOKIE['h3tp_212'], $_COOKIE['ki212'], $_COOKIE['p212'], $_COOKIE['ph3_212'], $_COOKIE['sumIshod'], "формула1");
+$isObmerRabotyChecked = new Table("Обмерные работы", $_COOKIE['chacked2'], $_COOKIE['h3tp_222'], $_COOKIE['ki222'], $_COOKIE['p222'], $_COOKIE['ph3_222'], $_COOKIE['sumObmer'], "формула2");
+$isObsledRabChecked = new Table("Обследовательские работы", $_COOKIE['chacked3'], $_COOKIE['h3tp_223'], $_COOKIE['ki223'], $_COOKIE['p223'], $_COOKIE['ph3_223'], $_COOKIE['sumObsled'], "формула3");
+$isSostTechOtchetCheck = new Table("Составление технического отчета ", $_COOKIE['chacked4'], $_COOKIE['h3tp_242'], $_COOKIE['ki242'], $_COOKIE['p242'], $_COOKIE['ph3_242'], $_COOKIE['sumSosttech'], "формула4");
+$isRedaktorIspConstr = new Table("Расчет стоимости испытания материалов", $_COOKIE['chacked5'], 0, 0, 0, 0, $_COOKIE['sumRedaktor'], "формула5");
+$isSborDann = new Table("Обследование отдельных жб конструкций", $_COOKIE['chacked6'], 0, 0, 0, 0, 0, "формула6");
 
 $arrTables = array();
 array_push($arrTables, $isSborIshodnihDannihChecked);
@@ -514,7 +516,7 @@ foreach ($arrTables as $item) {
         $sheet->getStyle('E' . $startedCell . ':E' . $endCell)->getFont()->setSize(11);
         $sheet->getStyle('G' . $startedCell . ':G' . $endCell)->getFont()->setSize(11);
         $sheet->mergeCells('K' . ($startedCell) . ':M' . $endCell);
-        $sheet->setCellValue("K" . ($startedCell ), "ТУТ ВСТАВЛЯТЬ ФОРМУЛУ"); ////////////////////////////////////////////////////////////////////////
+        $sheet->setCellValue("K" . ($startedCell ), $item->formula); ////////////////////////////////////////////////////////////////////////
         $sheet->getStyle("K" . ($startedCell))->getAlignment()->setWrapText(true);
         $sheet->getStyle("K" . ($startedCell))->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
         $sheet->getStyle("K" . ($startedCell))->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);

@@ -4,6 +4,21 @@ let etazh = 1;
 let visotapola = 1;
 
 
+let chekb1Val;
+let chekb2Val;
+let chekb3Val;
+let chekb4Val ;
+let chekb5Val;
+let chekb6Val ;
+let chekb7Val ;
+let chekb8Val ;
+let chekb9Val ;
+let chekb10Val ;
+let chekb11Val ;
+let chekb12Val;
+
+let arrHaractCheckb;
+
 let calculacia = 0;
 
 let koefObmerWork1 = 1;
@@ -119,6 +134,10 @@ async function getSmeta(id) {
         $('#buildingType').val(haract.zdanie);
         $('#constructionType').val(haract.typeZdanie);
         $('#etazh').val(haract.stage);
+        const allRadioZdvis = $('input[name="zdvis"]');
+        allRadioZdvis.each(function (){
+            $(this).val() === haract.radio_zdanie ? $(this).prop('checked',true) : $(this).prop('checked',false);
+        });
         $('#visotazdani').val(haract.height);
         $('#obem').val(haract.obem);
         $('#visotapola').val(haract.height_pol);
@@ -452,9 +471,9 @@ function saveSmeta() {
             selectedSosttech = $(this).val();
         }
     });
-    $(".butrad").each(function() {
-        if ($(this).prop('checked')) {
-            selectedButrad = $(this).val();
+    $("input[name='pasportNaZdanie']").each((item)=> {
+        if ($(item).prop('checked')) {
+            selectedButrad = $(item).val();
         }
     });
     let ishod = {
@@ -480,10 +499,10 @@ function saveSmeta() {
         selectedButrad: selectedButrad
     };
 
-
     haractObject = {
         zdanie: buildingType.val(),
         typeZdanie: constructionType.val(),
+        hardZdanie: hardZdanie,
         stage: $('#etazh').val(),
         height: $('#visotazdani').val(),
         obem: $('#obem').val(),
@@ -713,7 +732,7 @@ async function calcObmerWorksPart1() {
                 if (koefObmerWork1 == 1 && koefObmerWork2 == 1) {
                     sumObmer = 0;
                 } else {
-                    sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * k18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222;
+                    sumObmer = koefObmerWork1 * koefObmerWork2 * b14Value * k18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222 * koefHarackCheckb;
                 }
                 $('#obmerRaboty').html(sumObmer.toFixed(3));
 
@@ -812,7 +831,7 @@ async function calcObmerWorksPart2() {
                 if (koefObmerWork1 == 1 && koefObmerWork2 == 1) {
                     sumObmer = 0;
                 } else {
-                    sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * k18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222;
+                    sumObmer = koefObmerWork1 * koefObmerWork2 * b14Value * k18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222 * koefHarackCheckb;
                 }
 
                 $('#obmerRaboty').html(sumObmer.toFixed(3));
@@ -839,7 +858,7 @@ $("#choosCunstruct4").on("change", async function (event) {
     if (koefObmerWork1 == 1 && koefObmerWork2 == 1) {
         sumObmer = 0;
     } else {
-        sumObmer = koefObmerWork1 * koefObmerWork2 * costwork14 * k18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222;
+        sumObmer = koefObmerWork1 * koefObmerWork2 * b14Value * k18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222 * koefHarackCheckb;
     }
     $('#obmerRaboty').html(sumObmer.toFixed(3));
     await calculateK();
@@ -908,7 +927,7 @@ async function calcObsled1() {
                 if (koefObsled1 == 1 && koefObsled2 == 1) {
                     sumObsled = 0;
                 } else {
-                    sumObsled = koefObsled1 * koefObsled2 * costwork14 * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223;
+                    sumObsled = koefObsled1 * koefObsled2 * b14Value * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223 * koefHarackCheckb;
                 }
                 $('#obsledRab').html(sumObsled.toFixed(3));
             }else{}
@@ -1001,7 +1020,7 @@ async function calcObsled2() {
                 if (koefObsled1 == 1 && koefObsled2 == 1) {
                     sumObsled = 0;
                 } else {
-                    sumObsled = koefObsled1 * koefObsled2 * costwork14 * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223;
+                    sumObsled = koefObsled1 * koefObsled2 * b14Value * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223 * koefHarackCheckb;
                 }
                 $('#obsledRab').html(sumObsled.toFixed(3));
                 resolve();
@@ -1027,7 +1046,7 @@ $("#choosCunstruct5").on("change", async function (event) {
     if (koefObsled1 == 1 && koefObsled2 == 1) {
         sumObsled = 0;
     } else {
-        sumObsled = koefObsled1 * koefObsled2 * costwork14 * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223;
+        sumObsled = koefObsled1 * koefObsled2 * b14Value * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223 * koefHarackCheckb;
     }
     $('#obsledRab').html(sumObsled.toFixed(3));
     await calculateK();
@@ -1099,7 +1118,7 @@ async function calcSosttech1() {
                 if (koefSosttech1 == 1 && koefSosttech2 == 1) {
                     sumSosttech = 0;
                 } else {
-                    sumSosttech = koefSosttech1 * koefSosttech2 * costwork14 * k18ob * Vdiv100 * k18101 * ki242;
+                    sumSosttech = koefSosttech1 * koefSosttech2 * b14Value * k18ob * Vdiv100 * k18101 * ki242 * koefHarackCheckb;
                 }
                 $('#sostTech').html(sumSosttech.toFixed(3));
 
@@ -1192,7 +1211,7 @@ async function calcSosttech2() {
                 if (koefSosttech1 == 1 && koefSosttech2 == 1) {
                     sumSosttech = 0;
                 } else {
-                    sumSosttech = koefSosttech1 * koefSosttech2 * costwork14 * k18ob * Vdiv100 * k18101 * ki242;
+                    sumSosttech = koefSosttech1 * koefSosttech2 * b14Value * k18ob * Vdiv100 * k18101 * ki242 * koefHarackCheckb;
                 }
                 $('#sostTech').html(sumSosttech.toFixed(3));
                 resolve();
@@ -1218,7 +1237,7 @@ $("#choosCunstruct6").on("change", async function (event) {
     if (koefSosttech1 == 1 && koefSosttech2 == 1) {
         sumSosttech = 0;
     } else {
-        sumSosttech = koefSosttech1 * koefSosttech2 * costwork14 * k18ob * Vdiv100 * k18101 * ki242;
+        sumSosttech = koefSosttech1 * koefSosttech2 * b14Value * k18ob * Vdiv100 * k18101 * ki242 * koefHarackCheckb;
     }
     $('#sostTech').html(sumSosttech.toFixed(3));
     await calculateK();
@@ -1279,7 +1298,7 @@ async function calcCalkulation() {
 
 
     $('#tarifKoef').val(response.trim());
-    calculacia = (parseFloat(response.trim()) * costwork14).toFixed(2);
+    calculacia = (parseFloat(response.trim()) * b14Value).toFixed(2);
 
     truds.each(function() {
         calculacia *= $(this).val() !== "0" ? parseFloat($(this).val()) : 1;
@@ -1324,21 +1343,25 @@ function printExcel() {
         document.cookie = " ph3_212=" + koefIshod2 + ";";
         document.cookie = " ki212=" + ki212 + ";";
         document.cookie = " p212=" + P212 + ";";
+        //
 
         document.cookie = " h3tp_222=" + koefObmerWork1 + ";";
         document.cookie = " ph3_222=" + koefObmerWork2 + ";";
         document.cookie = " ki222=" + ki222 + ";";
         document.cookie = " p222=" + P222 + ";";
+        //
 
         document.cookie = " h3tp_223=" + koefObsled1 + ";";
         document.cookie = " ph3_223=" + koefObsled2 + ";";
         document.cookie = " ki223=" + ki223 + ";";
         document.cookie = " p223=" + P223 + ";";
+        //
 
         document.cookie = " h3tp_242=" + koefSosttech1 + ";";
         document.cookie = " ph3_242=" + koefSosttech2 + ";";
         document.cookie = " ki242=" + ki242 + ";";
         document.cookie = " p242=" + P242 + ";";
+        //
 
         document.cookie = " toggleZd71=" + toggleZd71 + ";";
         document.cookie = " toggleZd72=" + toggleZd72 + ";";
@@ -1461,3 +1484,17 @@ function printAkt() {
     })
 }
 ///////////////////////////////////////////////////////////////////////////
+
+
+// function calculateHaracterCheckb(thisEl){
+//     let data_id = thisEl.getAttribute('data-id');
+//     if(thisEl.checked){
+//         fullSumma *= data_id;
+//     }else{
+//         fullSumma /= data_id;
+//     }
+//     totalSum = fullSumma + calculacia;
+//     $("#harakteristikaObjectSmeta").text(fullSumma.toFixed(2));
+//     $("#harakteristikaObjectObsh").text(totalSum.toFixed(2));
+//     console.log('fullSumma', fullSumma);
+// }

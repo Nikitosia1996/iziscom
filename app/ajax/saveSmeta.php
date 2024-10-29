@@ -31,6 +31,7 @@ $checkb9 = isset($haractObject['checkb9']) ? $haractObject['checkb9'] : 0;
 $checkb10 = isset($haractObject['checkb10']) ? $haractObject['checkb10'] : 0;
 $checkb11 = isset($haractObject['checkb11']) ? $haractObject['checkb11'] : 0;
 $checkb12 = isset($haractObject['checkb12']) ? $haractObject['checkb12'] : 0;
+$hardZdanie = isset($haractObject['hardZdanie']) ? $haractObject['hardZdanie'] : 0;
 
 
 $toggleZd1 = isset($ishod['toggleZd1']) ? $ishod['toggleZd1'] : null;
@@ -140,11 +141,12 @@ $smetaName = $_POST['name'];
 if (isset($_POST['id'])) {
 
     $id = $_POST['id'];
-    $sql = "update smets set `name` = '$smetaName',`id_zakazchik`='$id_zakazchik', `id_podryadchik`='$id_podryadchik', `date_nach_rab`='$dateNachRab', `date_okonch_rab`='$dateOkonchRab'
+    $sql = "update smets set  `name` = '$smetaName',`id_zakazchik`='$id_zakazchik', `id_podryadchik`='$id_podryadchik', `date_nach_rab`='$dateNachRab', `date_okonch_rab`='$dateOkonchRab'
             where id_smeta = '$id'";
     mysqli_query($connectionDB->con, $sql)  or mysqli_error($connectionDB->con);
 
     $sql = "UPDATE haract_object SET
+                         radio_zdanie = '$hardZdanie',
     zdanie = '$zdanie',
     type_zdanie = '$typeZdanie',
     stage = '$stage',
@@ -279,6 +281,7 @@ WHERE id_smeta = '$id'";
         $insertedId = mysqli_insert_id($connectionDB->con);
 
         $sql = "INSERT INTO haract_object (
+                           radio_zdanie ,
     zdanie, 
     type_zdanie, 
     stage, 
@@ -302,6 +305,7 @@ WHERE id_smeta = '$id'";
     checkb12,
     id_smeta
 ) VALUES (
+    '$hardZdanie',
     '$zdanie',
     '$typeZdanie',
     '$stage',
