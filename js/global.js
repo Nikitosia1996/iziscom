@@ -1228,20 +1228,29 @@ $(".doljnosti_KSD").on('change', async (event) => {
     let thisTarget = event.target;
     let doljnostKoef = thisTarget.options[thisTarget.options.selectedIndex].getAttribute('data-koef');
     let nextInput = thisTarget.nextElementSibling;
+    let nextnextInput = nextInput.nextElementSibling;
+    if(nextnextInput.value.length === 0)
+        nextnextInput.value = 1;
     nextInput.value = doljnostKoef;
     await calcCalkulation()
 })
 
+$(".kol_isp").on('change', async (event) => {
+
+    await calcCalkulation()
+})
+
+
 async function calcCalkulation() {
 
-
+    let truds = $(".trud:not([disabled])");
+    let tarifs = $(".tarif");
+    let kol_isps = $(".kol_isp:not([disabled])");
     let result = await new Promise((resolve, reject) => {
-        let truds = $(".trud:not([disabled])");
-        let tarifs = $(".tarif");
-        let kol_isps = $(".kol_isp:not([disabled])");
+
         let trudsFiltered = truds.filter((index, item) => item.value.trim() !== "");
         let tarifsFiltered = tarifs.filter((index, item) => item.value.trim() !== "");
-        // let kol_ispsFiltered = kol_isps.filter((index, item) => item.value.trim() !== "");
+        let kol_ispsFiltered = kol_isps.filter((index, item) => item.value.trim() !== "");
         let size = Math.min(trudsFiltered.length, tarifsFiltered.length);
         let chilsitel = 0;
         let znamenatel = 0;
@@ -1272,6 +1281,13 @@ async function calcCalkulation() {
     $('#tarifKoef').val(response.trim());
     calculacia = (parseFloat(response.trim()) * costwork14).toFixed(2);
 
+    truds.each(function() {
+        calculacia *= $(this).val() !== "0" ? parseFloat($(this).val()) : 1;
+    });
+
+    kol_isps.each(function() {
+        calculacia *= $(this).val() !== "0" ? parseFloat($(this).val()) : 1;
+    });
     document.getElementById('harakteristikaObjectCalc').innerText = calculacia;
     document.getElementById('calcalcres').innerText = calculacia;
     calculateK();

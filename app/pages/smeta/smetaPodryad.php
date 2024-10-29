@@ -3673,6 +3673,9 @@ echo "<script>
         ];
         const selectedValue = workSelect.value;
 
+        if($("#inputCalc"+index).val().length === 0){
+            $("#inputCalc"+index).val(1);
+        }
         if (selectedValue !== "0") {
             otherInputs.forEach(input => {
                 input.disabled = false;
