@@ -108,6 +108,10 @@ table {
   border-collapse: collapse;
   
 }
+
+.table0{
+border:none !important;
+}
 .page-break {
         page-break-before: always; 
     }
@@ -156,15 +160,15 @@ tr:hover {
     
     Приложение № <br> К договору № <br> От</div>
     <br>
-   <table style="width: 100%; margin-left: 3%; border: none !important; line-height: 18pt;" border = "0">
-    <tr>
-        <td style="text-align: left; padding: 0; vertical-align: top;">
+<table class = "table0" style="width: 100%; margin-left: 3%; line-height: 18pt; border: none;">
+    <tr >
+        <td style="text-align: left; padding: 0; vertical-align: top; border: none;">
             УТВЕРДЖДАЮ<br>
             <strong>Заказчик</strong><br>
             <?php echo $zakazchik; ?><br>
             Проректор по экономике и материально-<br>техническому развитию
         </td>
-        <td style="text-align: right; padding: 0; vertical-align: top; width: 50%;">
+        <td style="text-align: right; padding: 0; vertical-align: top; width: 50%; border: none;">
             СОГЛАСОВАНО<br>
             <strong>Подрядчик</strong><br>
             <?php echo $podryadchik; ?><br>
@@ -172,14 +176,14 @@ tr:hover {
         </td>
     </tr>
 </table>
-
-<table style="width: 100%; margin-left: 3%; border: none  !important; line-height: 18pt; margin-top: 20px;" border = "0">
+ 
+<table class = "table0" style="width: 100%; margin-left: 3%; line-height: 18pt; margin-top: 20px; border: none;">
     <tr>
-        <td style="text-align: left; padding: 0; vertical-align: top;">
+        <td style="text-align: left; padding: 0; vertical-align: top;  border: none;">
             ______________<br>
             <div style="text-align: center; margin-top: 8px;">м.п.</div>
         </td>
-        <td style="text-align: right; padding: 0; vertical-align: top; width: 50%;">
+        <td style="text-align: right; padding: 0; vertical-align: top; width: 50%; border: none;">
             ______________ А.В. Лукьянович<br>
             <div style="text-align: center; margin-top: 8px;">м.п.</div>
         </td>
