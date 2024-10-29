@@ -153,6 +153,7 @@ tr:hover {
     margin-right:80px;
     " 
     >
+    
     Приложение № <br> К договору № <br> От</div>
     <br>
    <table style="width: 100%; margin-left: 3%; border: none !important; line-height: 18pt;" border = "0">
