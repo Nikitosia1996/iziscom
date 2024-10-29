@@ -35,6 +35,9 @@ let selectZakazchik = $('#zakazchik');
 let selectPodryadchik = $('#podryadchik');
 let inputDateNachRab = $('#dateNachRab');
 let inputDateOkonchRab = $('#dateOkonchRab');
+let textAreaNaimRabot = $('#textAreaNaimRabot');
+let textAreaCel = $('#textAreaCel');
+let textAreaMestoObj = $('#textAreaMestoObj');
 let divSaveSmeta = $('#divSaveSmeta');
 let smetaName = $('#smetaName');
 let buildingType = $('#buildingType');
@@ -112,6 +115,46 @@ let toggleZdDopUslrazrab = $('#toggleZdDopUslrazrab');
 let toggleZdDopUslrazrabrek = $('#toggleZdDopUslrazrabrek');
 
 
+
+let selectCalc1 = $('#selectCalc1');
+let selectCalc2 = $('#selectCalc2');
+let selectCalc3 = $('#selectCalc3');
+let selectCalc4 = $('#selectCalc4');
+let selectCalc5 = $('#selectCalc5');
+let selectCalc6 = $('#selectCalc6');
+let selectCalc7 = $('#selectCalc7');
+let selectCalc8 = $('#selectCalc8');
+
+
+let select2Calc1 = $('#select2Calc1');
+let select2Calc2 = $('#select2Calc2');
+let select2Calc3 = $('#select2Calc3');
+let select2Calc4 = $('#select2Calc4');
+let select2Calc5 = $('#select2Calc5');
+let select2Calc6 = $('#select2Calc6');
+let select2Calc7 = $('#select2Calc7');
+let select2Calc8 = $('#select2Calc8');
+
+let inputCalc1 = $('#inputCalc1');
+let inputCalc2 = $('#inputCalc2');
+let inputCalc3 = $('#inputCalc3');
+let inputCalc4 = $('#inputCalc4');
+let inputCalc5 = $('#inputCalc5');
+let inputCalc6 = $('#inputCalc6');
+let inputCalc7 = $('#inputCalc7');
+let inputCalc8 = $('#inputCalc8');
+
+
+let input3Calc1 = $('#input3Calc1');
+let input3Calc2 = $('#input3Calc2');
+let input3Calc3 = $('#input3Calc3');
+let input3Calc4 = $('#input3Calc4');
+let input3Calc5 = $('#input3Calc5');
+let input3Calc6 = $('#input3Calc6');
+let input3Calc7 = $('#input3Calc7');
+let input3Calc8 = $('#input3Calc8');
+
+
 async function getSmeta(id) {
     idActiveSmeta = id;
     const selectedItem = smetaList.find(item => item.id == id);
@@ -120,6 +163,9 @@ async function getSmeta(id) {
         selectPodryadchik.val(selectedItem.id_podryadchik);
         inputDateNachRab.val(selectedItem.dateNachRab);
         inputDateOkonchRab.val(selectedItem.dateOkonchRab);
+        textAreaNaimRabot.val(selectedItem.textAreaNaimRabot);
+        textAreaCel.val(selectedItem.textAreaCel);
+        textAreaMestoObj.val(selectedItem.textAreaMestoObj);
         smetaName.val(selectedItem.name);
 
 
@@ -443,22 +489,16 @@ async function getSmeta(id) {
 }
 
 async function executeFunctions() {
-    await calculateHaracterCoefficient();
+
     updateCalendarDaysFromEnd();
-    updateBuildingInfo();
+    await  updateBuildingInfo();
     await toggleCheckboxesDop();
     await toggleCheckboxesDop4();
     await toggleCheckboxesDop5();
     await toggleCheckboxesDop6();
-    await calcIshod1();
-    await calcIshod2();
-    await calcObmerWorksPart1();
-    await calcObmerWorksPart2();
-    await calcObsled1();
-    await calcObsled2();
-    await calcSosttech1();
-    await calcSosttech2();
+    await calculateHaracterCoefficient();
     await calculateK();
+
 }
 
 function saveSmeta() {
@@ -466,6 +506,7 @@ function saveSmeta() {
     let selectedButrad;
     let selectedObsled;
     let selectedSosttech;
+
     $(".kat_sl_rab_sosttech").each(function() {
         if ($(this).prop('checked')) {
             selectedSosttech = $(this).val();
@@ -602,6 +643,49 @@ function saveSmeta() {
         conval69: $('#conval69').val()
     }
 
+    //
+    // let calculationObject = {
+    //
+    //     selectCalc1: selectCalc1.val(),
+    //     selectCalc2: selectCalc2.val(),
+    //     selectCalc3: selectCalc3.val(),
+    //     selectCalc4: selectCalc4.val(),
+    //     selectCalc5: selectCalc5.val(),
+    //     selectCalc6: selectCalc6.val(),
+    //     selectCalc7: selectCalc7.val(),
+    //     selectCalc8: selectCalc8.val(),
+    //
+    //
+    //     inputCalc1: inputCalc1.val(),
+    //     inputCalc2: inputCalc2.val(),
+    //     inputCalc3: inputCalc3.val(),
+    //     inputCalc4: inputCalc4.val(),
+    //     inputCalc5: inputCalc5.val(),
+    //     inputCalc6: inputCalc6.val(),
+    //     inputCalc7: inputCalc7.val(),
+    //     inputCalc8: inputCalc8.val(),
+    //
+    //
+    //     select2Calc1: select2Calc1.val(),
+    //     select2Calc2: select2Calc2.val(),
+    //     select2Calc3: select2Calc3.val(),
+    //     select2Calc4: select2Calc4.val(),
+    //     select2Calc5: select2Calc5.val(),
+    //     select2Calc6: select2Calc6.val(),
+    //     select2Calc7: select2Calc7.val(),
+    //     select2Calc8: select2Calc8.val(),
+    //
+    //
+    //     input3Calc1: input3Calc1.val(),
+    //     input3Calc2: input3Calc2.val(),
+    //     input3Calc3: input3Calc3.val(),
+    //     input3Calc4: input3Calc4.val(),
+    //     input3Calc5: input3Calc5.val(),
+    //     input3Calc6: input3Calc6.val(),
+    //     input3Calc7: input3Calc7.val(),
+    //     input3Calc8: input3Calc8.val(),
+    // }
+
     let smetaForPhp = {
         id: idActiveSmeta?.toString(),
         name: smetaName.val(),
@@ -609,6 +693,9 @@ function saveSmeta() {
         id_podryadchik: selectPodryadchik.val(),
         dateNachRab: inputDateNachRab.val(),
         dateOkonchRab: inputDateOkonchRab.val(),
+        textAreaNaimRabot: textAreaNaimRabot.val(),
+        textAreaCel: textAreaCel.val(),
+        textAreaMestoObj: textAreaMestoObj.val(),
         haractObject: JSON.stringify(haractObject),
         ishod: JSON.stringify(ishod),
         obmerObject: JSON.stringify(obmerObject),
@@ -624,6 +711,9 @@ function saveSmeta() {
         id_podryadchik: selectPodryadchik.val(),
         dateNachRab: inputDateNachRab.val(),
         dateOkonchRab: inputDateOkonchRab.val(),
+        textAreaNaimRabot: textAreaNaimRabot.val(),
+        textAreaCel: textAreaCel.val(),
+        textAreaMestoObj: textAreaMestoObj.val(),
         haractObject: haractObject,
         ishod: ishod,
         obmerObject: obmerObject,
@@ -1310,9 +1400,9 @@ async function calcCalkulation() {
     document.getElementById('harakteristikaObjectCalc').innerText = calculacia;
     document.getElementById('calcalcres').innerText = calculacia;
     calculateK();
-
-
 }
+
+
 
 $(".trud").on('change', () => {
     calcCalkulation();

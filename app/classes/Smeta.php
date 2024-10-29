@@ -9,6 +9,9 @@ class Smeta
     private $id_podryadchik;
     private $dateNachRab;
     private $dateOkonchRab;
+    private $textAreaNaimRabot;
+    private $textAreaCel;
+    private $textAreaMestoObj;
     private $haractObject;
     private $ishodValObject;
     private $obmerObject;
@@ -32,7 +35,7 @@ class Smeta
      * @param $obsledObject
      * @param $sostTechObject
      */
-    public function __construct($id, $name, $id_zakazchik, $id_podryadchik, $dateNachRab, $dateOkonchRab, $haractObject, $ishodValObject, $obmerObject, $obsledObject, $sostTechObject, $calculationObject)
+    public function __construct($id, $name, $id_zakazchik, $id_podryadchik, $dateNachRab, $dateOkonchRab,$textAreaNaimRabot,$textAreaCel,$textAreaMestoObj, $haractObject, $ishodValObject, $obmerObject, $obsledObject, $sostTechObject, $calculationObject)
     {
         $this->id = $id;
         $this->name = $name;
@@ -40,6 +43,9 @@ class Smeta
         $this->id_podryadchik = $id_podryadchik;
         $this->dateNachRab = $dateNachRab;
         $this->dateOkonchRab = $dateOkonchRab;
+        $this->textAreaNaimRabot = $textAreaNaimRabot;
+        $this->textAreaCel = $textAreaCel;
+        $this->textAreaMestoObj = $textAreaMestoObj;
         $this->haractObject = $haractObject;
         $this->ishodValObject = $ishodValObject;
         $this->obmerObject = $obmerObject;
@@ -128,6 +134,45 @@ class Smeta
     {
         $this->dateNachRab = $dateNachRab;
     }
+
+
+
+
+    public function getTextAreaNaimRabot()
+    {
+        return $this->textAreaNaimRabot;
+    }
+
+    public function setTextAreaNaimRabot($textAreaNaimRabot): void
+    {
+        $this->textAreaNaimRabot = $textAreaNaimRabot;
+    }
+
+
+    public function getTextAreaCel()
+    {
+        return $this->textAreaCel;
+    }
+
+    public function setTextAreaCel($textAreaCel): void
+    {
+        $this->textAreaCel = $textAreaCel;
+    }
+
+
+
+
+    public function getTextAreaMestoObj()
+    {
+        return $this->textAreaMestoObj;
+    }
+
+    public function setTextAreaMestoObj($textAreaMestoObj): void
+    {
+        $this->textAreaMestoObj = $textAreaMestoObj;
+    }
+
+
 
     /**
      * @return mixed
@@ -246,6 +291,9 @@ class Smeta
             'id_podryadchik' => $this->id_podryadchik,
             'dateNachRab' => $this->dateNachRab,
             'dateOkonchRab' => $this->dateOkonchRab,
+            'textAreaNaimRabot' => $this->textAreaNaimRabot,
+            'textAreaCel' => $this->textAreaCel,
+            'textAreaMestoObj' => $this->textAreaMestoObj,
             'haractObject' => $this->haractObject->toJson(),
             'ishod' => $this->ishodValObject->toJson(),
             'obmer' => $this->obmerObject->toJson(),

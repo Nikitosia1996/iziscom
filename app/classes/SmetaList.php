@@ -52,17 +52,17 @@ class SmetaList
         return null;
     }
 
-    public function pushSmeta($name, $id_zakazchik, $id_podryadchik,$dateNachRab,$dateOkonchRab){
-        $sql = "INSERT INTO smets (`name`, `id_zakazchik`, `id_podryadchik`, `date_nach_rab`, `date_okonch_rab`) VALUES ('$name', '$id_zakazchik', '$id_podryadchik', '$dateNachRab', '$dateOkonchRab')";
+    public function pushSmeta($name, $id_zakazchik, $id_podryadchik,$dateNachRab,$dateOkonchRab, $textAreaNaimRabot, $textAreaCel, $textAreaMestoObj){
+        $sql = "INSERT INTO smets (`name`, `id_zakazchik`, `id_podryadchik`, `date_nach_rab`, `date_okonch_rab`, textAreaNaimRabot , textAreaCel, textAreaMestoObj) VALUES ('$name', '$id_zakazchik', '$id_podryadchik', '$dateNachRab', '$dateOkonchRab', '$textAreaNaimRabot', '$textAreaCel', '$textAreaMestoObj')";
         if (mysqli_query($connectionDB->con, $sql)) {
             $insertedId = mysqli_insert_id($connectionDB->con);
         }
         return $insertedId;
     }
 
-    public function updateSmetaInDB($con, $id, $id_zakazchik, $id_podryadchik,$dateNachRab,$dateOkonchRab)
+    public function updateSmetaInDB($con, $id, $id_zakazchik, $id_podryadchik,$dateNachRab,$dateOkonchRab, $textAreaNaimRabot, $textAreaCel, $textAreaMestoObj)
     {
-        $sql = "update smets set `id_zakazchik`='$id_zakazchik', `id_podryadchik`='$id_podryadchik', `date_nach_rab`='$dateNachRab', `date_okonch_rab`='$dateOkonchRab'
+        $sql = "update smets set `id_zakazchik`='$id_zakazchik', `id_podryadchik`='$id_podryadchik', `date_nach_rab`='$dateNachRab', `date_okonch_rab`='$dateOkonchRab' , textAreaNaimRabot = '$textAreaNaimRabot', textAreaCel = '$textAreaCel', textAreaMestoObj = '$textAreaMestoObj'
             where id_smeta = '$id'";
         mysqli_query($connectionDB->con, $sql);
         return $id;
@@ -80,7 +80,7 @@ class SmetaList
 ";
         $result = mysqli_query($con, $sql);
         while ($row = mysqli_fetch_assoc($result)) {
-            $smeta = new Smeta($row['id_sm'], $row['name'], $row['id_zakazchik'], $row['id_podryadchik'], $row['date_nach_rab'],$row['date_okonch_rab'],
+            $smeta = new Smeta($row['id_sm'], $row['name'], $row['id_zakazchik'], $row['id_podryadchik'], $row['date_nach_rab'],$row['date_okonch_rab'], $row['textAreaNaimRabot'], $row['textAreaCel'], $row['textAreaMestoObj'],
                 new HaractObject($row['id_haract_object'],
                     $row['zdanie'],
                     $row['type_zdanie'],

@@ -30,7 +30,10 @@ if (isset($TOKEN)) {
     <title>Админ панель</title>
 
     <?php include "app/elements/links.php"; ?>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/docx/7.3.0/docx.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </head>
 
 <body>

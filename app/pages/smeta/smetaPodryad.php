@@ -298,7 +298,7 @@ echo "<script>
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         margin-bottom: 50px;
         z-index: 999;
-        margin-top: 70px;
+        margin-top: 10px;
     }
     .hr{
         z-index: 1;
@@ -2321,6 +2321,7 @@ echo "<script>
             sumIshod = 0;
         } else {
             sumIshod =  Vdiv100 * k18101 * koefIshod * koefIshod2 * b14Value * k18ob * ki212 * koefHarackCheckb;
+            $('#sborIshodnihDannih').html(sumIshod.toFixed(3));
             console.log(sumIshod + " =  koefIshod: " + koefIshod + " koefIshod2: " + koefIshod2 + " costwork14: " + b14Value + " K18ob:" + k18ob + " ki212: " + ki212);
         }
 
@@ -2329,6 +2330,7 @@ echo "<script>
             sumObmer = 0;
         } else {
             sumObmer = koefObmerWork1 * koefObmerWork2 * b14Value * k18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222* koefHarackCheckb;
+            $('#obmerRaboty').html(sumObmer.toFixed(3));
             console.log(sumObmer + " =  koefObmerWork1: " + koefObmerWork1 + " koefObmerWork2: " + koefObmerWork2 + " K18ob: " + k18ob + " obmerDop1:" + obmerDop1 + " obmerDop2: " + obmerDop2 + " Vdiv100: " + Vdiv100 + " k18101: " + k18101 + " ki222: " + ki222);
         }
 
@@ -2336,6 +2338,7 @@ echo "<script>
             sumObsled = 0;
         } else {
             sumObsled = koefObsled1 * koefObsled2 * b14Value * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223* koefHarackCheckb;
+            $('#obsledRab').html(sumObsled.toFixed(3));
             console.log(sumObsled + " =  koefObsled1: " + koefObsled1 + " koefObsled2: " + koefObsled2 + " K18ob: " + k18ob + " obsledDop1:" + obsledDop1 + " obsledDop2: " + obsledDop2 + " Vdiv100: " + Vdiv100 + " k18101: " + k18101 + " ki223: " + ki223);
         }
 
@@ -2343,6 +2346,7 @@ echo "<script>
             sumSosttech = 0;
         } else {
             sumSosttech = koefSosttech1 * koefSosttech2 * b14Value * k18ob * Vdiv100 * k18101 * ki242* koefHarackCheckb;
+            $('#sostTech').html(sumSosttech.toFixed(3));
             console.log(sumSosttech + " =  koefSosttech1: " + koefSosttech1 + " koefSosttech2: " + koefSosttech2 + " costwork14: " + b14Value + " K18ob:" + k18ob + " Vdiv100: " + Vdiv100 + " Vdiv100: " + Vdiv100 + " k18101: " + k18101 + " ki223: " + ki223);
         }
         fullSumma = 0; //+ parseFloat(sumIshod) + parseFloat(sumObmer) + parseFloat(sumObsled) + parseFloat(sumSosttech) + parseFloat(sumRedaktor);
@@ -2471,16 +2475,16 @@ let koefHarackCheckb = 1;
         }
 
 
+        await  updateBuildingInfo();
+        await calcIshod1();
+        await calcIshod2();
+        await   calcObmerWorksPart1();
+        await calcObmerWorksPart2();
+        await calcObsled1();
+        await calcObsled2();
+        await  calcSosttech1();
+        await  calcSosttech2();
 
-        calcIshod1();
-        calcIshod2();
-         calcObmerWorksPart1();
-         calcObmerWorksPart2();
-         calcObsled1();
-         calcObsled2();
-         calcSosttech1();
-         calcSosttech2();
-        updateBuildingInfo();
         await calculateK();
     }
 
@@ -2708,7 +2712,7 @@ let koefHarackCheckb = 1;
 
     })
 
-    function updateBuildingInfo() {
+  async  function updateBuildingInfo() {
         etazh = parseInt(document.getElementById('etazh').value) || 0;
         const visotazdani = parseFloat(document.getElementById('visotazdani').value) || 0;
         const visotapola = parseFloat(document.getElementById('visotapola').value) || 0;
@@ -2811,6 +2815,7 @@ let koefHarackCheckb = 1;
             }
         }
         console.log(hardZdanie + "сложность здания");
+         calculateK();
     }
 
 
@@ -3142,7 +3147,9 @@ let koefHarackCheckb = 1;
             }
         });
 
-        await calcIshod2();
+        calcIshod1();
+        calcIshod2();
+        await calculateK();
     }
 
 
@@ -3459,7 +3466,7 @@ let koefHarackCheckb = 1;
                     await calculateK();
                     $('#modalPeremen').modal('hide');
                     updateCalendarDaysFromEnd();
-                    updateBuildingInfo();
+                    await  updateBuildingInfo();
                     await toggleCheckboxesDop();
                     await toggleCheckboxesDop4();
                     await toggleCheckboxesDop5();
@@ -3665,16 +3672,45 @@ let koefHarackCheckb = 1;
                 zdvisValueSlRab: zdvisValueSlRab
             },
             success: function (response) {
-                var WinPrint = window.open('', '', 'left=50,top=50,width=1200,height=860,toolbar=0,scrollbars=1,status=0');
-                WinPrint.document.write('<style>@page {\n' +
-                    'margin: 1rem;\n' +
-                    '}</style>');
-                WinPrint.document.write('<br/>');
-                WinPrint.document.write(response);
-                WinPrint.document.close();
-                WinPrint.focus();
-                WinPrint.print();
-                WinPrint.close();
+
+
+                function downloadAsWord(response) {
+                    // Create a Blob object with the HTML content and a Word-related MIME type
+                    const blob = new Blob(['\ufeff', '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/1999/xhtml">',
+                        '<head><meta charset="utf-8" />',
+                        '<title>Report</title>',
+                        '<style>@page { margin: 1rem; }</style>',
+                        '</head>',
+                        '<body>', response, '</body>',
+                        '</html>'
+                    ], { type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });
+
+                    // Create an anchor element with a download attribute
+                    const a = document.createElement('a');
+                    a.href = window.URL.createObjectURL(blob);
+                    a.download = 'report.doc';
+
+                    // Trigger a click event on the anchor element to download the Blob as a Word document
+                    a.click();
+                }
+
+// Your existing code to generate the response
+// ...
+
+// Call the downloadAsWord function instead of the print function
+                downloadAsWord(response);
+
+
+                // var WinPrint = window.open('', '', 'left=50,top=50,width=1200,height=860,toolbar=0,scrollbars=1,status=0');
+                // WinPrint.document.write('<style>@page {\n' +
+                //     'margin: 1rem;\n' +
+                //     '}</style>');
+                // WinPrint.document.write('<br/>');
+                // WinPrint.document.write(response);
+                // WinPrint.document.close();
+                // WinPrint.focus();
+                // WinPrint.print();
+                // WinPrint.close();
 
                 resolve();
             }

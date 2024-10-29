@@ -155,19 +155,35 @@ tr:hover {
     >
     Приложение № <br> К договору № <br> От</div>
     <br>
-    <div class="container" style="margin-left: 3%;">
-    <div class="left-block" style="text-align: left; line-height: 18pt; padding-left: 0px;">
-        УТВЕРЖДАЮ<br><strong>Заказчик</strong><br>'.$zakazchik.'<br>
-        Проректор по экономике и материально-<br>техническому развитию
-    </div>
-    <div class="right-block" style="text-align: left; line-height: 18pt; margin-left:120px;">
-        СОГЛАСОВАНО<br><strong>Подрядчик</strong><br>'.$podryadchik.'<br><p>Директор</p>
-    </div>
-</div>
-<div class="container" style="margin-left: 3%;">
-    <div class="left-block" style="text-align: left; line-height: 18pt; padding-left: 0px; ">______________<div class="center-text" style="margin-left: 40px; margin-top: 8px; margin-bottom: 8px;" >м.п.</div></div>
-    <div class="right-block" style="text-align: left; line-height: 18pt; margin-left:120px;">______________А.В. Лукьянович<div class="center-text" style="margin-left: 40px; margin-top: 8px; margin-bottom: 8px;" >м.п.</div></div>
-    </div><br><br>  
+   <table style="width: 100%; margin-left: 3%; border: none !important; line-height: 18pt;" border = "0">
+    <tr>
+        <td style="text-align: left; padding: 0; vertical-align: top;">
+            УТВЕРДЖДАЮ<br>
+            <strong>Заказчик</strong><br>
+            <?php echo $zakazchik; ?><br>
+            Проректор по экономике и материально-<br>техническому развитию
+        </td>
+        <td style="text-align: right; padding: 0; vertical-align: top; width: 50%;">
+            СОГЛАСОВАНО<br>
+            <strong>Подрядчик</strong><br>
+            <?php echo $podryadchik; ?><br>
+            <p>Директор</p>
+        </td>
+    </tr>
+</table>
+
+<table style="width: 100%; margin-left: 3%; border: none  !important; line-height: 18pt; margin-top: 20px;" border = "0">
+    <tr>
+        <td style="text-align: left; padding: 0; vertical-align: top;">
+            ______________<br>
+            <div style="text-align: center; margin-top: 8px;">м.п.</div>
+        </td>
+        <td style="text-align: right; padding: 0; vertical-align: top; width: 50%;">
+            ______________ А.В. Лукьянович<br>
+            <div style="text-align: center; margin-top: 8px;">м.п.</div>
+        </td>
+    </tr>
+</table>
 <div style=" font-size: 14pt;
     position: relative;
     text-align: center;

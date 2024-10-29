@@ -123,6 +123,9 @@ $zaklSostStr = isset($sostTechObject['selectedSosttech']) ? $sostTechObject['sel
 
 $id_zakazchik = isset($_POST['id_zakazchik']) ? $_POST['id_zakazchik'] : null;
 $id_podryadchik = isset($_POST['id_podryadchik']) ? $_POST['id_podryadchik'] : null;
+$textAreaNaimRabot = isset($_POST['textAreaNaimRabot']) ? $_POST['textAreaNaimRabot'] : null;
+$textAreaCel = isset($_POST['textAreaCel']) ? $_POST['textAreaCel'] : null;
+$textAreaMestoObj = isset($_POST['textAreaMestoObj']) ? $_POST['textAreaMestoObj'] : null;
 if ($_POST['dateNachRab'] === "")
     $dateNachRab = "2000-01-01";
 else {
@@ -141,7 +144,7 @@ $smetaName = $_POST['name'];
 if (isset($_POST['id'])) {
 
     $id = $_POST['id'];
-    $sql = "update smets set  `name` = '$smetaName',`id_zakazchik`='$id_zakazchik', `id_podryadchik`='$id_podryadchik', `date_nach_rab`='$dateNachRab', `date_okonch_rab`='$dateOkonchRab'
+    $sql = "update smets set  `name` = '$smetaName',`id_zakazchik`='$id_zakazchik', `id_podryadchik`='$id_podryadchik', `date_nach_rab`='$dateNachRab', `date_okonch_rab`='$dateOkonchRab', textAreaNaimRabot = '$textAreaNaimRabot', textAreaCel = '$textAreaCel', textAreaMestoObj = '$textAreaMestoObj'  
             where id_smeta = '$id'";
     mysqli_query($connectionDB->con, $sql)  or mysqli_error($connectionDB->con);
 
@@ -276,7 +279,7 @@ WHERE id_smeta = '$id'";
     echo $id;
 
 } else {
-    $sql = "INSERT INTO smets (`name`, `id_zakazchik`, `id_podryadchik`, `date_nach_rab`, `date_okonch_rab`) VALUES ('$smetaName', '$id_zakazchik', '$id_podryadchik', '$dateNachRab', '$dateOkonchRab')";
+    $sql = "INSERT INTO smets (`name`, `id_zakazchik`, `id_podryadchik`, `date_nach_rab`, `date_okonch_rab`, textAreaNaimRabot, textAreaCel, textAreaMestoObj) VALUES ('$smetaName', '$id_zakazchik', '$id_podryadchik', '$dateNachRab', '$dateOkonchRab' , '$textAreaNaimRabot', '$textAreaCel', '$textAreaMestoObj')";
     if (mysqli_query($connectionDB->con, $sql)) {
         $insertedId = mysqli_insert_id($connectionDB->con);
 
