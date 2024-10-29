@@ -513,7 +513,11 @@ foreach ($arrTables as $item) {
         $sheet->getStyle('N' . $startedCell . ':O' . $endCell)->applyFromArray($styleArray);
         $sheet->getStyle('E' . $startedCell . ':E' . $endCell)->getFont()->setSize(11);
         $sheet->getStyle('G' . $startedCell . ':G' . $endCell)->getFont()->setSize(11);
-
+        $sheet->mergeCells('K' . ($startedCell) . ':M' . $endCell);
+        $sheet->setCellValue("K" . ($startedCell ), "ТУТ ВСТАВЛЯТЬ ФОРМУЛУ"); ////////////////////////////////////////////////////////////////////////
+        $sheet->getStyle("K" . ($startedCell))->getAlignment()->setWrapText(true);
+        $sheet->getStyle("K" . ($startedCell))->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+        $sheet->getStyle("K" . ($startedCell))->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
 
         $startedCell = $endCell + 1;
 
