@@ -7,14 +7,14 @@ let visotapola = 1;
 let chekb1Val;
 let chekb2Val;
 let chekb3Val;
-let chekb4Val ;
+let chekb4Val;
 let chekb5Val;
-let chekb6Val ;
-let chekb7Val ;
-let chekb8Val ;
-let chekb9Val ;
-let chekb10Val ;
-let chekb11Val ;
+let chekb6Val;
+let chekb7Val;
+let chekb8Val;
+let chekb9Val;
+let chekb10Val;
+let chekb11Val;
 let chekb12Val;
 
 let arrHaractCheckb;
@@ -181,8 +181,8 @@ async function getSmeta(id) {
         $('#constructionType').val(haract.typeZdanie);
         $('#etazh').val(haract.stage);
         const allRadioZdvis = $('input[name="zdvis"]');
-        allRadioZdvis.each(function (){
-            $(this).val() === haract.radio_zdanie ? $(this).prop('checked',true) : $(this).prop('checked',false);
+        allRadioZdvis.each(function () {
+            $(this).val() === haract.radio_zdanie ? $(this).prop('checked', true) : $(this).prop('checked', false);
         });
         $('#visotazdani').val(haract.height);
         $('#obem').val(haract.obem);
@@ -506,13 +506,12 @@ function saveSmeta() {
     let selectedButrad;
     let selectedObsled;
     let selectedSosttech;
-
-    $(".kat_sl_rab_sosttech").each(function() {
+    $(".kat_sl_rab_sosttech").each(function () {
         if ($(this).prop('checked')) {
             selectedSosttech = $(this).val();
         }
     });
-    $("input[name='pasportNaZdanie']").each((item)=> {
+    $("input[name='pasportNaZdanie']").each((item) => {
         if ($(item).prop('checked')) {
             selectedButrad = $(item).val();
         }
@@ -564,7 +563,7 @@ function saveSmeta() {
         checkb11: chekb11.prop('checked') ? 1 : 0,
         checkb12: chekb12.prop('checked') ? 1 : 0,
     }
-    kat_sl_rab.each(function() {
+    kat_sl_rab.each(function () {
         if ($(this).prop('checked')) {
             selectedObmerKatSl = $(this).val();
         }
@@ -592,7 +591,7 @@ function saveSmeta() {
         conval449: $('#conval449').val()
 
     }
-    kat_sl_rab_obsled.each(function() {
+    kat_sl_rab_obsled.each(function () {
         if ($(this).prop('checked')) {
             selectedObsled = $(this).val();
         }
@@ -642,49 +641,6 @@ function saveSmeta() {
         conval68: $('#conval68').val(),
         conval69: $('#conval69').val()
     }
-
-    //
-    // let calculationObject = {
-    //
-    //     selectCalc1: selectCalc1.val(),
-    //     selectCalc2: selectCalc2.val(),
-    //     selectCalc3: selectCalc3.val(),
-    //     selectCalc4: selectCalc4.val(),
-    //     selectCalc5: selectCalc5.val(),
-    //     selectCalc6: selectCalc6.val(),
-    //     selectCalc7: selectCalc7.val(),
-    //     selectCalc8: selectCalc8.val(),
-    //
-    //
-    //     inputCalc1: inputCalc1.val(),
-    //     inputCalc2: inputCalc2.val(),
-    //     inputCalc3: inputCalc3.val(),
-    //     inputCalc4: inputCalc4.val(),
-    //     inputCalc5: inputCalc5.val(),
-    //     inputCalc6: inputCalc6.val(),
-    //     inputCalc7: inputCalc7.val(),
-    //     inputCalc8: inputCalc8.val(),
-    //
-    //
-    //     select2Calc1: select2Calc1.val(),
-    //     select2Calc2: select2Calc2.val(),
-    //     select2Calc3: select2Calc3.val(),
-    //     select2Calc4: select2Calc4.val(),
-    //     select2Calc5: select2Calc5.val(),
-    //     select2Calc6: select2Calc6.val(),
-    //     select2Calc7: select2Calc7.val(),
-    //     select2Calc8: select2Calc8.val(),
-    //
-    //
-    //     input3Calc1: input3Calc1.val(),
-    //     input3Calc2: input3Calc2.val(),
-    //     input3Calc3: input3Calc3.val(),
-    //     input3Calc4: input3Calc4.val(),
-    //     input3Calc5: input3Calc5.val(),
-    //     input3Calc6: input3Calc6.val(),
-    //     input3Calc7: input3Calc7.val(),
-    //     input3Calc8: input3Calc8.val(),
-    // }
 
     let smetaForPhp = {
         id: idActiveSmeta?.toString(),
@@ -815,7 +771,7 @@ async function calcObmerWorksPart1() {
             },
 
         }).then(response => {
-            if(response.trim().length > 0) {
+            if (response.trim().length > 0) {
                 let unparseRepsonse = JSON.parse(response);
                 ki222 = parseFloat(unparseRepsonse[1].trim());
                 koefObmerWork1 = parseFloat(unparseRepsonse[0].trim());
@@ -826,7 +782,7 @@ async function calcObmerWorksPart1() {
                 }
                 $('#obmerRaboty').html(sumObmer.toFixed(3));
 
-            }else{
+            } else {
 
             }
             resolve();
@@ -1010,7 +966,7 @@ async function calcObsled1() {
             },
 
         }).then(response => {
-            if(response.trim().length > 0) {
+            if (response.trim().length > 0) {
                 let unparseRepsonse = JSON.parse(response);
                 koefObsled1 = parseFloat(unparseRepsonse[0].trim());
                 ki223 = parseFloat(unparseRepsonse[1].trim());
@@ -1020,7 +976,8 @@ async function calcObsled1() {
                     sumObsled = koefObsled1 * koefObsled2 * b14Value * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223 * koefHarackCheckb;
                 }
                 $('#obsledRab').html(sumObsled.toFixed(3));
-            }else{}
+            } else {
+            }
             resolve();
         })
     })
@@ -1201,7 +1158,7 @@ async function calcSosttech1() {
             },
 
         }).then(response => {
-            if(response.trim().length > 0) {
+            if (response.trim().length > 0) {
                 let unparseRepsonse = JSON.parse(response);
                 koefSosttech1 = parseFloat(unparseRepsonse[0].trim());
                 ki242 = parseFloat(unparseRepsonse[1].trim());
@@ -1338,7 +1295,7 @@ $(".doljnosti_KSD").on('change', async (event) => {
     let doljnostKoef = thisTarget.options[thisTarget.options.selectedIndex].getAttribute('data-koef');
     let nextInput = thisTarget.nextElementSibling;
     let nextnextInput = nextInput.nextElementSibling;
-    if(nextnextInput.value.length === 0)
+    if (nextnextInput.value.length === 0)
         nextnextInput.value = 1;
     nextInput.value = doljnostKoef;
     await calcCalkulation()
@@ -1390,19 +1347,18 @@ async function calcCalkulation() {
     $('#tarifKoef').val(response.trim());
     calculacia = (parseFloat(response.trim()) * b14Value).toFixed(2);
 
-    truds.each(function() {
+    truds.each(function () {
         calculacia *= $(this).val() !== "0" ? parseFloat($(this).val()) : 1;
     });
 
-    kol_isps.each(function() {
+    kol_isps.each(function () {
         calculacia *= $(this).val() !== "0" ? parseFloat($(this).val()) : 1;
     });
     document.getElementById('harakteristikaObjectCalc').innerText = calculacia;
     document.getElementById('calcalcres').innerText = calculacia;
     calculateK();
+
 }
-
-
 
 $(".trud").on('change', () => {
     calcCalkulation();
@@ -1433,24 +1389,88 @@ function printExcel() {
         document.cookie = " ph3_212=" + koefIshod2 + ";";
         document.cookie = " ki212=" + ki212 + ";";
         document.cookie = " p212=" + P212 + ";";
-        //
+        let formula1 = "V/100 * PH3 * K * БС * Ki";
+        let formula2 = formula1;
+        let formula3 = formula1;
 
+        if ($("#constructionType").val() === "2") {
+            formula1 += " * " + "K18102";
+            document.cookie = " K18102=" + 0.8 + ";";
+        } else {
+            document.cookie = " K18102=" + 1 + ";";
+        }
+        $(".harObj").each(function () {
+            if ($(this).prop('checked')) {
+                formula1 += " * " + $(this).attr('data-nameK');
+                formula2 += " * " + $(this).attr('data-nameK');
+                formula3 += " * " + $(this).attr('data-nameK');
+                document.cookie = " " + $(this).attr('data-nameK').replace(".", "") + "=" + $(this).attr('data-id') + ";";
+            } else {
+                document.cookie = " " + $(this).attr('data-nameK').replace(".", "") + "=" + 1 + ";";
+            }
+        })
+
+        $("#temperatureMode").children().each(function () {
+            if ($(this).prop('selected')) {
+                document.cookie = " K18205=" + $(this).attr('data-id') + ";";
+            }
+        })
+
+        $("#equipmentSaturation").children().each(function () {
+            if ($(this).prop('selected')) {
+                document.cookie = " K18206=" + $(this).attr('data-id') + ";";
+            }
+        })
+
+        $("#options").children().each(function () {
+            if ($(this).prop('selected')) {
+                document.cookie = " K18207=" + $(this).attr('data-id') + ";";
+            }
+        })
+
+        document.cookie = " formula1=" + formula1 + ";";
+        //
         document.cookie = " h3tp_222=" + koefObmerWork1 + ";";
         document.cookie = " ph3_222=" + koefObmerWork2 + ";";
         document.cookie = " ki222=" + ki222 + ";";
         document.cookie = " p222=" + P222 + ";";
-        //
+        document.cookie = " formula2=" + formula1 + ";";
 
+        //
+        if($("#toggleSelect1").prop("checked")){
+            formula2 += " * K18221";
+        }
+        if($("#toggleSelect2").prop("checked")){
+            formula2 += " * K18222";
+        }
+        if($("#povkef").prop("checked")){
+            formula2 += " * K18223";
+        }
+        if($("#sooruzhzd").prop("checked")){
+            formula2 += " * K18224";
+        }
         document.cookie = " h3tp_223=" + koefObsled1 + ";";
         document.cookie = " ph3_223=" + koefObsled2 + ";";
         document.cookie = " ki223=" + ki223 + ";";
         document.cookie = " p223=" + P223 + ";";
+        document.cookie = " formula3=" + formula2 + ";";
         //
 
+        if($("#toggleZdDopUslseism").prop("checked")){
+            formula3 += " * K18225";
+        }
+        if($("#toggleZdDopUslrazrab").prop("checked")){
+            formula3 += " * K18226";
+        }
+        if($("#toggleZdDopUslrazrabrek").prop("checked")){
+            formula3 += " * K18227";
+        }
         document.cookie = " h3tp_242=" + koefSosttech1 + ";";
         document.cookie = " ph3_242=" + koefSosttech2 + ";";
         document.cookie = " ki242=" + ki242 + ";";
         document.cookie = " p242=" + P242 + ";";
+        document.cookie = " formula4=" + formula3 + ";";
+
         //
 
         document.cookie = " toggleZd71=" + toggleZd71 + ";";
@@ -1494,7 +1514,7 @@ function printCalculExcel() {
         document.cookie = " podradchik=" + selectPodryadchik.find('option:selected').text() + ";";
         let count = 0;
         $('.trud').each((index, item) => {
-            if($(item).val().length > 0){
+            if ($(item).val().length > 0) {
                 let sel = $(item).prev('select').find('option:selected').text();
                 document.cookie = "name_rab" + (index + 1) + "=" + sel + ";";
                 document.cookie = "trud" + (index + 1) + "=" + $(item).val() + ";";
@@ -1504,7 +1524,7 @@ function printCalculExcel() {
         })
 
         $('.tarif').each((index, item) => {
-            if($(item).val().length > 0){
+            if ($(item).val().length > 0) {
                 let sel = $(item).prev('select').find('option:selected').text();
                 let inp = $(item).next('input').val();
                 document.cookie = "doljnost" + (index + 1) + "=" + sel + ";";
@@ -1520,7 +1540,7 @@ function printCalculExcel() {
 
         resolve();
     }).then(() => {
-       location.href = "calculExcel.php";
+        location.href = "calculExcel.php";
     })
 
 }
@@ -1529,8 +1549,7 @@ function printDogovor() {
     $.ajax({
         url: 'printDogovor.php',
         type: 'POST',
-        data: {
-        },
+        data: {},
         success: function (response) {
             var WinPrint = window.open('', '', 'left=50,top=50,width=1200,height=860,toolbar=0,scrollbars=1,status=0');
             WinPrint.document.write('<style>@page {\n' +
@@ -1554,8 +1573,7 @@ function printAkt() {
     $.ajax({
         url: 'printAkt.php',
         type: 'POST',
-        data: {
-        },
+        data: {},
         success: function (response) {
             var WinPrint = window.open('', '', 'left=50,top=50,width=1200,height=860,toolbar=0,scrollbars=1,status=0');
             WinPrint.document.write('<style>@page {\n' +
@@ -1573,6 +1591,7 @@ function printAkt() {
 
     })
 }
+
 ///////////////////////////////////////////////////////////////////////////
 
 

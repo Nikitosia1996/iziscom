@@ -23,6 +23,23 @@ $het = $_COOKIE['het'];
 $k18101 = $_COOKIE['k18101'];
 $k18ob = $_COOKIE['k18ob'];
 
+$k18102 = $_COOKIE['K18102'];
+$k18205 = $_COOKIE['K18205'];
+$k18206 = $_COOKIE['K18206'];
+$k18207 = $_COOKIE['K18207'];
+$k18208 = $_COOKIE['K18208'];
+$k18209 = $_COOKIE['K18209'];
+$k18210 = $_COOKIE['K18210'];
+$k18211 = $_COOKIE['K18211'];
+$k18212 = $_COOKIE['K18212'];
+$k18213 = $_COOKIE['K18213'];
+$k18214 = $_COOKIE['K18214'];
+$k18215 = $_COOKIE['K18215'];
+$k18216 = $_COOKIE['K18216'];
+$k18217 = $_COOKIE['K18217'];
+$k18218 = $_COOKIE['K18218'];
+$k18220 = $_COOKIE['K18220'];
+
 $fullSumma = $_COOKIE['fullSumma'];
 
 class Table
@@ -51,10 +68,10 @@ class Table
 
 
 
-$isSborIshodnihDannihChecked = new Table("Сбор исходных данных", $_COOKIE['chacked1'], $_COOKIE['h3tp_212'], $_COOKIE['ki212'], $_COOKIE['p212'], $_COOKIE['ph3_212'], $_COOKIE['sumIshod'], "формула1");
-$isObmerRabotyChecked = new Table("Обмерные работы", $_COOKIE['chacked2'], $_COOKIE['h3tp_222'], $_COOKIE['ki222'], $_COOKIE['p222'], $_COOKIE['ph3_222'], $_COOKIE['sumObmer'], "формула2");
-$isObsledRabChecked = new Table("Обследовательские работы", $_COOKIE['chacked3'], $_COOKIE['h3tp_223'], $_COOKIE['ki223'], $_COOKIE['p223'], $_COOKIE['ph3_223'], $_COOKIE['sumObsled'], "формула3");
-$isSostTechOtchetCheck = new Table("Составление технического отчета ", $_COOKIE['chacked4'], $_COOKIE['h3tp_242'], $_COOKIE['ki242'], $_COOKIE['p242'], $_COOKIE['ph3_242'], $_COOKIE['sumSosttech'], "формула4");
+$isSborIshodnihDannihChecked = new Table("Сбор исходных данных", $_COOKIE['chacked1'], $_COOKIE['h3tp_212'], $_COOKIE['ki212'], $_COOKIE['p212'], $_COOKIE['ph3_212'], $_COOKIE['sumIshod'], $_COOKIE['formula1']);
+$isObmerRabotyChecked = new Table("Обмерные работы", $_COOKIE['chacked2'], $_COOKIE['h3tp_222'], $_COOKIE['ki222'], $_COOKIE['p222'], $_COOKIE['ph3_222'], $_COOKIE['sumObmer'], $_COOKIE['formula2']);
+$isObsledRabChecked = new Table("Обследовательские работы", $_COOKIE['chacked3'], $_COOKIE['h3tp_223'], $_COOKIE['ki223'], $_COOKIE['p223'], $_COOKIE['ph3_223'], $_COOKIE['sumObsled'], $_COOKIE['formula3']);
+$isSostTechOtchetCheck = new Table("Составление технического отчета ", $_COOKIE['chacked4'], $_COOKIE['h3tp_242'], $_COOKIE['ki242'], $_COOKIE['p242'], $_COOKIE['ph3_242'], $_COOKIE['sumSosttech'], $_COOKIE['formula4']);
 $isRedaktorIspConstr = new Table("Расчет стоимости испытания материалов", $_COOKIE['chacked5'], 0, 0, 0, 0, $_COOKIE['sumRedaktor'], "формула5");
 $isSborDann = new Table("Обследование отдельных жб конструкций", $_COOKIE['chacked6'], 0, 0, 0, 0, 0, "формула6");
 
@@ -180,6 +197,7 @@ $subscriptText->getFont()->setSubscript(true);
 $richText->addText($subscriptText);
 $richText->addText($ravno);
 $sheet->setCellValue("B16", $richText);
+$sheet->setCellValue("C16", $k18102);
 
 $richText = new RichText();
 $richText->createText("К");
@@ -237,6 +255,7 @@ $subscriptText->getFont()->setSubscript(true);
 $richText->addText($subscriptText);
 $richText->addText($ravno);
 $sheet->setCellValue("F16", $richText);
+$sheet->setCellValue("G16", $k18205);
 
 $richText = new RichText();
 $richText->createText("К");
@@ -245,6 +264,8 @@ $subscriptText->getFont()->setSubscript(true);
 $richText->addText($subscriptText);
 $richText->addText($ravno);
 $sheet->setCellValue("F17", $richText);
+$sheet->setCellValue("G17", $k18206);
+
 
 $richText = new RichText();
 $richText->createText("К");
@@ -253,6 +274,8 @@ $subscriptText->getFont()->setSubscript(true);
 $richText->addText($subscriptText);
 $richText->addText($ravno);
 $sheet->setCellValue("F18", $richText);
+$sheet->setCellValue("G18", $k18207);
+
 
 $richText = new RichText();
 $richText->createText("К");
@@ -261,6 +284,7 @@ $subscriptText->getFont()->setSubscript(true);
 $richText->addText($subscriptText);
 $richText->addText($ravno);
 $sheet->setCellValue("F19", $richText);
+$sheet->setCellValue("G19", $k18208);
 
 $richText = new RichText();
 $richText->createText("К");
@@ -269,62 +293,8 @@ $subscriptText->getFont()->setSubscript(true);
 $richText->addText($subscriptText);
 $richText->addText($ravno);
 $sheet->setCellValue("F20", $richText);
+$sheet->setCellValue("G20", $k18209);
 
-
-$sheet->setCellValue("I15", "п. 2.5.9");
-$sheet->setCellValue("I16", "п. 2.5.10");
-$sheet->setCellValue("I17", "п. 2.5.11");
-$sheet->setCellValue("I18", "п. 2.5.12");
-$sheet->setCellValue("I19", "п. 2.5.13");
-$sheet->setCellValue("I20", "п. 2.5.14");
-
-$richText = new RichText();
-$richText->createText("K");
-$subscriptText = new Run("18.210");
-$subscriptText->getFont()->setSubscript(true);
-$richText->addText($subscriptText);
-$richText->addText($ravno);
-$sheet->setCellValue("J15", $richText);
-
-$richText = new RichText();
-$richText->createText("K");
-$subscriptText = new Run("18.211");
-$subscriptText->getFont()->setSubscript(true);
-$richText->addText($subscriptText);
-$richText->addText($ravno);
-$sheet->setCellValue("J16", $richText);
-
-$richText = new RichText();
-$richText->createText("K");
-$subscriptText = new Run("18.212");
-$subscriptText->getFont()->setSubscript(true);
-$richText->addText($subscriptText);
-$richText->addText($ravno);
-$sheet->setCellValue("J17", $richText);
-
-$richText = new RichText();
-$richText->createText("K");
-$subscriptText = new Run("18.213");
-$subscriptText->getFont()->setSubscript(true);
-$richText->addText($subscriptText);
-$richText->addText($ravno);
-$sheet->setCellValue("J18", $richText);
-
-$richText = new RichText();
-$richText->createText("K");
-$subscriptText = new Run("18.214");
-$subscriptText->getFont()->setSubscript(true);
-$richText->addText($subscriptText);
-$richText->addText($ravno);
-$sheet->setCellValue("J19", $richText);
-
-$richText = new RichText();
-$richText->createText("K");
-$subscriptText = new Run("18.215");
-$subscriptText->getFont()->setSubscript(true);
-$richText->addText($subscriptText);
-$richText->addText($ravno);
-$sheet->setCellValue("J20", $richText);
 
 
 $sheet->setCellValue("I15", "п. 2.5.9");
@@ -341,6 +311,8 @@ $subscriptText->getFont()->setSubscript(true);
 $richText->addText($subscriptText);
 $richText->addText($ravno);
 $sheet->setCellValue("J15", $richText);
+$sheet->setCellValue("K15", $k18210);
+
 
 $richText = new RichText();
 $richText->createText("K");
@@ -349,6 +321,8 @@ $subscriptText->getFont()->setSubscript(true);
 $richText->addText($subscriptText);
 $richText->addText($ravno);
 $sheet->setCellValue("J16", $richText);
+$sheet->setCellValue("K16", $k18211);
+
 
 $richText = new RichText();
 $richText->createText("K");
@@ -357,6 +331,8 @@ $subscriptText->getFont()->setSubscript(true);
 $richText->addText($subscriptText);
 $richText->addText($ravno);
 $sheet->setCellValue("J17", $richText);
+$sheet->setCellValue("K17", $k18212);
+
 
 $richText = new RichText();
 $richText->createText("K");
@@ -365,6 +341,8 @@ $subscriptText->getFont()->setSubscript(true);
 $richText->addText($subscriptText);
 $richText->addText($ravno);
 $sheet->setCellValue("J18", $richText);
+$sheet->setCellValue("K18", $k18213);
+
 
 $richText = new RichText();
 $richText->createText("K");
@@ -373,6 +351,8 @@ $subscriptText->getFont()->setSubscript(true);
 $richText->addText($subscriptText);
 $richText->addText($ravno);
 $sheet->setCellValue("J19", $richText);
+$sheet->setCellValue("K19", $k18214);
+
 
 $richText = new RichText();
 $richText->createText("K");
@@ -381,6 +361,9 @@ $subscriptText->getFont()->setSubscript(true);
 $richText->addText($subscriptText);
 $richText->addText($ravno);
 $sheet->setCellValue("J20", $richText);
+$sheet->setCellValue("K20", $k18215);
+
+
 
 
 $sheet->setCellValue("M15", "п. 2.5.15");
@@ -393,19 +376,12 @@ $sheet->setCellValue("M20", "п. 1.7");
 
 $richText = new RichText();
 $richText->createText("K");
-$subscriptText = new Run("18.215");
-$subscriptText->getFont()->setSubscript(true);
-$richText->addText($subscriptText);
-$richText->addText($ravno);
-$sheet->setCellValue("N15", $richText);
-
-$richText = new RichText();
-$richText->createText("K");
 $subscriptText = new Run("18.216");
 $subscriptText->getFont()->setSubscript(true);
 $richText->addText($subscriptText);
 $richText->addText($ravno);
-$sheet->setCellValue("N16", $richText);
+$sheet->setCellValue("N15", $richText);
+$sheet->setCellValue("O15", $k18216);
 
 $richText = new RichText();
 $richText->createText("K");
@@ -413,16 +389,19 @@ $subscriptText = new Run("18.217");
 $subscriptText->getFont()->setSubscript(true);
 $richText->addText($subscriptText);
 $richText->addText($ravno);
-$sheet->setCellValue("N17", $richText);
+$sheet->setCellValue("N16", $richText);
+$sheet->setCellValue("O16", $k18217);
+
 
 $richText = new RichText();
 $richText->createText("K");
 $subscriptText = new Run("18.218");
 $subscriptText->getFont()->setSubscript(true);
 $richText->addText($subscriptText);
-$richText->createText("=");
 $richText->addText($ravno);
-$sheet->setCellValue("N18", $richText);
+$sheet->setCellValue("N17", $richText);
+$sheet->setCellValue("O17", $k18217);
+
 
 $richText = new RichText();
 $richText->createText("K");
@@ -430,7 +409,18 @@ $subscriptText = new Run("18.219");
 $subscriptText->getFont()->setSubscript(true);
 $richText->addText($subscriptText);
 $richText->addText($ravno);
+$sheet->setCellValue("N18", $richText);
+
+
+$richText = new RichText();
+$richText->createText("K");
+$subscriptText = new Run("18.220");
+$subscriptText->getFont()->setSubscript(true);
+$richText->addText($subscriptText);
+$richText->addText($ravno);
 $sheet->setCellValue("N19", $richText);
+$sheet->setCellValue("O19", $k18220);
+
 
 $sheet->setCellValue("N20", "Коп=");
 $sheet->getStyle("N20")->getFont()->setBold(true);
@@ -517,6 +507,7 @@ foreach ($arrTables as $item) {
         $sheet->getStyle('G' . $startedCell . ':G' . $endCell)->getFont()->setSize(11);
         $sheet->mergeCells('K' . ($startedCell) . ':M' . $endCell);
         $sheet->setCellValue("K" . ($startedCell ), $item->formula); ////////////////////////////////////////////////////////////////////////
+        $sheet->getStyle('K' . $startedCell)->getFont()->setSize(10);
         $sheet->getStyle("K" . ($startedCell))->getAlignment()->setWrapText(true);
         $sheet->getStyle("K" . ($startedCell))->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
         $sheet->getStyle("K" . ($startedCell))->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
