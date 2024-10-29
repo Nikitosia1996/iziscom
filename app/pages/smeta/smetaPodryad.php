@@ -2271,6 +2271,7 @@ echo "<script>
     let selectedRadio; // КАТЕГОРИЯ СЛОЖНОСТИ РАБОТ
     let koefIshod2 = 1; // КОЭФИЦИЕНТ НЗТ1 (табл.2.4)
     let costwork14; // СРЕДНИЙ РАЗРЯД  14
+    let b14Value; // b14
     let obmerDop1 = 1; // доп чекбокс2
     let obmerDop2 = 1; // доп чекбокс2
     let obsledDop1 = 1; //
@@ -2719,6 +2720,7 @@ echo "<script>
     function updateBuildingInfo() {
         etazh = parseInt(document.getElementById('etazh').value) || 0;
         const visotazdani = parseFloat(document.getElementById('visotazdani').value) || 0;
+        const visotapola = parseFloat(document.getElementById('visotapola').value) || 0;
 
         const vis6Label = document.querySelector('label[for="vis6"]');
         const vis614Label = document.querySelector('label[for="vis614"]');
@@ -2729,9 +2731,9 @@ echo "<script>
         vis614Label.classList.remove('highlight-green', 'highlight-red');
         vis14Label.classList.remove('highlight-green', 'highlight-red');
 
-        document.getElementById('vis6').checked = false;
-        document.getElementById('vis614').checked = false;
-        document.getElementById('vis14').checked = false;
+        // document.getElementById('vis6').checked = false;
+        // document.getElementById('vis614').checked = false;
+        // document.getElementById('vis14').checked = false;
 
 
 
@@ -2749,22 +2751,22 @@ echo "<script>
             vis14Label.innerText = '3)  Здание с высотой этажа свыше 6м, с краном, свыше 3 объемов, свыше 10 этажей, сооружения высотой более 60м, полный монолитный каркас';
 
 
-
-            if (visotazdani < 20) {
+                console.log (visotapola);
+            if (visotapola <= 3.6) {
                 vis6Label.classList.add('highlight-green');
                 vis614Label.classList.add('highlight-red');
                 vis14Label.classList.add('highlight-red');
-                document.getElementById('vis6').checked = true;
-            } else if (visotazdani >= 20 && visotazdani < 60) {
+               // document.getElementById('vis6').checked = true;
+            } else if ((visotazdani >= 20 && visotazdani < 60 && visotapola < 6) || (visotapola > 3.6 && visotapola < 6)) {
                 vis614Label.classList.add('highlight-green');
                 vis6Label.classList.add('highlight-red');
                 vis14Label.classList.add('highlight-red');
-                document.getElementById('vis614').checked = true;
-            } else if (visotazdani > 60) {
+             //   document.getElementById('vis614').checked = true;
+            } else if (visotazdani >= 60 || visotapola >= 6) {
                 vis14Label.classList.add('highlight-green');
                 vis6Label.classList.add('highlight-red');
                 vis614Label.classList.add('highlight-red');
-                document.getElementById('vis14').checked = true;
+              //  document.getElementById('vis14').checked = true;
             }
 
 
@@ -2782,17 +2784,17 @@ echo "<script>
                 vis6Label.classList.add('highlight-green');
                 vis14Label.classList.add('highlight-red');
                 vis614Label.classList.add('highlight-red');
-                document.getElementById('vis6').checked = true;
+               // document.getElementById('vis6').checked = true;
             } else if (visotazdani >= 6 && visotazdani < 14) {
                 vis614Label.classList.add('highlight-green');
                 vis14Label.classList.add('highlight-red');
                 vis6Label.classList.add('highlight-red');
-                document.getElementById('vis614').checked = true;
+               // document.getElementById('vis614').checked = true;
             } else if (visotazdani >= 14) {
                 vis14Label.classList.add('highlight-green');
                 vis614Label.classList.add('highlight-red');
                 vis6Label.classList.add('highlight-red');
-                document.getElementById('vis14').checked = true;
+              //  document.getElementById('vis14').checked = true;
             }
         }
 
@@ -2816,9 +2818,8 @@ echo "<script>
                     hardZdanie = 3;
                 }
             }
-
-
         }
+        console.log(hardZdanie + "сложность здания");
     }
 
 
@@ -3501,16 +3502,49 @@ echo "<script>
                 if (data.success) {
                     $('#director').val(data.params.name_director);
                     $('#iODirector').val(data.params.name_IOdirector);
-                    $('#currentIndex').val(data.params.index_current_year);
-                    $('#nextIndex').val(data.params.index_next_year);
                     $('#usnValue').val(data.params.value_usn);
                     $('#ndsValue').val(data.params.value_nds);
-                    $('#workCost').val(data.params.cost_work14);
-                    $('#costwork14').val(data.params.cost_work14);
-                    $('#znachprognoz24').val(data.params.index_current_year);
-                    $('#znachprognoz25').val(data.params.index_next_year);
-                    costwork14 = data.params.cost_work14;
-                    const b14Value = data.params.analizb14;
+                } else {
+                    console.error('Error:', data.error);
+                }
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        loadParametrPeremenFromDB();
+        loadIndexPeremenFromDB();
+    });
+
+
+
+
+    function loadIndexPeremenFromDB() {
+        let indexval=0;
+        let b14indexval=0;
+        $.ajax({
+            url: 'app/ajax/getIndexPeremen.php',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                if (data.success) {
+                    $('#currentIndex').val(parseFloat(data.params.res.replace(',', '.')).toFixed(4));
+                    $('#nextIndex').val( parseFloat(data.params.next_year_res.replace(',', '.')).toFixed(4));
+                    $('#znachprognoz24').val(data.params.res);
+                    $('#znachprognoz25').val(data.params.next_year_res);
+                    indexval = parseFloat(data.params.cmont.replace(',', '.')).toFixed(4);
+                    b14indexval = parseFloat(data.params.res.replace(',', '.')) * parseFloat(data.params.cost_work) * data.koefMonth *(1+0.5*(indexval-1));
+
+
+                    console.log ("b14Ж" + b14indexval);
+                    let formula = `${data.params.res} * ${data.params.cost_work} * ${data.koefMonth} * (1 + 0.5 * (${indexval} - 1))`;
+                    console.log("b14Ж: " + b14indexval);
+                    console.log("Формула: " + formula);
+
+                    $('#workCost').val(data.params.cost_work);
+                    $('#costwork14').val(data.params.cost_work);
+                    costwork14 = data.params.cost_work;
+                    b14Value = b14indexval.toFixed(4);
                     $('#b14Checkbox').prop('checked', b14Value !== '');
                     $('#b14Input').prop('disabled', !$('#b14Checkbox').is(':checked'));
                     if (b14Value) {
@@ -3528,8 +3562,9 @@ echo "<script>
 
     $(document).ready(function () {
         loadParametrPeremenFromDB();
-
     });
+
+
 
     function printTZ() {
         let obem = document.getElementById('obem').value;
