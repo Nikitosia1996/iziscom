@@ -565,22 +565,22 @@ echo "<script>
             <div class="pos1">
                 <div class="viborvis">
                     <label>
-                        <input data-id="1.5" value="1" type="checkbox" id="chekb1"
+                        <input class="harObj" data-id="1.5" value="1" type="checkbox" id="chekb1" data-nameK="K18.208"
                                onchange="calculateHaracterCoefficient();"> Выполнение работ с применением альпинисткого
                         снаряжения (K = 1.5)
                     </label>
                     <label>
-                        <input data-id="1.25" value="2" type="checkbox" id="chekb2"
+                        <input class="harObj" data-id="1.25" value="2" type="checkbox" id="chekb2" data-nameK="K18.209"
                                onchange="calculateHaracterCoefficient();"> Шумовые воздействия, превышающие нормативные
                         величины (K = 1.25)
                     </label>
                     <label>
-                        <input data-id="1.2" value="3" type="checkbox" id="chekb3"
+                        <input class="harObj" data-id="1.2" value="3" type="checkbox" id="chekb3" data-nameK="K18.210"
                                onchange="calculateHaracterCoefficient();"> Выполнение работ в условиях отрицательных
                         температур в период с 1 ноября - 1 мая (K = 1.2)
                     </label>
                     <label>
-                        <input data-id="1.2" value="4" type="checkbox" id="chekb4"
+                        <input class="harObj" data-id="1.2" value="4" type="checkbox" id="chekb4" data-nameK="K18.211"
                                onchange="calculateHaracterCoefficient();"> Необходимость очистки поверхности конструкций
                         от грязи, пыли, ржавчины. Расчет выполнять по калькуляции трудозатрат
                     </label>
@@ -591,22 +591,22 @@ echo "<script>
 
                 <div class="viborvis">
                     <label>
-                        <input data-id="1.2" value="5" type="checkbox" id="chekb5"
+                        <input class="harObj" data-id="1.2" value="5" type="checkbox" id="chekb5" data-nameK="K18.212"
                                onchange="calculateHaracterCoefficient();"> Необходимость использования переносных
                         источников освещения (K = 1.2)
                     </label>
                     <label>
-                        <input data-id="1.02" value="6" type="checkbox" id="chekb6"
+                        <input class="harObj" data-id="1.02" value="6" type="checkbox" id="chekb6" data-nameK="K18.213"
                                onchange="calculateHaracterCoefficient();"> Здание является памятником архитектуры (K =
                         1.02)
                     </label>
                     <label>
-                        <input data-id="1.2" value="7" type="checkbox" id="chekb7"
+                        <input class="harObj" data-id="1.2" value="7" type="checkbox" id="chekb7" data-nameK="K18.214"
                                onchange="calculateHaracterCoefficient();"> Обследование в условиях производственного
                         процесса (K = 1.2)
                     </label>
                     <label>
-                        <input data-id="1.15" value="8" type="checkbox" id="chekb8"
+                        <input class="harObj" data-id="1.15" value="8" type="checkbox" id="chekb8" data-nameK="K18.215"
                                onchange="calculateHaracterCoefficient();"> Выполнение работ с мостового крана или
                         подмостей (K = 1.15)
                     </label>
@@ -615,22 +615,22 @@ echo "<script>
             <div class="pos3">
                 <div class="viborvis">
                     <label>
-                        <input data-id="1.2" value="9" type="checkbox" id="chekb9"
+                        <input class="harObj" data-id="1.2" value="9" type="checkbox" id="chekb9" data-nameK="K18.216"
                                onchange="calculateHaracterCoefficient();"> Здание оборудовано кранами режимных групп 7К,
                         8К, (K = 1.2)
                     </label>
                     <label>
-                        <input data-id="1.2" value="10" type="checkbox" id="chekb10"
+                        <input class="harObj" data-id="1.2" value="10" type="checkbox" id="chekb10" data-nameK="K18.217"
                                onchange="calculateHaracterCoefficient();"> Конструкции, усиленные по ранее разработанным
                         проектам (K = 1.2)
                     </label>
                     <label>
-                        <input data-id="0.7" value="11" type="checkbox" id="chekb11"
+                        <input class="harObj" data-id="0.7" value="11" type="checkbox" id="chekb11" data-nameK="K18.218"
                                onchange="calculateHaracterCoefficient();"> Использование ранее выполненных обследований
                         не более 3 лет назад (K = 0.7)
                     </label>
                     <label>
-                        <input data-id="1.35" value="12" type="checkbox" id="chekb12"
+                        <input class="harObj" data-id="1.35" value="12" type="checkbox" id="chekb12" data-nameK="K18.220"
                                onchange="calculateHaracterCoefficient();"> Срочное выполнение обмерно-обследовательских
                         работ (K <= 1.35)
                     </label>
