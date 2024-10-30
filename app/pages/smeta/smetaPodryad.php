@@ -2986,12 +2986,10 @@ let koefHarackCheckb = 1;
         }
 
     }
-
     async function toggleSelect(toggleId, selectContainerId, optionsId) {
         const toggleSelect = document.getElementById(toggleId);
         const selectContainer = document.getElementById(selectContainerId);
         const optionsSelect = document.getElementById(optionsId);
-
         if (toggleSelect.checked) {
             selectContainer.classList.remove('hidden');
             optionsSelect.disabled = false;
