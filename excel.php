@@ -206,6 +206,7 @@ $subscriptText->getFont()->setSubscript(true);
 $richText->addText($subscriptText);
 $richText->addText($ravno);
 $sheet->setCellValue("B17", $richText);
+$sheet->setCellValue("C17", "1");
 
 $richText = new RichText();
 $richText->createText("К");
@@ -223,6 +224,7 @@ $subscriptText->getFont()->setSubscript(true);
 $richText->addText($subscriptText);
 $richText->addText($ravno);
 $sheet->setCellValue("B19", $richText);
+$sheet->setCellValue("C19", "1");
 
 $richText = new RichText();
 $richText->createText("К");
@@ -231,6 +233,7 @@ $subscriptText->getFont()->setSubscript(true);
 $richText->addText($subscriptText);
 $richText->addText($ravno);
 $sheet->setCellValue("B20", $richText);
+$sheet->setCellValue("C20", "1");
 
 
 $sheet->setCellValue("E15", "п. 2.5.3");
@@ -247,6 +250,7 @@ $subscriptText->getFont()->setSubscript(true);
 $richText->addText($subscriptText);
 $richText->addText($ravno);
 $sheet->setCellValue("F15", $richText);
+$sheet->setCellValue("G15", "1");
 
 $richText = new RichText();
 $richText->createText("К");
@@ -410,6 +414,7 @@ $subscriptText->getFont()->setSubscript(true);
 $richText->addText($subscriptText);
 $richText->addText($ravno);
 $sheet->setCellValue("N18", $richText);
+$sheet->setCellValue("O18", "1");
 
 
 $richText = new RichText();

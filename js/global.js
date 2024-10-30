@@ -115,7 +115,6 @@ let toggleZdDopUslrazrab = $('#toggleZdDopUslrazrab');
 let toggleZdDopUslrazrabrek = $('#toggleZdDopUslrazrabrek');
 
 
-
 let selectCalc1 = $('#selectCalc1');
 let selectCalc2 = $('#selectCalc2');
 let selectCalc3 = $('#selectCalc3');
@@ -491,7 +490,7 @@ async function getSmeta(id) {
 async function executeFunctions() {
 
     updateCalendarDaysFromEnd();
-    await  updateBuildingInfo();
+    await updateBuildingInfo();
     await toggleCheckboxesDop();
     await toggleCheckboxesDop4();
     await toggleCheckboxesDop5();
@@ -1312,12 +1311,13 @@ async function calcCalkulation() {
     let truds = $(".trud:not([disabled])");
     let tarifs = $(".tarif");
     let kol_isps = $(".kol_isp:not([disabled])");
+    let size = 1;
     let result = await new Promise((resolve, reject) => {
 
         let trudsFiltered = truds.filter((index, item) => item.value.trim() !== "");
         let tarifsFiltered = tarifs.filter((index, item) => item.value.trim() !== "");
         let kol_ispsFiltered = kol_isps.filter((index, item) => item.value.trim() !== "");
-        let size = Math.min(trudsFiltered.length, tarifsFiltered.length);
+        size = Math.min(trudsFiltered.length, tarifsFiltered.length);
         let chilsitel = 0;
         let znamenatel = 0;
         for (let i = 0; i < size; i++) {
@@ -1346,14 +1346,35 @@ async function calcCalkulation() {
 
     $('#tarifKoef').val(response.trim());
     calculacia = (parseFloat(response.trim()) * b14Value).toFixed(2);
+    let newCalcul = 0;
 
-    truds.each(function () {
-        calculacia *= $(this).val() !== "0" ? parseFloat($(this).val()) : 1;
-    });
+    let sizeTruds = truds.length < 1 ? 1 : truds.length;
 
-    kol_isps.each(function () {
-        calculacia *= $(this).val() !== "0" ? parseFloat($(this).val()) : 1;
-    });
+    if(truds.length > 1) {
+        for (let i = 0; i < sizeTruds; i++) {
+            let trudValue = parseFloat(truds.eq(i).val()); // Получаем значение текущего элемента
+            let kolIspValue = parseFloat(kol_isps.eq(i).val()); // Получаем значение текущего элемента kol_isp
+
+            if (trudValue !== 0) {
+                calculacia = parseFloat(calculacia) + (calculacia / sizeTruds) * trudValue * kolIspValue;
+                console.log(calculacia + " + (" + calculacia + " / " + sizeTruds + ")");
+            } else {
+                calculacia = parseFloat(calculacia) + (calculacia / sizeTruds);
+            }
+        }
+    }else{
+        truds.each(function () {
+            calculacia *= $(this).val() !== "0" ? parseFloat($(this).val()) : 1;
+        });
+
+        kol_isps.each(function () {
+            calculacia *= $(this).val() !== "0" ? parseFloat($(this).val()) : 1;
+        });
+    }
+
+
+
+
     document.getElementById('harakteristikaObjectCalc').innerText = calculacia;
     document.getElementById('calcalcres').innerText = calculacia;
     calculateK();
@@ -1437,16 +1458,16 @@ function printExcel() {
         document.cookie = " formula2=" + formula1 + ";";
 
         //
-        if($("#toggleSelect1").prop("checked")){
+        if ($("#toggleSelect1").prop("checked")) {
             formula2 += " * K18221";
         }
-        if($("#toggleSelect2").prop("checked")){
+        if ($("#toggleSelect2").prop("checked")) {
             formula2 += " * K18222";
         }
-        if($("#povkef").prop("checked")){
+        if ($("#povkef").prop("checked")) {
             formula2 += " * K18223";
         }
-        if($("#sooruzhzd").prop("checked")){
+        if ($("#sooruzhzd").prop("checked")) {
             formula2 += " * K18224";
         }
         document.cookie = " h3tp_223=" + koefObsled1 + ";";
@@ -1456,13 +1477,13 @@ function printExcel() {
         document.cookie = " formula3=" + formula2 + ";";
         //
 
-        if($("#toggleZdDopUslseism").prop("checked")){
+        if ($("#toggleZdDopUslseism").prop("checked")) {
             formula3 += " * K18225";
         }
-        if($("#toggleZdDopUslrazrab").prop("checked")){
+        if ($("#toggleZdDopUslrazrab").prop("checked")) {
             formula3 += " * K18226";
         }
-        if($("#toggleZdDopUslrazrabrek").prop("checked")){
+        if ($("#toggleZdDopUslrazrabrek").prop("checked")) {
             formula3 += " * K18227";
         }
         document.cookie = " h3tp_242=" + koefSosttech1 + ";";
