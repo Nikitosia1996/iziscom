@@ -1351,17 +1351,18 @@ async function calcCalkulation() {
     let sizeTruds = truds.length < 1 ? 1 : truds.length;
 
     if(truds.length > 1) {
+        let calc1 = parseFloat(calculacia);
+        let sum = 0;
         for (let i = 0; i < sizeTruds; i++) {
             let trudValue = parseFloat(truds.eq(i).val()); // Получаем значение текущего элемента
             let kolIspValue = parseFloat(kol_isps.eq(i).val()); // Получаем значение текущего элемента kol_isp
 
             if (trudValue !== 0) {
-                calculacia = parseFloat(calculacia) + (calculacia / sizeTruds) * trudValue * kolIspValue;
-                console.log(calculacia + " + (" + calculacia + " / " + sizeTruds + ")");
-            } else {
-                calculacia = parseFloat(calculacia) + (calculacia / sizeTruds);
+                sum += calc1 * trudValue * kolIspValue;
+                console.log("calc1 + calc1 * trudValue * kolIspValue" , calc1 + " + " + calc1 + " * " +  trudValue + " * " + kolIspValue)
             }
         }
+        calculacia = sum.toFixed(2);
     }else{
         truds.each(function () {
             calculacia *= $(this).val() !== "0" ? parseFloat($(this).val()) : 1;
