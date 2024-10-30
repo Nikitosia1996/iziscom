@@ -1312,12 +1312,13 @@ async function calcCalkulation() {
     let truds = $(".trud:not([disabled])");
     let tarifs = $(".tarif");
     let kol_isps = $(".kol_isp:not([disabled])");
+    let size = 1;
     let result = await new Promise((resolve, reject) => {
 
         let trudsFiltered = truds.filter((index, item) => item.value.trim() !== "");
         let tarifsFiltered = tarifs.filter((index, item) => item.value.trim() !== "");
         let kol_ispsFiltered = kol_isps.filter((index, item) => item.value.trim() !== "");
-        let size = Math.min(trudsFiltered.length, tarifsFiltered.length);
+        size = Math.min(trudsFiltered.length, tarifsFiltered.length);
         let chilsitel = 0;
         let znamenatel = 0;
         for (let i = 0; i < size; i++) {
@@ -1345,7 +1346,7 @@ async function calcCalkulation() {
 
 
     $('#tarifKoef').val(response.trim());
-    calculacia = (parseFloat(response.trim()) * b14Value).toFixed(2);
+    calculacia = (parseFloat(response.trim()) * b14Value).toFixed(2) * size;
 
     truds.each(function () {
         calculacia *= $(this).val() !== "0" ? parseFloat($(this).val()) : 1;
