@@ -1345,38 +1345,27 @@ async function calcCalkulation() {
 
 
     $('#tarifKoef').val(response.trim());
-    calculacia = (parseFloat(response.trim()) * b14Value).toFixed(2);
-    let newCalcul = 0;
+    let tarifKoef = parseFloat(response.trim());
+    calculacia = 0;
 
-    let sizeTruds = truds.length < 1 ? 1 : truds.length;
+    truds.each(function (index) {
+        let trudValue = parseFloat($(this).val());
+        let tarifValue = parseFloat(tarifs.eq(index).val());
+        let kolIspValue = parseFloat(kol_isps.eq(index).val());
 
-    if(truds.length > 1) {
-        for (let i = 0; i < sizeTruds; i++) {
-            let trudValue = parseFloat(truds.eq(i).val()); // Получаем значение текущего элемента
-            let kolIspValue = parseFloat(kol_isps.eq(i).val()); // Получаем значение текущего элемента kol_isp
-
-            if (trudValue !== 0) {
-                calculacia = parseFloat(calculacia) + (calculacia / sizeTruds) * trudValue * kolIspValue;
-                console.log(calculacia + " + (" + calculacia + " / " + sizeTruds + ")");
-            } else {
-                calculacia = parseFloat(calculacia) + (calculacia / sizeTruds);
-            }
+        if (!isNaN(trudValue) && !isNaN(tarifValue) && !isNaN(kolIspValue)) {
+            let currentCalculacia = b14Value * trudValue * tarifKoef * kolIspValue;
+            calculacia += currentCalculacia;
+            console.log(`Формула для специалиста ${index + 1}: ${b14Value} * ${tarifKoef}  * ${trudValue} * ${kolIspValue} = ${currentCalculacia}`);
         }
-    }else{
-        truds.each(function () {
-            calculacia *= $(this).val() !== "0" ? parseFloat($(this).val()) : 1;
-        });
+    });
 
-        kol_isps.each(function () {
-            calculacia *= $(this).val() !== "0" ? parseFloat($(this).val()) : 1;
-        });
-    }
 
 
 
 
     document.getElementById('harakteristikaObjectCalc').innerText = calculacia;
-    document.getElementById('calcalcres').innerText = calculacia;
+    document.getElementById('calcalcres').innerText = calculacia.toFixed(2);
     calculateK();
 
 }
