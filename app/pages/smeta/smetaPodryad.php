@@ -305,6 +305,94 @@ echo "<script>
         position: relative;
     }
 </style>
+<style>
+    .sticky {
+        position: sticky;
+        top: 0;
+        background-color: #f8f9fa;
+        padding: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+    }
+
+    .row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 15px;
+    }
+
+    .col-lg-2, .col-lg-3, .col-lg-5 {
+        flex: 0 0 auto;
+    }
+
+    .dropdown {
+        position: relative;
+    }
+
+    /* Button Styling - Consistent Look */
+    .btn, .dropbtn {
+        background-color: #146121;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+        font-family: Arial, sans-serif; /* Choose your preferred font */
+        font-size: 16px;              /* Adjust font size as needed */
+    }
+
+    .btn:hover, .dropbtn:hover {
+        background-color: #155305;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        border-radius: 5px;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown-content input {
+        width: calc(100% - 22px);
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 5px;
+    }
+
+    .dropdown-content a {
+        padding: 10px;
+        text-decoration: none;
+        display: block;
+        color: black;
+        background-color: #f8f9fa;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #f1f1f1;
+    }
+
+    .form-control {
+        padding: 10px;
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+    }
+
+    /* Styling for amount display */
+    .harakteristikaObject {
+        font-weight: bold; /* Make amount bold */
+        margin-left: 5px;
+    }
+</style>
 <div class="sticky">
 <div class="col-lg-12 connectedSortable ui-sortable" style="margin-top: 10px">
     <div class="row mgbottom20p mgleft5">
