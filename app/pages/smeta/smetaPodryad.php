@@ -2288,6 +2288,9 @@ echo "<script>
     let Vdiv100 = 1; // Значение тарифного коэффициента п 2.1.2
     let k18101 = 1; // Тип здания
     let V = 1;
+    let agressive;
+    let temperaturMode;
+    let equipmentSaturat;
 
     let isSborIshodnihDannihChecked;
     let isObmerRabotyChecked;
@@ -2320,7 +2323,7 @@ echo "<script>
         if (koefIshod == 1 && koefIshod2 == 1) {
             sumIshod = 0;
         } else {
-            sumIshod =  Vdiv100 * k18101 * koefIshod * koefIshod2 * b14Value * k18ob * ki212 * koefHarackCheckb;
+            sumIshod =  Vdiv100 * k18101 * koefIshod * koefIshod2 * b14Value * k18ob * ki212 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat;
             $('#sborIshodnihDannih').html(sumIshod.toFixed(3));
             console.log(sumIshod + " =  koefIshod: " + koefIshod + " koefIshod2: " + koefIshod2 + " costwork14: " + b14Value + " K18ob:" + k18ob + " ki212: " + ki212);
         }
@@ -2329,7 +2332,7 @@ echo "<script>
         if (koefObmerWork1 == 1 && koefObmerWork2 == 1) {
             sumObmer = 0;
         } else {
-            sumObmer = koefObmerWork1 * koefObmerWork2 * b14Value * k18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222* koefHarackCheckb;
+            sumObmer = koefObmerWork1 * koefObmerWork2 * b14Value * k18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222* koefHarackCheckb * agressive * temperaturMode * equipmentSaturat;
             $('#obmerRaboty').html(sumObmer.toFixed(3));
             console.log(sumObmer + " =  koefObmerWork1: " + koefObmerWork1 + " koefObmerWork2: " + koefObmerWork2 + " K18ob: " + k18ob + " obmerDop1:" + obmerDop1 + " obmerDop2: " + obmerDop2 + " Vdiv100: " + Vdiv100 + " k18101: " + k18101 + " ki222: " + ki222);
         }
@@ -2337,7 +2340,7 @@ echo "<script>
         if (koefObsled1 == 1 && koefObsled2 == 1) {
             sumObsled = 0;
         } else {
-            sumObsled = koefObsled1 * koefObsled2 * b14Value * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223* koefHarackCheckb;
+            sumObsled = koefObsled1 * koefObsled2 * b14Value * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223* koefHarackCheckb * agressive * temperaturMode * equipmentSaturat;
             $('#obsledRab').html(sumObsled.toFixed(3));
             console.log(sumObsled + " =  koefObsled1: " + koefObsled1 + " koefObsled2: " + koefObsled2 + " K18ob: " + k18ob + " obsledDop1:" + obsledDop1 + " obsledDop2: " + obsledDop2 + " Vdiv100: " + Vdiv100 + " k18101: " + k18101 + " ki223: " + ki223);
         }
@@ -2345,7 +2348,7 @@ echo "<script>
         if (koefSosttech1 == 1 && koefSosttech2 == 1) {
             sumSosttech = 0;
         } else {
-            sumSosttech = koefSosttech1 * koefSosttech2 * b14Value * k18ob * Vdiv100 * k18101 * ki242* koefHarackCheckb;
+            sumSosttech = koefSosttech1 * koefSosttech2 * b14Value * k18ob * Vdiv100 * k18101 * ki242* koefHarackCheckb * agressive * temperaturMode * equipmentSaturat;
             $('#sostTech').html(sumSosttech.toFixed(3));
             console.log(sumSosttech + " =  koefSosttech1: " + koefSosttech1 + " koefSosttech2: " + koefSosttech2 + " costwork14: " + b14Value + " K18ob:" + k18ob + " Vdiv100: " + Vdiv100 + " Vdiv100: " + Vdiv100 + " k18101: " + k18101 + " ki223: " + ki223);
         }
@@ -2383,6 +2386,11 @@ let koefHarackCheckb = 1;
     async function calculateHaracterCoefficient() {
         sumHarakter = 0;
         koefHarackCheckb = 1;
+        agressive = 1;//++
+        temperaturMode = 1;
+        equipmentSaturat = 1;
+
+
        chekb1Val = getCheckboxValue('chekb1');
        chekb2Val = getCheckboxValue('chekb2');
         chekb3Val = getCheckboxValue('chekb3');
@@ -2396,9 +2404,25 @@ let koefHarackCheckb = 1;
         chekb11Val = getCheckboxValue('chekb11');
          chekb12Val = getCheckboxValue('chekb12');
         arrHaractCheckb = [chekb1Val, chekb2Val,chekb3Val,chekb4Val,chekb5Val,chekb6Val,chekb7Val,chekb8Val,chekb9Val,chekb10Val,chekb11Val,chekb12Val];
-
         arrHaractCheckb.map( item => koefHarackCheckb *= item);
         console.log("arrHaractCheckb", arrHaractCheckb);
+
+        let checkboxagressive = document.getElementById("toggleSelect");
+        let optionsaggr = document.getElementById("options");
+
+
+        if (checkboxagressive.checked) {
+            let selectedOption = optionsaggr.options[optionsaggr.selectedIndex];
+            agressive = parseFloat(selectedOption.getAttribute('data-id')) || 1;
+        } else {
+            agressive = 1;
+        }
+        console.log (agressive + "agressive");
+
+
+
+
+
         let kefVisota = 1;
         const visotazdani = parseFloat(document.getElementById('visotazdani').value) || 0;
         etazh = parseFloat(document.getElementById('etazh').value) || 0;
@@ -2420,8 +2444,9 @@ let koefHarackCheckb = 1;
 
         const constructionType = getSelectedDataId('#constructionType');
         const options = getSelectedDataId('#options');
-        const temperatureMode = getSelectedDataId('#temperatureMode');
-        const equipmentSaturation = getSelectedDataId('#equipmentSaturation');
+        temperaturMode = getSelectedDataId('#temperatureMode');
+        console.log(temperaturMode+"temperatureMode");
+        equipmentSaturat = getSelectedDataId('#equipmentSaturation');
 
         k18101 = buildingType;
         //РАСЧЕТ ОСНОВНОГО  КОЭФИЦИЕНТА К18.об ОТ ОБЪЕМА
@@ -2577,7 +2602,7 @@ let koefHarackCheckb = 1;
                             if (koefIshod == 1 && koefIshod2 == 1) {
                                 sumIshod = 0;
                             } else {
-                                sumIshod = Vdiv100 * k18101 * koefIshod * koefIshod2 * b14Value * k18ob * ki212 * koefHarackCheckb;
+                                sumIshod = Vdiv100 * k18101 * koefIshod * koefIshod2 * b14Value * k18ob * ki212 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat;
                             }
                             $('#sborIshodnihDannih').html(sumIshod.toFixed(3));
                         }
@@ -2673,7 +2698,7 @@ let koefHarackCheckb = 1;
                     if (koefIshod == 1 && koefIshod2 == 1) {
                         sumIshod = 0;
                     } else {
-                        sumIshod = Vdiv100 * k18101 * koefIshod * koefIshod2 * b14Value * k18ob * ki212* koefHarackCheckb;
+                        sumIshod = Vdiv100 * k18101 * koefIshod * koefIshod2 * b14Value * k18ob * ki212* koefHarackCheckb * agressive * temperaturMode * equipmentSaturat;
                     }
                     resolve();
                 }).catch(function (error) {
@@ -2699,7 +2724,7 @@ let koefHarackCheckb = 1;
         if (koefIshod == 1 && koefIshod2 == 1) {
             sumIshod = 0;
         } else {
-            sumIshod = Vdiv100 * k18101 * koefIshod * koefIshod2 * b14Value * k18ob * ki212* koefHarackCheckb;
+            sumIshod = Vdiv100 * k18101 * koefIshod * koefIshod2 * b14Value * k18ob * ki212* koefHarackCheckb * agressive * temperaturMode * equipmentSaturat;
         }
         $('#sborIshodnihDannih').html(sumIshod.toFixed(3));
         await calculateK();
@@ -2974,7 +2999,14 @@ let koefHarackCheckb = 1;
             selectContainer.classList.add('hidden');
             optionsSelect.selectedIndex = 0;
             optionsSelect.disabled = true;
-            document.getElementById('dataId' + optionsId.charAt(optionsId.length - 1)).value = 1;
+            const index = optionsId.charAt(optionsId.length - 1);
+            const dataIdElement = document.getElementById('dataId' + index);
+
+            if (dataIdElement) {
+                dataIdElement.value = 1;
+            } else {
+                console.log('Элемент с ID ' + 'dataId' + index + ' не найден.');
+            }
 
 
 
@@ -2986,12 +3018,12 @@ let koefHarackCheckb = 1;
             if (koefObsled1 == 1 && koefObsled2 == 1) {
                 sumObsled = 0;
             } else {
-                sumObsled = koefObsled1 * koefObsled2 * b14Value * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223 * koefHarackCheckb;
+                sumObsled = koefObsled1 * koefObsled2 * b14Value * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat;
             }
             $('#obsledRab').html(sumObsled.toFixed(3));
 
         }
-        await calculateK();
+        await calculateHaracterCoefficient();
     }
 
     async function toggleCheckboxes() {
@@ -3772,7 +3804,7 @@ let koefHarackCheckb = 1;
        if(koefObmerWork1 == 1 && koefObmerWork2 == 1){
            sumObmer = 0;
        }else {
-           sumObmer = koefObmerWork1 * koefObmerWork2 * b14Value * k18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222 * koefHarackCheckb;
+           sumObmer = koefObmerWork1 * koefObmerWork2 * b14Value * k18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat;
        }
        $('#obmerRaboty').html(sumObmer.toFixed(3));
         await calculateK();
@@ -3788,7 +3820,7 @@ let koefHarackCheckb = 1;
         if (koefObsled1 == 1 && koefObsled2 == 1) {
             sumObsled = 0;
         } else {
-            sumObsled = koefObsled1 * koefObsled2 * b14Value * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223 * koefHarackCheckb;
+            sumObsled = koefObsled1 * koefObsled2 * b14Value * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat;
         }
         $('#obsledRab').html(sumObsled.toFixed(3));
 
@@ -3801,7 +3833,7 @@ let koefHarackCheckb = 1;
         if (koefObsled1 == 1 && koefObsled2 == 1) {
             sumObsled = 0;
         } else {
-            sumObsled = koefObsled1 * koefObsled2 * b14Value * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223 * koefHarackCheckb;
+            sumObsled = koefObsled1 * koefObsled2 * b14Value * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat;
         }
         $('#obsledRab').html(sumObsled.toFixed(3));
         calculateK();
