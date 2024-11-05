@@ -1895,10 +1895,13 @@ echo "<script>
                                 </option>
                                 <option value="6">Обследование сетей. Электроснабжение</option>
                                 <option value="7">Обследование сетей. Отопление и вентиляция</option>
+                                <option value="8">Другое</option>
                             </select>
                             <input class="inpvalsel trud" disabled type="number" id="inputCalc1" name="inputValue" step="1"
                                    min="0" placeholder="">
+
                         </div>
+                        <input class="custom-work" type="text" id="customWork1" style="display:none;" placeholder="Введите наименование работы">
                         <div class="select-input-pair">
                             <select class="form-select-calc" id="selectCalc2" aria-label=""
                                     onchange="selectCalculation(2)">
@@ -1913,10 +1916,12 @@ echo "<script>
                                 </option>
                                 <option value="6">Обследование сетей. Электроснабжение</option>
                                 <option value="7">Обследование сетей. Отопление и вентиляция</option>
+                                <option value="8">Другое</option>
                             </select>
                             <input class="inpvalsel trud" disabled type="number" id="inputCalc2" name="inputValue" step="1"
                                    min="0" placeholder="">
                         </div>
+                        <input class="custom-work" type="text" id="customWork2" style="display:none;" placeholder="Введите наименование работы">
                         <div class="select-input-pair">
                             <select class="form-select-calc" aria-label="" id="selectCalc3"
                                     onchange="selectCalculation(3)">
@@ -1931,10 +1936,12 @@ echo "<script>
                                 </option>
                                 <option value="6">Обследование сетей. Электроснабжение</option>
                                 <option value="7">Обследование сетей. Отопление и вентиляция</option>
+                                <option value="8">Другое</option>
                             </select>
                             <input class="inpvalsel trud" type="number" disabled id="inputCalc3" name="inputValue" step="1"
                                    min="0" placeholder="">
                         </div>
+                        <input class="custom-work" type="text" id="customWork3" style="display:none;" placeholder="Введите наименование работы">
                         <div class="select-input-pair">
                             <select class="form-select-calc" aria-label="" id="selectCalc4"
                                     onchange="selectCalculation(4)">
@@ -1949,10 +1956,12 @@ echo "<script>
                                 </option>
                                 <option value="6">Обследование сетей. Электроснабжение</option>
                                 <option value="7">Обследование сетей. Отопление и вентиляция</option>
+                                <option value="8">Другое</option>
                             </select>
                             <input class="inpvalsel trud" type="number" name="inputValue" disabled id="inputCalc4" step="1"
                                    min="0" placeholder="">
                         </div>
+                        <input class="custom-work" type="text" id="customWork4" style="display:none;" placeholder="Введите наименование работы">
                         <div class="select-input-pair">
                             <select class="form-select-calc" aria-label="" id="selectCalc5"
                                     onchange="selectCalculation(5)">
@@ -1967,10 +1976,12 @@ echo "<script>
                                 </option>
                                 <option value="6">Обследование сетей. Электроснабжение</option>
                                 <option value="7">Обследование сетей. Отопление и вентиляция</option>
+                                <option value="8">Другое</option>
                             </select>
                             <input class="inpvalsel trud" type="number" disabled id="inputCalc5" name="inputValue" step="1"
                                    min="0" placeholder="">
                         </div>
+                        <input class="custom-work" type="text" id="customWork5" style="display:none;" placeholder="Введите наименование работы">
                         <div class="select-input-pair">
                             <select class="form-select-calc" aria-label="" id="selectCalc6"
                                     onchange="selectCalculation(6)">
@@ -1985,10 +1996,12 @@ echo "<script>
                                 </option>
                                 <option value="6">Обследование сетей. Электроснабжение</option>
                                 <option value="7">Обследование сетей. Отопление и вентиляция</option>
+                                <option value="8">Другое</option>
                             </select>
                             <input class="inpvalsel trud" type="number" disabled id="inputCalc6" name="inputValue" step="1"
                                    min="0" placeholder="">
                         </div>
+                        <input class="custom-work" type="text" id="customWork6" style="display:none;" placeholder="Введите наименование работы">
                         <div class="select-input-pair">
                             <select class="form-select-calc" aria-label="" id="selectCalc7"
                                     onchange="selectCalculation(7)">
@@ -2003,10 +2016,12 @@ echo "<script>
                                 </option>
                                 <option value="6">Обследование сетей. Электроснабжение</option>
                                 <option value="7">Обследование сетей. Отопление и вентиляция</option>
+                                <option value="8">Другое</option>
                             </select>
                             <input class="inpvalsel trud" type="number" disabled id="inputCalc7" name="inputValue" step="1"
                                    min="0" placeholder="">
                         </div>
+                        <input class="custom-work" type="text" id="customWork7" style="display:none;" placeholder="Введите наименование работы">
                         <div class="select-input-pair">
                             <select class="form-select-calc" aria-label="" id="selectCalc8"
                                     onchange="selectCalculation(8)">
@@ -2021,10 +2036,12 @@ echo "<script>
                                 </option>
                                 <option value="6">Обследование сетей. Электроснабжение</option>
                                 <option value="7">Обследование сетей. Отопление и вентиляция</option>
+                                <option value="8">Другое</option>
                             </select>
                             <input class="inpvalsel trud" type="number" disabled id="inputCalc8" name="inputValue" step="1"
                                    min="0" placeholder="">
                         </div>
+                        <input class="custom-work" type="text" id="customWork8" style="display:none;" placeholder="Введите наименование работы">
                     </div>
                 </div>
             </div>
@@ -3868,6 +3885,18 @@ let koefHarackCheckb = 1;
             });
 
         }
+
+        const select = document.getElementById(`selectCalc${index}`);
+        const customWorkInput = document.getElementById(`customWork${index}`);
+
+        if (select.value === "8") {
+            customWorkInput.style.display = "inline";
+        } else {
+            customWorkInput.style.display = "none";
+            customWorkInput.value = "";
+        }
+
+
     }
 
 
