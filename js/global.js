@@ -1345,27 +1345,39 @@ async function calcCalkulation() {
 
 
     $('#tarifKoef').val(response.trim());
-    let tarifKoef = parseFloat(response.trim());
-    calculacia = 0;
+    calculacia = (parseFloat(response.trim()) * b14Value).toFixed(2);
+    let newCalcul = 0;
 
-    truds.each(function (index) {
-        let trudValue = parseFloat($(this).val());
-        let tarifValue = parseFloat(tarifs.eq(index).val());
-        let kolIspValue = parseFloat(kol_isps.eq(index).val());
+    let sizeTruds = truds.length < 1 ? 1 : truds.length;
 
-        if (!isNaN(trudValue) && !isNaN(tarifValue) && !isNaN(kolIspValue)) {
-            let currentCalculacia = b14Value * trudValue * tarifKoef * kolIspValue;
-            calculacia += currentCalculacia;
-            console.log(`Формула для специалиста ${index + 1}: ${b14Value} * ${tarifKoef}  * ${trudValue} * ${kolIspValue} = ${currentCalculacia}`);
+    if(truds.length > 1) {
+        let calc1 = parseFloat(calculacia);
+        let sum = 0;
+        for (let i = 0; i < sizeTruds; i++) {
+            let trudValue = parseFloat(truds.eq(i).val()); // Получаем значение текущего элемента
+            let kolIspValue = parseFloat(kol_isps.eq(i).val()); // Получаем значение текущего элемента kol_isp
+
+            if (trudValue !== 0) {
+                sum += calc1 * trudValue * kolIspValue;
+                console.log("calc1 + calc1 * trudValue * kolIspValue" , calc1 + " + " + calc1 + " * " +  trudValue + " * " + kolIspValue)
+            }
         }
-    });
+        calculacia = sum.toFixed(2);
+    }else{
+        truds.each(function () {
+            calculacia *= $(this).val() !== "0" ? parseFloat($(this).val()) : 1;
+        });
 
+        kol_isps.each(function () {
+            calculacia *= $(this).val() !== "0" ? parseFloat($(this).val()) : 1;
+        });
+    }
 
 
 
 
     document.getElementById('harakteristikaObjectCalc').innerText = calculacia;
-    document.getElementById('calcalcres').innerText = calculacia.toFixed(2);
+    document.getElementById('calcalcres').innerText = calculacia;
     calculateK();
 
 }
