@@ -1515,23 +1515,58 @@ function printExcel() {
 }
 
 function printCalculExcel() {
+    let hasTrudData = false;
+    let hasTarifData = false;
+
+    $('.trud').each((index, item) => {
+        console.log(`Значение .trud на индексе ${index}:`, $(item).val());
+        if (!$(item).is(':disabled') && $(item).val() !== "") {
+            hasTrudData = true;
+        }
+    });
+
+    $('.tarif').each((index, item) => {
+        console.log(`Значение .tarif на индексе ${index}:`, $(item).val());
+        if ($(item).val() !== "") {
+            hasTarifData = true;
+        }
+    });
+
+    if (!hasTrudData || !hasTarifData) {
+        alert("Пожалуйста, заполните хотя бы одно поле трудоемкости и одно поле тарифов.");
+        return;
+    }
+
     new Promise((resolve, reject) => {
         document.cookie = "costwork14=" + costwork14 + ";";
         document.cookie = "p_avg=" + $('#sredRazryad').val() + ";";
         document.cookie = "t_k=" + $('#tarifKoef').val() + ";";
-
-        document.cookie = " zakazchik=" + selectZakazchik.find('option:selected').text() + ";";
-        document.cookie = " podradchik=" + selectPodryadchik.find('option:selected').text() + ";";
+        document.cookie = "zakazchik=" + selectZakazchik.find('option:selected').text() + ";";
+        document.cookie = "podradchik=" + selectPodryadchik.find('option:selected').text() + ";";
         let count = 0;
+
         $('.trud').each((index, item) => {
             if ($(item).val().length > 0) {
-                let sel = $(item).prev('select').find('option:selected').text();
-                document.cookie = "name_rab" + (index + 1) + "=" + sel + ";";
-                document.cookie = "trud" + (index + 1) + "=" + $(item).val() + ";";
-                count++;
-            }
+                let sel = $(item).prev('select');
+                let selectedText;
 
-        })
+
+                let customWorkInput = $('#customWork' + (index + 1));
+                if (sel.val() === "8") {
+                    selectedText = customWorkInput.val();
+                } else {
+                    selectedText = sel.find('option:selected').text();
+                }
+
+                console.log(`selectedText для name_rab${index + 1}:`, selectedText);
+
+                if (selectedText && selectedText.trim() !== "") {
+                    document.cookie = "name_rab" + (index + 1) + "=" + selectedText + ";";
+                    document.cookie = "trud" + (index + 1) + "=" + $(item).val() + ";";
+                    count++;
+                }
+            }
+        });
 
         $('.tarif').each((index, item) => {
             if ($(item).val().length > 0) {
@@ -1541,18 +1576,15 @@ function printCalculExcel() {
                 document.cookie = "tarif" + (index + 1) + "=" + $(item).val() + ";";
                 document.cookie = "kol_isp" + (index + 1) + "=" + inp + ";";
             }
+        });
 
-        })
-
-        document.cookie = " countCalc=" + count + ";";
-        document.cookie = " calculacia=" + calculacia + ";";
-        document.cookie = " fullSumma=" + fullSumma + ";";
-
+        document.cookie = "countCalc=" + count + ";";
+        document.cookie = "calculacia=" + calculacia + ";";
+        document.cookie = "fullSumma=" + fullSumma + ";";
         resolve();
     }).then(() => {
         location.href = "calculExcel.php";
-    })
-
+    });
 }
 
 function printDogovor() {
