@@ -17,6 +17,7 @@ let chekb10Val;
 let chekb11Val;
 let chekb12Val;
 
+
 let arrHaractCheckb;
 
 let calculacia = 0;

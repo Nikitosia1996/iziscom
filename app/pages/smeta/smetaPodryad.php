@@ -3,13 +3,13 @@ include "app/classes/SmetaList.php";
 
 $harakteristikaObject = 0;
 $sborIshodnihDannih = 0;
+$obsledotdel = 0;
 $obmerRaboty = 0;
 $obsledRab = 0;
 $sostTech = 0;
 $redaktorCons = 0;
 $calculacia = 0;
 $calcalcres = 0;
-
 
 
 echo "<script>
@@ -260,8 +260,6 @@ echo "<script>
     }
 
 
-
-
     .mainselspace {
         display: flex;
         flex-direction: column;
@@ -288,6 +286,7 @@ echo "<script>
     .mgleft5 {
         margin-left: 2%;
     }
+
     .sticky {
         position: -webkit-sticky;
         position: sticky;
@@ -300,7 +299,8 @@ echo "<script>
         z-index: 999;
         margin-top: 10px;
     }
-    .hr{
+
+    .hr {
         z-index: 1;
         position: relative;
     }
@@ -340,7 +340,7 @@ echo "<script>
         border-radius: 5px;
         transition: background-color 0.3s;
         font-family: Arial, sans-serif; /* Choose your preferred font */
-        font-size: 16px;              /* Adjust font size as needed */
+        font-size: 16px; /* Adjust font size as needed */
     }
 
     .btn:hover, .dropbtn:hover {
@@ -394,1913 +394,2079 @@ echo "<script>
     }
 </style>
 <div class="sticky">
-<div class="col-lg-12 connectedSortable ui-sortable" style="margin-top: 10px">
-    <div class="row mgbottom20p mgleft5">
-        <div class="dropdown col-lg-2">
-            <button onclick="myFunction()" class="dropbtn">Найти смету</button>
-            <div id="myDropdown" class="dropdown-content">
-                <input type="text" placeholder="Поиск..." id="myInput" onkeyup="filterFunction()">
-                <?php
-                $smetaArray = $smetaList->getSmetaArray();
-                foreach ($smetaArray as $smeta) {
-                    echo '<a onclick=" getSmeta(' . $smeta->getId() . ')">' . $smeta->getName() . '</a>';
-                }
+    <div class="col-lg-12 connectedSortable ui-sortable" style="margin-top: 10px">
+        <div class="row mgbottom20p mgleft5">
+            <div class="dropdown col-lg-2">
+                <button onclick="myFunction()" class="dropbtn">Найти смету</button>
+                <div id="myDropdown" class="dropdown-content">
+                    <input type="text" placeholder="Поиск..." id="myInput" onkeyup="filterFunction()">
+                    <?php
+                    $smetaArray = $smetaList->getSmetaArray();
+                    foreach ($smetaArray as $smeta) {
+                        echo '<a onclick=" getSmeta(' . $smeta->getId() . ')">' . $smeta->getName() . '</a>';
+                    }
 
-                ?>
+                    ?>
+                </div>
             </div>
-        </div>
 
 
-        <div class="col-lg-2">
-            <button id="btnShowModalPeremen" class="btn btn-primary">Параметры переменных</button>
-        </div>
+            <div class="col-lg-2">
+                <button id="btnShowModalPeremen" class="btn btn-primary">Параметры переменных</button>
+            </div>
 
-        <div class="col-lg-2">
+            <div class="col-lg-2">
 
-            Общая сумма <?php echo ' <span class="harakteristikaObject" id="harakteristikaObjectObsh">';
-            echo $harakteristikaObject;
-            echo '</span>' ?>
-        </div>
-        <div class="col-lg-2">
-            Смета <?php echo ' <span class="harakteristikaObject" id="harakteristikaObjectSmeta">';
-            echo $harakteristikaObject;
-            echo '</span>' ?>
-        </div>
-        <div class="col-lg-3">
-            Калькуляция <?php echo ' <span class="harakteristikaObject" id="harakteristikaObjectCalc">';
-            echo $calculacia;
-            echo '</span>' ?>
-        </div>
-
-
+                Общая сумма <?php echo ' <span class="harakteristikaObject" id="harakteristikaObjectObsh">';
+                echo $harakteristikaObject;
+                echo '</span>' ?>
+            </div>
+            <div class="col-lg-2">
+                Смета <?php echo ' <span class="harakteristikaObject" id="harakteristikaObjectSmeta">';
+                echo $harakteristikaObject;
+                echo '</span>' ?>
+            </div>
+            <div class="col-lg-3">
+                Калькуляция <?php echo ' <span class="harakteristikaObject" id="harakteristikaObjectCalc">';
+                echo $calculacia;
+                echo '</span>' ?>
+            </div>
 
 
-    </div>
-    <div class="row mgbottom20p mgleft5">
-        <div class="col-lg-2">
-            <button onclick="printCalculExcel()" id="btnCalculationExcel" class="btn btn-primary">Калькуляция в EXCEL</button>
         </div>
-        <div class="col-lg-2">
-            <button id="btnTechZad" class="btn btn-primary" onclick="printTZ()">Техническое задание</button>
-        </div>
-        <div class="col-lg-2">
-            <a onclick="printExcel()" class="btn btn-primary">Смета в EXCEL</a>
-        </div>
-        <div class="col-lg-5">
-            <div id="divSaveSmeta" class="form-group mgtop5" style="display: inline-flex;
+        <div class="row mgbottom20p mgleft5">
+            <div class="col-lg-2">
+                <button onclick="printCalculExcel()" id="btnCalculationExcel" class="btn btn-primary">Калькуляция в
+                    EXCEL
+                </button>
+            </div>
+            <div class="col-lg-2">
+                <button id="btnTechZad" class="btn btn-primary" onclick="printTZ()">Техническое задание</button>
+            </div>
+            <div class="col-lg-2">
+                <a onclick="printExcel()" class="btn btn-primary">Смета в EXCEL</a>
+            </div>
+            <div class="col-lg-5">
+                <div id="divSaveSmeta" class="form-group mgtop5" style="display: inline-flex;
     float: right;
     margin-right: 9%;">
-                <input class="form-control" type="text" id="smetaName" placeholder="Новая смета"
-                       style="width: 300px; margin-right: 10%;">
-                <button id="btnSaveSmeta" class="btn btn-primary" onclick="saveSmeta()">Сохранить</button>
+                    <input class="form-control" type="text" id="smetaName" placeholder="Новая смета"
+                           style="width: 300px; margin-right: 10%;">
+                    <button id="btnSaveSmeta" class="btn btn-primary" onclick="saveSmeta()">Сохранить</button>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+<div class="position1">
+    <div class="pos1">
+        <label for="SelectZakazchik" class="zakpod">Заказчик:</label>
+        <select class="form-select" aria-label="" id="zakazchik">
+            <option value="0" selected>-- Пожалуйста, выберите --</option>
+            <?php
+            while ($row = $connectionDB->getRowResult($zakazchik)) {
+                echo '<option id="zakazchik" value="' . htmlspecialchars($row['id_zakazchik']) . '">' . htmlspecialchars($row['nameZakazchik']) . '</option>';
+            }
+            ?>
+        </select>
+
+        <label for="SelectPodryadchik" class="zakpod">Подрядчик:</label>
+        <select class="form-select" aria-label="" id="podryadchik">
+            <option id="podryadchik" value="0" selected>-- Пожалуйста, выберите --</option>
+            <?php
+            while ($row = $connectionDB->getRowResult($podryadchik)) {
+                echo '<option value="' . htmlspecialchars($row['id_podryadchik']) . '">' . htmlspecialchars($row['namePodryadchik']) . '</option>';
+            }
+            ?>
+        </select>
+
+        <!-- Textarea with class .w-50 -->
+        <label for="textAreaNaimRabot" class="zakpod">Наименование работ:</label>
+        <div class="form-outline">
+            <textarea class="form-control" id="textAreaNaimRabot" rows="3"></textarea>
+        </div>
+    </div>
+    <div class="pos2">
+        <label for="SelectZakazchik" class="zakpod">Дата начала выполнения работ:</label>
+        <input type="date" class="form-date" id="dateNachRab" aria-label="">
+        <label for="SelectPodryadchik" class="zakpod">Дата окончания работ:</label>
+        <input type="date" class="form-date" id="dateOkonchRab" aria-label="">
+        <label for="textAreaCel" class="zakpod">Цель:</label>
+        <div class="form-outline">
+            <textarea class="form-control" id="textAreaCel" rows="3"></textarea>
+        </div>
+    </div>
+
+
+    <div class="pos3">
+        <label for="calendarDays" class="zakpod">Календарных дней:</label>
+        <input id="calendarDays" class="butrad" type="radio" name="daysType" value="calendar">
+        <br>
+        <div id="inputContainer" class="input-container">
+            <label id="inputLabel" for="commonInputField">Введите значение:</label>
+            <input id="commonInputField" disabled type="number" name="inputValue" step="1" min="0">
+        </div>
+        <label for="workingDays" class="zakpod">Рабочих дней:</label>
+        <input id="workingDays" class="butrad" type="radio" name="daysType" value="working">
+        <br>
+        <div id="inputContainerWorking" class="input-container">
+            <label id="inputLabel" for="commonInputFieldWorking">Введите значение:</label>
+            <input id="commonInputFieldWorking" disabled type="number" name="inputValue" step="1" min="0">
+        </div>
+
+        <label for="textAreaMestoObj" class="zakpodGps">Местоположение объекта:</label>
+        <div class="form-outline">
+            <textarea class="form-control" id="textAreaMestoObj" rows="3"></textarea>
+        </div>
+
+    </div>
 </div>
 
+<hr>
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+
+
+<div class="nameforblock1" onclick="toggleDisplay('.nameforblock1', '.dndb');">Характеристика
+    объекта&nbsp;&nbsp;&nbsp;<?php echo '<span class="harakteristikaObject" id="harakteristikaObject">';
+    //   echo $harakteristikaObject;
+    echo '</span>'; ?></div>
+<div class="dndb">
     <div class="position1">
         <div class="pos1">
-            <label for="SelectZakazchik" class="zakpod">Заказчик:</label>
-            <select class="form-select" aria-label="" id="zakazchik">
-                <option value="0" selected>-- Пожалуйста, выберите --</option>
-                <?php
-                while ($row = $connectionDB->getRowResult($zakazchik)) {
-                    echo '<option id="zakazchik" value="' . htmlspecialchars($row['id_zakazchik']) . '">' . htmlspecialchars($row['nameZakazchik']) . '</option>';
-                }
-                ?>
-            </select>
+            <div class="viborvis">
+                <label for="SelectZakazchik" class="zakpod">Здание:</label>
+                <select class="form-select" id="buildingType" aria-label=""
+                        onchange="calculateHaracterCoefficient();">
+                    <option data-id="1" value="0" selected>-- Пожалуйста, выберите --</option>
+                    <option data-id="1.2" value="1">Жилое</option>
+                    <option data-id="1.2" value="2">Гражданское</option>
+                    <option data-id="1" value="3">Промышленное</option>
+                    <option data-id="1" value="4">Сельскохозяйственное</option>
+                    <option data-id="1" value="5">Галереи</option>
+                    <option data-id="1" value="6">Коммуникационные и многоярусные эстакады</option>
+                    <option data-id="1" value="7">Градирни, этажерки и т.д.</option>
+                </select>
 
-            <label for="SelectPodryadchik" class="zakpod">Подрядчик:</label>
-            <select class="form-select" aria-label="" id="podryadchik">
-                <option id="podryadchik" value="0" selected>-- Пожалуйста, выберите --</option>
-                <?php
-                while ($row = $connectionDB->getRowResult($podryadchik)) {
-                    echo '<option value="' . htmlspecialchars($row['id_podryadchik']) . '">' . htmlspecialchars($row['namePodryadchik']) . '</option>';
-                }
-                ?>
-            </select>
+                <select class="form-select" id="constructionType" aria-label=""
+                        onchange="calculateHaracterCoefficient();">
+                    <option data-id="1" value="0" selected>-- Пожалуйста, выберите --</option>
+                    <option data-id="1.2" value="1">Существующее здание</option>
+                    <option data-id="0.8" value="2">Незавершенное капитальное строительство</option>
+                    <option data-id="0.7" value="3">Новое строительство</option>
+                </select>
 
-            <!-- Textarea with class .w-50 -->
-            <label for="textAreaNaimRabot" class="zakpod">Наименование работ:</label>
-            <div class="form-outline">
-                <textarea class="form-control" id="textAreaNaimRabot" rows="3"></textarea>
+                <div id="inputContainer" class="input-containerval">
+                    <label for="etazh" class="zakpod">Количество этажей:</label>
+                    <input data-id="1" id="etazh" type="number" name="inputValue" step="1" min="0"
+                           oninput="calculateHaracterCoefficient()">
+                </div>
+
+                <div id="inputContainer" class="input-containerval">
+                    <label for="visotazdani" class="zakpod">Высота здания:</label>
+                    <input data-id="1" id="visotazdani" type="number" name="inputValue" step="1" min="0"
+                           oninput="calculateHaracterCoefficient()">м
+                </div>
+
+                <div id="inputContainer" class="input-containerval">
+                    <label for="obem" class="zakpod">Объем здания:</label>
+                    <input id="obem" type="number" name="inputValue" step="1" min="0"
+                           oninput="calculateHaracterCoefficient()">м³
+                </div>
+
+                <div id="inputContainer" class="input-containerval">
+                    <label for="visotapola" class="zakpod">Высота покрытия от уровня пола:</label>
+                    <input data-id="1" id="visotapola" type="number" name="inputValue" step="1" min="0"
+                           oninput="calculateHaracterCoefficient()">м
+                </div>
+
             </div>
         </div>
         <div class="pos2">
-            <label for="SelectZakazchik" class="zakpod">Дата начала выполнения работ:</label>
-            <input type="date" class="form-date" id="dateNachRab" aria-label="">
-            <label for="SelectPodryadchik" class="zakpod">Дата окончания работ:</label>
-            <input type="date" class="form-date" id="dateOkonchRab" aria-label="">
-            <label for="textAreaCel" class="zakpod">Цель:</label>
-            <div class="form-outline">
-                <textarea class="form-control" id="textAreaCel" rows="3"></textarea>
+
+            <div class="viborvis">
+                <input data-id="1.3" id="vis6" class="butrad" type="radio" name="zdvis" value="1"
+                       onchange="calculateHaracterCoefficient()">
+                <label for="vis6" class="visotarad"> 1) Здание высотой до 6м, бескрановое, однообъемное,
+                    двухпролетное</label>
+                <br>
+                <input data-id="1.5" id="vis614" class="butrad" type="radio" name="zdvis" value="2"
+                       onchange="calculateHaracterCoefficient()">
+                <label for="vis614" class="visotarad">2) Здание высотой от 6м до 14м высоты, с кранами
+                    грузоподъемностью до 50т включительно, с двумя объемами, 3-5 пролета, а также различные
+                    сооружения, резервуары, тоннели, лестничные клетки, галереи
+                </label>
+                <br>
+                <input data-id="1.5" id="vis14" class="butrad" type="radio" name="zdvis" value="3"
+                       onchange="calculateHaracterCoefficient()">
+                <label for="vis14" class="visotarad">3) Здание высотой более 14м, со сложной конструктивной схемой,
+                    с двухъярусным расположением кранов, более 3
+                    объемов, более 6 пролетов галереи с высотой опор более 20м и пролетом более 36м, полный
+                    монолитный каркас</label>
+                <br>
+            </div>
+        </div>
+        <div class="pos3">
+
+            <label for="SelectZakazchik" class="zakpod">Температурно-влажностный режим:</label>
+            <select class="form-select" id="temperatureMode" aria-label=""
+                    onchange="calculateHaracterCoefficient();">
+                <option data-id="1" value="0" selected>-- Пожалуйста, выберите --</option>
+                <option data-id="1" value="1">Нормальный (К = 1)</option>
+                <option data-id="1.15" value="2">t>25° С, W>70% (K = 1.15)</option>
+                <option data-id="1.2" value="3">t>30° С, W>85% (K = 1.2)</option>
+            </select>
+
+            <label for="SelectPodryadchik" class="zakpod">Насыщенность оборудования:</label>
+            <select class="form-select" id="equipmentSaturation" aria-label=""
+                    onchange="calculateHaracterCoefficient();">
+                <option data-id="1" value="0" selected>-- Пожалуйста, выберите --</option>
+                <option data-id="1" value="1">Отсуствует (K = 1)</option>
+                <option data-id="1.1" value="2">До 30% от площади помещений (K = 1.1)</option>
+                <option data-id="1.2" value="3">От 30% До 50% от площади помещений (K = 1.2)</option>
+                <option data-id="1.3" value="4">Свыше 50% от площади помещений (K = 1.3)</option>
+            </select>
+
+            <label>
+
+                <input type="checkbox" id="toggleSelect"
+                       onchange="toggleSelect('toggleSelect', 'selectContainer', 'options')"> Работа в помещениях в
+                зависимости от степени агрессивности воздействия
+            </label>
+
+            <div id="selectContainer" class="hidden">
+                <label for="options">Выберите опцию:</label>
+                <select class="form-select" id="options" disabled onchange="calculateHaracterCoefficient();">
+                    <option data-id="1" value="0">-- Пожалуйста, выберите --</option>
+                    <option data-id="1.2" value="1">Помещение со слабой степенью агрессивного воздействия (k=1.2)
+                    </option>
+                    <option data-id="1.3" value="2">Помещение со средней степенью агрессивного воздействия (k=1.3)
+                    </option>
+                    <option data-id="1.4" value="3">Помещение с сильной степенью агрессивного воздействия (k=1.4)
+                    </option>
+                </select>
+            </div>
+
+        </div>
+    </div>
+    <div class="position1">
+        <div class="pos1">
+            <div class="viborvis">
+                <label>
+                    <input class="harObj" data-id="1.5" value="1" type="checkbox" id="chekb1" data-nameK="K18.208"
+                           onchange="calculateHaracterCoefficient();"> Выполнение работ с применением альпинисткого
+                    снаряжения (K = 1.5)
+                </label>
+                <label>
+                    <input class="harObj" data-id="1.25" value="2" type="checkbox" id="chekb2" data-nameK="K18.209"
+                           onchange="calculateHaracterCoefficient();"> Шумовые воздействия, превышающие нормативные
+                    величины (K = 1.25)
+                </label>
+                <label>
+                    <input class="harObj" data-id="1.2" value="3" type="checkbox" id="chekb3" data-nameK="K18.210"
+                           onchange="calculateHaracterCoefficient();"> Выполнение работ в условиях отрицательных
+                    температур в период с 1 ноября - 1 мая (K = 1.2)
+                </label>
+                <label>
+                    <input class="harObj" data-id="1.2" value="4" type="checkbox" id="chekb4" data-nameK="K18.211"
+                           onchange="calculateHaracterCoefficient();"> Необходимость очистки поверхности конструкций
+                    от грязи, пыли, ржавчины. Расчет выполнять по калькуляции трудозатрат
+                </label>
+
+            </div>
+        </div>
+        <div class="pos2">
+
+            <div class="viborvis">
+                <label>
+                    <input class="harObj" data-id="1.2" value="5" type="checkbox" id="chekb5" data-nameK="K18.212"
+                           onchange="calculateHaracterCoefficient();"> Необходимость использования переносных
+                    источников освещения (K = 1.2)
+                </label>
+                <label>
+                    <input class="harObj" data-id="1.02" value="6" type="checkbox" id="chekb6" data-nameK="K18.213"
+                           onchange="calculateHaracterCoefficient();"> Здание является памятником архитектуры (K =
+                    1.02)
+                </label>
+                <label>
+                    <input class="harObj" data-id="1.2" value="7" type="checkbox" id="chekb7" data-nameK="K18.214"
+                           onchange="calculateHaracterCoefficient();"> Обследование в условиях производственного
+                    процесса (K = 1.2)
+                </label>
+                <label>
+                    <input class="harObj" data-id="1.15" value="8" type="checkbox" id="chekb8" data-nameK="K18.215"
+                           onchange="calculateHaracterCoefficient();"> Выполнение работ с мостового крана или
+                    подмостей (K = 1.15)
+                </label>
+            </div>
+        </div>
+        <div class="pos3">
+            <div class="viborvis">
+                <label>
+                    <input class="harObj" data-id="1.2" value="9" type="checkbox" id="chekb9" data-nameK="K18.216"
+                           onchange="calculateHaracterCoefficient();"> Здание оборудовано кранами режимных групп 7К,
+                    8К, (K = 1.2)
+                </label>
+                <label>
+                    <input class="harObj" data-id="1.2" value="10" type="checkbox" id="chekb10" data-nameK="K18.217"
+                           onchange="calculateHaracterCoefficient();"> Конструкции, усиленные по ранее разработанным
+                    проектам (K = 1.2)
+                </label>
+                <label>
+                    <input class="harObj" data-id="0.7" value="11" type="checkbox" id="chekb11" data-nameK="K18.218"
+                           onchange="calculateHaracterCoefficient();"> Использование ранее выполненных обследований
+                    не более 3 лет назад (K = 0.7)
+                </label>
+                <label>
+                    <input class="harObj" data-id="1.35" value="12" type="checkbox" id="chekb12" data-nameK="K18.220"
+                           onchange="calculateHaracterCoefficient();"> Срочное выполнение обмерно-обследовательских
+                    работ (K <= 1.35)
+                </label>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<hr>
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+
+
+<div class="nameforblock3" onclick="toggleDisplay('.nameforblock3', '.dndb3');"><input class="onCollap"
+                                                                                       type="checkbox"
+                                                                                       id="sborCheck"
+                                                                                       name="obmerCheck" value="1"
+                                                                                       onchange="calculateK()">
+    &nbsp;&nbsp;&nbsp;Сбор исходных данных
+    &nbsp;&nbsp;&nbsp;<?php echo '<span class="sborIshodnihDannih" id="sborIshodnihDannih">';
+    echo $sborIshodnihDannih;
+    echo '</span>'; ?></div>
+<div class="dndb3">
+
+    <div class="mainfreename">
+        <div class="freeName" style="margin-left: 1%;">
+            <label>
+                Категория сложности работ:
+            </label>
+        </div>
+        <div class="freeName2" style="    margin-left: 19%;">
+            <label>
+                <input data-id="1" value="10" type="checkbox" id="choosCunstruct" onchange="toggleCheckboxes()">
+                Конструкции (если конструкции обследуются выборочно, поставьте галочку и введите проценты) :
+            </label>
+        </div>
+    </div>
+
+
+    <div class="position1">
+
+        <div class="pos1">
+            <div class="viborvis">
+                <input data-id="12" id="pasportNaZdanie" class="butrad" type="radio" name="pasportNaZdanie" value="1"
+                       onchange="calcIshod1()">
+                <label for="pasportNaZdanie" class="pasportzd">1) Паспорт на здание или сооружение</label>
+
+                <br>
+                <input data-id="14" id="pasportNaZdanie" class="butrad" type="radio" name="pasportNaZdanie" value="2"
+                       onchange="calcIshod1()">
+                <label for="pasportNaZdanie" class="pasportzd">2) Паспорт на здание или сооружение. Проектная
+                    документация. Исполнительная документация. Эксплатуационная документация,
+                    журнал наблюдений службы эксплуатации. Документы характеризующие фактические нагрузки и
+                    воздействия. Сертификаты на стальные конструкции.</label>
+
+                <br>
+            </div>
+        </div>
+        <div class="pos2">
+            <div class="viborvischeckbox1">
+                <div class="mainlolspace">
+                    <div class="lolspace">
+                        <input data-id="1" value="1" type="checkbox" class="ishod2check" id="toggleZd1" disabled
+                               onchange="toggleCheckboxesDop()"> Конструкция фундаментов
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input data-id="1" class="inpval" id="conval1" disabled type="number" name="inputValue"
+                               step="1" min="0" oninput="calcIshod2()"> %
+                    </div>
+                </div>
+
+                <div class="mainlolspace">
+                    <div class="lolspace">
+
+                        <input data-id="1" type="checkbox" id="toggleZd2" class="ishod2check" disabled
+                               onchange="toggleCheckboxesDop()"> Стены
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input data-id="1" class="inpval" id="conval2" disabled type="number" name="inputValue"
+                               step="1" min="0" oninput="calcIshod2()"> %
+                    </div>
+                </div>
+
+
+                <div class="mainlolspace">
+                    <div class="lolspace">
+
+                        <input data-id="1" type="checkbox" id="toggleZd3" class="ishod2check" disabled
+                               onchange="toggleCheckboxesDop()"> Полы
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input data-id="1" class="inpval" id="conval3" disabled type="number" name="inputValue"
+                               step="1" min="0" oninput="calcIshod2()"> %
+                    </div>
+                </div>
+
+                <div class="mainlolspace">
+                    <div class="lolspace">
+                        <input data-id="1" type="checkbox" id="toggleZd4" class="ishod2check" disabled
+                               onchange="toggleCheckboxesDop()"> Колонны, столбы, стойки
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input data-id="1" class="inpval" id="conval4" disabled type="number" name="inputValue"
+                               step="1" min="0" oninput="calcIshod2()"> %
+                    </div>
+                </div>
+                <div class="mainlolspace">
+                    <div class="lolspace">
+                        <input data-id="1" type="checkbox" id="toggleZd5" class="ishod2check" disabled
+                               onchange="toggleCheckboxesDop()"> Несущие конструкции копров,пролетных строейний
+                        галерей
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input data-id="1" class="inpval" id="conval5" disabled type="number" name="inputValue"
+                               step="1" min="0" oninput="calcIshod2()"> %
+                    </div>
+                </div>
+
             </div>
         </div>
 
 
         <div class="pos3">
-            <label for="calendarDays" class="zakpod">Календарных дней:</label>
-            <input id="calendarDays" class="butrad" type="radio" name="daysType" value="calendar">
-            <br>
-            <div id="inputContainer" class="input-container">
-                <label id="inputLabel" for="commonInputField">Введите значение:</label>
-                <input id="commonInputField" disabled type="number" name="inputValue" step="1" min="0">
-            </div>
-            <label for="workingDays" class="zakpod">Рабочих дней:</label>
-            <input id="workingDays" class="butrad" type="radio" name="daysType" value="working">
-            <br>
-            <div id="inputContainerWorking" class="input-container">
-                <label id="inputLabel" for="commonInputFieldWorking">Введите значение:</label>
-                <input id="commonInputFieldWorking" disabled type="number" name="inputValue" step="1" min="0">
-            </div>
 
-            <label for="textAreaMestoObj" class="zakpodGps">Местоположение объекта:</label>
-            <div class="form-outline">
-                <textarea class="form-control" id="textAreaMestoObj" rows="3"></textarea>
-            </div>
-
-        </div>
-    </div>
-
-    <hr>
-
-    <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
-
-
-    <div class="nameforblock1" onclick="toggleDisplay('.nameforblock1', '.dndb');">Характеристика объекта&nbsp;&nbsp;&nbsp;<?php echo '<span class="harakteristikaObject" id="harakteristikaObject">';
-     //   echo $harakteristikaObject;
-        echo '</span>'; ?></div>
-    <div class="dndb">
-        <div class="position1">
-            <div class="pos1">
-                <div class="viborvis">
-                    <label for="SelectZakazchik" class="zakpod">Здание:</label>
-                    <select class="form-select" id="buildingType" aria-label=""
-                            onchange="calculateHaracterCoefficient();">
-                        <option data-id="1" value="0" selected>-- Пожалуйста, выберите --</option>
-                        <option data-id="1.2" value="1">Жилое</option>
-                        <option data-id="1.2" value="2">Гражданское</option>
-                        <option data-id="1" value="3">Промышленное</option>
-                        <option data-id="1" value="4">Сельскохозяйственное</option>
-                        <option data-id="1" value="5">Галереи</option>
-                        <option data-id="1" value="6">Коммуникационные и многоярусные эстакады</option>
-                        <option data-id="1" value="7">Градирни, этажерки и т.д.</option>
-                    </select>
-
-                    <select class="form-select" id="constructionType" aria-label=""
-                            onchange="calculateHaracterCoefficient();">
-                        <option data-id="1" value="0" selected>-- Пожалуйста, выберите --</option>
-                        <option data-id="1.2" value="1">Существующее здание</option>
-                        <option data-id="0.8" value="2">Незавершенное капитальное строительство</option>
-                        <option data-id="0.7" value="3">Новое строительство</option>
-                    </select>
-
-                    <div id="inputContainer" class="input-containerval">
-                        <label for="etazh" class="zakpod">Количество этажей:</label>
-                        <input data-id="1" id="etazh" type="number" name="inputValue" step="1" min="0"
-                               oninput="calculateHaracterCoefficient()">
+            <div class="viborvischeckbox2">
+                <div class="mainlolspace">
+                    <div class="lolspace">
+                        <input data-id="1" type="checkbox" id="toggleZd6" class="ishod2check" disabled
+                               onchange="toggleCheckboxesDop()"> Подкрановые и тормозные конструкции
                     </div>
-
-                    <div id="inputContainer" class="input-containerval">
-                        <label for="visotazdani" class="zakpod">Высота здания:</label>
-                        <input data-id="1" id="visotazdani" type="number" name="inputValue" step="1" min="0"
-                               oninput="calculateHaracterCoefficient()">м
+                    <div id="inputContainer" class="input-container">
+                        <input data-id="1" class="inpval" id="conval6" disabled type="number" name="inputValue"
+                               step="1" min="0" oninput="calcIshod2()"> %
                     </div>
-
-                    <div id="inputContainer" class="input-containerval">
-                        <label for="obem" class="zakpod">Объем здания:</label>
-                        <input id="obem" type="number" name="inputValue" step="1" min="0"
-                               oninput="calculateHaracterCoefficient()">м³
-                    </div>
-
-                    <div id="inputContainer" class="input-containerval">
-                        <label for="visotapola" class="zakpod">Высота покрытия от уровня пола:</label>
-                        <input data-id="1" id="visotapola" type="number" name="inputValue" step="1" min="0"
-                               oninput="calculateHaracterCoefficient()">м
-                    </div>
-
-                </div>
-            </div>
-            <div class="pos2">
-
-                <div class="viborvis">
-                    <input data-id="1.3" id="vis6" class="butrad" type="radio" name="zdvis" value="1"
-                           onchange="calculateHaracterCoefficient()">
-                    <label for="vis6" class="visotarad"> 1) Здание высотой до 6м, бескрановое, однообъемное,
-                        двухпролетное</label>
-                    <br>
-                    <input data-id="1.5" id="vis614" class="butrad" type="radio" name="zdvis" value="2"
-                           onchange="calculateHaracterCoefficient()">
-                    <label for="vis614" class="visotarad">2) Здание высотой от 6м до 14м высоты, с кранами
-                        грузоподъемностью до 50т включительно, с двумя объемами, 3-5 пролета, а также различные
-                        сооружения, резервуары, тоннели, лестничные клетки, галереи
-                    </label>
-                    <br>
-                    <input data-id="1.5" id="vis14" class="butrad" type="radio" name="zdvis" value="3"
-                           onchange="calculateHaracterCoefficient()">
-                    <label for="vis14" class="visotarad">3) Здание высотой более 14м, со сложной конструктивной схемой,
-                        с двухъярусным расположением кранов, более 3
-                        объемов, более 6 пролетов галереи с высотой опор более 20м и пролетом более 36м, полный
-                        монолитный каркас</label>
-                    <br>
-                </div>
-            </div>
-            <div class="pos3">
-
-                <label for="SelectZakazchik" class="zakpod">Температурно-влажностный режим:</label>
-                <select class="form-select" id="temperatureMode" aria-label=""
-                        onchange="calculateHaracterCoefficient();">
-                    <option data-id="1" value="0" selected>-- Пожалуйста, выберите --</option>
-                    <option data-id="1" value="1">Нормальный (К = 1)</option>
-                    <option data-id="1.15" value="2">t>25° С, W>70% (K = 1.15)</option>
-                    <option data-id="1.2" value="3">t>30° С, W>85% (K = 1.2)</option>
-                </select>
-
-                <label for="SelectPodryadchik" class="zakpod">Насыщенность оборудования:</label>
-                <select class="form-select" id="equipmentSaturation" aria-label=""
-                        onchange="calculateHaracterCoefficient();">
-                    <option data-id="1" value="0" selected>-- Пожалуйста, выберите --</option>
-                    <option data-id="1" value="1">Отсуствует (K = 1)</option>
-                    <option data-id="1.1" value="2">До 30% от площади помещений (K = 1.1)</option>
-                    <option data-id="1.2" value="3">От 30% До 50% от площади помещений (K = 1.2)</option>
-                    <option data-id="1.3" value="4">Свыше 50% от площади помещений (K = 1.3)</option>
-                </select>
-
-                <label>
-
-                    <input type="checkbox" id="toggleSelect"
-                           onchange="toggleSelect('toggleSelect', 'selectContainer', 'options')"> Работа в помещениях в
-                    зависимости от степени агрессивности воздействия
-                </label>
-
-                <div id="selectContainer" class="hidden">
-                    <label for="options">Выберите опцию:</label>
-                    <select class="form-select" id="options" disabled onchange="calculateHaracterCoefficient();">
-                        <option data-id="1" value="0">-- Пожалуйста, выберите --</option>
-                        <option data-id="1.2" value="1">Помещение со слабой степенью агрессивного воздействия (k=1.2)
-                        </option>
-                        <option data-id="1.3" value="2">Помещение со средней степенью агрессивного воздействия (k=1.3)
-                        </option>
-                        <option data-id="1.4" value="3">Помещение с сильной степенью агрессивного воздействия (k=1.4)
-                        </option>
-                    </select>
                 </div>
 
-            </div>
-        </div>
-        <div class="position1">
-            <div class="pos1">
-                <div class="viborvis">
-                    <label>
-                        <input class="harObj" data-id="1.5" value="1" type="checkbox" id="chekb1" data-nameK="K18.208"
-                               onchange="calculateHaracterCoefficient();"> Выполнение работ с применением альпинисткого
-                        снаряжения (K = 1.5)
-                    </label>
-                    <label>
-                        <input class="harObj" data-id="1.25" value="2" type="checkbox" id="chekb2" data-nameK="K18.209"
-                               onchange="calculateHaracterCoefficient();"> Шумовые воздействия, превышающие нормативные
-                        величины (K = 1.25)
-                    </label>
-                    <label>
-                        <input class="harObj" data-id="1.2" value="3" type="checkbox" id="chekb3" data-nameK="K18.210"
-                               onchange="calculateHaracterCoefficient();"> Выполнение работ в условиях отрицательных
-                        температур в период с 1 ноября - 1 мая (K = 1.2)
-                    </label>
-                    <label>
-                        <input class="harObj" data-id="1.2" value="4" type="checkbox" id="chekb4" data-nameK="K18.211"
-                               onchange="calculateHaracterCoefficient();"> Необходимость очистки поверхности конструкций
-                        от грязи, пыли, ржавчины. Расчет выполнять по калькуляции трудозатрат
-                    </label>
+                <div class="mainlolspace">
+                    <div class="lolspace">
 
+                        <input data-id="1" type="checkbox" id="toggleZd7" class="ishod2check" disabled
+                               onchange="toggleCheckboxesDop()"> Перекрытия
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input data-id="1" class="inpval" id="conval7" disabled type="number" name="inputValue"
+                               step="1" min="0" oninput="calcIshod2()"> %
+                    </div>
                 </div>
-            </div>
-            <div class="pos2">
 
-                <div class="viborvis">
-                    <label>
-                        <input class="harObj" data-id="1.2" value="5" type="checkbox" id="chekb5" data-nameK="K18.212"
-                               onchange="calculateHaracterCoefficient();"> Необходимость использования переносных
-                        источников освещения (K = 1.2)
-                    </label>
-                    <label>
-                        <input class="harObj" data-id="1.02" value="6" type="checkbox" id="chekb6" data-nameK="K18.213"
-                               onchange="calculateHaracterCoefficient();"> Здание является памятником архитектуры (K =
-                        1.02)
-                    </label>
-                    <label>
-                        <input class="harObj" data-id="1.2" value="7" type="checkbox" id="chekb7" data-nameK="K18.214"
-                               onchange="calculateHaracterCoefficient();"> Обследование в условиях производственного
-                        процесса (K = 1.2)
-                    </label>
-                    <label>
-                        <input class="harObj" data-id="1.15" value="8" type="checkbox" id="chekb8" data-nameK="K18.215"
-                               onchange="calculateHaracterCoefficient();"> Выполнение работ с мостового крана или
-                        подмостей (K = 1.15)
-                    </label>
+
+                <div class="mainlolspace">
+                    <div class="lolspace">
+
+                        <input data-id="1" type="checkbox" id="toggleZd8" class="ishod2check" disabled
+                               onchange="toggleCheckboxesDop()"> Покрытие
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input data-id="1" class="inpval" id="conval8" disabled type="number" name="inputValue"
+                               step="1" min="0" oninput="calcIshod2()"> %
+                    </div>
                 </div>
-            </div>
-            <div class="pos3">
-                <div class="viborvis">
-                    <label>
-                        <input class="harObj" data-id="1.2" value="9" type="checkbox" id="chekb9" data-nameK="K18.216"
-                               onchange="calculateHaracterCoefficient();"> Здание оборудовано кранами режимных групп 7К,
-                        8К, (K = 1.2)
-                    </label>
-                    <label>
-                        <input class="harObj" data-id="1.2" value="10" type="checkbox" id="chekb10" data-nameK="K18.217"
-                               onchange="calculateHaracterCoefficient();"> Конструкции, усиленные по ранее разработанным
-                        проектам (K = 1.2)
-                    </label>
-                    <label>
-                        <input class="harObj" data-id="0.7" value="11" type="checkbox" id="chekb11" data-nameK="K18.218"
-                               onchange="calculateHaracterCoefficient();"> Использование ранее выполненных обследований
-                        не более 3 лет назад (K = 0.7)
-                    </label>
-                    <label>
-                        <input class="harObj" data-id="1.35" value="12" type="checkbox" id="chekb12" data-nameK="K18.220"
-                               onchange="calculateHaracterCoefficient();"> Срочное выполнение обмерно-обследовательских
-                        работ (K <= 1.35)
-                    </label>
-                </div>
-            </div>
-        </div>
 
-    </div>
-
-    <hr>
-    <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
-
-
-    <div class="nameforblock3" onclick="toggleDisplay('.nameforblock3', '.dndb3');"><input class="onCollap"
-                                                                                           type="checkbox"
-                                                                                           id="sborCheck"
-                                                                                           name="obmerCheck" value="1" onchange="calculateK()">
-        &nbsp;&nbsp;&nbsp;Сбор исходных данных
-        &nbsp;&nbsp;&nbsp;<?php echo '<span class="sborIshodnihDannih" id="sborIshodnihDannih">';
-        echo $sborIshodnihDannih;
-        echo '</span>'; ?></div>
-    <div class="dndb3">
-
-        <div class="mainfreename">
-            <div class="freeName" style="margin-left: 1%;">
-                <label>
-                    Категория сложности работ:
-                </label>
-            </div>
-            <div class="freeName2" style="    margin-left: 19%;">
-                <label>
-                    <input data-id="1" value="10" type="checkbox" id="choosCunstruct" onchange="toggleCheckboxes()">
-                    Конструкции (если конструкции обследуются выборочно, поставьте галочку и введите проценты) :
-                </label>
-            </div>
-        </div>
-
-
-        <div class="position1">
-
-            <div class="pos1">
-                <div class="viborvis">
-                    <input data-id="12" id="pasportNaZdanie" class="butrad" type="radio" name="pasportNaZdanie" value="1"
-                           onchange="calcIshod1()">
-                    <label for="pasportNaZdanie" class="pasportzd">1) Паспорт на здание или сооружение</label>
-
-                    <br>
-                    <input data-id="14" id="pasportNaZdanie" class="butrad" type="radio" name="pasportNaZdanie" value="2"
-                           onchange="calcIshod1()">
-                    <label for="pasportNaZdanie" class="pasportzd">2) Паспорт на здание или сооружение. Проектная
-                        документация. Исполнительная документация. Эксплатуационная документация,
-                        журнал наблюдений службы эксплуатации. Документы характеризующие фактические нагрузки и
-                        воздействия. Сертификаты на стальные конструкции.</label>
-
-                    <br>
-                </div>
-            </div>
-            <div class="pos2">
-                <div class="viborvischeckbox1">
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-                            <input data-id="1" value="1" type="checkbox" class="ishod2check" id="toggleZd1" disabled
-                                   onchange="toggleCheckboxesDop()"> Конструкция фундаментов
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input data-id="1" class="inpval" id="conval1" disabled type="number" name="inputValue"
-                                   step="1" min="0" oninput="calcIshod2()"> %
-                        </div>
+                <div class="mainlolspace">
+                    <div class="lolspace">
+                        <input data-id="1" type="checkbox" id="toggleZd9" class="ishod2check" disabled
+                               onchange="toggleCheckboxesDop()"> Кровля
                     </div>
-
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-
-                            <input data-id="1" type="checkbox" id="toggleZd2" class="ishod2check" disabled
-                                   onchange="toggleCheckboxesDop()"> Стены
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input data-id="1" class="inpval" id="conval2" disabled type="number" name="inputValue"
-                                   step="1" min="0" oninput="calcIshod2()"> %
-                        </div>
-                    </div>
-
-
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-
-                            <input data-id="1" type="checkbox" id="toggleZd3" class="ishod2check" disabled
-                                   onchange="toggleCheckboxesDop()"> Полы
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input data-id="1" class="inpval" id="conval3" disabled type="number" name="inputValue"
-                                   step="1" min="0" oninput="calcIshod2()"> %
-                        </div>
-                    </div>
-
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-                            <input data-id="1" type="checkbox" id="toggleZd4" class="ishod2check" disabled
-                                   onchange="toggleCheckboxesDop()"> Колонны, столбы, стойки
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input data-id="1" class="inpval" id="conval4" disabled type="number" name="inputValue"
-                                   step="1" min="0" oninput="calcIshod2()"> %
-                        </div>
-                    </div>
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-                            <input data-id="1" type="checkbox" id="toggleZd5" class="ishod2check" disabled
-                                   onchange="toggleCheckboxesDop()"> Несущие конструкции копров,пролетных строейний
-                            галерей
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input data-id="1" class="inpval" id="conval5" disabled type="number" name="inputValue"
-                                   step="1" min="0" oninput="calcIshod2()"> %
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-
-            <div class="pos3">
-
-                <div class="viborvischeckbox2">
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-                            <input data-id="1" type="checkbox" id="toggleZd6" class="ishod2check" disabled
-                                   onchange="toggleCheckboxesDop()"> Подкрановые и тормозные конструкции
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input data-id="1" class="inpval" id="conval6" disabled type="number" name="inputValue"
-                                   step="1" min="0" oninput="calcIshod2()"> %
-                        </div>
-                    </div>
-
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-
-                            <input data-id="1" type="checkbox" id="toggleZd7" class="ishod2check" disabled
-                                   onchange="toggleCheckboxesDop()"> Перекрытия
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input data-id="1" class="inpval" id="conval7" disabled type="number" name="inputValue"
-                                   step="1" min="0" oninput="calcIshod2()"> %
-                        </div>
-                    </div>
-
-
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-
-                            <input data-id="1" type="checkbox" id="toggleZd8" class="ishod2check" disabled
-                                   onchange="toggleCheckboxesDop()"> Покрытие
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input data-id="1" class="inpval" id="conval8" disabled type="number" name="inputValue"
-                                   step="1" min="0" oninput="calcIshod2()"> %
-                        </div>
-                    </div>
-
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-                            <input data-id="1" type="checkbox" id="toggleZd9" class="ishod2check" disabled
-                                   onchange="toggleCheckboxesDop()"> Кровля
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input data-id="1" class="inpval" id="conval9" disabled type="number" name="inputValue"
-                                   step="1" min="0" oninput="calcIshod2()"> %
-                        </div>
+                    <div id="inputContainer" class="input-container">
+                        <input data-id="1" class="inpval" id="conval9" disabled type="number" name="inputValue"
+                               step="1" min="0" oninput="calcIshod2()"> %
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <hr>
+</div>
+<hr>
 
-    <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
 
-    <div class="nameforblock4" onclick="toggleDisplay('.nameforblock4', '.dndb4');"><input class="onCollap"
-                                                                                           type="checkbox"
-                                                                                           id="obmerCheck"
-                                                                                           name="obmerCheck" value="1" onchange="calculateK()">&nbsp;&nbsp;&nbsp;Обмерные
-        работы &nbsp;&nbsp;&nbsp;<?php echo '<span class="sborIshodnihDannih" id="obmerRaboty">';
-        echo $obmerRaboty;
-        echo '</span>'; ?></div>
-    <div class="dndb4">
+<div class="nameforblock4" onclick="toggleDisplay('.nameforblock4', '.dndb4');"><input class="onCollap"
+                                                                                       type="checkbox"
+                                                                                       id="obmerCheck"
+                                                                                       name="obmerCheck" value="1"
+                                                                                       onchange="calculateK()">&nbsp;&nbsp;&nbsp;Обмерные
+    работы &nbsp;&nbsp;&nbsp;<?php echo '<span class="sborIshodnihDannih" id="obmerRaboty">';
+    echo $obmerRaboty;
+    echo '</span>'; ?></div>
+<div class="dndb4">
 
-        <div class="mainfreename">
-            <div class="freeName" style="margin-left: 1%;">
-                <label>
-                    Категория сложности работ:
-                </label>
-            </div>
-            <div class="freeName2" style="    margin-left: 19%;">
-                <label>
-                    <input type="checkbox" id="choosCunstruct4" onchange="toggleCheckboxes4()"> Объем обмерных работ
-                    (если обмеры выполняются выборочно, поставьте галочку и введите проценты) :
-                </label>
-            </div>
+    <div class="mainfreename">
+        <div class="freeName" style="margin-left: 1%;">
+            <label>
+                Категория сложности работ:
+            </label>
         </div>
-
-
-        <div class="position1">
-
-            <div class="pos1">
-                <div class="viborvis">
-                    <input data-id="10"  id="obmerobs1" class="butrad kat_sl_rab" type="radio" name="kat_sl_rab" value="1"
-                           onchange="calcObmerWorksPart1()">
-                    <label for="obmerobs1" class="pasportzd">1) Обмеры для визуального обследования,
-                        паспортизации.:</label>
-
-                    <br>
-                    <input data-id="14"  id="obmerobs2" class="butrad kat_sl_rab" type="radio" name="kat_sl_rab" value="2"
-                           onchange="calcObmerWorksPart1()">
-                    <label for="obmerobsl2" class="pasportzd ">2) Обмеры для детального обследования (узлы, вскрытия и
-                        т.д.):</label>
-
-                    <!--                    <br>-->
-                    <!--                    <input id="obmerobsl3" class="butrad kat_sl_rab" type="radio" name="kat_sl_rab" value="3" onchange="calcObmerWorksPart1()">-->
-                    <!--                    <label for="obmerobsl3" class="pasportzd">3) Работы различной категории сложности:</label>-->
-
-                </div>
-            </div>
-            <div class="pos2">
-                <div class="viborvischeckbox3">
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-                            <input type="checkbox" id="toggleZd41" class="obmer2check" disabled
-                                   onchange="toggleCheckboxesDop4()">
-                            Конструкция фундаментов
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval41" disabled type="number" name="inputValue" step="1"
-                                   min="0" oninput="calcObmerWorksPart2()"> %
-                        </div>
-                    </div>
-
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-
-                            <input type="checkbox" id="toggleZd42" class="obmer2check" disabled
-                                   onchange="toggleCheckboxesDop4()"> Планы
-                            этажей
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval42" disabled type="number" name="inputValue" step="1"
-                                   min="0" oninput="calcObmerWorksPart2()"> %
-                        </div>
-                    </div>
-
-
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-
-                            <input type="checkbox" id="toggleZd43" class="obmer2check" disabled
-                                   onchange="toggleCheckboxesDop4()"> Фасады
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval43" disabled type="number" name="inputValue" step="1"
-                                   min="0" oninput="calcObmerWorksPart2()"> %
-                        </div>
-                    </div>
-
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-                            <input type="checkbox" id="toggleZd44" class="obmer2check" disabled
-                                   onchange="toggleCheckboxesDop4()"> Разрезы,
-                            сечения
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval44" disabled type="number" name="inputValue" step="1"
-                                   min="0" oninput="calcObmerWorksPart2()"> %
-                        </div>
-                    </div>
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-                            <input type="checkbox" id="toggleZd45" class="obmer2check" disabled
-                                   onchange="toggleCheckboxesDop4()"> Несущие
-                            конструкции копров,пролетных строейний галерей
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval45" disabled type="number" name="inputValue" step="1"
-                                   min="0" oninput="calcObmerWorksPart2()"> %
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-
-            <div class="pos3">
-
-                <div class="viborvischeckbox4">
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-                            <input type="checkbox" id="toggleZd46" class="obmer2check" disabled
-                                   onchange="toggleCheckboxesDop4()"> План
-                            кровли
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval46" disabled type="number" name="inputValue" step="1"
-                                   min="0" oninput="calcObmerWorksPart2()"> %
-                        </div>
-                    </div>
-
-
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-
-                            <input type="checkbox" id="toggleZd48" class="obmer2check" disabled
-                                   onchange="toggleCheckboxesDop4()">
-                            Стропильные и подстропильные конструкции, подкрановые и тормозные конструкции
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval48" disabled type="number" name="inputValue" step="1"
-                                   min="0" oninput="calcObmerWorksPart2()"> %
-                        </div>
-                    </div>
-
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-                            <input type="checkbox" id="toggleZd49" class="obmer2check" disabled
-                                   onchange="toggleCheckboxesDop4()"> Несущие
-                            элементы перекрытий
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval49" disabled type="number" name="inputValue" step="1"
-                                   min="0" oninput="calcObmerWorksPart2()"> %
-                        </div>
-                    </div>
-
-
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-                            <input type="checkbox" id="toggleZd449" class="obmer2check" disabled
-                                   onchange="toggleCheckboxesDop4()"> Несущие
-                            элементы покрытий
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval449" disabled type="number" name="inputValue" step="1"
-                                   min="0" oninput="calcObmerWorksPart2()"> %
-                        </div>
-                    </div>
-
-
-                </div>
-            </div>
-        </div>
-        <div class="dusl">Дополнительные условия:
-            <input data-id="0.7" type="checkbox" id="toggleZdDopUsl" onchange ="toggleCheckboxesDopDusl(this)"> Проектная документация присутствует в полном
-            объеме (K = 0.7)
-            <input data-id="1.25" type="checkbox" id="toggleZdDopUsl1" onchange ="toggleCheckboxesDopDusl(this)"> Выполнение детальных измерений пролетов,
-            сечений, узлов, смещений (K = 1.25)
+        <div class="freeName2" style="    margin-left: 19%;">
+            <label>
+                <input type="checkbox" id="choosCunstruct4" onchange="toggleCheckboxes4()"> Объем обмерных работ
+                (если обмеры выполняются выборочно, поставьте галочку и введите проценты) :
+            </label>
         </div>
     </div>
-
-    <hr>
-
-    <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
-
-
-    <div class="nameforblock5" onclick="toggleDisplay('.nameforblock5', '.dndb5');"><input class="onCollap"
-                                                                                           type="checkbox"
-                                                                                           id="obsledCheck"
-                                                                                           name="obsledCheck" value="1" onchange="calculateK()">&nbsp;&nbsp;&nbsp;Обследовательские
-        работы &nbsp;&nbsp;&nbsp;<?php echo '<span class="sborIshodnihDannih" id="obsledRab">';
-        echo $obsledRab;
-        echo '</span>'; ?></div>
-    <div class="dndb5">
-
-        <div class="mainfreename">
-            <div class="freeName" style="margin-left: 1%;">
-                <label>
-                    Категория сложности работ:
-                </label>
-            </div>
-            <div class="freeName2" style="    margin-left: 19%;">
-                <label>
-                    <input type="checkbox" id="choosCunstruct5" onchange="toggleCheckboxes5()"> Конструкции (если
-                    конструкции обследуются выборочно, поставьте галочку и введите проценты) :
-                </label>
-            </div>
-        </div>
-
-
-        <div class="position1">
-
-            <div class="pos1">
-                <div class="viborvis">
-                    <input id="obsledObs1" class="butrad kat_sl_rab_obsled" type="radio" name="kat_sl_rab_obsled"
-                           value="1" onchange="calcObsled1()">
-                    <label for="obsledObs1" class="pasportzd kat_sl_rab">Предварительный осмотр</label>
-                    <br>
-                    <input id="obsledObs2" class="butrad kat_sl_rab_obsled" type="radio" name="kat_sl_rab_obsled"
-                           value="2" onchange="calcObsled1()">
-                    <label for="obsledObs2" class="pasportzd">Общее обследование</label>
-                    <br>
-                    <input id="obsledObs3" class="butrad kat_sl_rab_obsled" type="radio" name="kat_sl_rab_obsled"
-                           value="3" onchange="calcObsled1()">
-                    <label for="obsledObs3" class="pasportzd">Детальное обследование</label>
-                    <br>
-                    <!--                    <input id="rabotyObshDetal" class="butrad" type="radio" name="daysType" value="4">-->
-                    <!--                    <label for="rabotyObshDetal" class="pasportzd">Работы совмещающие общее и детальное обследование</label>-->
-                    <!--                    <br>-->
-                </div>
-            </div>
-            <div class="pos2">
-                <div class="viborvischeckbox53">
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-                            <input type="checkbox" id="toggleZd51" disabled onchange="toggleCheckboxesDop5()">
-                            Конструкция фундаментов
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval51" disabled type="number" name="inputValue" step="1"
-                                   min="0" oninput="calcObsled2()">
-                        </div>
-                    </div>
-
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-
-                            <input type="checkbox" id="toggleZd52" disabled onchange="toggleCheckboxesDop5()"> Стены
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval52" disabled type="number" name="inputValue" step="1"
-                                   min="0" oninput="calcObsled2()">%
-                        </div>
-                    </div>
-
-
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-
-                            <input type="checkbox" id="toggleZd53" disabled onchange="toggleCheckboxesDop5()"> Полы
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval53" disabled type="number" name="inputValue" step="1"
-                                   min="0" oninput="calcObsled2()">%
-                        </div>
-                    </div>
-
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-                            <input type="checkbox" id="toggleZd54" disabled onchange="toggleCheckboxesDop5()"> Колонны,
-                            столбы, стойки
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval54" disabled type="number" name="inputValue" step="1"
-                                   min="0" oninput="calcObsled2()">%
-                        </div>
-                    </div>
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-                            <input type="checkbox" id="toggleZd55" disabled onchange="toggleCheckboxesDop5()"> Несущие
-                            конструкции копров,пролетных строейний галерей
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval55" disabled type="number" name="inputValue" step="1"
-                                   min="0" oninput="calcObsled2()">%
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-
-            <div class="pos3">
-
-                <div class="viborvischeckbox54">
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-                            <input type="checkbox" id="toggleZd56" disabled onchange="toggleCheckboxesDop5()">
-                            Подкрановые и тормозные конструкции
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval56" disabled type="number" name="inputValue" step="1"
-                                   min="0" oninput="calcObsled2()">%
-                        </div>
-                    </div>
-
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-
-                            <input type="checkbox" id="toggleZd57" disabled onchange="toggleCheckboxesDop5()">
-                            Перекрытия
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval57" disabled type="number" name="inputValue" step="1"
-                                   min="0" oninput="calcObsled2()">%
-                        </div>
-                    </div>
-
-
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-
-                            <input type="checkbox" id="toggleZd58" disabled onchange="toggleCheckboxesDop5()"> Покрытие
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval58" disabled type="number" name="inputValue" step="1"
-                                   min="0" oninput="calcObsled2()">%
-                        </div>
-                    </div>
-
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-                            <input type="checkbox" id="toggleZd59" disabled onchange="toggleCheckboxesDop5()"> Кровля
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval59" disabled type="number" name="inputValue" step="1"
-                                   min="0" oninput="calcObsled2()">%
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class=posframech>
-            <div class="dusl2">Дополнительные условия:
-                <label>
-                    <input type="checkbox" id="toggleSelect1"
-                           onchange="toggleSelect('toggleSelect1', 'selectContainer1', 'options1')"> Облицовка
-                    поверхностных конструкций
-                </label>
-
-                <div id="selectContainer1" class="hidden">
-                    <label for="options">Выберите опцию:</label>
-                    <select class="form-select" id="options1" disabled onchange = "obsledDataidSelect(this)">
-                        <option data-id="1" value="">-- Пожалуйста, выберите --</option>
-                        <option data-id="1.2" value="1">Поверхность конструкций обшиты листовыми материалами или плиткой</option>
-                        <option data-id="1.1" value="2">Поверхность конструкций оштукатурена</option>
-                        <option data-id="1.05" value="3">Поверхность конструкций окрашены или побелены</option>
-                    </select>
-                    <input type="hidden" id="dataId1" value="1">
-                </div>
-                <label>
-                    <input type="checkbox" id="toggleSelect2"
-                           onchange="toggleSelect('toggleSelect2', 'selectContainer2', 'options2')"> Наличие
-                    значительных дефектов
-                </label>
-
-                <div id="selectContainer2" class="hidden">
-                    <label for="options">Выберите опцию:</label>
-                    <select class="form-select" id="options2" disabled onchange = "obsledDataidSelect(this)">
-                        <option data-id="1" value="">-- Пожалуйста, выберите --</option>
-                        <option data-id="1" value="1">Значительные дефекты отсутствуют</option>
-                        <option data-id="1" value="2">До 33% элементов в неудовлетворительном состоянии</option>
-                        <option data-id="1.1" value="3">От 34% до 66% элементов в неудовлетворительном состоянии</option>
-                        <option data-id="1.2" value="4">Свыше 66% элементов в неудовлетворительном состоянии</option>
-                        <option data-id="1.1" value="5">До 33% элементов в предаварийном состоянии</option>
-                        <option data-id="1.2" value="6">От 34% до 66% элементов в предаварийном состоянии</option>
-                        <option data-id="1.3" value="7">Свыше 66% элементов в предаварийном состоянии</option>
-                    </select>
-                    <input type="hidden" id="dataId2" value="1">
-                </div>
-            </div>
-            <div class="svposch">
-                <input type="checkbox" id="povkef"> Учитывать повышающий коэффициент от объема работ если обследуется
-                <70% <br>
-                <input data-id="1.15"  value="1" type="checkbox" id="sooruzhzd"> Здание (сооружение) на просадочных грунтах
-            </div>
-        </div>
-
-
-    </div>
-
-    <hr>
-
-    <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
-
-    <div class="nameforblock6" onclick="toggleDisplay('.nameforblock6', '.dndb6');"><input class="onCollap"
-                                                                                           type="checkbox"
-                                                                                           id="sostTechOtchetCheck"
-                                                                                           name="sostTechOtchetCheck"
-                                                                                           value="1" onchange="calculateK()">&nbsp;&nbsp;&nbsp;Составление
-        технического отчета &nbsp;&nbsp;&nbsp;<?php echo '<span class="sborIshodnihDannih" id="sostTech">';
-        echo $sostTech;
-        echo '</span>'; ?></div>
-    <div class="dndb6">
-
-        <div class="mainfreename">
-            <div class="freeName" style="margin-left: 1%;">
-                <label>
-                    Категория сложности работ:
-                </label>
-            </div>
-            <div class="freeName2" style="    margin-left: 19%;">
-                <label>
-                    <input type="checkbox" id="choosCunstruct6" onchange="toggleCheckboxes6()"> Конструкции (если
-                    конструкции обследуются выборочно, поставьте галочку и введите проценты) :
-                </label>
-            </div>
-        </div>
-
-
-        <div class="position1">
-
-            <div class="pos1">
-                <div class="viborvis">
-                    <input id="sosttech1" class="butrad kat_sl_rab_sosttech" type="radio" name="kat_sl_rab_sosttech"
-                           value="1" onchange="calcSosttech1()">
-                    <label for="sosttech1" class="pasportzd">Заключение о состоянии строительных конструкций с
-                        выводами и рекомендациями</label>
-                    <br>
-                    <input id="sosttech2" class="butrad kat_sl_rab_sosttech" type="radio" name="kat_sl_rab_sosttech"
-                           value="2" onchange="calcSosttech1()">
-                    <label for="sosttech2" class="pasportzd">То же, с разработкой технических решений для отдельных
-                        элементов</label>
-                    <br>
-                    <input id="sosttech3" class="butrad kat_sl_rab_sosttech" type="radio" name="kat_sl_rab_sosttech"
-                           value="3" onchange="calcSosttech1()">
-                    <label for="sosttech3" class="pasportzd">То же, с частичной заменой или усилением более 30%
-                        несущих элементов</label>
-                    <br>
-                    <!--                    <input id="rabotCategory" class="butrad" type="radio" name="daysType" value="working">-->
-                    <!--                    <label for="rabotCategory" class="pasportzd">Работы различной категории сложности</label>-->
-                    <!--                    <br>-->
-                </div>
-            </div>
-            <div class="pos2">
-                <div class="viborvischeckbox63">
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-                            <input type="checkbox" id="toggleZd61" disabled onchange="toggleCheckboxesDop6()">
-                            Конструкция фундаментов
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval61" disabled type="number" name="inputValue" step="1"
-                                   min="0" oninput="calcSosttech2()"> %
-                        </div>
-                    </div>
-
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-
-                            <input type="checkbox" id="toggleZd62" disabled onchange="toggleCheckboxesDop6()"> Стены
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval62" disabled type="number" name="inputValue" step="1"
-                                   min="0" oninput="calcSosttech2()"> %
-                        </div>
-                    </div>
-
-
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-
-                            <input type="checkbox" id="toggleZd63" disabled onchange="toggleCheckboxesDop6()"> Полы
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval63" disabled type="number" name="inputValue" step="1"
-                                   min="0" oninput="calcSosttech2()"> %
-                        </div>
-                    </div>
-
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-                            <input type="checkbox" id="toggleZd64" disabled onchange="toggleCheckboxesDop6()"> Колонны,
-                            столбы, стойки
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval64" disabled type="number" name="inputValue" step="1"
-                                   min="0" oninput="calcSosttech2()"> %
-                        </div>
-                    </div>
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-                            <input type="checkbox" id="toggleZd65" disabled onchange="toggleCheckboxesDop6()"> Несущие
-                            конструкции копров,пролетных строейний галерей
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval65" disabled type="number" name="inputValue" step="1"
-                                   min="0" oninput="calcSosttech2()"> %
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-
-            <div class="pos3">
-
-                <div class="viborvischeckbox64">
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-                            <input type="checkbox" id="toggleZd66" disabled onchange="toggleCheckboxesDop6()">
-                            Подкрановые и тормозные конструкции
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval66" disabled type="number" name="inputValue" step="1"
-                                   min="0" oninput="calcSosttech2()"> %
-                        </div>
-                    </div>
-
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-
-                            <input type="checkbox" id="toggleZd67" disabled onchange="toggleCheckboxesDop6()"> Перекрыия
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval67" disabled type="number" name="inputValue" step="1"
-                                   min="0" oninput="calcSosttech2()"> %
-                        </div>
-                    </div>
-
-
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-
-                            <input type="checkbox" id="toggleZd68" disabled onchange="toggleCheckboxesDop6()"> Покрытие
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval68" disabled type="number" name="inputValue" step="1"
-                                   min="0" oninput="calcSosttech2()"> %
-                        </div>
-                    </div>
-
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-                            <input type="checkbox" id="toggleZd69" disabled onchange="toggleCheckboxesDop6()"> Кровля
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval69" disabled type="number" name="inputValue" step="1"
-                                   min="0" oninput="calcSosttech2()"> %
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="dusl">Дополнительные условия:
-            <input type="checkbox" id="toggleZdDopUslseism"> Сейсмические условия 7 баллов и более
-            <input type="checkbox" id="toggleZdDopUslrazrab"> Разработка временных противоаварийных мероприятий
-            <input type="checkbox" id="toggleZdDopUslrazrabrek"> Разработка рекомендаций без проведения расчетов
-        </div>
-    </div>
-    <hr>
-
-    <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
-
-
-    <div class="nameforblock7" onclick="toggleDisplay('.nameforblock7', '.dndb7');"><input class = "onCollap" type="checkbox" id="redaktorIspConstr" name="redaktorIspConstr" value="1" onchange="calculateK()">&nbsp;&nbsp;&nbsp;Редактор испытания конструкций &nbsp;&nbsp;&nbsp;<?php echo '<span class="sborIshodnihDannih" id="redaktorCons">'; echo $redaktorCons; echo'</span>'; ?></div>
-    <div class="dndb7">
-        <div style="margin-left:1%" ;>Работы по определению прочности бетона и кирпичной кладки:</div>
-        <div class="position1">
-
-            <div class="posfull">
-                <div class="viborvisnew">
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-                            <input type="checkbox" id="toggleZd71" onchange="toggleCheckboxesDop7('toggleZd71')"> Определение
-                            прочности бетона в бетонных и железобетонных конструкциях
-                            механическими приборами
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval71" disabled type="number" name="inputValue" step="1" min="0" oninput="sumKoefRedaktor()">
-                        </div>
-                    </div>
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-                            <input type="checkbox" id="toggleZd72" onchange="toggleCheckboxesDop7('toggleZd72')"> Определение
-                            прочности бетона в бетонных и железобетонных конструкциях
-                            ультразвуковыми приборами
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval72" disabled type="number" name="inputValue" step="1" min="0" oninput="sumKoefRedaktor()">
-                        </div>
-                    </div>
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-                            <input type="checkbox" id="toggleZd73" onchange="toggleCheckboxesDop7('toggleZd73')"> Определение
-                            прочности бетона в бетонных и железобетонных конструкциях
-                            гидравлическими пресс-насосами (типа ГПНС, "Скол", и т.д.)
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval73" disabled type="number" name="inputValue" step="1" min="0" oninput="sumKoefRedaktor()">
-                        </div>
-                    </div>
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-                            <input type="checkbox" id="toggleZd74" onchange="toggleCheckboxesDop7('toggleZd74')"> Определение
-                            прочности раствора и каменных материалов ультразвуковыми
-                            и ударно-импульсными методами
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval74" disabled type="number" name="inputValue" step="1" min="0" oninput="sumKoefRedaktor()">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <hr>
-
-
-    <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
-    <div class="nameforblock8" onclick="toggleDisplay('.nameforblock8', '.dndb8');">Обследование отдельных  конструкций <?php echo '<input onchange="calculateK()" class = "onCollap" type="checkbox" id="sborDann" name="sborDann" value="sborDann"> <span class="countRub">0</span>' ?></div>
-    <div class="dndb8">
-
-
-        <div class="position1">
-
-            <div class="pos1">
-                <div class="viborvischeckbox81">
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-                            <input type="checkbox" id="toggleZd81" onchange="toggleCheckboxesDop8()"> Стропильная ферма
-                            пролетом 18м
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval81" disabled type="number" name="inputValue" step="1"
-                                   min="0"> количество
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval811" disabled type="number" name="inputValue" step="1"
-                                   min="0"> сложность
-                        </div>
-                    </div>
-
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-
-                            <input type="checkbox" id="toggleZd82" onchange="toggleCheckboxesDop8()"> Стропильная ферма
-                            пролетом 24м
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval82" disabled type="number" name="inputValue" step="1"
-                                   min="0"> количество
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval822" disabled type="number" name="inputValue" step="1"
-                                   min="0"> сложность
-                        </div>
-                    </div>
-
-
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-
-                            <input type="checkbox" id="toggleZd83" onchange="toggleCheckboxesDop8()"> Стропильная ферма
-                            пролетом 30м
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval83" disabled type="number" name="inputValue" step="1"
-                                   min="0"> количество
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval833" disabled type="number" name="inputValue" step="1"
-                                   min="0"> сложность
-                        </div>
-                    </div>
-
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-                            <input type="checkbox" id="toggleZd84" onchange="toggleCheckboxesDop8()"> Подстропильная
-                            ферма пролетом 12м
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval84" disabled type="number" name="inputValue" step="1"
-                                   min="0"> количество
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval844" disabled type="number" name="inputValue" step="1"
-                                   min="0"> сложность
-                        </div>
-
-                    </div>
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-                            <input type="checkbox" id="toggleZd85" onchange="toggleCheckboxesDop8()"> Подстропильная
-                            балка пролетом 12м
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval85" disabled type="number" name="inputValue" step="1"
-                                   min="0"> количество
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval855" disabled type="number" name="inputValue" step="1"
-                                   min="0"> сложность
-                        </div>
-                    </div>
-
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-                            <input type="checkbox" id="toggleZd86" onchange="toggleCheckboxesDop8()"> Стропильная балка
-                            пролетом 9м
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval86" disabled type="number" name="inputValue" step="1"
-                                   min="0"> количество
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval866" disabled type="number" name="inputValue" step="1"
-                                   min="0"> сложность
-                        </div>
-                    </div>
-
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-                            <input type="checkbox" id="toggleZd87" onchange="toggleCheckboxesDop8()"> Стропильная балка
-                            пролетом 12м
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval87" disabled type="number" name="inputValue" step="1"
-                                   min="0"> количество
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval877" disabled type="number" name="inputValue" step="1"
-                                   min="0"> сложность
-                        </div>
-                    </div>
-
-
-                </div>
-            </div>
-            <div class="pos2">
-                <div class="viborvischeckbox82">
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-                            <input type="checkbox" id="toggleZd88" onchange="toggleCheckboxesDop8()"> Стропильная балка
-                            пролетом 18м
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval88" disabled type="number" name="inputValue" step="1"
-                                   min="0"> количество
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval888" disabled type="number" name="inputValue" step="1"
-                                   min="0"> сложность
-                        </div>
-                    </div>
-
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-                            <input type="checkbox" id="toggleZd89" onchange="toggleCheckboxesDop8()"> Подкрановая балка
-                            пролетом 6м
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval89" disabled type="number" name="inputValue" step="1"
-                                   min="0"> количество
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval899" disabled type="number" name="inputValue" step="1"
-                                   min="0"> сложность
-                        </div>
-                    </div>
-
-
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-                            <input type="checkbox" id="toggleZd081" onchange="toggleCheckboxesDop8()"> Подкрановая балка
-                            пролетом 12м
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval081" disabled type="number" name="inputValue" step="1"
-                                   min="0"> количество
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval0811" disabled type="number" name="inputValue" step="1"
-                                   min="0"> сложность
-                        </div>
-                    </div>
-
-
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-                            <input type="checkbox" id="toggleZd082" onchange="toggleCheckboxesDop8()"> Плиты покрытия и
-                            перекрытий размером 1,5х6 и 3х6 м
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval082" disabled type="number" name="inputValue" step="1"
-                                   min="0"> количество
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval0822" disabled type="number" name="inputValue" step="1"
-                                   min="0"> сложность
-                        </div>
-                    </div>
-
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-                            <input type="checkbox" id="toggleZd083" onchange="toggleCheckboxesDop8()"> Плиты покрытия и
-                            перекрытий размером 1,5х12 и 3х12 м
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval083" disabled type="number" name="inputValue" step="1"
-                                   min="0"> количество
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval0833" disabled type="number" name="inputValue" step="1"
-                                   min="0"> сложность
-                        </div>
-                    </div>
-
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-                            <input type="checkbox" id="toggleZd084" onchange="toggleCheckboxesDop8()"> Ригели и
-                            фундаментальные балки пролетом 6 м
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval084" disabled type="number" name="inputValue" step="1"
-                                   min="0"> количество
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval0844" disabled type="number" name="inputValue" step="1"
-                                   min="0"> сложность
-                        </div>
-                    </div>
-
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-                            <input type="checkbox" id="toggleZd085" onchange="toggleCheckboxesDop8()"> Ригели и
-                            фундаментальные балки пролетом 9 м
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval085" disabled type="number" name="inputValue" step="1"
-                                   min="0"> количество
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval0855" disabled type="number" name="inputValue" step="1"
-                                   min="0"> сложность
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-
-            <div class="pos3">
-
-                <div class="viborvischeckbox83">
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-                            <input type="checkbox" id="toggleZd086" onchange="toggleCheckboxesDop8()"> Колонны
-                            одноветвевые
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval086" disabled type="number" name="inputValue" step="1"
-                                   min="0"> количество
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval0866" disabled type="number" name="inputValue" step="1"
-                                   min="0"> сложность
-                        </div>
-                    </div>
-
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-                            <input type="checkbox" id="toggleZd087" onchange="toggleCheckboxesDop8()"> Колонны
-                            двухветвевые
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval087" disabled type="number" name="inputValue" step="1"
-                                   min="0"> количество
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval0877" disabled type="number" name="inputValue" step="1"
-                                   min="0"> сложность
-                        </div>
-                    </div>
-
-
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-                            <input type="checkbox" id="toggleZd088" onchange="toggleCheckboxesDop8()"> Капители
-                            безбалочных перекрытий
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval088" disabled type="number" name="inputValue" step="1"
-                                   min="0"> количество
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval0888" disabled type="number" name="inputValue" step="1"
-                                   min="0"> сложность
-                        </div>
-                    </div>
-
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-                            <input type="checkbox" id="toggleZd089" onchange="toggleCheckboxesDop8()"> Стеновые панели
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval089" disabled type="number" name="inputValue" step="1"
-                                   min="0"> количество
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval0899" disabled type="number" name="inputValue" step="1"
-                                   min="0"> сложность
-                        </div>
-                    </div>
-
-
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-                            <input type="checkbox" id="toggleZd0081" onchange="toggleCheckboxesDop8()"> Панели-оболочки
-                            размером 3х18 и 3х24 м
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval0081" disabled type="number" name="inputValue" step="1"
-                                   min="0"> количество
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval00811" disabled type="number" name="inputValue" step="1"
-                                   min="0"> сложность
-                        </div>
-                    </div>
-
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-                            <input type="checkbox" id="toggleZd0082" onchange="toggleCheckboxesDop8()"> Фундаменты
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval0082" disabled type="number" name="inputValue" step="1"
-                                   min="0"> количество
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval00822" disabled type="number" name="inputValue" step="1"
-                                   min="0"> сложность
-                        </div>
-                    </div>
-
-
-                    <div class="mainlolspace">
-                        <div class="lolspace">
-                            <input type="checkbox" id="toggleZd0083" onchange="toggleCheckboxesDop8()"> Перемычки
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval0083" disabled type="number" name="inputValue" step="1"
-                                   min="0"> количество
-                        </div>
-                        <div id="inputContainer" class="input-container">
-                            <input class="inpval" id="conval00833" disabled type="number" name="inputValue" step="1"
-                                   min="0"> сложность
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <hr>
-    <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
-    <div class="nameforblock9" onclick="toggleDisplay('.nameforblock9', '.dndb9');">
-        <?php echo '<input onchange="calculateK()" class = "onCollap" type="checkbox" id="calcalc" name="calcalc" value="1"> 
-&nbsp;&nbsp;&nbsp;Калькуляция &nbsp;&nbsp;&nbsp;
-<span class="calcalc" id="calcalcres">';
-        echo $calculacia;
-        echo '</span>'; ?></div>
-    <div class="dndb9">
-        <div class="position1">
-            <div class="pos1">
-                <div class="viborvisnew">
-                    <div class="mainselspace">
-
-                        <div style="display:flex;">
-                            <div style="width:90%">
-                                <label for="SelectZakazchik" class="zakpod">Наименование работы (услуги)</label>
-                            </div>
-                            <div style="width:50%">
-                                <label for="SelectZakazchik" class="zakpod">Трудоёмкость работы
-                                    (услуги),чел.-дн(Т)</label>
-                            </div>
-                        </div>
-                        <div class="select-input-pair">
-                            <select class="form-select-calc" id="selectCalc1" aria-label=""
-                                    onchange="selectCalculation(1)">
-                                <option value="0" selected>-- Пожалуйста, выберите --</option>
-                                <option value="1">
-                                    Обследование строительных конструкций. Оформление отчета.
-                                </option>
-                                <option value="2">Обмерные работы. Оформление чертежей.</option>
-                                <option value="3">Отрывка шурфов</option>
-                                <option value="4">Обследование сетей. Водопровод, канализация</option>
-                                <option value="5">Обследование сетей. Электроснабжение, слаботочные сети, автоматика
-                                </option>
-                                <option value="6">Обследование сетей. Электроснабжение</option>
-                                <option value="7">Обследование сетей. Отопление и вентиляция</option>
-                                <option value="8">Другое</option>
-                            </select>
-                            <input class="inpvalsel trud" disabled type="number" id="inputCalc1" name="inputValue" step="1"
-                                   min="0" placeholder="">
-
-                        </div>
-                        <input class="custom-work" type="text" id="customWork1" style="display:none;" placeholder="Введите наименование работы">
-                        <div class="select-input-pair">
-                            <select class="form-select-calc" id="selectCalc2" aria-label=""
-                                    onchange="selectCalculation(2)">
-                                <option value="0" selected>-- Пожалуйста, выберите --</option>
-                                <option value="1">
-                                    Обследование строительных конструкций. Оформление отчета.
-                                </option>
-                                <option value="2">Обмерные работы. Оформление чертежей.</option>
-                                <option value="3">Отрывка шурфов</option>
-                                <option value="4">Обследование сетей. Водопровод, канализация</option>
-                                <option value="5">Обследование сетей. Электроснабжение, слаботочные сети, автоматика
-                                </option>
-                                <option value="6">Обследование сетей. Электроснабжение</option>
-                                <option value="7">Обследование сетей. Отопление и вентиляция</option>
-                                <option value="8">Другое</option>
-                            </select>
-                            <input class="inpvalsel trud" disabled type="number" id="inputCalc2" name="inputValue" step="1"
-                                   min="0" placeholder="">
-                        </div>
-                        <input class="custom-work" type="text" id="customWork2" style="display:none;" placeholder="Введите наименование работы">
-                        <div class="select-input-pair">
-                            <select class="form-select-calc" aria-label="" id="selectCalc3"
-                                    onchange="selectCalculation(3)">
-                                <option selected>-- Пожалуйста, выберите --</option>
-                                <option value="1">
-                                    Обследование строительных конструкций. Оформление отчета.
-                                </option>
-                                <option value="2">Обмерные работы. Оформление чертежей.</option>
-                                <option value="3">Отрывка шурфов</option>
-                                <option value="4">Обследование сетей. Водопровод, канализация</option>
-                                <option value="5">Обследование сетей. Электроснабжение, слаботочные сети, автоматика
-                                </option>
-                                <option value="6">Обследование сетей. Электроснабжение</option>
-                                <option value="7">Обследование сетей. Отопление и вентиляция</option>
-                                <option value="8">Другое</option>
-                            </select>
-                            <input class="inpvalsel trud" type="number" disabled id="inputCalc3" name="inputValue" step="1"
-                                   min="0" placeholder="">
-                        </div>
-                        <input class="custom-work" type="text" id="customWork3" style="display:none;" placeholder="Введите наименование работы">
-                        <div class="select-input-pair">
-                            <select class="form-select-calc" aria-label="" id="selectCalc4"
-                                    onchange="selectCalculation(4)">
-                                <option selected>-- Пожалуйста, выберите --</option>
-                                <option value="1">
-                                    Обследование строительных конструкций. Оформление отчета.
-                                </option>
-                                <option value="2">Обмерные работы. Оформление чертежей.</option>
-                                <option value="3">Отрывка шурфов</option>
-                                <option value="4">Обследование сетей. Водопровод, канализация</option>
-                                <option value="5">Обследование сетей. Электроснабжение, слаботочные сети, автоматика
-                                </option>
-                                <option value="6">Обследование сетей. Электроснабжение</option>
-                                <option value="7">Обследование сетей. Отопление и вентиляция</option>
-                                <option value="8">Другое</option>
-                            </select>
-                            <input class="inpvalsel trud" type="number" name="inputValue" disabled id="inputCalc4" step="1"
-                                   min="0" placeholder="">
-                        </div>
-                        <input class="custom-work" type="text" id="customWork4" style="display:none;" placeholder="Введите наименование работы">
-                        <div class="select-input-pair">
-                            <select class="form-select-calc" aria-label="" id="selectCalc5"
-                                    onchange="selectCalculation(5)">
-                                <option selected>-- Пожалуйста, выберите --</option>
-                                <option value="1">
-                                    Обследование строительных конструкций. Оформление отчета.
-                                </option>
-                                <option value="2">Обмерные работы. Оформление чертежей.</option>
-                                <option value="3">Отрывка шурфов</option>
-                                <option value="4">Обследование сетей. Водопровод, канализация</option>
-                                <option value="5">Обследование сетей. Электроснабжение, слаботочные сети, автоматика
-                                </option>
-                                <option value="6">Обследование сетей. Электроснабжение</option>
-                                <option value="7">Обследование сетей. Отопление и вентиляция</option>
-                                <option value="8">Другое</option>
-                            </select>
-                            <input class="inpvalsel trud" type="number" disabled id="inputCalc5" name="inputValue" step="1"
-                                   min="0" placeholder="">
-                        </div>
-                        <input class="custom-work" type="text" id="customWork5" style="display:none;" placeholder="Введите наименование работы">
-                        <div class="select-input-pair">
-                            <select class="form-select-calc" aria-label="" id="selectCalc6"
-                                    onchange="selectCalculation(6)">
-                                <option selected>-- Пожалуйста, выберите --</option>
-                                <option value="1">
-                                    Обследование строительных конструкций. Оформление отчета.
-                                </option>
-                                <option value="2">Обмерные работы. Оформление чертежей.</option>
-                                <option value="3">Отрывка шурфов</option>
-                                <option value="4">Обследование сетей. Водопровод, канализация</option>
-                                <option value="5">Обследование сетей. Электроснабжение, слаботочные сети, автоматика
-                                </option>
-                                <option value="6">Обследование сетей. Электроснабжение</option>
-                                <option value="7">Обследование сетей. Отопление и вентиляция</option>
-                                <option value="8">Другое</option>
-                            </select>
-                            <input class="inpvalsel trud" type="number" disabled id="inputCalc6" name="inputValue" step="1"
-                                   min="0" placeholder="">
-                        </div>
-                        <input class="custom-work" type="text" id="customWork6" style="display:none;" placeholder="Введите наименование работы">
-                        <div class="select-input-pair">
-                            <select class="form-select-calc" aria-label="" id="selectCalc7"
-                                    onchange="selectCalculation(7)">
-                                <option selected>-- Пожалуйста, выберите --</option>
-                                <option value="1">
-                                    Обследование строительных конструкций. Оформление отчета.
-                                </option>
-                                <option value="2">Обмерные работы. Оформление чертежей.</option>
-                                <option value="3">Отрывка шурфов</option>
-                                <option value="4">Обследование сетей. Водопровод, канализация</option>
-                                <option value="5">Обследование сетей. Электроснабжение, слаботочные сети, автоматика
-                                </option>
-                                <option value="6">Обследование сетей. Электроснабжение</option>
-                                <option value="7">Обследование сетей. Отопление и вентиляция</option>
-                                <option value="8">Другое</option>
-                            </select>
-                            <input class="inpvalsel trud" type="number" disabled id="inputCalc7" name="inputValue" step="1"
-                                   min="0" placeholder="">
-                        </div>
-                        <input class="custom-work" type="text" id="customWork7" style="display:none;" placeholder="Введите наименование работы">
-                        <div class="select-input-pair">
-                            <select class="form-select-calc" aria-label="" id="selectCalc8"
-                                    onchange="selectCalculation(8)">
-                                <option selected>-- Пожалуйста, выберите --</option>
-                                <option value="1">
-                                    Обследование строительных конструкций. Оформление отчета.
-                                </option>
-                                <option value="2">Обмерные работы. Оформление чертежей.</option>
-                                <option value="3">Отрывка шурфов</option>
-                                <option value="4">Обследование сетей. Водопровод, канализация</option>
-                                <option value="5">Обследование сетей. Электроснабжение, слаботочные сети, автоматика
-                                </option>
-                                <option value="6">Обследование сетей. Электроснабжение</option>
-                                <option value="7">Обследование сетей. Отопление и вентиляция</option>
-                                <option value="8">Другое</option>
-                            </select>
-                            <input class="inpvalsel trud" type="number" disabled id="inputCalc8" name="inputValue" step="1"
-                                   min="0" placeholder="">
-                        </div>
-                        <input class="custom-work" type="text" id="customWork8" style="display:none;" placeholder="Введите наименование работы">
-                    </div>
-                </div>
-            </div>
-
-            <div class="pos2">
-                <div class="viborvisnew">
-                    <div class="mainselspace">
-
-                        <div style="display:flex;">
-                            <div style="width:100%">
-                                <label for="SelectZakazchik" class="zakpod">Должность исполнителя по КСД</label>
-                            </div>
-                            <div style="width:30%; font-size:10px;">
-                                <label for="SelectZakazchik" class="zakpod">Тарифный разряд исполнителя по ЕТС
-                                    (р)</label>
-                            </div>
-                            <div style="width:20%; font-size:10px;">
-                                <label for="SelectZakazchik" class="zakpod">Количество исполнителей</label>
-                            </div>
-                        </div>
-                        <div class="select-input-pair">
-                            <select class="form-select-calc doljnosti_KSD" id="select2Calc1" disabled aria-label="">
-                                <option selected>-- Пожалуйста, выберите --</option>
-                                <?php
-                                $doljnosti_array = array();
-                                while ($row = $connectionDB->getRowResult($doljnosti_KSD)) {
-                                    $KSD = [
-                                        'id' => $row['id_doljnostiKSD'],
-                                        'name' => $row['name'],
-                                        'koef' => $row['koef']
-
-                                    ];
-                                    array_push($doljnosti_array, $KSD);
-                                }
-                                foreach ($doljnosti_array as $row) {
-                                    echo "<option value='" . $row['id'] . "' data-koef='" . $row['koef'] . "'>" . $row['name'] . "</option>";
-                                }
-
-                                ?>
-                            </select>
-
-                            <input style="width: 70px;" class="inpvalsel tarif" disabled id="input2Calc1" type="number"
-                                   name="inputValue" step="1"
-                                   min="0" placeholder="">
-                            <input style="width: 70px;" class="inpvalsel kol_isp" disabled id="input3Calc1" type="number"
-                                   name="inputValue" step="1"
-                                   min="0" placeholder="">
-                        </div>
-                        <div class="select-input-pair">
-                            <select class="form-select-calc doljnosti_KSD" aria-label="" disabled id="select2Calc2">
-                                <option selected>-- Пожалуйста, выберите --</option>
-                                <?php
-                                foreach ($doljnosti_array as $row) {
-                                    echo "<option value='" . $row['id'] . "' data-koef='" . $row['koef'] . "'>" . $row['name'] . "</option>";
-                                }
-                                ?>
-                            </select>
-                            <input style="width: 70px;" class="inpvalsel tarif" disabled id="input2Calc2" type="number"
-                                   name="inputValue" step="1"
-                                   min="0" placeholder="">
-                            <input style="width: 70px;" class="inpvalsel kol_isp" disabled id="input3Calc2" type="number"
-                                   name="inputValue" step="1"
-                                   min="0" placeholder="">
-                        </div>
-                        <div class="select-input-pair">
-                            <select class="form-select-calc doljnosti_KSD" aria-label="" id="select2Calc3" disabled>
-                                <option selected>-- Пожалуйста, выберите --</option>
-                                <?php
-                                foreach ($doljnosti_array as $row) {
-                                    echo "<option value='" . $row['id'] . "' data-koef='" . $row['koef'] . "'>" . $row['name'] . "</option>";
-                                }
-                                ?>
-                            </select>
-                            <input style="width: 70px;" class="inpvalsel tarif" disabled id="input2Calc3" type="number"
-                                   name="inputValue" step="1"
-                                   min="0" placeholder="">
-                            <input style="width: 70px;" class="inpvalsel kol_isp" disabled id="input3Calc3" type="number"
-                                   name="inputValue" step="1"
-                                   min="0" placeholder="">
-                        </div>
-                        <div class="select-input-pair">
-                            <select class="form-select-calc doljnosti_KSD" aria-label="" id="select2Calc4" disabled>
-                                <option selected>-- Пожалуйста, выберите --</option>
-                                <?php
-                                foreach ($doljnosti_array as $row) {
-                                    echo "<option value='" . $row['id'] . "' data-koef='" . $row['koef'] . "'>" . $row['name'] . "</option>";
-                                }
-                                ?>
-                            </select>
-                            <input style="width: 70px;" class="inpvalsel tarif" disabled id="input2Calc4" type="number"
-                                   name="inputValue" step="1"
-                                   min="0" placeholder="">
-                            <input style="width: 70px;" class="inpvalsel kol_isp" disabled id="input3Calc4" type="number"
-                                   name="inputValue" step="1"
-                                   min="0" placeholder="">
-                        </div>
-                        <div class="select-input-pair">
-                            <select class="form-select-calc doljnosti_KSD" aria-label="" id="select2Calc5" disabled>
-                                <option selected>-- Пожалуйста, выберите --</option>
-                                <?php
-                                foreach ($doljnosti_array as $row) {
-                                    echo "<option value='" . $row['id'] . "' data-koef='" . $row['koef'] . "'>" . $row['name'] . "</option>";
-                                }
-                                ?>
-                            </select>
-                            <input style="width: 70px;" class="inpvalsel tarif" disabled id="input2Calc5" type="number"
-                                   name="inputValue" step="1"
-                                   min="0" placeholder="">
-                            <input style="width: 70px;" class="inpvalsel kol_isp" disabled id="input3Calc5" type="number"
-                                   name="inputValue" step="1"
-                                   min="0" placeholder="">
-                        </div>
-                        <div class="select-input-pair">
-                            <select class="form-select-calc doljnosti_KSD" aria-label="" id="select2Calc6" disabled>
-                                <option selected>-- Пожалуйста, выберите --</option>
-                                <?php
-                                foreach ($doljnosti_array as $row) {
-                                    echo "<option value='" . $row['id'] . "' data-koef='" . $row['koef'] . "'>" . $row['name'] . "</option>";
-                                }
-                                ?>
-                            </select>
-                            <input style="width: 70px;" class="inpvalsel tarif" disabled id="input2Calc6" type="number"
-                                   name="inputValue" step="1"
-                                   min="0" placeholder="">
-                            <input style="width: 70px;" class="inpvalsel kol_isp" disabled id="input3Calc6" type="number"
-                                   name="inputValue" step="1"
-                                   min="0" placeholder="">
-                        </div>
-                        <div class="select-input-pair">
-                            <select class="form-select-calc doljnosti_KSD" aria-label="" id="select2Calc7" disabled>
-                                <option selected>-- Пожалуйста, выберите --</option>
-                                <?php
-                                foreach ($doljnosti_array as $row) {
-                                    echo "<option value='" . $row['id'] . "' data-koef='" . $row['koef'] . "'>" . $row['name'] . "</option>";
-                                }
-                                ?>
-                            </select>
-                            <input style="width: 70px;" class="inpvalsel tarif" disabled id="input2Calc7" type="number"
-                                   name="inputValue" step="1"
-                                   min="0" placeholder="">
-                            <input style="width: 70px;" class="inpvalsel kol_isp" disabled id="input3Calc7" type="number"
-                                   name="inputValue" step="1"
-                                   min="0" placeholder="">
-                        </div>
-                        <div class="select-input-pair">
-                            <select class="form-select-calc doljnosti_KSD" aria-label="" id="select2Calc8" disabled>
-                                <option selected>-- Пожалуйста, выберите --</option>
-                                <?php
-                                foreach ($doljnosti_array as $row) {
-                                    echo "<option value='" . $row['id'] . "' data-koef='" . $row['koef'] . "'>" . $row['name'] . "</option>";
-                                }
-                                ?>
-                            </select>
-                            <input style="width: 70px;" class="inpvalsel tarif" type="number" disabled id="input2Calc8"
-                                   name="inputValue" step="1"
-                                   min="0" placeholder="">
-                            <input style="width: 70px;" class="inpvalsel kol_isp" type="number" disabled id="input3Calc8"
-                                   name="inputValue" step="1"
-                                   min="0" placeholder="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pos3">
-                <div class="viborvisnew">
-                    <div style="display: grid;
-    justify-content: center;">
-                        <label id="inputLabel" for="sredRazryad">Средний тарифный разряд исполнителей</label><br>
-                        <input id="sredRazryad" disabled type="number" name="inputValue" step="1" min="0"><br>
-                        <br><br>
-                        <label id="inputLabel" for="tarifKoef">Тарифный коэффициент для пересчёта
-                            стоимости</label><br>
-                        <input disabled id="tarifKoef" type="number" name="inputValue" step="1" min="0"><br>
-                        <br><br>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    <hr>
 
 
     <div class="position1">
+
         <div class="pos1">
-            <label for="SelectZakazchik" class="zakpod">Кто подписывает смету:</label>
-            <select class="form-select" aria-label="">
-                <option selected>-- Пожалуйста, выберите --</option>
-                <option value="1">
-                    Директор
-                </option>
-                <option value="2">И.О. Директора</option>
-            </select>
+            <div class="viborvis">
+                <input data-id="10" id="obmerobs1" class="butrad kat_sl_rab" type="radio" name="kat_sl_rab" value="1"
+                       onchange="calcObmerWorksPart1()">
+                <label for="obmerobs1" class="pasportzd">1) Обмеры для визуального обследования,
+                    паспортизации.:</label>
 
-            <label for="SelectPodryadchik" class="zakpod">Кем выступает заказчик:</label>
-            <select class="form-select" aria-label="">
-                <option selected>-- Пожалуйста, выберите --</option>
-                <option value="1">Заказчик</option>
-                <option value="2">Генподрядчик</option>
-                <option value="3">Подрядчик</option>
-                <option value="4">Генпроектировщик</option>
-            </select>
+                <br>
+                <input data-id="14" id="obmerobs2" class="butrad kat_sl_rab" type="radio" name="kat_sl_rab" value="2"
+                       onchange="calcObmerWorksPart1()">
+                <label for="obmerobsl2" class="pasportzd ">2) Обмеры для детального обследования (узлы, вскрытия и
+                    т.д.):</label>
 
+                <!--                    <br>-->
+                <!--                    <input id="obmerobsl3" class="butrad kat_sl_rab" type="radio" name="kat_sl_rab" value="3" onchange="calcObmerWorksPart1()">-->
+                <!--                    <label for="obmerobsl3" class="pasportzd">3) Работы различной категории сложности:</label>-->
 
-            <label for="SelectPodryadchik" class="zakpod">Кем выступает ИЗИСКОМ:</label>
-            <select class="form-select" aria-label="">
-                <option selected>-- Пожалуйста, выберите --</option>
-                <option value="1">Подрядчик</option>
-                <option value="2">Субподрядчик</option>
-                <option value="3">Исполнитель</option>
-            </select>
-
-            <label for="SelectPodryadchik" class="zakpod">Кто производит вскрытие и заделку строительных
-                конструкций</label>
-            <select class="form-select" aria-label="">
-                <option selected>-- Пожалуйста, выберите --</option>
-                <option value="1">Заказчик</option>
-                <option value="2">Генподрядчик</option>
-                <option value="3">Подрядчик</option>
-                <option value="4">Генпроектировщик</option>
-            </select>
-
-            <label for="SelectPodryadchik" class="zakpod">Кто подписывает конкурсное предложение</label>
-            <select class="form-select" aria-label="">
-                <option selected>-- Пожалуйста, выберите --</option>
-                <option value="1">Директор</option>
-                <option value="2">И.О. Директора</option>
-            </select>
-
-
+            </div>
         </div>
         <div class="pos2">
+            <div class="viborvischeckbox3">
+                <div class="mainlolspace">
+                    <div class="lolspace">
+                        <input type="checkbox" id="toggleZd41" class="obmer2check" disabled
+                               onchange="toggleCheckboxesDop4()">
+                        Конструкция фундаментов
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval41" disabled type="number" name="inputValue" step="1"
+                               min="0" oninput="calcObmerWorksPart2()"> %
+                    </div>
+                </div>
+
+                <div class="mainlolspace">
+                    <div class="lolspace">
+
+                        <input type="checkbox" id="toggleZd42" class="obmer2check" disabled
+                               onchange="toggleCheckboxesDop4()"> Планы
+                        этажей
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval42" disabled type="number" name="inputValue" step="1"
+                               min="0" oninput="calcObmerWorksPart2()"> %
+                    </div>
+                </div>
+
+
+                <div class="mainlolspace">
+                    <div class="lolspace">
+
+                        <input type="checkbox" id="toggleZd43" class="obmer2check" disabled
+                               onchange="toggleCheckboxesDop4()"> Фасады
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval43" disabled type="number" name="inputValue" step="1"
+                               min="0" oninput="calcObmerWorksPart2()"> %
+                    </div>
+                </div>
+
+                <div class="mainlolspace">
+                    <div class="lolspace">
+                        <input type="checkbox" id="toggleZd44" class="obmer2check" disabled
+                               onchange="toggleCheckboxesDop4()"> Разрезы,
+                        сечения
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval44" disabled type="number" name="inputValue" step="1"
+                               min="0" oninput="calcObmerWorksPart2()"> %
+                    </div>
+                </div>
+                <div class="mainlolspace">
+                    <div class="lolspace">
+                        <input type="checkbox" id="toggleZd45" class="obmer2check" disabled
+                               onchange="toggleCheckboxesDop4()"> Несущие
+                        конструкции копров,пролетных строейний галерей
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval45" disabled type="number" name="inputValue" step="1"
+                               min="0" oninput="calcObmerWorksPart2()"> %
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="pos3">
+
+            <div class="viborvischeckbox4">
+                <div class="mainlolspace">
+                    <div class="lolspace">
+                        <input type="checkbox" id="toggleZd46" class="obmer2check" disabled
+                               onchange="toggleCheckboxesDop4()"> План
+                        кровли
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval46" disabled type="number" name="inputValue" step="1"
+                               min="0" oninput="calcObmerWorksPart2()"> %
+                    </div>
+                </div>
+
+
+                <div class="mainlolspace">
+                    <div class="lolspace">
+
+                        <input type="checkbox" id="toggleZd48" class="obmer2check" disabled
+                               onchange="toggleCheckboxesDop4()">
+                        Стропильные и подстропильные конструкции, подкрановые и тормозные конструкции
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval48" disabled type="number" name="inputValue" step="1"
+                               min="0" oninput="calcObmerWorksPart2()"> %
+                    </div>
+                </div>
+
+                <div class="mainlolspace">
+                    <div class="lolspace">
+                        <input type="checkbox" id="toggleZd49" class="obmer2check" disabled
+                               onchange="toggleCheckboxesDop4()"> Несущие
+                        элементы перекрытий
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval49" disabled type="number" name="inputValue" step="1"
+                               min="0" oninput="calcObmerWorksPart2()"> %
+                    </div>
+                </div>
+
+
+                <div class="mainlolspace">
+                    <div class="lolspace">
+                        <input type="checkbox" id="toggleZd449" class="obmer2check" disabled
+                               onchange="toggleCheckboxesDop4()"> Несущие
+                        элементы покрытий
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval449" disabled type="number" name="inputValue" step="1"
+                               min="0" oninput="calcObmerWorksPart2()"> %
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <div class="dusl">Дополнительные условия:
+        <input data-id="0.7" type="checkbox" id="toggleZdDopUsl" onchange="toggleCheckboxesDopDusl(this)"> Проектная
+        документация присутствует в полном
+        объеме (K = 0.7)
+        <input data-id="1.25" type="checkbox" id="toggleZdDopUsl1" onchange="toggleCheckboxesDopDusl(this)"> Выполнение
+        детальных измерений пролетов,
+        сечений, узлов, смещений (K = 1.25)
+    </div>
+</div>
+
+<hr>
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+
+
+<div class="nameforblock5" onclick="toggleDisplay('.nameforblock5', '.dndb5');"><input class="onCollap"
+                                                                                       type="checkbox"
+                                                                                       id="obsledCheck"
+                                                                                       name="obsledCheck" value="1"
+                                                                                       onchange="calculateK()">&nbsp;&nbsp;&nbsp;Обследовательские
+    работы &nbsp;&nbsp;&nbsp;<?php echo '<span class="sborIshodnihDannih" id="obsledRab">';
+    echo $obsledRab;
+    echo '</span>'; ?></div>
+<div class="dndb5">
+
+    <div class="mainfreename">
+        <div class="freeName" style="margin-left: 1%;">
             <label>
-                <input type="checkbox" id="checkUSN"> Учитывать УСН
+                Категория сложности работ:
             </label>
-            <br>
+        </div>
+        <div class="freeName2" style="    margin-left: 19%;">
             <label>
-                <input type="checkbox" id="checkNDS"> Учитывать НДС
+                <input type="checkbox" id="choosCunstruct5" onchange="toggleCheckboxes5()"> Конструкции (если
+                конструкции обследуются выборочно, поставьте галочку и введите проценты) :
             </label>
-            <br>
-            <br>
-            <label id="inputLabel" for="minuskef">Понижающий коэффициент</label><br>
-            <input id="minuskef" type="number" name="inputValue" step="1" min="0"><br>
-            <label id="inputLabel" for="costwork14">Стоимость работ 14 разряда</label><br>
-            <input id="costwork14" disabled type="text" name="inputValue" step="1" min="0"><br>
-            <br>
-            <label id="inputLabel" for="znachprognoz">Значения прогнозных среднегодовых индексов изменения стоимости
-                работ:</label><br>
-            <label id="inputLabel" for="znachprognoz24">на 2024 год</label><br>
-            <input id="znachprognoz24" disabled type="number" name="inputValue" step="1" min="0"><br>
-            <label id="inputLabel" for="znachprognoz25">на 2025 год</label><br>
-            <input id="znachprognoz25" disabled type="number" name="inputValue" step="1" min="0"><br>
         </div>
     </div>
 
-    <hr>
+
+    <div class="position1">
+
+        <div class="pos1">
+            <div class="viborvis">
+                <input id="obsledObs1" class="butrad kat_sl_rab_obsled" type="radio" name="kat_sl_rab_obsled"
+                       value="1" onchange="calcObsled1()">
+                <label for="obsledObs1" class="pasportzd kat_sl_rab">Предварительный осмотр</label>
+                <br>
+                <input id="obsledObs2" class="butrad kat_sl_rab_obsled" type="radio" name="kat_sl_rab_obsled"
+                       value="2" onchange="calcObsled1()">
+                <label for="obsledObs2" class="pasportzd">Общее обследование</label>
+                <br>
+                <input id="obsledObs3" class="butrad kat_sl_rab_obsled" type="radio" name="kat_sl_rab_obsled"
+                       value="3" onchange="calcObsled1()">
+                <label for="obsledObs3" class="pasportzd">Детальное обследование</label>
+                <br>
+                <!--                    <input id="rabotyObshDetal" class="butrad" type="radio" name="daysType" value="4">-->
+                <!--                    <label for="rabotyObshDetal" class="pasportzd">Работы совмещающие общее и детальное обследование</label>-->
+                <!--                    <br>-->
+            </div>
+        </div>
+        <div class="pos2">
+            <div class="viborvischeckbox53">
+                <div class="mainlolspace">
+                    <div class="lolspace">
+                        <input type="checkbox" id="toggleZd51" disabled onchange="toggleCheckboxesDop5()">
+                        Конструкция фундаментов
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval51" disabled type="number" name="inputValue" step="1"
+                               min="0" oninput="calcObsled2()">
+                    </div>
+                </div>
+
+                <div class="mainlolspace">
+                    <div class="lolspace">
+
+                        <input type="checkbox" id="toggleZd52" disabled onchange="toggleCheckboxesDop5()"> Стены
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval52" disabled type="number" name="inputValue" step="1"
+                               min="0" oninput="calcObsled2()">%
+                    </div>
+                </div>
 
 
+                <div class="mainlolspace">
+                    <div class="lolspace">
+
+                        <input type="checkbox" id="toggleZd53" disabled onchange="toggleCheckboxesDop5()"> Полы
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval53" disabled type="number" name="inputValue" step="1"
+                               min="0" oninput="calcObsled2()">%
+                    </div>
+                </div>
+
+                <div class="mainlolspace">
+                    <div class="lolspace">
+                        <input type="checkbox" id="toggleZd54" disabled onchange="toggleCheckboxesDop5()"> Колонны,
+                        столбы, стойки
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval54" disabled type="number" name="inputValue" step="1"
+                               min="0" oninput="calcObsled2()">%
+                    </div>
+                </div>
+                <div class="mainlolspace">
+                    <div class="lolspace">
+                        <input type="checkbox" id="toggleZd55" disabled onchange="toggleCheckboxesDop5()"> Несущие
+                        конструкции копров,пролетных строейний галерей
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval55" disabled type="number" name="inputValue" step="1"
+                               min="0" oninput="calcObsled2()">%
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="pos3">
+
+            <div class="viborvischeckbox54">
+                <div class="mainlolspace">
+                    <div class="lolspace">
+                        <input type="checkbox" id="toggleZd56" disabled onchange="toggleCheckboxesDop5()">
+                        Подкрановые и тормозные конструкции
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval56" disabled type="number" name="inputValue" step="1"
+                               min="0" oninput="calcObsled2()">%
+                    </div>
+                </div>
+
+                <div class="mainlolspace">
+                    <div class="lolspace">
+
+                        <input type="checkbox" id="toggleZd57" disabled onchange="toggleCheckboxesDop5()">
+                        Перекрытия
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval57" disabled type="number" name="inputValue" step="1"
+                               min="0" oninput="calcObsled2()">%
+                    </div>
+                </div>
+
+
+                <div class="mainlolspace">
+                    <div class="lolspace">
+
+                        <input type="checkbox" id="toggleZd58" disabled onchange="toggleCheckboxesDop5()"> Покрытие
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval58" disabled type="number" name="inputValue" step="1"
+                               min="0" oninput="calcObsled2()">%
+                    </div>
+                </div>
+
+                <div class="mainlolspace">
+                    <div class="lolspace">
+                        <input type="checkbox" id="toggleZd59" disabled onchange="toggleCheckboxesDop5()"> Кровля
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval59" disabled type="number" name="inputValue" step="1"
+                               min="0" oninput="calcObsled2()">%
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class=posframech>
+        <div class="dusl2">Дополнительные условия:
+            <label>
+                <input type="checkbox" id="toggleSelect1"
+                       onchange="toggleSelect('toggleSelect1', 'selectContainer1', 'options1')"> Облицовка
+                поверхностных конструкций
+            </label>
+
+            <div id="selectContainer1" class="hidden">
+                <label for="options">Выберите опцию:</label>
+                <select class="form-select" id="options1" disabled onchange="obsledDataidSelect(this)">
+                    <option data-id="1" value="">-- Пожалуйста, выберите --</option>
+                    <option data-id="1.2" value="1">Поверхность конструкций обшиты листовыми материалами или плиткой
+                    </option>
+                    <option data-id="1.1" value="2">Поверхность конструкций оштукатурена</option>
+                    <option data-id="1.05" value="3">Поверхность конструкций окрашены или побелены</option>
+                </select>
+                <input type="hidden" id="dataId1" value="1">
+            </div>
+            <label>
+                <input type="checkbox" id="toggleSelect2"
+                       onchange="toggleSelect('toggleSelect2', 'selectContainer2', 'options2')"> Наличие
+                значительных дефектов
+            </label>
+
+            <div id="selectContainer2" class="hidden">
+                <label for="options">Выберите опцию:</label>
+                <select class="form-select" id="options2" disabled onchange="obsledDataidSelect(this)">
+                    <option data-id="1" value="">-- Пожалуйста, выберите --</option>
+                    <option data-id="1" value="1">Значительные дефекты отсутствуют</option>
+                    <option data-id="1" value="2">До 33% элементов в неудовлетворительном состоянии</option>
+                    <option data-id="1.1" value="3">От 34% до 66% элементов в неудовлетворительном состоянии</option>
+                    <option data-id="1.2" value="4">Свыше 66% элементов в неудовлетворительном состоянии</option>
+                    <option data-id="1.1" value="5">До 33% элементов в предаварийном состоянии</option>
+                    <option data-id="1.2" value="6">От 34% до 66% элементов в предаварийном состоянии</option>
+                    <option data-id="1.3" value="7">Свыше 66% элементов в предаварийном состоянии</option>
+                </select>
+                <input type="hidden" id="dataId2" value="1">
+            </div>
+        </div>
+        <div class="svposch">
+            <input type="checkbox" id="povkef"> Учитывать повышающий коэффициент от объема работ если обследуется
+            <70% <br>
+            <input data-id="1.15" value="1" type="checkbox" id="sooruzhzd"> Здание (сооружение) на просадочных грунтах
+        </div>
+    </div>
+
+
+</div>
+
+<hr>
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+
+<div class="nameforblock6" onclick="toggleDisplay('.nameforblock6', '.dndb6');"><input class="onCollap"
+                                                                                       type="checkbox"
+                                                                                       id="sostTechOtchetCheck"
+                                                                                       name="sostTechOtchetCheck"
+                                                                                       value="1"
+                                                                                       onchange="calculateK()">&nbsp;&nbsp;&nbsp;Составление
+    технического отчета &nbsp;&nbsp;&nbsp;<?php echo '<span class="sborIshodnihDannih" id="sostTech">';
+    echo $sostTech;
+    echo '</span>'; ?></div>
+<div class="dndb6">
+
+    <div class="mainfreename">
+        <div class="freeName" style="margin-left: 1%;">
+            <label>
+                Категория сложности работ:
+            </label>
+        </div>
+        <div class="freeName2" style="    margin-left: 19%;">
+            <label>
+                <input type="checkbox" id="choosCunstruct6" onchange="toggleCheckboxes6()"> Конструкции (если
+                конструкции обследуются выборочно, поставьте галочку и введите проценты) :
+            </label>
+        </div>
+    </div>
+
+
+    <div class="position1">
+
+        <div class="pos1">
+            <div class="viborvis">
+                <input id="sosttech1" class="butrad kat_sl_rab_sosttech" type="radio" name="kat_sl_rab_sosttech"
+                       value="1" onchange="calcSosttech1()">
+                <label for="sosttech1" class="pasportzd">Заключение о состоянии строительных конструкций с
+                    выводами и рекомендациями</label>
+                <br>
+                <input id="sosttech2" class="butrad kat_sl_rab_sosttech" type="radio" name="kat_sl_rab_sosttech"
+                       value="2" onchange="calcSosttech1()">
+                <label for="sosttech2" class="pasportzd">То же, с разработкой технических решений для отдельных
+                    элементов</label>
+                <br>
+                <input id="sosttech3" class="butrad kat_sl_rab_sosttech" type="radio" name="kat_sl_rab_sosttech"
+                       value="3" onchange="calcSosttech1()">
+                <label for="sosttech3" class="pasportzd">То же, с частичной заменой или усилением более 30%
+                    несущих элементов</label>
+                <br>
+                <!--                    <input id="rabotCategory" class="butrad" type="radio" name="daysType" value="working">-->
+                <!--                    <label for="rabotCategory" class="pasportzd">Работы различной категории сложности</label>-->
+                <!--                    <br>-->
+            </div>
+        </div>
+        <div class="pos2">
+            <div class="viborvischeckbox63">
+                <div class="mainlolspace">
+                    <div class="lolspace">
+                        <input type="checkbox" id="toggleZd61" disabled onchange="toggleCheckboxesDop6()">
+                        Конструкция фундаментов
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval61" disabled type="number" name="inputValue" step="1"
+                               min="0" oninput="calcSosttech2()"> %
+                    </div>
+                </div>
+
+                <div class="mainlolspace">
+                    <div class="lolspace">
+
+                        <input type="checkbox" id="toggleZd62" disabled onchange="toggleCheckboxesDop6()"> Стены
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval62" disabled type="number" name="inputValue" step="1"
+                               min="0" oninput="calcSosttech2()"> %
+                    </div>
+                </div>
+
+
+                <div class="mainlolspace">
+                    <div class="lolspace">
+
+                        <input type="checkbox" id="toggleZd63" disabled onchange="toggleCheckboxesDop6()"> Полы
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval63" disabled type="number" name="inputValue" step="1"
+                               min="0" oninput="calcSosttech2()"> %
+                    </div>
+                </div>
+
+                <div class="mainlolspace">
+                    <div class="lolspace">
+                        <input type="checkbox" id="toggleZd64" disabled onchange="toggleCheckboxesDop6()"> Колонны,
+                        столбы, стойки
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval64" disabled type="number" name="inputValue" step="1"
+                               min="0" oninput="calcSosttech2()"> %
+                    </div>
+                </div>
+                <div class="mainlolspace">
+                    <div class="lolspace">
+                        <input type="checkbox" id="toggleZd65" disabled onchange="toggleCheckboxesDop6()"> Несущие
+                        конструкции копров,пролетных строейний галерей
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval65" disabled type="number" name="inputValue" step="1"
+                               min="0" oninput="calcSosttech2()"> %
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="pos3">
+
+            <div class="viborvischeckbox64">
+                <div class="mainlolspace">
+                    <div class="lolspace">
+                        <input type="checkbox" id="toggleZd66" disabled onchange="toggleCheckboxesDop6()">
+                        Подкрановые и тормозные конструкции
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval66" disabled type="number" name="inputValue" step="1"
+                               min="0" oninput="calcSosttech2()"> %
+                    </div>
+                </div>
+
+                <div class="mainlolspace">
+                    <div class="lolspace">
+
+                        <input type="checkbox" id="toggleZd67" disabled onchange="toggleCheckboxesDop6()"> Перекрыия
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval67" disabled type="number" name="inputValue" step="1"
+                               min="0" oninput="calcSosttech2()"> %
+                    </div>
+                </div>
+
+
+                <div class="mainlolspace">
+                    <div class="lolspace">
+
+                        <input type="checkbox" id="toggleZd68" disabled onchange="toggleCheckboxesDop6()"> Покрытие
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval68" disabled type="number" name="inputValue" step="1"
+                               min="0" oninput="calcSosttech2()"> %
+                    </div>
+                </div>
+
+                <div class="mainlolspace">
+                    <div class="lolspace">
+                        <input type="checkbox" id="toggleZd69" disabled onchange="toggleCheckboxesDop6()"> Кровля
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval69" disabled type="number" name="inputValue" step="1"
+                               min="0" oninput="calcSosttech2()"> %
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dusl">Дополнительные условия:
+        <input type="checkbox" id="toggleZdDopUslseism"> Сейсмические условия 7 баллов и более
+        <input type="checkbox" id="toggleZdDopUslrazrab"> Разработка временных противоаварийных мероприятий
+        <input type="checkbox" id="toggleZdDopUslrazrabrek"> Разработка рекомендаций без проведения расчетов
+    </div>
+</div>
+<hr>
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+
+
+<div class="nameforblock7" onclick="toggleDisplay('.nameforblock7', '.dndb7');"><input class="onCollap" type="checkbox"
+                                                                                       id="redaktorIspConstr"
+                                                                                       name="redaktorIspConstr"
+                                                                                       value="1"
+                                                                                       onchange="calculateK()">&nbsp;&nbsp;&nbsp;Редактор
+    испытания конструкций &nbsp;&nbsp;&nbsp;<?php echo '<span class="sborIshodnihDannih" id="redaktorCons">';
+    echo $redaktorCons;
+    echo '</span>'; ?></div>
+<div class="dndb7">
+    <div style="margin-left:1%" ;>Работы по определению прочности бетона и кирпичной кладки:</div>
+    <div class="position1">
+
+        <div class="posfull">
+            <div class="viborvisnew">
+                <div class="mainlolspace">
+                    <div class="lolspace">
+                        <input type="checkbox" id="toggleZd71" onchange="toggleCheckboxesDop7('toggleZd71')">
+                        Определение
+                        прочности бетона в бетонных и железобетонных конструкциях
+                        механическими приборами
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval71" disabled type="number" name="inputValue" step="1" min="0"
+                               oninput="sumKoefRedaktor()">
+                    </div>
+                </div>
+                <div class="mainlolspace">
+                    <div class="lolspace">
+                        <input type="checkbox" id="toggleZd72" onchange="toggleCheckboxesDop7('toggleZd72')">
+                        Определение
+                        прочности бетона в бетонных и железобетонных конструкциях
+                        ультразвуковыми приборами
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval72" disabled type="number" name="inputValue" step="1" min="0"
+                               oninput="sumKoefRedaktor()">
+                    </div>
+                </div>
+                <div class="mainlolspace">
+                    <div class="lolspace">
+                        <input type="checkbox" id="toggleZd73" onchange="toggleCheckboxesDop7('toggleZd73')">
+                        Определение
+                        прочности бетона в бетонных и железобетонных конструкциях
+                        гидравлическими пресс-насосами (типа ГПНС, "Скол", и т.д.)
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval73" disabled type="number" name="inputValue" step="1" min="0"
+                               oninput="sumKoefRedaktor()">
+                    </div>
+                </div>
+                <div class="mainlolspace">
+                    <div class="lolspace">
+                        <input type="checkbox" id="toggleZd74" onchange="toggleCheckboxesDop7('toggleZd74')">
+                        Определение
+                        прочности раствора и каменных материалов ультразвуковыми
+                        и ударно-импульсными методами
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval74" disabled type="number" name="inputValue" step="1" min="0"
+                               oninput="sumKoefRedaktor()">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+<div class="nameforblock8" onclick="toggleDisplay('.nameforblock8', '.dndb8');"><input class="onCollap"
+                                                                                       type="checkbox"
+                                                                                       id="obsledotdelCheck"
+                                                                                       name="obsledotdelCheck" value="1"
+                                                                                       onchange="calculateK()">
+    &nbsp;&nbsp;&nbsp;Обследование отдельных конструкций
+    &nbsp;&nbsp;&nbsp;<?php echo '<span class="obsledotdel" id="obsledotdel">';
+    echo $obsledotdel;
+    echo '</span>'; ?></div>
+<div class="dndb8">
+
+
+    <div class="position1">
+
+        <div class="pos1">
+            <div class="viborvischeckbox81">
+                <div class="mainlolspace">
+                    <div class="lolspace">
+                        <input data-id="1.222" type="checkbox" id="toggleZd81" onchange="toggleCheckboxesDop8(this)">
+                        Стропильная ферма
+                        пролетом 18м
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval kol" id="conval81" disabled type="number" name="inputValue" step="1"
+                               min="0" onchange="calcObsledOtdel(this)"> количество
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval slojn" id="conval811" disabled type="number" name="inputValue" step="1"
+                               min="0" onchange="calcObsledOtdel(this)"> сложность
+                    </div>
+                    <label>
+                        <input class="monolit" data-id="1.2" value="1" type="checkbox" id="monolit1" data-nameK="K18.229"
+                               disabled onchange="calcObsledOtdel(this)"> Монолитная конструкция
+                    </label>
+                    <hr>
+                </div>
+
+                <div class="mainlolspace">
+                    <div class="lolspace">
+
+                        <input data-id="1.425" type="checkbox" id="toggleZd82" onchange="toggleCheckboxesDop8(this)">
+                        Стропильная ферма
+                        пролетом 24м
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval82" disabled type="number" name="inputValue" step="1"
+                               min="0" onchange="calcObsledOtdel(this)"> количество
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval822" disabled type="number" name="inputValue" step="1"
+                               min="0" onchange="calcObsledOtdel(this)"> сложность
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="" data-id="1.2" value="1" type="checkbox" id="monolit2" data-nameK="K18.229"
+                               disabled onchange="calcObsledOtdel(this)"> Монолитная конструкция
+                    </div>
+                    <hr>
+                </div>
+
+
+                <div class="mainlolspace">
+                    <div class="lolspace">
+
+                        <input data-id="1.587" type="checkbox" id="toggleZd83" onchange="toggleCheckboxesDop8(this)">
+                        Стропильная ферма
+                        пролетом 30м
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval83" disabled type="number" name="inputValue" step="1"
+                               min="0" onchange="calcObsledOtdel(this)"> количество
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval833" disabled type="number" name="inputValue" step="1"
+                               min="0" onchange="calcObsledOtdel(this)"> сложность
+                    </div>
+                    <label>
+                        <input class="" data-id="1.2" value="1" type="checkbox" id="monolit3" data-nameK="K18.229"
+                               disabled onchange="calcObsledOtdel(this)"> Монолитная конструкция
+                    </label>
+                    <hr>
+                </div>
+
+                <div class="mainlolspace">
+                    <div class="lolspace">
+                        <input data-id="1.298" type="checkbox" id="toggleZd84" onchange="toggleCheckboxesDop8(this)">
+                        Подстропильная
+                        ферма пролетом 12м
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval84" disabled type="number" name="inputValue" step="1"
+                               min="0" onchange="calcObsledOtdel(this)"> количество
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval844" disabled type="number" name="inputValue" step="1"
+                               min="0" onchange="calcObsledOtdel(this)"> сложность
+                    </div>
+                    <label>
+                        <input class="" data-id="1.2" value="1" type="checkbox" id="monolit4" data-nameK="K18.229"
+                               disabled onchange="calcObsledOtdel(this)"> Монолитная конструкция
+                    </label>
+                    <hr>
+                </div>
+                <div class="mainlolspace">
+                    <div class="lolspace">
+                        <input data-id="1.298" type="checkbox" id="toggleZd85" onchange="toggleCheckboxesDop8(this)">
+                        Подстропильная
+                        балка пролетом 12м
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval85" disabled type="number" name="inputValue" step="1"
+                               min="0" onchange="calcObsledOtdel(this)"> количество
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval855" disabled type="number" name="inputValue" step="1"
+                               min="0" onchange="calcObsledOtdel(this)"> сложность
+                    </div>
+                    <label>
+                        <input class="" data-id="1.2" value="1" type="checkbox" id="monolit5" data-nameK="K18.229"
+                               onchange="calcObsledOtdel(this)"> Монолитная конструкция
+                    </label>
+                    <hr>
+                </div>
+
+                <div class="mainlolspace">
+                    <div class="lolspace">
+                        <input data-id="1.004" type="checkbox" id="toggleZd86" onchange="toggleCheckboxesDop8(this)">
+                        Стропильная балка
+                        пролетом 9м
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval86" disabled type="number" name="inputValue" step="1"
+                               min="0" onchange="calcObsledOtdel(this)"> количество
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval866" disabled type="number" name="inputValue" step="1"
+                               min="0" onchange="calcObsledOtdel(this)"> сложность
+                    </div>
+                    <label>
+                        <input class="" data-id="1.2" value="1" type="checkbox" id="monolit6" data-nameK="K18.229"
+                               disabled onchange="calcObsledOtdel(this)"> Монолитная конструкция
+                    </label>
+                    <hr>
+                </div>
+
+                <div class="mainlolspace">
+                    <div class="lolspace">
+                        <input data-id="1.077" type="checkbox" id="toggleZd87" onchange="toggleCheckboxesDop8(this)">
+                        Стропильная балка
+                        пролетом 12м
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval87" disabled type="number" name="inputValue" step="1"
+                               min="0" onchange="calcObsledOtdel(this)"> количество
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval877" disabled type="number" name="inputValue" step="1"
+                               min="0" onchange="calcObsledOtdel(this)"> сложность
+                    </div>
+                    <label>
+                        <input class="" data-id="1.2" value="1" type="checkbox" id="monolit7" data-nameK="K18.229"
+                               disabled onchange="calcObsledOtdel(this)"> Монолитная конструкция
+                    </label>
+                    <hr>
+
+                </div>
+
+
+            </div>
+        </div>
+        <div class="pos2">
+            <div class="viborvischeckbox82">
+                <div class="mainlolspace">
+                    <div class="lolspace">
+                        <input data-id="1.130" type="checkbox" id="toggleZd88" onchange="toggleCheckboxesDop8(this)">
+                        Стропильная балка
+                        пролетом 18м
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval kol" id="conval88" disabled type="number" name="inputValue" step="1"
+                               min="0" onchange="calcObsledOtdel(this)"> количество
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval slojn" id="conval888" disabled type="number" name="inputValue" step="1"
+                               min="0" onchange="calcObsledOtdel(this)"> сложность
+                    </div>
+                    <label>
+                        <input class="monolit" data-id="1.2" value="1" type="checkbox" id="monolit8"
+                               data-nameK="K18.229"
+                               disabled onchange="calcObsledOtdel(this)"> Монолитная конструкция
+                    </label>
+                    <hr>
+                </div>
+
+                <div class="mainlolspace">
+                    <div class="lolspace">
+                        <input data-id="1.298" type="checkbox" id="toggleZd89" onchange="toggleCheckboxesDop8(this)">
+                        Подкрановая балка
+                        пролетом 6м
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval89" disabled type="number" name="inputValue" step="1"
+                               min="0" onchange="calcObsledOtdel(this)"> количество
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval899" disabled type="number" name="inputValue" step="1"
+                               min="0" onchange="calcObsledOtdel(this)"> сложность
+                    </div>
+                    <label>
+                        <input class="" data-id="1.2" value="1" type="checkbox" id="monolit9" data-nameK="K18.229"
+                               disabled onchange="calcObsledOtdel(this)"> Монолитная конструкция
+                    </label>
+                    <hr>
+                </div>
+
+
+                <div class="mainlolspace">
+                    <div class="lolspace">
+                        <input data-id="1.552" type="checkbox" id="toggleZd081" onchange="toggleCheckboxesDop8(this)">
+                        Подкрановая балка
+                        пролетом 12м
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval081" disabled type="number" name="inputValue" step="1"
+                               min="0" onchange="calcObsledOtdel(this)"> количество
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval0811" disabled type="number" name="inputValue" step="1"
+                               min="0" onchange="calcObsledOtdel(this)"> сложность
+                    </div>
+                    <label>
+                        <input class="" data-id="1.2" value="1" type="checkbox" id="monolit10" data-nameK="K18.229"
+                               disabled onchange="calcObsledOtdel(this)"> Монолитная конструкция
+                    </label>
+                    <hr>
+                </div>
+
+
+                <div class="mainlolspace">
+                    <div class="lolspace">
+                        <input data-id="0.931" type="checkbox" id="toggleZd082" onchange="toggleCheckboxesDop8(this)">
+                        Плиты
+                        покрытия и
+                        перекрытий размером 1,5х6 и 3х6 м
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval082" disabled type="number" name="inputValue" step="1"
+                               min="0" onchange="calcObsledOtdel(this)"> количество
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval0822" disabled type="number" name="inputValue" step="1"
+                               min="0" onchange="calcObsledOtdel(this)"> сложность
+                    </div>
+                    <label>
+                        <input class="" data-id="1.2" value="1" type="checkbox" id="monolit11" data-nameK="K18.229"
+                               disabled onchange="calcObsledOtdel(this)"> Монолитная конструкция
+                    </label>
+                    <hr>
+                </div>
+
+                <div class="mainlolspace">
+                    <div class="lolspace">
+                        <input data-id="1.112" type="checkbox" id="toggleZd083" onchange="toggleCheckboxesDop8(this)">
+                        Плиты
+                        покрытия и
+                        перекрытий размером 1,5х12 и 3х12 м
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval083" disabled type="number" name="inputValue" step="1"
+                               min="0" onchange="calcObsledOtdel(this)"> количество
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval0833" disabled type="number" name="inputValue" step="1"
+                               min="0" onchange="calcObsledOtdel(this)"> сложность
+                    </div>
+                    <label>
+                        <input class="" data-id="1.2" value="1" type="checkbox" id="monolit12" data-nameK="K18.229"
+                               disabled onchange="calcObsledOtdel(this)"> Монолитная конструкция
+                    </label>
+                    <hr>
+                </div>
+
+                <div class="mainlolspace">
+                    <div class="lolspace">
+                        <input data-id="0.896" type="checkbox" id="toggleZd084" onchange="toggleCheckboxesDop8(this)">
+                        Ригели и
+                        фундаментальные балки пролетом 6 м
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval084" disabled type="number" name="inputValue" step="1"
+                               min="0" onchange="calcObsledOtdel(this)"> количество
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval0844" disabled type="number" name="inputValue" step="1"
+                               min="0" onchange="calcObsledOtdel(this)"> сложность
+                    </div>
+                    <label>
+                        <input class="" data-id="1.2" value="1" type="checkbox" id="monolit13" data-nameK="K18.229"
+                               disabled onchange="calcObsledOtdel(this)"> Монолитная конструкция
+                    </label>
+                    <hr>
+                </div>
+
+                <div class="mainlolspace">
+                    <div class="lolspace">
+                        <input data-id="1.004" type="checkbox" id="toggleZd085" onchange="toggleCheckboxesDop8(this)">
+                        Ригели и
+                        фундаментальные балки пролетом 9 м
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval085" disabled type="number" name="inputValue" step="1"
+                               min="0" onchange="calcObsledOtdel(this)"> количество
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval0855" disabled type="number" name="inputValue" step="1"
+                               min="0" onchange="calcObsledOtdel(this)"> сложность
+                    </div>
+                    <label>
+                        <input class="" data-id="1.2" value="1" type="checkbox" id="monolit14" data-nameK="K18.229"
+                               disabled onchange="calcObsledOtdel(this)"> Монолитная конструкция
+                    </label>
+                    <hr>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="pos3">
+
+            <div class="viborvischeckbox83">
+                <div class="mainlolspace">
+                    <div class="lolspace">
+                        <input data-id="0.786" type="checkbox" id="toggleZd086" onchange="toggleCheckboxesDop8(this)">
+                        Колонны
+                        одноветвевые
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval086" disabled type="number" name="inputValue" step="1"
+                               min="0" onchange="calcObsledOtdel(this)"> количество
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval0866" disabled type="number" name="inputValue" step="1"
+                               min="0" onchange="calcObsledOtdel(this)"> сложность
+                    </div>
+                    <label>
+                        <input class="" data-id="1.2" value="1" type="checkbox" id="monolit15" data-nameK="K18.229"
+                               disabled onchange="calcObsledOtdel(this)"> Монолитная конструкция
+                    </label>
+                    <hr>
+                </div>
+
+                <div class="mainlolspace">
+                    <div class="lolspace">
+                        <input data-id="1.040" type="checkbox" id="toggleZd087" onchange="toggleCheckboxesDop8(this)">
+                        Колонны
+                        двухветвевые
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval087" disabled type="number" name="inputValue" step="1"
+                               min="0" onchange="calcObsledOtdel(this)"> количество
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval0877" disabled type="number" name="inputValue" step="1"
+                               min="0" onchange="calcObsledOtdel(this)"> сложность
+                    </div>
+                    <label>
+                        <input class="" data-id="1.2" value="1" type="checkbox" id="monolit16" data-nameK="K18.229"
+                               disabled onchange="calcObsledOtdel(this)"> Монолитная конструкция
+                    </label>
+                    <hr>
+                </div>
+
+
+                <div class="mainlolspace">
+                    <div class="lolspace">
+                        <input data-id="0.639" type="checkbox" id="toggleZd088" onchange="toggleCheckboxesDop8(this)">
+                        Капители
+                        безбалочных перекрытий
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval088" disabled type="number" name="inputValue" step="1"
+                               min="0" onchange="calcObsledOtdel(this)"> количество
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval0888" disabled type="number" name="inputValue" step="1"
+                               min="0" onchange="calcObsledOtdel(this)"> сложность
+                    </div>
+                    <label>
+                        <input class="" data-id="1.2" value="1" type="checkbox" id="monolit17" data-nameK="K18.229"
+                               disabled onchange="calcObsledOtdel(this)"> Монолитная конструкция
+                    </label>
+                    <hr>
+                </div>
+
+                <div class="mainlolspace">
+                    <div class="lolspace">
+                        <input data-id="0.565" type="checkbox" id="toggleZd089" onchange="toggleCheckboxesDop8(this)">
+                        Стеновые панели
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval089" disabled type="number" name="inputValue" step="1"
+                               min="0" onchange="calcObsledOtdel(this)"> количество
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval0899" disabled type="number" name="inputValue" step="1"
+                               min="0" onchange="calcObsledOtdel(this)"> сложность
+                    </div>
+                    <label>
+                        <input class="" data-id="1.2" value="1" type="checkbox" id="monolit18" data-nameK="K18.229"
+                               disabled onchange="calcObsledOtdel(this)"> Монолитная конструкция
+                    </label>
+                    <hr>
+                </div>
+
+
+                <div class="mainlolspace">
+                    <div class="lolspace">
+                        <input data-id="3.215" type="checkbox" id="toggleZd0081" onchange="toggleCheckboxesDop8(this)">
+                        Панели-оболочки
+                        размером 3х18 и 3х24 м
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval0081" disabled type="number" name="inputValue" step="1"
+                               min="0" onchange="calcObsledOtdel(this)"> количество
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval00811" disabled type="number" name="inputValue" step="1"
+                               min="0" onchange="calcObsledOtdel(this)"> сложность
+                    </div>
+                    <label>
+                        <input class="" data-id="1.2" value="1" type="checkbox" id="monolit19" data-nameK="K18.229"
+                               disabled onchange="calcObsledOtdel(this)"> Монолитная конструкция
+                    </label>
+                    <hr>
+                </div>
+
+                <div class="mainlolspace">
+                    <div class="lolspace">
+                        <input data-id="1.351" type="checkbox" id="toggleZd0082" onchange="toggleCheckboxesDop8(this)">
+                        Фундаменты
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval0082" disabled type="number" name="inputValue" step="1"
+                               min="0" onchange="calcObsledOtdel(this)"> количество
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval00822" disabled type="number" name="inputValue" step="1"
+                               min="0" onchange="calcObsledOtdel(this)"> сложность
+                    </div>
+                    <label>
+                        <input class="" data-id="1.2" value="1" type="checkbox" id="monolit20" data-nameK="K18.229"
+                               disabled onchange="calcObsledOtdel(this)"> Монолитная конструкция
+                    </label>
+                    <hr>
+                </div>
+
+
+                <div class="mainlolspace">
+                    <div class="lolspace">
+                        <input data-id="0.217" type="checkbox" id="toggleZd0083" onchange="toggleCheckboxesDop8(this)">
+                        Перемычки
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval0083" disabled type="number" name="inputValue" step="1"
+                               min="0" onchange="calcObsledOtdel(this)"> количество
+                    </div>
+                    <div id="inputContainer" class="input-container">
+                        <input class="inpval" id="conval00833" disabled type="number" name="inputValue" step="1"
+                               min="0" onchange="calcObsledOtdel(this)"> сложность
+                    </div>
+                    <label>
+                        <input class="" data-id="1.2" value="1" type="checkbox" id="monolit21" data-nameK="K18.229"
+                               disabled onchange="calcObsledOtdel(this)"> Монолитная конструкция
+                    </label>
+                    <hr>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+<div class="nameforblock9" onclick="toggleDisplay('.nameforblock9', '.dndb9');">
+    <?php echo '<input onchange="calculateK()" class = "onCollap" type="checkbox" id="calcalc" name="calcalc" value="1"> 
+&nbsp;&nbsp;&nbsp;Калькуляция &nbsp;&nbsp;&nbsp;
+<span class="calcalc" id="calcalcres">';
+    echo $calculacia;
+    echo '</span>'; ?></div>
+<div class="dndb9">
+    <div class="position1">
+        <div class="pos1">
+            <div class="viborvisnew">
+                <div class="mainselspace">
+
+                    <div style="display:flex;">
+                        <div style="width:90%">
+                            <label for="SelectZakazchik" class="zakpod">Наименование работы (услуги)</label>
+                        </div>
+                        <div style="width:50%">
+                            <label for="SelectZakazchik" class="zakpod">Трудоёмкость работы
+                                (услуги),чел.-дн(Т)</label>
+                        </div>
+                    </div>
+                    <div class="select-input-pair">
+                        <select class="form-select-calc" id="selectCalc1" aria-label=""
+                                onchange="selectCalculation(1)">
+                            <option value="0" selected>-- Пожалуйста, выберите --</option>
+                            <option value="1">
+                                Обследование строительных конструкций. Оформление отчета.
+                            </option>
+                            <option value="2">Обмерные работы. Оформление чертежей.</option>
+                            <option value="3">Отрывка шурфов</option>
+                            <option value="4">Обследование сетей. Водопровод, канализация</option>
+                            <option value="5">Обследование сетей. Электроснабжение, слаботочные сети, автоматика
+                            </option>
+                            <option value="6">Обследование сетей. Электроснабжение</option>
+                            <option value="7">Обследование сетей. Отопление и вентиляция</option>
+                            <option value="8">Другое</option>
+                        </select>
+                        <input class="inpvalsel trud" disabled type="number" id="inputCalc1" name="inputValue" step="1"
+                               min="0" placeholder="">
+
+                    </div>
+                    <input class="custom-work" type="text" id="customWork1" style="display:none;"
+                           placeholder="Введите наименование работы">
+                    <div class="select-input-pair">
+                        <select class="form-select-calc" id="selectCalc2" aria-label=""
+                                onchange="selectCalculation(2)">
+                            <option value="0" selected>-- Пожалуйста, выберите --</option>
+                            <option value="1">
+                                Обследование строительных конструкций. Оформление отчета.
+                            </option>
+                            <option value="2">Обмерные работы. Оформление чертежей.</option>
+                            <option value="3">Отрывка шурфов</option>
+                            <option value="4">Обследование сетей. Водопровод, канализация</option>
+                            <option value="5">Обследование сетей. Электроснабжение, слаботочные сети, автоматика
+                            </option>
+                            <option value="6">Обследование сетей. Электроснабжение</option>
+                            <option value="7">Обследование сетей. Отопление и вентиляция</option>
+                            <option value="8">Другое</option>
+                        </select>
+                        <input class="inpvalsel trud" disabled type="number" id="inputCalc2" name="inputValue" step="1"
+                               min="0" placeholder="">
+                    </div>
+                    <input class="custom-work" type="text" id="customWork2" style="display:none;"
+                           placeholder="Введите наименование работы">
+                    <div class="select-input-pair">
+                        <select class="form-select-calc" aria-label="" id="selectCalc3"
+                                onchange="selectCalculation(3)">
+                            <option selected>-- Пожалуйста, выберите --</option>
+                            <option value="1">
+                                Обследование строительных конструкций. Оформление отчета.
+                            </option>
+                            <option value="2">Обмерные работы. Оформление чертежей.</option>
+                            <option value="3">Отрывка шурфов</option>
+                            <option value="4">Обследование сетей. Водопровод, канализация</option>
+                            <option value="5">Обследование сетей. Электроснабжение, слаботочные сети, автоматика
+                            </option>
+                            <option value="6">Обследование сетей. Электроснабжение</option>
+                            <option value="7">Обследование сетей. Отопление и вентиляция</option>
+                            <option value="8">Другое</option>
+                        </select>
+                        <input class="inpvalsel trud" type="number" disabled id="inputCalc3" name="inputValue" step="1"
+                               min="0" placeholder="">
+                    </div>
+                    <input class="custom-work" type="text" id="customWork3" style="display:none;"
+                           placeholder="Введите наименование работы">
+                    <div class="select-input-pair">
+                        <select class="form-select-calc" aria-label="" id="selectCalc4"
+                                onchange="selectCalculation(4)">
+                            <option selected>-- Пожалуйста, выберите --</option>
+                            <option value="1">
+                                Обследование строительных конструкций. Оформление отчета.
+                            </option>
+                            <option value="2">Обмерные работы. Оформление чертежей.</option>
+                            <option value="3">Отрывка шурфов</option>
+                            <option value="4">Обследование сетей. Водопровод, канализация</option>
+                            <option value="5">Обследование сетей. Электроснабжение, слаботочные сети, автоматика
+                            </option>
+                            <option value="6">Обследование сетей. Электроснабжение</option>
+                            <option value="7">Обследование сетей. Отопление и вентиляция</option>
+                            <option value="8">Другое</option>
+                        </select>
+                        <input class="inpvalsel trud" type="number" name="inputValue" disabled id="inputCalc4" step="1"
+                               min="0" placeholder="">
+                    </div>
+                    <input class="custom-work" type="text" id="customWork4" style="display:none;"
+                           placeholder="Введите наименование работы">
+                    <div class="select-input-pair">
+                        <select class="form-select-calc" aria-label="" id="selectCalc5"
+                                onchange="selectCalculation(5)">
+                            <option selected>-- Пожалуйста, выберите --</option>
+                            <option value="1">
+                                Обследование строительных конструкций. Оформление отчета.
+                            </option>
+                            <option value="2">Обмерные работы. Оформление чертежей.</option>
+                            <option value="3">Отрывка шурфов</option>
+                            <option value="4">Обследование сетей. Водопровод, канализация</option>
+                            <option value="5">Обследование сетей. Электроснабжение, слаботочные сети, автоматика
+                            </option>
+                            <option value="6">Обследование сетей. Электроснабжение</option>
+                            <option value="7">Обследование сетей. Отопление и вентиляция</option>
+                            <option value="8">Другое</option>
+                        </select>
+                        <input class="inpvalsel trud" type="number" disabled id="inputCalc5" name="inputValue" step="1"
+                               min="0" placeholder="">
+                    </div>
+                    <input class="custom-work" type="text" id="customWork5" style="display:none;"
+                           placeholder="Введите наименование работы">
+                    <div class="select-input-pair">
+                        <select class="form-select-calc" aria-label="" id="selectCalc6"
+                                onchange="selectCalculation(6)">
+                            <option selected>-- Пожалуйста, выберите --</option>
+                            <option value="1">
+                                Обследование строительных конструкций. Оформление отчета.
+                            </option>
+                            <option value="2">Обмерные работы. Оформление чертежей.</option>
+                            <option value="3">Отрывка шурфов</option>
+                            <option value="4">Обследование сетей. Водопровод, канализация</option>
+                            <option value="5">Обследование сетей. Электроснабжение, слаботочные сети, автоматика
+                            </option>
+                            <option value="6">Обследование сетей. Электроснабжение</option>
+                            <option value="7">Обследование сетей. Отопление и вентиляция</option>
+                            <option value="8">Другое</option>
+                        </select>
+                        <input class="inpvalsel trud" type="number" disabled id="inputCalc6" name="inputValue" step="1"
+                               min="0" placeholder="">
+                    </div>
+                    <input class="custom-work" type="text" id="customWork6" style="display:none;"
+                           placeholder="Введите наименование работы">
+                    <div class="select-input-pair">
+                        <select class="form-select-calc" aria-label="" id="selectCalc7"
+                                onchange="selectCalculation(7)">
+                            <option selected>-- Пожалуйста, выберите --</option>
+                            <option value="1">
+                                Обследование строительных конструкций. Оформление отчета.
+                            </option>
+                            <option value="2">Обмерные работы. Оформление чертежей.</option>
+                            <option value="3">Отрывка шурфов</option>
+                            <option value="4">Обследование сетей. Водопровод, канализация</option>
+                            <option value="5">Обследование сетей. Электроснабжение, слаботочные сети, автоматика
+                            </option>
+                            <option value="6">Обследование сетей. Электроснабжение</option>
+                            <option value="7">Обследование сетей. Отопление и вентиляция</option>
+                            <option value="8">Другое</option>
+                        </select>
+                        <input class="inpvalsel trud" type="number" disabled id="inputCalc7" name="inputValue" step="1"
+                               min="0" placeholder="">
+                    </div>
+                    <input class="custom-work" type="text" id="customWork7" style="display:none;"
+                           placeholder="Введите наименование работы">
+                    <div class="select-input-pair">
+                        <select class="form-select-calc" aria-label="" id="selectCalc8"
+                                onchange="selectCalculation(8)">
+                            <option selected>-- Пожалуйста, выберите --</option>
+                            <option value="1">
+                                Обследование строительных конструкций. Оформление отчета.
+                            </option>
+                            <option value="2">Обмерные работы. Оформление чертежей.</option>
+                            <option value="3">Отрывка шурфов</option>
+                            <option value="4">Обследование сетей. Водопровод, канализация</option>
+                            <option value="5">Обследование сетей. Электроснабжение, слаботочные сети, автоматика
+                            </option>
+                            <option value="6">Обследование сетей. Электроснабжение</option>
+                            <option value="7">Обследование сетей. Отопление и вентиляция</option>
+                            <option value="8">Другое</option>
+                        </select>
+                        <input class="inpvalsel trud" type="number" disabled id="inputCalc8" name="inputValue" step="1"
+                               min="0" placeholder="">
+                    </div>
+                    <input class="custom-work" type="text" id="customWork8" style="display:none;"
+                           placeholder="Введите наименование работы">
+                </div>
+            </div>
+        </div>
+
+        <div class="pos2">
+            <div class="viborvisnew">
+                <div class="mainselspace">
+
+                    <div style="display:flex;">
+                        <div style="width:100%">
+                            <label for="SelectZakazchik" class="zakpod">Должность исполнителя по КСД</label>
+                        </div>
+                        <div style="width:30%; font-size:10px;">
+                            <label for="SelectZakazchik" class="zakpod">Тарифный разряд исполнителя по ЕТС
+                                (р)</label>
+                        </div>
+                        <div style="width:20%; font-size:10px;">
+                            <label for="SelectZakazchik" class="zakpod">Количество исполнителей</label>
+                        </div>
+                    </div>
+                    <div class="select-input-pair">
+                        <select class="form-select-calc doljnosti_KSD" id="select2Calc1" disabled aria-label="">
+                            <option selected>-- Пожалуйста, выберите --</option>
+                            <?php
+                            $doljnosti_array = array();
+                            while ($row = $connectionDB->getRowResult($doljnosti_KSD)) {
+                                $KSD = [
+                                    'id' => $row['id_doljnostiKSD'],
+                                    'name' => $row['name'],
+                                    'koef' => $row['koef']
+
+                                ];
+                                array_push($doljnosti_array, $KSD);
+                            }
+                            foreach ($doljnosti_array as $row) {
+                                echo "<option value='" . $row['id'] . "' data-koef='" . $row['koef'] . "'>" . $row['name'] . "</option>";
+                            }
+
+                            ?>
+                        </select>
+
+                        <input style="width: 70px;" class="inpvalsel tarif" disabled id="input2Calc1" type="number"
+                               name="inputValue" step="1"
+                               min="0" placeholder="">
+                        <input style="width: 70px;" class="inpvalsel kol_isp" disabled id="input3Calc1" type="number"
+                               name="inputValue" step="1"
+                               min="0" placeholder="">
+                    </div>
+                    <div class="select-input-pair">
+                        <select class="form-select-calc doljnosti_KSD" aria-label="" disabled id="select2Calc2">
+                            <option selected>-- Пожалуйста, выберите --</option>
+                            <?php
+                            foreach ($doljnosti_array as $row) {
+                                echo "<option value='" . $row['id'] . "' data-koef='" . $row['koef'] . "'>" . $row['name'] . "</option>";
+                            }
+                            ?>
+                        </select>
+                        <input style="width: 70px;" class="inpvalsel tarif" disabled id="input2Calc2" type="number"
+                               name="inputValue" step="1"
+                               min="0" placeholder="">
+                        <input style="width: 70px;" class="inpvalsel kol_isp" disabled id="input3Calc2" type="number"
+                               name="inputValue" step="1"
+                               min="0" placeholder="">
+                    </div>
+                    <div class="select-input-pair">
+                        <select class="form-select-calc doljnosti_KSD" aria-label="" id="select2Calc3" disabled>
+                            <option selected>-- Пожалуйста, выберите --</option>
+                            <?php
+                            foreach ($doljnosti_array as $row) {
+                                echo "<option value='" . $row['id'] . "' data-koef='" . $row['koef'] . "'>" . $row['name'] . "</option>";
+                            }
+                            ?>
+                        </select>
+                        <input style="width: 70px;" class="inpvalsel tarif" disabled id="input2Calc3" type="number"
+                               name="inputValue" step="1"
+                               min="0" placeholder="">
+                        <input style="width: 70px;" class="inpvalsel kol_isp" disabled id="input3Calc3" type="number"
+                               name="inputValue" step="1"
+                               min="0" placeholder="">
+                    </div>
+                    <div class="select-input-pair">
+                        <select class="form-select-calc doljnosti_KSD" aria-label="" id="select2Calc4" disabled>
+                            <option selected>-- Пожалуйста, выберите --</option>
+                            <?php
+                            foreach ($doljnosti_array as $row) {
+                                echo "<option value='" . $row['id'] . "' data-koef='" . $row['koef'] . "'>" . $row['name'] . "</option>";
+                            }
+                            ?>
+                        </select>
+                        <input style="width: 70px;" class="inpvalsel tarif" disabled id="input2Calc4" type="number"
+                               name="inputValue" step="1"
+                               min="0" placeholder="">
+                        <input style="width: 70px;" class="inpvalsel kol_isp" disabled id="input3Calc4" type="number"
+                               name="inputValue" step="1"
+                               min="0" placeholder="">
+                    </div>
+                    <div class="select-input-pair">
+                        <select class="form-select-calc doljnosti_KSD" aria-label="" id="select2Calc5" disabled>
+                            <option selected>-- Пожалуйста, выберите --</option>
+                            <?php
+                            foreach ($doljnosti_array as $row) {
+                                echo "<option value='" . $row['id'] . "' data-koef='" . $row['koef'] . "'>" . $row['name'] . "</option>";
+                            }
+                            ?>
+                        </select>
+                        <input style="width: 70px;" class="inpvalsel tarif" disabled id="input2Calc5" type="number"
+                               name="inputValue" step="1"
+                               min="0" placeholder="">
+                        <input style="width: 70px;" class="inpvalsel kol_isp" disabled id="input3Calc5" type="number"
+                               name="inputValue" step="1"
+                               min="0" placeholder="">
+                    </div>
+                    <div class="select-input-pair">
+                        <select class="form-select-calc doljnosti_KSD" aria-label="" id="select2Calc6" disabled>
+                            <option selected>-- Пожалуйста, выберите --</option>
+                            <?php
+                            foreach ($doljnosti_array as $row) {
+                                echo "<option value='" . $row['id'] . "' data-koef='" . $row['koef'] . "'>" . $row['name'] . "</option>";
+                            }
+                            ?>
+                        </select>
+                        <input style="width: 70px;" class="inpvalsel tarif" disabled id="input2Calc6" type="number"
+                               name="inputValue" step="1"
+                               min="0" placeholder="">
+                        <input style="width: 70px;" class="inpvalsel kol_isp" disabled id="input3Calc6" type="number"
+                               name="inputValue" step="1"
+                               min="0" placeholder="">
+                    </div>
+                    <div class="select-input-pair">
+                        <select class="form-select-calc doljnosti_KSD" aria-label="" id="select2Calc7" disabled>
+                            <option selected>-- Пожалуйста, выберите --</option>
+                            <?php
+                            foreach ($doljnosti_array as $row) {
+                                echo "<option value='" . $row['id'] . "' data-koef='" . $row['koef'] . "'>" . $row['name'] . "</option>";
+                            }
+                            ?>
+                        </select>
+                        <input style="width: 70px;" class="inpvalsel tarif" disabled id="input2Calc7" type="number"
+                               name="inputValue" step="1"
+                               min="0" placeholder="">
+                        <input style="width: 70px;" class="inpvalsel kol_isp" disabled id="input3Calc7" type="number"
+                               name="inputValue" step="1"
+                               min="0" placeholder="">
+                    </div>
+                    <div class="select-input-pair">
+                        <select class="form-select-calc doljnosti_KSD" aria-label="" id="select2Calc8" disabled>
+                            <option selected>-- Пожалуйста, выберите --</option>
+                            <?php
+                            foreach ($doljnosti_array as $row) {
+                                echo "<option value='" . $row['id'] . "' data-koef='" . $row['koef'] . "'>" . $row['name'] . "</option>";
+                            }
+                            ?>
+                        </select>
+                        <input style="width: 70px;" class="inpvalsel tarif" type="number" disabled id="input2Calc8"
+                               name="inputValue" step="1"
+                               min="0" placeholder="">
+                        <input style="width: 70px;" class="inpvalsel kol_isp" type="number" disabled id="input3Calc8"
+                               name="inputValue" step="1"
+                               min="0" placeholder="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pos3">
+            <div class="viborvisnew">
+                <div style="display: grid;
+    justify-content: center;">
+                    <label id="inputLabel" for="sredRazryad">Средний тарифный разряд исполнителей</label><br>
+                    <input id="sredRazryad" disabled type="number" name="inputValue" step="1" min="0"><br>
+                    <br><br>
+                    <label id="inputLabel" for="tarifKoef">Тарифный коэффициент для пересчёта
+                        стоимости</label><br>
+                    <input disabled id="tarifKoef" type="number" name="inputValue" step="1" min="0"><br>
+                    <br><br>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<hr>
+
+
+<div class="position1">
+    <div class="pos1">
+        <label for="SelectZakazchik" class="zakpod">Кто подписывает смету:</label>
+        <select class="form-select" aria-label="">
+            <option selected>-- Пожалуйста, выберите --</option>
+            <option value="1">
+                Директор
+            </option>
+            <option value="2">И.О. Директора</option>
+        </select>
+
+        <label for="SelectPodryadchik" class="zakpod">Кем выступает заказчик:</label>
+        <select class="form-select" aria-label="">
+            <option selected>-- Пожалуйста, выберите --</option>
+            <option value="1">Заказчик</option>
+            <option value="2">Генподрядчик</option>
+            <option value="3">Подрядчик</option>
+            <option value="4">Генпроектировщик</option>
+        </select>
+
+
+        <label for="SelectPodryadchik" class="zakpod">Кем выступает ИЗИСКОМ:</label>
+        <select class="form-select" aria-label="">
+            <option selected>-- Пожалуйста, выберите --</option>
+            <option value="1">Подрядчик</option>
+            <option value="2">Субподрядчик</option>
+            <option value="3">Исполнитель</option>
+        </select>
+
+        <label for="SelectPodryadchik" class="zakpod">Кто производит вскрытие и заделку строительных
+            конструкций</label>
+        <select class="form-select" aria-label="">
+            <option selected>-- Пожалуйста, выберите --</option>
+            <option value="1">Заказчик</option>
+            <option value="2">Генподрядчик</option>
+            <option value="3">Подрядчик</option>
+            <option value="4">Генпроектировщик</option>
+        </select>
+
+        <label for="SelectPodryadchik" class="zakpod">Кто подписывает конкурсное предложение</label>
+        <select class="form-select" aria-label="">
+            <option selected>-- Пожалуйста, выберите --</option>
+            <option value="1">Директор</option>
+            <option value="2">И.О. Директора</option>
+        </select>
+
+
+    </div>
+    <div class="pos2">
+        <label>
+            <input type="checkbox" id="checkUSN"> Учитывать УСН
+        </label>
+        <br>
+        <label>
+            <input type="checkbox" id="checkNDS"> Учитывать НДС
+        </label>
+        <br>
+        <br>
+        <label id="inputLabel" for="minuskef">Понижающий коэффициент</label><br>
+        <input id="minuskef" type="number" name="inputValue" step="1" min="0"><br>
+        <label id="inputLabel" for="costwork14">Стоимость работ 14 разряда</label><br>
+        <input id="costwork14" disabled type="text" name="inputValue" step="1" min="0"><br>
+        <br>
+        <label id="inputLabel" for="znachprognoz">Значения прогнозных среднегодовых индексов изменения стоимости
+            работ:</label><br>
+        <label id="inputLabel" for="znachprognoz24">на 2024 год</label><br>
+        <input id="znachprognoz24" disabled type="number" name="inputValue" step="1" min="0"><br>
+        <label id="inputLabel" for="znachprognoz25">на 2025 год</label><br>
+        <input id="znachprognoz25" disabled type="number" name="inputValue" step="1" min="0"><br>
+    </div>
+</div>
+
+<hr>
 
 
 </section>
@@ -2368,6 +2534,7 @@ echo "<script>
     let sumObsled = 0; // СУММА ВКЛАДКИ обcледа
     let sumSosttech = 0; // СУММА ВКЛАДКИ тех отчета
     let sumIspConstr = 0; // СУММА ВКЛАДКИ испытания конструкций
+    let sumObsledOtdel = 0; // СУММА ВКЛАДКИ обследования отдельных конструкций
     let fullSumma = 0; // ОБЩАЯ СУММА ВСЕХ ВКЛАДОК
     let k18ob = 0; // Общий  К18.об
     let hardZdanie; // КАТЕГОРИЯ СЛОЖНОСТИ ЗДАНИЯ
@@ -2377,7 +2544,7 @@ echo "<script>
     let koefIshod2 = 1; // КОЭФИЦИЕНТ НЗТ1 (табл.2.4)
     let b14Value = 1; // b14
 
-    let costwork14 ; // СРЕДНИЙ РАЗРЯД  14
+    let costwork14; // СРЕДНИЙ РАЗРЯД  14
     let obmerDop1 = 1; // доп чекбокс2
     let obmerDop2 = 1; // доп чекбокс2
     let obsledDop1 = 1; //
@@ -2402,9 +2569,23 @@ echo "<script>
     let isObsledRabChecked;
     let isSostTechOtchetCheck;
     let isRedaktorIspConstr;
-    let isSborDann;
     let isCalc;
+    let isObsledOtdel = 0;
     let totalSum = 0;
+
+
+    let arrObsledOtdel = [];
+
+    class Obsled {
+        constructor(id, koef, count, hard, koef_monol, total) {
+            this.id = id;
+            this.koef = koef;
+            this.count = count;
+            this.hard = hard;
+            this.koef_monol = koef_monol;
+            this.total = total;
+        }
+    }
 
 
     async function calculateK() {
@@ -2414,9 +2595,8 @@ echo "<script>
         isObsledRabChecked = document.getElementById('obsledCheck').checked;
         isSostTechOtchetCheck = document.getElementById('sostTechOtchetCheck').checked;
         isRedaktorIspConstr = document.getElementById('redaktorIspConstr').checked;
-        isSborDann = document.getElementById('sborDann').checked;
         isCalc = document.getElementById('calcalc').checked;
-
+        isObsledOtdel = document.getElementById('obsledotdel').checked;
 
 
         koefIshod = koefIshod == 0 ? 1 : koefIshod;
@@ -2428,7 +2608,7 @@ echo "<script>
         if (koefIshod == 1 && koefIshod2 == 1) {
             sumIshod = 0;
         } else {
-            sumIshod =  Vdiv100 * k18101 * koefIshod * koefIshod2 * b14Value * k18ob * ki212 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat;
+            sumIshod = Vdiv100 * k18101 * koefIshod * koefIshod2 * b14Value * k18ob * ki212 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat;
             $('#sborIshodnihDannih').html(sumIshod.toFixed(3));
             console.log(sumIshod + " =  koefIshod: " + koefIshod + " koefIshod2: " + koefIshod2 + " costwork14: " + b14Value + " K18ob:" + k18ob + " ki212: " + ki212);
         }
@@ -2437,7 +2617,7 @@ echo "<script>
         if (koefObmerWork1 == 1 && koefObmerWork2 == 1) {
             sumObmer = 0;
         } else {
-            sumObmer = koefObmerWork1 * koefObmerWork2 * b14Value * k18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222* koefHarackCheckb * agressive * temperaturMode * equipmentSaturat;
+            sumObmer = koefObmerWork1 * koefObmerWork2 * b14Value * k18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat;
             $('#obmerRaboty').html(sumObmer.toFixed(3));
             console.log(sumObmer + " =  koefObmerWork1: " + koefObmerWork1 + " koefObmerWork2: " + koefObmerWork2 + " K18ob: " + k18ob + " obmerDop1:" + obmerDop1 + " obmerDop2: " + obmerDop2 + " Vdiv100: " + Vdiv100 + " k18101: " + k18101 + " ki222: " + ki222);
         }
@@ -2445,7 +2625,7 @@ echo "<script>
         if (koefObsled1 == 1 && koefObsled2 == 1) {
             sumObsled = 0;
         } else {
-            sumObsled = koefObsled1 * koefObsled2 * b14Value * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223* koefHarackCheckb * agressive * temperaturMode * equipmentSaturat;
+            sumObsled = koefObsled1 * koefObsled2 * b14Value * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat;
             $('#obsledRab').html(sumObsled.toFixed(3));
             console.log(sumObsled + " =  koefObsled1: " + koefObsled1 + " koefObsled2: " + koefObsled2 + " K18ob: " + k18ob + " obsledDop1:" + obsledDop1 + " obsledDop2: " + obsledDop2 + " Vdiv100: " + Vdiv100 + " k18101: " + k18101 + " ki223: " + ki223);
         }
@@ -2453,26 +2633,29 @@ echo "<script>
         if (koefSosttech1 == 1 && koefSosttech2 == 1) {
             sumSosttech = 0;
         } else {
-            sumSosttech = koefSosttech1 * koefSosttech2 * b14Value * k18ob * Vdiv100 * k18101 * ki242* koefHarackCheckb * agressive * temperaturMode * equipmentSaturat;
+            sumSosttech = koefSosttech1 * koefSosttech2 * b14Value * k18ob * Vdiv100 * k18101 * ki242 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat;
             $('#sostTech').html(sumSosttech.toFixed(3));
             console.log(sumSosttech + " =  koefSosttech1: " + koefSosttech1 + " koefSosttech2: " + koefSosttech2 + " costwork14: " + b14Value + " K18ob:" + k18ob + " Vdiv100: " + Vdiv100 + " Vdiv100: " + Vdiv100 + " k18101: " + k18101 + " ki223: " + ki223);
         }
+
+
         fullSumma = 0; //+ parseFloat(sumIshod) + parseFloat(sumObmer) + parseFloat(sumObsled) + parseFloat(sumSosttech) + parseFloat(sumRedaktor);
         if (isSborIshodnihDannihChecked) fullSumma += parseFloat(sumIshod);
         if (isObmerRabotyChecked) fullSumma += parseFloat(sumObmer);
         if (isObsledRabChecked) fullSumma += parseFloat(sumObsled);
         if (isSostTechOtchetCheck) fullSumma += parseFloat(sumSosttech);
         if (isRedaktorIspConstr) fullSumma += parseFloat(sumRedaktor);
-         fullSumma = fullSumma.toFixed(2) ;
-         totalSum = 0;
+        if (isObsledOtdel) fullSumma += parseFloat(sumObsledOtdel);
+        fullSumma = fullSumma.toFixed(2);
+        totalSum = 0;
         totalSum += parseFloat(fullSumma)
         if (isCalc) totalSum += parseFloat(calculacia);
         document.getElementById('harakteristikaObjectObsh').innerText = totalSum.toFixed(2);
         document.getElementById('harakteristikaObjectSmeta').innerText = fullSumma;
         if (isCalc)
-        document.getElementById('harakteristikaObjectCalc').innerText = parseFloat(calculacia).toFixed(2);
+            document.getElementById('harakteristikaObjectCalc').innerText = parseFloat(calculacia).toFixed(2);
         else
-        document.getElementById('harakteristikaObjectCalc').innerText = 0;
+            document.getElementById('harakteristikaObjectCalc').innerText = 0;
 
 
         // fullSumma = fullSumma.toFixed(3);
@@ -2485,9 +2668,13 @@ echo "<script>
     function getCheckboxValue(checkboxId) {
 
         const checkbox = document.getElementById(checkboxId);
+        console.log(checkbox.getAttribute('data-id'));
         return checkbox.checked ? parseFloat(checkbox.getAttribute('data-id')) || 1 : 1;
+
     }
-let koefHarackCheckb = 1;
+
+    let koefHarackCheckb = 1;
+
     async function calculateHaracterCoefficient() {
         sumHarakter = 0;
         koefHarackCheckb = 1;
@@ -2496,20 +2683,20 @@ let koefHarackCheckb = 1;
         equipmentSaturat = 1;
 
 
-       chekb1Val = getCheckboxValue('chekb1');
-       chekb2Val = getCheckboxValue('chekb2');
+        chekb1Val = getCheckboxValue('chekb1');
+        chekb2Val = getCheckboxValue('chekb2');
         chekb3Val = getCheckboxValue('chekb3');
-       chekb4Val = getCheckboxValue('chekb4');
+        chekb4Val = getCheckboxValue('chekb4');
         chekb5Val = getCheckboxValue('chekb5');
         chekb6Val = getCheckboxValue('chekb6');
-      chekb7Val = getCheckboxValue('chekb7');
-      chekb8Val = getCheckboxValue('chekb8');
-         chekb9Val = getCheckboxValue('chekb9');
+        chekb7Val = getCheckboxValue('chekb7');
+        chekb8Val = getCheckboxValue('chekb8');
+        chekb9Val = getCheckboxValue('chekb9');
         chekb10Val = getCheckboxValue('chekb10');
         chekb11Val = getCheckboxValue('chekb11');
-         chekb12Val = getCheckboxValue('chekb12');
-        arrHaractCheckb = [chekb1Val, chekb2Val,chekb3Val,chekb4Val,chekb5Val,chekb6Val,chekb7Val,chekb8Val,chekb9Val,chekb10Val,chekb11Val,chekb12Val];
-        arrHaractCheckb.map( item => koefHarackCheckb *= item);
+        chekb12Val = getCheckboxValue('chekb12');
+        arrHaractCheckb = [chekb1Val, chekb2Val, chekb3Val, chekb4Val, chekb5Val, chekb6Val, chekb7Val, chekb8Val, chekb9Val, chekb10Val, chekb11Val, chekb12Val];
+        arrHaractCheckb.map(item => koefHarackCheckb *= item);
         console.log("arrHaractCheckb", arrHaractCheckb);
 
         let checkboxagressive = document.getElementById("toggleSelect");
@@ -2522,10 +2709,7 @@ let koefHarackCheckb = 1;
         } else {
             agressive = 1;
         }
-        console.log (agressive + "agressive");
-
-
-
+        console.log(agressive + "agressive");
 
 
         let kefVisota = 1;
@@ -2550,7 +2734,7 @@ let koefHarackCheckb = 1;
         const constructionType = getSelectedDataId('#constructionType');
         const options = getSelectedDataId('#options');
         temperaturMode = getSelectedDataId('#temperatureMode');
-        console.log(temperaturMode+"temperatureMode");
+        console.log(temperaturMode + "temperatureMode");
         equipmentSaturat = getSelectedDataId('#equipmentSaturation');
 
         k18101 = buildingType;
@@ -2559,7 +2743,7 @@ let koefHarackCheckb = 1;
         V = parseFloat(document.getElementById('obem').value);
         if (obem > 0) {
             k18ob = 6.33 / Math.sqrt(obem);
-            if(k18ob > 8){
+            if (k18ob > 8) {
                 k18ob = 8;
             }
             Vdiv100 = obem * 10;
@@ -2605,15 +2789,15 @@ let koefHarackCheckb = 1;
         }
 
 
-        await  updateBuildingInfo();
+        await updateBuildingInfo();
         await calcIshod1();
         await calcIshod2();
-        await   calcObmerWorksPart1();
+        await calcObmerWorksPart1();
         await calcObmerWorksPart2();
         await calcObsled1();
         await calcObsled2();
-        await  calcSosttech1();
-        await  calcSosttech2();
+        await calcSosttech1();
+        await calcSosttech2();
 
         await calculateK();
     }
@@ -2700,7 +2884,7 @@ let koefHarackCheckb = 1;
                         P212: P212
                     },
                     success: function (response) {
-                        if(response.trim().length > 0) {
+                        if (response.trim().length > 0) {
                             let unparseRepsonse = JSON.parse(response);
                             koefIshod = parseFloat(unparseRepsonse[0].trim());
                             ki212 = parseFloat(unparseRepsonse[1].trim());
@@ -2719,7 +2903,6 @@ let koefHarackCheckb = 1;
         await calculateK();
 
     }
-
 
 
     async function calcIshod2() {
@@ -2803,7 +2986,7 @@ let koefHarackCheckb = 1;
                     if (koefIshod == 1 && koefIshod2 == 1) {
                         sumIshod = 0;
                     } else {
-                        sumIshod = Vdiv100 * k18101 * koefIshod * koefIshod2 * b14Value * k18ob * ki212* koefHarackCheckb * agressive * temperaturMode * equipmentSaturat;
+                        sumIshod = Vdiv100 * k18101 * koefIshod * koefIshod2 * b14Value * k18ob * ki212 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat;
                     }
                     resolve();
                 }).catch(function (error) {
@@ -2829,7 +3012,7 @@ let koefHarackCheckb = 1;
         if (koefIshod == 1 && koefIshod2 == 1) {
             sumIshod = 0;
         } else {
-            sumIshod = Vdiv100 * k18101 * koefIshod * koefIshod2 * b14Value * k18ob * ki212* koefHarackCheckb * agressive * temperaturMode * equipmentSaturat;
+            sumIshod = Vdiv100 * k18101 * koefIshod * koefIshod2 * b14Value * k18ob * ki212 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat;
         }
         $('#sborIshodnihDannih').html(sumIshod.toFixed(3));
         await calculateK();
@@ -2842,7 +3025,7 @@ let koefHarackCheckb = 1;
 
     })
 
-  async  function updateBuildingInfo() {
+    async function updateBuildingInfo() {
         etazh = parseInt(document.getElementById('etazh').value) || 0;
         const visotazdani = parseFloat(document.getElementById('visotazdani').value) || 0;
         const visotapola = parseFloat(document.getElementById('visotapola').value) || 0;
@@ -2861,7 +3044,6 @@ let koefHarackCheckb = 1;
         // document.getElementById('vis14').checked = false;
 
 
-
         if (etazh > 1) {
 
 
@@ -2876,22 +3058,22 @@ let koefHarackCheckb = 1;
             vis14Label.innerText = '3)  Здание с высотой этажа свыше 6м, с краном, свыше 3 объемов, свыше 10 этажей, сооружения высотой более 60м, полный монолитный каркас';
 
 
-                console.log (visotapola);
+            console.log(visotapola);
             if (visotapola <= 3.6) {
                 vis6Label.classList.add('highlight-green');
                 vis614Label.classList.add('highlight-red');
                 vis14Label.classList.add('highlight-red');
-               // document.getElementById('vis6').checked = true;
+                // document.getElementById('vis6').checked = true;
             } else if ((visotazdani >= 20 && visotazdani < 60 && visotapola < 6) || (visotapola > 3.6 && visotapola < 6)) {
                 vis614Label.classList.add('highlight-green');
                 vis6Label.classList.add('highlight-red');
                 vis14Label.classList.add('highlight-red');
-             //   document.getElementById('vis614').checked = true;
+                //   document.getElementById('vis614').checked = true;
             } else if (visotazdani >= 60 || visotapola >= 6) {
                 vis14Label.classList.add('highlight-green');
                 vis6Label.classList.add('highlight-red');
                 vis614Label.classList.add('highlight-red');
-              //  document.getElementById('vis14').checked = true;
+                //  document.getElementById('vis14').checked = true;
             }
 
 
@@ -2909,17 +3091,17 @@ let koefHarackCheckb = 1;
                 vis6Label.classList.add('highlight-green');
                 vis14Label.classList.add('highlight-red');
                 vis614Label.classList.add('highlight-red');
-               // document.getElementById('vis6').checked = true;
+                // document.getElementById('vis6').checked = true;
             } else if (visotazdani >= 6 && visotazdani < 14) {
                 vis614Label.classList.add('highlight-green');
                 vis14Label.classList.add('highlight-red');
                 vis6Label.classList.add('highlight-red');
-               // document.getElementById('vis614').checked = true;
+                // document.getElementById('vis614').checked = true;
             } else if (visotazdani >= 14) {
                 vis14Label.classList.add('highlight-green');
                 vis614Label.classList.add('highlight-red');
                 vis6Label.classList.add('highlight-red');
-              //  document.getElementById('vis14').checked = true;
+                //  document.getElementById('vis14').checked = true;
             }
         }
 
@@ -2945,11 +3127,8 @@ let koefHarackCheckb = 1;
             }
         }
         console.log(hardZdanie + "сложность здания");
-         calculateK();
+        calculateK();
     }
-
-
-
 
 
     async function toggleInputs() {
@@ -3072,11 +3251,6 @@ let koefHarackCheckb = 1;
     });
 
 
-
-
-
-
-
     function toggleDisplay(triggerSelector, targetSelector) {
         const triggerElement = document.querySelector(triggerSelector);
         const targetElement = document.querySelector(targetSelector);
@@ -3091,6 +3265,7 @@ let koefHarackCheckb = 1;
         }
 
     }
+
     async function toggleSelect(toggleId, selectContainerId, optionsId) {
         const toggleSelect = document.getElementById(toggleId);
         const selectContainer = document.getElementById(selectContainerId);
@@ -3110,7 +3285,6 @@ let koefHarackCheckb = 1;
             } else {
                 console.log('Элемент с ID ' + 'dataId' + index + ' не найден.');
             }
-
 
 
             if (optionsId === 'options1') {
@@ -3353,7 +3527,7 @@ let koefHarackCheckb = 1;
     }
 
     let toggleZd71;
-    let toggleZd72 ;
+    let toggleZd72;
     let toggleZd73;
     let toggleZd74;
 
@@ -3368,10 +3542,10 @@ let koefHarackCheckb = 1;
         toggleZd73 = document.getElementById('toggleZd73').checked;
         toggleZd74 = document.getElementById('toggleZd74').checked;
         const checkboxes = [
-            { checkbox: document.getElementById('toggleZd71'), input: document.getElementById('conval71') },
-            { checkbox: document.getElementById('toggleZd72'), input: document.getElementById('conval72') },
-            { checkbox: document.getElementById('toggleZd73'), input: document.getElementById('conval73') },
-            { checkbox: document.getElementById('toggleZd74'), input: document.getElementById('conval74') },
+            {checkbox: document.getElementById('toggleZd71'), input: document.getElementById('conval71')},
+            {checkbox: document.getElementById('toggleZd72'), input: document.getElementById('conval72')},
+            {checkbox: document.getElementById('toggleZd73'), input: document.getElementById('conval73')},
+            {checkbox: document.getElementById('toggleZd74'), input: document.getElementById('conval74')},
         ];
 
         const currentCheckbox = checkboxes.find(item => item.checkbox.id === checkboxId);
@@ -3449,95 +3623,108 @@ let koefHarackCheckb = 1;
         await calculateK();
     }
 
-    let koefRedaktor1=0, koefRedaktor2=0, koefRedaktor3=0, koefRedaktor4=0;
+    let koefRedaktor1 = 0, koefRedaktor2 = 0, koefRedaktor3 = 0, koefRedaktor4 = 0;
 
 
+    function toggleCheckboxesDop8(elem) {
+        let k = false;
+        arrObsledOtdel.map(item => {
+            if (item.id === elem.id) {
+                k = true;
+            }
+        })
+        if (!k) {
+            arrObsledOtdel.push(new Obsled(elem.id, elem.getAttribute("data-id"), 0, 0, 0, 0))
+        } else {
+            arrObsledOtdel = arrObsledOtdel.filter((item) => item.id !== elem.id);
+        }
+        console.log(arrObsledOtdel);
 
-    function toggleCheckboxesDop8() {
+
         const checkboxes = [
             {
                 checkbox: document.getElementById('toggleZd81'),
-                inputs: [document.getElementById('conval81'), document.getElementById('conval811')]
+                inputs: [document.getElementById('conval81'), document.getElementById('conval811'), document.getElementById('monolit1')]
             },
             {
                 checkbox: document.getElementById('toggleZd82'),
-                inputs: [document.getElementById('conval82'), document.getElementById('conval822')]
+                inputs: [document.getElementById('conval82'), document.getElementById('conval822'), document.getElementById('monolit2')]
             },
             {
                 checkbox: document.getElementById('toggleZd83'),
-                inputs: [document.getElementById('conval83'), document.getElementById('conval833')]
+                inputs: [document.getElementById('conval83'), document.getElementById('conval833'), document.getElementById('monolit3')]
             },
             {
                 checkbox: document.getElementById('toggleZd84'),
-                inputs: [document.getElementById('conval84'), document.getElementById('conval844')]
+                inputs: [document.getElementById('conval84'), document.getElementById('conval844'), document.getElementById('monolit4')]
             },
             {
                 checkbox: document.getElementById('toggleZd85'),
-                inputs: [document.getElementById('conval85'), document.getElementById('conval855')]
+                inputs: [document.getElementById('conval85'), document.getElementById('conval855'), document.getElementById('monolit5')]
             },
             {
                 checkbox: document.getElementById('toggleZd86'),
-                inputs: [document.getElementById('conval86'), document.getElementById('conval866')]
+                inputs: [document.getElementById('conval86'), document.getElementById('conval866'), document.getElementById('monolit6')]
             },
             {
                 checkbox: document.getElementById('toggleZd87'),
-                inputs: [document.getElementById('conval87'), document.getElementById('conval877')]
+                inputs: [document.getElementById('conval87'), document.getElementById('conval877'), document.getElementById('monolit7')]
             },
             {
                 checkbox: document.getElementById('toggleZd88'),
-                inputs: [document.getElementById('conval88'), document.getElementById('conval888')]
+                inputs: [document.getElementById('conval88'), document.getElementById('conval888'), document.getElementById('monolit8')]
             },
             {
                 checkbox: document.getElementById('toggleZd89'),
-                inputs: [document.getElementById('conval89'), document.getElementById('conval899')]
+                inputs: [document.getElementById('conval89'), document.getElementById('conval899'), document.getElementById('monolit9')]
             },
             {
                 checkbox: document.getElementById('toggleZd081'),
-                inputs: [document.getElementById('conval081'), document.getElementById('conval0811')]
+                inputs: [document.getElementById('conval081'), document.getElementById('conval0811'), document.getElementById('monolit10')]
             },
             {
                 checkbox: document.getElementById('toggleZd082'),
-                inputs: [document.getElementById('conval082'), document.getElementById('conval0822')]
+                inputs: [document.getElementById('conval082'), document.getElementById('conval0822'), document.getElementById('monolit11')]
             },
             {
                 checkbox: document.getElementById('toggleZd083'),
-                inputs: [document.getElementById('conval083'), document.getElementById('conval0833')]
+                inputs: [document.getElementById('conval083'), document.getElementById('conval0833'), document.getElementById('monolit12')]
             },
             {
                 checkbox: document.getElementById('toggleZd084'),
-                inputs: [document.getElementById('conval084'), document.getElementById('conval0844')]
+                inputs: [document.getElementById('conval084'), document.getElementById('conval0844'), document.getElementById('monolit13')]
             },
             {
                 checkbox: document.getElementById('toggleZd085'),
-                inputs: [document.getElementById('conval085'), document.getElementById('conval0855')]
+                inputs: [document.getElementById('conval085'), document.getElementById('conval0855'), document.getElementById('monolit14')]
             },
             {
                 checkbox: document.getElementById('toggleZd086'),
-                inputs: [document.getElementById('conval086'), document.getElementById('conval0866')]
+                inputs: [document.getElementById('conval086'), document.getElementById('conval0866'), document.getElementById('monolit15')]
             },
             {
                 checkbox: document.getElementById('toggleZd087'),
-                inputs: [document.getElementById('conval087'), document.getElementById('conval0877')]
+                inputs: [document.getElementById('conval087'), document.getElementById('conval0877'), document.getElementById('monolit16')]
             },
             {
                 checkbox: document.getElementById('toggleZd088'),
-                inputs: [document.getElementById('conval088'), document.getElementById('conval0888')]
+                inputs: [document.getElementById('conval088'), document.getElementById('conval0888'), document.getElementById('monolit17')]
             },
             {
                 checkbox: document.getElementById('toggleZd089'),
-                inputs: [document.getElementById('conval089'), document.getElementById('conval0899')]
+                inputs: [document.getElementById('conval089'), document.getElementById('conval0899'), document.getElementById('monolit18')]
             },
             {
                 checkbox: document.getElementById('toggleZd0081'),
-                inputs: [document.getElementById('conval0081'), document.getElementById('conval00811')]
+                inputs: [document.getElementById('conval0081'), document.getElementById('conval00811'), document.getElementById('monolit19')]
             },
             {
                 checkbox: document.getElementById('toggleZd0082'),
-                inputs: [document.getElementById('conval0082'), document.getElementById('conval00822')]
+                inputs: [document.getElementById('conval0082'), document.getElementById('conval00822'), document.getElementById('monolit20')]
             },
             {
                 checkbox: document.getElementById('toggleZd0083'),
-                inputs: [document.getElementById('conval0083'), document.getElementById('conval00833')]
+                inputs: [document.getElementById('conval0083'), document.getElementById('conval00833'), document.getElementById('monolit21')]
             },
 
         ];
@@ -3601,7 +3788,7 @@ let koefHarackCheckb = 1;
                     await calculateK();
                     $('#modalPeremen').modal('hide');
                     updateCalendarDaysFromEnd();
-                    await  updateBuildingInfo();
+                    await updateBuildingInfo();
                     await toggleCheckboxesDop();
                     await toggleCheckboxesDop4();
                     await toggleCheckboxesDop5();
@@ -3645,11 +3832,9 @@ let koefHarackCheckb = 1;
     });
 
 
-
-
     function loadIndexPeremenFromDB() {
-        let indexval=0;
-        let b14indexval=0;
+        let indexval = 0;
+        let b14indexval = 0;
         $.ajax({
             url: 'app/ajax/getIndexPeremen.php',
             type: 'GET',
@@ -3657,15 +3842,15 @@ let koefHarackCheckb = 1;
             success: function (data) {
                 if (data.success) {
                     $('#currentIndex').val(parseFloat(data.params.res.replace(',', '.')).toFixed(4));
-                    $('#nextIndex').val( parseFloat(data.params.next_year_res.replace(',', '.')).toFixed(4));
+                    $('#nextIndex').val(parseFloat(data.params.next_year_res.replace(',', '.')).toFixed(4));
                     $('#znachprognoz24').val(data.params.res);
                     $('#znachprognoz25').val(data.params.next_year_res);
                     indexval = parseFloat(data.params.cmont.replace(',', '.')).toFixed(4);
-                    b14indexval = parseFloat(data.params.res.replace(',', '.')) * parseFloat(data.params.cost_work) * data.koefMonth *(1+0.5*(indexval-1));
+                    b14indexval = parseFloat(data.params.res.replace(',', '.')) * parseFloat(data.params.cost_work) * data.koefMonth * (1 + 0.5 * (indexval - 1));
                     $('#b14Input').val(b14indexval);
                     b14Value = b14indexval;
 
-                    console.log ("b14Ж" + b14indexval);
+                    console.log("b14Ж" + b14indexval);
                     let formula = `${data.params.res} * ${data.params.cost_work} * ${data.koefMonth} * (1 + 0.5 * (${indexval} - 1))`;
                     console.log("b14Ж: " + b14indexval);
                     console.log("Формула: " + formula);
@@ -3692,7 +3877,6 @@ let koefHarackCheckb = 1;
     $(document).ready(function () {
         loadParametrPeremenFromDB();
     });
-
 
 
     function printTZ() {
@@ -3750,11 +3934,7 @@ let koefHarackCheckb = 1;
         let toggleZd69 = document.getElementById('toggleZd69').checked ? 1 : 0;
 
 
-
-
-
-
-         let selectedRadio = document.querySelector('input[name="zdvis"]:checked');
+        let selectedRadio = document.querySelector('input[name="zdvis"]:checked');
         let zdvisValue = selectedRadio ? selectedRadio.value : '';
         let selectedRadioSlRab = document.querySelector('input[name="pasportNaZdanie"]:checked');
         let zdvisValueSlRab = selectedRadioSlRab ? selectedRadioSlRab.value : '';
@@ -3763,8 +3943,17 @@ let koefHarackCheckb = 1;
             url: 'printTZ.php',
             type: 'POST',
             data: {
-                obem: obem, etazh: etazh, visotazdani: visotazdani, visotapola: visotapola, zakazchik: zakazchik,cel: cel, mestoObj: mestoObj, naimRabot:naimRabot,
-                podryadchik: podryadchik, toggleZd1: toggleZd1, toggleZd2: toggleZd2,
+                obem: obem,
+                etazh: etazh,
+                visotazdani: visotazdani,
+                visotapola: visotapola,
+                zakazchik: zakazchik,
+                cel: cel,
+                mestoObj: mestoObj,
+                naimRabot: naimRabot,
+                podryadchik: podryadchik,
+                toggleZd1: toggleZd1,
+                toggleZd2: toggleZd2,
                 toggleZd3: toggleZd3,
                 toggleZd4: toggleZd4,
                 toggleZd5: toggleZd5,
@@ -3803,7 +3992,7 @@ let koefHarackCheckb = 1;
                 toggleZd68: toggleZd68,
                 toggleZd69: toggleZd69,
 
-                zdvisValue:zdvisValue,
+                zdvisValue: zdvisValue,
                 zdvisValueSlRab: zdvisValueSlRab
             },
             success: function (response) {
@@ -3818,7 +4007,7 @@ let koefHarackCheckb = 1;
                         '</head>',
                         '<body>', response, '</body>',
                         '</html>'
-                    ], { type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });
+                    ], {type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'});
 
                     // Create an anchor element with a download attribute
                     const a = document.createElement('a');
@@ -3854,8 +4043,6 @@ let koefHarackCheckb = 1;
     }
 
 
-
-
     function selectCalculation(index) {
         const workSelect = document.querySelector(`#selectCalc${index}`);
         const otherInputs = [
@@ -3866,8 +4053,8 @@ let koefHarackCheckb = 1;
         ];
         const selectedValue = workSelect.value;
 
-        if($("#inputCalc"+index).val().length === 0){
-            $("#inputCalc"+index).val(1);
+        if ($("#inputCalc" + index).val().length === 0) {
+            $("#inputCalc" + index).val(1);
         }
         if (selectedValue !== "0") {
             otherInputs.forEach(input => {
@@ -3900,7 +4087,7 @@ let koefHarackCheckb = 1;
     }
 
 
-   async function toggleCheckboxesDopDusl(checkbox) {
+    async function toggleCheckboxesDopDusl(checkbox) {
         const dataId = parseFloat(checkbox.getAttribute('data-id'));
 
         if (checkbox.checked) {
@@ -3916,12 +4103,12 @@ let koefHarackCheckb = 1;
                 obmerDop2 = 1;
             }
         }
-       if(koefObmerWork1 == 1 && koefObmerWork2 == 1){
-           sumObmer = 0;
-       }else {
-           sumObmer = koefObmerWork1 * koefObmerWork2 * b14Value * k18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat;
-       }
-       $('#obmerRaboty').html(sumObmer.toFixed(3));
+        if (koefObmerWork1 == 1 && koefObmerWork2 == 1) {
+            sumObmer = 0;
+        } else {
+            sumObmer = koefObmerWork1 * koefObmerWork2 * b14Value * k18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat;
+        }
+        $('#obmerRaboty').html(sumObmer.toFixed(3));
         await calculateK();
     }
 
@@ -3930,7 +4117,7 @@ let koefHarackCheckb = 1;
         return selectedOption.value === "" ? "1" : selectedOption.getAttribute('data-id');
     }
 
-    document.getElementById('options1').onchange = function() {
+    document.getElementById('options1').onchange = function () {
         obsledDop1 = obsledDataidSelect(this);
         if (koefObsled1 == 1 && koefObsled2 == 1) {
             sumObsled = 0;
@@ -3943,7 +4130,7 @@ let koefHarackCheckb = 1;
         calculateK();
     };
 
-    document.getElementById('options2').onchange = function() {
+    document.getElementById('options2').onchange = function () {
         obsledDop2 = obsledDataidSelect(this);
         if (koefObsled1 == 1 && koefObsled2 == 1) {
             sumObsled = 0;
@@ -3955,8 +4142,36 @@ let koefHarackCheckb = 1;
     };
 
 
+    function calcObsledOtdel(elem) {
+        const ded = elem.parentElement.parentElement;
+        let papa = elem.parentElement;
+
+        console.log("ded.children[0].id", ded.children[0].children[0].id)
+        arrObsledOtdel.map(item => {
+            if (item.id === ded.children[0].children[0].id) {
+                switch (elem.className) {
+                    case "inpval kol":
+                        item.count = elem.value;
+                        break;
+                    case "inpval slojn":
+                        item.hard = elem.value;
+                        break;
+                    case "monolit":
+                        item.koef_monol = elem.checked;
+                        break;
+                }
+                if ( item.count != 0 && item.hard != 0) {
+                    item.total = parseFloat(item.count) + parseFloat(item.hard);
+                    console.log("считаем", item.total)//sumObsledOtdel =
+                }
+
+            }
+        })
 
 
+
+        console.log (arrObsledOtdel);
+    }
 </script>
 
 </body>
