@@ -2668,7 +2668,6 @@ echo "<script>
         if (isObsledRabChecked) fullSumma += parseFloat(sumObsled);
         if (isSostTechOtchetCheck) fullSumma += parseFloat(sumSosttech);
         if (isRedaktorIspConstr) fullSumma += parseFloat(sumRedaktor);
-        if (isObsledOtdel) fullSumma += parseFloat(sumObsledOtdel);
         fullSumma = fullSumma.toFixed(2);
         totalSum = 0;
         totalSum += parseFloat(fullSumma)

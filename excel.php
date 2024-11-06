@@ -669,7 +669,7 @@ if ($isObsledOtdel->chacked == "true") {
 
     $sheet->getStyle('B' . $startedRed + 1 . ':B' . $endCell)->getFont()->setBold(true);
     $sheet->getStyle('B' . $startedRed + 1 . ':B' . $endCell)->getFont()->setSize(11);
-    $sheet->setCellValue("N" . $startedRed + ($endCell - $startedRed) / 2, $totalObsled);
+    $sheet->setCellValue("N" . $startedRed + round(($endCell - $startedRed) / 2), $totalObsled);
 }
 
 
@@ -679,7 +679,7 @@ $sheet->getStyle('B' . $endCell)->getFont()->setItalic(true);
 $sheet->getStyle('A' . $endCell . ':A' . $endCell)->applyFromArray($styleArray);
 $sheet->getStyle('B' . $endCell . ':M' . $endCell)->applyFromArray($styleArray);
 $sheet->getStyle('N' . $endCell . ':O' . $endCell)->applyFromArray($styleArray);
-$sheet->setCellValue("N" . $endCell, $fullSumma + $totalObsled);
+$sheet->setCellValue("N" . $endCell, $fullSumma);
 
 header("Expires: Mon, 1 Apr 1974 05:00:00 GMT");
 header("Last-Modified: " . gmdate("D,d M Y H:i:s") . " GMT");
@@ -691,3 +691,9 @@ header("Content-Disposition: attachment; filename=myFile.xlsx");
 
 $writer = new Xlsx($spreadsheet);
 $writer->save("php://output");
+
+//$myarr = json_decode($myObject);
+//
+//foreach ($myarr as $item) {
+//    echo $item->text . "<br>";
+//}
