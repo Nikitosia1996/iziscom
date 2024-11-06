@@ -3658,7 +3658,7 @@ echo "<script>
             }
         })
         if (!k) {
-            arrObsledOtdel.push(new Obsled(elem.id, koef0, 0, 0, 0, 0))
+            arrObsledOtdel.push(new Obsled(elem.id, koef0, 0, 0, 1, 0))
         } else {
             arrObsledOtdel = arrObsledOtdel.filter((item) => item.id !== elem.id);
         }
