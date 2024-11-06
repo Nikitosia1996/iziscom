@@ -2592,7 +2592,7 @@ echo "<script>
     let isSostTechOtchetCheck;
     let isRedaktorIspConstr;
     let isCalc;
-    let isObsledOtdel = 0;
+    let isObsledOtdel ;
     let totalSum = 0;
 
     let slojnObsledOtdel = 0;
@@ -2619,7 +2619,7 @@ echo "<script>
         isSostTechOtchetCheck = document.getElementById('sostTechOtchetCheck').checked;
         isRedaktorIspConstr = document.getElementById('redaktorIspConstr').checked;
         isCalc = document.getElementById('calcalc').checked;
-        isObsledOtdel = document.getElementById('obsledotdel').checked;
+        isObsledOtdel = document.getElementById('obsledotdelCheck').checked;
 
 
         koefIshod = koefIshod == 0 ? 1 : koefIshod;
