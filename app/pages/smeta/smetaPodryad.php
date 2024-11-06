@@ -2600,13 +2600,14 @@ echo "<script>
     let arrObsledOtdel = [];
 
     class Obsled {
-        constructor(id, koef, count, hard, koef_monol, total) {
+        constructor(id, koef, count, hard, koef_monol, total,text) {
             this.id = id;
             this.koef = koef;
             this.count = count;
             this.hard = hard;
             this.koef_monol = koef_monol;
             this.total = total;
+            this.text = text;
         }
     }
 
@@ -3652,13 +3653,14 @@ echo "<script>
     function toggleCheckboxesDop8(elem) {
         let k = false;
         koef0 = elem.getAttribute("data-id");
+        const text = elem.nextSibling.textContent.trim();
         arrObsledOtdel.map(item => {
             if (item.id === elem.id) {
                 k = true;
             }
         })
         if (!k) {
-            arrObsledOtdel.push(new Obsled(elem.id, koef0, 0, 0, 0, 0))
+            arrObsledOtdel.push(new Obsled(elem.id, koef0, 0, 0, 1, 0, text))
         } else {
             arrObsledOtdel = arrObsledOtdel.filter((item) => item.id !== elem.id);
         }
