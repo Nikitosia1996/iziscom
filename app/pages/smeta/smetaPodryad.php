@@ -3652,7 +3652,7 @@ echo "<script>
     function toggleCheckboxesDop8(elem) {
         let k = false;
         koef0 = elem.getAttribute("data-id");
-        const text = elem.nextSibling.textContent.trim();
+        const text = elem.nextSibling.textContent.replace(/\s+/g, ' ').trim();
         arrObsledOtdel.map(item => {
             if (item.id === elem.id) {
                 k = true;
