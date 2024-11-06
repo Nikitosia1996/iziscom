@@ -2597,8 +2597,6 @@ echo "<script>
 
     let slojnObsledOtdel = 0;
     let koef0=0;
-
-
     let arrObsledOtdel = [];
 
     class Obsled {
