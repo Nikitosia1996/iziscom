@@ -2611,7 +2611,6 @@ echo "<script>
         }
     }
 
-
     async function calculateK() {
 
         isSborIshodnihDannihChecked = document.getElementById('sborCheck').checked;
