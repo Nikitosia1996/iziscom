@@ -2592,7 +2592,7 @@ echo "<script>
     let isSostTechOtchetCheck;
     let isRedaktorIspConstr;
     let isCalc;
-    let isObsledOtdel = 0;
+    let isObsledOtdel ;
     let totalSum = 0;
 
     let slojnObsledOtdel = 0;

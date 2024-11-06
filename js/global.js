@@ -1519,7 +1519,8 @@ function printExcel() {
 
         document.cookie = " fullSumma=" + fullSumma + ";";
 
-
+        const objString = JSON.stringify(arrObsledOtdel);
+        document.cookie = `myObject=${encodeURIComponent(objString)}; path=/; max-age=3600`;
         resolve();
     }).then(() => {
         location.href = "excel.php";
