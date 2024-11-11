@@ -778,7 +778,7 @@ async function calcObmerWorksPart1() {
                 if (koefObmerWork1 == 1 && koefObmerWork2 == 1) {
                     sumObmer = 0;
                 } else {
-                    sumObmer = koefObmerWork1 * koefObmerWork2 * b14Value * k18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat;
+                    sumObmer = koefObmerWork1 * koefObmerWork2 * b14Value * k18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat * kefVisota;
                 }
                 $('#obmerRaboty').html(sumObmer.toFixed(3));
 
@@ -851,6 +851,14 @@ async function calcObmerWorksPart2() {
 
 
         return new Promise(function (resolve, reject) {
+            let budval = $("#buildingType").val();
+            if (budval == 5){
+                typeW = 3;
+            }
+            else if (budval == 6)
+            {
+                typeW = 4;
+            }
             $.ajax({
                 url: "app/ajax/getKoefObmerWork2.php",
                 method: "POST",
@@ -877,7 +885,7 @@ async function calcObmerWorksPart2() {
                 if (koefObmerWork1 == 1 && koefObmerWork2 == 1) {
                     sumObmer = 0;
                 } else {
-                    sumObmer = koefObmerWork1 * koefObmerWork2 * b14Value * k18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat;
+                    sumObmer = koefObmerWork1 * koefObmerWork2 * b14Value * k18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat * kefVisota;
                 }
 
                 $('#obmerRaboty').html(sumObmer.toFixed(3));
@@ -904,7 +912,7 @@ $("#choosCunstruct4").on("change", async function (event) {
     if (koefObmerWork1 == 1 && koefObmerWork2 == 1) {
         sumObmer = 0;
     } else {
-        sumObmer = koefObmerWork1 * koefObmerWork2 * b14Value * k18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat;
+        sumObmer = koefObmerWork1 * koefObmerWork2 * b14Value * k18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat * kefVisota;
     }
     $('#obmerRaboty').html(sumObmer.toFixed(3));
     await calculateK();
@@ -973,7 +981,7 @@ async function calcObsled1() {
                 if (koefObsled1 == 1 && koefObsled2 == 1) {
                     sumObsled = 0;
                 } else {
-                    sumObsled = koefObsled1 * koefObsled2 * b14Value * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat;
+                    sumObsled = koefObsled1 * koefObsled2 * b14Value * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat * kefVisota;
                 }
                 $('#obsledRab').html(sumObsled.toFixed(3));
             } else {
@@ -1042,6 +1050,14 @@ async function calcObsled2() {
 
 
         return new Promise(function (resolve, reject) {
+            let budval = $("#buildingType").val();
+            if (budval == 5){
+                typeW = 3;
+            }
+            else if (budval == 6)
+            {
+                typeW = 4;
+            }
             $.ajax({
                 url: "app/ajax/getKoefObsled2.php",
                 method: "POST",
@@ -1067,7 +1083,7 @@ async function calcObsled2() {
                 if (koefObsled1 == 1 && koefObsled2 == 1) {
                     sumObsled = 0;
                 } else {
-                    sumObsled = koefObsled1 * koefObsled2 * b14Value * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat;
+                    sumObsled = koefObsled1 * koefObsled2 * b14Value * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat * kefVisota;
                 }
                 $('#obsledRab').html(sumObsled.toFixed(3));
                 resolve();
@@ -1093,7 +1109,7 @@ $("#choosCunstruct5").on("change", async function (event) {
     if (koefObsled1 == 1 && koefObsled2 == 1) {
         sumObsled = 0;
     } else {
-        sumObsled = koefObsled1 * koefObsled2 * b14Value * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat;
+        sumObsled = koefObsled1 * koefObsled2 * b14Value * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat * kefVisota;
     }
     $('#obsledRab').html(sumObsled.toFixed(3));
     await calculateK();
@@ -1165,7 +1181,7 @@ async function calcSosttech1() {
                 if (koefSosttech1 == 1 && koefSosttech2 == 1) {
                     sumSosttech = 0;
                 } else {
-                    sumSosttech = koefSosttech1 * koefSosttech2 * b14Value * k18ob * Vdiv100 * k18101 * ki242 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat;
+                    sumSosttech = koefSosttech1 * koefSosttech2 * b14Value * k18ob * Vdiv100 * k18101 * ki242 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat * kefVisota;
                 }
                 $('#sostTech').html(sumSosttech.toFixed(3));
 
@@ -1233,6 +1249,14 @@ async function calcSosttech2() {
 
 
         return new Promise(function (resolve, reject) {
+            let budval = $("#buildingType").val();
+            if (budval == 5){
+                typeW = 3;
+            }
+            else if (budval == 6)
+            {
+                typeW = 4;
+            }
             $.ajax({
                 url: "app/ajax/getKoefSosttech2.php",
                 method: "POST",
@@ -1258,7 +1282,7 @@ async function calcSosttech2() {
                 if (koefSosttech1 == 1 && koefSosttech2 == 1) {
                     sumSosttech = 0;
                 } else {
-                    sumSosttech = koefSosttech1 * koefSosttech2 * b14Value * k18ob * Vdiv100 * k18101 * ki242 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat;
+                    sumSosttech = koefSosttech1 * koefSosttech2 * b14Value * k18ob * Vdiv100 * k18101 * ki242 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat * kefVisota;
                 }
                 $('#sostTech').html(sumSosttech.toFixed(3));
                 resolve();
@@ -1284,7 +1308,7 @@ $("#choosCunstruct6").on("change", async function (event) {
     if (koefSosttech1 == 1 && koefSosttech2 == 1) {
         sumSosttech = 0;
     } else {
-        sumSosttech = koefSosttech1 * koefSosttech2 * b14Value * k18ob * Vdiv100 * k18101 * ki242 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat;
+        sumSosttech = koefSosttech1 * koefSosttech2 * b14Value * k18ob * Vdiv100 * k18101 * ki242 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat * kefVisota;
     }
     $('#sostTech').html(sumSosttech.toFixed(3));
     await calculateK();
@@ -1415,6 +1439,8 @@ function printExcel() {
         let formula1 = "V/100 * PH3 * K * БС * Ki";
         let formula2 = formula1;
         let formula3 = formula1;
+        let formula6 = "ОК * Ki * (K18.229=1) * БС";
+        document.cookie = "formula6=" + formula6 + ";";
 
         if ($("#constructionType").val() === "2") {
             formula1 += " * " + "K18102";

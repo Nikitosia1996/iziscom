@@ -40,6 +40,15 @@
                     </a>
                 </li>
 
+                <li class="sidebar-item" id="zakazhcik-page">
+                    <a class="sidebar-link" href="index.php?zakazchik" data-page="zakazchik" aria-expanded="false">
+                <span>
+                  <i class="ti ti-article"></i>
+                </span>
+                        <span class="hide-menu">Заказчики</span>
+                    </a>
+                </li>
+
 
             </ul>
 

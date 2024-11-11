@@ -79,7 +79,7 @@ $isSostTechOtchetCheck = new Table("Составление техническо�
     ["п.2.4.2", "", "НЗТ8.01.00-2014 табл.1", "п.2.4.2", "п.2.4.5, табл. 2.10"]);
 $isRedaktorIspConstr = new Table("Расчет стоимости испытания материалов", $_COOKIE['chacked5'], 0, 0, 0, 0, $_COOKIE['sumRedaktor'], "формула5",
     ["табл.2.16"]);
-$isObsledOtdel = new Table("Обследование отдельных жб конструкций", $_COOKIE['chacked6'], 0, 0, 0, 0, 0, "формула6",
+$isObsledOtdel = new Table("Обследование отдельных жб конструкций", $_COOKIE['chacked6'], 0, 0, 0, 0, 0, $_COOKIE['formula6'],
     ["табл. 2.10", "п.2.4.1, табл. 2.11", "п.2.4.1, табл. 2.11", "табл. 2.11", "п.2.3.8.2"]);
 
 $arrTables = array();
@@ -627,11 +627,11 @@ if ($isObsledOtdel->chacked == "true") {
     foreach ($myarr as $item) {
         $sheet->setCellValue("B" . $startedCell + 1, $item->text);
 
-        $sheet->setCellValue("E" . $startedCell + 1, "Коеф");
+        $sheet->setCellValue("E" . $startedCell + 1, "Затраты трудовых ресурсов");
         $sheet->setCellValue("E" . $startedCell + 2, "Количество");
-        $sheet->setCellValue("E" . $startedCell + 3, "Сложность");
-        $sheet->setCellValue("E" . $startedCell + 4, "Коэф монол");
-        $sheet->setCellValue("E" . $startedCell + 5, "Тотал");
+        $sheet->setCellValue("E" . $startedCell + 3, "Значение тарифного коэф.");
+        $sheet->setCellValue("E" . $startedCell + 4, "Обследование монолитных конструкций");
+        $sheet->setCellValue("E" . $startedCell + 5, "Всего");
 //            $sheet->setCellValue("I" . $startedCell + 1, $isRedaktorIspConstr->arrObosnovanie[0]);
 
 

@@ -469,6 +469,7 @@ echo "<script>
                 echo '<option id="zakazchik" value="' . htmlspecialchars($row['id_zakazchik']) . '">' . htmlspecialchars($row['nameZakazchik']) . '</option>';
             }
             ?>
+
         </select>
 
         <label for="SelectPodryadchik" class="zakpod">Подрядчик:</label>
@@ -2475,7 +2476,7 @@ echo "<script>
         <br>
         <br>
         <label id="inputLabel" for="minuskef">Понижающий коэффициент</label><br>
-        <input id="minuskef" type="number" name="inputValue" step="1" min="0"><br>
+        <input id="minuskef" type="number" name="inputValue" step="0.1" min="0" value="1" oninput="calculateK()"><br>
         <label id="inputLabel" for="costwork14">Стоимость работ 14 разряда</label><br>
         <input id="costwork14" disabled type="text" name="inputValue" step="1" min="0"><br>
         <br>
@@ -2565,6 +2566,8 @@ echo "<script>
     let selectedRadio; // КАТЕГОРИЯ СЛОЖНОСТИ РАБОТ
     let koefIshod2 = 1; // КОЭФИЦИЕНТ НЗТ1 (табл.2.4)
     let b14Value = 1; // b14
+    let usn;
+    let nds;
 
     let costwork14; // СРЕДНИЙ РАЗРЯД  14
     let obmerDop1 = 1; // доп чекбокс2
@@ -2581,6 +2584,7 @@ echo "<script>
     let ki242 = 1; // Значение тарифного коэффициента п 2.4.2
     let Vdiv100 = 1; // Значение тарифного коэффициента п 2.1.2
     let k18101 = 1; // Тип здания
+    let kefVisota = 1;
     let V = 1;
     let agressive;
     let temperaturMode;
@@ -2631,16 +2635,16 @@ echo "<script>
         if (koefIshod == 1 && koefIshod2 == 1) {
             sumIshod = 0;
         } else {
-            sumIshod = Vdiv100 * k18101 * koefIshod * koefIshod2 * b14Value * k18ob * ki212 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat;
-            $('#sborIshodnihDannih').html(sumIshod.toFixed(3));
-            console.log(sumIshod + " =  koefIshod: " + koefIshod + " koefIshod2: " + koefIshod2 + " costwork14: " + b14Value + " K18ob:" + k18ob + " ki212: " + ki212);
+            sumIshod = Vdiv100 * k18101 * koefIshod * koefIshod2 * b14Value * k18ob * ki212 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat * kefVisota;
+            $('#sborIshodnihDannih').html(sumIshod.toFixed(3) );
+            console.log(sumIshod + " =  koefIshod: " + koefIshod + " koefIshod2: " + koefIshod2 + " costwork14: " + b14Value + " K18ob:" + k18ob + " ki212: " + ki212 + kefVisota + "VISOTA VISOTA VISOTA");
         }
 
 
         if (koefObmerWork1 == 1 && koefObmerWork2 == 1) {
             sumObmer = 0;
         } else {
-            sumObmer = koefObmerWork1 * koefObmerWork2 * b14Value * k18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat;
+            sumObmer = koefObmerWork1 * koefObmerWork2 * b14Value * k18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat * kefVisota;
             $('#obmerRaboty').html(sumObmer.toFixed(3));
             console.log(sumObmer + " =  koefObmerWork1: " + koefObmerWork1 + " koefObmerWork2: " + koefObmerWork2 + " K18ob: " + k18ob + " obmerDop1:" + obmerDop1 + " obmerDop2: " + obmerDop2 + " Vdiv100: " + Vdiv100 + " k18101: " + k18101 + " ki222: " + ki222);
         }
@@ -2648,7 +2652,7 @@ echo "<script>
         if (koefObsled1 == 1 && koefObsled2 == 1) {
             sumObsled = 0;
         } else {
-            sumObsled = koefObsled1 * koefObsled2 * b14Value * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat;
+            sumObsled = koefObsled1 * koefObsled2 * b14Value * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat * kefVisota;
             $('#obsledRab').html(sumObsled.toFixed(3));
             console.log(sumObsled + " =  koefObsled1: " + koefObsled1 + " koefObsled2: " + koefObsled2 + " K18ob: " + k18ob + " obsledDop1:" + obsledDop1 + " obsledDop2: " + obsledDop2 + " Vdiv100: " + Vdiv100 + " k18101: " + k18101 + " ki223: " + ki223);
         }
@@ -2656,7 +2660,7 @@ echo "<script>
         if (koefSosttech1 == 1 && koefSosttech2 == 1) {
             sumSosttech = 0;
         } else {
-            sumSosttech = koefSosttech1 * koefSosttech2 * b14Value * k18ob * Vdiv100 * k18101 * ki242 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat;
+            sumSosttech = koefSosttech1 * koefSosttech2 * b14Value * k18ob * Vdiv100 * k18101 * ki242 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat * kefVisota;
             $('#sostTech').html(sumSosttech.toFixed(3));
             console.log(sumSosttech + " =  koefSosttech1: " + koefSosttech1 + " koefSosttech2: " + koefSosttech2 + " costwork14: " + b14Value + " K18ob:" + k18ob + " Vdiv100: " + Vdiv100 + " Vdiv100: " + Vdiv100 + " k18101: " + k18101 + " ki223: " + ki223);
         }
@@ -2670,6 +2674,16 @@ echo "<script>
         if (isRedaktorIspConstr) fullSumma += parseFloat(sumRedaktor);
         fullSumma = fullSumma.toFixed(2);
         totalSum = 0;
+
+        const input = document.getElementById('minuskef');
+        const coefficient = parseFloat(input.value);
+        if (!isNaN(coefficient) && coefficient >= 0) {
+            fullSumma = fullSumma * (coefficient);
+            console.log('Новое значение:', fullSumma);
+        } else {
+            console.error('Некорректное значение коэффициента');
+        }
+
         totalSum += parseFloat(fullSumma)
         if (isCalc) totalSum += parseFloat(calculacia);
         document.getElementById('harakteristikaObjectObsh').innerText = totalSum.toFixed(2);
@@ -2734,7 +2748,7 @@ echo "<script>
         console.log(agressive + "agressive");
 
 
-        let kefVisota = 1;
+
         const visotazdani = parseFloat(document.getElementById('visotazdani').value) || 0;
         etazh = parseFloat(document.getElementById('etazh').value) || 0;
         visotapola = parseFloat(document.getElementById('visotapola').value) || 0;
@@ -2773,36 +2787,62 @@ echo "<script>
             k18ob = 0;
         }
 
+        let bval = 1;
+        bval = $("#buildingType").val();
+        if (bval == 5 || bval == 6 || bval == 7)
+        {
+           if (visotazdani <= 5 && visotazdani > 0)
+           {
+               kefVisota = 1;
+           }
+           else if (visotazdani > 5 && visotazdani <= 10) {
+               kefVisota = 1.1;
+           } else if (visotazdani > 10 && visotazdani <= 20) {
+               kefVisota = 1.25;
+           } else if (visotazdani > 20 && visotazdani <= 30) {
+               kefVisota = 1.35;
+           } else if (visotazdani > 30 && visotazdani <= 40) {
+               kefVisota = 1.45;
+           } else if (visotazdani > 50) {
+               kefVisota = 1.65;
+           }
 
-        if (etazh <= 1) {
-            if (visotazdani <= 4.2 && visotazdani > 0) {
-                kefVisota = 1;
-            } else if (visotazdani > 4.2 && visotazdani <= 4.8) {
-                kefVisota = 1.1;
-            } else if (visotazdani > 4.8 && visotazdani <= 5.4) {
-                kefVisota = 1.2;
-            } else if (visotazdani > 5.4 && visotazdani <= 6.0) {
-                kefVisota = 1.3;
-            } else if (visotazdani > 6.0 && visotazdani <= 6.6) {
-                kefVisota = 1.4;
-            } else if (visotazdani > 6.6) {
-                kefVisota = 1.5;
-            }
-        } else {
-            if (visotazdani <= 3.6) {
-                kefVisota = 1;
-            } else if (visotazdani > 3.6 && visotazdani <= 4.2) {
-                kefVisota = 1.15;
-            } else if (visotazdani > 4.2 && visotazdani <= 4.8) {
-                kefVisota = 1.3;
-            } else if (visotazdani > 4.8 && visotazdani <= 5.4) {
-                kefVisota = 1.45;
-            } else if (visotazdani > 5.4 && visotazdani <= 6.0) {
-                kefVisota = 1.5;
-            } else if (visotazdani > 6) {
-                kefVisota = 1.65;
-            }
+
         }
+        else {
+
+            if (etazh <= 1) {
+                if (visotazdani <= 4.2 && visotazdani > 0) {
+                    kefVisota = 1;
+                } else if (visotazdani > 4.2 && visotazdani <= 4.8) {
+                    kefVisota = 1.1;
+                } else if (visotazdani > 4.8 && visotazdani <= 5.4) {
+                    kefVisota = 1.2;
+                } else if (visotazdani > 5.4 && visotazdani <= 6.0) {
+                    kefVisota = 1.3;
+                } else if (visotazdani > 6.0 && visotazdani <= 6.6) {
+                    kefVisota = 1.4;
+                } else if (visotazdani > 6.6) {
+                    kefVisota = 1.5;
+                }
+            } else {
+                if (visotazdani <= 3.6) {
+                    kefVisota = 1;
+                } else if (visotazdani > 3.6 && visotazdani <= 4.2) {
+                    kefVisota = 1.15;
+                } else if (visotazdani > 4.2 && visotazdani <= 4.8) {
+                    kefVisota = 1.3;
+                } else if (visotazdani > 4.8 && visotazdani <= 5.4) {
+                    kefVisota = 1.45;
+                } else if (visotazdani > 5.4 && visotazdani <= 6.0) {
+                    kefVisota = 1.5;
+                } else if (visotazdani > 6) {
+                    kefVisota = 1.65;
+                }
+            }
+
+        }
+        console.log (kefVisota, "ВЫСОТА ВЫСОТА ВЫСОТА");
 
         if (visotapola > 0 && visotapola <= 1.6) {
             visotaPolaVal = 1.3;
@@ -2820,7 +2860,6 @@ echo "<script>
         await calcObsled2();
         await calcSosttech1();
         await calcSosttech2();
-
         await calculateK();
     }
 
@@ -2913,7 +2952,7 @@ echo "<script>
                             if (koefIshod == 1 && koefIshod2 == 1) {
                                 sumIshod = 0;
                             } else {
-                                sumIshod = Vdiv100 * k18101 * koefIshod * koefIshod2 * b14Value * k18ob * ki212 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat;
+                                sumIshod = Vdiv100 * k18101 * koefIshod * koefIshod2 * b14Value * k18ob * ki212 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat * kefVisota;
                             }
                             $('#sborIshodnihDannih').html(sumIshod.toFixed(3));
                         }
@@ -2932,6 +2971,7 @@ echo "<script>
         let typeW;
         if ($("#choosCunstruct").prop("checked")) {
             typeW = $("#buildingType").val();
+
             switch (typeW) {
                 case 6:
                     typeW = 4;
@@ -2981,6 +3021,15 @@ echo "<script>
 
 
             return new Promise(function (resolve, reject) {
+                let budval = $("#buildingType").val();
+                if (budval == 5){
+                    typeW = 3;
+                }
+                else if (budval == 6)
+                {
+                    typeW = 4;
+                }
+                console.log(typeW, "typeWtypeWtypeWtypeW");
                 $.ajax({
                     url: "app/ajax/getKoefIshod2.php",
                     method: "POST",
@@ -3008,7 +3057,7 @@ echo "<script>
                     if (koefIshod == 1 && koefIshod2 == 1) {
                         sumIshod = 0;
                     } else {
-                        sumIshod = Vdiv100 * k18101 * koefIshod * koefIshod2 * b14Value * k18ob * ki212 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat;
+                        sumIshod = Vdiv100 * k18101 * koefIshod * koefIshod2 * b14Value * k18ob * ki212 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat * kefVisota;
                     }
                     resolve();
                 }).catch(function (error) {
@@ -3034,7 +3083,7 @@ echo "<script>
         if (koefIshod == 1 && koefIshod2 == 1) {
             sumIshod = 0;
         } else {
-            sumIshod = Vdiv100 * k18101 * koefIshod * koefIshod2 * b14Value * k18ob * ki212 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat;
+            sumIshod = Vdiv100 * k18101 * koefIshod * koefIshod2 * b14Value * k18ob * ki212 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat * kefVisota;
         }
         $('#sborIshodnihDannih').html(sumIshod.toFixed(3));
         await calculateK();
@@ -3317,7 +3366,7 @@ echo "<script>
             if (koefObsled1 == 1 && koefObsled2 == 1) {
                 sumObsled = 0;
             } else {
-                sumObsled = koefObsled1 * koefObsled2 * b14Value * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat;
+                sumObsled = koefObsled1 * koefObsled2 * b14Value * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat * kefVisota;
             }
             $('#obsledRab').html(sumObsled.toFixed(3));
 
@@ -3843,6 +3892,9 @@ echo "<script>
                     $('#iODirector').val(data.params.name_IOdirector);
                     $('#usnValue').val(data.params.value_usn);
                     $('#ndsValue').val(data.params.value_nds);
+                    usn = data.params.value_usn;
+                    nds = data.params.value_nds;
+                    console.log (usn , nds, "нАЛОГИ НАЛОГИ")
                 } else {
                     console.error('Error:', data.error);
                 }
@@ -4130,7 +4182,7 @@ echo "<script>
         if (koefObmerWork1 == 1 && koefObmerWork2 == 1) {
             sumObmer = 0;
         } else {
-            sumObmer = koefObmerWork1 * koefObmerWork2 * b14Value * k18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat;
+            sumObmer = koefObmerWork1 * koefObmerWork2 * b14Value * k18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat * kefVisota;
         }
         $('#obmerRaboty').html(sumObmer.toFixed(3));
         await calculateK();
@@ -4146,7 +4198,7 @@ echo "<script>
         if (koefObsled1 == 1 && koefObsled2 == 1) {
             sumObsled = 0;
         } else {
-            sumObsled = koefObsled1 * koefObsled2 * b14Value * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat;
+            sumObsled = koefObsled1 * koefObsled2 * b14Value * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat * kefVisota;
         }
         $('#obsledRab').html(sumObsled.toFixed(3));
 
@@ -4159,7 +4211,7 @@ echo "<script>
         if (koefObsled1 == 1 && koefObsled2 == 1) {
             sumObsled = 0;
         } else {
-            sumObsled = koefObsled1 * koefObsled2 * b14Value * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat;
+            sumObsled = koefObsled1 * koefObsled2 * b14Value * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat * kefVisota;
         }
         $('#obsledRab').html(sumObsled.toFixed(3));
         calculateK();
@@ -4243,6 +4295,9 @@ echo "<script>
         document.getElementById('harakteristikaObjectObsh').innerText = totalSum.toFixed(2);
         document.getElementById('harakteristikaObjectSmeta').innerText = parseFloat(fullSumma);
     }
+
+
+
 
 </script>
 
