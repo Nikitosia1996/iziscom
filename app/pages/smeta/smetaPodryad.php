@@ -2467,11 +2467,11 @@ echo "<script>
     </div>
     <div class="pos2">
         <label>
-            <input type="checkbox" id="checkUSN"> Учитывать УСН
+            <input type="checkbox" id="checkUSN" onchange="calculateK()"> Учитывать УСН
         </label>
         <br>
         <label>
-            <input type="checkbox" id="checkNDS"> Учитывать НДС
+            <input type="checkbox" id="checkNDS" onchange="calculateK()"> Учитывать НДС
         </label>
         <br>
         <br>
@@ -2616,7 +2616,7 @@ echo "<script>
     }
 
     async function calculateK() {
-
+       await calcCalkulation();
         isSborIshodnihDannihChecked = document.getElementById('sborCheck').checked;
         isObmerRabotyChecked = document.getElementById('obmerCheck').checked;
         isObsledRabChecked = document.getElementById('obsledCheck').checked;
@@ -2684,10 +2684,30 @@ echo "<script>
             console.error('Некорректное значение коэффициента');
         }
 
+        //USNCALC
+        const checkUSN = document.getElementById('checkUSN');
+        const checkNDS = document.getElementById('checkNDS');
+        if (checkUSN.checked)
+        {
+            console.log('Учитывать НДС:', checkNDS.checked);
+            fullSumma = fullSumma - (fullSumma * usn)/100;
+            calculacia = calculacia - (calculacia *  usn)/100;
+            fullSumma = parseFloat(fullSumma.toFixed(2));
+        }
+        if (checkNDS.checked)
+        {
+            fullSumma = fullSumma - (fullSumma * nds)/100;
+            calculacia = calculacia - (calculacia *  nds)/100;
+            fullSumma = parseFloat(fullSumma.toFixed(2));
+            console.log('Учитывать УСН:', checkUSN.checked);
+            console.log('Учитывать НДС:', checkNDS.checked);
+        }
+
+
         totalSum += parseFloat(fullSumma)
         if (isCalc) totalSum += parseFloat(calculacia);
         document.getElementById('harakteristikaObjectObsh').innerText = totalSum.toFixed(2);
-        document.getElementById('harakteristikaObjectSmeta').innerText = fullSumma;
+        document.getElementById('harakteristikaObjectSmeta').innerText = fullSumma.toFixed(2);
         if (isCalc)
             document.getElementById('harakteristikaObjectCalc').innerText = parseFloat(calculacia).toFixed(2);
         else
@@ -3858,6 +3878,7 @@ echo "<script>
                 if (data.success) {
                     alert('Применено');
                     loadIndexPeremenFromDB();
+                    loadParametrPeremenFromDB();
                     await calculateK();
                     $('#modalPeremen').modal('hide');
                     updateCalendarDaysFromEnd();

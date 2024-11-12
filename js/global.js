@@ -1322,17 +1322,17 @@ $(".doljnosti_KSD").on('change', async (event) => {
     if (nextnextInput.value.length === 0)
         nextnextInput.value = 1;
     nextInput.value = doljnostKoef;
-    await calcCalkulation()
+    await calculateK();
 })
 
 $(".kol_isp").on('change', async (event) => {
 
-    await calcCalkulation()
+    await calculateK();
 })
 
 
 async function calcCalkulation() {
-
+    calculacia = 0;
     let truds = $(".trud:not([disabled])");
     let tarifs = $(".tarif");
     let kol_isps = $(".kol_isp:not([disabled])");
@@ -1403,16 +1403,16 @@ async function calcCalkulation() {
 
     document.getElementById('harakteristikaObjectCalc').innerText = calculacia;
     document.getElementById('calcalcres').innerText = calculacia;
-    calculateK();
+
 
 }
 
 $(".trud").on('change', () => {
-    calcCalkulation();
+    calculateK();
 })
 
 $(".tarif").on('change', () => {
-    calcCalkulation();
+    calculateK();
 })
 
 function printExcel() {
