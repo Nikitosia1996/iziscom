@@ -30,39 +30,45 @@ echo "<script>
         color: red;
     }
 
+    .butrad {
+        margin-right: 5px;
+    }
+   .form-date, .form-control {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+
+    .form-control {
+        resize: vertical;
+    }
+
     .form-select {
-        width: 90%;
-        height: 40px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        padding: 10px;
-        margin-bottom: 10px;
-        margin-left: 5%;
-        margin-top: 10px;
+        padding: 8px 12px;
+        border: 1px solid #dee2e6;
+        border-radius: 6px;
+        font-size: 14px;
+        transition: border-color 0.3s ease;
     }
-
     .form-select-calc {
-        width: 90%;
-        height: 35px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        padding: 10px;
-        margin-bottom: 10px;
-        margin-left: 5%;
-        margin-top: 10px;
-        font-size: 12px;
+        width: 66%;
+        padding: 8px 12px;
+        border: 1px solid #dee2e6;
+        border-radius: 6px;
+        font-size: 14px;
+        transition: border-color 0.3s ease;
     }
 
-    .form-date {
-        width: 90%;
-        height: 40px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        padding: 10px;
-        margin-bottom: 10px;
-        margin-left: 5%;
-        margin-top: 10px;
+    .form-select:focus, .form-select-calc:focus {
+        border-color: #80bdff;
+        outline: none;
+        box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
     }
+
+
 
     .form-outline {
         width: 90%;
@@ -72,8 +78,11 @@ echo "<script>
     }
 
 
-    .zakpod {
-        margin-left: 5%;
+    .zakpod, .zakpodGps {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 600;
+        color: #333;
     }
 
     .pasportzd {
@@ -87,34 +96,25 @@ echo "<script>
     }
 
 
-    .zakpodGps {
-        margin-top: 95px;
-        margin-left: 5%;
-    }
 
-    .pos1 {
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        margin-left: 1%;
-        width: 30%;
-    }
 
-    .pos2 {
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        margin-left: 1%;
-        width: 30%;
-    }
-
-    .pos3 {
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        margin-left: 1%;
-        width: 30%;
+    .pos1, .pos2, .pos3 {
+        flex: 1;
+        min-width: 300px;
+        padding: 15px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
 
     .position1 {
         display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
 
     .posfull {
@@ -133,7 +133,7 @@ echo "<script>
     }
 
     .input-container {
-        margin-left: 5%;
+        margin-bottom: 15px;
     }
 
     .input-containerval {
@@ -147,45 +147,64 @@ echo "<script>
         margin-left: 5%;
     }
 
-    #commonInputField {
-        width: 70px;
+    #commonInputField, #commonInputFieldWorking {
+        width: 100px;
+        padding: 5px;
+        margin-top: 5px;
     }
 
     #etazh {
-        width: 15%;
+        width: 33%;
     }
 
     #visotazdani {
-        width: 15%;
+        width: 33%;
     }
 
     #obem {
-        width: 15%;
+        width: 33%;
     }
 
-    .inpval {
-        width: 30%;
-    }
+
 
     #visotapola {
-        width: 15%;
+        width: 33%;
     }
 
     .dndb, .dndb3, .dndb4, .dndb5, .dndb6, .dndb7, .dndb8, .dndb9 {
-        display: none;
+        padding: 20px;
+        background: #ffffff;
+        border-radius: 8px;
+        margin: 10px 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        display:none;
     }
 
     .nameforblock1, .nameforblock3, .nameforblock4, .nameforblock5,
     .nameforblock6, .nameforblock7, .nameforblock8, .nameforblock9 {
-        margin-left: 1%;
+        background: linear-gradient(to right, #f8f9fa, #e9ecef);
+        padding: 15px 20px;
+        border-radius: 8px;
+        margin: 10px 0;
         cursor: pointer;
-        background-color: #f0f0f0;
-        padding: 10px;
-        border: 1px solid #ccc;
-        margin-bottom: 10px;
-        width: 50%;
+        font-weight: 500;
+        transition: all 0.3s ease;
         display: flex;
-        justify-content: center;
+        align-items: center;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    .nameforblock1:hover, .nameforblock3:hover, .nameforblock4:hover,
+    .nameforblock5:hover, .nameforblock6:hover, .nameforblock7:hover,
+    .nameforblock8:hover, .nameforblock9:hover {
+        background: linear-gradient(to right, #e9ecef, #dee2e6);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    input[type="checkbox"], input[type="radio"] {
+        margin-right: 10px;
+        cursor: pointer;
     }
 
     .countRub {
@@ -271,12 +290,14 @@ echo "<script>
         margin-bottom: 10px;
     }
 
-    .form-select-calc {
-        margin-right: 10px;
-    }
 
-    .inpvalsel {
-        flex: 1;
+
+    .inpvalsel, .inpval {
+        padding: 8px 12px;
+        border: 1px solid #dee2e6;
+        border-radius: 6px;
+        width: 80%;
+        margin: 5px 0;
     }
 
     .mgbottom20p {
@@ -409,7 +430,7 @@ echo "<script>
         .header-fixed {
             width: 86.5%;
             position: fixed;
-            top: 12.5%;
+            top: 70px;
             left: 12.7%;
             right: 0;
             background: var(--background-color);
@@ -418,12 +439,15 @@ echo "<script>
             padding: 10px 0;
         }
     }
+
+
+
     @media (min-width: 2399px) {
 
         .header-fixed {
             width: 88%;
             position: fixed;
-            top: 10.5%;
+            top: 70px;
             left: 11.2%;
             right: 0;
             background: var(--background-color);
@@ -433,12 +457,28 @@ echo "<script>
         }
     }
 
+
+    @media (min-width: 1530px) and (max-width: 1700px) {
+        .header-fixed {
+            width: 81.5%;
+            position: fixed;
+            top: 70px;
+            left: 17.6%;
+            right: 0;
+            background: var(--background-color);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            padding: 10px 0;
+        }
+    }
+
+
     @media (min-width: 1740px) and (max-width: 1899px) {
 
         .header-fixed {
             width: 83.6%;
             position: fixed;
-            top: 14.6%;
+            top: 70px;
             left: 15.5%;
             right: 0;
             background: var(--background-color);
@@ -452,7 +492,7 @@ echo "<script>
         .header-fixed {
             width: 85.1%;
             position: fixed;
-            top: 13.6%;
+            top: 70px;
             left: 14%;
             right: 0;
             background: var(--background-color);
@@ -476,6 +516,7 @@ echo "<script>
             z-index: 1000;
             padding: 10px 0;
         }
+
 
         .header-row {
             flex-direction: column;
@@ -507,7 +548,74 @@ echo "<script>
         }
 
 
+        .position1 {
+            flex-direction: column;
+        }
 
+        .pos1, .pos2, .pos3 {
+            width: 100%;
+        }
+
+        .select-input-pair {
+            flex-direction: column;
+        }
+        .form-select-calc, .inpvalsel {
+            width: 80%;
+            margin: 5px 0;
+        }
+
+    }
+
+    @media (max-width: 600px) {
+        .position1 {
+            padding: 10px;
+        }
+
+        .pos1, .pos2, .pos3 {
+            padding: 10px;
+        }
+    }
+    @media (max-width: 768px) {
+        .nameforblock1, .nameforblock3, .nameforblock4, .nameforblock5,
+        .nameforblock6, .nameforblock7, .nameforblock8, .nameforblock9 {
+            padding: 10px 15px;
+            font-size: 14px;
+        }
+
+        .dndb, .dndb3, .dndb4, .dndb5, .dndb6, .dndb7, .dndb8, .dndb9 {
+            padding: 10px;
+        }
+
+        .viborvis, .viborvischeckbox1, .viborvischeckbox2 {
+            margin: 5px 0;
+        }
+    }
+
+    /* Стили для групп элементов */
+    .viborvis, .viborvischeckbox1, .viborvischeckbox2 {
+        margin: 15px 0;
+    }
+
+    /* Стили для горизонтальных линий */
+    hr {
+        margin: 10px 0;
+        border: 0;
+        border-top: 1px solid #dee2e6;
+    }
+
+    /* Стили для модального окна */
+    .modal-content {
+        border-radius: 8px;
+    }
+
+    .modal-header {
+        background: #f8f9fa;
+        border-radius: 8px 8px 0 0;
+    }
+
+    .modal-footer {
+        background: #f8f9fa;
+        border-radius: 0 0 8px 8px;
     }
     .dropdown {
         position: relative;
