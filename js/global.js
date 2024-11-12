@@ -484,7 +484,7 @@ async function getSmeta(id) {
 
         }
     }
-    document.getElementById("myDropdown").classList.toggle("show");
+    document.getElementById("smetaDropdown").classList.toggle("show");
     executeFunctions();
 }
 

@@ -306,158 +306,294 @@ echo "<script>
     }
 </style>
 <style>
-    .sticky {
-        position: sticky;
-        top: 0;
-        background-color: #f8f9fa;
-        padding: 10px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        z-index: 100;
+    :root {
+        --primary-color: #2196F3;
+        --secondary-color: #4CAF50;
+        --accent-color: #FF5722;
+        --background-color: #fff;
+        --text-color: #333;
+        --border-radius: 8px;
+        --shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .otstup{
+        height: 240px;
+    }
+    .header-fixed {
+        width: 85.15%;
+        position: fixed;
+        top: 13.6%;
+        left: 14%;
+        right: 0;
+        background: var(--background-color);
+        box-shadow: var(--shadow);
+        z-index: 1000;
+        padding: 10px 0;
     }
 
-    .row {
+    .header-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .header-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .search-group {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .amounts-group {
+        display: flex;
+        gap: 20px;
+        background: #f8f9fa;
+        padding: 10px;
+        border-radius: var(--border-radius);
+    }
+
+    .amount-item {
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        margin-bottom: 15px;
+        gap: 5px;
     }
 
-    .col-lg-2, .col-lg-3, .col-lg-5 {
-        flex: 0 0 auto;
+    .amount-value {
+        font-weight: bold;
+        color: var(--primary-color);
     }
 
+    .buttons-group {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: left;
+        width: 50%;
+    }
+    .buttons-group2 {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: right;
+        width: 50%;
+    }
+
+    .btn {
+        padding: 8px 15px;
+        border: none;
+        border-radius: var(--border-radius);
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.3s;
+        white-space: nowrap;
+    }
+
+    .btn-primary { background: var(--primary-color); color: white; }
+    .btn-secondary { background: var(--secondary-color); color: white; }
+    .btn-accent { background: var(--accent-color); color: white; }
+
+    .search-input {
+        padding: 8px 15px;
+        border: 1px solid #ddd;
+        border-radius: var(--border-radius);
+        width: 200px;
+    }
+
+    @media (min-width: 2100px) and (max-width: 2398px) {
+
+        .header-fixed {
+            width: 86.5%;
+            position: fixed;
+            top: 12.5%;
+            left: 12.7%;
+            right: 0;
+            background: var(--background-color);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            padding: 10px 0;
+        }
+    }
+    @media (min-width: 2399px) {
+
+        .header-fixed {
+            width: 88%;
+            position: fixed;
+            top: 10.5%;
+            left: 11.2%;
+            right: 0;
+            background: var(--background-color);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            padding: 10px 0;
+        }
+    }
+
+    @media (min-width: 1740px) and (max-width: 1899px) {
+
+        .header-fixed {
+            width: 83.6%;
+            position: fixed;
+            top: 14.6%;
+            left: 15.5%;
+            right: 0;
+            background: var(--background-color);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            padding: 10px 0;
+        }
+    }
+    @media (min-width: 1900px) and (max-width: 2099px) {
+
+        .header-fixed {
+            width: 85.1%;
+            position: fixed;
+            top: 13.6%;
+            left: 14%;
+            right: 0;
+            background: var(--background-color);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            padding: 10px 0;
+        }
+    }
+
+
+    @media (max-width: 1200px) {
+
+        .header-fixed {
+            width:100%;
+            position: fixed;
+            top: 7%;
+            left: 0%;
+            right: 0;
+            background: var(--background-color);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            padding: 10px 0;
+        }
+
+        .header-row {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .search-group, .amounts-group, .buttons-group .buttons-group2 {
+            margin-bottom: 10px;
+        }
+        .buttons-group{
+            width: 75%;
+        }
+
+#btnShowModalPeremen{
+    width: 130px;
+    height: 25px;
+}
+.otstup{
+    height: 275px;
+}
+        .btn {
+            padding: 5px 10px;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+
+
+    }
     .dropdown {
         position: relative;
-    }
-
-    /* Button Styling - Consistent Look */
-    .btn, .dropbtn {
-        background-color: #146121;
-        color: white;
-        border: none;
-        padding: 10px 15px;
-        cursor: pointer;
-        border-radius: 5px;
-        transition: background-color 0.3s;
-        font-family: Arial, sans-serif; /* Choose your preferred font */
-        font-size: 16px; /* Adjust font size as needed */
-    }
-
-    .btn:hover, .dropbtn:hover {
-        background-color: #155305;
+        display: inline-block;
     }
 
     .dropdown-content {
         display: none;
         position: absolute;
-        background-color: white;
+        background-color: #f9f9f9;
         min-width: 160px;
-        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         z-index: 1;
-        border-radius: 5px;
-    }
-
-    .dropdown:hover .dropdown-content {
-        display: block;
-    }
-
-    .dropdown-content input {
-        width: calc(100% - 22px);
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        margin-bottom: 5px;
+        max-height: 300px;
+        overflow-y: auto;
     }
 
     .dropdown-content a {
-        padding: 10px;
+        color: black;
+        padding: 12px 16px;
         text-decoration: none;
         display: block;
-        color: black;
-        background-color: #f8f9fa;
     }
 
     .dropdown-content a:hover {
         background-color: #f1f1f1;
     }
 
-    .form-control {
-        padding: 10px;
-        border: 1px solid #ced4da;
-        border-radius: 5px;
+    .show {
+        display: block;
     }
 
-    /* Styling for amount display */
-    .harakteristikaObject {
-        font-weight: bold; /* Make amount bold */
-        margin-left: 5px;
-    }
 </style>
-<div class="sticky">
-    <div class="col-lg-12 connectedSortable ui-sortable" style="margin-top: 10px">
-        <div class="row mgbottom20p mgleft5">
-            <div class="dropdown col-lg-2">
-                <button onclick="myFunction()" class="dropbtn">Найти смету</button>
-                <div id="myDropdown" class="dropdown-content">
-                    <input type="text" placeholder="Поиск..." id="myInput" onkeyup="filterFunction()">
-                    <?php
-                    $smetaArray = $smetaList->getSmetaArray();
-                    foreach ($smetaArray as $smeta) {
-                        echo '<a onclick=" getSmeta(' . $smeta->getId() . ')">' . $smeta->getName() . '</a>';
-                    }
 
-                    ?>
+<div class="header-fixed">
+    <div class="header-container">
+        <div class="header-row">
+            <div class="search-group">
+                <div class="dropdown">
+                    <button class="btn btn-primary" onclick="toggleDropdown()">Найти смету</button>
+                    <div id="smetaDropdown" class="dropdown-content">
+                        <input type="text" placeholder="Поиск смет..." id="smetaSearch" onkeyup="filterSmeta()">
+                        <?php
+                        $smetaArray = $smetaList->getSmetaArray();
+                        foreach ($smetaArray as $smeta) {
+                            echo '<a onclick="getSmeta(' . $smeta->getId() . ')">' . $smeta->getName() . '</a>';
+                        }
+                        ?>
+                    </div>
                 </div>
+                <input type="text" class="search-input" id="smetaName" placeholder="Название сметы">
+                <button class="btn btn-secondary" onclick="saveSmeta()">Сохранить</button>
             </div>
 
-
-            <div class="col-lg-2">
-                <button id="btnShowModalPeremen" class="btn btn-primary">Параметры переменных</button>
-            </div>
-
-            <div class="col-lg-2">
-
-                Общая сумма <?php echo ' <span class="harakteristikaObject" id="harakteristikaObjectObsh">';
-                echo $harakteristikaObject;
-                echo '</span>' ?>
-            </div>
-            <div class="col-lg-2">
-                Смета <?php echo ' <span class="harakteristikaObject" id="harakteristikaObjectSmeta">';
-                echo $harakteristikaObject;
-                echo '</span>' ?>
-            </div>
-            <div class="col-lg-3">
-                Калькуляция <?php echo ' <span class="harakteristikaObject" id="harakteristikaObjectCalc">';
-                echo $calculacia;
-                echo '</span>' ?>
-            </div>
-
-
-        </div>
-        <div class="row mgbottom20p mgleft5">
-            <div class="col-lg-2">
-                <button onclick="printCalculExcel()" id="btnCalculationExcel" class="btn btn-primary">Калькуляция в
-                    EXCEL
-                </button>
-            </div>
-            <div class="col-lg-2">
-                <button id="btnTechZad" class="btn btn-primary" onclick="printTZ()">Техническое задание</button>
-            </div>
-            <div class="col-lg-2">
-                <a onclick="printExcel()" class="btn btn-primary">Смета в EXCEL</a>
-            </div>
-            <div class="col-lg-5">
-                <div id="divSaveSmeta" class="form-group mgtop5" style="display: inline-flex;
-    float: right;
-    margin-right: 9%;">
-                    <input class="form-control" type="text" id="smetaName" placeholder="Новая смета"
-                           style="width: 300px; margin-right: 10%;">
-                    <button id="btnSaveSmeta" class="btn btn-primary" onclick="saveSmeta()">Сохранить</button>
+            <div class="amounts-group">
+                <div class="amount-item">
+                    <span>Общая сумма:</span>
+                    <span class="amount-value" id="harakteristikaObjectObsh">0 ₽</span>
+                </div>
+                <div class="amount-item">
+                    <span>Смета:</span>
+                    <span class="amount-value" id="harakteristikaObjectSmeta">0 ₽</span>
+                </div>
+                <div class="amount-item">
+                    <span>Калькуляция:</span>
+                    <span class="amount-value" id="harakteristikaObjectCalc">0 ₽</span>
                 </div>
             </div>
         </div>
+
+        <hr>
+<div style = "display:flex;">
+        <div class="buttons-group">
+            <button class="btn btn-accent" onclick="printCalculExcel()">Калькуляция в EXCEL</button>
+            <button class="btn btn-accent" onclick="printExcel()">Смета в EXCEL</button>
+            <button class="btn btn-accent" onclick="printTZ()">Техническое задание</button>
+        </div>
+        <div class="buttons-group2">
+        <button class="btn btn-primary" id="btnShowModalPeremen">Параметры переменных</button>
+        </div>
+</div>
     </div>
 </div>
+
+<!-- Отступ для контента под фиксированной шапкой -->
+<div class = "otstup"></div>
 
 <div class="position1">
     <div class="pos1">
@@ -3830,22 +3966,34 @@ echo "<script>
         calculateK();
     }
 
-    function myFunction() {
-        document.getElementById("myDropdown").classList.toggle("show");
+    function toggleDropdown() {
+        document.getElementById("smetaDropdown").classList.toggle("show");
     }
 
-    function filterFunction() {
-        var input, filter, ul, li, a, i;
-        input = document.getElementById("myInput");
+    function filterSmeta() {
+        var input, filter, dropdown, a, i;
+        input = document.getElementById("smetaSearch");
         filter = input.value.toUpperCase();
-        div = document.getElementById("myDropdown");
-        a = div.getElementsByTagName("a");
+        dropdown = document.getElementById("smetaDropdown");
+        a = dropdown.getElementsByTagName("a");
         for (i = 0; i < a.length; i++) {
             txtValue = a[i].textContent || a[i].innerText;
             if (txtValue.toUpperCase().indexOf(filter) > -1) {
                 a[i].style.display = "";
             } else {
                 a[i].style.display = "none";
+            }
+        }
+    }
+
+    window.onclick = function(event) {
+        if (!event.target.matches('.btn-primary')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            for (var i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
             }
         }
     }
