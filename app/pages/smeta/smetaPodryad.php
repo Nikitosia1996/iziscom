@@ -501,14 +501,47 @@ echo "<script>
             padding: 10px 0;
         }
     }
+    @media (max-width: 420px) {
+        .buttons-group2 {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: right;
+            width: 35%;
+        }
 
+        #btnShowModalPeremen {
+            width: 130px;
+            height: 25px;
+            margin-top: 30px;
+            margin-right: 115px;
+        }
+        .header-fixed {
+            font-size:7px;
+            width:99%;
+            position: fixed;
+            top: 70px;
+            left: 0%;
+            right: 0;
+            background: var(--background-color);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            padding: 10px 0;
+        }
+        .search-group{
+            margin-bottom: 5px;
+        }
+        hr {
+            margin: 0px 0;
+        }
+    }
 
     @media (max-width: 1200px) {
 
         .header-fixed {
-            width:100%;
+            width:99%;
             position: fixed;
-            top: 7%;
+            top: 70px;
             left: 0%;
             right: 0;
             background: var(--background-color);
@@ -673,15 +706,15 @@ echo "<script>
             <div class="amounts-group">
                 <div class="amount-item">
                     <span>Общая сумма:</span>
-                    <span class="amount-value" id="harakteristikaObjectObsh">0 ₽</span>
+                    <span class="amount-value" id="harakteristikaObjectObsh">0</span>
                 </div>
                 <div class="amount-item">
                     <span>Смета:</span>
-                    <span class="amount-value" id="harakteristikaObjectSmeta">0 ₽</span>
+                    <span class="amount-value" id="harakteristikaObjectSmeta">0</span>
                 </div>
                 <div class="amount-item">
                     <span>Калькуляция:</span>
-                    <span class="amount-value" id="harakteristikaObjectCalc">0 ₽</span>
+                    <span class="amount-value" id="harakteristikaObjectCalc">0</span>
                 </div>
             </div>
         </div>
@@ -689,9 +722,9 @@ echo "<script>
         <hr>
 <div style = "display:flex;">
         <div class="buttons-group">
-            <button class="btn btn-accent" onclick="printCalculExcel()">Калькуляция в EXCEL</button>
-            <button class="btn btn-accent" onclick="printExcel()">Смета в EXCEL</button>
-            <button class="btn btn-accent" onclick="printTZ()">Техническое задание</button>
+            <button class="btn btn-warning" onclick="printCalculExcel()">Калькуляция в EXCEL</button>
+            <button class="btn btn-warning" onclick="printExcel()">Смета в EXCEL</button>
+            <button class="btn btn-warning" onclick="printTZ()">Техническое задание</button>
         </div>
         <div class="buttons-group2">
         <button class="btn btn-primary" id="btnShowModalPeremen">Параметры переменных</button>
@@ -726,10 +759,11 @@ echo "<script>
             ?>
         </select>
 
-        <!-- Textarea with class .w-50 -->
+        <!-- Textarea with class .w-50 --><div style ="    margin-top: 40px;">
         <label for="textAreaNaimRabot" class="zakpod">Наименование работ:</label>
         <div class="form-outline">
             <textarea class="form-control" id="textAreaNaimRabot" rows="3"></textarea>
+        </div>
         </div>
     </div>
     <div class="pos2">
@@ -2923,6 +2957,7 @@ echo "<script>
         const coefficient = parseFloat(input.value);
         if (!isNaN(coefficient) && coefficient >= 0) {
             fullSumma = fullSumma * (coefficient);
+            fullSumma = parseFloat(fullSumma.toFixed(2));
             console.log('Новое значение:', fullSumma);
         } else {
             console.error('Некорректное значение коэффициента');

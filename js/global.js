@@ -1397,14 +1397,9 @@ async function calcCalkulation() {
             calculacia *= $(this).val() !== "0" ? parseFloat($(this).val()) : 1;
         });
     }
-
-
-
-
+    calculacia = isNaN(calculacia) ? "0" : calculacia;
     document.getElementById('harakteristikaObjectCalc').innerText = calculacia;
     document.getElementById('calcalcres').innerText = calculacia;
-
-
 }
 
 $(".trud").on('change', () => {
