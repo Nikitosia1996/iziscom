@@ -7,6 +7,7 @@ $ishod = json_decode($_POST['ishod'], true);
 $obmerObject = json_decode($_POST['obmerObject'], true);
 $obsledObject = json_decode($_POST['obsledObject'], true);
 $sostTechObject = json_decode($_POST['sostTechObject'], true);
+$redactorIspObject = json_decode($_POST['redactorIspObject'], true);
 
 $zdanie = isset($haractObject['zdanie']) ? $haractObject['zdanie'] : null;
 $typeZdanie = isset($haractObject['typeZdanie']) ? $haractObject['typeZdanie'] : null;
@@ -119,6 +120,15 @@ $conval68 = isset($sostTechObject['conval68']) ? $sostTechObject['conval68'] : n
 $conval69 = isset($sostTechObject['conval69']) ? $sostTechObject['conval69'] : null;
 $zaklSostStr = isset($sostTechObject['selectedSosttech']) ? $sostTechObject['selectedSosttech'] : null;
 
+
+$toggleZd71 = isset($redactorIspObject['toggleZd71']) ? $redactorIspObject['toggleZd71'] : null;
+$toggleZd72 = isset($redactorIspObject['toggleZd72']) ? $redactorIspObject['toggleZd72'] : null;
+$toggleZd73 = isset($redactorIspObject['toggleZd73']) ? $redactorIspObject['toggleZd73'] : null;
+$toggleZd74 = isset($redactorIspObject['toggleZd74']) ? $redactorIspObject['toggleZd74'] : null;
+$conval71 = isset($redactorIspObject['conval71']) ? $redactorIspObject['conval71'] : null;
+$conval72 = isset($redactorIspObject['conval72']) ? $redactorIspObject['conval72'] : null;
+$conval73 = isset($redactorIspObject['conval73']) ? $redactorIspObject['conval73'] : null;
+$conval74 = isset($redactorIspObject['conval74']) ? $redactorIspObject['conval74'] : null;
 
 
 $id_zakazchik = isset($_POST['id_zakazchik']) ? $_POST['id_zakazchik'] : null;
@@ -272,6 +282,20 @@ WHERE id_smeta = '$id'";
     conval68 = '" . $conval68 . "',
     conval69 = '" . $conval69 . "',
     choosCunstruct6 = '" . $choosCunstruct6 . "'
+WHERE id_smeta = '$id'";
+
+    mysqli_query($connectionDB->con, $sql)  or mysqli_error($connectionDB->con);
+
+
+    $sql = "UPDATE redaktor SET
+      toggleZd71 = '" . $toggleZd71 . "',
+    toggleZd72 = '" . $toggleZd72 . "',
+    toggleZd73 = '" . $toggleZd73 . "',
+    toggleZd74 = '" . $toggleZd74 . "',
+    conval71 = '" . $conval71 . "',
+    conval72 = '" . $conval72 . "',
+    conval73 = '" . $conval73 . "',
+    conval74 = '" . $conval74 . "'
 WHERE id_smeta = '$id'";
 
     mysqli_query($connectionDB->con, $sql)  or mysqli_error($connectionDB->con);
