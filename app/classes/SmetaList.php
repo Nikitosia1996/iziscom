@@ -7,6 +7,7 @@ include 'ObsledObject.php';
 include 'SostTechObject.php';
 include 'CalculationObject.php';
 include 'RedaktorObject.php';
+include 'ObsledOtdelObject.php';
 
 class SmetaList
 {
@@ -71,7 +72,7 @@ class SmetaList
 
     public function getListSmetaFromDB($con)
     {
-        $sql = "SELECT s.*, ho.*, siv.*, orw.*, obsr.*, sost.*,calc.*, redakt.*, s.id_smeta as id_sm FROM smets s
+        $sql = "SELECT s.*, ho.*, siv.*, orw.*, obsr.*, sost.*,calc.*, redakt.*, obsotd.*, s.id_smeta as id_sm FROM smets s
                 left join haract_object ho on ho.id_smeta = s.id_smeta
                 left join sbor_ishod_value siv on siv.id_smeta = s.id_smeta
                 left join obmernie_raboty orw on orw.id_smeta = s.id_smeta
@@ -79,6 +80,7 @@ class SmetaList
                 left join sost_tech_otchet sost on sost.id_smeta = s.id_smeta
                 left join calculation calc on calc.id_smeta = s.id_smeta
                 left join redaktor redakt on redakt.id_smeta = s.id_smeta
+                left join obsled_otdel_constr obsotd on obsotd.id_smeta = s.id_smeta
 ";
         $result = mysqli_query($con, $sql);
         while ($row = mysqli_fetch_assoc($result)) {
@@ -223,6 +225,92 @@ class SmetaList
                     $row['conval72'],
                     $row['conval73'],
                     $row['conval74'],
+                ),
+                new ObsledOtdelObject($row['id_obsled_otdel_constr'],
+                    $row['toggleZd81'],
+                    $row['toggleZd82'],
+                    $row['toggleZd83'],
+                    $row['toggleZd84'],
+                    $row['toggleZd85'],
+                    $row['toggleZd86'],
+                    $row['toggleZd87'],
+                    $row['toggleZd88'],
+                    $row['toggleZd89'],
+                    $row['toggleZd081'],
+                    $row['toggleZd082'],
+                    $row['toggleZd083'],
+                    $row['toggleZd084'],
+                    $row['toggleZd085'],
+                    $row['toggleZd086'],
+                    $row['toggleZd087'],
+                    $row['toggleZd088'],
+                    $row['toggleZd089'],
+                    $row['toggleZd0081'],
+                    $row['toggleZd0082'],
+                    $row['toggleZd0083'],
+                    $row['conval81'],
+                    $row['conval82'],
+                    $row['conval83'],
+                    $row['conval84'],
+                    $row['conval85'],
+                    $row['conval86'],
+                    $row['conval87'],
+                    $row['conval88'],
+                    $row['conval89'],
+                    $row['conval081'],
+                    $row['conval082'],
+                    $row['conval083'],
+                    $row['conval084'],
+                    $row['conval085'],
+                    $row['conval086'],
+                    $row['conval087'],
+                    $row['conval088'],
+                    $row['conval089'],
+                    $row['conval0081'],
+                    $row['conval0082'],
+                    $row['conval0083'],
+                    $row['conval811'],
+                    $row['conval822'],
+                    $row['conval833'],
+                    $row['conval844'],
+                    $row['conval855'],
+                    $row['conval866'],
+                    $row['conval877'],
+                    $row['conval888'],
+                    $row['conval899'],
+                    $row['conval0811'],
+                    $row['conval0822'],
+                    $row['conval0833'],
+                    $row['conval0844'],
+                    $row['conval0855'],
+                    $row['conval0866'],
+                    $row['conval0877'],
+                    $row['conval0888'],
+                    $row['conval0899'],
+                    $row['conval00811'],
+                    $row['conval00822'],
+                    $row['conval00833'],
+                    $row['monolit1'],
+                    $row['monolit2'],
+                    $row['monolit3'],
+                    $row['monolit4'],
+                    $row['monolit5'],
+                    $row['monolit6'],
+                    $row['monolit7'],
+                    $row['monolit8'],
+                    $row['monolit9'],
+                    $row['monolit10'],
+                    $row['monolit11'],
+                    $row['monolit12'],
+                    $row['monolit13'],
+                    $row['monolit14'],
+                    $row['monolit15'],
+                    $row['monolit16'],
+                    $row['monolit17'],
+                    $row['monolit18'],
+                    $row['monolit19'],
+                    $row['monolit20'],
+                    $row['monolit21'],
                 ),
             );
 
