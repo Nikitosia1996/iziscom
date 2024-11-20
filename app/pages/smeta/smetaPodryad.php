@@ -3897,11 +3897,6 @@ echo "<script>
     }
 
 
-    let conval71;
-    let conval72;
-    let conval73;
-    let conval74;
-
     async function toggleCheckboxesDop7(checkboxId) {
         const checkboxes = [
             {checkbox: document.getElementById('toggleZd71'), input: document.getElementById('conval71')},

@@ -165,10 +165,6 @@ let input3Calc7 = $('#input3Calc7');
 let input3Calc8 = $('#input3Calc8');
 
 
-let toggleZd71 = $('#toggleZd71');
-let toggleZd72 = $('#toggleZd72');
-let toggleZd73 = $('#toggleZd73');
-let toggleZd74 = $('#toggleZd74');
 
 
 async function getSmeta(id) {
