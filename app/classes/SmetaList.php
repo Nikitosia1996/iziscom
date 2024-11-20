@@ -6,6 +6,7 @@ include 'ObmerObject.php';
 include 'ObsledObject.php';
 include 'SostTechObject.php';
 include 'CalculationObject.php';
+include 'RedaktorObject.php';
 
 class SmetaList
 {
@@ -70,13 +71,14 @@ class SmetaList
 
     public function getListSmetaFromDB($con)
     {
-        $sql = "SELECT s.*, ho.*, siv.*, orw.*, obsr.*, sost.*,calc.*, s.id_smeta as id_sm FROM smets s
+        $sql = "SELECT s.*, ho.*, siv.*, orw.*, obsr.*, sost.*,calc.*, redakt.*, s.id_smeta as id_sm FROM smets s
                 left join haract_object ho on ho.id_smeta = s.id_smeta
                 left join sbor_ishod_value siv on siv.id_smeta = s.id_smeta
                 left join obmernie_raboty orw on orw.id_smeta = s.id_smeta
                 left join obsled_raboty obsr on obsr.id_smeta = s.id_smeta
                 left join sost_tech_otchet sost on sost.id_smeta = s.id_smeta
                 left join calculation calc on calc.id_smeta = s.id_smeta
+                left join redaktor redakt on redakt.id_smeta = s.id_smeta
 ";
         $result = mysqli_query($con, $sql);
         while ($row = mysqli_fetch_assoc($result)) {
@@ -211,6 +213,16 @@ class SmetaList
                     $row['kol_isp'],
                     $row['sredRazryad'],
                     $row['tarifKoef'],
+                ),
+                new RedaktorObject($row['id_redaktor'],
+                    $row['toggleZd71'],
+                    $row['toggleZd72'],
+                    $row['toggleZd73'],
+                    $row['toggleZd74'],
+                    $row['conval71'],
+                    $row['conval72'],
+                    $row['conval73'],
+                    $row['conval74'],
                 ),
             );
 

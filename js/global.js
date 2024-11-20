@@ -155,6 +155,12 @@ let input3Calc7 = $('#input3Calc7');
 let input3Calc8 = $('#input3Calc8');
 
 
+let toggleZd71 = $('#toggleZd71');
+let toggleZd72 = $('#toggleZd72');
+let toggleZd73 = $('#toggleZd73');
+let toggleZd74 = $('#toggleZd74');
+
+
 async function getSmeta(id) {
     idActiveSmeta = id;
     const selectedItem = smetaList.find(item => item.id == id);
@@ -175,6 +181,7 @@ async function getSmeta(id) {
         const obsled = selectedItem.obsled;
         const sosttech = selectedItem.sosttech;
         const calculator = selectedItem.calculator;
+        const redaktor = selectedItem.redaktor;
 
 
         $('#buildingType').val(haract.zdanie);
@@ -483,6 +490,21 @@ async function getSmeta(id) {
             $('#conval69').val('');
 
         }
+
+        toggleZd71.prop('disabled', false);
+        toggleZd72.prop('disabled', false);
+        toggleZd73.prop('disabled', false);
+        toggleZd74.prop('disabled', false);
+        toggleZd71.prop('checked', redaktor.toggleZd71 > 0);
+        toggleZd72.prop('checked', redaktor.toggleZd72 > 0);
+        toggleZd73.prop('checked', redaktor.toggleZd73 > 0);
+        toggleZd74.prop('checked', redaktor.toggleZd74 > 0);
+        $('#conval71').val(redaktor.conval71);
+        $('#conval72').val(redaktor.conval72);
+        $('#conval73').val(redaktor.conval73);
+        $('#conval74').val(redaktor.conval74);
+
+
     }
     document.getElementById("smetaDropdown").classList.toggle("show");
     executeFunctions();
@@ -496,6 +518,7 @@ async function executeFunctions() {
     await toggleCheckboxesDop4();
     await toggleCheckboxesDop5();
     await toggleCheckboxesDop6();
+    await toggleCheckboxesDop7();
     await calculateHaracterCoefficient();
     await calculateK();
 

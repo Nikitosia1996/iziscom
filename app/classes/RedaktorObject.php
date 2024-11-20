@@ -4,7 +4,6 @@
 class RedaktorObject
 {
     /////////////////////////////////
-
     private $id;
     private $toggleZd71;
     private $toggleZd72;

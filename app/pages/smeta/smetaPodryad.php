@@ -3896,10 +3896,6 @@ echo "<script>
         await calculateK();
     }
 
-    let toggleZd71;
-    let toggleZd72;
-    let toggleZd73;
-    let toggleZd74;
 
     let conval71;
     let conval72;
@@ -3907,10 +3903,6 @@ echo "<script>
     let conval74;
 
     async function toggleCheckboxesDop7(checkboxId) {
-        toggleZd71 = document.getElementById('toggleZd71').checked;
-        toggleZd72 = document.getElementById('toggleZd72').checked;
-        toggleZd73 = document.getElementById('toggleZd73').checked;
-        toggleZd74 = document.getElementById('toggleZd74').checked;
         const checkboxes = [
             {checkbox: document.getElementById('toggleZd71'), input: document.getElementById('conval71')},
             {checkbox: document.getElementById('toggleZd72'), input: document.getElementById('conval72')},
@@ -3918,17 +3910,9 @@ echo "<script>
             {checkbox: document.getElementById('toggleZd74'), input: document.getElementById('conval74')},
         ];
 
-        const currentCheckbox = checkboxes.find(item => item.checkbox.id === checkboxId);
-
-        if (currentCheckbox) {
-            if (currentCheckbox.checkbox.checked) {
-                currentCheckbox.input.disabled = false;
-                currentCheckbox.input.value = 0;
-            } else {
-                currentCheckbox.input.disabled = true;
-                currentCheckbox.input.value = '';
-            }
-        }
+        checkboxes.forEach(item => {
+            item.input.disabled = !item.checkbox.checked;
+        });
         await sumKoefRedaktor();
     }
 
