@@ -126,6 +126,91 @@ let conval73 = $('#conval73');
 let conval74 = $('#conval74');
 
 
+let toggleZd81 = $('#toggleZd81');
+let toggleZd82 = $('#toggleZd82');
+let toggleZd83 = $('#toggleZd83');
+let toggleZd84 = $('#toggleZd84');
+let toggleZd85 = $('#toggleZd85');
+let toggleZd86 = $('#toggleZd86');
+let toggleZd87 = $('#toggleZd87');
+let toggleZd88 = $('#toggleZd88');
+let toggleZd89 = $('#toggleZd89');
+let toggleZd081 = $('#toggleZd081');
+let toggleZd082 = $('#toggleZd082');
+let toggleZd083 = $('#toggleZd083');
+let toggleZd084 = $('#toggleZd084');
+let toggleZd085 = $('#toggleZd085');
+let toggleZd086 = $('#toggleZd086');
+let toggleZd087 = $('#toggleZd087');
+let toggleZd088 = $('#toggleZd088');
+let toggleZd089 = $('#toggleZd089');
+let toggleZd0081 = $('#toggleZd0081');
+let toggleZd0082 = $('#toggleZd0082');
+let toggleZd0083 = $('#toggleZd0083');
+let conval81 = $('#conval81');
+let conval811 = $('#conval811');
+let conval82 = $('#conval82');
+let conval822 = $('#conval822');
+let conval83 = $('#conval83');
+let conval833 = $('#conval833');
+let conval84 = $('#conval84');
+let conval844 = $('#conval844');
+let conval85 = $('#conval85');
+let conval855 = $('#conval855');
+let conval86 = $('#conval86');
+let conval866 = $('#conval866');
+let conval87 = $('#conval87');
+let conval877 = $('#conval877');
+let conval88 = $('#conval88');
+let conval888 = $('#conval888');
+let conval89 = $('#conval89');
+let conval899 = $('#conval899');
+let conval081 = $('#conval081');
+let conval0811 = $('#conval0811');
+let conval082 = $('#conval082');
+let conval0822 = $('#conval0822');
+let conval083 = $('#conval083');
+let conval0833 = $('#conval0833');
+let conval084 = $('#conval084');
+let conval0844 = $('#conval0844');
+let conval085 = $('#conval085');
+let conval0855 = $('#conval0855');
+let conval086 = $('#conval086');
+let conval0866 = $('#conval0866');
+let conval087 = $('#conval087');
+let conval0877 = $('#conval0877');
+let conval088 = $('#conval088');
+let conval0888 = $('#conval0888');
+let conval089 = $('#conval089');
+let conval0899 = $('#conval0899');
+let conval00811 = $('#conval00811');
+let conval0082 = $('#conval0082');
+let conval00822 = $('#conval00822');
+let conval0083 = $('#conval0083');
+let conval00833 = $('#conval00833');
+let monolit1 = $('#monolit1');
+let monolit2 = $('#monolit2');
+let monolit3 = $('#monolit3');
+let monolit4 = $('#monolit4');
+let monolit5 = $('#monolit5');
+let monolit6 = $('#monolit6');
+let monolit7 = $('#monolit7');
+let monolit8 = $('#monolit8');
+let monolit9 = $('#monolit9');
+let monolit10 = $('#monolit10');
+let monolit11 = $('#monolit11');
+let monolit12 = $('#monolit12');
+let monolit13 = $('#monolit13');
+let monolit14 = $('#monolit14');
+let monolit15 = $('#monolit15');
+let monolit16 = $('#monolit16');
+let monolit17 = $('#monolit17');
+let monolit18 = $('#monolit18');
+let monolit19 = $('#monolit19');
+let monolit20 = $('#monolit20');
+let monolit21 = $('#monolit21');
+
+
 let selectCalc1 = $('#selectCalc1');
 let selectCalc2 = $('#selectCalc2');
 let selectCalc3 = $('#selectCalc3');
@@ -663,6 +748,121 @@ function saveSmeta() {
         conval74: $('#conval74').val()
     }
 
+    let obsledOtdKonstrObject = {
+        toggleZd81: toggleZd81.prop('checked') ? 1 : 0,
+        toggleZd82: toggleZd82.prop('checked') ? 1 : 0,
+        toggleZd83: toggleZd83.prop('checked') ? 1 : 0,
+        toggleZd84: toggleZd84.prop('checked') ? 1 : 0,
+        toggleZd85: toggleZd85.prop('checked') ? 1 : 0,
+        toggleZd86: toggleZd86.prop('checked') ? 1 : 0,
+        toggleZd87: toggleZd87.prop('checked') ? 1 : 0,
+        toggleZd88: toggleZd88.prop('checked') ? 1 : 0,
+        toggleZd89: toggleZd89.prop('checked') ? 1 : 0,
+        toggleZd081: toggleZd081.prop('checked') ? 1 : 0,
+        toggleZd082: toggleZd082.prop('checked') ? 1 : 0,
+        toggleZd083: toggleZd083.prop('checked') ? 1 : 0,
+        toggleZd084: toggleZd084.prop('checked') ? 1 : 0,
+        toggleZd085: toggleZd085.prop('checked') ? 1 : 0,
+        toggleZd086: toggleZd086.prop('checked') ? 1 : 0,
+        toggleZd087: toggleZd087.prop('checked') ? 1 : 0,
+        toggleZd088: toggleZd088.prop('checked') ? 1 : 0,
+        toggleZd089: toggleZd089.prop('checked') ? 1 : 0,
+        toggleZd0081: toggleZd0081.prop('checked') ? 1 : 0,
+        toggleZd0082: toggleZd0082.prop('checked') ? 1 : 0,
+        toggleZd0083: toggleZd0083.prop('checked') ? 1 : 0,
+        conval81: $('#conval81').val(),
+        conval811: $('#conval811').val(),
+        conval82: $('#conval82').val(),
+        conval822: $('#conval822').val(),
+        conval83: $('#conval83').val(),
+        conval833: $('#conval833').val(),
+        conval84: $('#conval84').val(),
+        conval844: $('#conval844').val(),
+        conval85: $('#conval85').val(),
+        conval855: $('#conval855').val(),
+        conval86: $('#conval86').val(),
+        conval866: $('#conval866').val(),
+        conval87: $('#conval87').val(),
+        conval877: $('#conval877').val(),
+        conval88: $('#conval88').val(),
+        conval888: $('#conval888').val(),
+        conval89: $('#conval89').val(),
+        conval899: $('#conval899').val(),
+        conval081: $('#conval081').val(),
+        conval0811: $('#conval0811').val(),
+        conval082: $('#conval082').val(),
+        conval0822: $('#conval0822').val(),
+        conval083: $('#conval083').val(),
+        conval0833: $('#conval0833').val(),
+        conval084: $('#conval084').val(),
+        conval0844: $('#conval0844').val(),
+        conval085: $('#conval085').val(),
+        conval0855: $('#conval0855').val(),
+        conval086: $('#conval086').val(),
+        conval0866: $('#conval0866').val(),
+        conval087: $('#conval087').val(),
+        conval0877: $('#conval0877').val(),
+        conval088: $('#conval088').val(),
+        conval0888: $('#conval0888').val(),
+        conval089: $('#conval089').val(),
+        conval0899: $('#conval0899').val(),
+        conval0081: $('#conval0081').val(),
+        conval00811: $('#conval00811').val(),
+        conval0082: $('#conval0082').val(),
+        conval00822: $('#conval00822').val(),
+        conval0083: $('#conval0083').val(),
+        conval00833: $('#conval00833').val()
+
+    }
+
+    let calculObject = {
+        selectCalc1: $('#selectCalc1').val(),
+        selectCalc2: $('#selectCalc2').val(),
+        selectCalc3: $('#selectCalc3').val(),
+        selectCalc4: $('#selectCalc4').val(),
+        selectCalc5: $('#selectCalc5').val(),
+        selectCalc6: $('#selectCalc6').val(),
+        selectCalc7: $('#selectCalc7').val(),
+        selectCalc8: $('#selectCalc8').val(),
+
+        inputCalc1: $('#inputCalc1').val(),
+        inputCalc2: $('#inputCalc2').val(),
+        inputCalc3: $('#inputCalc3').val(),
+        inputCalc4: $('#inputCalc4').val(),
+        inputCalc5: $('#inputCalc5').val(),
+        inputCalc6: $('#inputCalc6').val(),
+        inputCalc7: $('#inputCalc7').val(),
+        inputCalc8: $('#inputCalc8').val(),
+
+        select2Calc1: $('#select2Calc1').val(),
+        select2Calc2: $('#select2Calc2').val(),
+        select2Calc3: $('#select2Calc3').val(),
+        select2Calc4: $('#select2Calc4').val(),
+        select2Calc5: $('#select2Calc5').val(),
+        select2Calc6: $('#select2Calc6').val(),
+        select2Calc7: $('#select2Calc7').val(),
+        select2Calc8: $('#select2Calc8').val(),
+
+        input2Calc1: $('#input2Calc1').val(),
+        input2Calc2: $('#input2Calc2').val(),
+        input2Calc3: $('#input2Calc3').val(),
+        input2Calc4: $('#input2Calc4').val(),
+        input2Calc5: $('#input2Calc5').val(),
+        input2Calc6: $('#input2Calc6').val(),
+        input2Calc7: $('#input2Calc7').val(),
+        input2Calc8: $('#input2Calc8').val(),
+
+        input3Calc1: $('#input3Calc1').val(),
+        input3Calc2: $('#input3Calc2').val(),
+        input3Calc3: $('#input3Calc3').val(),
+        input3Calc4: $('#input3Calc4').val(),
+        input3Calc5: $('#input3Calc5').val(),
+        input3Calc6: $('#input3Calc6').val(),
+        input3Calc7: $('#input3Calc7').val(),
+        input3Calc8: $('#input3Calc8').val(),
+
+    }
+
     let smetaForPhp = {
         id: idActiveSmeta?.toString(),
         name: smetaName.val(),
@@ -679,6 +879,8 @@ function saveSmeta() {
         obsledObject: JSON.stringify(obsledObject),
         sostTechObject: JSON.stringify(sostTechObject),
         redactorIspObject: JSON.stringify(redactorIspObject),
+        obsledOtdKonstrObject: JSON.stringify(obsledOtdKonstrObject),
+        calculObject: JSON.stringify(calculObject),
 
     };
 
@@ -698,6 +900,8 @@ function saveSmeta() {
         obsledObject: obsledObject,
         sostTechObject: sostTechObject,
         redactorIspObject: redactorIspObject,
+        obsledOtdKonstrObject: obsledOtdKonstrObject,
+        calculObject: calculObject,
 
     };
 

@@ -3896,15 +3896,7 @@ echo "<script>
         await calculateK();
     }
 
-    let toggleZd71;
-    let toggleZd72;
-    let toggleZd73;
-    let toggleZd74;
 
-    let conval71;
-    let conval72;
-    let conval73;
-    let conval74;
 
     async function toggleCheckboxesDop7(checkboxId) {
         toggleZd71 = document.getElementById('toggleZd71').checked;
