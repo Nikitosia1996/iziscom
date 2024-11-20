@@ -8,6 +8,8 @@ $obmerObject = json_decode($_POST['obmerObject'], true);
 $obsledObject = json_decode($_POST['obsledObject'], true);
 $sostTechObject = json_decode($_POST['sostTechObject'], true);
 $redactorIspObject = json_decode($_POST['redactorIspObject'], true);
+$obsledOtdKonstrObject = json_decode($_POST['obsledOtdKonstrObject'], true);
+$calculObject = json_decode($_POST['calculObject'], true);
 
 $zdanie = isset($haractObject['zdanie']) ? $haractObject['zdanie'] : null;
 $typeZdanie = isset($haractObject['typeZdanie']) ? $haractObject['typeZdanie'] : null;
@@ -129,6 +131,140 @@ $conval71 = isset($redactorIspObject['conval71']) ? $redactorIspObject['conval71
 $conval72 = isset($redactorIspObject['conval72']) ? $redactorIspObject['conval72'] : null;
 $conval73 = isset($redactorIspObject['conval73']) ? $redactorIspObject['conval73'] : null;
 $conval74 = isset($redactorIspObject['conval74']) ? $redactorIspObject['conval74'] : null;
+
+
+$toggleZd81 = isset($obsledOtdKonstrObject['toggleZd81']) ? $obsledOtdKonstrObject['toggleZd81'] : 0;
+$toggleZd82 = isset($obsledOtdKonstrObject['toggleZd82']) ? $obsledOtdKonstrObject['toggleZd82'] : 0;
+$toggleZd83 = isset($obsledOtdKonstrObject['toggleZd83']) ? $obsledOtdKonstrObject['toggleZd83'] : 0;
+$toggleZd84 = isset($obsledOtdKonstrObject['toggleZd84']) ? $obsledOtdKonstrObject['toggleZd84'] : 0;
+$toggleZd85 = isset($obsledOtdKonstrObject['toggleZd85']) ? $obsledOtdKonstrObject['toggleZd85'] : 0;
+$toggleZd86 = isset($obsledOtdKonstrObject['toggleZd86']) ? $obsledOtdKonstrObject['toggleZd86'] : 0;
+$toggleZd87 = isset($obsledOtdKonstrObject['toggleZd87']) ? $obsledOtdKonstrObject['toggleZd87'] : 0;
+$toggleZd88 = isset($obsledOtdKonstrObject['toggleZd88']) ? $obsledOtdKonstrObject['toggleZd88'] : 0;
+$toggleZd89 = isset($obsledOtdKonstrObject['toggleZd89']) ? $obsledOtdKonstrObject['toggleZd89'] : 0;
+$toggleZd081 = isset($obsledOtdKonstrObject['toggleZd081']) ? $obsledOtdKonstrObject['toggleZd081'] : 0;
+$toggleZd082 = isset($obsledOtdKonstrObject['toggleZd082']) ? $obsledOtdKonstrObject['toggleZd082'] : 0;
+$toggleZd083 = isset($obsledOtdKonstrObject['toggleZd083']) ? $obsledOtdKonstrObject['toggleZd083'] : 0;
+$toggleZd084 = isset($obsledOtdKonstrObject['toggleZd084']) ? $obsledOtdKonstrObject['toggleZd084'] : 0;
+$toggleZd085 = isset($obsledOtdKonstrObject['toggleZd085']) ? $obsledOtdKonstrObject['toggleZd085'] : 0;
+$toggleZd086 = isset($obsledOtdKonstrObject['toggleZd086']) ? $obsledOtdKonstrObject['toggleZd086'] : 0;
+$toggleZd087 = isset($obsledOtdKonstrObject['toggleZd087']) ? $obsledOtdKonstrObject['toggleZd087'] : 0;
+$toggleZd088 = isset($obsledOtdKonstrObject['toggleZd088']) ? $obsledOtdKonstrObject['toggleZd088'] : 0;
+$toggleZd089 = isset($obsledOtdKonstrObject['toggleZd089']) ? $obsledOtdKonstrObject['toggleZd089'] : 0;
+$toggleZd0081 = isset($obsledOtdKonstrObject['toggleZd0081']) ? $obsledOtdKonstrObject['toggleZd0081'] : 0;
+$toggleZd0082 = isset($obsledOtdKonstrObject['toggleZd0082']) ? $obsledOtdKonstrObject['toggleZd0082'] : 0;
+$toggleZd0083 = isset($obsledOtdKonstrObject['toggleZd0083']) ? $obsledOtdKonstrObject['toggleZd0083'] : 0;
+
+$conval81 = isset($obsledOtdKonstrObject['conval81']) ? $obsledOtdKonstrObject['conval81'] : null;
+$conval811 = isset($obsledOtdKonstrObject['conval811']) ? $obsledOtdKonstrObject['conval811'] : null;
+$conval82 = isset($obsledOtdKonstrObject['conval82']) ? $obsledOtdKonstrObject['conval82'] : null;
+$conval822 = isset($obsledOtdKonstrObject['conval822']) ? $obsledOtdKonstrObject['conval822'] : null;
+$conval83 = isset($obsledOtdKonstrObject['conval83']) ? $obsledOtdKonstrObject['conval83'] : null;
+$conval833 = isset($obsledOtdKonstrObject['conval833']) ? $obsledOtdKonstrObject['conval833'] : null;
+$conval84 = isset($obsledOtdKonstrObject['conval84']) ? $obsledOtdKonstrObject['conval84'] : null;
+$conval844 = isset($obsledOtdKonstrObject['conval844']) ? $obsledOtdKonstrObject['conval844'] : null;
+$conval85 = isset($obsledOtdKonstrObject['conval85']) ? $obsledOtdKonstrObject['conval85'] : null;
+$conval855 = isset($obsledOtdKonstrObject['conval855']) ? $obsledOtdKonstrObject['conval855'] : null;
+$conval86 = isset($obsledOtdKonstrObject['conval86']) ? $obsledOtdKonstrObject['conval86'] : null;
+$conval866 = isset($obsledOtdKonstrObject['conval866']) ? $obsledOtdKonstrObject['conval866'] : null;
+$conval87 = isset($obsledOtdKonstrObject['conval87']) ? $obsledOtdKonstrObject['conval87'] : null;
+$conval877 = isset($obsledOtdKonstrObject['conval877']) ? $obsledOtdKonstrObject['conval877'] : null;
+$conval88 = isset($obsledOtdKonstrObject['conval88']) ? $obsledOtdKonstrObject['conval88'] : null;
+$conval888 = isset($obsledOtdKonstrObject['conval888']) ? $obsledOtdKonstrObject['conval888'] : null;
+$conval89 = isset($obsledOtdKonstrObject['conval89']) ? $obsledOtdKonstrObject['conval89'] : null;
+$conval899 = isset($obsledOtdKonstrObject['conval899']) ? $obsledOtdKonstrObject['conval899'] : null;
+$conval081 = isset($obsledOtdKonstrObject['conval081']) ? $obsledOtdKonstrObject['conval081'] : null;
+$conval0811 = isset($obsledOtdKonstrObject['conval0811']) ? $obsledOtdKonstrObject['conval0811'] : null;
+$conval082 = isset($obsledOtdKonstrObject['conval082']) ? $obsledOtdKonstrObject['conval082'] : null;
+$conval0822 = isset($obsledOtdKonstrObject['conval0822']) ? $obsledOtdKonstrObject['conval0822'] : null;
+$conval083 = isset($obsledOtdKonstrObject['conval083']) ? $obsledOtdKonstrObject['conval083'] : null;
+$conval0833 = isset($obsledOtdKonstrObject['conval0833']) ? $obsledOtdKonstrObject['conval0833'] : null;
+$conval084 = isset($obsledOtdKonstrObject['conval084']) ? $obsledOtdKonstrObject['conval084'] : null;
+$conval0844 = isset($obsledOtdKonstrObject['conval0844']) ? $obsledOtdKonstrObject['conval0844'] : null;
+$conval085 = isset($obsledOtdKonstrObject['conval085']) ? $obsledOtdKonstrObject['conval085'] : null;
+$conval0855 = isset($obsledOtdKonstrObject['conval0855']) ? $obsledOtdKonstrObject['conval0855'] : null;
+$conval086 = isset($obsledOtdKonstrObject['conval086']) ? $obsledOtdKonstrObject['conval086'] : null;
+$conval0866 = isset($obsledOtdKonstrObject['conval0866']) ? $obsledOtdKonstrObject['conval0866'] : null;
+$conval087 = isset($obsledOtdKonstrObject['conval087']) ? $obsledOtdKonstrObject['conval087'] : null;
+$conval0877 = isset($obsledOtdKonstrObject['conval0877']) ? $obsledOtdKonstrObject['conval0877'] : null;
+$conval088 = isset($obsledOtdKonstrObject['conval088']) ? $obsledOtdKonstrObject['conval088'] : null;
+$conval0888 = isset($obsledOtdKonstrObject['conval0888']) ? $obsledOtdKonstrObject['conval0888'] : null;
+$conval089 = isset($obsledOtdKonstrObject['conval089']) ? $obsledOtdKonstrObject['conval089'] : null;
+$conval0899 = isset($obsledOtdKonstrObject['conval0899']) ? $obsledOtdKonstrObject['conval0899'] : null;
+$conval0081 = isset($obsledOtdKonstrObject['conval0081']) ? $obsledOtdKonstrObject['conval0081'] : null;
+$conval00811 = isset($obsledOtdKonstrObject['conval00811']) ? $obsledOtdKonstrObject['conval00811'] : null;
+$conval0082 = isset($obsledOtdKonstrObject['conval0082']) ? $obsledOtdKonstrObject['conval0082'] : null;
+$conval00822 = isset($obsledOtdKonstrObject['conval00822']) ? $obsledOtdKonstrObject['conval00822'] : null;
+$conval0083 = isset($obsledOtdKonstrObject['conval0083']) ? $obsledOtdKonstrObject['conval0083'] : null;
+$conval00833 = isset($obsledOtdKonstrObject['conval00833']) ? $obsledOtdKonstrObject['conval00833'] : null;
+
+$monolit1 = isset($obsledOtdKonstrObject['monolit1']) ? $obsledOtdKonstrObject['monolit1'] : null;
+$monolit2 = isset($obsledOtdKonstrObject['monolit2']) ? $obsledOtdKonstrObject['monolit2'] : null;
+$monolit3 = isset($obsledOtdKonstrObject['monolit3']) ? $obsledOtdKonstrObject['monolit3'] : null;
+$monolit4 = isset($obsledOtdKonstrObject['monolit4']) ? $obsledOtdKonstrObject['monolit4'] : null;
+$monolit5 = isset($obsledOtdKonstrObject['monolit5']) ? $obsledOtdKonstrObject['monolit5'] : null;
+$monolit6 = isset($obsledOtdKonstrObject['monolit6']) ? $obsledOtdKonstrObject['monolit6'] : null;
+$monolit7 = isset($obsledOtdKonstrObject['monolit7']) ? $obsledOtdKonstrObject['monolit7'] : null;
+$monolit8 = isset($obsledOtdKonstrObject['monolit8']) ? $obsledOtdKonstrObject['monolit8'] : null;
+$monolit9 = isset($obsledOtdKonstrObject['monolit9']) ? $obsledOtdKonstrObject['monolit9'] : null;
+$monolit10 = isset($obsledOtdKonstrObject['monolit10']) ? $obsledOtdKonstrObject['monolit10'] : null;
+$monolit11 = isset($obsledOtdKonstrObject['monolit11']) ? $obsledOtdKonstrObject['monolit11'] : null;
+$monolit12 = isset($obsledOtdKonstrObject['monolit12']) ? $obsledOtdKonstrObject['monolit12'] : null;
+$monolit13 = isset($obsledOtdKonstrObject['monolit13']) ? $obsledOtdKonstrObject['monolit13'] : null;
+$monolit14 = isset($obsledOtdKonstrObject['monolit14']) ? $obsledOtdKonstrObject['monolit14'] : null;
+$monolit15 = isset($obsledOtdKonstrObject['monolit15']) ? $obsledOtdKonstrObject['monolit15'] : null;
+$monolit16 = isset($obsledOtdKonstrObject['monolit16']) ? $obsledOtdKonstrObject['monolit16'] : null;
+$monolit17 = isset($obsledOtdKonstrObject['monolit17']) ? $obsledOtdKonstrObject['monolit17'] : null;
+$monolit18 = isset($obsledOtdKonstrObject['monolit18']) ? $obsledOtdKonstrObject['monolit18'] : null;
+$monolit19 = isset($obsledOtdKonstrObject['monolit19']) ? $obsledOtdKonstrObject['monolit19'] : null;
+$monolit20 = isset($obsledOtdKonstrObject['monolit20']) ? $obsledOtdKonstrObject['monolit20'] : null;
+$monolit21 = isset($obsledOtdKonstrObject['monolit21']) ? $obsledOtdKonstrObject['monolit21'] : null;
+
+
+$selectCalc1 = isset($calculObject['selectCalc1']) ? $calculObject['selectCalc1'] : null;
+$selectCalc2 = isset($calculObject['selectCalc2']) ? $calculObject['selectCalc2'] : null;
+$selectCalc3 = isset($calculObject['selectCalc3']) ? $calculObject['selectCalc3'] : null;
+$selectCalc4 = isset($calculObject['selectCalc4']) ? $calculObject['selectCalc4'] : null;
+$selectCalc5 = isset($calculObject['selectCalc5']) ? $calculObject['selectCalc5'] : null;
+$selectCalc6 = isset($calculObject['selectCalc6']) ? $calculObject['selectCalc6'] : null;
+$selectCalc7 = isset($calculObject['selectCalc7']) ? $calculObject['selectCalc7'] : null;
+$selectCalc8 = isset($calculObject['selectCalc8']) ? $calculObject['selectCalc8'] : null;
+
+$inputCalc1 = isset($calculObject['inputCalc1']) ? $calculObject['inputCalc1'] : null;
+$inputCalc2 = isset($calculObject['inputCalc2']) ? $calculObject['inputCalc2'] : null;
+$inputCalc3 = isset($calculObject['inputCalc3']) ? $calculObject['inputCalc3'] : null;
+$inputCalc4 = isset($calculObject['inputCalc4']) ? $calculObject['inputCalc4'] : null;
+$inputCalc5 = isset($calculObject['inputCalc5']) ? $calculObject['inputCalc5'] : null;
+$inputCalc6 = isset($calculObject['inputCalc6']) ? $calculObject['inputCalc6'] : null;
+$inputCalc7 = isset($calculObject['inputCalc7']) ? $calculObject['inputCalc7'] : null;
+$inputCalc8 = isset($calculObject['inputCalc8']) ? $calculObject['inputCalc8'] : null;
+
+$select2Calc1 = isset($calculObject['select2Calc1']) ? $calculObject['select2Calc1'] : null;
+$select2Calc2 = isset($calculObject['select2Calc2']) ? $calculObject['select2Calc2'] : null;
+$select2Calc3 = isset($calculObject['select2Calc3']) ? $calculObject['select2Calc3'] : null;
+$select2Calc4 = isset($calculObject['select2Calc4']) ? $calculObject['select2Calc4'] : null;
+$select2Calc5 = isset($calculObject['select2Calc5']) ? $calculObject['select2Calc5'] : null;
+$select2Calc6 = isset($calculObject['select2Calc6']) ? $calculObject['select2Calc6'] : null;
+$select2Calc7 = isset($calculObject['select2Calc7']) ? $calculObject['select2Calc7'] : null;
+$select2Calc8 = isset($calculObject['select2Calc8']) ? $calculObject['select2Calc8'] : null;
+
+$input2Calc1 = isset($calculObject['input2Calc1']) ? $calculObject['input2Calc1'] : null;
+$input2Calc2 = isset($calculObject['input2Calc2']) ? $calculObject['input2Calc2'] : null;
+$input2Calc3 = isset($calculObject['input2Calc3']) ? $calculObject['input2Calc3'] : null;
+$input2Calc4 = isset($calculObject['input2Calc4']) ? $calculObject['input2Calc4'] : null;
+$input2Calc5 = isset($calculObject['input2Calc5']) ? $calculObject['input2Calc5'] : null;
+$input2Calc6 = isset($calculObject['input2Calc6']) ? $calculObject['input2Calc6'] : null;
+$input2Calc7 = isset($calculObject['input2Calc7']) ? $calculObject['input2Calc7'] : null;
+$input2Calc8 = isset($calculObject['input2Calc8']) ? $calculObject['input2Calc8'] : null;
+
+$input3Calc1 = isset($calculObject['input3Calc1']) ? $calculObject['input3Calc1'] : null;
+$input3Calc2 = isset($calculObject['input3Calc2']) ? $calculObject['input3Calc2'] : null;
+$input3Calc3 = isset($calculObject['input3Calc3']) ? $calculObject['input3Calc3'] : null;
+$input3Calc4 = isset($calculObject['input3Calc4']) ? $calculObject['input3Calc4'] : null;
+$input3Calc5 = isset($calculObject['input3Calc5']) ? $calculObject['input3Calc5'] : null;
+$input3Calc6 = isset($calculObject['input3Calc6']) ? $calculObject['input3Calc6'] : null;
+$input3Calc7 = isset($calculObject['input3Calc7']) ? $calculObject['input3Calc7'] : null;
+$input3Calc8 = isset($calculObject['input3Calc8']) ? $calculObject['input3Calc8'] : null;
 
 
 $id_zakazchik = isset($_POST['id_zakazchik']) ? $_POST['id_zakazchik'] : null;
@@ -300,6 +436,141 @@ WHERE id_smeta = '$id'";
 
     mysqli_query($connectionDB->con, $sql)  or mysqli_error($connectionDB->con);
 
+    $sql = "UPDATE obsled_otdel_constr SET
+    toggleZd81 = '" . $toggleZd81 . "',
+    toggleZd82 = '" . $toggleZd82 . "',
+    toggleZd83 = '" . $toggleZd83 . "',
+    toggleZd84 = '" . $toggleZd84 . "',
+    toggleZd85 = '" . $toggleZd85 . "',
+    toggleZd86 = '" . $toggleZd86 . "',
+    toggleZd87 = '" . $toggleZd87 . "',
+    toggleZd88 = '" . $toggleZd88 . "',
+    toggleZd89 = '" . $toggleZd89 . "',
+    toggleZd081 = '" . $toggleZd081 . "',
+    toggleZd082 = '" . $toggleZd082 . "',
+    toggleZd083 = '" . $toggleZd083 . "',
+    toggleZd084 = '" . $toggleZd084 . "',
+    toggleZd085 = '" . $toggleZd085 . "',
+    toggleZd086 = '" . $toggleZd086 . "',
+    toggleZd087 = '" . $toggleZd087 . "',
+    toggleZd088 = '" . $toggleZd088 . "',
+    toggleZd089 = '" . $toggleZd089 . "',
+    toggleZd0081 = '" . $toggleZd0081 . "',
+    toggleZd0082 = '" . $toggleZd0082 . "',
+    toggleZd0083 = '" . $toggleZd0083 . "',
+    conval81 = '" . $conval81 . "',
+    conval811 = '" . $conval811 . "',
+    conval82 = '" . $conval82 . "',
+    conval822 = '" . $conval822 . "',
+    conval83 = '" . $conval83 . "',
+    conval833 = '" . $conval833 . "',
+    conval84 = '" . $conval84 . "',
+    conval844 = '" . $conval844 . "',
+    conval85 = '" . $conval85 . "',
+    conval855 = '" . $conval855 . "',
+    conval86 = '" . $conval86 . "',
+    conval866 = '" . $conval866 . "',
+    conval87 = '" . $conval87 . "',
+    conval877 = '" . $conval877 . "',
+    conval88 = '" . $conval88 . "',
+    conval888 = '" . $conval888 . "',
+    conval89 = '" . $conval89 . "',
+    conval899 = '" . $conval899 . "',
+    conval081 = '" . $conval081 . "',
+    conval0811 = '" . $conval0811 . "',
+    conval082 = '" . $conval082 . "',
+    conval0822 = '" . $conval0822 . "',
+    conval083 = '" . $conval083 . "',
+    conval0833 = '" . $conval0833 . "',
+    conval084 = '" . $conval084 . "',
+    conval0844 = '" . $conval0844 . "',
+    conval085 = '" . $conval085 . "',
+    conval0855 = '" . $conval0855 . "',
+    conval086 = '" . $conval086 . "',
+    conval0866 = '" . $conval0866 . "',
+    conval087 = '" . $conval087 . "',
+    conval0877 = '" . $conval0877 . "',
+    conval088 = '" . $conval088 . "',
+    conval0888 = '" . $conval0888 . "',
+    conval089 = '" . $conval089 . "',
+    conval0899 = '" . $conval0899 . "',
+    conval0081 = '" . $conval0081 . "',
+    conval00811 = '" . $conval00811 . "',
+    conval0082 = '" . $conval0082 . "',
+    conval00822 = '" . $conval00822 . "',
+    conval0083 = '" . $conval0083 . "',
+    conval00833 = '" . $conval00833 . "',
+    monolit1 = '" . $monolit1 . "',
+    monolit2 = '" . $monolit2 . "',
+    monolit3 = '" . $monolit3 . "',
+    monolit4 = '" . $monolit4 . "',
+    monolit5 = '" . $monolit5 . "',
+    monolit6 = '" . $monolit6 . "',
+    monolit7 = '" . $monolit7 . "',
+    monolit8 = '" . $monolit8 . "',
+    monolit9 = '" . $monolit9 . "',
+    monolit10 = '" . $monolit10 . "',
+    monolit11 = '" . $monolit11 . "',
+    monolit12 = '" . $monolit12 . "',
+    monolit13 = '" . $monolit13 . "',
+    monolit14 = '" . $monolit14 . "',
+    monolit15 = '" . $monolit15 . "',
+    monolit16 = '" . $monolit16 . "',
+    monolit17 = '" . $monolit17 . "',
+    monolit18 = '" . $monolit18 . "',
+    monolit19 = '" . $monolit19 . "',
+    monolit20 = '" . $monolit20 . "',
+    monolit21 = '" . $monolit21 . "'
+WHERE id_smeta = '$id'";
+
+    mysqli_query($connectionDB->con, $sql)  or mysqli_error($connectionDB->con);
+
+
+    $sql = "UPDATE calculation SET
+    selectCalc1 = '" . $selectCalc1 . "',
+    selectCalc2 = '" . $selectCalc2 . "',
+    selectCalc3 = '" . $selectCalc3 . "',
+    selectCalc4 = '" . $selectCalc4 . "',
+    selectCalc5 = '" . $selectCalc5 . "',
+    selectCalc6 = '" . $selectCalc6 . "',
+    selectCalc7 = '" . $selectCalc7 . "',
+    selectCalc8 = '" . $selectCalc8 . "',
+    inputCalc1 = '" . $inputCalc1 . "',
+    inputCalc2 = '" . $inputCalc2 . "',
+    inputCalc3 = '" . $inputCalc3 . "',
+    inputCalc4 = '" . $inputCalc4 . "',
+    inputCalc5 = '" . $inputCalc5 . "',
+    inputCalc6 = '" . $inputCalc6 . "',
+    inputCalc7 = '" . $inputCalc7 . "',
+    inputCalc8 = '" . $inputCalc8 . "',
+    select2Calc1 = '" . $select2Calc1 . "',
+    select2Calc2 = '" . $select2Calc2 . "',
+    select2Calc3 = '" . $select2Calc3 . "',
+    select2Calc4 = '" . $select2Calc4 . "',
+    select2Calc5 = '" . $select2Calc5 . "',
+    select2Calc6 = '" . $select2Calc6 . "',
+    select2Calc7 = '" . $select2Calc7 . "',
+    select2Calc8 = '" . $select2Calc8 . "',
+    input2Calc1 = '" . $input2Calc1 . "',
+    input2Calc2 = '" . $input2Calc2 . "',
+    input2Calc3 = '" . $input2Calc3 . "',
+    input2Calc4 = '" . $input2Calc4 . "',
+    input2Calc5 = '" . $input2Calc5 . "',
+    input2Calc6 = '" . $input2Calc6 . "',
+    input2Calc7 = '" . $input2Calc7 . "',
+    input2Calc8 = '" . $input2Calc8 . "',
+    input3Calc1 = '" . $input3Calc1 . "',
+    input3Calc2 = '" . $input3Calc2 . "',
+    input3Calc3 = '" . $input3Calc3 . "',
+    input3Calc4 = '" . $input3Calc4 . "',
+    input3Calc5 = '" . $input3Calc5 . "',
+    input3Calc6 = '" . $input3Calc6 . "',
+    input3Calc7 = '" . $input3Calc7 . "',
+    input3Calc8 = '" . $input3Calc8 . "'
+WHERE id_smeta = '$id'";
+
+    mysqli_query($connectionDB->con, $sql)  or mysqli_error($connectionDB->con);
+
     echo $id;
 
 } else {
@@ -308,7 +579,7 @@ WHERE id_smeta = '$id'";
         $insertedId = mysqli_insert_id($connectionDB->con);
 
         $sql = "INSERT INTO haract_object (
-                           radio_zdanie ,
+    radio_zdanie ,
     zdanie, 
     type_zdanie, 
     stage, 
@@ -547,6 +818,295 @@ WHERE id_smeta = '$id'";
            '{$conval69}',
            '$insertedId',
            '{$choosCunstruct6}'
+)";
+
+        mysqli_query($connectionDB->con, $sql) or mysqli_error($connectionDB->con);
+
+        $sql = "INSERT INTO redaktor (
+    toggleZd81,
+    toggleZd82,
+    toggleZd83,
+    toggleZd84
+    conval81,
+    conval82,
+    conval83,
+    conval84
+    id_smeta,
+) VALUES (
+    '{$toggleZd81}',
+    '{$toggleZd82}',
+    '{$toggleZd83}',
+           '{$toggleZd84}',
+           '{$conval81}',
+           '{$conval82}',
+           '{$conval83}',
+           '{$conval84}',
+           '$insertedId'
+)";
+
+        mysqli_query($connectionDB->con, $sql) or mysqli_error($connectionDB->con);
+
+
+        $sql = "INSERT INTO obsled_otdel_constr (
+    toggleZd81,
+    toggleZd82,
+    toggleZd83,
+    toggleZd84,
+    toggleZd85,
+    toggleZd86,
+    toggleZd87,
+    toggleZd88,
+    toggleZd89,
+    toggleZd081,
+    toggleZd082,
+    toggleZd083,
+    toggleZd084,
+    toggleZd085,
+    toggleZd086,
+    toggleZd087,
+    toggleZd088,
+    toggleZd089,
+    toggleZd0081,
+    toggleZd0082,
+    toggleZd0083,
+    conval81,
+    conval811,
+    conval82,
+    conval822,
+    conval83,
+    conval833,
+    conval84,
+    conval844,
+    conval85,
+    conval855,
+    conval86,
+    conval866,
+    conval87,
+    conval877,
+    conval88,
+    conval888,
+    conval89,
+    conval899,
+    conval081,
+    conval0811,
+    conval082,
+    conval0822,
+    conval083,
+    conval0833,
+    conval084,
+    conval0844,
+    conval085,
+    conval0855,
+    conval086,
+    conval0866,
+    conval087,
+    conval0877,
+    conval088,
+    conval0888,
+    conval089,
+    conval0899,
+    conval0081,
+    conval00811,
+    conval0082,
+    conval00822,
+    conval0083,
+    conval00833,
+    monolit1,
+    monolit2,
+    monolit3,
+    monolit4,
+    monolit5,
+    monolit6,
+    monolit7,
+    monolit8,
+    monolit9,
+    monolit10,
+    monolit11,
+    monolit12,
+    monolit13,
+    monolit14,
+    monolit15,
+    monolit16,
+    monolit17,
+    monolit18,
+    monolit19,
+    monolit20,
+    monolit21,
+    id_smeta
+) VALUES (
+    '{$toggleZd81}',
+    '{$toggleZd82}',
+    '{$toggleZd83}',
+    '{$toggleZd84}',
+    '{$toggleZd85}',
+    '{$toggleZd86}',
+    '{$toggleZd87}',
+    '{$toggleZd88}',
+    '{$toggleZd89}',
+    '{$toggleZd081}',
+    '{$toggleZd082}',
+    '{$toggleZd083}',
+    '{$toggleZd084}',
+    '{$toggleZd085}',
+    '{$toggleZd086}',
+    '{$toggleZd087}',
+    '{$toggleZd088}',
+    '{$toggleZd089}',
+    '{$toggleZd0081}',
+    '{$toggleZd0082}',
+    '{$toggleZd0083}',
+    '{$conval81}',
+    '{$conval811}',
+    '{$conval82}',
+    '{$conval822}',
+    '{$conval83}',
+    '{$conval833}',
+    '{$conval84}',
+    '{$conval844}',
+    '{$conval85}',
+    '{$conval855}',
+    '{$conval86}',
+    '{$conval866}',
+    '{$conval87}',
+    '{$conval877}',
+    '{$conval88}',
+    '{$conval888}',
+    '{$conval89}',
+    '{$conval899}',
+    '{$conval081}',
+    '{$conval0811}',
+    '{$conval082}',
+    '{$conval0822}',
+    '{$conval083}',
+    '{$conval0833}',
+    '{$conval084}',
+    '{$conval0844}',
+    '{$conval085}',
+    '{$conval0855}',
+    '{$conval086}',
+    '{$conval0866}',
+    '{$conval087}',
+    '{$conval0877}',
+    '{$conval088}',
+    '{$conval0888}',
+    '{$conval089}',
+    '{$conval0899}',
+    '{$conval0081}',
+    '{$conval00811}',
+    '{$conval0082}',
+    '{$conval00822}',
+    '{$conval0083}',
+    '{$conval00833}',
+    '{$monolit1}',
+    '{$monolit2}',
+    '{$monolit3}',
+    '{$monolit4}',
+    '{$monolit5}',
+    '{$monolit6}',
+    '{$monolit7}',
+    '{$monolit8}',
+    '{$monolit9}',
+    '{$monolit10}',
+    '{$monolit11}',
+    '{$monolit12}',
+    '{$monolit13}',
+    '{$monolit14}',
+    '{$monolit15}',
+    '{$monolit16}',
+    '{$monolit17}',
+    '{$monolit18}',
+    '{$monolit19}',
+    '{$monolit20}',
+    '{$monolit21}',
+    '$insertedId'
+)";
+
+        mysqli_query($connectionDB->con, $sql) or mysqli_error($connectionDB->con);
+
+        $sql = "INSERT INTO calculation (
+    selectCalc1,
+    selectCalc2,
+    selectCalc3,
+    selectCalc4,
+    selectCalc5,
+    selectCalc6,
+    selectCalc7,
+    selectCalc8,
+    inputCalc1,
+    inputCalc2,
+    inputCalc3,
+    inputCalc4,
+    inputCalc5,
+    inputCalc6,
+    inputCalc7,
+    inputCalc8,
+    select2Calc1,
+    select2Calc2,
+    select2Calc3,
+    select2Calc4,
+    select2Calc5,
+    select2Calc6,
+    select2Calc7,
+    select2Calc8,
+    input2Calc1,
+    input2Calc2,
+    input2Calc3,
+    input2Calc4,
+    input2Calc5,
+    input2Calc6,
+    input2Calc7,
+    input2Calc8,
+    input3Calc1,
+    input3Calc2,
+    input3Calc3,
+    input3Calc4,
+    input3Calc5,
+    input3Calc6,
+    input3Calc7,
+    input3Calc8,
+    id_smeta
+) VALUES (
+    '{$selectCalc1}',
+    '{$selectCalc2}',
+    '{$selectCalc3}',
+    '{$selectCalc4}',
+    '{$selectCalc5}',
+    '{$selectCalc6}',
+    '{$selectCalc7}',
+    '{$selectCalc8}',
+    '{$inputCalc1}',
+    '{$inputCalc2}',
+    '{$inputCalc3}',
+    '{$inputCalc4}',
+    '{$inputCalc5}',
+    '{$inputCalc6}',
+    '{$inputCalc7}',
+    '{$inputCalc8}',
+    '{$select2Calc1}',
+    '{$select2Calc2}',
+    '{$select2Calc3}',
+    '{$select2Calc4}',
+    '{$select2Calc5}',
+    '{$select2Calc6}',
+    '{$select2Calc7}',
+    '{$select2Calc8}',
+    '{$input2Calc1}',
+    '{$input2Calc2}',
+    '{$input2Calc3}',
+    '{$input2Calc4}',
+    '{$input2Calc5}',
+    '{$input2Calc6}',
+    '{$input2Calc7}',
+    '{$input2Calc8}',
+    '{$input3Calc1}',
+    '{$input3Calc2}',
+    '{$input3Calc3}',
+    '{$input3Calc4}',
+    '{$input3Calc5}',
+    '{$input3Calc6}',
+    '{$input3Calc7}',
+    '{$input3Calc8}',
+    '$insertedId'
 )";
 
         mysqli_query($connectionDB->con, $sql) or mysqli_error($connectionDB->con);
