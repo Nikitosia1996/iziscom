@@ -116,6 +116,16 @@ let toggleZdDopUslrazrab = $('#toggleZdDopUslrazrab');
 let toggleZdDopUslrazrabrek = $('#toggleZdDopUslrazrabrek');
 
 
+let toggleZd71 = $('#toggleZd71');
+let toggleZd72 = $('#toggleZd72');
+let toggleZd73 = $('#toggleZd73');
+let toggleZd74 = $('#toggleZd74');
+let conval71 = $('#conval71');
+let conval72 = $('#conval72');
+let conval73 = $('#conval73');
+let conval74 = $('#conval74');
+
+
 let selectCalc1 = $('#selectCalc1');
 let selectCalc2 = $('#selectCalc2');
 let selectCalc3 = $('#selectCalc3');
@@ -665,6 +675,17 @@ function saveSmeta() {
         conval69: $('#conval69').val()
     }
 
+    let redactorIspObject = {
+        toggleZd71: toggleZd71.prop('checked') ? 1 : 0,
+        toggleZd72: toggleZd72.prop('checked') ? 1 : 0,
+        toggleZd73: toggleZd73.prop('checked') ? 1 : 0,
+        toggleZd74: toggleZd74.prop('checked') ? 1 : 0,
+        conval71: $('#conval71').val(),
+        conval72: $('#conval72').val(),
+        conval73: $('#conval73').val(),
+        conval74: $('#conval74').val()
+    }
+
     let smetaForPhp = {
         id: idActiveSmeta?.toString(),
         name: smetaName.val(),
@@ -680,6 +701,7 @@ function saveSmeta() {
         obmerObject: JSON.stringify(obmerObject),
         obsledObject: JSON.stringify(obsledObject),
         sostTechObject: JSON.stringify(sostTechObject),
+        redactorIspObject: JSON.stringify(redactorIspObject),
 
     };
 
@@ -698,6 +720,7 @@ function saveSmeta() {
         obmerObject: obmerObject,
         obsledObject: obsledObject,
         sostTechObject: sostTechObject,
+        redactorIspObject: redactorIspObject,
 
     };
 
