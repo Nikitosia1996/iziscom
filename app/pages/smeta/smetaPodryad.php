@@ -1845,7 +1845,7 @@ echo "<script>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval slojn" id="conval811" disabled type="number" name="inputValue" step="1"
                                min="1" max="3" onchange="calcObsledOtdel(this)"
-                               oninput="this.value = this.value.replace(/[^1-3]/g, '')"> сложность
+                               oninput="this.value = this.value.replace(/[^1-3]/g, '')"> <div>сложность</div>
                     </div>
                     <label>
                         <input class="monolit" data-id="1.2" value="1" type="checkbox" id="monolit1" data-nameK="K18.229"
@@ -1868,7 +1868,7 @@ echo "<script>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval slojn" id="conval822" disabled type="number" name="inputValue" step="1"
                                min="1" max="3" onchange="calcObsledOtdel(this)"
-                               oninput="this.value = this.value.replace(/[^1-3]/g, '')"> сложность
+                               oninput="this.value = this.value.replace(/[^1-3]/g, '')"> <div>сложность</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="monolit" data-id="1.2" value="1" type="checkbox" id="monolit2" data-nameK="K18.229"
@@ -4535,13 +4535,12 @@ echo "<script>
         else{
             checkMonol = 1;
         }
-
         arrObsledOtdel.map(item => {
             let dedchildren = ded.children[0];
             let dedchildren1 = dedchildren.children[0];
 
 
-            console.log (item.id + "/item.id/" , dedchildren1.id + "/ed.children[0].children[0].id/");
+            console.log (item.id + "/item.id/" + dedchildren1.id + "/ed.children[0].children[0].id/");
             if (item.id === ded.children[0].children[0].id) {
                 switch (elem.className) {
                     case "inpval kol":

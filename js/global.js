@@ -724,17 +724,21 @@ async function executeFunctions() {
     await calculateK();
 
     let allLolSpace = document.querySelectorAll(".lolspace1");
-    [...allLolSpace].each(item => {
+    [...allLolSpace].forEach(item => {
         if(item.children[0].checked) {
             toggleCheckboxesDop8(item.children[0]);
         }
     });
 
-    [...allLolSpace].foreach(item => {
+    [...allLolSpace].forEach(item => {
         if (item.children[0].checked) {
-            let nextElem = item.nextSibling;
-            console.log (nextElem , "engluchs!!!!!!!!!!!!!!!!");
-            calcObsledOtdel(nextElem.children[0]);
+            let nextElem = item.nextElementSibling; // Используем nextElementSibling
+            if (nextElem) { // Проверяем, существует ли nextElem
+                console.log(nextElem, "engluchs!!!!!!!!!!!!!!!!");
+                calcObsledOtdel(nextElem.children[0]);
+                calcObsledOtdel(nextElem.nextElementSibling.children[0]);
+                calcObsledOtdel(nextElem.nextElementSibling.nextElementSibling.children[0]);
+            }
         }
     });
 }
