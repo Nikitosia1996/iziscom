@@ -1833,14 +1833,14 @@ echo "<script>
         <div class="pos1">
             <div class="viborvischeckbox81">
                 <div class="mainlolspace">
-                    <div class="lolspace">
+                    <div class="lolspace1">
                         <input data-id="1.222" type="checkbox" id="toggleZd81" onchange="toggleCheckboxesDop8(this)">
                         Стропильная ферма
                         пролетом 18м
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval kol" id="conval81" disabled type="number" name="inputValue" step="1"
-                               min="0" onchange="calcObsledOtdel(this)"> количество
+                               min="0" onchange="calcObsledOtdel(this)"> <div>количество</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval slojn" id="conval811" disabled type="number" name="inputValue" step="1"
@@ -1855,7 +1855,7 @@ echo "<script>
                 </div>
 
                 <div class="mainlolspace">
-                    <div class="lolspace">
+                    <div class="lolspace1">
 
                         <input data-id="1.425" type="checkbox" id="toggleZd82" onchange="toggleCheckboxesDop8(this)">
                         Стропильная ферма
@@ -1863,7 +1863,7 @@ echo "<script>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval kol" id="conval82" disabled type="number" name="inputValue" step="1"
-                               min="0" onchange="calcObsledOtdel(this)"> количество
+                               min="0" onchange="calcObsledOtdel(this)"> <div>количество</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval slojn" id="conval822" disabled type="number" name="inputValue" step="1"
@@ -1879,7 +1879,7 @@ echo "<script>
 
 
                 <div class="mainlolspace">
-                    <div class="lolspace">
+                    <div class="lolspace1">
 
                         <input data-id="1.587" type="checkbox" id="toggleZd83" onchange="toggleCheckboxesDop8(this)">
                         Стропильная ферма
@@ -1902,7 +1902,7 @@ echo "<script>
                 </div>
 
                 <div class="mainlolspace">
-                    <div class="lolspace">
+                    <div class="lolspace1">
                         <input data-id="1.298" type="checkbox" id="toggleZd84" onchange="toggleCheckboxesDop8(this)">
                         Подстропильная
                         ферма пролетом 12м
@@ -1923,7 +1923,7 @@ echo "<script>
                     <hr>
                 </div>
                 <div class="mainlolspace">
-                    <div class="lolspace">
+                    <div class="lolspace1">
                         <input data-id="1.298" type="checkbox" id="toggleZd85" onchange="toggleCheckboxesDop8(this)">
                         Подстропильная
                         балка пролетом 12м
@@ -1945,7 +1945,7 @@ echo "<script>
                 </div>
 
                 <div class="mainlolspace">
-                    <div class="lolspace">
+                    <div class="lolspace1">
                         <input data-id="1.004" type="checkbox" id="toggleZd86" onchange="toggleCheckboxesDop8(this)">
                         Стропильная балка
                         пролетом 9м
@@ -1967,7 +1967,7 @@ echo "<script>
                 </div>
 
                 <div class="mainlolspace">
-                    <div class="lolspace">
+                    <div class="lolspace1">
                         <input data-id="1.077" type="checkbox" id="toggleZd87" onchange="toggleCheckboxesDop8(this)">
                         Стропильная балка
                         пролетом 12м
@@ -1995,7 +1995,7 @@ echo "<script>
         <div class="pos2">
             <div class="viborvischeckbox82">
                 <div class="mainlolspace">
-                    <div class="lolspace">
+                    <div class="lolspace1">
                         <input data-id="1.130" type="checkbox" id="toggleZd88" onchange="toggleCheckboxesDop8(this)">
                         Стропильная балка
                         пролетом 18м
@@ -2019,7 +2019,7 @@ echo "<script>
                 </div>
 
                 <div class="mainlolspace">
-                    <div class="lolspace">
+                    <div class="lolspace1">
                         <input data-id="1.298" type="checkbox" id="toggleZd89" onchange="toggleCheckboxesDop8(this)">
                         Подкрановая балка
                         пролетом 6м
@@ -2042,7 +2042,7 @@ echo "<script>
 
 
                 <div class="mainlolspace">
-                    <div class="lolspace">
+                    <div class="lolspace1">
                         <input data-id="1.552" type="checkbox" id="toggleZd081" onchange="toggleCheckboxesDop8(this)">
                         Подкрановая балка
                         пролетом 12м
@@ -2065,7 +2065,7 @@ echo "<script>
 
 
                 <div class="mainlolspace">
-                    <div class="lolspace">
+                    <div class="lolspace1">
                         <input data-id="0.931" type="checkbox" id="toggleZd082" onchange="toggleCheckboxesDop8(this)">
                         Плиты
                         покрытия и
@@ -2088,7 +2088,7 @@ echo "<script>
                 </div>
 
                 <div class="mainlolspace">
-                    <div class="lolspace">
+                    <div class="lolspace1">
                         <input data-id="1.112" type="checkbox" id="toggleZd083" onchange="toggleCheckboxesDop8(this)">
                         Плиты
                         покрытия и
@@ -2111,7 +2111,7 @@ echo "<script>
                 </div>
 
                 <div class="mainlolspace">
-                    <div class="lolspace">
+                    <div class="lolspace1">
                         <input data-id="0.896" type="checkbox" id="toggleZd084" onchange="toggleCheckboxesDop8(this)">
                         Ригели и
                         фундаментальные балки пролетом 6 м
@@ -2133,7 +2133,7 @@ echo "<script>
                 </div>
 
                 <div class="mainlolspace">
-                    <div class="lolspace">
+                    <div class="lolspace1">
                         <input data-id="1.004" type="checkbox" id="toggleZd085" onchange="toggleCheckboxesDop8(this)">
                         Ригели и
                         фундаментальные балки пролетом 9 м
@@ -2162,7 +2162,7 @@ echo "<script>
 
             <div class="viborvischeckbox83">
                 <div class="mainlolspace">
-                    <div class="lolspace">
+                    <div class="lolspace1">
                         <input data-id="0.786" type="checkbox" id="toggleZd086" onchange="toggleCheckboxesDop8(this)">
                         Колонны
                         одноветвевые
@@ -2184,7 +2184,7 @@ echo "<script>
                 </div>
 
                 <div class="mainlolspace">
-                    <div class="lolspace">
+                    <div class="lolspace1">
                         <input data-id="1.040" type="checkbox" id="toggleZd087" onchange="toggleCheckboxesDop8(this)">
                         Колонны
                         двухветвевые
@@ -2207,7 +2207,7 @@ echo "<script>
 
 
                 <div class="mainlolspace">
-                    <div class="lolspace">
+                    <div class="lolspace1">
                         <input data-id="0.639" type="checkbox" id="toggleZd088" onchange="toggleCheckboxesDop8(this)">
                         Капители
                         безбалочных перекрытий
@@ -2229,7 +2229,7 @@ echo "<script>
                 </div>
 
                 <div class="mainlolspace">
-                    <div class="lolspace">
+                    <div class="lolspace1">
                         <input data-id="0.565" type="checkbox" id="toggleZd089" onchange="toggleCheckboxesDop8(this)">
                         Стеновые панели
                     </div>
@@ -2251,7 +2251,7 @@ echo "<script>
 
 
                 <div class="mainlolspace">
-                    <div class="lolspace">
+                    <div class="lolspace1">
                         <input data-id="3.215" type="checkbox" id="toggleZd0081" onchange="toggleCheckboxesDop8(this)">
                         Панели-оболочки
                         размером 3х18 и 3х24 м
@@ -2273,7 +2273,7 @@ echo "<script>
                 </div>
 
                 <div class="mainlolspace">
-                    <div class="lolspace">
+                    <div class="lolspace1">
                         <input data-id="1.351" type="checkbox" id="toggleZd0082" onchange="toggleCheckboxesDop8(this)">
                         Фундаменты
                     </div>
@@ -2295,7 +2295,7 @@ echo "<script>
 
 
                 <div class="mainlolspace">
-                    <div class="lolspace">
+                    <div class="lolspace1">
                         <input data-id="0.217" type="checkbox" id="toggleZd0083" onchange="toggleCheckboxesDop8(this)">
                         Перемычки
                     </div>
@@ -3897,7 +3897,7 @@ echo "<script>
     }
 
 
-    async function toggleCheckboxesDop7(checkboxId) {
+    async function toggleCheckboxesDop7() {
         const checkboxes = [
             {checkbox: document.getElementById('toggleZd71'), input: document.getElementById('conval71')},
             {checkbox: document.getElementById('toggleZd72'), input: document.getElementById('conval72')},
@@ -4509,7 +4509,7 @@ echo "<script>
     };
 
 
-    function calcObsledOtdel(elem) {
+    async function calcObsledOtdel(elem) {
         const ded = elem.parentElement.parentElement;
         let papa = elem.parentElement;
         let checkMonol;
@@ -4537,6 +4537,11 @@ echo "<script>
         }
 
         arrObsledOtdel.map(item => {
+            let dedchildren = ded.children[0];
+            let dedchildren1 = dedchildren.children[0];
+
+
+            console.log (item.id + "/item.id/" , dedchildren1.id + "/ed.children[0].children[0].id/");
             if (item.id === ded.children[0].children[0].id) {
                 switch (elem.className) {
                     case "inpval kol":
@@ -4550,6 +4555,7 @@ echo "<script>
                         item.koef_monol = checkMonol;
                         break;
                 }
+
                 if ( item.count != 0 && item.hard != 0) {
                     item.total = koef0 * parseFloat(item.hard) * checkMonol * b14Value * item.count;
                     console.log(`считаем: item.total = ${koef0} * parseFloat(${item.hard}) * ${checkMonol} * ${b14Value} = ${item.total}`);

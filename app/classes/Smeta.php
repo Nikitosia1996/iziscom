@@ -331,7 +331,7 @@ class Smeta
             'sosttech' => $this->sostTechObject->toJson(),
             'calculator' => $this->calculationObject->toJson(),
             'redaktor' => $this->redaktorObject->toJson(),
-            'obsledOtdel' => $this->obsledOtdelObject->toJson(),
+            'obsledotdel' => $this->obsledOtdelObject->toJson(),
         ]);
     }
 

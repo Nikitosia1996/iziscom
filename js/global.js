@@ -273,6 +273,7 @@ async function getSmeta(id) {
         const sosttech = selectedItem.sosttech;
         const calculator = selectedItem.calculator;
         const redaktor = selectedItem.redaktor;
+        const obsledotdel = selectedItem.obsledotdel;
 
 
         $('#buildingType').val(haract.zdanie);
@@ -596,6 +597,115 @@ async function getSmeta(id) {
         $('#conval74').val(redaktor.conval74);
 
 
+        toggleZd81.prop('disabled', false);
+        toggleZd82.prop('disabled', false);
+        toggleZd83.prop('disabled', false);
+        toggleZd84.prop('disabled', false);
+        toggleZd85.prop('disabled', false);
+        toggleZd86.prop('disabled', false);
+        toggleZd87.prop('disabled', false);
+        toggleZd88.prop('disabled', false);
+        toggleZd89.prop('disabled', false);
+        toggleZd081.prop('disabled', false);
+        toggleZd082.prop('disabled', false);
+        toggleZd083.prop('disabled', false);
+        toggleZd084.prop('disabled', false);
+        toggleZd085.prop('disabled', false);
+        toggleZd086.prop('disabled', false);
+        toggleZd087.prop('disabled', false);
+        toggleZd088.prop('disabled', false);
+        toggleZd089.prop('disabled', false);
+        toggleZd0081.prop('disabled', false);
+        toggleZd0082.prop('disabled', false);
+        toggleZd0083.prop('disabled', false);
+
+        toggleZd81.prop('checked', obsledotdel.toggleZd81 > 0);
+        toggleZd82.prop('checked', obsledotdel.toggleZd82 > 0);
+        toggleZd83.prop('checked', obsledotdel.toggleZd83 > 0);
+        toggleZd84.prop('checked', obsledotdel.toggleZd84 > 0);
+        toggleZd85.prop('checked', obsledotdel.toggleZd85 > 0);
+        toggleZd86.prop('checked', obsledotdel.toggleZd86 > 0);
+        toggleZd87.prop('checked', obsledotdel.toggleZd87 > 0);
+        toggleZd88.prop('checked', obsledotdel.toggleZd88 > 0);
+        toggleZd89.prop('checked', obsledotdel.toggleZd89 > 0);
+        toggleZd081.prop('checked', obsledotdel.toggleZd081 > 0);
+        toggleZd082.prop('checked', obsledotdel.toggleZd082 > 0);
+        toggleZd083.prop('checked', obsledotdel.toggleZd083 > 0);
+        toggleZd084.prop('checked', obsledotdel.toggleZd084 > 0);
+        toggleZd085.prop('checked', obsledotdel.toggleZd085 > 0);
+        toggleZd086.prop('checked', obsledotdel.toggleZd086 > 0);
+        toggleZd087.prop('checked', obsledotdel.toggleZd087 > 0);
+        toggleZd088.prop('checked', obsledotdel.toggleZd088 > 0);
+        toggleZd089.prop('checked', obsledotdel.toggleZd089 > 0);
+        toggleZd0081.prop('checked', obsledotdel.toggleZd0081 > 0);
+        toggleZd0082.prop('checked', obsledotdel.toggleZd0082 > 0);
+        toggleZd0083.prop('checked', obsledotdel.toggleZd0083 > 0);
+
+        $('#conval81').val(obsledotdel.conval81);
+        $('#conval82').val(obsledotdel.conval82);
+        $('#conval83').val(obsledotdel.conval83);
+        $('#conval84').val(obsledotdel.conval84);
+        $('#conval85').val(obsledotdel.conval85);
+        $('#conval86').val(obsledotdel.conval86);
+        $('#conval87').val(obsledotdel.conval87);
+        $('#conval88').val(obsledotdel.conval88);
+        $('#conval89').val(obsledotdel.conval89);
+        $('#conval081').val(obsledotdel.conval081);
+        $('#conval082').val(obsledotdel.conval082);
+        $('#conval083').val(obsledotdel.conval083);
+        $('#conval084').val(obsledotdel.conval084);
+        $('#conval085').val(obsledotdel.conval085);
+        $('#conval086').val(obsledotdel.conval086);
+        $('#conval087').val(obsledotdel.conval087);
+        $('#conval088').val(obsledotdel.conval088);
+        $('#conval089').val(obsledotdel.conval089);
+        $('#conval0081').val(obsledotdel.conval0081);
+        $('#conval0082').val(obsledotdel.conval0082);
+        $('#conval0083').val(obsledotdel.conval0083);
+
+        $('#conval811').val(obsledotdel.conval811);
+        $('#conval822').val(obsledotdel.conval822);
+        $('#conval833').val(obsledotdel.conval833);
+        $('#conval844').val(obsledotdel.conval844);
+        $('#conval855').val(obsledotdel.conval855);
+        $('#conval866').val(obsledotdel.conval866);
+        $('#conval877').val(obsledotdel.conval877);
+        $('#conval888').val(obsledotdel.conval888);
+        $('#conval899').val(obsledotdel.conval899);
+        $('#conval0811').val(obsledotdel.conval0811);
+        $('#conval0822').val(obsledotdel.conval0822);
+        $('#conval0833').val(obsledotdel.conval0833);
+        $('#conval0844').val(obsledotdel.conval0844);
+        $('#conval0855').val(obsledotdel.conval0855);
+        $('#conval0866').val(obsledotdel.conval0866);
+        $('#conval0877').val(obsledotdel.conval0877);
+        $('#conval0888').val(obsledotdel.conval0888);
+        $('#conval0899').val(obsledotdel.conval0899);
+        $('#conval00811').val(obsledotdel.conval00811);
+        $('#conval00822').val(obsledotdel.conval00822);
+        $('#conval00833').val(obsledotdel.conval00833);
+
+        monolit1.prop('checked', obsledotdel.monolit1 > 0);
+        monolit2.prop('checked', obsledotdel.monolit2 > 0);
+        monolit3.prop('checked', obsledotdel.monolit3 > 0);
+        monolit4.prop('checked', obsledotdel.monolit4 > 0);
+        monolit5.prop('checked', obsledotdel.monolit5 > 0);
+        monolit6.prop('checked', obsledotdel.monolit6 > 0);
+        monolit7.prop('checked', obsledotdel.monolit7 > 0);
+        monolit8.prop('checked', obsledotdel.monolit8 > 0);
+        monolit9.prop('checked', obsledotdel.monolit9 > 0);
+        monolit10.prop('checked', obsledotdel.monolit10 > 0);
+        monolit11.prop('checked', obsledotdel.monolit11 > 0);
+        monolit12.prop('checked', obsledotdel.monolit12 > 0);
+        monolit13.prop('checked', obsledotdel.monolit13 > 0);
+        monolit14.prop('checked', obsledotdel.monolit14 > 0);
+        monolit15.prop('checked', obsledotdel.monolit15 > 0);
+        monolit16.prop('checked', obsledotdel.monolit16 > 0);
+        monolit17.prop('checked', obsledotdel.monolit17 > 0);
+        monolit18.prop('checked', obsledotdel.monolit18 > 0);
+        monolit19.prop('checked', obsledotdel.monolit19 > 0);
+        monolit20.prop('checked', obsledotdel.monolit20 > 0);
+        monolit21.prop('checked', obsledotdel.monolit21 > 0);
     }
     document.getElementById("smetaDropdown").classList.toggle("show");
     executeFunctions();
@@ -613,6 +723,20 @@ async function executeFunctions() {
     await calculateHaracterCoefficient();
     await calculateK();
 
+    let allLolSpace = document.querySelectorAll(".lolspace1");
+    [...allLolSpace].each(item => {
+        if(item.children[0].checked) {
+            toggleCheckboxesDop8(item.children[0]);
+        }
+    });
+
+    [...allLolSpace].foreach(item => {
+        if (item.children[0].checked) {
+            let nextElem = item.nextSibling;
+            console.log (nextElem , "engluchs!!!!!!!!!!!!!!!!");
+            calcObsledOtdel(nextElem.children[0]);
+        }
+    });
 }
 
 function saveSmeta() {
