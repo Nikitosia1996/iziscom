@@ -305,7 +305,7 @@ async function getSmeta(id) {
 
         choosCunstruct.prop('checked', ishod.choosCunstruct > 0);
         const pasportValue = ishod.pasport_na_zdanie;
-        console.log(pasportValue)
+
 
         if (pasportValue == 1) {
             $('#pasportNaZdanie[value="1"]').prop('checked', true);
@@ -318,7 +318,7 @@ async function getSmeta(id) {
         if (pasportNaZdanie.length) {
             pasportNaZdanie.prop('checked', true);
         } else {
-            console.error("Элемент не найден");
+
         }
         if (ishod.choosCunstruct > 0) {
             toggleZd1.prop('disabled', false);
@@ -384,7 +384,7 @@ async function getSmeta(id) {
         if (obmerElement.length) {
             obmerElement.prop('checked', true);
         } else {
-            console.error("Элемент не найден");
+
         }
         choosCunstruct4.prop('checked', obmer.choosCunstruct4 > 0);
         if (obmer.choosCunstruct4 > 0) {
@@ -452,7 +452,7 @@ async function getSmeta(id) {
         if (obsledElement.length) {
             obsledElement.prop('checked', true);
         } else {
-            console.error("Элемент не найден");
+
         }
         choosCunstruct5.prop('checked', obsled.choosCunstruct5 > 0);
         if (obsled.choosCunstruct5 > 0) {
@@ -520,7 +520,7 @@ async function getSmeta(id) {
         if (kat_sl_rab_sosttech.length) {
             kat_sl_rab_sosttech.prop('checked', true);
         } else {
-            console.error("Элемент не найден");
+
         }
         choosCunstruct6.prop('checked', sosttech.choosCunstruct6 > 0);
         if (sosttech.choosCunstruct6 > 0) {
@@ -730,17 +730,7 @@ async function executeFunctions() {
         }
     });
 
-    [...allLolSpace].forEach(item => {
-        if (item.children[0].checked) {
-            let nextElem = item.nextElementSibling; // Используем nextElementSibling
-            if (nextElem) { // Проверяем, существует ли nextElem
-                console.log(nextElem, "engluchs!!!!!!!!!!!!!!!!");
-                calcObsledOtdel(nextElem.children[0]);
-                calcObsledOtdel(nextElem.nextElementSibling.children[0]);
-                calcObsledOtdel(nextElem.nextElementSibling.nextElementSibling.children[0]);
-            }
-        }
-    });
+
 }
 
 function saveSmeta() {
@@ -1727,7 +1717,7 @@ async function calcCalkulation() {
         }
         let resultElement = chilsitel / znamenatel;
         let result = resultElement.toFixed(1);
-        console.log(chilsitel, znamenatel);
+
         $('#sredRazryad').val(result);
         resolve(result);
     })
@@ -1758,7 +1748,7 @@ async function calcCalkulation() {
 
             if (trudValue !== 0) {
                 sum += calc1 * trudValue * kolIspValue;
-                console.log("calc1 + calc1 * trudValue * kolIspValue" , calc1 + " + " + calc1 + " * " +  trudValue + " * " + kolIspValue)
+
             }
         }
         calculacia = sum.toFixed(2);
@@ -1928,14 +1918,14 @@ function printCalculExcel() {
     let hasTarifData = false;
 
     $('.trud').each((index, item) => {
-        console.log(`Значение .trud на индексе ${index}:`, $(item).val());
+
         if (!$(item).is(':disabled') && $(item).val() !== "") {
             hasTrudData = true;
         }
     });
 
     $('.tarif').each((index, item) => {
-        console.log(`Значение .tarif на индексе ${index}:`, $(item).val());
+
         if ($(item).val() !== "") {
             hasTarifData = true;
         }
@@ -1967,7 +1957,7 @@ function printCalculExcel() {
                     selectedText = sel.find('option:selected').text();
                 }
 
-                console.log(`selectedText для name_rab${index + 1}:`, selectedText);
+
 
                 if (selectedText && selectedText.trim() !== "") {
                     document.cookie = "name_rab" + (index + 1) + "=" + selectedText + ";";

@@ -1849,7 +1849,7 @@ echo "<script>
                     </div>
                     <label>
                         <input class="monolit" data-id="1.2" value="1" type="checkbox" id="monolit1" data-nameK="K18.229"
-                               disabled onchange="calcObsledOtdel(this)"> Монолитная конструкция
+                               disabled onchange="calcObsledOtdel(this)"> <div>Монолитная конструкция</div>
                     </label>
                     <hr>
                 </div>
@@ -1872,7 +1872,7 @@ echo "<script>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="monolit" data-id="1.2" value="1" type="checkbox" id="monolit2" data-nameK="K18.229"
-                               disabled onchange="calcObsledOtdel(this)"> Монолитная конструкция
+                               disabled onchange="calcObsledOtdel(this)"> <div>Монолитная конструкция</div>
                     </div>
                     <hr>
                 </div>
@@ -1887,16 +1887,16 @@ echo "<script>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval kol" id="conval83" disabled type="number" name="inputValue" step="1"
-                               min="0" onchange="calcObsledOtdel(this)"> количество
+                               min="0" onchange="calcObsledOtdel(this)"> <div>количество</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval slojn" id="conval833" disabled type="number" name="inputValue" step="1"
                                min="1" max="3" onchange="calcObsledOtdel(this)"
-                               oninput="this.value = this.value.replace(/[^1-3]/g, '')"> сложность
+                               oninput="this.value = this.value.replace(/[^1-3]/g, '')"> <div>сложность</div>
                     </div>
                     <label>
                         <input class="monolit" data-id="1.2" value="1" type="checkbox" id="monolit3" data-nameK="K18.229"
-                               disabled onchange="calcObsledOtdel(this)"> Монолитная конструкция
+                               disabled onchange="calcObsledOtdel(this)"> <div>Монолитная конструкция</div>
                     </label>
                     <hr>
                 </div>
@@ -1909,16 +1909,16 @@ echo "<script>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval kol" id="conval84" disabled type="number" name="inputValue" step="1"
-                               min="0" onchange="calcObsledOtdel(this)"> количество
+                               min="0" onchange="calcObsledOtdel(this)"> <div>количество</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval slojn" id="conval844" disabled type="number" name="inputValue" step="1"
                                min="1" max="3" onchange="calcObsledOtdel(this)"
-                               oninput="this.value = this.value.replace(/[^1-3]/g, '')"> сложность
+                               oninput="this.value = this.value.replace(/[^1-3]/g, '')"> <div>сложность</div>
                     </div>
                     <label>
                         <input class="monolit" data-id="1.2" value="1" type="checkbox" id="monolit4" data-nameK="K18.229"
-                               disabled onchange="calcObsledOtdel(this)"> Монолитная конструкция
+                               disabled onchange="calcObsledOtdel(this)"> <div>Монолитная конструкция</div>
                     </label>
                     <hr>
                 </div>
@@ -1930,16 +1930,16 @@ echo "<script>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval kol" id="conval85" disabled type="number" name="inputValue" step="1"
-                               min="0" onchange="calcObsledOtdel(this)"> количество
+                               min="0" onchange="calcObsledOtdel(this)"> <div>количество</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval slojn" id="conval855" disabled type="number" name="inputValue" step="1"
                                min="1" max="3" onchange="calcObsledOtdel(this)"
-                               oninput="this.value = this.value.replace(/[^1-3]/g, '')"> сложность
+                               oninput="this.value = this.value.replace(/[^1-3]/g, '')"> <div>сложность</div>
                     </div>
                     <label>
                         <input class="monolit" data-id="1.2" value="1" type="checkbox" id="monolit5" data-nameK="K18.229"
-                               onchange="calcObsledOtdel(this)"> Монолитная конструкция
+                               onchange="calcObsledOtdel(this)"> <div>Монолитная конструкция</div>
                     </label>
                     <hr>
                 </div>
@@ -1952,16 +1952,16 @@ echo "<script>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval kol" id="conval86" disabled type="number" name="inputValue" step="1"
-                               min="0" onchange="calcObsledOtdel(this)"> количество
+                               min="0" onchange="calcObsledOtdel(this)"> <div>количество</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval slojn" id="conval866" disabled type="number" name="inputValue" step="1"
                                min="1" max="3" onchange="calcObsledOtdel(this)"
-                               oninput="this.value = this.value.replace(/[^1-3]/g, '')"> сложность
+                               oninput="this.value = this.value.replace(/[^1-3]/g, '')"> <div>сложность</div>
                     </div>
                     <label>
                         <input class="monolit" data-id="1.2" value="1" type="checkbox" id="monolit6" data-nameK="K18.229"
-                               disabled onchange="calcObsledOtdel(this)"> Монолитная конструкция
+                               disabled onchange="calcObsledOtdel(this)"> <div>Монолитная конструкция</div>
                     </label>
                     <hr>
                 </div>
@@ -1974,16 +1974,16 @@ echo "<script>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval kol" id="conval87" disabled type="number" name="inputValue" step="1"
-                               min="0" onchange="calcObsledOtdel(this)"> количество
+                               min="0" onchange="calcObsledOtdel(this)"> <div>количество</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval slojn" id="conval877" disabled type="number" name="inputValue" step="1"
                                min="1" max="3" onchange="calcObsledOtdel(this)"
-                               oninput="this.value = this.value.replace(/[^1-3]/g, '')"> сложность
+                               oninput="this.value = this.value.replace(/[^1-3]/g, '')"> <div>сложность</div>
                     </div>
                     <label>
                         <input class="monolit" data-id="1.2" value="1" type="checkbox" id="monolit7" data-nameK="K18.229"
-                               disabled onchange="calcObsledOtdel(this)"> Монолитная конструкция
+                               disabled onchange="calcObsledOtdel(this)"> <div>Монолитная конструкция</div>
                     </label>
                     <hr>
 
@@ -2002,18 +2002,18 @@ echo "<script>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval kol" id="conval88" disabled type="number" name="inputValue" step="1"
-                               min="0" onchange="calcObsledOtdel(this)"> количество
+                               min="0" onchange="calcObsledOtdel(this)"> <div>количество</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval slojn" id="conval888" disabled type="number" name="inputValue" step="1"
                                min="1" max="3" onchange="calcObsledOtdel(this)"
-                               oninput="this.value = this.value.replace(/[^1-3]/g, '')"> сложность
+                               oninput="this.value = this.value.replace(/[^1-3]/g, '')"> <div>сложность</div>
                     </div>
                     <label>
                         <input class="monolit" data-id="1.2" value="1" type="checkbox" id="monolit8"
                                data-nameK="K18.229"
                                disabled onchange="calcObsledOtdel(this)"
-                               > Монолитная конструкция
+                               > <div>Монолитная конструкция</div>
                     </label>
                     <hr>
                 </div>
@@ -2026,16 +2026,16 @@ echo "<script>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval kol" id="conval89" disabled type="number" name="inputValue" step="1"
-                               min="0" onchange="calcObsledOtdel(this)"> количество
+                               min="0" onchange="calcObsledOtdel(this)"> <div>количество</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval slojn" id="conval899" disabled type="number" name="inputValue" step="1"
                                min="1" max="3" onchange="calcObsledOtdel(this)"
-                               oninput="this.value = this.value.replace(/[^1-3]/g, '')"> сложность
+                               oninput="this.value = this.value.replace(/[^1-3]/g, '')"> <div>сложность</div>
                     </div>
                     <label>
                         <input class="monolit" data-id="1.2" value="1" type="checkbox" id="monolit9" data-nameK="K18.229"
-                               disabled onchange="calcObsledOtdel(this)"> Монолитная конструкция
+                               disabled onchange="calcObsledOtdel(this)"> <div>Монолитная конструкция</div>
                     </label>
                     <hr>
                 </div>
@@ -2049,16 +2049,16 @@ echo "<script>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval kol" id="conval081" disabled type="number" name="inputValue" step="1"
-                               min="0" onchange="calcObsledOtdel(this)"> количество
+                               min="0" onchange="calcObsledOtdel(this)"> <div>количество</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval slojn" id="conval0811" disabled type="number" name="inputValue" step="1"
                                min="1" max="3" onchange="calcObsledOtdel(this)"
-                               oninput="this.value = this.value.replace(/[^1-3]/g, '')"> сложность
+                               oninput="this.value = this.value.replace(/[^1-3]/g, '')"> <div>сложность</div>
                     </div>
                     <label>
                         <input class="monolit" data-id="1.2" value="1" type="checkbox" id="monolit10" data-nameK="K18.229"
-                               disabled onchange="calcObsledOtdel(this)"> Монолитная конструкция
+                               disabled onchange="calcObsledOtdel(this)"> <div>Монолитная конструкция</div>
                     </label>
                     <hr>
                 </div>
@@ -2073,16 +2073,16 @@ echo "<script>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval kol" id="conval082" disabled type="number" name="inputValue" step="1"
-                               min="0" onchange="calcObsledOtdel(this)"> количество
+                               min="0" onchange="calcObsledOtdel(this)"> <div>количество</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval slojn" id="conval0822" disabled type="number" name="inputValue" step="1"
                                min="1" max="3" onchange="calcObsledOtdel(this)"
-                               oninput="this.value = this.value.replace(/[^1-3]/g, '')"> сложность
+                               oninput="this.value = this.value.replace(/[^1-3]/g, '')"> <div>сложность</div>
                     </div>
                     <label>
                         <input class="monolit" data-id="1.2" value="1" type="checkbox" id="monolit11" data-nameK="K18.229"
-                               disabled onchange="calcObsledOtdel(this)"> Монолитная конструкция
+                               disabled onchange="calcObsledOtdel(this)"> <div>Монолитная конструкция</div>
                     </label>
                     <hr>
                 </div>
@@ -2096,16 +2096,16 @@ echo "<script>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval kol" id="conval083" disabled type="number" name="inputValue" step="1"
-                               min="0" onchange="calcObsledOtdel(this)"> количество
+                               min="0" onchange="calcObsledOtdel(this)"> <div>количество</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval slojn" id="conval0833" disabled type="number" name="inputValue" step="1"
                                min="1" max="3" onchange="calcObsledOtdel(this)"
-                               oninput="this.value = this.value.replace(/[^1-3]/g, '')"> сложность
+                               oninput="this.value = this.value.replace(/[^1-3]/g, '')"> <div>сложность</div>
                     </div>
                     <label>
                         <input class="monolit" data-id="1.2" value="1" type="checkbox" id="monolit12" data-nameK="K18.229"
-                               disabled onchange="calcObsledOtdel(this)"> Монолитная конструкция
+                               disabled onchange="calcObsledOtdel(this)"> <div>Монолитная конструкция</div>
                     </label>
                     <hr>
                 </div>
@@ -2118,16 +2118,16 @@ echo "<script>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval kol" id="conval084" disabled type="number" name="inputValue" step="1"
-                               min="0" onchange="calcObsledOtdel(this)"> количество
+                               min="0" onchange="calcObsledOtdel(this)"><div>количество</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval slojn" id="conval0844" disabled type="number" name="inputValue" step="1"
                                min="1" max="3" onchange="calcObsledOtdel(this)"
-                               oninput="this.value = this.value.replace(/[^1-3]/g, '')"> сложность
+                               oninput="this.value = this.value.replace(/[^1-3]/g, '')"> <div>сложность</div>
                     </div>
                     <label>
                         <input class="monolit" data-id="1.2" value="1" type="checkbox" id="monolit13" data-nameK="K18.229"
-                               disabled onchange="calcObsledOtdel(this)"> Монолитная конструкция
+                               disabled onchange="calcObsledOtdel(this)"> <div>Монолитная конструкция</div>
                     </label>
                     <hr>
                 </div>
@@ -2140,16 +2140,16 @@ echo "<script>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval kol" id="conval085" disabled type="number" name="inputValue" step="1"
-                               min="0" onchange="calcObsledOtdel(this)"> количество
+                               min="0" onchange="calcObsledOtdel(this)"> <div>количество</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval slojn" id="conval0855" disabled type="number" name="inputValue" step="1"
                                min="1" max="3" onchange="calcObsledOtdel(this)"
-                               oninput="this.value = this.value.replace(/[^1-3]/g, '')"> сложность
+                               oninput="this.value = this.value.replace(/[^1-3]/g, '')"> <div>сложность</div>
                     </div>
                     <label>
                         <input class="monolit" data-id="1.2" value="1" type="checkbox" id="monolit14" data-nameK="K18.229"
-                               disabled onchange="calcObsledOtdel(this)"> Монолитная конструкция
+                               disabled onchange="calcObsledOtdel(this)"> <div>Монолитная конструкция</div>
                     </label>
                     <hr>
                 </div>
@@ -2169,16 +2169,16 @@ echo "<script>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval kol" id="conval086" disabled type="number" name="inputValue" step="1"
-                               min="0" onchange="calcObsledOtdel(this)"> количество
+                               min="0" onchange="calcObsledOtdel(this)"> <div>количество</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval slojn" id="conval0866" disabled type="number" name="inputValue" step="1"
                                min="1" max="3" onchange="calcObsledOtdel(this)"
-                               oninput="this.value = this.value.replace(/[^1-3]/g, '')"> сложность
+                               oninput="this.value = this.value.replace(/[^1-3]/g, '')"> <div>сложность</div>
                     </div>
                     <label>
                         <input class="monolit" data-id="1.2" value="1" type="checkbox" id="monolit15" data-nameK="K18.229"
-                               disabled onchange="calcObsledOtdel(this)"> Монолитная конструкция
+                               disabled onchange="calcObsledOtdel(this)"> <div>Монолитная конструкция</div>
                     </label>
                     <hr>
                 </div>
@@ -2191,16 +2191,16 @@ echo "<script>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval kol" id="conval087" disabled type="number" name="inputValue" step="1"
-                               min="0" onchange="calcObsledOtdel(this)"> количество
+                               min="0" onchange="calcObsledOtdel(this)"> <div>количество</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval slojn" id="conval0877" disabled type="number" name="inputValue" step="1"
                                min="1" max="3" onchange="calcObsledOtdel(this)"
-                               oninput="this.value = this.value.replace(/[^1-3]/g, '')"> сложность
+                               oninput="this.value = this.value.replace(/[^1-3]/g, '')"> <div>сложность</div>
                     </div>
                     <label>
                         <input class="monolit" data-id="1.2" value="1" type="checkbox" id="monolit16" data-nameK="K18.229"
-                               disabled onchange="calcObsledOtdel(this)"> Монолитная конструкция
+                               disabled onchange="calcObsledOtdel(this)"> <div>Монолитная конструкция</div>
                     </label>
                     <hr>
                 </div>
@@ -2214,16 +2214,16 @@ echo "<script>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval kol" id="conval088" disabled type="number" name="inputValue" step="1"
-                               min="0" onchange="calcObsledOtdel(this)"> количество
+                               min="0" onchange="calcObsledOtdel(this)"> <div>количество</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval slojn" id="conval0888" disabled type="number" name="inputValue" step="1"
                                min="1" max="3" onchange="calcObsledOtdel(this)"
-                               oninput="this.value = this.value.replace(/[^1-3]/g, '')"> сложность
+                               oninput="this.value = this.value.replace(/[^1-3]/g, '')"> <div>сложность</div>
                     </div>
                     <label>
                         <input class="monolit" data-id="1.2" value="1" type="checkbox" id="monolit17" data-nameK="K18.229"
-                               disabled onchange="calcObsledOtdel(this)"> Монолитная конструкция
+                               disabled onchange="calcObsledOtdel(this)"> <div>Монолитная конструкция</div>
                     </label>
                     <hr>
                 </div>
@@ -2235,16 +2235,16 @@ echo "<script>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval kol" id="conval089" disabled type="number" name="inputValue" step="1"
-                               min="0" onchange="calcObsledOtdel(this)"> количество
+                               min="0" onchange="calcObsledOtdel(this)"> <div>количество</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval slojn" id="conval0899" disabled type="number" name="inputValue" step="1"
                                min="1" max="3" onchange="calcObsledOtdel(this)"
-                               oninput="this.value = this.value.replace(/[^1-3]/g, '')"> сложность
+                               oninput="this.value = this.value.replace(/[^1-3]/g, '')"> <div>сложность</div>
                     </div>
                     <label>
                         <input class="monolit" data-id="1.2" value="1" type="checkbox" id="monolit18" data-nameK="K18.229"
-                               disabled onchange="calcObsledOtdel(this)"> Монолитная конструкция
+                               disabled onchange="calcObsledOtdel(this)"> <div>Монолитная конструкция</div>
                     </label>
                     <hr>
                 </div>
@@ -2258,16 +2258,16 @@ echo "<script>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval kol" id="conval0081" disabled type="number" name="inputValue" step="1"
-                               min="0" onchange="calcObsledOtdel(this)"> количество
+                               min="0" onchange="calcObsledOtdel(this)"> <div>количество</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval slojn" id="conval00811" disabled type="number" name="inputValue" step="1"
                                min="1" max="3" onchange="calcObsledOtdel(this)"
-                               oninput="this.value = this.value.replace(/[^1-3]/g, '')"> сложность
+                               oninput="this.value = this.value.replace(/[^1-3]/g, '')"> <div>сложность</div>
                     </div>
                     <label>
                         <input class="monolit" data-id="1.2" value="1" type="checkbox" id="monolit19" data-nameK="K18.229"
-                               disabled onchange="calcObsledOtdel(this)"> Монолитная конструкция
+                               disabled onchange="calcObsledOtdel(this)"> <div>Монолитная конструкция</div>
                     </label>
                     <hr>
                 </div>
@@ -2279,16 +2279,16 @@ echo "<script>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval kol" id="conval0082" disabled type="number" name="inputValue" step="1"
-                               min="0" onchange="calcObsledOtdel(this)"> количество
+                               min="0" onchange="calcObsledOtdel(this)"> <div>количество</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval slojn" id="conval00822" disabled type="number" name="inputValue" step="1"
                                min="1" max="3" onchange="calcObsledOtdel(this)"
-                               oninput="this.value = this.value.replace(/[^1-3]/g, '')"> сложность
+                               oninput="this.value = this.value.replace(/[^1-3]/g, '')"> <div>сложность</div>
                     </div>
                     <label>
                         <input class="monolit" data-id="1.2" value="1" type="checkbox" id="monolit20" data-nameK="K18.229"
-                               disabled onchange="calcObsledOtdel(this)"> Монолитная конструкция
+                               disabled onchange="calcObsledOtdel(this)"> <div>Монолитная конструкция</div>
                     </label>
                     <hr>
                 </div>
@@ -2301,16 +2301,16 @@ echo "<script>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval kol" id="conval0083" disabled type="number" name="inputValue" step="1"
-                               min="0" onchange="calcObsledOtdel(this)"> количество
+                               min="0" onchange="calcObsledOtdel(this)"> <div>количество</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval slojn" id="conval00833" disabled type="number" name="inputValue" step="1"
                                min="1" max="3" onchange="calcObsledOtdel(this)"
-                               oninput="this.value = this.value.replace(/[^1-3]/g, '')"> сложность
+                               oninput="this.value = this.value.replace(/[^1-3]/g, '')"> <div>сложность</div>
                     </div>
                     <label>
                         <input class="monolit" data-id="1.2" value="1" type="checkbox" id="monolit21" data-nameK="K18.229"
-                               disabled onchange="calcObsledOtdel(this)"> Монолитная конструкция
+                               disabled onchange="calcObsledOtdel(this)"> <div>Монолитная конструкция</div>
                     </label>
                     <hr>
                 </div>
@@ -2915,7 +2915,7 @@ echo "<script>
         } else {
             sumIshod = Vdiv100 * k18101 * koefIshod * koefIshod2 * b14Value * k18ob * ki212 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat * kefVisota;
             $('#sborIshodnihDannih').html(sumIshod.toFixed(3) );
-            console.log(sumIshod + " =  koefIshod: " + koefIshod + " koefIshod2: " + koefIshod2 + " costwork14: " + b14Value + " K18ob:" + k18ob + " ki212: " + ki212 + kefVisota + "VISOTA VISOTA VISOTA");
+          //  console.log(sumIshod + " =  koefIshod: " + koefIshod + " koefIshod2: " + koefIshod2 + " costwork14: " + b14Value + " K18ob:" + k18ob + " ki212: " + ki212 + kefVisota + "VISOTA VISOTA VISOTA");
         }
 
 
@@ -2924,7 +2924,7 @@ echo "<script>
         } else {
             sumObmer = koefObmerWork1 * koefObmerWork2 * b14Value * k18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat * kefVisota;
             $('#obmerRaboty').html(sumObmer.toFixed(3));
-            console.log(sumObmer + " =  koefObmerWork1: " + koefObmerWork1 + " koefObmerWork2: " + koefObmerWork2 + " K18ob: " + k18ob + " obmerDop1:" + obmerDop1 + " obmerDop2: " + obmerDop2 + " Vdiv100: " + Vdiv100 + " k18101: " + k18101 + " ki222: " + ki222);
+        //    console.log(sumObmer + " =  koefObmerWork1: " + koefObmerWork1 + " koefObmerWork2: " + koefObmerWork2 + " K18ob: " + k18ob + " obmerDop1:" + obmerDop1 + " obmerDop2: " + obmerDop2 + " Vdiv100: " + Vdiv100 + " k18101: " + k18101 + " ki222: " + ki222);
         }
 
         if (koefObsled1 == 1 && koefObsled2 == 1) {
@@ -2932,7 +2932,7 @@ echo "<script>
         } else {
             sumObsled = koefObsled1 * koefObsled2 * b14Value * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat * kefVisota;
             $('#obsledRab').html(sumObsled.toFixed(3));
-            console.log(sumObsled + " =  koefObsled1: " + koefObsled1 + " koefObsled2: " + koefObsled2 + " K18ob: " + k18ob + " obsledDop1:" + obsledDop1 + " obsledDop2: " + obsledDop2 + " Vdiv100: " + Vdiv100 + " k18101: " + k18101 + " ki223: " + ki223);
+          //  console.log(sumObsled + " =  koefObsled1: " + koefObsled1 + " koefObsled2: " + koefObsled2 + " K18ob: " + k18ob + " obsledDop1:" + obsledDop1 + " obsledDop2: " + obsledDop2 + " Vdiv100: " + Vdiv100 + " k18101: " + k18101 + " ki223: " + ki223);
         }
 
         if (koefSosttech1 == 1 && koefSosttech2 == 1) {
@@ -2940,7 +2940,7 @@ echo "<script>
         } else {
             sumSosttech = koefSosttech1 * koefSosttech2 * b14Value * k18ob * Vdiv100 * k18101 * ki242 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat * kefVisota;
             $('#sostTech').html(sumSosttech.toFixed(3));
-            console.log(sumSosttech + " =  koefSosttech1: " + koefSosttech1 + " koefSosttech2: " + koefSosttech2 + " costwork14: " + b14Value + " K18ob:" + k18ob + " Vdiv100: " + Vdiv100 + " Vdiv100: " + Vdiv100 + " k18101: " + k18101 + " ki223: " + ki223);
+          //  console.log(sumSosttech + " =  koefSosttech1: " + koefSosttech1 + " koefSosttech2: " + koefSosttech2 + " costwork14: " + b14Value + " K18ob:" + k18ob + " Vdiv100: " + Vdiv100 + " Vdiv100: " + Vdiv100 + " k18101: " + k18101 + " ki223: " + ki223);
         }
 
 
@@ -2958,9 +2958,9 @@ echo "<script>
         if (!isNaN(coefficient) && coefficient >= 0) {
             fullSumma = fullSumma * (coefficient);
             fullSumma = parseFloat(fullSumma.toFixed(2));
-            console.log('Новое значение:', fullSumma);
+        //    console.log('Новое значение:', fullSumma);
         } else {
-            console.error('Некорректное значение коэффициента');
+       //     console.error('Некорректное значение коэффициента');
         }
 
         //USNCALC
@@ -2968,7 +2968,7 @@ echo "<script>
         const checkNDS = document.getElementById('checkNDS');
         if (checkUSN.checked)
         {
-            console.log('Учитывать НДС:', checkNDS.checked);
+         //   console.log('Учитывать НДС:', checkNDS.checked);
             fullSumma = fullSumma - (fullSumma * usn)/100;
             calculacia = calculacia - (calculacia *  usn)/100;
             fullSumma = parseFloat(fullSumma.toFixed(2));
@@ -2978,8 +2978,8 @@ echo "<script>
             fullSumma = fullSumma - (fullSumma * nds)/100;
             calculacia = calculacia - (calculacia *  nds)/100;
             fullSumma = parseFloat(fullSumma.toFixed(2));
-            console.log('Учитывать УСН:', checkUSN.checked);
-            console.log('Учитывать НДС:', checkNDS.checked);
+           // console.log('Учитывать УСН:', checkUSN.checked);
+          //  console.log('Учитывать НДС:', checkNDS.checked);
         }
 
 
@@ -3003,7 +3003,7 @@ echo "<script>
     function getCheckboxValue(checkboxId) {
 
         const checkbox = document.getElementById(checkboxId);
-        console.log(checkbox.getAttribute('data-id'));
+       // console.log(checkbox.getAttribute('data-id'));
         return checkbox.checked ? parseFloat(checkbox.getAttribute('data-id')) || 1 : 1;
 
     }
@@ -3032,7 +3032,7 @@ echo "<script>
         chekb12Val = getCheckboxValue('chekb12');
         arrHaractCheckb = [chekb1Val, chekb2Val, chekb3Val, chekb4Val, chekb5Val, chekb6Val, chekb7Val, chekb8Val, chekb9Val, chekb10Val, chekb11Val, chekb12Val];
         arrHaractCheckb.map(item => koefHarackCheckb *= item);
-        console.log("arrHaractCheckb", arrHaractCheckb);
+       // console.log("arrHaractCheckb", arrHaractCheckb);
 
         let checkboxagressive = document.getElementById("toggleSelect");
         let optionsaggr = document.getElementById("options");
@@ -3044,7 +3044,7 @@ echo "<script>
         } else {
             agressive = 1;
         }
-        console.log(agressive + "agressive");
+       // console.log(agressive + "agressive");
 
 
 
@@ -3069,7 +3069,7 @@ echo "<script>
         const constructionType = getSelectedDataId('#constructionType');
         const options = getSelectedDataId('#options');
         temperaturMode = getSelectedDataId('#temperatureMode');
-        console.log(temperaturMode + "temperatureMode");
+       // console.log(temperaturMode + "temperatureMode");
         equipmentSaturat = getSelectedDataId('#equipmentSaturation');
 
         k18101 = buildingType;
@@ -3328,7 +3328,7 @@ echo "<script>
                 {
                     typeW = 4;
                 }
-                console.log(typeW, "typeWtypeWtypeWtypeW");
+           //     console.log(typeW, "typeWtypeWtypeWtypeW");
                 $.ajax({
                     url: "app/ajax/getKoefIshod2.php",
                     method: "POST",
@@ -3351,8 +3351,8 @@ echo "<script>
                         });
                         koefIshod2 = sum;
                     }
-                    console.log("koefIshod = " + koefIshod);
-                    console.log("koefIshod2 = " + koefIshod2);
+                  //  console.log("koefIshod = " + koefIshod);
+                  //  console.log("koefIshod2 = " + koefIshod2);
                     if (koefIshod == 1 && koefIshod2 == 1) {
                         sumIshod = 0;
                     } else {
@@ -3367,7 +3367,7 @@ echo "<script>
             koefIshod2 = 1;
         }
         calculateK();
-        console.log("koefHarackCheckb", koefHarackCheckb);
+      //  console.log("koefHarackCheckb", koefHarackCheckb);
         $('#sborIshodnihDannih').html(sumIshod.toFixed(3));
 
     }
@@ -3428,7 +3428,7 @@ echo "<script>
             vis14Label.innerText = '3)  Здание с высотой этажа свыше 6м, с краном, свыше 3 объемов, свыше 10 этажей, сооружения высотой более 60м, полный монолитный каркас';
 
 
-            console.log(visotapola);
+         //   console.log(visotapola);
             if (visotapola <= 3.6) {
                 vis6Label.classList.add('highlight-green');
                 vis614Label.classList.add('highlight-red');
@@ -3496,7 +3496,7 @@ echo "<script>
                 }
             }
         }
-        console.log(hardZdanie + "сложность здания");
+       // console.log(hardZdanie + "сложность здания");
         calculateK();
     }
 
@@ -3516,7 +3516,7 @@ echo "<script>
             calendarInput.value = '';
         }
         await calculateK();
-        console.log(5 + "updateWorkingDays");
+       // console.log(5 + "updateWorkingDays");
     }
 
     function updateWorkingDays() {
@@ -3535,7 +3535,7 @@ echo "<script>
         //     endDate.setDate(startDate.getDate() + calendarDays);
         //     document.getElementById('dateOkonchRab').value = endDate.toISOString().split('T')[0];
         // }
-        console.log(4 + "updateWorkingDays")
+      //  console.log(4 + "updateWorkingDays")
     }
 
     function updateCalendarDays() {
@@ -3555,7 +3555,7 @@ echo "<script>
             document.getElementById('dateOkonchRab').value = endDate.toISOString().split('T')[0];
         }
 
-        console.log(1 + "updateCalendarDays")
+        //console.log(1 + "updateCalendarDays")
     }
 
     function updateEndDate() {
@@ -3569,7 +3569,7 @@ echo "<script>
             endDate.setDate(startDate.getDate() + calendarDays);
             document.getElementById('dateOkonchRab').value = endDate.toISOString().split('T')[0];
         }
-        console.log(2 + "updateEndDate")
+        //console.log(2 + "updateEndDate")
     }
 
     // Устанавливает календарные дни в зависимости от выбранных дат в календаре.
@@ -3653,7 +3653,7 @@ echo "<script>
             if (dataIdElement) {
                 dataIdElement.value = 1;
             } else {
-                console.log('Элемент с ID ' + 'dataId' + index + ' не найден.');
+                //console.log('Элемент с ID ' + 'dataId' + index + ' не найден.');
             }
 
 
@@ -3967,7 +3967,7 @@ echo "<script>
         let sumRedaktor1 = koefRedaktor1 + koefRedaktor2 + koefRedaktor3 + koefRedaktor4;
         sumRedaktor = sumRedaktor1;
 
-        console.log("koefRedaktor1=" + koefRedaktor1 + " koefRedaktor2=" + koefRedaktor2 + " koefRedaktor3=" + koefRedaktor3 + " koefRedaktor4=" + koefRedaktor4 + " === " + "sumRedaktor=" + sumRedaktor);
+      //  console.log("koefRedaktor1=" + koefRedaktor1 + " koefRedaktor2=" + koefRedaktor2 + " koefRedaktor3=" + koefRedaktor3 + " koefRedaktor4=" + koefRedaktor4 + " === " + "sumRedaktor=" + sumRedaktor);
         document.getElementById('redaktorCons').innerText = sumRedaktor1.toFixed(3);
         await calculateK();
     }
@@ -3989,7 +3989,7 @@ echo "<script>
         } else {
             arrObsledOtdel = arrObsledOtdel.filter((item) => item.id !== elem.id);
         }
-        console.log(arrObsledOtdel);
+       // console.log(arrObsledOtdel);
 
 
         const checkboxes = [
@@ -4085,7 +4085,17 @@ echo "<script>
                 input.disabled = !item.checkbox.checked;
             });
         });
-        calculateK();
+        let allLolSpace = document.querySelectorAll(".lolspace1");
+        [...allLolSpace].forEach(item => {
+            if (item.children[0].checked) {
+                let nextElem = item.nextElementSibling;
+                if (nextElem) {
+                    calcObsledOtdel(nextElem.children[0]);
+                    calcObsledOtdel(nextElem.nextElementSibling.children[0]);
+                    calcObsledOtdel(nextElem.nextElementSibling.nextElementSibling.children[0]);
+                }
+            }
+        });
     }
 
     function toggleDropdown() {
@@ -4217,10 +4227,10 @@ echo "<script>
                     $('#b14Input').val(b14indexval);
                     b14Value = b14indexval;
 
-                    console.log("b14Ж" + b14indexval);
+                   // console.log("b14Ж" + b14indexval);
                     let formula = `${data.params.res} * ${data.params.cost_work} * ${data.koefMonth} * (1 + 0.5 * (${indexval} - 1))`;
-                    console.log("b14Ж: " + b14indexval);
-                    console.log("Формула: " + formula);
+                  //  console.log("b14Ж: " + b14indexval);
+                  //  console.log("Формула: " + formula);
 
                     $('#workCost').val(data.params.cost_work);
                     $('#costwork14').val(data.params.cost_work);
@@ -4538,9 +4548,6 @@ echo "<script>
         arrObsledOtdel.map(item => {
             let dedchildren = ded.children[0];
             let dedchildren1 = dedchildren.children[0];
-
-
-            console.log (item.id + "/item.id/" + dedchildren1.id + "/ed.children[0].children[0].id/");
             if (item.id === ded.children[0].children[0].id) {
                 switch (elem.className) {
                     case "inpval kol":
@@ -4557,10 +4564,9 @@ echo "<script>
 
                 if ( item.count != 0 && item.hard != 0) {
                     item.total = koef0 * parseFloat(item.hard) * checkMonol * b14Value * item.count;
-                    console.log(`считаем: item.total = ${koef0} * parseFloat(${item.hard}) * ${checkMonol} * ${b14Value} = ${item.total}`);
+                   console.log(`считаем: item.total = ${koef0} * parseFloat(${item.hard}) * ${checkMonol} * ${b14Value} = ${item.total}`);
                     sumObsledOtdel =  item.total;
                     $('#obsledotdel').html(sumObsledOtdel.toFixed(3));
-                    console.log (sumObsledOtdel + "obsled otdel");
                 }
                 else
                 {
@@ -4568,12 +4574,13 @@ echo "<script>
                 }
             }
         })
-       sumObsledOtdel = 0;
-        arrObsledOtdel.map(item => {
-            sumObsledOtdel +=  item.total;
-        })
-        $('#obsledotdel').html(sumObsledOtdel.toFixed(3));
         console.log (arrObsledOtdel);
+       // sumObsledOtdel = 0;
+       //  arrObsledOtdel.map(item => {
+       //      sumObsledOtdel +=  item.total;
+       //  })
+        $('#obsledotdel').html(sumObsledOtdel.toFixed(3));
+      //  console.log (arrObsledOtdel);
         calculateK();
     }
 
@@ -4581,7 +4588,7 @@ echo "<script>
 
     function calcObsOtd(elem){
         if (elem.is(':checked')) {
-            console.log ("fullSumma", fullSumma)
+          //  console.log ("fullSumma", fullSumma)
             fullSumma = parseFloat(fullSumma) + parseFloat(sumObsledOtdel);
 
             totalSum = totalSum +parseFloat(sumObsledOtdel);
