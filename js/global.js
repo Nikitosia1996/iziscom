@@ -685,6 +685,7 @@ async function getSmeta(id) {
         $('#conval00822').val(obsledotdel.conval00822);
         $('#conval00833').val(obsledotdel.conval00833);
 
+        console.log
         monolit1.prop('checked', obsledotdel.monolit1 > 0);
         monolit2.prop('checked', obsledotdel.monolit2 > 0);
         monolit3.prop('checked', obsledotdel.monolit3 > 0);
