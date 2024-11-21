@@ -247,7 +247,7 @@ class SmetaList
                     $row['input3Calc5'],
                     $row['input3Calc6'],
                     $row['input3Calc7'],
-                    $row['input3Calc8']
+                    $row['input3Calc8'],
                 ),
                 new RedaktorObject($row['id_redaktor'],
                     $row['toggleZd71'],

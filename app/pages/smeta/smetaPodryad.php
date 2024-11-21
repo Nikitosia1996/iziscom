@@ -2388,7 +2388,7 @@ echo "<script>
                     <div class="select-input-pair">
                         <select class="form-select-calc" aria-label="" id="selectCalc3"
                                 onchange="selectCalculation(3)">
-                            <option selected>-- Пожалуйста, выберите --</option>
+                            <option value = "0" selected>-- Пожалуйста, выберите --</option>
                             <option value="1">
                                 Обследование строительных конструкций. Оформление отчета.
                             </option>
@@ -2409,7 +2409,7 @@ echo "<script>
                     <div class="select-input-pair">
                         <select class="form-select-calc" aria-label="" id="selectCalc4"
                                 onchange="selectCalculation(4)">
-                            <option selected>-- Пожалуйста, выберите --</option>
+                            <option value = "0" selected>-- Пожалуйста, выберите --</option>
                             <option value="1">
                                 Обследование строительных конструкций. Оформление отчета.
                             </option>
@@ -2430,7 +2430,7 @@ echo "<script>
                     <div class="select-input-pair">
                         <select class="form-select-calc" aria-label="" id="selectCalc5"
                                 onchange="selectCalculation(5)">
-                            <option selected>-- Пожалуйста, выберите --</option>
+                            <option value = "0" selected>-- Пожалуйста, выберите --</option>
                             <option value="1">
                                 Обследование строительных конструкций. Оформление отчета.
                             </option>
@@ -2451,7 +2451,7 @@ echo "<script>
                     <div class="select-input-pair">
                         <select class="form-select-calc" aria-label="" id="selectCalc6"
                                 onchange="selectCalculation(6)">
-                            <option selected>-- Пожалуйста, выберите --</option>
+                            <option value = "0" selected>-- Пожалуйста, выберите --</option>
                             <option value="1">
                                 Обследование строительных конструкций. Оформление отчета.
                             </option>
@@ -2472,7 +2472,7 @@ echo "<script>
                     <div class="select-input-pair">
                         <select class="form-select-calc" aria-label="" id="selectCalc7"
                                 onchange="selectCalculation(7)">
-                            <option selected>-- Пожалуйста, выберите --</option>
+                            <option value = "0" selected>-- Пожалуйста, выберите --</option>
                             <option value="1">
                                 Обследование строительных конструкций. Оформление отчета.
                             </option>
@@ -2493,7 +2493,7 @@ echo "<script>
                     <div class="select-input-pair">
                         <select class="form-select-calc" aria-label="" id="selectCalc8"
                                 onchange="selectCalculation(8)">
-                            <option selected>-- Пожалуйста, выберите --</option>
+                            <option value = "0" selected>-- Пожалуйста, выберите --</option>
                             <option value="1">
                                 Обследование строительных конструкций. Оформление отчета.
                             </option>
@@ -2533,7 +2533,7 @@ echo "<script>
                     </div>
                     <div class="select-input-pair">
                         <select class="form-select-calc doljnosti_KSD" id="select2Calc1" disabled aria-label="">
-                            <option selected>-- Пожалуйста, выберите --</option>
+                            <option value = "0" selected>-- Пожалуйста, выберите --</option>
                             <?php
                             $doljnosti_array = array();
                             while ($row = $connectionDB->getRowResult($doljnosti_KSD)) {
@@ -2561,7 +2561,7 @@ echo "<script>
                     </div>
                     <div class="select-input-pair">
                         <select class="form-select-calc doljnosti_KSD" aria-label="" disabled id="select2Calc2">
-                            <option selected>-- Пожалуйста, выберите --</option>
+                            <option value="0" selected>-- Пожалуйста, выберите --</option>
                             <?php
                             foreach ($doljnosti_array as $row) {
                                 echo "<option value='" . $row['id'] . "' data-koef='" . $row['koef'] . "'>" . $row['name'] . "</option>";
@@ -4435,7 +4435,9 @@ echo "<script>
             // document.querySelector(`#input2Calc${index}`),
             document.querySelector(`#input3Calc${index}`)
         ];
+        try{
         const selectedValue = workSelect.value;
+
 
         if ($("#inputCalc" + index).val().length === 0) {
             $("#inputCalc" + index).val(1);
@@ -4467,7 +4469,10 @@ echo "<script>
             customWorkInput.value = "";
         }
 
-
+        }
+        catch{
+            console.log('Error in selectCalculation');
+        }
     }
 
 
@@ -4572,7 +4577,7 @@ echo "<script>
 
                 if ( item.count != 0 && item.hard != 0) {
                     item.total = item.koef * parseFloat(item.hard) * checkMonol * b14Value * item.count;
-                   console.log(`считаем: item.total = ${item.koef} * parseFloat(${item.hard}) * ${checkMonol} * ${b14Value} = ${item.total}`);
+                 //  console.log(`считаем: item.total = ${item.koef} * parseFloat(${item.hard}) * ${checkMonol} * ${b14Value} = ${item.total}`);
                     sumObsledOtdel +=  item.total;
 
                 }

@@ -250,8 +250,6 @@ let input3Calc7 = $('#input3Calc7');
 let input3Calc8 = $('#input3Calc8');
 
 
-
-
 async function getSmeta(id) {
     idActiveSmeta = id;
     const selectedItem = smetaList.find(item => item.id == id);
@@ -685,7 +683,7 @@ async function getSmeta(id) {
         $('#conval00822').val(obsledotdel.conval00822);
         $('#conval00833').val(obsledotdel.conval00833);
 
-        console.log
+
         monolit1.prop('checked', obsledotdel.monolit1 > 0);
         monolit2.prop('checked', obsledotdel.monolit2 > 0);
         monolit3.prop('checked', obsledotdel.monolit3 > 0);
@@ -707,7 +705,45 @@ async function getSmeta(id) {
         monolit19.prop('checked', obsledotdel.monolit19 > 0);
         monolit20.prop('checked', obsledotdel.monolit20 > 0);
         monolit21.prop('checked', obsledotdel.monolit21 > 0);
+
+        selectCalc1.val(calculator.selectCalc1);
+        selectCalc2.val(calculator.selectCalc2);
+        selectCalc3.val(calculator.selectCalc3);
+        selectCalc4.val(calculator.selectCalc4);
+        selectCalc5.val(calculator.selectCalc5);
+        selectCalc6.val(calculator.selectCalc6);
+        selectCalc7.val(calculator.selectCalc7);
+        selectCalc8.val(calculator.selectCalc8);
+
+        select2Calc1.val(calculator.select2Calc1);
+        select2Calc2.val(calculator.select2Calc2);
+        select2Calc3.val(calculator.select2Calc3);
+        select2Calc4.val(calculator.select2Calc4);
+        select2Calc5.val(calculator.select2Calc5);
+        select2Calc6.val(calculator.select2Calc6);
+        select2Calc7.val(calculator.select2Calc7);
+        select2Calc8.val(calculator.select2Calc8);
+
+        inputCalc1.val(calculator.inputCalc1);
+        inputCalc2.val(calculator.inputCalc2);
+        inputCalc3.val(calculator.inputCalc3);
+        inputCalc4.val(calculator.inputCalc4);
+        inputCalc5.val(calculator.inputCalc5);
+        inputCalc6.val(calculator.inputCalc6);
+        inputCalc7.val(calculator.inputCalc7);
+        inputCalc8.val(calculator.inputCalc8);
+
+        input3Calc1.val(calculator.input3Calc1);
+        input3Calc2.val(calculator.input3Calc2);
+        input3Calc3.val(calculator.input3Calc3);
+        input3Calc4.val(calculator.input3Calc4);
+        input3Calc5.val(calculator.input3Calc5);
+        input3Calc6.val(calculator.input3Calc6);
+        input3Calc7.val(calculator.input3Calc7);
+        input3Calc8.val(calculator.input3Calc8);
     }
+
+
     document.getElementById("smetaDropdown").classList.toggle("show");
     executeFunctions();
 }
@@ -722,12 +758,43 @@ async function executeFunctions() {
     await toggleCheckboxesDop6();
     await toggleCheckboxesDop7();
     await calculateHaracterCoefficient();
+
     await calculateK();
+
 
     let allLolSpace = document.querySelectorAll(".lolspace1");
     [...allLolSpace].forEach(item => {
-        if(item.children[0].checked) {
+        if (item.children[0].checked) {
             toggleCheckboxesDop8(item.children[0]);
+        }
+    });
+    let formselectcalc = document.querySelectorAll(".form-select-calc");
+    [...formselectcalc].forEach((item, index) => {
+        if (item) {
+            if (item.options[item.selectedIndex].value !== 0) {
+                index = index + 1;
+                selectCalculation(index);
+            }
+
+        }
+    });
+
+    let doljnosti_KSD_class = document.querySelectorAll(".doljnosti_KSD");
+    console.log (doljnosti_KSD_class , "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+    doljnosti_KSD_class.forEach((item) => {
+        if (item) {
+
+            if (item.options[item.selectedIndex].value !== 0) {
+                let thisTarget = item;
+                let doljnostKoef = thisTarget.options[thisTarget.options.selectedIndex].getAttribute('data-koef');
+                let nextInput = thisTarget.nextElementSibling;
+                let nextnextInput = nextInput.nextElementSibling;
+                if (nextnextInput.value.length === 0)
+                    nextnextInput.value = 1;
+                nextInput.value = doljnostKoef;
+                console.log (doljnostKoef , "doljnostKoef");
+                 calculateK();
+            }
         }
     });
 
@@ -829,6 +896,8 @@ function saveSmeta() {
             selectedObsled = $(this).val();
         }
     });
+
+
     let obsledObject = {
         obsledobs: selectedObsled,
         choosCunstruct5: choosCunstruct5.prop('checked') ? 1 : 0,
@@ -1238,11 +1307,9 @@ async function calcObmerWorksPart2() {
 
         return new Promise(function (resolve, reject) {
             let budval = $("#buildingType").val();
-            if (budval == 5){
+            if (budval == 5) {
                 typeW = 3;
-            }
-            else if (budval == 6)
-            {
+            } else if (budval == 6) {
                 typeW = 4;
             }
             $.ajax({
@@ -1437,11 +1504,9 @@ async function calcObsled2() {
 
         return new Promise(function (resolve, reject) {
             let budval = $("#buildingType").val();
-            if (budval == 5){
+            if (budval == 5) {
                 typeW = 3;
-            }
-            else if (budval == 6)
-            {
+            } else if (budval == 6) {
                 typeW = 4;
             }
             $.ajax({
@@ -1636,11 +1701,9 @@ async function calcSosttech2() {
 
         return new Promise(function (resolve, reject) {
             let budval = $("#buildingType").val();
-            if (budval == 5){
+            if (budval == 5) {
                 typeW = 3;
-            }
-            else if (budval == 6)
-            {
+            } else if (budval == 6) {
                 typeW = 4;
             }
             $.ajax({
@@ -1700,7 +1763,7 @@ $("#choosCunstruct6").on("change", async function (event) {
     await calculateK();
 })
 
-$(".doljnosti_KSD").on('change', async (event) => {
+async function call_doljnosti_KSD(event) {
     let thisTarget = event.target;
     let doljnostKoef = thisTarget.options[thisTarget.options.selectedIndex].getAttribute('data-koef');
     let nextInput = thisTarget.nextElementSibling;
@@ -1709,7 +1772,11 @@ $(".doljnosti_KSD").on('change', async (event) => {
         nextnextInput.value = 1;
     nextInput.value = doljnostKoef;
     await calculateK();
-})
+}
+
+document.querySelectorAll(".doljnosti_KSD").forEach(element => {
+    element.addEventListener('change', call_doljnosti_KSD);
+});
 
 $(".kol_isp").on('change', async (event) => {
 
@@ -1761,7 +1828,7 @@ async function calcCalkulation() {
 
     let sizeTruds = truds.length < 1 ? 1 : truds.length;
 
-    if(truds.length > 1) {
+    if (truds.length > 1) {
         let calc1 = parseFloat(calculacia);
         let sum = 0;
         for (let i = 0; i < sizeTruds; i++) {
@@ -1774,7 +1841,7 @@ async function calcCalkulation() {
             }
         }
         calculacia = sum.toFixed(2);
-    }else{
+    } else {
         truds.each(function () {
             calculacia *= $(this).val() !== "0" ? parseFloat($(this).val()) : 1;
         });
@@ -1978,7 +2045,6 @@ function printCalculExcel() {
                 } else {
                     selectedText = sel.find('option:selected').text();
                 }
-
 
 
                 if (selectedText && selectedText.trim() !== "") {
