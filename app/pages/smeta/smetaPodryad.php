@@ -4086,8 +4086,10 @@ echo "<script>
             });
         });
         let allLolSpace = document.querySelectorAll(".lolspace1");
+        let countChecked = 0;
         [...allLolSpace].forEach(item => {
             if (item.children[0].checked) {
+                countChecked++;
                 let nextElem = item.nextElementSibling;
                 if (nextElem) {
                     calcObsledOtdel(nextElem.children[0]);
@@ -4096,6 +4098,11 @@ echo "<script>
                 }
             }
         });
+        console.log(countChecked, "yebishe");
+        if(countChecked == 0) {
+            sumObsledOtdel = 0;
+            $('#obsledotdel').html(0);
+        }
     }
 
     function toggleDropdown() {
@@ -4520,6 +4527,7 @@ echo "<script>
 
 
     async function calcObsledOtdel(elem) {
+
         const ded = elem.parentElement.parentElement;
         let papa = elem.parentElement;
         let checkMonol;
@@ -4545,7 +4553,7 @@ echo "<script>
         else{
             checkMonol = 1;
         }
-        arrObsledOtdel.map(item => {
+        arrObsledOtdel.forEach(item => {
             let dedchildren = ded.children[0];
             let dedchildren1 = dedchildren.children[0];
             if (item.id === ded.children[0].children[0].id) {
@@ -4563,22 +4571,23 @@ echo "<script>
                 }
 
                 if ( item.count != 0 && item.hard != 0) {
-                    item.total = koef0 * parseFloat(item.hard) * checkMonol * b14Value * item.count;
-                   console.log(`считаем: item.total = ${koef0} * parseFloat(${item.hard}) * ${checkMonol} * ${b14Value} = ${item.total}`);
-                    sumObsledOtdel =  item.total;
-                    $('#obsledotdel').html(sumObsledOtdel.toFixed(3));
+                    item.total = item.koef * parseFloat(item.hard) * checkMonol * b14Value * item.count;
+                   console.log(`считаем: item.total = ${item.koef} * parseFloat(${item.hard}) * ${checkMonol} * ${b14Value} = ${item.total}`);
+                    sumObsledOtdel +=  item.total;
+
                 }
                 else
                 {
                     item.total = 0;
+                    sumObsledOtdel = 0;
                 }
             }
         })
         console.log (arrObsledOtdel);
-       // sumObsledOtdel = 0;
-       //  arrObsledOtdel.map(item => {
-       //      sumObsledOtdel +=  item.total;
-       //  })
+       sumObsledOtdel = 0;
+        arrObsledOtdel.map(item => {
+            sumObsledOtdel +=  item.total;
+        })
         $('#obsledotdel').html(sumObsledOtdel.toFixed(3));
       //  console.log (arrObsledOtdel);
         calculateK();
