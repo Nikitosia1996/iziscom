@@ -2343,9 +2343,9 @@ echo "<script>
                         </div>
                     </div>
                     <div class="select-input-pair">
-                        <select class="form-select-calc" id="selectCalc1" aria-label=""
+                        <select class="form-select-calc naim_rab" id="selectCalc1" aria-label=""
                                 onchange="selectCalculation(1)">
-                            <option value="0" selected>-- Пожалуйста, выберите --</option>
+                            <option value="0" >-- Пожалуйста, выберите --</option>
                             <option value="1">
                                 Обследование строительных конструкций. Оформление отчета.
                             </option>
@@ -2365,7 +2365,7 @@ echo "<script>
                     <input class="custom-work" type="text" id="customWork1" style="display:none;"
                            placeholder="Введите наименование работы">
                     <div class="select-input-pair">
-                        <select class="form-select-calc" id="selectCalc2" aria-label=""
+                        <select class="form-select-calc naim_rab" id="selectCalc2" aria-label=""
                                 onchange="selectCalculation(2)">
                             <option value="0" selected>-- Пожалуйста, выберите --</option>
                             <option value="1">
@@ -2386,7 +2386,7 @@ echo "<script>
                     <input class="custom-work" type="text" id="customWork2" style="display:none;"
                            placeholder="Введите наименование работы">
                     <div class="select-input-pair">
-                        <select class="form-select-calc" aria-label="" id="selectCalc3"
+                        <select class="form-select-calc naim_rab" aria-label="" id="selectCalc3"
                                 onchange="selectCalculation(3)">
                             <option value = "0" selected>-- Пожалуйста, выберите --</option>
                             <option value="1">
@@ -2407,7 +2407,7 @@ echo "<script>
                     <input class="custom-work" type="text" id="customWork3" style="display:none;"
                            placeholder="Введите наименование работы">
                     <div class="select-input-pair">
-                        <select class="form-select-calc" aria-label="" id="selectCalc4"
+                        <select class="form-select-calc naim_rab" aria-label="" id="selectCalc4"
                                 onchange="selectCalculation(4)">
                             <option value = "0" selected>-- Пожалуйста, выберите --</option>
                             <option value="1">
@@ -2428,7 +2428,7 @@ echo "<script>
                     <input class="custom-work" type="text" id="customWork4" style="display:none;"
                            placeholder="Введите наименование работы">
                     <div class="select-input-pair">
-                        <select class="form-select-calc" aria-label="" id="selectCalc5"
+                        <select class="form-select-calc naim_rab" aria-label="" id="selectCalc5"
                                 onchange="selectCalculation(5)">
                             <option value = "0" selected>-- Пожалуйста, выберите --</option>
                             <option value="1">
@@ -2449,7 +2449,7 @@ echo "<script>
                     <input class="custom-work" type="text" id="customWork5" style="display:none;"
                            placeholder="Введите наименование работы">
                     <div class="select-input-pair">
-                        <select class="form-select-calc" aria-label="" id="selectCalc6"
+                        <select class="form-select-calc naim_rab" aria-label="" id="selectCalc6"
                                 onchange="selectCalculation(6)">
                             <option value = "0" selected>-- Пожалуйста, выберите --</option>
                             <option value="1">
@@ -2470,7 +2470,7 @@ echo "<script>
                     <input class="custom-work" type="text" id="customWork6" style="display:none;"
                            placeholder="Введите наименование работы">
                     <div class="select-input-pair">
-                        <select class="form-select-calc" aria-label="" id="selectCalc7"
+                        <select class="form-select-calc naim_rab" aria-label="" id="selectCalc7"
                                 onchange="selectCalculation(7)">
                             <option value = "0" selected>-- Пожалуйста, выберите --</option>
                             <option value="1">
@@ -2491,7 +2491,7 @@ echo "<script>
                     <input class="custom-work" type="text" id="customWork7" style="display:none;"
                            placeholder="Введите наименование работы">
                     <div class="select-input-pair">
-                        <select class="form-select-calc" aria-label="" id="selectCalc8"
+                        <select class="form-select-calc naim_rab" aria-label="" id="selectCalc8"
                                 onchange="selectCalculation(8)">
                             <option value = "0" selected>-- Пожалуйста, выберите --</option>
                             <option value="1">
@@ -2533,7 +2533,7 @@ echo "<script>
                     </div>
                     <div class="select-input-pair">
                         <select class="form-select-calc doljnosti_KSD" id="select2Calc1" disabled aria-label="">
-                            <option value = "0" selected>-- Пожалуйста, выберите --</option>
+                            <option value = "0" >-- Пожалуйста, выберите --</option>
                             <?php
                             $doljnosti_array = array();
                             while ($row = $connectionDB->getRowResult($doljnosti_KSD)) {
@@ -4098,7 +4098,6 @@ echo "<script>
                 }
             }
         });
-        console.log(countChecked, "yebishe");
         if(countChecked == 0) {
             sumObsledOtdel = 0;
             $('#obsledotdel').html(0);

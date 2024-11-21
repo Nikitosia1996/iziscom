@@ -239,6 +239,14 @@ let inputCalc6 = $('#inputCalc6');
 let inputCalc7 = $('#inputCalc7');
 let inputCalc8 = $('#inputCalc8');
 
+let input2Calc1 = $('#input2Calc1');
+let input2Calc2 = $('#input2Calc2');
+let input2Calc3 = $('#input2Calc3');
+let input2Calc4 = $('#input2Calc4');
+let input2Calc5 = $('#input2Calc5');
+let input2Calc6 = $('#input2Calc6');
+let input2Calc7 = $('#input2Calc7');
+let input2Calc8 = $('#input2Calc8');
 
 let input3Calc1 = $('#input3Calc1');
 let input3Calc2 = $('#input3Calc2');
@@ -706,8 +714,9 @@ async function getSmeta(id) {
         monolit20.prop('checked', obsledotdel.monolit20 > 0);
         monolit21.prop('checked', obsledotdel.monolit21 > 0);
 
-        selectCalc1.val(calculator.selectCalc1);
-        selectCalc2.val(calculator.selectCalc2);
+
+        selectCalc1.find(`option[value="${calculator.selectCalc1}"]`).attr('selected', true);
+        selectCalc2.find(`option[value="${calculator.selectCalc2}"]`).attr('selected', true);
         selectCalc3.val(calculator.selectCalc3);
         selectCalc4.val(calculator.selectCalc4);
         selectCalc5.val(calculator.selectCalc5);
@@ -715,7 +724,8 @@ async function getSmeta(id) {
         selectCalc7.val(calculator.selectCalc7);
         selectCalc8.val(calculator.selectCalc8);
 
-        select2Calc1.val(calculator.select2Calc1);
+
+        select2Calc1.find(`option[value="${calculator.select2Calc1}"]`).attr('selected', true);
         select2Calc2.val(calculator.select2Calc2);
         select2Calc3.val(calculator.select2Calc3);
         select2Calc4.val(calculator.select2Calc4);
@@ -732,6 +742,15 @@ async function getSmeta(id) {
         inputCalc6.val(calculator.inputCalc6);
         inputCalc7.val(calculator.inputCalc7);
         inputCalc8.val(calculator.inputCalc8);
+
+        input2Calc1.val(calculator.input2Calc1);
+        input2Calc2.val(calculator.input2Calc2);
+        input2Calc3.val(calculator.input2Calc3);
+        input2Calc4.val(calculator.input2Calc4);
+        input2Calc5.val(calculator.input2Calc5);
+        input2Calc6.val(calculator.input2Calc6);
+        input2Calc7.val(calculator.input2Calc7);
+        input2Calc8.val(calculator.input2Calc8);
 
         input3Calc1.val(calculator.input3Calc1);
         input3Calc2.val(calculator.input3Calc2);
@@ -768,7 +787,7 @@ async function executeFunctions() {
             toggleCheckboxesDop8(item.children[0]);
         }
     });
-    let formselectcalc = document.querySelectorAll(".form-select-calc");
+    let formselectcalc = document.querySelectorAll(".naim_rab");
     [...formselectcalc].forEach((item, index) => {
         if (item) {
             if (item.options[item.selectedIndex].value !== 0) {
@@ -780,7 +799,6 @@ async function executeFunctions() {
     });
 
     let doljnosti_KSD_class = document.querySelectorAll(".doljnosti_KSD");
-    console.log (doljnosti_KSD_class , "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
     doljnosti_KSD_class.forEach((item) => {
         if (item) {
 
