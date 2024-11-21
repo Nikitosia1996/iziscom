@@ -823,24 +823,24 @@ WHERE id_smeta = '$id'";
         mysqli_query($connectionDB->con, $sql) or mysqli_error($connectionDB->con);
 
         $sql = "INSERT INTO redaktor (
-    toggleZd81,
-    toggleZd82,
-    toggleZd83,
-    toggleZd84
-    conval81,
-    conval82,
-    conval83,
-    conval84
-    id_smeta,
+    toggleZd71,
+    toggleZd72,
+    toggleZd73,
+    toggleZd74,
+    conval71,
+    conval72,
+    conval73,
+    conval74,
+    id_smeta
 ) VALUES (
-    '{$toggleZd81}',
-    '{$toggleZd82}',
-    '{$toggleZd83}',
-           '{$toggleZd84}',
-           '{$conval81}',
-           '{$conval82}',
-           '{$conval83}',
-           '{$conval84}',
+    '{$toggleZd71}',
+    '{$toggleZd72}',
+    '{$toggleZd73}',
+           '{$toggleZd74}',
+           '{$conval71}',
+           '{$conval72}',
+           '{$conval73}',
+           '{$conval74}',
            '$insertedId'
 )";
 
@@ -1023,7 +1023,7 @@ WHERE id_smeta = '$id'";
 
         mysqli_query($connectionDB->con, $sql) or mysqli_error($connectionDB->con);
 
-        $sql = "INSERT INTO calculation (
+        $sql = "INSERT INTO iziscom.calculation (
     selectCalc1,
     selectCalc2,
     selectCalc3,
