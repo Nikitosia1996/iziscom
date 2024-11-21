@@ -949,7 +949,28 @@ function saveSmeta() {
         conval0082: $('#conval0082').val(),
         conval00822: $('#conval00822').val(),
         conval0083: $('#conval0083').val(),
-        conval00833: $('#conval00833').val()
+        conval00833: $('#conval00833').val(),
+        monolit1: monolit1.prop('checked') ? 1 : 0,
+        monolit2: monolit2.prop('checked') ? 1 : 0,
+        monolit3: monolit3.prop('checked') ? 1 : 0,
+        monolit4: monolit4.prop('checked') ? 1 : 0,
+        monolit5: monolit5.prop('checked') ? 1 : 0,
+        monolit6: monolit6.prop('checked') ? 1 : 0,
+        monolit7: monolit7.prop('checked') ? 1 : 0,
+        monolit8: monolit8.prop('checked') ? 1 : 0,
+        monolit9: monolit9.prop('checked') ? 1 : 0,
+        monolit10: monolit10.prop('checked') ? 1 : 0,
+        monolit11: monolit11.prop('checked') ? 1 : 0,
+        monolit12: monolit12.prop('checked') ? 1 : 0,
+        monolit13: monolit13.prop('checked') ? 1 : 0,
+        monolit14: monolit14.prop('checked') ? 1 : 0,
+        monolit15: monolit15.prop('checked') ? 1 : 0,
+        monolit16: monolit16.prop('checked') ? 1 : 0,
+        monolit17: monolit17.prop('checked') ? 1 : 0,
+        monolit18: monolit18.prop('checked') ? 1 : 0,
+        monolit19: monolit19.prop('checked') ? 1 : 0,
+        monolit20: monolit20.prop('checked') ? 1 : 0,
+        monolit21: monolit21.prop('checked') ? 1 : 0
 
     }
 
