@@ -1426,7 +1426,7 @@ echo "<script>
                 <div class="mainlolspace">
                     <div class="lolspace">
 
-                        <input type="checkbox" id="toggleZd52" class="obsled2check" disabled onchange="toggleCheckboxesDop5()"> Стены
+                        <input type="checkbox" id="toggleZd52" class="obsled2check" disabled onchange="toggleCheckboxesDop5()"> <div>Стены</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval" id="conval52" disabled type="number" name="inputValue" step="1"
