@@ -788,19 +788,11 @@ $sheet->setCellValue("A" . $startedCell + 6, "М.П.");
 
 
 
-header("Expires: Mon, 1 Apr 1974 05:00:00 GMT");
-header("Last-Modified: " . gmdate("D,d M Y H:i:s") . " GMT");
-header("Cache-Control: no-cache, must-revalidate");
-header("Pragma: no-cache");
 header("Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-header("Content-Disposition: attachment; filename=myFile.xlsx");
-
-
+header("Content-Disposition: attachment; filename=\"myFile.xlsx\"");
+header("Cache-Control: max-age=0");
+header("Pragma: public");
+header("Expires: 0");
 $writer = new Xlsx($spreadsheet);
 $writer->save("php://output");
-
-$myarr = json_decode($myObject);
-
-foreach ($myarr as $item) {
-    echo $item->text . "<br>";
-}
+exit;
