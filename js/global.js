@@ -2056,7 +2056,7 @@ function printExcel() {
 
         $(".ishod2check:checked").each(function() {
             var nextText = $(this).next();
-            arrSbor.push(nextText.text());
+            arrSbor.push(nextText.text().replace(/\s+/g, ' ').trim());
         })
         const arrSborString = JSON.stringify(arrSbor);
         document.cookie = `arrSbor=${encodeURIComponent(arrSborString)}; path=/; max-age=3600`;
@@ -2065,7 +2065,7 @@ function printExcel() {
 
         $(".obmer2check:checked").each(function() {
             var nextText = $(this).next();
-            arrObmer.push(nextText.text());
+            arrObmer.push(nextText.text().replace(/\s+/g, ' ').trim());
         })
         const arrObmerString = JSON.stringify(arrObmer);
         document.cookie = `arrObmer=${encodeURIComponent(arrObmerString)}; path=/; max-age=3600`;
@@ -2074,7 +2074,7 @@ function printExcel() {
 
         $(".obsled2check:checked").each(function() {
             var nextText = $(this).next();
-            arrObsled.push(nextText.text());
+            arrObsled.push(nextText.text().replace(/\s+/g, ' ').trim());
         })
         const arrObsledString = JSON.stringify(arrObsled);
         document.cookie = `arrObsled=${encodeURIComponent(arrObsledString)}; path=/; max-age=3600`;
@@ -2083,7 +2083,7 @@ function printExcel() {
 
         $(".sostTech2check:checked").each(function() {
             var nextText = $(this).next();
-            arrSostTech.push(nextText.text());
+            arrSostTech.push(nextText.text().replace(/\s+/g, ' ').trim());
         })
         const arrSostTechString = JSON.stringify(arrSostTech);
         document.cookie = `arrSostTech=${encodeURIComponent(arrSostTechString)}; path=/; max-age=3600`;
