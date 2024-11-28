@@ -4603,11 +4603,8 @@ echo "<script>
             sumObsledOtdel +=  item.total;
         })
         $('#obsledotdel').html(sumObsledOtdel.toFixed(3));
-      //  console.log (arrObsledOtdel);
         calculateK();
     }
-
-
 
     function calcObsOtd(elem){
         if (elem.is(':checked')) {
