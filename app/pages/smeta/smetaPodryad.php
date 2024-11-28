@@ -2969,14 +2969,16 @@ echo "<script>
         if (checkUSN.checked)
         {
          //   console.log('Учитывать НДС:', checkNDS.checked);
-            fullSumma = fullSumma - (fullSumma * usn)/100;
-            calculacia = calculacia - (calculacia *  usn)/100;
+            let peremen = 100 - usn;
+            fullSumma = fullSumma + (fullSumma * usn)/peremen;
+            calculacia = calculacia + (calculacia *  usn)/peremen;
             fullSumma = parseFloat(fullSumma.toFixed(2));
         }
         if (checkNDS.checked)
         {
-            fullSumma = fullSumma - (fullSumma * nds)/100;
-            calculacia = calculacia - (calculacia *  nds)/100;
+            let peremen = 100 - nds;
+            fullSumma = fullSumma + (fullSumma * nds)/peremen;
+            calculacia = calculacia + (calculacia *  nds)/peremen;
             fullSumma = parseFloat(fullSumma.toFixed(2));
            // console.log('Учитывать УСН:', checkUSN.checked);
           //  console.log('Учитывать НДС:', checkNDS.checked);
@@ -3253,14 +3255,17 @@ echo "<script>
                             } else {
                                 sumIshod = Vdiv100 * k18101 * koefIshod * koefIshod2 * b14Value * k18ob * ki212 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat * kefVisota;
                             }
-                            $('#sborIshodnihDannih').html(sumIshod.toFixed(3));
+
                         }
+                        $('#sborIshodnihDannih').html(sumIshod.toFixed(3));
+                        calculateK();
                         resolve();
                     },
                 })
             })
         }
         await calculateK();
+        $('#sborIshodnihDannih').html(sumIshod.toFixed(3));
 
     }
 
@@ -3358,6 +3363,8 @@ echo "<script>
                     } else {
                         sumIshod = Vdiv100 * k18101 * koefIshod * koefIshod2 * b14Value * k18ob * ki212 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat * kefVisota;
                     }
+                    $('#sborIshodnihDannih').html(sumIshod.toFixed(3));
+                    calculateK();
                     resolve();
                 }).catch(function (error) {
                     reject(error);
@@ -4607,7 +4614,7 @@ echo "<script>
             totalSum = totalSum +parseFloat(sumObsledOtdel);
 
         }
-
+       fullSumma = fullSumma.toFixed(2);
         document.getElementById('harakteristikaObjectObsh').innerText = totalSum.toFixed(2);
         document.getElementById('harakteristikaObjectSmeta').innerText = parseFloat(fullSumma);
     }

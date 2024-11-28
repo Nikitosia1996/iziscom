@@ -1280,11 +1280,13 @@ async function calcObmerWorksPart1() {
                 } else {
                     sumObmer = koefObmerWork1 * koefObmerWork2 * b14Value * k18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat * kefVisota;
                 }
-                $('#obmerRaboty').html(sumObmer.toFixed(3));
+
 
             } else {
 
             }
+            $('#obmerRaboty').html(sumObmer.toFixed(3));
+            calculateK();
             resolve();
         })
     })
@@ -1387,6 +1389,7 @@ async function calcObmerWorksPart2() {
                 }
 
                 $('#obmerRaboty').html(sumObmer.toFixed(3));
+                calculateK();
                 resolve();
             }).catch(function (error) {
                 reject(error);
@@ -1481,9 +1484,11 @@ async function calcObsled1() {
                 } else {
                     sumObsled = koefObsled1 * koefObsled2 * b14Value * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat * kefVisota;
                 }
-                $('#obsledRab').html(sumObsled.toFixed(3));
+
             } else {
             }
+            $('#obsledRab').html(sumObsled.toFixed(3));
+            calculateK();
             resolve();
         })
     })
@@ -1582,6 +1587,7 @@ async function calcObsled2() {
                     sumObsled = koefObsled1 * koefObsled2 * b14Value * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat * kefVisota;
                 }
                 $('#obsledRab').html(sumObsled.toFixed(3));
+                calculateK();
                 resolve();
             }).catch(function (error) {
                 reject(error);
@@ -1679,9 +1685,11 @@ async function calcSosttech1() {
                 } else {
                     sumSosttech = koefSosttech1 * koefSosttech2 * b14Value * k18ob * Vdiv100 * k18101 * ki242 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat * kefVisota;
                 }
-                $('#sostTech').html(sumSosttech.toFixed(3));
+
 
             }
+            $('#sostTech').html(sumSosttech.toFixed(3));
+            calculateK();
             resolve();
         })
     })
@@ -1779,6 +1787,7 @@ async function calcSosttech2() {
                     sumSosttech = koefSosttech1 * koefSosttech2 * b14Value * k18ob * Vdiv100 * k18101 * ki242 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat * kefVisota;
                 }
                 $('#sostTech').html(sumSosttech.toFixed(3));
+                calculateK();
                 resolve();
             }).catch(function (error) {
                 reject(error);
