@@ -1,5 +1,16 @@
 <?php
+
+
 require 'vendor/autoload.php';
+
+//require "connection/connection.php";
+//
+//$smets = "SELECT * FROM smets where id_smeta = 54";
+//$smetsRresult = $connectionDB->executeQuery($smets);
+//
+//$rows = $connectionDB->getRowResult($smetsRresult);
+//$text = $rows['textAreaNaimRabot'];
+
 
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
@@ -20,6 +31,7 @@ $V = $_COOKIE['V'];
 $n = $_COOKIE['n'];
 $h = $_COOKIE['h'];
 $het = $_COOKIE['het'];
+$textAreaNaimRabot = $_COOKIE['textAreaNaimRabot'];
 $k18101 = $_COOKIE['k18101'];
 $k18ob = $_COOKIE['k18ob'];
 
@@ -42,9 +54,49 @@ $k18220 = $_COOKIE['K18220'];
 
 $fullSumma = $_COOKIE['fullSumma'];
 
+$arrSbor = $_COOKIE["arrSbor"];
+$stringSbor = "";
+$arr = json_decode($arrSbor);
+
+foreach ($arr as $item){
+    $stringSbor .= $item . ", ";
+}
+$stringSbor = rtrim($stringSbor, ", ");
+////////
+$arrObmer = $_COOKIE["arrObmer"];
+$stringObmer = "";
+$arr = json_decode($arrObmer);
+
+foreach ($arr as $item){
+    $stringObmer .= $item . ", ";
+}
+$stringObmer = rtrim($stringObmer, ", ");
+
+////////
+$arrObsled = $_COOKIE["arrObsled"];
+$stringObsled = "";
+$arr = json_decode($arrObsled);
+
+foreach ($arr as $item){
+    $stringObsled .= $item . ", ";
+}
+$stringObsled = rtrim($stringObsled, ", ");
+
+////////
+$arrSostTech = $_COOKIE["arrSostTech"];
+$stringSostTech = "";
+$arr = json_decode($arrSostTech);
+
+foreach ($arr as $item){
+    $stringSostTech .= $item . ", ";
+}
+$stringSostTech = rtrim($stringSostTech, ", ");
+
+
 class Table
 {
     public $tableName;
+    public $arrString;
     public $chacked;
     public $h3tp;
     public $ki;
@@ -54,9 +106,10 @@ class Table
     public $formula;
     public $arrObosnovanie;
 
-    public function __construct($tableName, $chacked, $h3tp, $ki, $p, $ph3, $sumKoef, $formula, $arrObosnovanie)
+    public function __construct($tableName, $arrString, $chacked, $h3tp, $ki, $p, $ph3, $sumKoef, $formula, $arrObosnovanie)
     {
         $this->tableName = $tableName;
+        $this->arrString = $arrString;
         $this->chacked = $chacked;
         $this->h3tp = $h3tp;
         $this->ki = $ki;
@@ -69,17 +122,17 @@ class Table
 }
 
 
-$isSborIshodnihDannihChecked = new Table("Сбор исходных данных", $_COOKIE['chacked1'], $_COOKIE['h3tp_212'], $_COOKIE['ki212'], $_COOKIE['p212'], $_COOKIE['ph3_212'], $_COOKIE['sumIshod'], $_COOKIE['formula1'],
+$isSborIshodnihDannihChecked = new Table("Сбор исходных данных", $stringSbor, $_COOKIE['chacked1'], $_COOKIE['h3tp_212'], $_COOKIE['ki212'], $_COOKIE['p212'], $_COOKIE['ph3_212'], $_COOKIE['sumIshod'], $_COOKIE['formula1'],
     ["п.2.1.2", "", "НЗТ8.01.00-2014 табл.1", "п.2.1.2", "п.2.1.5, табл. 2.4"]);
-$isObmerRabotyChecked = new Table("Обмерные работы", $_COOKIE['chacked2'], $_COOKIE['h3tp_222'], $_COOKIE['ki222'], $_COOKIE['p222'], $_COOKIE['ph3_222'], $_COOKIE['sumObmer'], $_COOKIE['formula2'],
+$isObmerRabotyChecked = new Table("Обмерные работы", $stringObmer, $_COOKIE['chacked2'], $_COOKIE['h3tp_222'], $_COOKIE['ki222'], $_COOKIE['p222'], $_COOKIE['ph3_222'], $_COOKIE['sumObmer'], $_COOKIE['formula2'],
     ["п.2.2.2", "", "НЗТ8.01.00-2014 табл.1", "п.2.2.2", "п.2.2.5, табл. 2.7"]);
-$isObsledRabChecked = new Table("Обследовательские работы", $_COOKIE['chacked3'], $_COOKIE['h3tp_223'], $_COOKIE['ki223'], $_COOKIE['p223'], $_COOKIE['ph3_223'], $_COOKIE['sumObsled'], $_COOKIE['formula3'],
+$isObsledRabChecked = new Table("Обследовательские работы", $stringObsled, $_COOKIE['chacked3'], $_COOKIE['h3tp_223'], $_COOKIE['ki223'], $_COOKIE['p223'], $_COOKIE['ph3_223'], $_COOKIE['sumObsled'], $_COOKIE['formula3'],
     ["п.2.3.2", "", "НЗТ8.01.00-2014 табл.1", "п.2.3.2", "п.2.3.5, табл. 2.10"]);
-$isSostTechOtchetCheck = new Table("Составление технического отчета ", $_COOKIE['chacked4'], $_COOKIE['h3tp_242'], $_COOKIE['ki242'], $_COOKIE['p242'], $_COOKIE['ph3_242'], $_COOKIE['sumSosttech'], $_COOKIE['formula4'],
+$isSostTechOtchetCheck = new Table("Составление технического отчета ", $stringSostTech, $_COOKIE['chacked4'], $_COOKIE['h3tp_242'], $_COOKIE['ki242'], $_COOKIE['p242'], $_COOKIE['ph3_242'], $_COOKIE['sumSosttech'], $_COOKIE['formula4'],
     ["п.2.4.2", "", "НЗТ8.01.00-2014 табл.1", "п.2.4.2", "п.2.4.5, табл. 2.10"]);
-$isRedaktorIspConstr = new Table("Расчет стоимости испытания материалов", $_COOKIE['chacked5'], 0, 0, 0, 0, $_COOKIE['sumRedaktor'], "формула5",
+$isRedaktorIspConstr = new Table("Расчет стоимости испытания материалов", "", $_COOKIE['chacked5'], 0, 0, 0, 0, $_COOKIE['sumRedaktor'], "формула5",
     ["табл.2.16"]);
-$isObsledOtdel = new Table("Обследование отдельных жб конструкций", $_COOKIE['chacked6'], 0, 0, 0, 0, 0, $_COOKIE['formula6'],
+$isObsledOtdel = new Table("Обследование отдельных жб конструкций", "", $_COOKIE['chacked6'], 0, 0, 0, 0, 0, $_COOKIE['formula6'],
     ["табл. 2.10", "п.2.4.1, табл. 2.11", "п.2.4.1, табл. 2.11", "табл. 2.11", "п.2.3.8.2"]);
 
 $arrTables = array();
@@ -92,7 +145,10 @@ array_push($arrTables, $isSostTechOtchetCheck);
 
 $sheet->getStyle('A1:Z1000')->getFont()->setName('Arial');
 $sheet->getStyle('A1:Z1000')->getFont()->setSize(14);
-$sheet->getStyle('I24:I100')->getFont()->setSize(10);
+$sheet->getStyle('I24:I100')->getFont()->setSize(13);
+
+$sheet->getStyle('B24:B100' )->getFont()->setBold(true);
+$sheet->getStyle('N24:N100' )->getFont()->setBold(true);
 
 $sheet->getColumnDimension("A")->setWidth(14 * COEFF);
 $sheet->getColumnDimension("B")->setWidth(9.57 * COEFF);
@@ -119,6 +175,15 @@ for ($row = 1; $row <= 1000; $row++) {
 $sheet->getRowDimension("5")->setRowHeight(47);
 
 
+$sheet->getStyle("C6")->getFont()->setBold(true);
+$sheet->getStyle("C7")->getFont()->setBold(true);
+$sheet->getStyle("C15:C20")->getFont()->setBold(true);
+$sheet->getStyle("G15:G20")->getFont()->setBold(true);
+$sheet->getStyle("K15:K20")->getFont()->setBold(true);
+$sheet->getStyle("O15:O20")->getFont()->setBold(true);
+$sheet->getStyle("F11:F14")->getFont()->setBold(true);
+
+
 $sheet->setCellValue("N1", "Приложение №");
 $sheet->setCellValue("N2", "к договору №");
 $date = "";
@@ -131,7 +196,14 @@ $sheet->getStyle("F3")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::
 $sheet->getStyle("F3")->getFont()->setSize(20);
 $sheet->getStyle("F3")->getFont()->setBold(true);
 $sheet->setCellValue("E4", "на выполнение обследовательских работ по объекту:");
+$sheet->setCellValue("D5", $textAreaNaimRabot);
+$sheet->getStyle("D5")->getAlignment()->setWrapText(true);
+
+// Объединяем ячейки D5:H5 (5 столбцов)
+$sheet->mergeCells("D5:K5");
 $sheet->getStyle('E4')->getFont()->setSize(16);
+
+
 
 $sheet->setCellValue("A6", "Заказчик: ");
 $sheet->setCellValue("C6", $zakazchik);
@@ -480,9 +552,18 @@ $sheet->getStyle("N22")->getAlignment()->setVertical(PHPExcel_Style_Alignment::V
 
 
 $startedCell = 24;
+
 foreach ($arrTables as $item) {
     if ($item->chacked == "true") {
         $sheet->setCellValue("B" . ($startedCell + 1), $item->tableName);
+
+        $sheet->setCellValue("B" . ($startedCell + 2), $item->arrString);
+        $sheet->getStyle("B" . ($startedCell + 2))->getFont()->setBold(false);
+        $sheet->getStyle('B' . ($startedCell + 2))->getFont()->setSize(11);
+        $sheet->mergeCells('B' . ($startedCell+ 2) . ':D' . + ($startedCell+ 3));
+        $sheet->getStyle("B" . ($startedCell + 2))->getAlignment()->setWrapText(true);
+        $sheet->getRowDimension($startedCell + 2)->setRowHeight(20);
+
         $sheet->setCellValue("G" . ($startedCell + 1), "НЗТР=");
         $sheet->setCellValue("G" . ($startedCell + 2), "Ki=");
         $sheet->setCellValue("G" . ($startedCell + 3), "P=");
@@ -519,8 +600,8 @@ foreach ($arrTables as $item) {
         $sheet->getStyle('G' . $startedCell . ':H' . $endCell)->applyFromArray($styleArray);
         $sheet->getStyle('I' . $startedCell . ':J' . $endCell)->applyFromArray($styleArray);
         $sheet->getStyle('N' . $startedCell . ':O' . $endCell)->applyFromArray($styleArray);
-        $sheet->getStyle('E' . $startedCell . ':E' . $endCell)->getFont()->setSize(11);
-        $sheet->getStyle('G' . $startedCell . ':G' . $endCell)->getFont()->setSize(11);
+        $sheet->getStyle('E' . $startedCell . ':E' . $endCell)->getFont()->setSize(13);
+        $sheet->getStyle('G' . $startedCell . ':G' . $endCell)->getFont()->setSize(13);
         $sheet->mergeCells('K' . ($startedCell) . ':M' . $endCell);
         $sheet->setCellValue("K" . ($startedCell), $item->formula); ////////////////////////////////////////////////////////////////////////
         $sheet->getStyle('K' . $startedCell)->getFont()->setSize(10);
@@ -681,6 +762,32 @@ $sheet->getStyle('B' . $endCell . ':M' . $endCell)->applyFromArray($styleArray);
 $sheet->getStyle('N' . $endCell . ':O' . $endCell)->applyFromArray($styleArray);
 $sheet->setCellValue("N" . $endCell, $fullSumma);
 
+
+$startedCell = $endCell + 1;
+$sheet->setCellValue("E" . $startedCell, "Расчет налогов и отчислений");
+$sheet->getStyle('E' . $startedCell)->getFont()->setBold(true);
+$sheet->getStyle('A' . $startedCell  . ':O' . $startedCell)->applyFromArray($styleArray);
+for ($i = 1; $i < 4; $i++) {
+    $sheet->getStyle('A' . $startedCell + $i)->applyFromArray($styleArray);
+    $sheet->getStyle('B' . $startedCell + $i . ':J' . $startedCell + $i)->applyFromArray($styleArray);
+    $sheet->getStyle('K' . $startedCell + $i . ':M' . $startedCell + $i)->applyFromArray($styleArray);
+    $sheet->getStyle('N' . $startedCell + $i . ':O' . $startedCell + $i)->applyFromArray($styleArray);
+}
+$startedCell = $startedCell + 6;
+
+$whoVistupaet = $_COOKIE['whoVistupaet'];
+
+$sheet->setCellValue("A" . $startedCell, $whoVistupaet);
+$sheet->getStyle('A' . $startedCell)->getFont()->setBold(true);
+$sheet->setCellValue("A" . $startedCell + 5, "_______________________________");
+$sheet->setCellValue("A" . $startedCell + 6, "М.П.");
+
+
+
+
+
+
+
 header("Expires: Mon, 1 Apr 1974 05:00:00 GMT");
 header("Last-Modified: " . gmdate("D,d M Y H:i:s") . " GMT");
 header("Cache-Control: no-cache, must-revalidate");
@@ -692,8 +799,8 @@ header("Content-Disposition: attachment; filename=myFile.xlsx");
 $writer = new Xlsx($spreadsheet);
 $writer->save("php://output");
 
-//$myarr = json_decode($myObject);
-//
-//foreach ($myarr as $item) {
-//    echo $item->text . "<br>";
-//}
+$myarr = json_decode($myObject);
+
+foreach ($myarr as $item) {
+    echo $item->text . "<br>";
+}
