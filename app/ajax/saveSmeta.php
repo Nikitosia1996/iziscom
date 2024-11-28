@@ -1023,8 +1023,8 @@ WHERE id_smeta = '$id'";
 
         mysqli_query($connectionDB->con, $sql) or mysqli_error($connectionDB->con);
 
-        $sql = "INSERT INTO iziscom.calculation (
-    selectCalc1,
+        $sql = "INSERT INTO calculation (
+    selectCalc1,                    
     selectCalc2,
     selectCalc3,
     selectCalc4,

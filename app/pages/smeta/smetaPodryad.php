@@ -1062,7 +1062,7 @@ echo "<script>
                 <div class="mainlolspace">
                     <div class="lolspace">
                         <input data-id="1" value="1" type="checkbox" class="ishod2check" id="toggleZd1" disabled
-                               onchange="toggleCheckboxesDop()"> Конструкция фундаментов
+                               onchange="toggleCheckboxesDop()"> <div>Конструкция фундаментов</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input data-id="1" class="inpval" id="conval1" disabled type="number" name="inputValue"
@@ -1074,7 +1074,7 @@ echo "<script>
                     <div class="lolspace">
 
                         <input data-id="1" type="checkbox" id="toggleZd2" class="ishod2check" disabled
-                               onchange="toggleCheckboxesDop()"> Стены
+                               onchange="toggleCheckboxesDop()"> <div>Стены</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input data-id="1" class="inpval" id="conval2" disabled type="number" name="inputValue"
@@ -1087,7 +1087,7 @@ echo "<script>
                     <div class="lolspace">
 
                         <input data-id="1" type="checkbox" id="toggleZd3" class="ishod2check" disabled
-                               onchange="toggleCheckboxesDop()"> Полы
+                               onchange="toggleCheckboxesDop()"> <div>Полы</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input data-id="1" class="inpval" id="conval3" disabled type="number" name="inputValue"
@@ -1098,7 +1098,7 @@ echo "<script>
                 <div class="mainlolspace">
                     <div class="lolspace">
                         <input data-id="1" type="checkbox" id="toggleZd4" class="ishod2check" disabled
-                               onchange="toggleCheckboxesDop()"> Колонны, столбы, стойки
+                               onchange="toggleCheckboxesDop()"> <div>Колонны, столбы, стойки</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input data-id="1" class="inpval" id="conval4" disabled type="number" name="inputValue"
@@ -1108,8 +1108,8 @@ echo "<script>
                 <div class="mainlolspace">
                     <div class="lolspace">
                         <input data-id="1" type="checkbox" id="toggleZd5" class="ishod2check" disabled
-                               onchange="toggleCheckboxesDop()"> Несущие конструкции копров,пролетных строейний
-                        галерей
+                               onchange="toggleCheckboxesDop()"> <div>Несущие конструкции копров,пролетных строейний
+                        галерей</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input data-id="1" class="inpval" id="conval5" disabled type="number" name="inputValue"
@@ -1127,7 +1127,7 @@ echo "<script>
                 <div class="mainlolspace">
                     <div class="lolspace">
                         <input data-id="1" type="checkbox" id="toggleZd6" class="ishod2check" disabled
-                               onchange="toggleCheckboxesDop()"> Подкрановые и тормозные конструкции
+                               onchange="toggleCheckboxesDop()"> <div>Подкрановые и тормозные конструкции</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input data-id="1" class="inpval" id="conval6" disabled type="number" name="inputValue"
@@ -1139,7 +1139,7 @@ echo "<script>
                     <div class="lolspace">
 
                         <input data-id="1" type="checkbox" id="toggleZd7" class="ishod2check" disabled
-                               onchange="toggleCheckboxesDop()"> Перекрытия
+                               onchange="toggleCheckboxesDop()"> <div>Перекрытия</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input data-id="1" class="inpval" id="conval7" disabled type="number" name="inputValue"
@@ -1152,7 +1152,7 @@ echo "<script>
                     <div class="lolspace">
 
                         <input data-id="1" type="checkbox" id="toggleZd8" class="ishod2check" disabled
-                               onchange="toggleCheckboxesDop()"> Покрытие
+                               onchange="toggleCheckboxesDop()"> <div>Покрытие</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input data-id="1" class="inpval" id="conval8" disabled type="number" name="inputValue"
@@ -1163,7 +1163,7 @@ echo "<script>
                 <div class="mainlolspace">
                     <div class="lolspace">
                         <input data-id="1" type="checkbox" id="toggleZd9" class="ishod2check" disabled
-                               onchange="toggleCheckboxesDop()"> Кровля
+                               onchange="toggleCheckboxesDop()"> <div>Кровля</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input data-id="1" class="inpval" id="conval9" disabled type="number" name="inputValue"
@@ -1230,7 +1230,7 @@ echo "<script>
                     <div class="lolspace">
                         <input type="checkbox" id="toggleZd41" class="obmer2check" disabled
                                onchange="toggleCheckboxesDop4()">
-                        Конструкция фундаментов
+                        <div>Конструкция фундаментов</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval" id="conval41" disabled type="number" name="inputValue" step="1"
@@ -1242,8 +1242,8 @@ echo "<script>
                     <div class="lolspace">
 
                         <input type="checkbox" id="toggleZd42" class="obmer2check" disabled
-                               onchange="toggleCheckboxesDop4()"> Планы
-                        этажей
+                               onchange="toggleCheckboxesDop4()"> <div>Планы
+                        этажей</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval" id="conval42" disabled type="number" name="inputValue" step="1"
@@ -1256,7 +1256,7 @@ echo "<script>
                     <div class="lolspace">
 
                         <input type="checkbox" id="toggleZd43" class="obmer2check" disabled
-                               onchange="toggleCheckboxesDop4()"> Фасады
+                               onchange="toggleCheckboxesDop4()"> <div>Фасады</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval" id="conval43" disabled type="number" name="inputValue" step="1"
@@ -1267,8 +1267,8 @@ echo "<script>
                 <div class="mainlolspace">
                     <div class="lolspace">
                         <input type="checkbox" id="toggleZd44" class="obmer2check" disabled
-                               onchange="toggleCheckboxesDop4()"> Разрезы,
-                        сечения
+                               onchange="toggleCheckboxesDop4()"> <div>Разрезы,
+                        сечения</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval" id="conval44" disabled type="number" name="inputValue" step="1"
@@ -1278,8 +1278,8 @@ echo "<script>
                 <div class="mainlolspace">
                     <div class="lolspace">
                         <input type="checkbox" id="toggleZd45" class="obmer2check" disabled
-                               onchange="toggleCheckboxesDop4()"> Несущие
-                        конструкции копров,пролетных строейний галерей
+                               onchange="toggleCheckboxesDop4()"> <div>Несущие
+                        конструкции копров,пролетных строейний галерей</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval" id="conval45" disabled type="number" name="inputValue" step="1"
@@ -1297,8 +1297,8 @@ echo "<script>
                 <div class="mainlolspace">
                     <div class="lolspace">
                         <input type="checkbox" id="toggleZd46" class="obmer2check" disabled
-                               onchange="toggleCheckboxesDop4()"> План
-                        кровли
+                               onchange="toggleCheckboxesDop4()"> <div>План
+                        кровли</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval" id="conval46" disabled type="number" name="inputValue" step="1"
@@ -1312,7 +1312,7 @@ echo "<script>
 
                         <input type="checkbox" id="toggleZd48" class="obmer2check" disabled
                                onchange="toggleCheckboxesDop4()">
-                        Стропильные и подстропильные конструкции, подкрановые и тормозные конструкции
+                        <div>Стропильные и подстропильные конструкции, подкрановые и тормозные конструкции</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval" id="conval48" disabled type="number" name="inputValue" step="1"
@@ -1323,8 +1323,8 @@ echo "<script>
                 <div class="mainlolspace">
                     <div class="lolspace">
                         <input type="checkbox" id="toggleZd49" class="obmer2check" disabled
-                               onchange="toggleCheckboxesDop4()"> Несущие
-                        элементы перекрытий
+                               onchange="toggleCheckboxesDop4()"> <div>Несущие
+                        элементы перекрытий</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval" id="conval49" disabled type="number" name="inputValue" step="1"
@@ -1336,8 +1336,8 @@ echo "<script>
                 <div class="mainlolspace">
                     <div class="lolspace">
                         <input type="checkbox" id="toggleZd449" class="obmer2check" disabled
-                               onchange="toggleCheckboxesDop4()"> Несущие
-                        элементы покрытий
+                               onchange="toggleCheckboxesDop4()"> <div>Несущие
+                        элементы покрытий</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval" id="conval449" disabled type="number" name="inputValue" step="1"
@@ -1414,8 +1414,8 @@ echo "<script>
             <div class="viborvischeckbox53">
                 <div class="mainlolspace">
                     <div class="lolspace">
-                        <input type="checkbox" id="toggleZd51" disabled onchange="toggleCheckboxesDop5()">
-                        Конструкция фундаментов
+                        <input type="checkbox" id="toggleZd51" class="obsled2check" disabled onchange="toggleCheckboxesDop5()">
+                        <div>Конструкция фундаментов</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval" id="conval51" disabled type="number" name="inputValue" step="1"
@@ -1426,7 +1426,7 @@ echo "<script>
                 <div class="mainlolspace">
                     <div class="lolspace">
 
-                        <input type="checkbox" id="toggleZd52" disabled onchange="toggleCheckboxesDop5()"> Стены
+                        <input type="checkbox" id="toggleZd52" class="obsled2check" disabled onchange="toggleCheckboxesDop5()"> Стены
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval" id="conval52" disabled type="number" name="inputValue" step="1"
@@ -1438,7 +1438,7 @@ echo "<script>
                 <div class="mainlolspace">
                     <div class="lolspace">
 
-                        <input type="checkbox" id="toggleZd53" disabled onchange="toggleCheckboxesDop5()"> Полы
+                        <input type="checkbox" id="toggleZd53" class="obsled2check" disabled onchange="toggleCheckboxesDop5()"> <div>Полы</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval" id="conval53" disabled type="number" name="inputValue" step="1"
@@ -1448,8 +1448,8 @@ echo "<script>
 
                 <div class="mainlolspace">
                     <div class="lolspace">
-                        <input type="checkbox" id="toggleZd54" disabled onchange="toggleCheckboxesDop5()"> Колонны,
-                        столбы, стойки
+                        <input type="checkbox" id="toggleZd54" class="obsled2check" disabled onchange="toggleCheckboxesDop5()"> <div> Колонны,
+                            столбы, стойки</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval" id="conval54" disabled type="number" name="inputValue" step="1"
@@ -1458,8 +1458,8 @@ echo "<script>
                 </div>
                 <div class="mainlolspace">
                     <div class="lolspace">
-                        <input type="checkbox" id="toggleZd55" disabled onchange="toggleCheckboxesDop5()"> Несущие
-                        конструкции копров,пролетных строейний галерей
+                        <input type="checkbox" id="toggleZd55" class="obsled2check" disabled onchange="toggleCheckboxesDop5()"> <div>Несущие
+                        конструкции копров,пролетных строейний галерей</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval" id="conval55" disabled type="number" name="inputValue" step="1"
@@ -1476,8 +1476,8 @@ echo "<script>
             <div class="viborvischeckbox54">
                 <div class="mainlolspace">
                     <div class="lolspace">
-                        <input type="checkbox" id="toggleZd56" disabled onchange="toggleCheckboxesDop5()">
-                        Подкрановые и тормозные конструкции
+                        <input type="checkbox" id="toggleZd56" class="obsled2check" disabled onchange="toggleCheckboxesDop5()">
+                        <div> Подкрановые и тормозные конструкции</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval" id="conval56" disabled type="number" name="inputValue" step="1"
@@ -1488,8 +1488,8 @@ echo "<script>
                 <div class="mainlolspace">
                     <div class="lolspace">
 
-                        <input type="checkbox" id="toggleZd57" disabled onchange="toggleCheckboxesDop5()">
-                        Перекрытия
+                        <input type="checkbox" id="toggleZd57" class="obsled2check" disabled onchange="toggleCheckboxesDop5()">
+                        <div>Перекрытия</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval" id="conval57" disabled type="number" name="inputValue" step="1"
@@ -1501,7 +1501,7 @@ echo "<script>
                 <div class="mainlolspace">
                     <div class="lolspace">
 
-                        <input type="checkbox" id="toggleZd58" disabled onchange="toggleCheckboxesDop5()"> Покрытие
+                        <input type="checkbox" id="toggleZd58" class="obsled2check" disabled onchange="toggleCheckboxesDop5()"><div> Покрытие</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval" id="conval58" disabled type="number" name="inputValue" step="1"
@@ -1511,7 +1511,7 @@ echo "<script>
 
                 <div class="mainlolspace">
                     <div class="lolspace">
-                        <input type="checkbox" id="toggleZd59" disabled onchange="toggleCheckboxesDop5()"> Кровля
+                        <input type="checkbox" id="toggleZd59" class="obsled2check" disabled onchange="toggleCheckboxesDop5()"> <div>Кровля</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval" id="conval59" disabled type="number" name="inputValue" step="1"
@@ -1525,8 +1525,8 @@ echo "<script>
         <div class="dusl2">Дополнительные условия:
             <label>
                 <input type="checkbox" id="toggleSelect1"
-                       onchange="toggleSelect('toggleSelect1', 'selectContainer1', 'options1')"> Облицовка
-                поверхностных конструкций
+                       onchange="toggleSelect('toggleSelect1', 'selectContainer1', 'options1')"><div> Облицовка
+                поверхностных конструкций</div>
             </label>
 
             <div id="selectContainer1" class="hidden">
@@ -1542,8 +1542,8 @@ echo "<script>
             </div>
             <label>
                 <input type="checkbox" id="toggleSelect2"
-                       onchange="toggleSelect('toggleSelect2', 'selectContainer2', 'options2')"> Наличие
-                значительных дефектов
+                       onchange="toggleSelect('toggleSelect2', 'selectContainer2', 'options2')"> <div>Наличие
+                значительных дефектов</div>
             </label>
 
             <div id="selectContainer2" class="hidden">
@@ -1629,8 +1629,8 @@ echo "<script>
             <div class="viborvischeckbox63">
                 <div class="mainlolspace">
                     <div class="lolspace">
-                        <input type="checkbox" id="toggleZd61" disabled onchange="toggleCheckboxesDop6()">
-                        Конструкция фундаментов
+                        <input type="checkbox" id="toggleZd61" class="sostTech2check" disabled onchange="toggleCheckboxesDop6()">
+                        <div> Конструкция фундаментов</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval" id="conval61" disabled type="number" name="inputValue" step="1"
@@ -1641,7 +1641,7 @@ echo "<script>
                 <div class="mainlolspace">
                     <div class="lolspace">
 
-                        <input type="checkbox" id="toggleZd62" disabled onchange="toggleCheckboxesDop6()"> Стены
+                        <input type="checkbox" id="toggleZd62" class="sostTech2check" disabled onchange="toggleCheckboxesDop6()"> <div>Стены</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval" id="conval62" disabled type="number" name="inputValue" step="1"
@@ -1653,7 +1653,7 @@ echo "<script>
                 <div class="mainlolspace">
                     <div class="lolspace">
 
-                        <input type="checkbox" id="toggleZd63" disabled onchange="toggleCheckboxesDop6()"> Полы
+                        <input type="checkbox" id="toggleZd63" class="sostTech2check" disabled onchange="toggleCheckboxesDop6()"> <div>Полы</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval" id="conval63" disabled type="number" name="inputValue" step="1"
@@ -1663,8 +1663,8 @@ echo "<script>
 
                 <div class="mainlolspace">
                     <div class="lolspace">
-                        <input type="checkbox" id="toggleZd64" disabled onchange="toggleCheckboxesDop6()"> Колонны,
-                        столбы, стойки
+                        <input type="checkbox" id="toggleZd64" class="sostTech2check" disabled onchange="toggleCheckboxesDop6()"> <div>Колонны,
+                            столбы, стойки</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval" id="conval64" disabled type="number" name="inputValue" step="1"
@@ -1673,8 +1673,8 @@ echo "<script>
                 </div>
                 <div class="mainlolspace">
                     <div class="lolspace">
-                        <input type="checkbox" id="toggleZd65" disabled onchange="toggleCheckboxesDop6()"> Несущие
-                        конструкции копров,пролетных строейний галерей
+                        <input type="checkbox" id="toggleZd65" class="sostTech2check" disabled onchange="toggleCheckboxesDop6()"> <div>Несущие
+                            конструкции копров,пролетных строейний галерей</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval" id="conval65" disabled type="number" name="inputValue" step="1"
@@ -1691,8 +1691,8 @@ echo "<script>
             <div class="viborvischeckbox64">
                 <div class="mainlolspace">
                     <div class="lolspace">
-                        <input type="checkbox" id="toggleZd66" disabled onchange="toggleCheckboxesDop6()">
-                        Подкрановые и тормозные конструкции
+                        <input type="checkbox" id="toggleZd66" class="sostTech2check" disabled onchange="toggleCheckboxesDop6()">
+                        <div>Подкрановые и тормозные конструкции</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval" id="conval66" disabled type="number" name="inputValue" step="1"
@@ -1703,7 +1703,7 @@ echo "<script>
                 <div class="mainlolspace">
                     <div class="lolspace">
 
-                        <input type="checkbox" id="toggleZd67" disabled onchange="toggleCheckboxesDop6()"> Перекрыия
+                        <input type="checkbox" id="toggleZd67" class="sostTech2check" disabled onchange="toggleCheckboxesDop6()"> <div>Перекрыия</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval" id="conval67" disabled type="number" name="inputValue" step="1"
@@ -1715,7 +1715,7 @@ echo "<script>
                 <div class="mainlolspace">
                     <div class="lolspace">
 
-                        <input type="checkbox" id="toggleZd68" disabled onchange="toggleCheckboxesDop6()"> Покрытие
+                        <input type="checkbox" id="toggleZd68" class="sostTech2check" disabled onchange="toggleCheckboxesDop6()"> <div>Покрытие</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval" id="conval68" disabled type="number" name="inputValue" step="1"
@@ -1725,7 +1725,7 @@ echo "<script>
 
                 <div class="mainlolspace">
                     <div class="lolspace">
-                        <input type="checkbox" id="toggleZd69" disabled onchange="toggleCheckboxesDop6()"> Кровля
+                        <input type="checkbox" id="toggleZd69" class="sostTech2check" disabled onchange="toggleCheckboxesDop6()"> <div>Кровля</div>
                     </div>
                     <div id="inputContainer" class="input-container">
                         <input class="inpval" id="conval69" disabled type="number" name="inputValue" step="1"
@@ -2717,7 +2717,7 @@ echo "<script>
 
 
         <label for="SelectPodryadchik" class="zakpod">Кем выступает ИЗИСКОМ:</label>
-        <select class="form-select" aria-label="">
+        <select class="form-select" id="whoVistupaet" aria-label="">
             <option selected>-- Пожалуйста, выберите --</option>
             <option value="1">Подрядчик</option>
             <option value="2">Субподрядчик</option>
@@ -3805,6 +3805,7 @@ echo "<script>
 
 
     async function toggleCheckboxesDop() {
+
         const checkboxes = [
             {checkbox: document.getElementById('toggleZd1'), input: document.getElementById('conval1')},
             {checkbox: document.getElementById('toggleZd2'), input: document.getElementById('conval2')},
@@ -3818,7 +3819,9 @@ echo "<script>
         ];
 
         checkboxes.forEach(item => {
+            let cbx = item.checkbox;
             if (item.checkbox.checked) {
+
                 item.input.disabled = false;
             } else {
                 item.input.disabled = true;

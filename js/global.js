@@ -1882,13 +1882,15 @@ $(".tarif").on('change', () => {
 })
 
 function printExcel() {
+
     new Promise((resolve, reject) => {
         document.cookie = "V=" + V + ";";
         document.cookie = "n=" + etazh + ";";
         document.cookie = "h=" + mainvisotazdani + ";";
+        document.cookie = "textAreaNaimRabot=" + textAreaNaimRabot.val() + ";";
         document.cookie = " het=" + visotapola + ";";
         document.cookie = " k18101=" + k18101 + ";";
-        document.cookie = " k18ob=" + k18ob + ";";
+        document.cookie = " k18ob=" + k18ob.toFixed(2) + ";";
         document.cookie = " zakazchik=" + selectZakazchik.find('option:selected').text() + ";";
         document.cookie = " podradchik=" + selectPodryadchik.find('option:selected').text() + ";";
         document.cookie = " chacked1=" + isSborIshodnihDannihChecked + ";";
@@ -2010,6 +2012,46 @@ function printExcel() {
         document.cookie = " sumRedaktor=" + sumRedaktor + ";";
 
         document.cookie = " fullSumma=" + fullSumma + ";";
+
+
+        document.cookie = " whoVistupaet=" + $("#whoVistupaet option:selected").text() + ";";
+
+        let arrSbor = [];
+
+        $(".ishod2check:checked").each(function() {
+            var nextText = $(this).next();
+            arrSbor.push(nextText.html());
+        })
+        const arrSborString = JSON.stringify(arrSbor);
+        document.cookie = `arrSbor=${encodeURIComponent(arrSborString)}; path=/; max-age=3600`;
+
+        let arrObmer = [];
+
+        $(".obmer2check:checked").each(function() {
+            var nextText = $(this).next();
+            arrObmer.push(nextText.html());
+        })
+        const arrObmerString = JSON.stringify(arrObmer);
+        document.cookie = `arrObmer=${encodeURIComponent(arrObmerString)}; path=/; max-age=3600`;
+
+        let arrObsled = [];
+
+        $(".obsled2check:checked").each(function() {
+            var nextText = $(this).next();
+            arrObsled.push(nextText.html());
+        })
+        const arrObsledString = JSON.stringify(arrObsled);
+        document.cookie = `arrObsled=${encodeURIComponent(arrObsledString)}; path=/; max-age=3600`;
+
+        let arrSostTech = [];
+
+        $(".sostTech2check:checked").each(function() {
+            var nextText = $(this).next();
+            arrSostTech.push(nextText.html());
+        })
+        const arrSostTechString = JSON.stringify(arrSostTech);
+        document.cookie = `arrSostTech=${encodeURIComponent(arrSostTechString)}; path=/; max-age=3600`;
+
 
         const objString = JSON.stringify(arrObsledOtdel);
         document.cookie = `myObject=${encodeURIComponent(objString)}; path=/; max-age=3600`;
