@@ -15,6 +15,7 @@
     "phpoffice/phpspreadsheet": "^2.2",
     "phpoffice/phpexcel": "^1.8",
     "ext-intl": "*",
-    "phpoffice/phpword": "^1.2"
+    "phpoffice/phpword": "^1.2",
+    "ext-mysqli": "*"
   }
 }

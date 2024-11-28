@@ -36,7 +36,7 @@ $checkb11 = isset($haractObject['checkb11']) ? $haractObject['checkb11'] : 0;
 $checkb12 = isset($haractObject['checkb12']) ? $haractObject['checkb12'] : 0;
 $hardZdanie = isset($haractObject['hardZdanie']) ? $haractObject['hardZdanie'] : 0;
 
-
+$sborCheck = isset($ishod['sborCheck']) ? $ishod['sborCheck'] : null;
 $toggleZd1 = isset($ishod['toggleZd1']) ? $ishod['toggleZd1'] : null;
 $toggleZd2 = isset($ishod['toggleZd2']) ? $ishod['toggleZd2'] : null;
 $toggleZd3 = isset($ishod['toggleZd3']) ? $ishod['toggleZd3'] : null;
@@ -58,7 +58,7 @@ $conval8 = isset($ishod['conval8']) ? $ishod['conval8'] : null;
 $conval9 = isset($ishod['conval9']) ? $ishod['conval9'] : null;
 $selectedButrad = isset($ishod['selectedButrad']) ? $ishod['selectedButrad'] : null;
 
-
+$obmerCheck = isset($obmerObject['obmerCheck']) ? $obmerObject['obmerCheck'] : null;
 $toggleZd41 = isset($obmerObject['toggleZd41']) ? $obmerObject['toggleZd41'] : null;
 $toggleZd42 = isset($obmerObject['toggleZd42']) ? $obmerObject['toggleZd42'] : null;
 $toggleZd43 = isset($obmerObject['toggleZd43']) ? $obmerObject['toggleZd43'] : null;
@@ -80,6 +80,8 @@ $conval49 = isset($obmerObject['conval49']) ? $obmerObject['conval49'] : null;
 $conval449 = isset($obmerObject['conval449']) ? $obmerObject['conval449'] : null;
 $obmerobs = isset($obmerObject['obmerobs']) ? $obmerObject['obmerobs'] : null;
 
+
+$obsledCheck = isset($obsledObject['obsledCheck']) ? $obsledObject['obsledCheck'] : null;
 $toggleZd51 = isset($obsledObject['toggleZd51']) ? $obsledObject['toggleZd51'] : null;
 $toggleZd52 = isset($obsledObject['toggleZd52']) ? $obsledObject['toggleZd52'] : null;
 $toggleZd53 = isset($obsledObject['toggleZd53']) ? $obsledObject['toggleZd53'] : null;
@@ -101,6 +103,7 @@ $conval58 = isset($obsledObject['conval58']) ? $obsledObject['conval58'] : null;
 $conval59 = isset($obsledObject['conval59']) ? $obsledObject['conval59'] : null;
 $obsledobs = isset($obsledObject['obsledobs']) ? $obsledObject['obsledobs'] : null;
 
+$sostTechOtchetCheck = isset($sostTechObject['sostTechOtchetCheck']) ? $sostTechObject['sostTechOtchetCheck'] : null;
 $toggleZd61 = isset($sostTechObject['toggleZd61']) ? $sostTechObject['toggleZd61'] : null;
 $toggleZd62 = isset($sostTechObject['toggleZd62']) ? $sostTechObject['toggleZd62'] : null;
 $toggleZd63 = isset($sostTechObject['toggleZd63']) ? $sostTechObject['toggleZd63'] : null;
@@ -122,7 +125,7 @@ $conval68 = isset($sostTechObject['conval68']) ? $sostTechObject['conval68'] : n
 $conval69 = isset($sostTechObject['conval69']) ? $sostTechObject['conval69'] : null;
 $zaklSostStr = isset($sostTechObject['selectedSosttech']) ? $sostTechObject['selectedSosttech'] : null;
 
-
+$redaktorIspConstrCheck = isset($redactorIspObject['redaktorIspConstrCheck']) ? $redactorIspObject['redaktorIspConstrCheck'] : null;
 $toggleZd71 = isset($redactorIspObject['toggleZd71']) ? $redactorIspObject['toggleZd71'] : null;
 $toggleZd72 = isset($redactorIspObject['toggleZd72']) ? $redactorIspObject['toggleZd72'] : null;
 $toggleZd73 = isset($redactorIspObject['toggleZd73']) ? $redactorIspObject['toggleZd73'] : null;
@@ -132,7 +135,7 @@ $conval72 = isset($redactorIspObject['conval72']) ? $redactorIspObject['conval72
 $conval73 = isset($redactorIspObject['conval73']) ? $redactorIspObject['conval73'] : null;
 $conval74 = isset($redactorIspObject['conval74']) ? $redactorIspObject['conval74'] : null;
 
-
+$obsledotdelCheck = isset($obsledOtdKonstrObject['obsledotdelCheck']) ? $obsledOtdKonstrObject['obsledotdelCheck'] : 0;
 $toggleZd81 = isset($obsledOtdKonstrObject['toggleZd81']) ? $obsledOtdKonstrObject['toggleZd81'] : 0;
 $toggleZd82 = isset($obsledOtdKonstrObject['toggleZd82']) ? $obsledOtdKonstrObject['toggleZd82'] : 0;
 $toggleZd83 = isset($obsledOtdKonstrObject['toggleZd83']) ? $obsledOtdKonstrObject['toggleZd83'] : 0;
@@ -220,7 +223,7 @@ $monolit19 = isset($obsledOtdKonstrObject['monolit19']) ? $obsledOtdKonstrObject
 $monolit20 = isset($obsledOtdKonstrObject['monolit20']) ? $obsledOtdKonstrObject['monolit20'] : null;
 $monolit21 = isset($obsledOtdKonstrObject['monolit21']) ? $obsledOtdKonstrObject['monolit21'] : null;
 
-
+$calcalcCheck = isset($calculObject['calcalcCheck']) ? $calculObject['calcalcCheck'] : null;
 $selectCalc1 = isset($calculObject['selectCalc1']) ? $calculObject['selectCalc1'] : null;
 $selectCalc2 = isset($calculObject['selectCalc2']) ? $calculObject['selectCalc2'] : null;
 $selectCalc3 = isset($calculObject['selectCalc3']) ? $calculObject['selectCalc3'] : null;
@@ -323,6 +326,7 @@ WHERE id_smeta = '$id'";
 
 
     $sql = "UPDATE sbor_ishod_value SET
+    sborCheck = '" . $ishod['sborCheck'] . "',
     toggleZd1 = '" . $ishod['toggleZd1'] . "',
     toggleZd2 = '" . $ishod['toggleZd2'] . "',
     toggleZd3 = '" . $ishod['toggleZd3'] . "',
@@ -349,6 +353,7 @@ WHERE id_smeta = '$id'";
 
     $sql = "UPDATE obmernie_raboty SET
     obmerobs = '$obmerobs',
+    obmerCheck = '$obmerCheck',
       toggleZd41 = '" . $toggleZd41 . "',
     toggleZd42 = '" . $toggleZd42 . "',
     toggleZd43 = '" . $toggleZd43 . "',
@@ -374,6 +379,7 @@ WHERE id_smeta = '$id'";
 
     $sql = "UPDATE obsled_raboty SET
     predvOsmotr = '" . $obsledobs . "',
+    obsledCheck = '" . $obsledCheck . "',
       toggleZd51 = '" . $toggleZd51 . "',
     toggleZd52 = '" . $toggleZd52 . "',
     toggleZd53 = '" . $toggleZd53 . "',
@@ -399,6 +405,7 @@ WHERE id_smeta = '$id'";
 
     $sql = "UPDATE sost_tech_otchet SET
     zaklSostStr = '$zaklSostStr',
+    sostTechOtchetCheck = '$sostTechOtchetCheck',
       toggleZd61 = '" . $toggleZd61 . "',
     toggleZd62 = '" . $toggleZd62 . "',
     toggleZd63 = '" . $toggleZd63 . "',
@@ -424,6 +431,7 @@ WHERE id_smeta = '$id'";
 
 
     $sql = "UPDATE redaktor SET
+      redaktorIspConstrCheck = '" . $redaktorIspConstrCheck . "',
       toggleZd71 = '" . $toggleZd71 . "',
     toggleZd72 = '" . $toggleZd72 . "',
     toggleZd73 = '" . $toggleZd73 . "',
@@ -437,6 +445,7 @@ WHERE id_smeta = '$id'";
     mysqli_query($connectionDB->con, $sql)  or mysqli_error($connectionDB->con);
 
     $sql = "UPDATE obsled_otdel_constr SET
+    obsledotdelCheck = '" . $obsledotdelCheck . "',
     toggleZd81 = '" . $toggleZd81 . "',
     toggleZd82 = '" . $toggleZd82 . "',
     toggleZd83 = '" . $toggleZd83 . "',
@@ -527,6 +536,7 @@ WHERE id_smeta = '$id'";
 
 
     $sql = "UPDATE calculation SET
+    calcalcCheck = '" . $calcalcCheck . "',
     selectCalc1 = '" . $selectCalc1 . "',
     selectCalc2 = '" . $selectCalc2 . "',
     selectCalc3 = '" . $selectCalc3 . "',
@@ -631,6 +641,7 @@ WHERE id_smeta = '$id'";
 
 
         $sql = "INSERT INTO sbor_ishod_value (
+    sborCheck,
     toggleZd1,
     toggleZd2,
     toggleZd3,
@@ -653,6 +664,7 @@ WHERE id_smeta = '$id'";
     choosCunstruct,
     pasport_na_zdanie
 ) VALUES (
+    '{$ishod['sborCheck']}',
     '{$ishod['toggleZd1']}',
     '{$ishod['toggleZd2']}',
     '{$ishod['toggleZd3']}',
@@ -680,6 +692,7 @@ WHERE id_smeta = '$id'";
 
         $sql = "INSERT INTO obmernie_raboty (
     obmerobs,
+    obmerCheck,
     toggleZd41,
     toggleZd42,
     toggleZd43,
@@ -702,6 +715,7 @@ WHERE id_smeta = '$id'";
     choosCunstruct4
 ) VALUES (
     '{$obmerobs}',
+    '{$obmerCheck}',
     '{$toggleZd41}',
     '{$toggleZd42}',
     '{$toggleZd43}',
@@ -728,6 +742,7 @@ WHERE id_smeta = '$id'";
 
         $sql = "INSERT INTO obsled_raboty (
     predvOsmotr,
+    obsledCheck,
     toggleZd51,
     toggleZd52,
     toggleZd53,
@@ -750,6 +765,7 @@ WHERE id_smeta = '$id'";
     choosCunstruct5
 ) VALUES (
     '{$obsledobs}',
+    '{$obsledCheck}',
     '{$toggleZd51}',
     '{$toggleZd52}',
     '{$toggleZd53}',
@@ -776,6 +792,7 @@ WHERE id_smeta = '$id'";
 
         $sql = "INSERT INTO sost_tech_otchet (
     zaklSostStr,
+    sostTechOtchetCheck,
     toggleZd61,
     toggleZd62,
     toggleZd63,
@@ -798,6 +815,7 @@ WHERE id_smeta = '$id'";
     choosCunstruct6
 ) VALUES (
     '{$zaklSostStr}',
+    '{$sostTechOtchetCheck}',
     '{$toggleZd61}',
     '{$toggleZd62}',
     '{$toggleZd63}',
@@ -823,6 +841,7 @@ WHERE id_smeta = '$id'";
         mysqli_query($connectionDB->con, $sql) or mysqli_error($connectionDB->con);
 
         $sql = "INSERT INTO redaktor (
+    redaktorIspConstrCheck,
     toggleZd71,
     toggleZd72,
     toggleZd73,
@@ -833,6 +852,7 @@ WHERE id_smeta = '$id'";
     conval74,
     id_smeta
 ) VALUES (
+    '{$redaktorIspConstrCheck}',
     '{$toggleZd71}',
     '{$toggleZd72}',
     '{$toggleZd73}',
@@ -848,6 +868,7 @@ WHERE id_smeta = '$id'";
 
 
         $sql = "INSERT INTO obsled_otdel_constr (
+    obsledotdelCheck,
     toggleZd81,
     toggleZd82,
     toggleZd83,
@@ -934,6 +955,7 @@ WHERE id_smeta = '$id'";
     monolit21,
     id_smeta
 ) VALUES (
+    '{$obsledotdelCheck}',
     '{$toggleZd81}',
     '{$toggleZd82}',
     '{$toggleZd83}',
@@ -1023,7 +1045,8 @@ WHERE id_smeta = '$id'";
 
         mysqli_query($connectionDB->con, $sql) or mysqli_error($connectionDB->con);
 
-        $sql = "INSERT INTO iziscom.calculation (
+        $sql = "INSERT INTO calculation (
+    calcalcCheck,
     selectCalc1,
     selectCalc2,
     selectCalc3,
@@ -1066,6 +1089,7 @@ WHERE id_smeta = '$id'";
     input3Calc8,
     id_smeta
 ) VALUES (
+    '{$calcalcCheck}',
     '{$selectCalc1}',
     '{$selectCalc2}',
     '{$selectCalc3}',

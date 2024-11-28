@@ -6,6 +6,7 @@ class ObsledOtdelObject
     /////////////////////////////////
 
     private $id;
+    private $obsledotdelCheck;
     private $toggleZd81;
     private $toggleZd82;
     private $toggleZd83;
@@ -179,9 +180,10 @@ class ObsledOtdelObject
      * @param $monolit20
      * @param $monolit21
      */
-    public function __construct($id, $toggleZd81, $toggleZd82, $toggleZd83, $toggleZd84, $toggleZd85, $toggleZd86, $toggleZd87, $toggleZd88, $toggleZd89, $toggleZd081, $toggleZd082, $toggleZd083, $toggleZd084, $toggleZd085, $toggleZd086, $toggleZd087, $toggleZd088, $toggleZd089, $toggleZd0081, $toggleZd0082, $toggleZd0083, $conval81, $conval82, $conval83, $conval84, $conval85, $conval86, $conval87, $conval88, $conval89, $conval081, $conval082, $conval083, $conval084, $conval085, $conval086, $conval087, $conval088, $conval089, $conval0081, $conval0082, $conval0083, $conval811, $conval822, $conval833, $conval844, $conval855, $conval866, $conval877, $conval888, $conval899, $conval0811, $conval0822, $conval0833, $conval0844, $conval0855, $conval0866, $conval0877, $conval0888, $conval0899, $conval00811, $conval00822, $conval00833, $monolit1, $monolit2, $monolit3, $monolit4, $monolit5, $monolit6, $monolit7, $monolit8, $monolit9, $monolit10, $monolit11, $monolit12, $monolit13, $monolit14, $monolit15, $monolit16, $monolit17, $monolit18, $monolit19, $monolit20, $monolit21)
+    public function __construct($id,$obsledotdelCheck, $toggleZd81, $toggleZd82, $toggleZd83, $toggleZd84, $toggleZd85, $toggleZd86, $toggleZd87, $toggleZd88, $toggleZd89, $toggleZd081, $toggleZd082, $toggleZd083, $toggleZd084, $toggleZd085, $toggleZd086, $toggleZd087, $toggleZd088, $toggleZd089, $toggleZd0081, $toggleZd0082, $toggleZd0083, $conval81, $conval82, $conval83, $conval84, $conval85, $conval86, $conval87, $conval88, $conval89, $conval081, $conval082, $conval083, $conval084, $conval085, $conval086, $conval087, $conval088, $conval089, $conval0081, $conval0082, $conval0083, $conval811, $conval822, $conval833, $conval844, $conval855, $conval866, $conval877, $conval888, $conval899, $conval0811, $conval0822, $conval0833, $conval0844, $conval0855, $conval0866, $conval0877, $conval0888, $conval0899, $conval00811, $conval00822, $conval00833, $monolit1, $monolit2, $monolit3, $monolit4, $monolit5, $monolit6, $monolit7, $monolit8, $monolit9, $monolit10, $monolit11, $monolit12, $monolit13, $monolit14, $monolit15, $monolit16, $monolit17, $monolit18, $monolit19, $monolit20, $monolit21)
     {
         $this->id = $id;
+        $this->obsledotdelCheck = $obsledotdelCheck;
         $this->toggleZd81 = $toggleZd81;
         $this->toggleZd82 = $toggleZd82;
         $this->toggleZd83 = $toggleZd83;
@@ -283,6 +285,23 @@ class ObsledOtdelObject
     {
         $this->id = $id;
     }
+
+
+
+    public function getObsledotdelCheck()
+    {
+        return $this->obsledotdelCheck;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setObsledotdelCheck($obsledotdelCheck): void
+    {
+        $this->obsledotdelCheck = $obsledotdelCheck;
+    }
+
+
 
     /**
      * @return mixed
@@ -1635,6 +1654,7 @@ class ObsledOtdelObject
     public function toJson() {
         return [
             'id' => $this->id,
+            'obsledotdelCheck' => $this->obsledotdelCheck,
             'toggleZd81' => $this->toggleZd81,
             'toggleZd82' => $this->toggleZd82,
             'toggleZd83' => $this->toggleZd83,

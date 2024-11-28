@@ -4,6 +4,14 @@ let etazh = 1;
 let visotapola = 1;
 
 
+let sborCheck = $('#sborCheck');
+let obmerCheck = $('#obmerCheck');
+let obsledCheck = $('#obsledCheck');
+let sostTechOtchetCheck = $('#sostTechOtchetCheck');
+let redaktorIspConstrCheck = $('#redaktorIspConstr');
+let obsledotdelCheck = $('#obsledotdelCheck');
+let calcalcCheck = $('#calcalc');
+
 let chekb1Val;
 let chekb2Val;
 let chekb3Val;
@@ -270,7 +278,6 @@ async function getSmeta(id) {
         textAreaCel.val(selectedItem.textAreaCel);
         textAreaMestoObj.val(selectedItem.textAreaMestoObj);
         smetaName.val(selectedItem.name);
-
 
         const haract = selectedItem.haractObject;
         const ishod = selectedItem.ishod;
@@ -760,6 +767,18 @@ async function getSmeta(id) {
         input3Calc6.val(calculator.input3Calc6);
         input3Calc7.val(calculator.input3Calc7);
         input3Calc8.val(calculator.input3Calc8);
+
+
+
+
+        sborCheck.prop('checked', ishod.sborCheck > 0);
+        obmerCheck.prop('checked', obmer.obmerCheck > 0);
+        obsledCheck.prop('checked', obsled.obsledCheck > 0);
+        sostTechOtchetCheck.prop('checked', sosttech.sostTechOtchetCheck > 0);
+        redaktorIspConstrCheck.prop('checked', redaktor.redaktorIspConstrCheck > 0);
+        obsledotdelCheck.prop('checked', obsledotdel.obsledotdelCheck > 0);
+        calcalcCheck.prop('checked', calculator.calcalcCheck > 0);
+
     }
 
 
@@ -824,6 +843,7 @@ function saveSmeta() {
     let selectedButrad;
     let selectedObsled;
     let selectedSosttech;
+
     $(".kat_sl_rab_sosttech").each(function () {
         if ($(this).prop('checked')) {
             selectedSosttech = $(this).val();
@@ -835,6 +855,7 @@ function saveSmeta() {
         }
     });
     let ishod = {
+        sborCheck: sborCheck.prop('checked') ? 1 : 0,
         toggleZd1: toggleZd1.prop('checked') ? 1 : 0,
         toggleZd2: toggleZd2.prop('checked') ? 1 : 0,
         toggleZd3: toggleZd3.prop('checked') ? 1 : 0,
@@ -887,6 +908,7 @@ function saveSmeta() {
         }
     });
     obmerObject = {
+        obmerCheck: obmerCheck.prop('checked') ? 1 : 0,
         obmerobs: selectedObmerKatSl,
         choosCunstruct4: choosCunstruct4.prop('checked') ? 1 : 0,
         toggleZd41: toggleZd41.prop('checked') ? 1 : 0,
@@ -917,6 +939,7 @@ function saveSmeta() {
 
 
     let obsledObject = {
+        obsledCheck: obsledCheck.prop('checked') ? 1 : 0,
         obsledobs: selectedObsled,
         choosCunstruct5: choosCunstruct5.prop('checked') ? 1 : 0,
         toggleZd51: toggleZd51.prop('checked') ? 1 : 0,
@@ -940,6 +963,7 @@ function saveSmeta() {
     }
 
     let sostTechObject = {
+        sostTechOtchetCheck: sostTechOtchetCheck.prop('checked') ? 1 : 0,
         selectedSosttech: selectedSosttech,
         choosCunstruct6: choosCunstruct6.prop('checked') ? 1 : 0,
         toggleZd61: toggleZd61.prop('checked') ? 1 : 0,
@@ -963,6 +987,7 @@ function saveSmeta() {
     }
 
     let redactorIspObject = {
+        redaktorIspConstrCheck: redaktorIspConstrCheck.prop('checked') ? 1 : 0,
         toggleZd71: toggleZd71.prop('checked') ? 1 : 0,
         toggleZd72: toggleZd72.prop('checked') ? 1 : 0,
         toggleZd73: toggleZd73.prop('checked') ? 1 : 0,
@@ -974,6 +999,7 @@ function saveSmeta() {
     }
 
     let obsledOtdKonstrObject = {
+        obsledotdelCheck: obsledotdelCheck.prop('checked') ? 1 : 0,
         toggleZd81: toggleZd81.prop('checked') ? 1 : 0,
         toggleZd82: toggleZd82.prop('checked') ? 1 : 0,
         toggleZd83: toggleZd83.prop('checked') ? 1 : 0,
@@ -1062,6 +1088,7 @@ function saveSmeta() {
     }
 
     let calculObject = {
+        calcalcCheck: calcalcCheck.prop('checked') ? 1 : 0,
         selectCalc1: $('#selectCalc1').val(),
         selectCalc2: $('#selectCalc2').val(),
         selectCalc3: $('#selectCalc3').val(),

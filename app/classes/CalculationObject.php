@@ -3,6 +3,7 @@
 class CalculationObject
 {
     private $id;
+    private $calcalcCheck;
     private $selectCalc1;
     private $selectCalc2;
     private $selectCalc3;
@@ -90,6 +91,7 @@ class CalculationObject
      */
     public function __construct(
         $id,
+        $calcalcCheck,
         $selectCalc1,
         $selectCalc2,
         $selectCalc3,
@@ -132,6 +134,7 @@ class CalculationObject
         $input3Calc8
     ) {
         $this->id = $id;
+        $this->calcalcCheck = $calcalcCheck;
         $this->selectCalc1 = $selectCalc1;
         $this->selectCalc2 = $selectCalc2;
         $this->selectCalc3 = $selectCalc3;
@@ -178,6 +181,9 @@ class CalculationObject
 
     public function getId() { return $this->id; }
     public function setId($id): void { $this->id = $id; }
+
+    public function getCalcalcCheck() { return $this->calcalcCheck; }
+    public function setCalcalcCheck($calcalcCheck): void { $this->calcalcCheck = $calcalcCheck; }
 
     public function getSelectCalc1() { return $this->selectCalc1; }
     public function setSelectCalc1($selectCalc1): void { $this->selectCalc1 = $selectCalc1; }
@@ -303,6 +309,7 @@ class CalculationObject
     {
         return [
             'id' => $this->id,
+            'calcalcCheck' => $this->calcalcCheck,
             'selectCalc1' => $this->selectCalc1,
             'selectCalc2' => $this->selectCalc2,
             'selectCalc3' => $this->selectCalc3,
