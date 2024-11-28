@@ -2026,10 +2026,10 @@ function printExcel() {
 
         //
 
-        document.cookie = " toggleZd71=" + toggleZd71 + ";";
-        document.cookie = " toggleZd72=" + toggleZd72 + ";";
-        document.cookie = " toggleZd73=" + toggleZd73 + ";";
-        document.cookie = " toggleZd74=" + toggleZd74 + ";";
+        document.cookie = " toggleZd71=" + toggleZd71.is(':checked') + ";";
+        document.cookie = " toggleZd72=" + toggleZd72.is(':checked') + ";";
+        document.cookie = " toggleZd73=" + toggleZd73.is(':checked') + ";";
+        document.cookie = " toggleZd74=" + toggleZd74.is(':checked') + ";";
 
         document.cookie = " conval71=" + conval71 + ";";
         document.cookie = " conval72=" + conval72 + ";";
