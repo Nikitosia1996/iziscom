@@ -59,18 +59,18 @@ $stringSbor = "";
 $arr = json_decode($arrSbor);
 
 foreach ($arr as $item){
-    $stringSbor .= $item . ", ";
+    $stringSbor .= $item . "; ";
 }
-$stringSbor = rtrim($stringSbor, ", ");
+$stringSbor = rtrim($stringSbor, "; ");
 ////////
 $arrObmer = $_COOKIE["arrObmer"];
 $stringObmer = "";
 $arr = json_decode($arrObmer);
 
 foreach ($arr as $item){
-    $stringObmer .= $item . ", ";
+    $stringObmer .= $item . "; ";
 }
-$stringObmer = rtrim($stringObmer, ", ");
+$stringObmer = rtrim($stringObmer, "; ");
 
 ////////
 $arrObsled = $_COOKIE["arrObsled"];
@@ -78,9 +78,9 @@ $stringObsled = "";
 $arr = json_decode($arrObsled);
 
 foreach ($arr as $item){
-    $stringObsled .= $item . ", ";
+    $stringObsled .= $item . "; ";
 }
-$stringObsled = rtrim($stringObsled, ", ");
+$stringObsled = rtrim($stringObsled, "; ");
 
 ////////
 $arrSostTech = $_COOKIE["arrSostTech"];
@@ -88,9 +88,9 @@ $stringSostTech = "";
 $arr = json_decode($arrSostTech);
 
 foreach ($arr as $item){
-    $stringSostTech .= $item . ", ";
+    $stringSostTech .= $item . "; ";
 }
-$stringSostTech = rtrim($stringSostTech, ", ");
+$stringSostTech = rtrim($stringSostTech, "; ");
 
 
 class Table
@@ -788,11 +788,14 @@ $sheet->setCellValue("A" . $startedCell + 6, "М.П.");
 
 
 
+header("Expires: Mon, 1 Apr 1974 05:00:00 GMT");
+header("Last-Modified: " . gmdate("D,d M Y H:i:s") . " GMT");
+header("Cache-Control: no-cache, must-revalidate");
+header("Pragma: no-cache");
 header("Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-header("Content-Disposition: attachment; filename=\"myFile.xlsx\"");
-header("Cache-Control: max-age=0");
-header("Pragma: public");
-header("Expires: 0");
+header("Content-Disposition: attachment; filename=myFile.xlsx");
+
+
 $writer = new Xlsx($spreadsheet);
 $writer->save("php://output");
-exit;
+
