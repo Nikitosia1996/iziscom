@@ -59,18 +59,18 @@ $stringSbor = "";
 $arr = json_decode($arrSbor);
 
 foreach ($arr as $item){
-    $stringSbor .= $item . ", ";
+    $stringSbor .= $item . "; ";
 }
-$stringSbor = rtrim($stringSbor, ", ");
+$stringSbor = rtrim($stringSbor, "; ");
 ////////
 $arrObmer = $_COOKIE["arrObmer"];
 $stringObmer = "";
 $arr = json_decode($arrObmer);
 
 foreach ($arr as $item){
-    $stringObmer .= $item . ", ";
+    $stringObmer .= $item . "; ";
 }
-$stringObmer = rtrim($stringObmer, ", ");
+$stringObmer = rtrim($stringObmer, "; ");
 
 ////////
 $arrObsled = $_COOKIE["arrObsled"];
@@ -78,9 +78,9 @@ $stringObsled = "";
 $arr = json_decode($arrObsled);
 
 foreach ($arr as $item){
-    $stringObsled .= $item . ", ";
+    $stringObsled .= $item . "; ";
 }
-$stringObsled = rtrim($stringObsled, ", ");
+$stringObsled = rtrim($stringObsled, "; ");
 
 ////////
 $arrSostTech = $_COOKIE["arrSostTech"];
@@ -88,9 +88,9 @@ $stringSostTech = "";
 $arr = json_decode($arrSostTech);
 
 foreach ($arr as $item){
-    $stringSostTech .= $item . ", ";
+    $stringSostTech .= $item . "; ";
 }
-$stringSostTech = rtrim($stringSostTech, ", ");
+$stringSostTech = rtrim($stringSostTech, "; ");
 
 
 class Table
@@ -799,8 +799,3 @@ header("Content-Disposition: attachment; filename=myFile.xlsx");
 $writer = new Xlsx($spreadsheet);
 $writer->save("php://output");
 
-$myarr = json_decode($myObject);
-
-foreach ($myarr as $item) {
-    echo $item->text . "<br>";
-}
