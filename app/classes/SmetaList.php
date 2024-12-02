@@ -72,6 +72,9 @@ class SmetaList
 
     public function getListSmetaFromDB($con)
     {
+
+
+
         $sql = "SELECT s.*, ho.*, siv.*, orw.*, obsr.*, sost.*,calc.*, redakt.*, obsotd.*, s.id_smeta as id_sm FROM smets s
                 left join haract_object ho on ho.id_smeta = s.id_smeta
                 left join sbor_ishod_value siv on siv.id_smeta = s.id_smeta
@@ -111,7 +114,7 @@ class SmetaList
                 ),
                 new IshodValObject($row['id_sbor_ishod_value'],
                     $row['pasport_na_zdanie'],
-                    $row['sborCheck'],
+                    $row['sborCheck'] ?? null,
                     $row['toggleZd1'],
                     $row['conval1'],
                     $row['toggleZd2'],
@@ -133,8 +136,8 @@ class SmetaList
                     $row['choosCunstruct'],
                 ), new ObmerObject($row['id_obmernie_raboty'],
                     $row['obmerobs'],
-                    $row['obmerCheck'],
-                    $row['choosCunstruct4'],
+                    $row['obmerCheck'] ?? null,
+                    $row['choosCunstruct4'] ?? null,
                     $row['toggleZd41'],
                     $row['toggleZd42'],
                     $row['toggleZd43'],
@@ -160,7 +163,7 @@ class SmetaList
                 ),
                 new ObsledObject($row['id_obsled_raboty'],
                     $row['predvOsmotr'],
-                    $row['obsledCheck'],
+                    $row['obsledCheck'] ?? null,
                     $row['choosCunstruct5'],
                     $row['toggleZd51'],
                     $row['toggleZd52'],
@@ -187,7 +190,7 @@ class SmetaList
                 ),
                 new SostTechObject($row['id_sost_tech_otchet'],
                     $row['zaklSostStr'],
-                    $row['sostTechOtchetCheck'],
+                    $row['sostTechOtchetCheck'] ?? null,
                     $row['toggleZd61'],
                     $row['toggleZd62'],
                     $row['toggleZd63'],
@@ -212,7 +215,7 @@ class SmetaList
                     $row['choosCunstruct6'],
                 ),
                 new CalculationObject($row['id_calculation'],
-                    $row['calcalcCheck'],
+                    $row['calcalcCheck'] ?? null,
                     $row['selectCalc1'],
                     $row['selectCalc2'],
                     $row['selectCalc3'],
@@ -255,7 +258,7 @@ class SmetaList
                     $row['input3Calc8'],
                 ),
                 new RedaktorObject($row['id_redaktor'],
-                    $row['redaktorIspConstrCheck'],
+                    $row['redaktorIspConstrCheck'] ?? null,
                     $row['toggleZd71'],
                     $row['toggleZd72'],
                     $row['toggleZd73'],
@@ -266,7 +269,7 @@ class SmetaList
                     $row['conval74'],
                 ),
                 new ObsledOtdelObject($row['id_obsled_otdel_constr'],
-                    $row['obsledotdelCheck'],
+                    $row['obsledotdelCheck'] ?? null,
                     $row['toggleZd81'],
                     $row['toggleZd82'],
                     $row['toggleZd83'],

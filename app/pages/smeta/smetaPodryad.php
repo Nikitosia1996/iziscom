@@ -337,13 +337,13 @@ echo "<script>
         --shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
     .otstup{
-        height: 240px;
+        height: 180px;
     }
     .header-fixed {
         width: 85.15%;
         position: fixed;
-        top: 13.6%;
-        left: 14%;
+        top: 0%;
+        left: 270px;
         right: 0;
         background: var(--background-color);
         box-shadow: var(--shadow);
@@ -430,7 +430,7 @@ echo "<script>
         .header-fixed {
             width: 86.5%;
             position: fixed;
-            top: 70px;
+            top: 0px;
             left: 12.7%;
             right: 0;
             background: var(--background-color);
@@ -447,7 +447,7 @@ echo "<script>
         .header-fixed {
             width: 88%;
             position: fixed;
-            top: 70px;
+            top: 0px;
             left: 11.2%;
             right: 0;
             background: var(--background-color);
@@ -462,7 +462,7 @@ echo "<script>
         .header-fixed {
             width: 81.5%;
             position: fixed;
-            top: 70px;
+            top: 0px;
             left: 17.6%;
             right: 0;
             background: var(--background-color);
@@ -478,7 +478,7 @@ echo "<script>
         .header-fixed {
             width: 83.6%;
             position: fixed;
-            top: 70px;
+            top: 0px;
             left: 15.5%;
             right: 0;
             background: var(--background-color);
@@ -492,8 +492,8 @@ echo "<script>
         .header-fixed {
             width: 85.1%;
             position: fixed;
-            top: 70px;
-            left: 14%;
+            top: 0px;
+            left: 270px;
             right: 0;
             background: var(--background-color);
             box-shadow: var(--shadow);
@@ -520,7 +520,7 @@ echo "<script>
             font-size:7px;
             width:99%;
             position: fixed;
-            top: 70px;
+            top: 0px;
             left: 0%;
             right: 0;
             background: var(--background-color);
@@ -541,7 +541,7 @@ echo "<script>
         .header-fixed {
             width:99%;
             position: fixed;
-            top: 70px;
+            top: 0px;
             left: 0%;
             right: 0;
             background: var(--background-color);
@@ -568,7 +568,7 @@ echo "<script>
     height: 25px;
 }
 .otstup{
-    height: 275px;
+    height: 180px;
 }
         .btn {
             padding: 5px 10px;
