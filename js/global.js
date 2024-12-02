@@ -39,6 +39,7 @@ let koefSosttech2 = 1;
 
 
 let idActiveSmeta;
+let idActiveDogovor;
 
 let selectZakazchik = $('#zakazchik');
 let selectPodryadchik = $('#podryadchik');
@@ -2215,6 +2216,50 @@ function printAkt() {
         }
 
     })
+}
+
+
+function toggleDropdownDogovor() {
+    document.getElementById("dogovorDropdown").classList.toggle("show");
+}
+
+function filterDogovor() {
+    var input, filter, dropdown, a, i;
+    input = document.getElementById("dogovorSearch");
+    filter = input.value.toUpperCase();
+    dropdown = document.getElementById("dogovorDropdown");
+    a = dropdown.getElementsByTagName("a");
+    for (i = 0; i < a.length; i++) {
+        txtValue = a[i].textContent || a[i].innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            a[i].style.display = "";
+        } else {
+            a[i].style.display = "none";
+        }
+    }
+}
+
+function getDogovor(id) {
+    if (id) {
+        const selectedItemDogovor = dogovorList.find(item => item.id_dogovor == id);
+        if (selectedItemDogovor) {
+            document.getElementById("doljn").value = selectedItemDogovor.doljn;
+            document.getElementById("fio").value = selectedItemDogovor.fio;
+            document.getElementById("osn_podpis").value = selectedItemDogovor.osn_podpis;
+            document.getElementById("rekvizit").value = selectedItemDogovor.rekvizit;
+            document.getElementById("istochnik").value = selectedItemDogovor.istochnik;
+            document.getElementById("count_bum").value = selectedItemDogovor.count_bum;
+            document.getElementById("count_el").value = selectedItemDogovor.count_el;
+            document.getElementById("osn_obsled").value = selectedItemDogovor.osn_obsled;
+            document.getElementById("nomer_dogovora").value = selectedItemDogovor.nomer_dogovora;
+            document.getElementById("date_akt").value = selectedItemDogovor.date_akt;
+            document.getElementById("who_podpis_akt").value = selectedItemDogovor.who_podpis_akt;
+        } else {
+
+        }
+
+        document.getElementById("dogovorDropdown").classList.toggle("show");
+    }
 }
 
 ///////////////////////////////////////////////////////////////////////////

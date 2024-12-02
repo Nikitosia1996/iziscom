@@ -1,5 +1,4 @@
 <?php
-include "../../connection/connection.php";
 include "Dogovor.php";
 
 class DogovorList
@@ -50,9 +49,25 @@ class DogovorList
         return $this->dogovorList;
     }
 
+    public function getDogovorById($id) {
+        foreach ($this->dogovorList as $dogovor) {
+            if ($dogovor->id_dogovor == $id) {
+                return $dogovor;
+            }
+        }
+        return null;
+    }
+
+    public function getListDogovors()
+    {
+        $smetaList = [];
+        foreach ($this->dogovorList as $dogovor) {
+            $dogovorsData[] = json_decode($dogovor->toJson(), true);
+        }
+
+        return json_encode($dogovorsData);
+    }
 }
 $dogovorList = new DogovorList();
-
-foreach ($dogovorList->getDogovorList() as $dogovor){
-    echo $dogovor->toJson();
-}
+$jsonDogovorList = json_encode($dogovorList->getDogovorList());
+?>
