@@ -66,7 +66,7 @@ $cost_work = str_replace(',', '.', $cost_work);
 // Преобразуем строку в вещественное число
 $number = floatval($cost_work);
 $cost_work = $number * 100;
-$kopeiki = $cost_work - $rubli * 100;
+$kopeiki = round($cost_work - $rubli * 100);
 
 $last_one_characters_k = substr($kopeiki, -1);
 $intKopLastOne = intval($last_one_characters_k);
