@@ -84,7 +84,6 @@ echo "<script>
     .hidden {
         display: none; /* Скрываем селект по умолчанию */
     }
-
     @media (max-width: 768px) {
         .row > * {
             -ms-flex-negative: 0;
