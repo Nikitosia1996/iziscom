@@ -1,4 +1,5 @@
 <?php
+//include "../../connection/connection.php";
 include "Dogovor.php";
 
 class DogovorList
@@ -77,4 +78,5 @@ class DogovorList
 }
 $dogovorList = new DogovorList();
 $jsonDogovorList = json_encode($dogovorList->getDogovorList());
+
 ?>

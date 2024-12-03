@@ -770,8 +770,6 @@ async function getSmeta(id) {
         input3Calc8.val(calculator.input3Calc8);
 
 
-
-
         sborCheck.prop('checked', ishod.sborCheck > 0);
         obmerCheck.prop('checked', obmer.obmerCheck > 0);
         obsledCheck.prop('checked', obsled.obsledCheck > 0);
@@ -830,8 +828,8 @@ async function executeFunctions() {
                 if (nextnextInput.value.length === 0)
                     nextnextInput.value = 1;
                 nextInput.value = doljnostKoef;
-                console.log (doljnostKoef , "doljnostKoef");
-                 calculateK();
+                console.log(doljnostKoef, "doljnostKoef");
+                calculateK();
             }
         }
     });
@@ -2055,7 +2053,7 @@ function printExcel() {
 
         let arrSbor = [];
 
-        $(".ishod2check:checked").each(function() {
+        $(".ishod2check:checked").each(function () {
             var nextText = $(this).next();
             arrSbor.push(nextText.text().replace(/\s+/g, ' ').trim());
         })
@@ -2064,7 +2062,7 @@ function printExcel() {
 
         let arrObmer = [];
 
-        $(".obmer2check:checked").each(function() {
+        $(".obmer2check:checked").each(function () {
             var nextText = $(this).next();
             arrObmer.push(nextText.text().replace(/\s+/g, ' ').trim());
         })
@@ -2073,7 +2071,7 @@ function printExcel() {
 
         let arrObsled = [];
 
-        $(".obsled2check:checked").each(function() {
+        $(".obsled2check:checked").each(function () {
             var nextText = $(this).next();
             arrObsled.push(nextText.text().replace(/\s+/g, ' ').trim());
         })
@@ -2082,7 +2080,7 @@ function printExcel() {
 
         let arrSostTech = [];
 
-        $(".sostTech2check:checked").each(function() {
+        $(".sostTech2check:checked").each(function () {
             var nextText = $(this).next();
             arrSostTech.push(nextText.text().replace(/\s+/g, ' ').trim());
         })
@@ -2239,7 +2237,10 @@ function filterDogovor() {
     }
 }
 
+let selectedDogovor = null;
+
 function getDogovor(id) {
+    selectedDogovor = id;
     if (id) {
         const selectedItemDogovor = dogovorList.find(item => item.id_dogovor == id);
         if (selectedItemDogovor) {
@@ -2266,8 +2267,8 @@ function getDogovor(id) {
             document.getElementById("date_zakl_dogovora").value = selectedItemDogovor.date_zakl_dogovora;
             document.getElementById("count_toms").value = selectedItemDogovor.count_toms;
             document.getElementById("who_podpis_titul").value = selectedItemDogovor.who_podpis_titul;
-            document.getElementById("sum_avans").value = selectedItemDogovor.sum_avans.replace("." , ",");
-            document.getElementById("cost_work").value = selectedItemDogovor.cost_work.replace("." , ",");
+            document.getElementById("sum_avans").value = selectedItemDogovor.sum_avans.replace(".", ",");
+            document.getElementById("cost_work").value = selectedItemDogovor.cost_work.replace(".", ",");
             document.getElementById("count_str").value = selectedItemDogovor.count_str;
 
 
@@ -2280,7 +2281,7 @@ function getDogovor(id) {
             checkboxDRall.forEach(id => {
                 const checkboxDR = document.getElementById(id);
                 if (checkboxDR) {
-                    console.log (selectedItemDogovor[id]);
+                    console.log(selectedItemDogovor[id]);
                     checkboxDR.checked = selectedItemDogovor[id] > 0;
                 }
             });
@@ -2302,9 +2303,57 @@ function getDogovor(id) {
         document.getElementById("dogovorDropdown").classList.toggle("show");
     }
 }
-function saveDogovor(){
+
+function saveDogovor() {
+    let dogovor = {
+        id_zakazchik: document.getElementById("id_zakazchik").value,
+        doljn: document.getElementById("doljn").value,
+        fio: document.getElementById("fio").value,
+        osn_podpis: document.getElementById("osn_podpis").value,
+        rekvizit: document.getElementById("rekvizit").value,
+        istochnik: document.getElementById("istochnik").value,
+        date_start_work: document.getElementById("date_start_work").value,
+        date_end_work: document.getElementById("date_end_work").value,
+        count_bum: document.getElementById("count_bum").value,
+        count_el: document.getElementById("count_el").value,
+        osn_obsled: document.getElementById("osn_obsled").value,
+        name_work: document.getElementById("name_work").value,
+        target_work: document.getElementById("target_work").value,
+        nomer_dogovora: document.getElementById("nomer_dogovora").value,
+        who_podpis_dog: document.getElementById("who_podpis_dog").value,
+        srok_vid: document.getElementById("srok_vid").value,
+        count_days: document.getElementById("count_days").value,
+        date_akt: document.getElementById("date_akt").value,
+        who_podpis_akt: document.getElementById("who_podpis_akt").value,
+        date_zakl_dogovora: document.getElementById("date_zakl_dogovora").value,
+        count_toms: document.getElementById("count_toms").value,
+        who_podpis_titul: document.getElementById("who_podpis_titul").value,
+        sum_avans: document.getElementById("sum_avans").value.replace(".", ","),
+        cost_work: document.getElementById("cost_work").value.replace(".", ","),
+        count_str: document.getElementById("count_str").value
+    };
+
+    $.ajax({
+        url: "app/ajax/saveDogovor.php",
+        method: "POST",
+        data: {dogovor: dogovor, id: selectedDogovor}
+    }).then(response => {
+        alert("Данные дохранены");
+    }).catch(e => {
+        console.log(e);
+        const message = JSON.parse(e.responseText) ? JSON.parse(e.responseText).message : "";
+        alert("Ошибка: " + message);
+    })
+
+    if(selectedDogovor) {
+        dogovorList[selectedDogovor] = dogovor;
+    }else{
+        dogovorList.push(dogovor);
+    }
+
 
 }
+
 ///////////////////////////////////////////////////////////////////////////
 
 
