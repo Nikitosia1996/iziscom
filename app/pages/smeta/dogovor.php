@@ -105,12 +105,14 @@ echo "<script>
                     ?>
                 </div>
             </div>
+            <input type="text" class="search-input" id="dogovorName" placeholder="Название договора">
+            <button class="btn btn-secondary" onclick="saveDogovor()">Сохранить</button>
 
         </div>
         <div class="col-lg-3 mgleft2">
             <div class="form-group mgtop5">
-                <label for="exampleFormControlSelect1">Заказчик</label>
-                <select class="form-control" id="exampleFormControlSelect1">
+                <label for="id_zakazchik">Заказчик</label>
+                <select class="form-control" id="id_zakazchik">
                     <option value="0" selected>-- Пожалуйста, выберите --</option>
                     <?php
                     while ($row = $connectionDB->getRowResult($zakazchik)) {
@@ -145,23 +147,23 @@ echo "<script>
             <div class="form-group mgtop5">
                 <label for="">Источник финансирования</label>
                 <select class="form-control" id="istochnik">
-                    <option>-- Пожалуйста, выберите --</option>
-                    <option>Собственные средства заказчика</option>
-                    <option>Местный бюджет</option>
-                    <option>Республиканский бюджет</option>
-                    <option>Государственный целевой бюджетный фонд</option>
-                    <option>Государственный целевой внебюджетный фонд</option>
+                    <option value="0">-- Пожалуйста, выберите --</option>
+                    <option value="1">Собственные средства заказчика</option>
+                    <option value="2">Местный бюджет</option>
+                    <option value="3">Республиканский бюджет</option>
+                    <option value="4">Государственный целевой бюджетный фонд</option>
+                    <option value="5">Государственный целевой внебюджетный фонд</option>
                 </select>
             </div>
 
             <div class="form-group mgtop5">
                 <label for="">Дата начала выполнения работ:</label>
-                <input type="date" class="form-control" id="">
+                <input type="date" class="form-control" id="date_start_work">
             </div>
 
             <div class="form-group mgtop5">
                 <label for="">Дата окончания выполнения:</label>
-                <input type="date" class="form-control" id="">
+                <input type="date" class="form-control" id="date_end_work">
             </div>
 
             <div class="form-group mgtop5">
@@ -177,8 +179,9 @@ echo "<script>
             <div class="form-group mgtop5">
                 <label for="">Основание для обследования:</label>
                 <select class="form-control" id="osn_obsled">
-                    <option>Техническое задание заказчика</option>
-                    <option>Обращение заказчика</option>
+                    <option value="0">-- Пожалуйста, выберите --</option>
+                    <option value="1">Техническое задание заказчика</option>
+                    <option value="2">Обращение заказчика</option>
                 </select>
             </div>
         </div>
@@ -186,12 +189,12 @@ echo "<script>
         <div class="col-lg-3 mgleft8">
             <div class="form-group mgtop5" style="height: 42%;">
                 <label for="">Наименование работ:</label>
-                <textarea class="form-control" id="" style="height: 90%;"></textarea>
+                <textarea class="form-control" id="name_work" style="height: 90%;"></textarea>
 
             </div>
             <div class="form-group mgtop5" style="height: 42%;">
                 <label for="">Цель:</label>
-                <textarea class="form-control" id="" style="height: 90%;"></textarea>
+                <textarea class="form-control" id="target_work" style="height: 90%;"></textarea>
 
             </div>
         </div>
@@ -222,8 +225,9 @@ echo "<script>
             <div class="form-group mgtop5">
                 <label for="">Кто подписывает договор:</label>
                 <select class="form-control" id="who_podpis_dog">
-                    <option>Техническое задание заказчика</option>
-                    <option>Обращение заказчика</option>
+                    <option value="0">-- Пожалуйста, выберите --</option>
+                    <option value="1">Директор</option>
+                    <option value="2">И.О. Директора</option>
                 </select>
             </div>
 
@@ -231,8 +235,9 @@ echo "<script>
             <div class="form-group mgtop5">
                 <label for="">Срок и вид оплаты:</label>
                 <select class="form-control" id="srok_vid">
-                    <option>Техническое задание заказчика</option>
-                    <option>Обращение заказчика</option>
+                    <option value="0">-- Пожалуйста, выберите --</option>
+                    <option value="1">Наличными</option>
+                    <option value="2">Картой</option>
                 </select>
             </div>
 
@@ -249,7 +254,7 @@ echo "<script>
                 <div class="col-md-6 mgleft2">
                     <div class="form-group ">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                            <input class="form-check-input" type="checkbox" value="" id="checkbox_1" >
                             <label class="form-check-label" for="invalidCheck">
                                 Смета
                             </label>
@@ -257,7 +262,7 @@ echo "<script>
                     </div>
                     <div class="form-group mgtop20p">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                            <input class="form-check-input" type="checkbox" value="" id="checkbox_2" >
                             <label class="form-check-label" for="invalidCheck">
                                 Калькуляция
                             </label>
@@ -265,7 +270,7 @@ echo "<script>
                     </div>
                     <div class="form-group mgtop20p">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                            <input class="form-check-input" type="checkbox" value="" id="checkbox_3" >
                             <label class="form-check-label" for="invalidCheck">
                                 Сводная смета
                             </label>
@@ -273,7 +278,7 @@ echo "<script>
                     </div>
                     <div class="form-group mgtop20p">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                            <input class="form-check-input" type="checkbox" value="" id="checkbox_4" >
                             <label class="form-check-label" for="invalidCheck">
                                 Антикоррупционная оговорка
                             </label>
@@ -285,7 +290,7 @@ echo "<script>
                 <div class="col-md-6 ">
                     <div class="form-group ">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                            <input class="form-check-input" type="checkbox" value="" id="checkbox_5" >
                             <label class="form-check-label" for="invalidCheck">
                                 Календарный план
                             </label>
@@ -293,7 +298,7 @@ echo "<script>
                     </div>
                     <div class="form-group mgtop20p">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                            <input class="form-check-input" type="checkbox" value="" id="checkbox_6" >
                             <label class="form-check-label" for="invalidCheck">
                                 Техническое задание
                             </label>
@@ -301,15 +306,15 @@ echo "<script>
                     </div>
                     <div class="form-group mgtop20p">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                            <input class="form-check-input" type="checkbox" value="" id="checkbox_7" >
                             <label class="form-check-label" for="invalidCheck">
                                 Протокол заседания
                             </label>
                         </div>
                     </div>
                     <div class="form-group mgtop20p">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                        <div class="form-check-">
+                            <input class="form-check-input" type="checkbox" value="" id="checkbox_8" >
                             <label class="form-check-label" for="invalidCheck">
                                 Протокол согласования договорной (контрактной) цены
                             </label>
@@ -338,9 +343,9 @@ echo "<script>
             <div class="form-group mgtop5">
                 <label for="">Кто подписывает накладную и акт</label>
                 <select class="form-control" id="who_podpis_akt">
-                    <option>Директор</option>
-                    <option>И.О. Директора</option>
-
+                    <option value="0">-- Пожалуйста, выберите --</option>
+                    <option value="1">Директор</option>
+                    <option value="2">И.О. Директора</option>
                 </select>
             </div>
         </div>
@@ -370,10 +375,9 @@ echo "<script>
                 <div class="mgtop20p">
                     <label for="c2" id="ID-1724763137556">Сумма аванса:</label>
                     <div class="input-group ">
-                        <span class="input-group-addon">Р</span>
-                        <input type="number" value="1000" min="0" step="0.01" data-number-to-fixed="2"
-                               data-number-stepfactor="100" class="form-control currency" id="sum_avans"
-                               style="appearance: none; display: none;"><input
+                        <span class="input-group-addon">BYN</span>
+                        <input type="number" value="" min="0" step="0.01" class="form-control currency"
+                               style="appearance: none; display: none;"><input id="sum_avans"
                                 class="ws-number ws-inputreplace form-control currency wsshadow-1724763137553 has-input-buttons"
                                 type="text" placeholder="" value="1,000" aria-required="false" inputmode="numeric"
                                 aria-labelledby="ID-1724763137556 ID-1724763137557"
@@ -402,7 +406,7 @@ echo "<script>
             <div class="col-lg-3 mgleft2">
                 <div class="form-group mgtop20p">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="tek_smeta" required>
+                        <input class="form-check-input" type="checkbox" value="" id="tek_smeta" >
                         <label class="form-check-label" for="invalidCheck">
                             Текущая смета
                         </label>
@@ -410,7 +414,7 @@ echo "<script>
                 </div>
                 <div class="form-group mgtop20p">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="calculacia" required>
+                        <input class="form-check-input" type="checkbox" value="" id="calculacia" >
                         <label class="form-check-label" for="invalidCheck">
                             Калькуляция
                         </label>
@@ -423,21 +427,19 @@ echo "<script>
                 <div class="form-group ">
                     <label for="">Кто подписывает титул:</label>
                     <select class="form-control" id="who_podpis_titul">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
+                        <option value="0">-- Пожалуйста, выберите --</option>
+                        <option value="1">Директор</option>
+                        <option value="2">И.О. Директора</option>
                     </select>
                 </div>
 
                 <div class="mgtop20p">
                     <label for="c2" id="ID-1724763137556">Стоимость работ:</label>
                     <div class="input-group ">
-                        <span class="input-group-addon">Р</span>
-                        <input type="number" value="1000" min="0" step="0.01" data-number-to-fixed="2"
-                               data-number-stepfactor="100" class="form-control currency" id="c2"
-                               style="appearance: none; display: none;"><input
+                        <span class="input-group-addon">BYN</span>
+                        <input type="number" value="" min="0" step="0.01" data-number-to-fixed="2"
+                               data-number-stepfactor="100" class="form-control currency" id=""
+                               style="appearance: none; display: none;"><input id="cost_work"
                                 class="ws-number ws-inputreplace form-control currency wsshadow-1724763137553 has-input-buttons"
                                 type="text" placeholder="" value="1,000" aria-required="false" inputmode="numeric"
                                 aria-labelledby="ID-1724763137556 ID-1724763137557"

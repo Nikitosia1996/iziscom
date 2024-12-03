@@ -2243,25 +2243,68 @@ function getDogovor(id) {
     if (id) {
         const selectedItemDogovor = dogovorList.find(item => item.id_dogovor == id);
         if (selectedItemDogovor) {
+            console.log(selectedItemDogovor);
+            document.getElementById("id_zakazchik").value = selectedItemDogovor.id_zakazchik;
             document.getElementById("doljn").value = selectedItemDogovor.doljn;
             document.getElementById("fio").value = selectedItemDogovor.fio;
             document.getElementById("osn_podpis").value = selectedItemDogovor.osn_podpis;
             document.getElementById("rekvizit").value = selectedItemDogovor.rekvizit;
             document.getElementById("istochnik").value = selectedItemDogovor.istochnik;
+            document.getElementById("date_start_work").value = selectedItemDogovor.date_start_work;
+            document.getElementById("date_end_work").value = selectedItemDogovor.date_end_work;
             document.getElementById("count_bum").value = selectedItemDogovor.count_bum;
             document.getElementById("count_el").value = selectedItemDogovor.count_el;
             document.getElementById("osn_obsled").value = selectedItemDogovor.osn_obsled;
+            document.getElementById("name_work").value = selectedItemDogovor.name_work;
+            document.getElementById("target_work").value = selectedItemDogovor.target_work;
             document.getElementById("nomer_dogovora").value = selectedItemDogovor.nomer_dogovora;
+            document.getElementById("who_podpis_dog").value = selectedItemDogovor.who_podpis_dog;
+            document.getElementById("srok_vid").value = selectedItemDogovor.srok_vid;
+            document.getElementById("count_days").value = selectedItemDogovor.count_days;
             document.getElementById("date_akt").value = selectedItemDogovor.date_akt;
             document.getElementById("who_podpis_akt").value = selectedItemDogovor.who_podpis_akt;
-        } else {
+            document.getElementById("date_zakl_dogovora").value = selectedItemDogovor.date_zakl_dogovora;
+            document.getElementById("count_toms").value = selectedItemDogovor.count_toms;
+            document.getElementById("who_podpis_titul").value = selectedItemDogovor.who_podpis_titul;
+            document.getElementById("sum_avans").value = selectedItemDogovor.sum_avans.replace("." , ",");
+            document.getElementById("cost_work").value = selectedItemDogovor.cost_work.replace("." , ",");
+            document.getElementById("count_str").value = selectedItemDogovor.count_str;
 
+
+//-----------------------------------------------------------------------------------------------------------------
+            const checkboxes = document.querySelectorAll('.form-check-input');
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = false;
+            });
+            const checkboxDRall = ['nalich_avans', 'kompl_chert', 'tek_smeta', 'calculacia'];
+            checkboxDRall.forEach(id => {
+                const checkboxDR = document.getElementById(id);
+                if (checkboxDR) {
+                    console.log (selectedItemDogovor[id]);
+                    checkboxDR.checked = selectedItemDogovor[id] > 0;
+                }
+            });
+
+            const checkboxprilagaetsa = selectedItemDogovor.prilagaetsa;
+            if (checkboxprilagaetsa) {
+                const idcheckboxprilagaetsa = checkboxprilagaetsa.split(';');
+                idcheckboxprilagaetsa.forEach(id => {
+                    const checkbox = document.getElementById(`checkbox_${id}`);
+                    if (checkbox) {
+                        checkbox.checked = true;
+                    }
+                });
+            }
+        } else {
+            console.error("Договор не найден");
         }
 
         document.getElementById("dogovorDropdown").classList.toggle("show");
     }
 }
+function saveDogovor(){
 
+}
 ///////////////////////////////////////////////////////////////////////////
 
 

@@ -23,6 +23,8 @@ class DogovorList
                 $row['osn_podpis'],
                 $row['rekvizit'],
                 $row['istochnik'],
+                $row['date_start_work'],
+                $row['date_end_work'],
                 $row['count_bum'],
                 $row['count_el'],
                 $row['osn_obsled'],
@@ -35,11 +37,16 @@ class DogovorList
                 $row['date_akt'],
                 $row['who_podpis_akt'],
                 $row['nalich_avans'],
+                $row['kompl_chert'],
                 $row['count_toms'],
                 $row['tek_smeta'],
                 $row['calculacia'],
                 $row['who_podpis_titul'],
-                $row['count_str']
+                $row['count_str'],
+                $row['name_work'],
+                $row['target_work'],
+                $row['sum_avans'],
+                $row['cost_work'],
             );
             array_push($this->dogovorList, $dogovor);
         };

@@ -2,9 +2,9 @@
 
 class Dogovor
 {
-    public $id_dogovor, $id_smeta, $id_zakazchik, $doljn, $fio, $osn_podpis, $rekvizit, $istochnik, $count_bum, $count_el, $osn_obsled,
-    $nomer_dogovora, $date_zakl_dogovora, $who_podpis_dog, $srok_vid, $count_days, $prilagaetsa, $date_akt, $who_podpis_akt, $nalich_avans,
-    $count_toms, $tek_smeta, $calculacia, $who_podpis_titul, $count_str;
+    public $id_dogovor, $id_smeta, $id_zakazchik, $doljn, $fio, $osn_podpis, $rekvizit, $istochnik,$date_start_work, $date_end_work, $count_bum, $count_el, $osn_obsled,
+    $nomer_dogovora, $date_zakl_dogovora, $who_podpis_dog, $srok_vid, $count_days, $prilagaetsa, $date_akt, $who_podpis_akt, $nalich_avans, $kompl_chert,
+    $count_toms, $tek_smeta, $calculacia, $who_podpis_titul, $count_str, $name_work, $target_work , $sum_avans, $cost_work;
 
     /**
      * @param $id_dogovor
@@ -33,7 +33,7 @@ class Dogovor
      * @param $who_podpis_titul
      * @param $count_str
      */
-    public function __construct($id_dogovor, $id_smeta, $id_zakazchik, $doljn, $fio, $osn_podpis, $rekvizit, $istochnik, $count_bum, $count_el, $osn_obsled, $nomer_dogovora, $date_zakl_dogovora, $who_podpis_dog, $srok_vid, $count_days, $prilagaetsa, $date_akt, $who_podpis_akt, $nalich_avans, $count_toms, $tek_smeta, $calculacia, $who_podpis_titul, $count_str)
+    public function __construct($id_dogovor, $id_smeta, $id_zakazchik, $doljn, $fio, $osn_podpis, $rekvizit, $istochnik,$date_start_work, $date_end_work, $count_bum, $count_el, $osn_obsled, $nomer_dogovora, $date_zakl_dogovora, $who_podpis_dog, $srok_vid, $count_days, $prilagaetsa, $date_akt, $who_podpis_akt, $nalich_avans, $kompl_chert, $count_toms, $tek_smeta, $calculacia, $who_podpis_titul, $count_str, $name_work, $target_work, $sum_avans, $cost_work)
     {
         $this->id_dogovor = $id_dogovor;
         $this->id_smeta = $id_smeta;
@@ -43,6 +43,8 @@ class Dogovor
         $this->osn_podpis = $osn_podpis;
         $this->rekvizit = $rekvizit;
         $this->istochnik = $istochnik;
+        $this->date_start_work = $date_start_work;
+        $this->date_end_work = $date_end_work;
         $this->count_bum = $count_bum;
         $this->count_el = $count_el;
         $this->osn_obsled = $osn_obsled;
@@ -55,11 +57,17 @@ class Dogovor
         $this->date_akt = $date_akt;
         $this->who_podpis_akt = $who_podpis_akt;
         $this->nalich_avans = $nalich_avans;
+        $this->kompl_chert = $kompl_chert;
         $this->count_toms = $count_toms;
         $this->tek_smeta = $tek_smeta;
         $this->calculacia = $calculacia;
         $this->who_podpis_titul = $who_podpis_titul;
         $this->count_str = $count_str;
+        $this->name_work = $name_work;
+        $this->target_work = $target_work;
+        $this->sum_avans = $sum_avans;
+        $this->cost_work = $cost_work;
+
     }
 
 
@@ -73,6 +81,8 @@ class Dogovor
             'osn_podpis' => $this->osn_podpis,
             'rekvizit' => $this->rekvizit,
             'istochnik' => $this->istochnik,
+            'date_start_work' => $this->date_start_work,
+            'date_end_work' => $this->date_end_work,
             'count_bum' => $this->count_bum,
             'count_el' => $this->count_el,
             'osn_obsled' => $this->osn_obsled,
@@ -85,11 +95,17 @@ class Dogovor
             'date_akt' => $this->date_akt,
             'who_podpis_akt' => $this->who_podpis_akt,
             'nalich_avans' => $this->nalich_avans,
+            'kompl_chert' => $this->kompl_chert,
             'count_toms' => $this->count_toms,
             'tek_smeta' => $this->tek_smeta,
             'calculacia' => $this->calculacia,
             'who_podpis_titul' => $this->who_podpis_titul,
             'count_str' => $this->count_str,
+            'name_work' => $this->name_work,
+            'target_work' => $this->target_work,
+            'sum_avans' => $this->sum_avans,
+            'cost_work' => $this->cost_work,
+
         ]);
     }
 
