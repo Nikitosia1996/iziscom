@@ -2305,6 +2305,7 @@ function getDogovor(id) {
 }
 
 function saveDogovor() {
+
     let dogovor = {
         id_zakazchik: document.getElementById("id_zakazchik").value,
         doljn: document.getElementById("doljn").value,
@@ -2330,8 +2331,24 @@ function saveDogovor() {
         who_podpis_titul: document.getElementById("who_podpis_titul").value,
         sum_avans: document.getElementById("sum_avans").value.replace(".", ","),
         cost_work: document.getElementById("cost_work").value.replace(".", ","),
-        count_str: document.getElementById("count_str").value
+        count_str: document.getElementById("count_str").value,
+        prilagaetsa: ""
     };
+    const checkboxDRall = ['nalich_avans', 'kompl_chert', 'tek_smeta', 'calculacia'];
+    checkboxDRall.forEach(id => {
+        const checkboxDR = document.getElementById(id);
+        if (checkboxDR) {
+            dogovor[id] = checkboxDR.checked ? 1 : 0;
+        }
+    });
+
+    document.querySelectorAll(".prilagaetsa").forEach(function(item) {
+        if(item.checked){
+            console.log(item);
+            dogovor["prilagaetsa"] += item.id.slice(-1) + ";";
+        }
+    })
+    dogovor["prilagaetsa"] = dogovor["prilagaetsa"].slice(0, -1);
 
     $.ajax({
         url: "app/ajax/saveDogovor.php",

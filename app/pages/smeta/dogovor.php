@@ -324,7 +324,7 @@ echo "<script>
                 <div class="col-md-6 mgleft2">
                     <div class="form-group ">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="checkbox_1" >
+                            <input class="form-check-input prilagaetsa" type="checkbox" value="" id="checkbox_1" >
                             <label class="form-check-label" for="invalidCheck">
                                 Смета
                             </label>
@@ -332,7 +332,7 @@ echo "<script>
                     </div>
                     <div class="form-group mgtop20p">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="checkbox_2" >
+                            <input class="form-check-input prilagaetsa" type="checkbox" value="" id="checkbox_2" >
                             <label class="form-check-label" for="invalidCheck">
                                 Калькуляция
                             </label>
@@ -340,7 +340,7 @@ echo "<script>
                     </div>
                     <div class="form-group mgtop20p">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="checkbox_3" >
+                            <input class="form-check-input prilagaetsa" type="checkbox" value="" id="checkbox_3" >
                             <label class="form-check-label" for="invalidCheck">
                                 Сводная смета
                             </label>
@@ -348,7 +348,7 @@ echo "<script>
                     </div>
                     <div class="form-group mgtop20p">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="checkbox_4" >
+                            <input class="form-check-input prilagaetsa" type="checkbox" value="" id="checkbox_4" >
                             <label class="form-check-label" for="invalidCheck">
                                 Антикоррупционная оговорка
                             </label>
@@ -360,7 +360,7 @@ echo "<script>
                 <div class="col-md-6 ">
                     <div class="form-group ">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="checkbox_5" >
+                            <input class="form-check-input prilagaetsa" type="checkbox" value="" id="checkbox_5" >
                             <label class="form-check-label" for="invalidCheck">
                                 Календарный план
                             </label>
@@ -368,7 +368,7 @@ echo "<script>
                     </div>
                     <div class="form-group mgtop20p">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="checkbox_6" >
+                            <input class="form-check-input prilagaetsa" type="checkbox" value="" id="checkbox_6" >
                             <label class="form-check-label" for="invalidCheck">
                                 Техническое задание
                             </label>
@@ -376,7 +376,7 @@ echo "<script>
                     </div>
                     <div class="form-group mgtop20p">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="checkbox_7" >
+                            <input class="form-check-input prilagaetsa" type="checkbox" value="" id="checkbox_7" >
                             <label class="form-check-label" for="invalidCheck">
                                 Протокол заседания
                             </label>
@@ -384,7 +384,7 @@ echo "<script>
                     </div>
                     <div class="form-group mgtop20p">
                         <div class="form-check-">
-                            <input class="form-check-input" type="checkbox" value="" id="checkbox_8" >
+                            <input class="form-check-input prilagaetsa" type="checkbox" value="" id="checkbox_8" >
                             <label class="form-check-label" for="invalidCheck">
                                 Протокол согласования договорной (контрактной) цены
                             </label>

@@ -32,6 +32,10 @@ if ($dogovor) {
     $sum_avans = isset($dogovor['sum_avans']) ? $dogovor['sum_avans'] : null;
     $cost_work = isset($dogovor['cost_work']) ? $dogovor['cost_work'] : null;
     $count_str = isset($dogovor['count_str']) ? $dogovor['count_str'] : null;
+    $nalich_avans = isset($dogovor['nalich_avans']) ? $dogovor['nalich_avans'] : null;
+    $kompl_chert = isset($dogovor['kompl_chert']) ? $dogovor['kompl_chert'] : null;
+    $tek_smeta = isset($dogovor['tek_smeta']) ? $dogovor['tek_smeta'] : null;
+    $calculacia = isset($dogovor['calculacia']) ? $dogovor['calculacia'] : null;
 
     if ($id) {
         $sql = "UPDATE dogovor SET 
@@ -59,7 +63,12 @@ if ($dogovor) {
         sum_avans = '$sum_avans', 
         cost_work = '$cost_work', 
         count_str = '$count_str' ,
-        id_zakazchik = '$id_zakazchik'
+        id_zakazchik = '$id_zakazchik',
+        nalich_avans = '$nalich_avans',
+        kompl_chert = '$kompl_chert',
+        tek_smeta = '$tek_smeta',
+        calculacia = '$calculacia'
+        
     WHERE id_dogovor = '$id'";
     } else {
         // Если id_zakazchik не существует, вставляем новую запись
@@ -87,7 +96,11 @@ if ($dogovor) {
         who_podpis_titul, 
         sum_avans, 
         cost_work, 
-        count_str
+        count_str,
+        nalich_avans,
+                        kompl_chert,
+        tek_smeta,
+        calculacia 
     ) VALUES (
         '$doljn', 
         '$fio', 
@@ -112,7 +125,11 @@ if ($dogovor) {
         '$who_podpis_titul', 
         '$sum_avans', 
         '$cost_work', 
-        '$count_str'
+        '$count_str',
+              '$nalich_avans',
+                '$kompl_chert',
+      '$tek_smeta',
+       '$calculacia'
     )";
     }
     try {
