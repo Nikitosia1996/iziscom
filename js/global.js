@@ -2302,11 +2302,69 @@ function getDogovor(id) {
         document.getElementById("dogovorDropdown").classList.toggle("show");
     }
 }
+
+
+
 function saveDogovor(){
 
 }
 ///////////////////////////////////////////////////////////////////////////
+function toggleDropdown() {
+    document.getElementById("smetaDropdown").classList.toggle("show");
+}
 
+function filterSmeta() {
+    var input, filter, dropdown, a, i;
+    input = document.getElementById("smetaSearch");
+    filter = input.value.toUpperCase();
+    dropdown = document.getElementById("smetaDropdown");
+    a = dropdown.getElementsByTagName("a");
+    for (i = 0; i < a.length; i++) {
+        txtValue = a[i].textContent || a[i].innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            a[i].style.display = "";
+        } else {
+            a[i].style.display = "none";
+        }
+    }
+}
+
+window.onclick = function(event) {
+    if (!event.target.matches('.btn-primary')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        for (var i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+        }
+    }
+}
+
+function getSmetaDogovor(id) {
+    idActiveSmeta = id;
+    const selectedItem = smetaList.find(item => item.id == id);
+    if (selectedItem) {
+        const haract = selectedItem.haractObject;
+        const ishod = selectedItem.ishod;
+        const obmer = selectedItem.obmer;
+        const obsled = selectedItem.obsled;
+        const sosttech = selectedItem.sosttech;
+        const calculator = selectedItem.calculator;
+        const redaktor = selectedItem.redaktor;
+        const obsledotdel = selectedItem.obsledotdel;
+        console.log (selectedItem);
+
+
+        document.getElementById("id_zakazchik").value = selectedItem.id_zakazchik;
+        document.getElementById("date_start_work").value = selectedItem.dateNachRab;
+        document.getElementById("date_end_work").value = selectedItem.dateOkonchRab;
+        document.getElementById("name_work").value = selectedItem.textAreaNaimRabot;
+        document.getElementById("target_work").value = selectedItem.textAreaCel;
+
+
+    }
+}
 
 // function calculateHaracterCheckb(thisEl){
 //     let data_id = thisEl.getAttribute('data-id');

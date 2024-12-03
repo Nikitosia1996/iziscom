@@ -4114,37 +4114,7 @@ echo "<script>
         }
     }
 
-    function toggleDropdown() {
-        document.getElementById("smetaDropdown").classList.toggle("show");
-    }
 
-    function filterSmeta() {
-        var input, filter, dropdown, a, i;
-        input = document.getElementById("smetaSearch");
-        filter = input.value.toUpperCase();
-        dropdown = document.getElementById("smetaDropdown");
-        a = dropdown.getElementsByTagName("a");
-        for (i = 0; i < a.length; i++) {
-            txtValue = a[i].textContent || a[i].innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                a[i].style.display = "";
-            } else {
-                a[i].style.display = "none";
-            }
-        }
-    }
-
-    window.onclick = function(event) {
-        if (!event.target.matches('.btn-primary')) {
-            var dropdowns = document.getElementsByClassName("dropdown-content");
-            for (var i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (openDropdown.classList.contains('show')) {
-                    openDropdown.classList.remove('show');
-                }
-            }
-        }
-    }
 
 
     document.getElementById('btnShowModalPeremen').addEventListener('click', function () {

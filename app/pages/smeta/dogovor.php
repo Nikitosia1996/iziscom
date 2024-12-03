@@ -1,9 +1,10 @@
 <?php
 include "app/classes/DogovorList.php";
-
+include "app/classes/SmetaList.php";
 
 echo "<script>
      let dogovorList = " . $dogovorList->getListDogovors() . ";
+     let smetaList = " . $smetaList->getListSmets() . ";
    
 </script>";
 
@@ -12,6 +13,10 @@ echo "<script>
 
 <script src="/js/global.js"></script>
 <style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+
     .input-group .input-buttons {
         position: relative;
         z-index: 3;
@@ -80,23 +85,76 @@ echo "<script>
         display: none; /* Скрываем селект по умолчанию */
     }
 
+    @media (max-width: 768px) {
+        .row > * {
+            -ms-flex-negative: 0;
+            flex-shrink: 0;
+            width: 90%;
+            max-width: 100%;
+            padding-right: calc(var(--bs-gutter-x)* 0.5);
+            padding-left: calc(var(--bs-gutter-x)* 0.5);
+            margin-top: var(--bs-gutter-y);
+        }
+        #btnTechZad{
+            width: 130px !important;
+            height: 25px !important;
+        }
+        #actnacl{
+            margin-left: 10px !important;
+        }
+        #dogr{
+            margin-left: 10px !important;
+        }
+        #naitidog{
+            margin-left: -270px !important;
+            margin-top: 30px !important;
+        }
+        #dogovorDropdown{
+            margin-left: -270px !important;
+        }
+        #dogovorName{
+            margin-left: -170px !important;
+            margin-top: 32px !important;
+            width: 90px !important;
+            height: 26px !important;
+        }
+        #svdog{
+            margin-left: 5px !important;
+            width: 75px !important;
+            height: 27px !important;
+            margin-top: 30px !important;
+        }
+        #naitismetu{
+            margin-left: 10px !important;
+            width: 60px !important;
+            height: 40px !important;
+        }
+        #smetaDropdown{
+            margin-left: -58px !important;
+        }
+
+
+
+    }
+
+
 </style>
 
 <section class="col-lg-12 connectedSortable ui-sortable" style="margin-top: 90px; margin-bottom: 20px;">
 
     <div class="row ">
         <div style = "display:flex;">
-            <div style = "margin-left:30px;">
+            <div style = "margin-left:30px;" id = "actnacl">
                 <button id="btnTechZad" class="btn btn-primary" onclick="printAkt()">Акт, накладная в Word</button>
             </div>
-            <div style = "margin-left:30px;">
+            <div style = "margin-left:30px;"  id = "dogr">
                 <button id="btnTechZad" class="btn btn-primary" onclick="printDogovor()">Договор в Word</button>
             </div>
 
             <div class="dropdown">
-                <button class="btn btn-primary" onclick="toggleDropdownDogovor()">Найти договор</button>
+                <button style = "margin-left:120px;" class="btn btn-primary" id="naitidog" onclick="toggleDropdownDogovor()">Найти договор</button>
                 <div id="dogovorDropdown" class="dropdown-content">
-                    <input type="text" placeholder="Поиск смет..." id="dogovorSearch" onkeyup="filterDogovor()">
+                    <input type="text" placeholder="Поиск договора..." id="dogovorSearch" onkeyup="filterDogovor()">
                     <?php
                     $dogovorList = $dogovorList->getDogovorList();
                     foreach ($dogovorList as $dogovor) {
@@ -105,8 +163,21 @@ echo "<script>
                     ?>
                 </div>
             </div>
-            <input type="text" class="search-input" id="dogovorName" placeholder="Название договора">
-            <button class="btn btn-secondary" onclick="saveDogovor()">Сохранить</button>
+            <input style = "margin-left:15px;" type="text" class="search-input" id="dogovorName" placeholder="Название договора">
+            <button class="btn btn-secondary" id="svdog" onclick="saveDogovor()">Сохранить</button>
+
+            <div class="dropdown">
+                <button style = "margin-left:120px;" class="btn btn-primary" id = "naitismetu" onclick="toggleDropdown()">Найти смету</button>
+                <div id="smetaDropdown" class="dropdown-content">
+                    <input type="text" placeholder="Поиск смет..." id="smetaSearch" onkeyup="filterSmeta()">
+                    <?php
+                    $smetaArray = $smetaList->getSmetaArray();
+                    foreach ($smetaArray as $smeta) {
+                        echo '<a onclick="getSmetaDogovor(' . $smeta->getId() . ')">' . $smeta->getName() . '</a>';
+                    }
+                    ?>
+                </div>
+            </div>
 
         </div>
         <div class="col-lg-3 mgleft2">
@@ -455,22 +526,6 @@ echo "<script>
         </div>
 
 </section>
-
-<!--    <div class="container">-->
-<!--        <h1>Договоры</h1>-->
-<!--        --><?php //foreach ($dogovorList->getDogovorList() as $dogovor): ?>
-<!--            <div class="form-group mgtop5">-->
-<!--                <label for="doljn_--><?php //echo $dogovor->id_dogovor; ?><!--">Должность</label>-->
-<!--                <input type="text" class="form-control" id="doljn_--><?php //echo $dogovor->id_dogovor; ?><!--" value="--><?php //echo htmlspecialchars($dogovor->doljn); ?><!--">-->
-<!--            </div>-->
-<!--            <div class="form-group mgtop5">-->
-<!--                <label for="fio_--><?php //echo $dogovor->id_dogovor; ?><!--">ФИО</label>-->
-<!--                <input type="text" class="form-control" id="fio_--><?php //echo $dogovor->id_dogovor; ?><!--" value="--><?php //echo htmlspecialchars($dogovor->fio); ?><!--">-->
-<!--            </div>-->
-<!---->
-<!--        --><?php //endforeach; ?>
-<!--    </div>-->
-
 <?php
 $result = (new \MessageFormatter('ru-RU', '{n, spellout}'))->format(['n' => 45]);
 echo $result;
