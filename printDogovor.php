@@ -6,13 +6,12 @@ $date_zakl_dogovora = $_POST['date_zakl_dogovora'] ?? null;
 $formatted_date_zakl_dogovora = null;
 if ($date_zakl_dogovora) {
     $date_z_dog = DateTime::createFromFormat('Y-m-d', $date_zakl_dogovora);
-if ($date_z_dog) {
-    $formatted_date_zakl_dogovora = $date_z_dog->format('d.m.Y');
+    if ($date_z_dog) {
+        $formatted_date_zakl_dogovora = $date_z_dog->format('d.m.Y');
+    } else {
+        $date_zakl_dogovora = $_POST['date_zakl_dogovora'] ?? null;
+    }
 } else {
-    $date_zakl_dogovora = $_POST['date_zakl_dogovora'] ?? null;
-}
-}
-else{
     $date_zakl_dogovora = $_POST['date_zakl_dogovora'] ?? null;
 }
 
@@ -60,8 +59,59 @@ if ($date_end_work) {
 $target_work = $_POST['target_work'] ?? null;
 $name_work = $_POST['name_work'] ?? null;
 $cost_work = $_POST['cost_work'] ?? null;
-$result_cost_work = (new \MessageFormatter('ru-RU', '{n, spellout}'))->format(['n' => $cost_work]);
 
+$rubli = intval($cost_work);
+$cost_work = str_replace(',', '.', $cost_work);
+
+// Преобразуем строку в вещественное число
+$number = floatval($cost_work);
+$cost_work = $number * 100;
+$kopeiki = $cost_work - $rubli * 100;
+
+$last_one_characters_k = substr($kopeiki, -1);
+$intKopLastOne = intval($last_one_characters_k);
+$last_two_characters_k = substr($kopeiki, -2);
+$intKopLastTwo = intval($last_two_characters_k);
+
+$last_one_characters = substr($rubli, -1);
+$intRubLastOne = intval($last_one_characters);
+
+$stringP = "";
+$last_two_characters = substr($rubli, -2);
+$intRubLastTwo = intval($last_two_characters);
+
+$intKopeiki = $kopeiki;
+
+if ($intRubLastTwo >= 5 && $intRubLastTwo < 100) {
+    $stringP = " рублей";
+
+    if ($intRubLastOne == 1 && $intRubLastTwo != 11) {
+        $stringP = " рубль";
+    } else if ($intRubLastOne > 1 && $intRubLastOne < 5 && $intRubLastTwo < 12 || $intRubLastTwo > 20) {
+        $stringP = " рубля";
+    }
+} else {
+    $stringP = " рубль";
+}
+if ($last_two_characters == "00") {
+    $stringP = " рублей";
+}
+
+if ($intKopLastTwo >= 5 && $intKopLastTwo < 100) {
+    $stringK = " копеек";
+    if ($intKopLastOne == 1 && $intKopLastOne != 11) {
+        $stringK = " копейка";
+    }else if ($intKopLastOne > 1 && $intKopLastOne < 5 && ($intKopLastTwo < 12 || $intKopLastTwo > 20)) {
+        $stringK = " копейки";
+    }
+}else{
+    $stringK = " копейки";
+}
+// Получаем целую часть
+
+
+$result_rubli = (new \MessageFormatter('ru-RU', '{n, spellout}'))->format(['n' => $rubli]);
+$result_kopeiki = (new \MessageFormatter('ru-RU', '{n, spellout}'))->format(['n' => $kopeiki]);
 
 
 echo '		
@@ -126,27 +176,27 @@ tr:hover {
     margin-bottom: 5px;
 ">
 <!-- Преамбула заявления -->
-    <strong>Договор № '.$nomer_dogovora.' </strong> </div>
+    <strong>Договор № ' . $nomer_dogovora . ' </strong> </div>
     <br>
     <div class="container" style="margin-left: 3%;">
     <div class="left-block" style="text-align: left; line-height: 18pt; padding-left: 0px;">
         г. Минск<br>
     </div>
     <div class="right-block" style="text-align: left; line-height: 18pt; margin-left:120px;">
-        '.$formatted_date_zakl_dogovora.'<br>
+        ' . $formatted_date_zakl_dogovora . '<br>
     </div>
 </div>
 <div class="mt-4">
-        <p style="text-align: justify;"> '.$name_zakazchik.', именуемое в дальнейшем «Заказчик» в лице '.$name_zakazchik.', действующего на основании Устава с одной стороны, и ООО «ИЗИСКОМ» в лице директора Лукьяновича А.В., действующего на основании Устава, именуемое в дальнейшем «Подрядчик», с другой стороны, вместе именуемые - Стороны, заключили настоящий Договор о нижеследующем:</p>
+        <p style="text-align: justify;"> ' . $name_zakazchik . ', именуемое в дальнейшем «Заказчик» в лице ' . $name_zakazchik . ', действующего на основании Устава с одной стороны, и ООО «ИЗИСКОМ» в лице директора Лукьяновича А.В., действующего на основании Устава, именуемое в дальнейшем «Подрядчик», с другой стороны, вместе именуемые - Стороны, заключили настоящий Договор о нижеследующем:</p>
     </div> 
     <div class="mt-8">
         <h2 class="text-lg font-bold">1. ПРЕДМЕТ ДОГОВОРА</h2>
-        <p class="mt-2">1.1. <span class="font-bold">Заказчик</span> поручает, а <span class="font-bold">Подрядчик</span> обязуется выполнить '.$name_work.' с последующей выдачей соответствующего заключения.</p>
-        <p class="mt-2">1.2. Цель проведения работ – '.$target_work.'</p>
+        <p class="mt-2">1.1. <span class="font-bold">Заказчик</span> поручает, а <span class="font-bold">Подрядчик</span> обязуется выполнить ' . $name_work . ' с последующей выдачей соответствующего заключения.</p>
+        <p class="mt-2">1.2. Цель проведения работ – ' . $target_work . '</p>
     </div>
     <div class="mt-8">
         <h2 class="text-lg font-bold">2. СРОКИ ВЫПОЛНЕНИЯ РАБОТ</h2>
-        <p class="mt-2">2.1. Сроки выполнения работ: '.$formatted_date_start_work.' - '.$formatted_date_end_work.'</p>
+        <p class="mt-2">2.1. Сроки выполнения работ: ' . $formatted_date_start_work . ' - ' . $formatted_date_end_work . '</p>
         <p class="mt-2">2.2. В случае не своевременного выполнения <span class="font-bold">Заказчиком</span> обязательства, изложенного в п. 3.1.1 настоящего Договора, <span class="font-bold">Подрядчик</span> имеет право сместить срок выполнения на соответствующее число дней.</p>
     </div>
      <div class="mt-8">
@@ -163,9 +213,9 @@ tr:hover {
         <p class="ml-4 mt-2">3.2.3. Подрядчик имеет право привлекать для проведения или обеспечения некоторых видов работ по настоящему договору сторонние (субподрядные) организации.</p> 
     </div>';
 
-echo'     <div class="mt-8">
+echo '     <div class="mt-8">
         <h2 class="text-lg font-bold">4. СТОИМОСТЬ РАБОТ И ПОРЯДОК ОПЛАТЫ</h2>
-        <p class="ml-4 mt-2">4.1. Стоимость работ определена на момент составления договора, согласно утвержденной сторонами смете (Приложение №1) и составляет: '.$cost_work.' ('.$result_cost_work.'), без НДС (в связи с применением УСН).
+        <p class="ml-4 mt-2">4.1. Стоимость работ определена на момент составления договора, согласно утвержденной сторонами смете (Приложение №1) и составляет: ' . $rubli.','.$kopeiki . ' (' . $result_rubli . ' ' . $stringP . ' ' . $result_kopeiki . ' ' . $stringK. '), без НДС (в связи с применением УСН).
          - внесения Заказчиком изменений в первоначальное задание, влекущее за собой изменение объемов обследовательских работ;
          - изменения налогового законодательства;
          В случае изменения договорной цены расчеты производятся на основании исполнительной сметы по фактически выполненным объемам работ.
@@ -176,7 +226,7 @@ echo'     <div class="mt-8">
         <p class="ml-4 mt-2">4.6. Источник финансирования – собственные средства Заказчика.</p> 
     </div>';
 
-echo'     <div class="mt-8">
+echo '     <div class="mt-8">
         <h2 class="text-lg font-bold">5. ПОРЯДОК СДАЧИ И ПРИЕМКИ РАБОТ</h2>
         <p class="ml-4 mt-2">5.1. Работа принимается по накладной на основании подписанного сторонами акта сдачи-приемки выполненных работ.
 </p>
@@ -184,7 +234,7 @@ echo'     <div class="mt-8">
         <p class="ml-4 mt-2">5.3. Если в процессе выполнения работ выясняется невозможность ее дальнейшего проведения, Подрядчик обязан приостановить ее, письменно поставить об этом в известность Заказчика и в 10-ти дневный срок рассмотреть вопрос о дальнейших действиях. По истечении указанного срока Заказчик уплачивает Подрядчику стоимость выполненных работ.</p> 
     </div>';
 
-echo'     <div class="mt-8">
+echo '     <div class="mt-8">
         <h2 class="text-lg font-bold">6. ОТВЕТСТВЕННОСТЬ СТОРОН</h2>
         <p class="ml-4 mt-2">6.1. За невыполнение или ненадлежащее выполнение обязательств по настоящему договору Заказчик и Подрядчик несут имущественную ответственность в соответствии с действующим законодательством Республики Беларусь.
 </p>
@@ -194,18 +244,18 @@ echo'     <div class="mt-8">
         <p class="ml-4 mt-2">6.5. За несвоевременную оплату выполненных работ (п. 4.3 настоящего договора) Заказчик уплачивает пеню в размере 0.2% от стоимости несвоевременно оплаченных работ за каждый день просрочки, но не более 10% от стоимости.</p> 
     </div>';
 
-echo'     <div class="mt-8">
+echo '     <div class="mt-8">
         <h2 class="text-lg font-bold">7. ДОПОЛНИТЕЛЬНЫЕ УСЛОВИЯ</h2>
         <p class="ml-4 mt-2">7.1. Все изменения и дополнения в договор вносятся путем заключения дополнительного соглашения, подписанного обеими сторонами.
 </p>
     </div>';
-echo'     <div class="mt-8">
+echo '     <div class="mt-8">
         <h2 class="text-lg font-bold">8. СРОК ДЕЙСТВИЯ ДОГОВОРА </h2>
         <p class="ml-4 mt-2">8.1. Настоящий договор вступает в силу со дня его подписания и действует до полного исполнения сторонами своих обязательств.
 </p>
     </div>';
 
-echo'     <div class="mt-8">
+echo '     <div class="mt-8">
         <h2 class="text-lg font-bold">9. ЮРИДИЧЕСКИЕ АДРЕСА СТОРОН</h2>
         <p class="ml-4 mt-2">9.1. Заказчик: Лидское   городское   унитарное   предприятие   жилищно-коммунального хозяйства   
 Республика Беларусь, г. Лида, ул. Победы, 53
@@ -222,7 +272,7 @@ echo'     <div class="mt-8">
 </p>
     </div>';
 
-echo'     <div class="mt-8">
+echo '     <div class="mt-8">
         <h2 class="text-lg font-bold">10. К ДОГОВОРУ ПРИЛАГАЕТСЯ:</h2>
         <p class="ml-4 mt-2">10.1. Расчет стоимости (Калькуляция) (Приложение №1).
 </p>
@@ -233,7 +283,7 @@ echo'     <div class="mt-8">
     </div>';
 
 
-echo' 
+echo ' 
     <div class="container" style="margin-left: 3%;">
  <div class="left-block" style="text-align: left; line-height: 18pt; padding-left: 0px;">
         УТВЕРЖДАЮ<br><strong>Заказчик</strong><br>asdasdasda<br>

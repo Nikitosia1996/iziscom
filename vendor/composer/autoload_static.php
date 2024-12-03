@@ -19,10 +19,6 @@ class ComposerStaticInit98da02ec33b027a0ebf18a043e65c429
         array (
             'ZipStream\\' => 10,
         ),
-        'T' => 
-        array (
-            'Tests\\PhpOffice\\Math\\' => 21,
-        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Php83\\' => 23,
@@ -72,10 +68,6 @@ class ComposerStaticInit98da02ec33b027a0ebf18a043e65c429
         'ZipStream\\' => 
         array (
             0 => __DIR__ . '/..' . '/maennchen/zipstream-php/src',
-        ),
-        'Tests\\PhpOffice\\Math\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/phpoffice/math/tests/Math',
         ),
         'Symfony\\Polyfill\\Php83\\' => 
         array (
