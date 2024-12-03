@@ -525,10 +525,7 @@ echo "<script>
         </div>
 
 </section>
-<?php
-$result = (new \MessageFormatter('ru-RU', '{n, spellout}'))->format(['n' => 45]);
-echo $result;
-?>
+
 <script>
 </script>
 

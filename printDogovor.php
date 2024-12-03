@@ -1,4 +1,69 @@
 <?php
+setlocale(LC_TIME, 'ru_RU.UTF-8');
+
+$nomer_dogovora = $_POST['nomer_dogovora'] ?? null;
+$date_zakl_dogovora = $_POST['date_zakl_dogovora'] ?? null;
+$formatted_date_zakl_dogovora = null;
+if ($date_zakl_dogovora) {
+    $date_z_dog = DateTime::createFromFormat('Y-m-d', $date_zakl_dogovora);
+if ($date_z_dog) {
+    $formatted_date_zakl_dogovora = $date_z_dog->format('d.m.Y');
+} else {
+    $date_zakl_dogovora = $_POST['date_zakl_dogovora'] ?? null;
+}
+}
+else{
+    $date_zakl_dogovora = $_POST['date_zakl_dogovora'] ?? null;
+}
+
+$name_zakazchik = $_POST['name_zakazchik'] ?? null;
+
+$date_start_work = $_POST['date_start_work'] ?? null;
+$date_end_work = $_POST['date_end_work'] ?? null;
+
+$formatted_date_start_work = null;
+$formatted_date_end_work = null;
+
+if ($date_start_work) {
+    $date_start = DateTime::createFromFormat('Y-m-d', $date_start_work);
+    if ($date_start) {
+        // Форматирование даты на русском языке
+        $formatter = new IntlDateFormatter(
+            'ru_RU',
+            IntlDateFormatter::LONG,
+            IntlDateFormatter::NONE,
+            null,
+            IntlDateFormatter::GREGORIAN,
+            'd MMMM yyyy г.'
+        );
+        $formatted_date_start_work = $formatter->format($date_start);
+    }
+}
+
+if ($date_end_work) {
+    $date_end = DateTime::createFromFormat('Y-m-d', $date_end_work);
+    if ($date_end) {
+        // Форматирование даты на русском языке
+        $formatter = new IntlDateFormatter(
+            'ru_RU',
+            IntlDateFormatter::LONG,
+            IntlDateFormatter::NONE,
+            null,
+            IntlDateFormatter::GREGORIAN,
+            'd MMMM yyyy г.'
+        );
+        $formatted_date_end_work = $formatter->format($date_end);
+    }
+}
+
+
+$target_work = $_POST['target_work'] ?? null;
+$name_work = $_POST['name_work'] ?? null;
+$cost_work = $_POST['cost_work'] ?? null;
+$result_cost_work = (new \MessageFormatter('ru-RU', '{n, spellout}'))->format(['n' => $cost_work]);
+
+
+
 echo '		
 <body>
 <style>
@@ -61,27 +126,27 @@ tr:hover {
     margin-bottom: 5px;
 ">
 <!-- Преамбула заявления -->
-    <strong>Договор № </strong> </div>
+    <strong>Договор № '.$nomer_dogovora.' </strong> </div>
     <br>
     <div class="container" style="margin-left: 3%;">
     <div class="left-block" style="text-align: left; line-height: 18pt; padding-left: 0px;">
         г. Минск<br>
     </div>
     <div class="right-block" style="text-align: left; line-height: 18pt; margin-left:120px;">
-        24.10.2024<br>
+        '.$formatted_date_zakl_dogovora.'<br>
     </div>
 </div>
 <div class="mt-4">
-        <p style="text-align: justify;">Лидское городское унитарное предприятие жилищно-коммунального хозяйства в лице заместителя директора Ариашко Руслана Антоновича, действующего на основании доверенности №8 от 09.02.2023 г., именуемое в дальнейшем «Заказчик», с одной стороны, и ООО «ИЗИСКОМ» в лице директора Лукьяновича А.В., действующего на основании Устава, именуемое в дальнейшем «Подрядчик», с другой стороны, вместе именуемые - Стороны, заключили настоящий Договор о нижеследующем:</p>
+        <p style="text-align: justify;"> '.$name_zakazchik.', именуемое в дальнейшем «Заказчик» в лице '.$name_zakazchik.', действующего на основании Устава с одной стороны, и ООО «ИЗИСКОМ» в лице директора Лукьяновича А.В., действующего на основании Устава, именуемое в дальнейшем «Подрядчик», с другой стороны, вместе именуемые - Стороны, заключили настоящий Договор о нижеследующем:</p>
     </div> 
     <div class="mt-8">
         <h2 class="text-lg font-bold">1. ПРЕДМЕТ ДОГОВОРА</h2>
-        <p class="mt-2">1.1. <span class="font-bold">Заказчик</span> поручает, а <span class="font-bold">Подрядчик</span> обязуется выполнить обследование строительных конструкций квартиры №4 по ул. Чапаева, 18 в г. Лиде с последующей выдачей соответствующего заключения.</p>
-        <p class="mt-2">1.2. Цель проведения работ – определение технического состояния строительных конструкций.</p>
+        <p class="mt-2">1.1. <span class="font-bold">Заказчик</span> поручает, а <span class="font-bold">Подрядчик</span> обязуется выполнить '.$name_work.' с последующей выдачей соответствующего заключения.</p>
+        <p class="mt-2">1.2. Цель проведения работ – '.$target_work.'</p>
     </div>
     <div class="mt-8">
         <h2 class="text-lg font-bold">2. СРОКИ ВЫПОЛНЕНИЯ РАБОТ</h2>
-        <p class="mt-2">2.1. Сроки выполнения работ: 12 июня 2024г. - 22 июля 2024г.</p>
+        <p class="mt-2">2.1. Сроки выполнения работ: '.$formatted_date_start_work.' - '.$formatted_date_end_work.'</p>
         <p class="mt-2">2.2. В случае не своевременного выполнения <span class="font-bold">Заказчиком</span> обязательства, изложенного в п. 3.1.1 настоящего Договора, <span class="font-bold">Подрядчик</span> имеет право сместить срок выполнения на соответствующее число дней.</p>
     </div>
      <div class="mt-8">
@@ -100,7 +165,7 @@ tr:hover {
 
 echo'     <div class="mt-8">
         <h2 class="text-lg font-bold">4. СТОИМОСТЬ РАБОТ И ПОРЯДОК ОПЛАТЫ</h2>
-        <p class="ml-4 mt-2">4.1. Стоимость работ определена на момент составления договора, согласно утвержденной сторонами смете (Приложение №1) и составляет: 250,39 (Двести пятьдесят рублей 39 копеек), без НДС (в связи с применением УСН).
+        <p class="ml-4 mt-2">4.1. Стоимость работ определена на момент составления договора, согласно утвержденной сторонами смете (Приложение №1) и составляет: '.$cost_work.' ('.$result_cost_work.'), без НДС (в связи с применением УСН).
          - внесения Заказчиком изменений в первоначальное задание, влекущее за собой изменение объемов обследовательских работ;
          - изменения налогового законодательства;
          В случае изменения договорной цены расчеты производятся на основании исполнительной сметы по фактически выполненным объемам работ.

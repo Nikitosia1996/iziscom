@@ -2170,10 +2170,46 @@ function printCalculExcel() {
 }
 
 function printDogovor() {
+        let id_zakazchik = document.getElementById("id_zakazchik");
+        let name_zakazchik  = id_zakazchik.options[id_zakazchik.selectedIndex].text;
+        let  doljn = document.getElementById("doljn").value;
+        let fio = document.getElementById("fio").value;
+        let osn_podpis = document.getElementById("osn_podpis").value;
+        let rekvizit = document.getElementById("rekvizit").value;
+        let istochnik = document.getElementById("istochnik").value;
+        let date_start_work = document.getElementById("date_start_work").value;
+        let date_end_work = document.getElementById("date_end_work").value;
+        let count_bum = document.getElementById("count_bum").value;
+        let  count_el = document.getElementById("count_el").value;
+        let  osn_obsled = document.getElementById("osn_obsled").value;
+        let  name_work = document.getElementById("name_work").value;
+        let  target_work = document.getElementById("target_work").value;
+        let  nomer_dogovora = document.getElementById("nomer_dogovora").value;
+        let who_podpis_dog = document.getElementById("who_podpis_dog").value;
+        let srok_vid = document.getElementById("srok_vid").value;
+        let count_days = document.getElementById("count_days").value;
+        let date_akt = document.getElementById("date_akt").value;
+        let who_podpis_akt = document.getElementById("who_podpis_akt").value;
+        let date_zakl_dogovora = document.getElementById("date_zakl_dogovora").value;
+        let count_toms = document.getElementById("count_toms").value;
+        let who_podpis_titul = document.getElementById("who_podpis_titul").value;
+        let  sum_avans = document.getElementById("sum_avans").value.replace(".", ",");
+        let cost_work = document.getElementById("cost_work").value.replace(".", ",");
+        let count_str = document.getElementById("count_str").value;
+
     $.ajax({
         url: 'printDogovor.php',
         type: 'POST',
-        data: {},
+        data: {
+            nomer_dogovora: nomer_dogovora,
+            date_zakl_dogovora: date_zakl_dogovora,
+            name_zakazchik: name_zakazchik,
+            date_start_work: date_start_work,
+            date_end_work: date_end_work,
+            target_work: target_work,
+            name_work: name_work,
+            cost_work: cost_work
+        },
         success: function (response) {
             var WinPrint = window.open('', '', 'left=50,top=50,width=1200,height=860,toolbar=0,scrollbars=1,status=0');
             WinPrint.document.write('<style>@page {\n' +
