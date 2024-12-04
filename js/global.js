@@ -2500,8 +2500,8 @@ function getSmetaDogovor(id) {
 
 
  function getZakazchik() {
-     $('#id_zakazchik').change(function () {
-         var selectedValue = $(this).val();
+
+         var selectedValue = $('#id_zakazchik').val();
          if (selectedValue != "0") {
              $.ajax({
                  url: 'app/ajax/getZakazchik.php',
@@ -2520,8 +2520,9 @@ function getSmetaDogovor(id) {
 
              });
          } else {
+             $('#rekvizit').val("");
          }
-     });
+
  }
 
 
