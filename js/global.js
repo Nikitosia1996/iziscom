@@ -2278,7 +2278,18 @@ function printProtocol(){
                 $.ajax({
                     url: 'printProtocol.php',
                     type: 'POST',
-                    data: {id: item.ind},
+                    data: {id: item.ind,
+                        nomer_dogovora: $("#nomer_dogovora").val(),
+                        date_zakl_dogovora: $("#date_zakl_dogovora").val(),
+                        name_work: $("#name_work").val(),
+                        osn_obsled: $('#osn_obsled option:selected').text(),
+                        id_zakazchik: $('#id_zakazchik option:selected').text(),
+                        cost_work: $('#cost_work').val(),
+                        doljn: $('#doljn').val(),
+                        fio: $('#fio').val(),
+                        who_podpis_dog: $('#who_podpis_dog option:selected').text(),
+
+                    },
                     success: function (response) {
                         var WinPrint = window.open('', '', 'left=50,top=50,width=1200,height=860,toolbar=0,scrollbars=1,status=0');
                         WinPrint.document.write('<style>@page {\n' +
@@ -2296,6 +2307,36 @@ function printProtocol(){
                 })
             }
         })
+
+
+}
+
+function printPlan(){
+    pushApplications();
+
+    applications.forEach(function (item) {
+        if((item.lab.toLowerCase()).includes("план")){
+            $.ajax({
+                url: 'printPlan.php',
+                type: 'POST',
+                data: {id: item.ind},
+                success: function (response) {
+                    var WinPrint = window.open('', '', 'left=50,top=50,width=1200,height=860,toolbar=0,scrollbars=1,status=0');
+                    WinPrint.document.write('<style>@page {\n' +
+                        'margin: 1rem;\n' +
+                        '}</style>');
+                    WinPrint.document.write('<br/>');
+                    WinPrint.document.write(response);
+                    WinPrint.document.close();
+                    WinPrint.focus();
+                    WinPrint.print();
+                    WinPrint.close();
+
+                }
+
+            })
+        }
+    })
 
 
 }
