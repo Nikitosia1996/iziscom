@@ -9,9 +9,9 @@ ini_set('display_errors', 'on');
 
 class ConnectionDB
 {
-    private $host = '172.19.6.188';
-    private $user = 'user';
-    private $password = 'user';
+    private $host = 'localhost';
+    private $user = 'root';
+    private $password = '';
     private $database = 'iziscom';
     public $con;
 
