@@ -2171,7 +2171,26 @@ function printCalculExcel() {
 
 
 
+let applications = [];
 
+function pushApplications() {
+    applications = [];
+    const checkboxes = document.querySelectorAll('.prilagaetsa');
+    let index = 1;
+    checkboxes.forEach(checkbox => {
+        if (checkbox.checked) {
+
+            const label = checkbox.nextElementSibling.innerText;
+            let appObj = {
+                ind: index,
+                lab: label
+            }
+            applications.push(appObj);
+            index++;
+        }
+    });
+    console.log(applications)
+}
 function printDogovor() {
         let id_zakazchik = document.getElementById("id_zakazchik");
         let name_zakazchik  = id_zakazchik.options[id_zakazchik.selectedIndex].text;
@@ -2202,22 +2221,16 @@ function printDogovor() {
         let count_str = document.getElementById("count_str").value;
 
 
-    const checkboxes = document.querySelectorAll('.prilagaetsa');
-    let applications = [];
-    let index = 1;
 
-    checkboxes.forEach(checkbox => {
-        if (checkbox.checked) {
-            const label = checkbox.nextElementSibling.innerText;
-            applications.push(`${label} (Приложение № ${index})`);
-            index++;
-        }
-    });
+    pushApplications();
+
+
+
     let htmlOutput = '';
     if (applications.length > 0) {
         htmlOutput = '<h2 class="text-lg font-bold">10. К ДОГОВОРУ ПРИЛАГАЕТСЯ:</h2>';
-        applications.forEach((app, i) => {
-            htmlOutput += `<p class="ml-4 mt-2">10.${i + 1}. ${app}</p>`;
+        applications.forEach(function(app) {
+            htmlOutput += `<p class="ml-4 mt-2">10.${app.ind}. ${app.lab} (Приложение № ${app.ind})</p>`;
         });
     } else {
         htmlOutput = "";
@@ -2252,12 +2265,40 @@ console.log (rekvizit);
             WinPrint.print();
             WinPrint.close();
 
-            resolve();
         }
 
     })
 }
 
+function printProtocol(){
+    pushApplications();
+
+        applications.forEach(function (item) {
+            if((item.lab.toLowerCase()).includes("протокол заседания")){
+                $.ajax({
+                    url: 'printProtocol.php',
+                    type: 'POST',
+                    data: {id: item.ind},
+                    success: function (response) {
+                        var WinPrint = window.open('', '', 'left=50,top=50,width=1200,height=860,toolbar=0,scrollbars=1,status=0');
+                        WinPrint.document.write('<style>@page {\n' +
+                            'margin: 1rem;\n' +
+                            '}</style>');
+                        WinPrint.document.write('<br/>');
+                        WinPrint.document.write(response);
+                        WinPrint.document.close();
+                        WinPrint.focus();
+                        WinPrint.print();
+                        WinPrint.close();
+
+                    }
+
+                })
+            }
+        })
+
+
+}
 
 function printAkt() {
     $.ajax({
@@ -2276,7 +2317,6 @@ function printAkt() {
             WinPrint.print();
             WinPrint.close();
 
-            resolve();
         }
 
     })
