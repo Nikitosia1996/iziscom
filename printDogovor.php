@@ -107,8 +107,6 @@ if ($intKopLastTwo >= 5 && $intKopLastTwo < 100) {
 }else{
     $stringK = " копейки";
 }
-// Получаем целую часть
-
 
 $result_rubli = (new \MessageFormatter('ru-RU', '{n, spellout}'))->format(['n' => $rubli]);
 $result_kopeiki = (new \MessageFormatter('ru-RU', '{n, spellout}'))->format(['n' => $kopeiki]);
