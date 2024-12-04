@@ -2169,6 +2169,9 @@ function printCalculExcel() {
     });
 }
 
+
+
+
 function printDogovor() {
         let id_zakazchik = document.getElementById("id_zakazchik");
         let name_zakazchik  = id_zakazchik.options[id_zakazchik.selectedIndex].text;
@@ -2176,7 +2179,8 @@ function printDogovor() {
         let fio = document.getElementById("fio").value;
         let osn_podpis = document.getElementById("osn_podpis").value;
         let rekvizit = document.getElementById("rekvizit").value;
-        let istochnik = document.getElementById("istochnik").value;
+        let istochnik = document.getElementById("istochnik");
+        let istochnik_fin  = istochnik.options[istochnik.selectedIndex].text;
         let date_start_work = document.getElementById("date_start_work").value;
         let date_end_work = document.getElementById("date_end_work").value;
         let count_bum = document.getElementById("count_bum").value;
@@ -2197,6 +2201,29 @@ function printDogovor() {
         let cost_work = document.getElementById("cost_work").value.replace(".", ",");
         let count_str = document.getElementById("count_str").value;
 
+
+    const checkboxes = document.querySelectorAll('.prilagaetsa');
+    let applications = [];
+    let index = 1;
+
+    checkboxes.forEach(checkbox => {
+        if (checkbox.checked) {
+            const label = checkbox.nextElementSibling.innerText;
+            applications.push(`${label} (Приложение № ${index})`);
+            index++;
+        }
+    });
+    let htmlOutput = '';
+    if (applications.length > 0) {
+        htmlOutput = '<h2 class="text-lg font-bold">10. К ДОГОВОРУ ПРИЛАГАЕТСЯ:</h2>';
+        applications.forEach((app, i) => {
+            htmlOutput += `<p class="ml-4 mt-2">10.${i + 1}. ${app}</p>`;
+        });
+    } else {
+        htmlOutput = "";
+    }
+
+console.log (rekvizit);
     $.ajax({
         url: 'printDogovor.php',
         type: 'POST',
@@ -2208,7 +2235,10 @@ function printDogovor() {
             date_end_work: date_end_work,
             target_work: target_work,
             name_work: name_work,
-            cost_work: cost_work
+            cost_work: cost_work,
+            rekvizit: rekvizit,
+            istochnik: istochnik_fin,
+            applications: htmlOutput
         },
         success: function (response) {
             var WinPrint = window.open('', '', 'left=50,top=50,width=1200,height=860,toolbar=0,scrollbars=1,status=0');
@@ -2338,6 +2368,8 @@ function getDogovor(id) {
 
         document.getElementById("dogovorDropdown").classList.toggle("show");
     }
+
+    getZakazchik();
 }
 
 function saveDogovor() {
@@ -2463,7 +2495,37 @@ function getSmetaDogovor(id) {
 
 
     }
+    getZakazchik();
 }
+
+
+ function getZakazchik() {
+     $('#id_zakazchik').change(function () {
+         var selectedValue = $(this).val();
+         if (selectedValue != "0") {
+             $.ajax({
+                 url: 'app/ajax/getZakazchik.php',
+                 type: 'POST',
+                 data: {id: selectedValue},
+                 success: function (data) {
+                     let responseData = JSON.parse(data);
+                     console.log(responseData);
+                     if (data) {
+                         console.log(data);
+                         $('#rekvizit').val(responseData.rekvizit);
+                     } else {
+
+                     }
+                 },
+
+             });
+         } else {
+         }
+     });
+ }
+
+
+
 
 // function calculateHaracterCheckb(thisEl){
 //     let data_id = thisEl.getAttribute('data-id');

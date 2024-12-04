@@ -124,9 +124,11 @@ echo "<script>
             margin-top: 30px !important;
         }
         #naitismetu{
+            margin-top: 30px;
             margin-left: 10px !important;
-            width: 60px !important;
-            height: 40px !important;
+            width: 90px !important;
+            height: 30px !important;
+        }
         }
         #smetaDropdown{
             margin-left: -58px !important;
@@ -151,22 +153,22 @@ echo "<script>
             </div>
 
             <div class="dropdown">
-                <button style = "margin-left:120px;" class="btn btn-primary" id="naitidog" onclick="toggleDropdownDogovor()">Найти договор</button>
+                <button style = "margin-left:150px;" class="btn btn-primary" id="naitidog" onclick="toggleDropdownDogovor()">Найти договор</button>
                 <div id="dogovorDropdown" class="dropdown-content">
                     <input type="text" placeholder="Поиск договора..." id="dogovorSearch" onkeyup="filterDogovor()">
                     <?php
                     $dogovorList = $dogovorList->getDogovorList();
                     foreach ($dogovorList as $dogovor) {
-                        echo '<a onclick="getDogovor(' . $dogovor->id_dogovor . ')">' . $dogovor->id_dogovor . '</a>';
+                        echo '<a onclick="getDogovor(' . $dogovor->id_dogovor . ')">' . $dogovor->id_dogovor . ' (№ договора ' . $dogovor->nomer_dogovora . ')</a>';
                     }
                     ?>
                 </div>
             </div>
-            <input style = "margin-left:15px;" type="text" class="search-input" id="dogovorName" placeholder="Название договора">
-            <button class="btn btn-secondary" id="svdog" onclick="saveDogovor()">Сохранить</button>
+<!--            <input style = "margin-left:15px;" type="text" class="search-input" id="dogovorName" placeholder="Название договора">-->
+            <button style = "margin-left:15px;" class="btn btn-secondary" id="dogovorName" onclick="saveDogovor()">Сохранить</button>
 
             <div class="dropdown">
-                <button style = "margin-left:120px;" class="btn btn-primary" id = "naitismetu" onclick="toggleDropdown()">Найти смету</button>
+                <button style = "margin-left:280px;" class="btn btn-primary" id = "naitismetu" onclick="toggleDropdown()">Найти смету</button>
                 <div id="smetaDropdown" class="dropdown-content">
                     <input type="text" placeholder="Поиск смет..." id="smetaSearch" onkeyup="filterSmeta()">
                     <?php
@@ -182,7 +184,7 @@ echo "<script>
         <div class="col-lg-3 mgleft2">
             <div class="form-group mgtop5">
                 <label for="id_zakazchik">Заказчик</label>
-                <select class="form-control" id="id_zakazchik">
+                <select class="form-control" id="id_zakazchik" onchange="getZakazchik()">
                     <option value="0" selected>-- Пожалуйста, выберите --</option>
                     <?php
                     while ($row = $connectionDB->getRowResult($zakazchik)) {
