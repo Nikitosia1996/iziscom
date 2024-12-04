@@ -2301,10 +2301,23 @@ function printProtocol(){
 }
 
 function printAkt() {
+    let cost_work = document.getElementById("cost_work").value.replace(".", ",");
+    let  name_work = document.getElementById("name_work").value;
+    let date_zakl_dogovora = document.getElementById("date_zakl_dogovora").value;
+    let  nomer_dogovora = document.getElementById("nomer_dogovora").value;
+    let id_zakazchik = document.getElementById("id_zakazchik");
+    let name_zakazchik  = id_zakazchik.options[id_zakazchik.selectedIndex].text;
+    let rekvizit = document.getElementById("rekvizit").value;
     $.ajax({
         url: 'printAkt.php',
         type: 'POST',
-        data: {},
+        data: {name_zakazchik: name_zakazchik,
+            name_work: name_work,
+            date_zakl_dogovora: date_zakl_dogovora,
+            rekvizit: rekvizit,
+            nomer_dogovora: nomer_dogovora,
+            cost_work: cost_work,
+            },
         success: function (response) {
             var WinPrint = window.open('', '', 'left=50,top=50,width=1200,height=860,toolbar=0,scrollbars=1,status=0');
             WinPrint.document.write('<style>@page {\n' +
