@@ -2518,7 +2518,7 @@ function saveDogovor() {
             dogovor["prilagaetsa"] += item.id.slice(-1) + ";";
         }
     })
-    dogovor["prilagaetsa"] = dogovor["prilagaetsa"].slice(0, -1);
+ //   dogovor["prilagaetsa"] = dogovor["prilagaetsa"].slice(0, -1);
 
     $.ajax({
         url: "app/ajax/saveDogovor.php",

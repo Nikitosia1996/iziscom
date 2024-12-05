@@ -36,6 +36,7 @@ if ($dogovor) {
     $kompl_chert = isset($dogovor['kompl_chert']) ? $dogovor['kompl_chert'] : null;
     $tek_smeta = isset($dogovor['tek_smeta']) ? $dogovor['tek_smeta'] : null;
     $calculacia = isset($dogovor['calculacia']) ? $dogovor['calculacia'] : null;
+    $prilagaetsa = isset($dogovor['prilagaetsa']) ? $dogovor['prilagaetsa'] : null;
 
     if ($id) {
         $sql = "UPDATE dogovor SET 
@@ -67,7 +68,8 @@ if ($dogovor) {
         nalich_avans = '$nalich_avans',
         kompl_chert = '$kompl_chert',
         tek_smeta = '$tek_smeta',
-        calculacia = '$calculacia'
+        calculacia = '$calculacia',
+        prilagaetsa = '$prilagaetsa'
         
     WHERE id_dogovor = '$id'";
     } else {
@@ -100,7 +102,8 @@ if ($dogovor) {
         nalich_avans,
                         kompl_chert,
         tek_smeta,
-        calculacia 
+        calculacia ,
+        prilagaetsa 
     ) VALUES (
         '$doljn', 
         '$fio', 
@@ -129,7 +132,8 @@ if ($dogovor) {
               '$nalich_avans',
                 '$kompl_chert',
       '$tek_smeta',
-       '$calculacia'
+       '$calculacia',
+       '$prilagaetsa'
     )";
     }
     try {
@@ -139,5 +143,5 @@ if ($dogovor) {
         echo json_encode(['status' => 'error', 'message' => $e->getMessage()]);
     }
 } else {
-    echo "xyu";
+
 }
