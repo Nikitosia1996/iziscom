@@ -2278,7 +2278,8 @@ function printProtocol(){
                 $.ajax({
                     url: 'printProtocol.php',
                     type: 'POST',
-                    data: {id: item.ind,
+                    data: {
+                        id: item.ind,
                         nomer_dogovora: $("#nomer_dogovora").val(),
                         date_zakl_dogovora: $("#date_zakl_dogovora").val(),
                         name_work: $("#name_work").val(),
@@ -2288,7 +2289,6 @@ function printProtocol(){
                         doljn: $('#doljn').val(),
                         fio: $('#fio').val(),
                         who_podpis_dog: $('#who_podpis_dog option:selected').text(),
-
                     },
                     success: function (response) {
                         var WinPrint = window.open('', '', 'left=50,top=50,width=1200,height=860,toolbar=0,scrollbars=1,status=0');
@@ -2301,14 +2301,10 @@ function printProtocol(){
                         WinPrint.focus();
                         WinPrint.print();
                         WinPrint.close();
-
                     }
-
                 })
             }
         })
-
-
 }
 
 function printPlan(){
@@ -2319,7 +2315,19 @@ function printPlan(){
             $.ajax({
                 url: 'printPlan.php',
                 type: 'POST',
-                data: {id: item.ind},
+                data: {id: item.ind,
+                    nomer_dogovora: $("#nomer_dogovora").val(),
+                    date_zakl_dogovora: $("#date_zakl_dogovora").val(),
+                    name_work: $("#name_work").val(),
+                    date_start_work: $("#date_start_work").val(),
+                    date_end_work: $("#date_end_work").val(),
+                    istochnik: $('#istochnik option:selected').text(),
+                    id_zakazchik: $('#id_zakazchik option:selected').text(),
+                    cost_work: $('#cost_work').val(),
+                    doljn: $('#doljn').val(),
+                    fio: $('#fio').val(),
+                    who_podpis_dog: $('#who_podpis_dog option:selected').text(),
+                },
                 success: function (response) {
                     var WinPrint = window.open('', '', 'left=50,top=50,width=1200,height=860,toolbar=0,scrollbars=1,status=0');
                     WinPrint.document.write('<style>@page {\n' +

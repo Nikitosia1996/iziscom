@@ -25,7 +25,8 @@ if ($date_zakl_dogovora) {
     $formatted_date_zakl_dogovora = $formatter->format($date_zakl_dogovora);
 }
 
-$cost_work = 3531.98;
+$cost_work = $_POST['cost_work'];
+
     //$_POST['cost_work'] ?? null;
 
 $rubli = intval($cost_work);
