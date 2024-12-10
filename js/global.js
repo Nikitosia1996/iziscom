@@ -848,9 +848,9 @@ function saveSmeta() {
             selectedSosttech = $(this).val();
         }
     });
-    $("input[name='pasportNaZdanie']").each((item) => {
-        if ($(item).prop('checked')) {
-            selectedButrad = $(item).val();
+    $("input[name='pasportNaZdanie']").each(function ()  {
+        if ($(this).prop('checked')) {
+            selectedButrad = $(this).val();
         }
     });
     let ishod = {
