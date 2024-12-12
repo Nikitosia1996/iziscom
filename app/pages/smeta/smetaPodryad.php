@@ -2915,7 +2915,7 @@ echo "<script>
         } else {
             sumIshod = Vdiv100 * k18101 * koefIshod * koefIshod2 * b14Value * k18ob * ki212 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat * kefVisota;
             $('#sborIshodnihDannih').html(sumIshod.toFixed(3) );
-          //  console.log(sumIshod + " =  koefIshod: " + koefIshod + " koefIshod2: " + koefIshod2 + " costwork14: " + b14Value + " K18ob:" + k18ob + " ki212: " + ki212 + kefVisota + "VISOTA VISOTA VISOTA");
+            console.log(sumIshod + " =  Vdiv100: " + Vdiv100 + " k18101: " + k18101 + " koefIshod: " + koefIshod + " koefIshod2:" + koefIshod2 + " b14Value: " + b14Value +  " k18ob: " + k18ob + " ki212: " + ki212 +  " koefHarackCheckb: " + koefHarackCheckb + " agressive: " + agressive + " temperaturMode: " + temperaturMode + " equipmentSaturat: " + equipmentSaturat + " kefVisota: " + kefVisota);
         }
 
 
@@ -3127,17 +3127,17 @@ echo "<script>
                     kefVisota = 1.5;
                 }
             } else {
-                if (visotazdani <= 3.6) {
+                if (visotapola <= 3.6) {
                     kefVisota = 1;
-                } else if (visotazdani > 3.6 && visotazdani <= 4.2) {
+                } else if (visotapola > 3.6 && visotapola <= 4.2) {
                     kefVisota = 1.15;
-                } else if (visotazdani > 4.2 && visotazdani <= 4.8) {
+                } else if (visotapola > 4.2 && visotapola <= 4.8) {
                     kefVisota = 1.3;
-                } else if (visotazdani > 4.8 && visotazdani <= 5.4) {
+                } else if (visotapola > 4.8 && visotapola <= 5.4) {
                     kefVisota = 1.45;
-                } else if (visotazdani > 5.4 && visotazdani <= 6.0) {
+                } else if (visotapola > 5.4 && visotapola <= 6.0) {
                     kefVisota = 1.5;
-                } else if (visotazdani > 6) {
+                } else if (visotapola > 6) {
                     kefVisota = 1.65;
                 }
             }
@@ -4209,14 +4209,14 @@ echo "<script>
                     $('#znachprognoz24').val(data.params.res);
                     $('#znachprognoz25').val(data.params.next_year_res);
                     indexval = parseFloat(data.params.cmont.replace(',', '.')).toFixed(4);
-                    b14indexval = parseFloat(data.params.res.replace(',', '.')) * parseFloat(data.params.cost_work) * data.koefMonth * (1 + 0.5 * (indexval - 1));
+                    b14indexval =  parseFloat(data.params.cost_work) * data.koefMonth * (1 + 0.5 * (indexval - 1));
                     $('#b14Input').val(b14indexval);
                     b14Value = b14indexval;
-
+// ${data.params.res} *
                    // console.log("b14Ж" + b14indexval);
-                    let formula = `${data.params.res} * ${data.params.cost_work} * ${data.koefMonth} * (1 + 0.5 * (${indexval} - 1))`;
-                  //  console.log("b14Ж: " + b14indexval);
-                  //  console.log("Формула: " + formula);
+                    let formula = `${data.params.cost_work} * ${data.koefMonth} * (1 + 0.5 * (${indexval} - 1))`;
+                    console.log("b14Ж: " + b14indexval);
+                    console.log("Формула: " + formula);
 
                     $('#workCost').val(data.params.cost_work);
                     $('#costwork14').val(data.params.cost_work);

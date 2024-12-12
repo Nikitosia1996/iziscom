@@ -270,6 +270,7 @@ let input3Calc8 = $('#input3Calc8');
 async function getSmeta(id) {
     idActiveSmeta = id;
     const selectedItem = smetaList.find(item => item.id == id);
+    console.log(selectedItem);
     if (selectedItem) {
         selectZakazchik.val(selectedItem.id_zakazchik);
         selectPodryadchik.val(selectedItem.id_podryadchik);
@@ -394,8 +395,10 @@ async function getSmeta(id) {
             $('#conval9').val('');
 
         }
+
         const obmerElement = $("#obmerobs" + obmer.obmerobs);
         if (obmerElement.length) {
+            console.log (obmer.obmerobs , "lenght");
             obmerElement.prop('checked', true);
         } else {
 
@@ -901,7 +904,7 @@ function saveSmeta() {
         checkb11: chekb11.prop('checked') ? 1 : 0,
         checkb12: chekb12.prop('checked') ? 1 : 0,
     }
-    kat_sl_rab.each(function () {
+    $('.kat_sl_rab').each(function () {
         if ($(this).prop('checked')) {
             selectedObmerKatSl = $(this).val();
         }
