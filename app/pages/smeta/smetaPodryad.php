@@ -2847,6 +2847,9 @@ echo "<script>
     let usn;
     let nds;
 
+    let peremenusn;
+    let peremennds;
+
     let costwork14; // СРЕДНИЙ РАЗРЯД  14
     let obmerDop1 = 1; // доп чекбокс2
     let obmerDop2 = 1; // доп чекбокс2
@@ -2966,19 +2969,20 @@ echo "<script>
         //USNCALC
         const checkUSN = document.getElementById('checkUSN');
         const checkNDS = document.getElementById('checkNDS');
+        peremenusn = 100 - usn;
+        peremenusn = 100 - usn;
         if (checkUSN.checked)
         {
          //   console.log('Учитывать НДС:', checkNDS.checked);
-            let peremen = 100 - usn;
-            fullSumma = fullSumma + (fullSumma * usn)/peremen;
-            calculacia = calculacia + (calculacia *  usn)/peremen;
+
+            fullSumma = fullSumma + (fullSumma * usn)/peremenusn;
+            calculacia = calculacia + (calculacia *  usn)/peremenusn;
             fullSumma = parseFloat(fullSumma.toFixed(2));
         }
         if (checkNDS.checked)
         {
-            let peremen = 100 - nds;
-            fullSumma = fullSumma + (fullSumma * nds)/peremen;
-            calculacia = calculacia + (calculacia *  nds)/peremen;
+            fullSumma = fullSumma + (fullSumma * nds)/peremennds;
+            calculacia = calculacia + (calculacia *  nds)/peremennds;
             fullSumma = parseFloat(fullSumma.toFixed(2));
            // console.log('Учитывать УСН:', checkUSN.checked);
           //  console.log('Учитывать НДС:', checkNDS.checked);
