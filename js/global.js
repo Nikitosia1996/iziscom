@@ -1925,6 +1925,8 @@ function printExcel() {
         document.cookie = "V=" + V + ";";
         document.cookie = "n=" + etazh + ";";
         document.cookie = "h=" + mainvisotazdani + ";";
+        document.cookie = "usn=" + usn + ";";
+        document.cookie = "nds=" + nds + ";";
         document.cookie = "textAreaNaimRabot=" + textAreaNaimRabot.val() + ";";
         document.cookie = " het=" + visotapola + ";";
         document.cookie = " k18101=" + k18101 + ";";
