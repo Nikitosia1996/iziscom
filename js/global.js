@@ -1945,7 +1945,6 @@ function printExcel() {
         document.cookie = " chacked4=" + isSostTechOtchetCheck + ";";
         document.cookie = " chacked5=" + isRedaktorIspConstr + ";";
         document.cookie = " chacked6=" + isObsledOtdel + ";";
-
         document.cookie = " h3tp_212=" + koefIshod + ";";
         document.cookie = " ph3_212=" + koefIshod2 + ";";
         document.cookie = " ki212=" + ki212 + ";";
