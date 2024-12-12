@@ -2972,14 +2972,14 @@ echo "<script>
         const checkUSN = document.getElementById('checkUSN');
         const checkNDS = document.getElementById('checkNDS');
         peremenusn = 100 - usn;
-        peremenusn = 100 - usn;
+        peremennds = 100 - nds;
         if (checkUSN.checked)
         {
            chusn = checkUSN.checked
          //   console.log('Учитывать НДС:', checkNDS.checked);
 
-            fullSumma = fullSumma + (fullSumma * usn)/peremen;
-            calculacia = calculacia + (calculacia *  usn)/peremen;
+            fullSumma = fullSumma + (fullSumma * usn)/peremenusn;
+            calculacia = calculacia + (calculacia *  usn)/peremenusn;
             fullSumma = parseFloat(fullSumma.toFixed(2));
             fullSummaUsn = fullSumma;
         }
@@ -2987,8 +2987,8 @@ echo "<script>
         {
             chusnnds = checkNDS.checked;
 
-            fullSumma = fullSumma + (fullSumma * nds)/peremen;
-            calculacia = calculacia + (calculacia *  nds)/peremen;
+            fullSumma = fullSumma + (fullSumma * nds)/peremennds;
+            calculacia = calculacia + (calculacia *  nds)/peremennds;
             fullSumma = parseFloat(fullSumma.toFixed(2));
             fullSummaNds = fullSumma;
            // console.log('Учитывать УСН:', checkUSN.checked);

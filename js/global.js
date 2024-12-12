@@ -1922,15 +1922,19 @@ $(".tarif").on('change', () => {
 function printExcel() {
 
     new Promise((resolve, reject) => {
+        document.cookie = "dateStartWork=" + $('#dateNachRab')?.val() + ";";
+        document.cookie = "hardZdanie=" + hardZdanie + ";";
+        document.cookie = "costWork=" + $('#workCost')?.val() + ";";
+        document.cookie = "b14Input=" + $('#b14Input')?.val() + ";";
+        document.cookie = "commonInputField=" + Math.round($('#commonInputField')?.val() / 30) + ";";
+
+
+        document.cookie = "kefVisota=" + kefVisota + ";";
         document.cookie = "V=" + V + ";";
         document.cookie = "n=" + etazh + ";";
         document.cookie = "h=" + mainvisotazdani + ";";
         document.cookie = "usn=" + usn + ";";
-        document.cookie = "nds=" + nds + ";";
         document.cookie = "peremenusn=" + peremenusn + ";";
-        document.cookie = "peremennds=" + peremennds + ";";
-        document.cookie = "chusn=" + chusn + ";";
-        document.cookie = "chnds=" + chnds + ";";
         document.cookie = "fullSummaUsn=" + fullSummaUsn + ";";
         document.cookie = "fullSummaNds=" + fullSummaNds + ";";
         document.cookie = "textAreaNaimRabot=" + textAreaNaimRabot.val() + ";";
@@ -1949,10 +1953,10 @@ function printExcel() {
         document.cookie = " ph3_212=" + koefIshod2 + ";";
         document.cookie = " ki212=" + ki212 + ";";
         document.cookie = " p212=" + P212 + ";";
-        let formula1 = "V/100 * PH3 * K * БС * Ki";
+        let formula1 = "V/100 * K18.об * Коп  * НЗТР * Ki * РНЗ * B14";
         let formula2 = formula1;
         let formula3 = formula1;
-        let formula6 = "ОК * Ki * (K18.229=1) * БС";
+        let formula6 = "ОК * (K18.229=1) * БС";
         document.cookie = "formula6=" + formula6 + ";";
 
         if ($("#constructionType").val() === "2") {

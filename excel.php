@@ -12,7 +12,6 @@ require 'vendor/autoload.php';
 //$text = $rows['textAreaNaimRabot'];
 
 
-
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Style\Border;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
@@ -25,6 +24,24 @@ $sheet = $spreadsheet->getActiveSheet();
 $sheet->setTitle("Смета");
 
 const COEFF = 1.053423626787058;
+$dateStartWork = $_COOKIE['dateStartWork'];
+$hardZdanie = $_COOKIE['hardZdanie'];
+$costWork = $_COOKIE['costWork'];
+$commonInputField = $_COOKIE['commonInputField'];
+$b14Input = $_COOKIE['b14Input'];
+
+$sheet->setCellValue("F10", $hardZdanie);
+$sheet->setCellValue("I10", $costWork);
+$sheet->setCellValue("J10", "руб. - стоимость работ на 1 чел.-д. исполнителя 14 разряда");
+$sheet->setCellValue("J11", "на 01.03.2022 г. по приказу МАиС №17 от 09.02.2022 г.");
+$sheet->setCellValue("J12", "мес. - месяц текущего года, в котором начинаются работы");
+$sheet->setCellValue("J13", "мес. - продолжительность работ");
+$sheet->setCellValue("J14", "руб. - стоим. работ на 1 чел.-дн. специал. 14 разр.");
+$sheet->setCellValue("I12", date('m'));
+$sheet->setCellValue("I13", $commonInputField);
+$sheet->setCellValue("I14", $b14Input);
+
+
 $zakazchik = $_COOKIE['zakazchik'];
 $podradchik = $_COOKIE['podradchik'];
 $V = $_COOKIE['V'];
@@ -58,7 +75,7 @@ $arrSbor = $_COOKIE["arrSbor"];
 $stringSbor = "";
 $arr = json_decode($arrSbor);
 
-foreach ($arr as $item){
+foreach ($arr as $item) {
     $stringSbor .= $item . "; ";
 }
 $stringSbor = rtrim($stringSbor, "; ");
@@ -67,7 +84,7 @@ $arrObmer = $_COOKIE["arrObmer"];
 $stringObmer = "";
 $arr = json_decode($arrObmer);
 
-foreach ($arr as $item){
+foreach ($arr as $item) {
     $stringObmer .= $item . "; ";
 }
 $stringObmer = rtrim($stringObmer, "; ");
@@ -77,7 +94,7 @@ $arrObsled = $_COOKIE["arrObsled"];
 $stringObsled = "";
 $arr = json_decode($arrObsled);
 
-foreach ($arr as $item){
+foreach ($arr as $item) {
     $stringObsled .= $item . "; ";
 }
 $stringObsled = rtrim($stringObsled, "; ");
@@ -87,7 +104,7 @@ $arrSostTech = $_COOKIE["arrSostTech"];
 $stringSostTech = "";
 $arr = json_decode($arrSostTech);
 
-foreach ($arr as $item){
+foreach ($arr as $item) {
     $stringSostTech .= $item . "; ";
 }
 $stringSostTech = rtrim($stringSostTech, "; ");
@@ -146,9 +163,11 @@ array_push($arrTables, $isSostTechOtchetCheck);
 $sheet->getStyle('A1:Z1000')->getFont()->setName('Arial');
 $sheet->getStyle('A1:Z1000')->getFont()->setSize(14);
 $sheet->getStyle('I24:I100')->getFont()->setSize(13);
+$sheet->getStyle('J10:J14')->getFont()->setSize(11);
+$sheet->getStyle('H10:H14')->getFont()->setSize(10);
 
-$sheet->getStyle('B24:B100' )->getFont()->setBold(true);
-$sheet->getStyle('N24:N100' )->getFont()->setBold(true);
+$sheet->getStyle('B24:B100')->getFont()->setBold(true);
+$sheet->getStyle('N24:N100')->getFont()->setBold(true);
 
 $sheet->getColumnDimension("A")->setWidth(14 * COEFF);
 $sheet->getColumnDimension("B")->setWidth(9.57 * COEFF);
@@ -181,14 +200,29 @@ $sheet->getStyle("C15:C20")->getFont()->setBold(true);
 $sheet->getStyle("G15:G20")->getFont()->setBold(true);
 $sheet->getStyle("K15:K20")->getFont()->setBold(true);
 $sheet->getStyle("O15:O20")->getFont()->setBold(true);
-$sheet->getStyle("F11:F14")->getFont()->setBold(true);
+$sheet->getStyle("F10:F14")->getFont()->setBold(true);
+$sheet->getStyle("I10:I14")->getFont()->setBold(true);
 
 
 $sheet->setCellValue("N1", "Приложение №");
 $sheet->setCellValue("N2", "к договору №");
-$date = "";
+
 $sheet->setCellValue("N3", "от ");
-$sheet->setCellValue("O3", $date);
+
+$dateStartWork = DateTime::createFromFormat('Y-m-d', $dateStartWork);
+if ($dateStartWork) {
+    // Форматирование даты на русском языке
+    $formatter = new IntlDateFormatter(
+        'ru_RU',
+        IntlDateFormatter::LONG,
+        IntlDateFormatter::NONE,
+        null,
+        IntlDateFormatter::GREGORIAN,
+        'd MMMM yyyy г.'
+    );
+    $dateStartWork = $formatter->format($dateStartWork);
+}
+$sheet->setCellValue("O3", $dateStartWork);
 $sheet->getStyle("N1:N3")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_RIGHT);
 
 $sheet->setCellValue("F3", "Смета");
@@ -197,12 +231,12 @@ $sheet->getStyle("F3")->getFont()->setSize(20);
 $sheet->getStyle("F3")->getFont()->setBold(true);
 $sheet->setCellValue("E4", "на выполнение обследовательских работ по объекту:");
 $sheet->setCellValue("D5", $textAreaNaimRabot);
+$sheet->getStyle("D5")->getFont()->setBold(true);
 $sheet->getStyle("D5")->getAlignment()->setWrapText(true);
 
 // Объединяем ячейки D5:H5 (5 столбцов)
 $sheet->mergeCells("D5:K5");
 $sheet->getStyle('E4')->getFont()->setSize(16);
-
 
 
 $sheet->setCellValue("A6", "Заказчик: ");
@@ -246,6 +280,9 @@ $sheet->setCellValue("G11", "м3");
 $sheet->setCellValue("G12", "эт.");
 $sheet->setCellValue("G13", "м");
 $sheet->setCellValue("G14", "м");
+
+$sheet->setCellValue("H10", "В(чел-дн 01янв)=");
+$sheet->setCellValue("H14", "В(чел-дн 14р)=");
 
 $sheet->getStyle('A15:O20')->applyFromArray($styleArray);
 $sheet->getStyle('A10:O14')->applyFromArray($styleArray);
@@ -526,7 +563,7 @@ $sheet->setCellValue("F23", "Показатели");
 $sheet->setCellValue("I23", "Обоснование               ");
 $sheet->setCellValue("J23", "СНЗТ 18-2014");
 $sheet->setCellValue("L23", "Расчет стоимости");
-$sheet->setCellValue("N22", "          Стоимость ");
+$sheet->setCellValue("N22", "        Стоимость ");
 $sheet->setCellValue("N23", "          работ, руб.");
 $sheet->getStyle('N22:O23')->applyFromArray($styleArray);
 $sheet->getStyle("A22:O23")->getFont()->setBold(true);
@@ -539,28 +576,30 @@ $sheet->getStyle("F23")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment:
 $sheet->getStyle("F23")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
 $sheet->getStyle("L23")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 $sheet->getStyle("L23")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
-$sheet->getStyle("N23")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-$sheet->getStyle("N23")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
+
 $sheet->getStyle("I23")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
 $sheet->getStyle("I23")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
 $sheet->getStyle("J23")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 $sheet->getStyle("J23")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
 $sheet->getStyle("M23")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 $sheet->getStyle("M23")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
-$sheet->getStyle("N22")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-$sheet->getStyle("N22")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
 
 
 $startedCell = 24;
-
+$nom = 1;
 foreach ($arrTables as $item) {
+    $sheet->setCellValue("A" . ($startedCell + 2), $nom);
+    $sheet->getStyle("A" . ($startedCell + 2))->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+    $sheet->getStyle("A" . ($startedCell + 2))->getFont()->setBold(true);
     if ($item->chacked == "true") {
+
         $sheet->setCellValue("B" . ($startedCell + 1), $item->tableName);
+
 
         $sheet->setCellValue("B" . ($startedCell + 2), $item->arrString);
         $sheet->getStyle("B" . ($startedCell + 2))->getFont()->setBold(false);
         $sheet->getStyle('B' . ($startedCell + 2))->getFont()->setSize(11);
-        $sheet->mergeCells('B' . ($startedCell+ 2) . ':D' . + ($startedCell+ 3));
+        $sheet->mergeCells('B' . ($startedCell + 2) . ':D' . +($startedCell + 3));
         $sheet->getStyle("B" . ($startedCell + 2))->getAlignment()->setWrapText(true);
         $sheet->getRowDimension($startedCell + 2)->setRowHeight(20);
 
@@ -610,8 +649,9 @@ foreach ($arrTables as $item) {
         $sheet->getStyle("K" . ($startedCell))->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
 
         $startedCell = $endCell + 1;
-
     }
+    $nom++;
+
 }
 
 $toggleZd71 = $_COOKIE['toggleZd71'];
@@ -655,10 +695,14 @@ $arrPodTable = [new PodTable($toggleZd71, $conval71, $koef1, "Определен
 
 if ($isRedaktorIspConstr->chacked == "true") {
     $sheet->setCellValue("E" . $startedCell, $isRedaktorIspConstr->tableName);
+    $sheet->setCellValue("E" . $startedCell, $isRedaktorIspConstr->tableName);
     $sheet->getStyle("E" . $startedCell)->getFont()->setBold(true);
     $sheet->getStyle('E' . $startedCell)->getFont()->setSize(14);
     $sheet->getStyle('A' . $startedCell . ':O' . $startedCell)->applyFromArray($styleArray);
     $startedRed = $startedCell;
+    $sheet->setCellValue("A" . $startedCell + 2, $nom);
+    $sheet->getStyle("A" . ($startedCell + 2))->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+    $sheet->getStyle("A" . ($startedCell + 2))->getFont()->setBold(true);
 
     foreach ($arrPodTable as $podTable) {
         if ($podTable->checked == "true") {
@@ -679,6 +723,7 @@ if ($isRedaktorIspConstr->chacked == "true") {
         }
 
     }
+    $nom++;
 
     $endCell = $startedCell;
     $sheet->getStyle('A' . $startedRed + 1 . ':A' . $endCell)->applyFromArray($styleArray);
@@ -704,6 +749,9 @@ if ($isObsledOtdel->chacked == "true") {
     $sheet->getStyle('A' . $startedCell . ':O' . $startedCell)->applyFromArray($styleArray);
     $startedRed = $startedCell;
     $myarr = json_decode($myObject);
+    $sheet->setCellValue("A" . $startedCell + 2, $nom);
+    $sheet->getStyle("A" . ($startedCell + 2))->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+    $sheet->getStyle("A" . ($startedCell + 2))->getFont()->setBold(true);
 
     foreach ($myarr as $item) {
         $sheet->setCellValue("B" . $startedCell + 1, $item->text);
@@ -737,8 +785,9 @@ if ($isObsledOtdel->chacked == "true") {
         $sheet->getStyle('B' . $startedRed + 1 . ':M' . $startedCell)->applyFromArray($styleArray);
 
         $totalObsled += $item->total;
-    }
 
+    }
+    $nom++;
     $endCell = $startedCell;
     $sheet->getStyle('A' . $startedRed + 1 . ':A' . $endCell)->applyFromArray($styleArray);
     $sheet->getStyle('B' . $startedRed + 1 . ':D' . $endCell)->applyFromArray($styleArray);
@@ -753,8 +802,16 @@ if ($isObsledOtdel->chacked == "true") {
     $sheet->setCellValue("N" . $startedRed + round(($endCell - $startedRed) / 2), $totalObsled);
 }
 
-
+$stringItogoFormula = "";
+for ($j = 1; $j < $nom - 1; $j++)
+    $stringItogoFormula .= "п." . $j . " + ";
+$stringItogoFormula .= "п." . $nom - 1;
 $sheet->setCellValue("B" . ++$endCell, "Итого стоимость работ");
+$sheet->setCellValue("A" . $endCell, $nom);
+$sheet->getStyle("A" . $endCell)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+$sheet->getStyle("A" . $endCell)->getFont()->setBold(true);
+$sheet->setCellValue("K" . $endCell, $stringItogoFormula);
+$sheet->getStyle('K' . $endCell)->getFont()->setSize(10);
 $sheet->getStyle('B' . $endCell)->getFont()->setBold(true);
 $sheet->getStyle('B' . $endCell)->getFont()->setItalic(true);
 $sheet->getStyle('A' . $endCell . ':A' . $endCell)->applyFromArray($styleArray);
@@ -766,9 +823,26 @@ $sheet->setCellValue("N" . $endCell, $fullSumma);
 $startedCell = $endCell + 1;
 $sheet->setCellValue("E" . $startedCell, "Расчет налогов и отчислений");
 $sheet->getStyle('E' . $startedCell)->getFont()->setBold(true);
-$sheet->getStyle('A' . $startedCell  . ':O' . $startedCell)->applyFromArray($styleArray);
-for ($i = 1; $i < 4; $i++) {
+$sheet->getStyle('A' . $startedCell . ':O' . $startedCell)->applyFromArray($styleArray);
+$proc = $_COOKIE['usn'];
+$znam = $_COOKIE['peremenusn'];
+for ($i = 1; $i < 3; $i++) {
+    if ($i == 1) {
+        $sheet->setCellValue("B" . $startedCell + $i, "Сумма налога при упрощенной системе налогообложения (" . $proc ."%)");
+        $sheet->setCellValue("L" . $startedCell + $i, "п." . $nom . " * " . $proc . " / " . $znam );
+        $sheet->setCellValue("N" . $startedCell + $i, $fullSumma * $proc / $znam);
+
+    } else {
+        $sheet->setCellValue("B" . $startedCell + $i, "Итого стоимость работ без НДС:");
+        $sheet->setCellValue("L" . $startedCell + $i, "п." . $nom - 1  . " + " . "п." . $nom );
+        $sheet->setCellValue("N" . $startedCell + $i, $fullSumma + $fullSumma * $proc / $znam);
+
+    }
+    $sheet->getStyle('L' . $startedCell + $i)->getFont()->setSize(10);
     $sheet->getStyle('A' . $startedCell + $i)->applyFromArray($styleArray);
+    $sheet->setCellValue("A" . $startedCell + $i, ++$nom);
+    $sheet->getStyle("A" . ($startedCell + $i))->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+    $sheet->getStyle("A" . ($startedCell + $i))->getFont()->setBold(true);
     $sheet->getStyle('B' . $startedCell + $i . ':J' . $startedCell + $i)->applyFromArray($styleArray);
     $sheet->getStyle('K' . $startedCell + $i . ':M' . $startedCell + $i)->applyFromArray($styleArray);
     $sheet->getStyle('N' . $startedCell + $i . ':O' . $startedCell + $i)->applyFromArray($styleArray);
@@ -776,16 +850,18 @@ for ($i = 1; $i < 4; $i++) {
 $startedCell = $startedCell + 6;
 
 $whoVistupaet = $_COOKIE['whoVistupaet'];
+$kefVisota = $_COOKIE['kefVisota'];
+$sheet->setCellValue("O20", $kefVisota);
 
-$sheet->setCellValue("A" . $startedCell, $whoVistupaet);
+$sheet->setCellValue("A" . $startedCell, "Подрядчик");
+$sheet->setCellValue("C" . $startedCell + 2, $podradchik);
+$sheet->getStyle('C' . $startedCell + 2)->getFont()->setBold(true);
+
+$sheet->setCellValue("A" . $startedCell + 2, "Директор");
 $sheet->getStyle('A' . $startedCell)->getFont()->setBold(true);
 $sheet->setCellValue("A" . $startedCell + 5, "_______________________________");
+$sheet->setCellValue("D" . $startedCell + 5, "      А.В. Лукьянович");
 $sheet->setCellValue("A" . $startedCell + 6, "М.П.");
-
-
-
-
-
 
 
 header("Expires: Mon, 1 Apr 1974 05:00:00 GMT");
