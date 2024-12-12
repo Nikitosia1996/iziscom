@@ -2844,15 +2844,14 @@ echo "<script>
     let selectedRadio; // КАТЕГОРИЯ СЛОЖНОСТИ РАБОТ
     let koefIshod2 = 1; // КОЭФИЦИЕНТ НЗТ1 (табл.2.4)
     let b14Value = 1; // b14
-    let peremenusn;
-    let peremennds;
     let usn;
     let nds;
     let chusn;
     let chnds;
     let fullSummaUsn;
     let fullSummaNds;
-
+    let peremenusn;
+    let peremennds;
     let costwork14; // СРЕДНИЙ РАЗРЯД  14
     let obmerDop1 = 1; // доп чекбокс2
     let obmerDop2 = 1; // доп чекбокс2
@@ -2972,11 +2971,13 @@ echo "<script>
         //USNCALC
         const checkUSN = document.getElementById('checkUSN');
         const checkNDS = document.getElementById('checkNDS');
+        peremenusn = 100 - usn;
+        peremenusn = 100 - usn;
         if (checkUSN.checked)
         {
            chusn = checkUSN.checked
          //   console.log('Учитывать НДС:', checkNDS.checked);
-            peremenusn = 100 - usn;
+
             fullSumma = fullSumma + (fullSumma * usn)/peremen;
             calculacia = calculacia + (calculacia *  usn)/peremen;
             fullSumma = parseFloat(fullSumma.toFixed(2));
@@ -2985,7 +2986,7 @@ echo "<script>
         if (checkNDS.checked)
         {
             chusnnds = checkNDS.checked;
-            peremennds = 100 - nds;
+
             fullSumma = fullSumma + (fullSumma * nds)/peremen;
             calculacia = calculacia + (calculacia *  nds)/peremen;
             fullSumma = parseFloat(fullSumma.toFixed(2));
