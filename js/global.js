@@ -1927,6 +1927,12 @@ function printExcel() {
         document.cookie = "h=" + mainvisotazdani + ";";
         document.cookie = "usn=" + usn + ";";
         document.cookie = "nds=" + nds + ";";
+        document.cookie = "peremenusn=" + peremenusn + ";";
+        document.cookie = "peremennds=" + peremennds + ";";
+        document.cookie = "chusn=" + chusn + ";";
+        document.cookie = "chnds=" + chnds + ";";
+        document.cookie = "fullSummaUsn=" + fullSummaUsn + ";";
+        document.cookie = "fullSummaNds=" + fullSummaNds + ";";
         document.cookie = "textAreaNaimRabot=" + textAreaNaimRabot.val() + ";";
         document.cookie = " het=" + visotapola + ";";
         document.cookie = " k18101=" + k18101 + ";";
