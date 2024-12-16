@@ -2288,7 +2288,7 @@ function printDogovor() {
     if (applications.length > 0) {
         htmlOutput = '<h2 class="text-lg font-bold">10. К ДОГОВОРУ ПРИЛАГАЕТСЯ:</h2>';
         applications.forEach(function(app) {
-            htmlOutput += `<p class="ml-4 mt-2">10.${app.ind}. ${app.lab} (Приложение № ${app.ind})</p>`;
+            htmlOutput += `<p class="ml-4 mt-2 no-margin">10.${app.ind}. ${app.lab} (Приложение № ${app.ind})</p>`;
         });
     } else {
         htmlOutput = "";
@@ -2309,6 +2309,9 @@ console.log (rekvizit);
             cost_work: cost_work,
             rekvizit: rekvizit,
             istochnik: istochnik_fin,
+            doljn: doljn,
+            osn_podpis: osn_podpis,
+            sum_avans: sum_avans,
             applications: htmlOutput
         },
         success: function (response) {

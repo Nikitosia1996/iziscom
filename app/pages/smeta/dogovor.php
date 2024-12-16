@@ -312,7 +312,7 @@ echo "<script>
             </div>
 
 
-            <div class="form-group mgtop5">
+            <div class="form-group mgtop5" style = "display: none">
                 <label for="">Срок и вид оплаты:</label>
                 <select class="form-control" id="srok_vid">
                     <option value="0">-- Пожалуйста, выберите --</option>
@@ -323,7 +323,7 @@ echo "<script>
 
 
             <div class="form-group mgtop5">
-                <label for="">Количество дней:</label>
+                <label for="">Срок оплаты в банковских днях:</label>
                 <input type="number" class="form-control" id="count_days">
             </div>
 
@@ -356,14 +356,6 @@ echo "<script>
                             </label>
                         </div>
                     </div>
-                    <div class="form-group mgtop20p">
-                        <div class="form-check">
-                            <input class="form-check-input prilagaetsa" type="checkbox" value="" id="checkbox_4" >
-                            <label class="form-check-label" for="invalidCheck">
-                                Антикоррупционная оговорка
-                            </label>
-                        </div>
-                    </div>
                 </div>
 
 
@@ -385,18 +377,10 @@ echo "<script>
                         </div>
                     </div>
                     <div class="form-group mgtop20p">
-                        <div class="form-check">
-                            <input class="form-check-input prilagaetsa" type="checkbox" value="" id="checkbox_7" >
-                            <label class="form-check-label" for="invalidCheck">
-                                Протокол заседания
-                            </label>
-                        </div>
-                    </div>
-                    <div class="form-group mgtop20p">
                         <div class="form-check-">
                             <input class="form-check-input prilagaetsa" type="checkbox" value="" id="checkbox_8" >
                             <label class="form-check-label" for="invalidCheck">
-                                Протокол согласования договорной (контрактной) цены
+                                Протокол договорной (контрактной) цены
                             </label>
                         </div>
                     </div>
@@ -431,7 +415,7 @@ echo "<script>
         </div>
 
         <div class="col-lg-3 mgleft8 ">
-            <div class="form-group mgtop20p">
+            <div class="form-group mgtop20p" style = "display: none">
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="nalich_avans" required>
                     <label class="form-check-label" for="invalidCheck">
@@ -439,7 +423,17 @@ echo "<script>
                     </label>
                 </div>
             </div>
-            <div class="form-group mgtop20p">
+            <label for="c2" id="ID-1724763137556">Сумма аванса:</label>
+            <div class="input-group ">
+                <span class="input-group-addon">%</span>
+                <input type="number" value="" min="0" step="0.01" class="form-control currency"
+                       style="appearance: none; display: none;"><input id="sum_avans"
+                                                                       class="ws-number ws-inputreplace form-control currency wsshadow-1724763137553 has-input-buttons"
+                                                                       type="text" placeholder="" value="0" aria-required="false" inputmode="numeric"
+                                                                       aria-labelledby="ID-1724763137556 ID-1724763137557"
+                                                                       style="margin-left: 0px; margin-right: 0px; padding-right: 30px;">
+            </div>
+            <div class="form-group mgtop20p" style = "display: none">
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="kompl_chert" required>
                     <label class="form-check-label" for="invalidCheck">
@@ -453,18 +447,9 @@ echo "<script>
             <div class="row">
 
                 <div class="mgtop20p">
-                    <label for="c2" id="ID-1724763137556">Сумма аванса:</label>
-                    <div class="input-group ">
-                        <span class="input-group-addon">%</span>
-                        <input type="number" value="" min="0" step="0.01" class="form-control currency"
-                               style="appearance: none; display: none;"><input id="sum_avans"
-                                class="ws-number ws-inputreplace form-control currency wsshadow-1724763137553 has-input-buttons"
-                                type="text" placeholder="" value="0" aria-required="false" inputmode="numeric"
-                                aria-labelledby="ID-1724763137556 ID-1724763137557"
-                                style="margin-left: 0px; margin-right: 0px; padding-right: 30px;">
-                    </div>
 
-                    <div class="form-group mgtop5">
+
+                    <div class="form-group mgtop5" style = "display: none">
                         <label for="">Количество томов:</label>
                         <input type="number" class="form-control" id="count_toms">
                     </div>
