@@ -1971,6 +1971,7 @@ function printExcel() {
             inputValue = 1;
         }
         document.cookie = "commonInputField=" + inputValue + ";";
+        document.cookie = "chusn=" + chusn + ";";
 
 
         document.cookie = "kefVisota=" + kefVisota + ";";

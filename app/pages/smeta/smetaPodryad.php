@@ -2991,6 +2991,8 @@ display: flex;
             calculacia = calculacia + (calculacia *  usn)/peremenusn;
             fullSumma = parseFloat(fullSumma.toFixed(2));
             fullSummaUsn = fullSumma;
+        }else{
+            chusn = checkUSN.checked;
         }
         if (checkNDS.checked)
         {
