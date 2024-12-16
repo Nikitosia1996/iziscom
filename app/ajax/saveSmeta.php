@@ -272,6 +272,12 @@ $input3Calc8 = isset($calculObject['input3Calc8']) ? $calculObject['input3Calc8'
 
 $id_zakazchik = isset($_POST['id_zakazchik']) ? $_POST['id_zakazchik'] : null;
 $id_podryadchik = isset($_POST['id_podryadchik']) ? $_POST['id_podryadchik'] : null;
+$selectedZakazchik = isset($_POST['selectedZakazchik']) ? $_POST['selectedZakazchik'] : null;
+$selectedPodryadchik = isset($_POST['selectedPodryadchik']) ? $_POST['selectedPodryadchik'] : null;
+$selectedIziskom = isset($_POST['selectedIziskom']) ? $_POST['selectedIziskom'] : null;
+$selectedVskrytie = isset($_POST['selectedVskrytie']) ? $_POST['selectedVskrytie'] : null;
+$selectedKonkursnoe= isset($_POST['selectedKonkursnoe']) ? $_POST['selectedKonkursnoe'] : null;
+$summa = isset($_POST['summa']) ? $_POST['summa'] : null;
 $textAreaNaimRabot = isset($_POST['textAreaNaimRabot']) ? $_POST['textAreaNaimRabot'] : null;
 $textAreaCel = isset($_POST['textAreaCel']) ? $_POST['textAreaCel'] : null;
 $textAreaMestoObj = isset($_POST['textAreaMestoObj']) ? $_POST['textAreaMestoObj'] : null;
@@ -293,7 +299,13 @@ $smetaName = $_POST['name'];
 if (isset($_POST['id'])) {
 
     $id = $_POST['id'];
-    $sql = "update smets set  `name` = '$smetaName',`id_zakazchik`='$id_zakazchik', `id_podryadchik`='$id_podryadchik', `date_nach_rab`='$dateNachRab', `date_okonch_rab`='$dateOkonchRab', textAreaNaimRabot = '$textAreaNaimRabot', textAreaCel = '$textAreaCel', textAreaMestoObj = '$textAreaMestoObj'  
+    $sql = "update smets set  `name` = '$smetaName',`id_zakazchik`='$id_zakazchik', `id_podryadchik`='$id_podryadchik', `date_nach_rab`='$dateNachRab', `date_okonch_rab`='$dateOkonchRab', textAreaNaimRabot = '$textAreaNaimRabot', textAreaCel = '$textAreaCel', textAreaMestoObj = '$textAreaMestoObj' , 
+                  selectedZakazchik = '$selectedZakazchik', 
+                  selectedPodryadchik = '$selectedPodryadchik', 
+                  selectedIziskom = '$selectedIziskom', 
+                  selectedVskrytie = '$selectedVskrytie', 
+                  selectedKonkursnoe = '$selectedKonkursnoe', 
+                  summa = '$summa'
             where id_smeta = '$id'";
     mysqli_query($connectionDB->con, $sql)  or mysqli_error($connectionDB->con);
 
@@ -584,7 +596,7 @@ WHERE id_smeta = '$id'";
     echo $id;
 
 } else {
-    $sql = "INSERT INTO smets (`name`, `id_zakazchik`, `id_podryadchik`, `date_nach_rab`, `date_okonch_rab`, textAreaNaimRabot, textAreaCel, textAreaMestoObj) VALUES ('$smetaName', '$id_zakazchik', '$id_podryadchik', '$dateNachRab', '$dateOkonchRab' , '$textAreaNaimRabot', '$textAreaCel', '$textAreaMestoObj')";
+    $sql = "INSERT INTO smets (`name`, `id_zakazchik`, `id_podryadchik`, `date_nach_rab`, `date_okonch_rab`, textAreaNaimRabot, textAreaCel, textAreaMestoObj, selectedZakazchik, selectedPodryadchik, selectedIziskom, selectedVskrytie, selectedKonkursnoe,  summa) VALUES ('$smetaName', '$id_zakazchik', '$id_podryadchik', '$dateNachRab', '$dateOkonchRab' , '$textAreaNaimRabot', '$textAreaCel', '$textAreaMestoObj' ,'$selectedZakazchik', '$selectedPodryadchik', '$selectedIziskom', '$selectedVskrytie', '$selectedKonkursnoe','$summa')";
     if (mysqli_query($connectionDB->con, $sql)) {
         $insertedId = mysqli_insert_id($connectionDB->con);
 

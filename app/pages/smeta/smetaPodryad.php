@@ -205,6 +205,7 @@ echo "<script>
     input[type="checkbox"], input[type="radio"] {
         margin-right: 10px;
         cursor: pointer;
+        transform: scale(1.5);
     }
 
     .countRub {
@@ -242,7 +243,7 @@ echo "<script>
     }
 
     .lolspace {
-
+display: flex;
     }
 
     .mainlolspace {
@@ -681,6 +682,10 @@ echo "<script>
         display: block;
     }
 
+    .ownst{
+        display:flex;
+    }
+
 </style>
 
 <div class="header-fixed">
@@ -780,18 +785,24 @@ echo "<script>
 
     <div class="pos3">
         <label for="calendarDays" class="zakpod">Календарных дней:</label>
+
+        <div class = "ownst">
         <input id="calendarDays" class="butrad" type="radio" name="daysType" value="calendar">
         <br>
         <div id="inputContainer" class="input-container">
             <label id="inputLabel" for="commonInputField">Введите значение:</label>
             <input id="commonInputField" disabled type="number" name="inputValue" step="1" min="0">
         </div>
+        </div>
+
         <label for="workingDays" class="zakpod">Рабочих дней:</label>
+        <div class = "ownst">
         <input id="workingDays" class="butrad" type="radio" name="daysType" value="working">
         <br>
         <div id="inputContainerWorking" class="input-container">
             <label id="inputLabel" for="commonInputFieldWorking">Введите значение:</label>
             <input id="commonInputFieldWorking" disabled type="number" name="inputValue" step="1" min="0">
+        </div>
         </div>
 
         <label for="textAreaMestoObj" class="zakpodGps">Местоположение объекта:</label>
@@ -2698,16 +2709,14 @@ echo "<script>
 <div class="position1">
     <div class="pos1">
         <label for="SelectZakazchik" class="zakpod">Кто подписывает смету:</label>
-        <select class="form-select" aria-label="">
+        <select class="form-select" aria-label="" id ="selectedZakazchik1">
             <option selected>-- Пожалуйста, выберите --</option>
-            <option value="1">
-                Директор
-            </option>
+            <option value="1">Директор</option>
             <option value="2">И.О. Директора</option>
         </select>
 
         <label for="SelectPodryadchik" class="zakpod">Кем выступает заказчик:</label>
-        <select class="form-select" aria-label="">
+        <select class="form-select" aria-label=""  id ="selectedPodryadchik1">
             <option selected>-- Пожалуйста, выберите --</option>
             <option value="1">Заказчик</option>
             <option value="2">Генподрядчик</option>
@@ -2717,7 +2726,7 @@ echo "<script>
 
 
         <label for="SelectPodryadchik" class="zakpod">Кем выступает ИЗИСКОМ:</label>
-        <select class="form-select" id="whoVistupaet" aria-label="">
+        <select class="form-select" id="whoVistupaet" aria-label="" >
             <option selected>-- Пожалуйста, выберите --</option>
             <option value="1">Подрядчик</option>
             <option value="2">Субподрядчик</option>
@@ -2726,7 +2735,7 @@ echo "<script>
 
         <label for="SelectPodryadchik" class="zakpod">Кто производит вскрытие и заделку строительных
             конструкций</label>
-        <select class="form-select" aria-label="">
+        <select class="form-select" aria-label=""  id ="selectedVskrytie1">
             <option selected>-- Пожалуйста, выберите --</option>
             <option value="1">Заказчик</option>
             <option value="2">Генподрядчик</option>
@@ -2735,7 +2744,7 @@ echo "<script>
         </select>
 
         <label for="SelectPodryadchik" class="zakpod">Кто подписывает конкурсное предложение</label>
-        <select class="form-select" aria-label="">
+        <select class="form-select" aria-label=""  id ="selectedKonkursnoe1">
             <option selected>-- Пожалуйста, выберите --</option>
             <option value="1">Директор</option>
             <option value="2">И.О. Директора</option>
@@ -4232,7 +4241,7 @@ echo "<script>
                     $('#workCost').val(data.params.cost_work);
                     $('#costwork14').val(data.params.cost_work);
                     costwork14 = data.params.cost_work;
-                    b14Value = b14indexval.toFixed(4);
+                    b14Value = b14indexval.toFixed(2);
                     $('#b14Checkbox').prop('checked', b14Value !== '');
                     $('#b14Input').prop('disabled', !$('#b14Checkbox').is(':checked'));
                     if (b14Value) {

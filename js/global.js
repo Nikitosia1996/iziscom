@@ -48,6 +48,11 @@ let inputDateOkonchRab = $('#dateOkonchRab');
 let textAreaNaimRabot = $('#textAreaNaimRabot');
 let textAreaCel = $('#textAreaCel');
 let textAreaMestoObj = $('#textAreaMestoObj');
+let selectedZakazchik = $('#selectedZakazchik1');
+let selectedPodryadchik = $('#selectedPodryadchik1');
+let selectedIziskom = $('#whoVistupaet');
+let selectedVskrytie = $('#selectedVskrytie1');
+let selectedKonkursnoe = $('#selectedKonkursnoe1');
 let divSaveSmeta = $('#divSaveSmeta');
 let smetaName = $('#smetaName');
 let buildingType = $('#buildingType');
@@ -279,6 +284,11 @@ async function getSmeta(id) {
         textAreaNaimRabot.val(selectedItem.textAreaNaimRabot);
         textAreaCel.val(selectedItem.textAreaCel);
         textAreaMestoObj.val(selectedItem.textAreaMestoObj);
+        selectedZakazchik.val(selectedItem.selectedZakazchik);
+        selectedPodryadchik.val(selectedItem.selectedPodryadchik);
+        selectedIziskom.val(selectedItem.selectedIziskom);
+        selectedVskrytie.val(selectedItem.selectedVskrytie);
+        selectedKonkursnoe.val(selectedItem.selectedKonkursnoe);
         smetaName.val(selectedItem.name);
 
         const haract = selectedItem.haractObject;
@@ -841,6 +851,23 @@ async function executeFunctions() {
 }
 
 function saveSmeta() {
+    let elemSumma = document.getElementById('harakteristikaObjectObsh');
+    let valueelemSumma = elemSumma.textContent || elemSumma.innerText;
+    let summa = parseFloat(valueelemSumma);
+
+
+    let selectedZakazchik = $('#selectedZakazchik1 option:selected').val() ? $('#selectedZakazchik1 option:selected').val() : "";
+    let selectedPodryadchik = $('#selectedPodryadchik1 option:selected').val() ? $('#selectedPodryadchik1 option:selected').val() : "";
+    let selectedIziskom = $('#whoVistupaet option:selected').val() ? $('#whoVistupaet option:selected').val() : "";
+    let selectedVskrytie = $('#selectedVskrytie1 option:selected').val() ? $('#selectedVskrytie1 option:selected').val() : "";
+    let selectedKonkursnoe = $('#selectedKonkursnoe1 option:selected').val() ? $('#selectedKonkursnoe1 option:selected').val() : "";
+    if (selectedZakazchik === "0" || selectedZakazchik === "") selectedZakazchik = "";
+    if (selectedPodryadchik === "0" || selectedPodryadchik === "") selectedPodryadchik = "";
+    if (selectedIziskom === "0" || selectedIziskom === "") selectedIziskom = "";
+    if (selectedVskrytie === "0" || selectedVskrytie === "") selectedVskrytie = "";
+    if (selectedKonkursnoe === "0" || selectedKonkursnoe === "") selectedKonkursnoe = "";
+
+
     let selectedObmerKatSl;
     let selectedButrad;
     let selectedObsled;
@@ -1148,6 +1175,12 @@ function saveSmeta() {
         textAreaNaimRabot: textAreaNaimRabot.val(),
         textAreaCel: textAreaCel.val(),
         textAreaMestoObj: textAreaMestoObj.val(),
+        selectedZakazchik: selectedZakazchik,
+        selectedPodryadchik: selectedPodryadchik,
+        selectedIziskom: selectedIziskom,
+        selectedVskrytie: selectedVskrytie,
+        selectedKonkursnoe: selectedKonkursnoe,
+        summa: summa,
         haractObject: JSON.stringify(haractObject),
         ishod: JSON.stringify(ishod),
         obmerObject: JSON.stringify(obmerObject),
@@ -1169,6 +1202,12 @@ function saveSmeta() {
         textAreaNaimRabot: textAreaNaimRabot.val(),
         textAreaCel: textAreaCel.val(),
         textAreaMestoObj: textAreaMestoObj.val(),
+        selectedZakazchik: selectedZakazchik,
+        selectedPodryadchik: selectedPodryadchik,
+        selectedIziskom: selectedIziskom,
+        selectedVskrytie: selectedVskrytie,
+        selectedKonkursnoe: selectedKonkursnoe,
+        summa: summa,
         haractObject: haractObject,
         ishod: ishod,
         obmerObject: obmerObject,
@@ -1177,6 +1216,7 @@ function saveSmeta() {
         redactorIspObject: redactorIspObject,
         obsledOtdKonstrObject: obsledOtdKonstrObject,
         calculObject: calculObject,
+
 
     };
 
@@ -1926,7 +1966,11 @@ function printExcel() {
         document.cookie = "hardZdanie=" + hardZdanie + ";";
         document.cookie = "costWork=" + $('#workCost')?.val() + ";";
         document.cookie = "b14Input=" + $('#b14Input')?.val() + ";";
-        document.cookie = "commonInputField=" + Math.round($('#commonInputField')?.val() / 30) + ";";
+        let inputValue = Math.round($('#commonInputField')?.val() / 30);
+        if (inputValue < 1) {
+            inputValue = 1;
+        }
+        document.cookie = "commonInputField=" + inputValue + ";";
 
 
         document.cookie = "kefVisota=" + kefVisota + ";";
@@ -2486,6 +2530,7 @@ function getDogovor(id) {
     }
 
     getZakazchik();
+    updateCost();
 }
 
 function saveDogovor() {
@@ -2608,10 +2653,12 @@ function getSmetaDogovor(id) {
         document.getElementById("date_end_work").value = selectedItem.dateOkonchRab;
         document.getElementById("name_work").value = selectedItem.textAreaNaimRabot;
         document.getElementById("target_work").value = selectedItem.textAreaCel;
+        document.getElementById("cost_work").value = selectedItem.summa;
 
 
     }
     getZakazchik();
+    updateCost();
 }
 
 
@@ -2641,8 +2688,21 @@ function getSmetaDogovor(id) {
 
  }
 
+function updateCost() {
+    let cost = $('#cost_work').val();
+    $('#stoimost_rabot').text(cost);
+}
+$('#cost_work').on('input', function() {
+    updateCost();
+});
 
 
+$(document).ready(function() {
+    $('#cost_work').on('input', function() {
+        let cost = $(this).val();
+        $('#stoimost_rabot').text(cost);
+    });
+});
 
 // function calculateHaracterCheckb(thisEl){
 //     let data_id = thisEl.getAttribute('data-id');

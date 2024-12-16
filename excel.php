@@ -231,6 +231,7 @@ $sheet->getStyle("F3")->getFont()->setSize(20);
 $sheet->getStyle("F3")->getFont()->setBold(true);
 $sheet->setCellValue("E4", "на выполнение обследовательских работ по объекту:");
 $sheet->setCellValue("D5", $textAreaNaimRabot);
+$sheet->getStyle("D5")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 $sheet->getStyle("D5")->getFont()->setBold(true);
 $sheet->getStyle("D5")->getAlignment()->setWrapText(true);
 
@@ -563,8 +564,7 @@ $sheet->setCellValue("F23", "Показатели");
 $sheet->setCellValue("I23", "Обоснование               ");
 $sheet->setCellValue("J23", "СНЗТ 18-2014");
 $sheet->setCellValue("L23", "Расчет стоимости");
-$sheet->setCellValue("N22", "        Стоимость ");
-$sheet->setCellValue("N23", "          работ, руб.");
+$sheet->setCellValue("N23", "Стоимость, руб.");
 $sheet->getStyle('N22:O23')->applyFromArray($styleArray);
 $sheet->getStyle("A22:O23")->getFont()->setBold(true);
 $sheet->getStyle('A23:O23')->getFont()->setSize(12);

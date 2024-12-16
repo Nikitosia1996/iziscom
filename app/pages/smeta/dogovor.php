@@ -159,7 +159,7 @@ echo "<script>
             </div>
 
             <div class="dropdown">
-                <button style = "margin-left:150px;" class="btn btn-primary" id="naitidog" onclick="toggleDropdownDogovor()">Найти договор</button>
+                <button style = "margin-left:60px;" class="btn btn-primary" id="naitidog" onclick="toggleDropdownDogovor()">Найти договор</button>
                 <div id="dogovorDropdown" class="dropdown-content">
                     <input type="text" placeholder="Поиск договора..." id="dogovorSearch" onkeyup="filterDogovor()">
                     <?php
@@ -172,9 +172,11 @@ echo "<script>
             </div>
 <!--            <input style = "margin-left:15px;" type="text" class="search-input" id="dogovorName" placeholder="Название договора">-->
             <button style = "margin-left:15px;" class="btn btn-secondary" id="dogovorName" onclick="saveDogovor()">Сохранить</button>
-
+             <div style = "margin-left: 20px;">
+                 Стоимость работ(byn): <span style="font-weight: bold; font-size: 1.2em;" id="stoimost_rabot"></span>
+             </div>
             <div class="dropdown">
-                <button style = "margin-left:280px;" class="btn btn-primary" id = "naitismetu" onclick="toggleDropdown()">Найти смету</button>
+                <button style = "margin-left:55px;" class="btn btn-primary" id = "naitismetu" onclick="toggleDropdown()">Найти смету</button>
                 <div id="smetaDropdown" class="dropdown-content">
                     <input type="text" placeholder="Поиск смет..." id="smetaSearch" onkeyup="filterSmeta()">
                     <?php
@@ -453,11 +455,11 @@ echo "<script>
                 <div class="mgtop20p">
                     <label for="c2" id="ID-1724763137556">Сумма аванса:</label>
                     <div class="input-group ">
-                        <span class="input-group-addon">BYN</span>
+                        <span class="input-group-addon">%</span>
                         <input type="number" value="" min="0" step="0.01" class="form-control currency"
                                style="appearance: none; display: none;"><input id="sum_avans"
                                 class="ws-number ws-inputreplace form-control currency wsshadow-1724763137553 has-input-buttons"
-                                type="text" placeholder="" value="1,000" aria-required="false" inputmode="numeric"
+                                type="text" placeholder="" value="0" aria-required="false" inputmode="numeric"
                                 aria-labelledby="ID-1724763137556 ID-1724763137557"
                                 style="margin-left: 0px; margin-right: 0px; padding-right: 30px;">
                     </div>
@@ -519,7 +521,7 @@ echo "<script>
                                data-number-stepfactor="100" class="form-control currency" id=""
                                style="appearance: none; display: none;"><input id="cost_work"
                                 class="ws-number ws-inputreplace form-control currency wsshadow-1724763137553 has-input-buttons"
-                                type="text" placeholder="" value="1,000" aria-required="false" inputmode="numeric"
+                                type="text" placeholder="" value="" aria-required="false" inputmode="numeric"
                                 aria-labelledby="ID-1724763137556 ID-1724763137557"
                                 style="margin-left: 0px; margin-right: 0px; padding-right: 30px;">
                     </div>
