@@ -2390,7 +2390,7 @@ console.log (rekvizit);
                 const blob = new Blob(['\ufeff', '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/1999/xhtml">',
                     '<head><meta charset="utf-8" />',
                     '<title>Report</title>',
-                    '<style>@page { margin: 1rem; }</style>',
+                    '<style>@page {  }</style>',
                     '</head>',
                     '<body>', response, '</body>',
                     '</html>'
