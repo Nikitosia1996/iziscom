@@ -2385,16 +2385,27 @@ console.log (rekvizit);
             who_podpis_dog: $('#who_podpis_dog option:selected').text(),
         },
         success: function (response) {
-            var WinPrint = window.open('', '', 'left=50,top=50,width=1200,height=860,toolbar=0,scrollbars=1,status=0');
-            WinPrint.document.write('<style>@page {\n' +
-                'margin: 1rem;\n' +
-                '}</style>');
-            WinPrint.document.write('<br/>');
-            WinPrint.document.write(response);
-            WinPrint.document.close();
-            WinPrint.focus();
-            WinPrint.print();
-            WinPrint.close();
+            function downloadAsWord(response) {
+                // Create a Blob object with the HTML content and a Word-related MIME type
+                const blob = new Blob(['\ufeff', '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/1999/xhtml">',
+                    '<head><meta charset="utf-8" />',
+                    '<title>Report</title>',
+                    '<style>@page { margin: 1rem; }</style>',
+                    '</head>',
+                    '<body>', response, '</body>',
+                    '</html>'
+                ], {type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'});
+
+                // Create an anchor element with a download attribute
+                const a = document.createElement('a');
+                a.href = window.URL.createObjectURL(blob);
+                a.download = 'Договор №' +nomer_dogovora + '.doc';
+
+                // Trigger a click event on the anchor element to download the Blob as a Word document
+                a.click();
+            }
+            downloadAsWord(response);
+
 
         }
 
