@@ -2294,6 +2294,64 @@ function printDogovor() {
     } else {
         htmlOutput = "";
     }
+    let indprot ;
+
+    applications.forEach(function(app) {
+        if (app.lab.toLowerCase().includes("протокол"))
+        {
+            indprot = app.ind;
+        }
+    });
+
+    let indsmeta ;
+
+    applications.forEach(function(app) {
+        if (app.lab.toLowerCase().includes("протокол"))
+        {
+            indsmeta = app.ind;
+        }
+    });
+
+
+
+    let indcalc ;
+
+    applications.forEach(function(app) {
+        if (app.lab.toLowerCase().includes("протокол"))
+        {
+            indcalc = app.ind;
+        }
+    });
+
+
+    let indsvodsmet ;
+
+    applications.forEach(function(app) {
+        if (app.lab.toLowerCase().includes("протокол"))
+        {
+            indsvodsmet = app.ind;
+        }
+    });
+
+
+    let indcalendarplan ;
+
+    applications.forEach(function(app) {
+        if (app.lab.toLowerCase().includes("протокол"))
+        {
+            indcalendarplan = app.ind;
+        }
+    });
+
+
+    let indtehzad ;
+
+    applications.forEach(function(app) {
+        if (app.lab.toLowerCase().includes("протокол"))
+        {
+            indtehzad = app.ind;
+        }
+    });
 
 console.log (rekvizit);
     $.ajax({
@@ -2313,7 +2371,18 @@ console.log (rekvizit);
             doljn: doljn,
             osn_podpis: osn_podpis,
             sum_avans: sum_avans,
-            applications: htmlOutput
+            applications: htmlOutput,
+            fio: fio,
+
+            indprot: indprot,
+            indtehzad: indtehzad,
+            indcalendarplan: indcalendarplan,
+            indsvodsmet: indsvodsmet,
+            indcalc: indcalc,
+            indsmeta: indsmeta,
+            osn_obsled: $('#osn_obsled option:selected').text(),
+            id_zakazchik: $('#id_zakazchik option:selected').text(),
+            who_podpis_dog: $('#who_podpis_dog option:selected').text(),
         },
         success: function (response) {
             var WinPrint = window.open('', '', 'left=50,top=50,width=1200,height=860,toolbar=0,scrollbars=1,status=0');
