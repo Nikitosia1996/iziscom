@@ -2373,6 +2373,8 @@ console.log (rekvizit);
             sum_avans: sum_avans,
             applications: htmlOutput,
             fio: fio,
+            count_bum: count_bum,
+            count_el: count_el,
 
             indprot: indprot,
             indtehzad: indtehzad,
@@ -2385,26 +2387,16 @@ console.log (rekvizit);
             who_podpis_dog: $('#who_podpis_dog option:selected').text(),
         },
         success: function (response) {
-            function downloadAsWord(response) {
-                // Create a Blob object with the HTML content and a Word-related MIME type
-                const blob = new Blob(['\ufeff', '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/1999/xhtml">',
-                    '<head><meta charset="utf-8" />',
-                    '<title>Report</title>',
-                    '<style>@page {  }</style>',
-                    '</head>',
-                    '<body>', response, '</body>',
-                    '</html>'
-                ], {type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'});
-
-                // Create an anchor element with a download attribute
-                const a = document.createElement('a');
-                a.href = window.URL.createObjectURL(blob);
-                a.download = 'Договор №' +nomer_dogovora + '.doc';
-
-                // Trigger a click event on the anchor element to download the Blob as a Word document
-                a.click();
-            }
-            downloadAsWord(response);
+            var WinPrint = window.open('', '', 'left=50,top=50,width=1200,height=860,toolbar=0,scrollbars=1,status=0');
+            WinPrint.document.write('<style>@page {\n' +
+                'margin-left: 3rem;\n' +
+                '}</style>');
+            WinPrint.document.write('<br/>');
+            WinPrint.document.write(response);
+            WinPrint.document.close();
+            WinPrint.focus();
+            WinPrint.print();
+            WinPrint.close();
 
 
         }
@@ -2492,6 +2484,10 @@ function printPlan(){
 }
 
 function printAkt() {
+    let count_bum = document.getElementById("count_bum").value;
+    let  count_el = document.getElementById("count_el").value;
+    let date_end_work = document.getElementById("date_end_work").value;
+    let date_akt = document.getElementById("date_akt").value;
     let cost_work = document.getElementById("cost_work").value.replace(".", ",");
     let  name_work = document.getElementById("name_work").value;
     let date_zakl_dogovora = document.getElementById("date_zakl_dogovora").value;
@@ -2508,11 +2504,15 @@ function printAkt() {
             rekvizit: rekvizit,
             nomer_dogovora: nomer_dogovora,
             cost_work: cost_work,
+            date_akt: date_akt,
+            date_end_work: date_end_work,
+            count_bum: count_bum,
+            count_el: count_el,
             },
         success: function (response) {
             var WinPrint = window.open('', '', 'left=50,top=50,width=1200,height=860,toolbar=0,scrollbars=1,status=0');
             WinPrint.document.write('<style>@page {\n' +
-                'margin: 1rem;\n' +
+                'margin-left: 3rem;\n' +
                 '}</style>');
             WinPrint.document.write('<br/>');
             WinPrint.document.write(response);

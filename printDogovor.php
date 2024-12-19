@@ -10,8 +10,13 @@ $nomer_dogovora = $_POST['nomer_dogovora'] ?? null;
 $applications = $_POST['applications'] ?? null;
 $rekvizit = $_POST['rekvizit'] ?? null;
 $doljn = $_POST['doljn'] ?? null;
+$count_bum = $_POST['count_bum'] ?? null;
+$count_el = $_POST['count_el'] ?? null;
+$doljn = $_POST['doljn'] ?? null;
 $osn_podpis = $_POST['osn_podpis'] ?? null;
 $date_zakl_dogovora = $_POST['date_zakl_dogovora'] ?? null;
+$fio = $_POST['fio'];
+$fioDirika = $doljn == "Директор" ? "А.В. Лукьянович" : "Иванов И.И";
 $formatted_date_zakl_dogovora = null;
 if ($date_zakl_dogovora) {
     $date_z_dog = DateTime::createFromFormat('Y-m-d', $date_zakl_dogovora);
@@ -217,7 +222,7 @@ echo '
         }
 
         p {
-            text-indent: 20px; 
+            text-indent: 30px; 
             text-align: justify; 
         }
 table {
@@ -267,8 +272,6 @@ font-size: 14px;
 
 </style>
 </body>        
-<br><br><br>
-
 <div style=" font-size: 14pt;
     position: relative;
     text-align: center;
@@ -282,7 +285,7 @@ font-size: 14px;
     <div class="left-block" style="text-align: left; line-height: 18pt; padding-left: 0px;">
         г. Минск<br>
     </div>
-    <div class="right-block" style="text-align: left; line-height: 18pt; margin-left:120px;">
+    <div class="right-block" style="text-align: left; line-height: 18pt; margin-left:340px;">
         ' . $form_date_zakl_dogovora . '<br>
     </div>
 </div>
@@ -360,17 +363,19 @@ echo '     <div class="mt-8">
 </p>
     </div>';
 
-echo '     <div class="mt-8">
+echo '    
+    
+     <div class="mt-8 page-break" >
         <h2 class="text-lg font-bold">9. ЮРИДИЧЕСКИЕ АДРЕСА СТОРОН</h2>
-        <p class="ml-4 mt-2 no-margin">9.1. <strong>Заказчик: ' . $name_zakazchik . '   </strong>
-' . $rekvizit . '
-</p>
-  <p class="ml-4 mt-2 no-margin">9.2. <strong>Подрядчик: ООО «ИЗИСКОМ»</strong>
-ул. Шафарнянская, 11, пом.25, г. Минск, 220125, Республика Беларусь
+        <p class="ml-4 mt-2 no-margin"> <strong>Заказчик: ' . $name_zakazchik . '   </strong></p>
+<div style = "margin-left:30px">' . $rekvizit . ' </div>
+
+  <p class="ml-4 mt-2" style = "margin-bottom:0px"> <strong>Подрядчик: ООО «ИЗИСКОМ»</strong></p>
+ <div style = "margin-left:30px " > ул. Шафарнянская, 11, пом.25, г. Минск, 220125, Республика Беларусь
 тел. факс +375(17) 3939673, +375(17) 3968696, E-mail: info@iziscom.by, www.iziscom.by
 УНП193091186 р/с BY61TECN30125225720180000010
-БИК: TECNBY22 в ОАО «Технобанк» ул. Руссиянова, 8, г. Минск.
-</p>
+БИК: TECNBY22 в ОАО «Технобанк» ул. Руссиянова, 8, г. Минск.</div>
+
     </div>';
 
 echo '     <div class="mt-8">
@@ -381,15 +386,15 @@ echo '     <div class="mt-8">
 echo ' 
     <div class="container" style="margin-left: 3%;">
  <div class="left-block" style="text-align: left; line-height: 18pt; padding-left: 0px;">
-       <strong>Заказчик</strong><br><strong>' . $name_zakazchik . '</strong><br>
+      <strong>Подрядчик</strong><br><br><div>Директор<br>ООО «ИЗИСКОМ»</div>
     </div>
     <div class="right-block" style="text-align: left; line-height: 18pt; margin-left:120px;">
-      <strong>Подрядчик</strong><br><strong>ООО "ИЗИСКОМ"</strong><br><p>Директор</p>
+      <strong>Заказчик</strong><br><br><div>'.$doljn.'<br>'.$name_zakazchik.'</div>
     </div>
 </div></div>
 <div class="container" style="margin-left: 3%;">
-    <div class="left-block" style="text-align: left; line-height: 18pt; padding-left: 0px; ">______________<div class="center-text" style="margin-left: 40px; margin-top: 8px; margin-bottom: 8px;" >м.п.</div></div>
-    <div class="right-block" style="text-align: left; line-height: 18pt; margin-left:120px;">______________А.В. Лукьянович<div class="center-text" style="margin-left: 40px; margin-top: 8px; margin-bottom: 8px;" >м.п.</div></div>
+    <div class="left-block" style="text-align: left; line-height: 18pt; padding-left: 0px; ">______________ '.$fio.'<div class="center-text" style="margin-left: 40px; margin-top: 8px; margin-bottom: 8px;" >м.п.</div></div>
+    <div class="right-block" style="text-align: left; line-height: 18pt; margin-left:120px;">______________ А.В. Лукьянович<div class="center-text" style="margin-left: 40px; margin-top: 8px; margin-bottom: 8px;" >м.п.</div></div>
     </div><br><br>  ';
 
 
@@ -401,8 +406,7 @@ $osn_obsled = $_POST['osn_obsled'];
 $id_zakazchik = $_POST['id_zakazchik'];
 $who_podpis_dog = $_POST['who_podpis_dog'];
 $doljn = $_POST['doljn'];
-$fio = $_POST['fio'];
-$fioDirika = $doljn == "Директор" ? "А.В. Лукьянович" : "Иванов И.И";
+
 //$_POST['id'];
 $date_zakl_dogovora = DateTime::createFromFormat('Y-m-d', $date_zakl_dogovora);
 if ($date_zakl_dogovora) {
@@ -491,18 +495,19 @@ $result_kopeiki = (new \MessageFormatter('ru-RU', '{n, spellout}'))->format(['n'
     <div style="text-align: center; margin-top: 10px; font-size:14px"><b>согласования договорной (контрактной) цены</b></div>
 
     <div >
-        <p style="margin-left: 40px">Наименование выполняемых работ:</p>
-        <p>«<?= $name_work ?>»</p>
-        <div style="margin-left: 40px">Основание для обследования: <?= $osn_obsled ?></div>
-        <div style="margin-left: 40px"><b>Заказчик</b>: <?= $id_zakazchik ?></div>
-        <div style="margin-left: 40px"><b>Подрядчик</b>: ООО «ИЗИСКОМ»</div>
-        <div style="margin-left: 40px">Договорная цена работ: <b><?=$rubli.','.$kopeiki . ' (' . $result_rubli . ' ' . $stringP . ' ' . $kopeiki . ' ' . $stringK . ')' ?></b>,</div>
-        <div>без НДС (в связи с применением УСН).</div>
+        <div style="margin-left: 30px">Наименование выполняемых работ:</div>
+        <div style="margin-left: 0px">«<?= $name_work ?>»</div>
+        <div style="margin-left: 30px">Основание для обследования: <?= $osn_obsled ?></div>
+        <div style="margin-left: 30px"><b>Заказчик</b>: <?= $id_zakazchik ?></div>
+        <div style="margin-left: 30px"><b>Подрядчик</b>: ООО «ИЗИСКОМ»</div>
+        <p class = "no-margin">Договорная цена работ: <b><?=$rubli.','.$kopeiki . ' (' . $result_rubli . ' ' . $stringP . ' ' . $kopeiki . ' ' . $stringK . ')' ?></b>,без НДС (в связи с применением УСН).</p>
 
 
     </div>
 
-    <div style="display: flex; justify-content: space-around; margin-top: 60px;">
+
+
+    <div style="display: flex; justify-content: space-between; margin-top: 60px; margin-left: 40px; margin-right: 40px;">
         <div>
             <b>Подрядчик</b>
             <br>
@@ -632,6 +637,7 @@ $result_kopeiki = (new \MessageFormatter('ru-RU', '{n, spellout}'))->format(['n'
     </style>
 </head>
 <body>
+<DIV class = "page-break"></DIV>
 <div style="display: grid">
     <div style='float: right'>
         <div style='position: relative; text-align: right'>Приложение №<?= $indtehzad ?></div>
@@ -639,13 +645,13 @@ $result_kopeiki = (new \MessageFormatter('ru-RU', '{n, spellout}'))->format(['n'
         <div style='position: relative; text-align: right'>от <?= $formatted_date_zakl_dogovora ?></div>
     </div>
 
-    <div style="text-align: center; margin-top: 50px; font-size:18px"><b>КАЛЕНДАРНЫЙ ПЛАН</b></div>
+    <div style="text-align: center; margin-top: 50px; font-size:14px"><b>КАЛЕНДАРНЫЙ ПЛАН</b></div><br>
 
     <div >
-        <p style="margin-left: 40px">Наименование выполняемых работ:</p>
-        <p>«<?= $name_work ?>»</p>
+        <div style="margin-left: 30px;margin-top: 10px;" >Наименование выполняемых работ:</div>
+        <div style="margin-left: 0px">«<?= $name_work ?>»</div>
 
-    </div>
+    </div><br>
 
     <div>
         <table border="1">
@@ -669,7 +675,7 @@ $result_kopeiki = (new \MessageFormatter('ru-RU', '{n, spellout}'))->format(['n'
             </tr>
             <tr>
 
-                <th>
+                <th style = "width: 80px;">
                     сумма, рублей
                 </th>
                 <th>
@@ -686,7 +692,7 @@ $result_kopeiki = (new \MessageFormatter('ru-RU', '{n, spellout}'))->format(['n'
                 <td><?=$rubli . ',' . $kopeiki?></td>
                 <td>100%</td>
                 <td><?=$istochnik?></td>
-                <td>Техническое заключение в 2 экз.</td>
+                <td><?=$osn_obsled?> на бумажном носителе в <?=$count_bum?> экз., в электронном формате в <?=$count_el?> экз.</td>
             </tr>
             <tr>
                 <td>Итого</td>
@@ -699,7 +705,7 @@ $result_kopeiki = (new \MessageFormatter('ru-RU', '{n, spellout}'))->format(['n'
         </table>
     </div>
 
-    <div style="display: flex; justify-content: space-around; margin-top: 60px;">
+    <div style="display: flex; justify-content: space-between; margin-top: 60px; margin-left: 40px; margin-right: 40px;">
         <div>
             <b>Подрядчик</b>
             <br>
