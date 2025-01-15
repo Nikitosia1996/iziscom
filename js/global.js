@@ -1668,6 +1668,23 @@ function printAkt() {
 
     })
 }
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
+if(getCookie('admin') === 'admin'){
+    let deleteF = document.getElementById("deleteF");
+    deleteF.classList.remove("hidden");
+}
+
+function deleteF(){
+    $.ajax({
+        url: "app/ajax/clear.php",
+        method: "GET"
+    }).then(response => alert("ok"));
+}
 
 ///////////////////////////////////////////////////////////////////////////
 
