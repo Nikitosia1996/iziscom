@@ -25,6 +25,7 @@
 
                             <?= $login != "" ? '<a onclick="location.href=`index.php?logout`" class="btn btn-outline-primary mx-3 mt-2 d-block">Выход</a>'
                                 : '<a onclick="location.href=`app/pages/login.php`"  class="btn btn-outline-primary mx-3 mt-2 d-block">Вход</a>' ?>
+                            <a  onclick="deleteF()" id="deleteF" class="btn btn-outline-primary mx-3 mt-2  hidden">Удалить нахуй</a>
                         </div>
                     </div>
                 </li>
