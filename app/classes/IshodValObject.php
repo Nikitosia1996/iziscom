@@ -7,6 +7,7 @@ class IshodValObject
 
     private $id;
     private $pasport_na_zdanie;
+    private $sborCheck;
     private $toggleZd1;
     private $conval1;
     private $toggleZd2;
@@ -61,10 +62,11 @@ class IshodValObject
      * @param $conval9
      * @param $choosCunstruct
      */
-    public function __construct($id, $pasport_na_zdanie, $toggleZd1, $conval1, $toggleZd2, $conval2, $toggleZd3, $conval3, $toggleZd4, $conval4, $toggleZd5, $conval5, $toggleZd6, $conval6, $toggleZd7, $conval7, $toggleZd8, $conval8, $toggleZd9, $conval9, $choosCunstruct)
+    public function __construct($id, $pasport_na_zdanie, $sborCheck, $toggleZd1, $conval1, $toggleZd2, $conval2, $toggleZd3, $conval3, $toggleZd4, $conval4, $toggleZd5, $conval5, $toggleZd6, $conval6, $toggleZd7, $conval7, $toggleZd8, $conval8, $toggleZd9, $conval9, $choosCunstruct)
     {
         $this->id = $id;
         $this->pasport_na_zdanie = $pasport_na_zdanie;
+        $this->sborCheck = $sborCheck;
         $this->toggleZd1 = $toggleZd1;
         $this->conval1 = $conval1;
         $this->toggleZd2 = $toggleZd2;
@@ -117,6 +119,25 @@ class IshodValObject
     {
         $this->pasport_na_zdanie = $pasport_na_zdanie;
     }
+
+
+
+    public function getSborCheck()
+    {
+        return $this->sborCheck;
+    }
+
+    /**
+     * @param mixed $sborCheck
+     */
+    public function setSborCheck($sborCheck): void
+    {
+        $this->sborCheck = $sborCheck;
+    }
+
+
+
+
 
     /**
      * @return mixed
@@ -425,6 +446,7 @@ class IshodValObject
         return [
             'id' => $this->id,
             'pasport_na_zdanie' => $this->pasport_na_zdanie,
+            'sborCheck' => $this->sborCheck,
             'toggleZd1' => $this->toggleZd1,
             'conval1' => $this->conval1,
             'toggleZd2' => $this->toggleZd2,

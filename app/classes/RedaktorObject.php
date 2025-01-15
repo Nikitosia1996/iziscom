@@ -4,8 +4,8 @@
 class RedaktorObject
 {
     /////////////////////////////////
-
     private $id;
+    private $redaktorIspConstrCheck;
     private $toggleZd71;
     private $toggleZd72;
     private $toggleZd73;
@@ -34,9 +34,10 @@ class RedaktorObject
      * @param $conval73
      * @param $conval74
      */
-    public function __construct($id, $toggleZd71, $toggleZd72, $toggleZd73, $toggleZd74, $conval71, $conval72, $conval73, $conval74)
+    public function __construct($id,$redaktorIspConstrCheck, $toggleZd71, $toggleZd72, $toggleZd73, $toggleZd74, $conval71, $conval72, $conval73, $conval74)
     {
         $this->id = $id;
+        $this->redaktorIspConstrCheck = $redaktorIspConstrCheck;
         $this->toggleZd71 = $toggleZd71;
         $this->toggleZd72 = $toggleZd72;
         $this->toggleZd73 = $toggleZd73;
@@ -61,6 +62,23 @@ class RedaktorObject
     public function setId($id): void
     {
         $this->id = $id;
+    }
+
+
+
+
+
+    public function getRedaktorIspConstrCheck()
+    {
+        return $this->redaktorIspConstrCheck;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setRedaktorIspConstrCheck($redaktorIspConstrCheck): void
+    {
+        $this->redaktorIspConstrCheck = $redaktorIspConstrCheck;
     }
 
     /**
@@ -199,6 +217,7 @@ class RedaktorObject
     public function toJson(){
         return [
             'id' => $this->id,
+            'redaktorIspConstrCheck' => $this->redaktorIspConstrCheck,
             'toggleZd71' => $this->toggleZd71,
             'toggleZd72' => $this->toggleZd72,
             'toggleZd73' => $this->toggleZd73,

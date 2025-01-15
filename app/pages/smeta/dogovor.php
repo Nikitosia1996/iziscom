@@ -1,10 +1,22 @@
 <?php
+include "app/classes/DogovorList.php";
+include "app/classes/SmetaList.php";
+
+echo "<script>
+     let dogovorList = " . $dogovorList->getListDogovors() . ";
+     let smetaList = " . $smetaList->getListSmets() . ";
+   
+</script>";
 
 ?>
 
 
 <script src="/js/global.js"></script>
 <style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+
     .input-group .input-buttons {
         position: relative;
         z-index: 3;
@@ -72,6 +84,60 @@
     .hidden {
         display: none; /* Скрываем селект по умолчанию */
     }
+    @media (max-width: 768px) {
+        .row > * {
+            -ms-flex-negative: 0;
+            flex-shrink: 0;
+            width: 90%;
+            max-width: 100%;
+            padding-right: calc(var(--bs-gutter-x)* 0.5);
+            padding-left: calc(var(--bs-gutter-x)* 0.5);
+            margin-top: var(--bs-gutter-y);
+        }
+        #btnTechZad{
+            width: 130px !important;
+            height: 25px !important;
+        }
+        #actnacl{
+            margin-left: 10px !important;
+        }
+        #dogr{
+            margin-left: 10px !important;
+        }
+        #naitidog{
+            margin-left: -270px !important;
+            margin-top: 30px !important;
+        }
+        #dogovorDropdown{
+            margin-left: -270px !important;
+        }
+        #dogovorName{
+            margin-left: -170px !important;
+            margin-top: 32px !important;
+            width: 90px !important;
+            height: 26px !important;
+        }
+        #svdog{
+            margin-left: 5px !important;
+            width: 75px !important;
+            height: 27px !important;
+            margin-top: 30px !important;
+        }
+        #naitismetu{
+            margin-top: 30px;
+            margin-left: 10px !important;
+            width: 90px !important;
+            height: 30px !important;
+        }
+        }
+        #smetaDropdown{
+            margin-left: -58px !important;
+        }
+
+
+
+    }
+
 
 </style>
 
@@ -79,17 +145,54 @@
 
     <div class="row ">
         <div style = "display:flex;">
-            <div style = "margin-left:30px;">
+            <div style = "margin-left:30px;" id = "actnacl">
                 <button id="btnTechZad" class="btn btn-primary" onclick="printAkt()">Акт, накладная в Word</button>
             </div>
-            <div style = "margin-left:30px;">
+            <div style = "margin-left:30px;" id = "protoc">
+                <button id="btnPrintProtocol" class="btn btn-primary" onclick="printProtocol()">Протокол</button>
+            </div>
+            <div style = "margin-left:30px;" id = "plan">
+                <button id="btnPrintPlan" class="btn btn-primary" onclick="printPlan()">Календарный план</button>
+            </div>
+            <div style = "margin-left:30px;"  id = "dogr">
                 <button id="btnTechZad" class="btn btn-primary" onclick="printDogovor()">Договор в Word</button>
             </div>
+
+            <div class="dropdown">
+                <button style = "margin-left:60px;" class="btn btn-primary" id="naitidog" onclick="toggleDropdownDogovor()">Найти договор</button>
+                <div id="dogovorDropdown" class="dropdown-content">
+                    <input type="text" placeholder="Поиск договора..." id="dogovorSearch" onkeyup="filterDogovor()">
+                    <?php
+                    $dogovorList = $dogovorList->getDogovorList();
+                    foreach ($dogovorList as $dogovor) {
+                        echo '<a onclick="getDogovor(' . $dogovor->id_dogovor . ')">' . $dogovor->id_dogovor . ' (№ договора ' . $dogovor->nomer_dogovora . ')</a>';
+                    }
+                    ?>
+                </div>
+            </div>
+<!--            <input style = "margin-left:15px;" type="text" class="search-input" id="dogovorName" placeholder="Название договора">-->
+            <button style = "margin-left:15px;" class="btn btn-secondary" id="dogovorName" onclick="saveDogovor()">Сохранить</button>
+             <div style = "margin-left: 20px;">
+                 Стоимость работ(byn): <span style="font-weight: bold; font-size: 1.2em;" id="stoimost_rabot"></span>
+             </div>
+            <div class="dropdown">
+                <button style = "margin-left:55px;" class="btn btn-primary" id = "naitismetu" onclick="toggleDropdown()">Найти смету</button>
+                <div id="smetaDropdown" class="dropdown-content">
+                    <input type="text" placeholder="Поиск смет..." id="smetaSearch" onkeyup="filterSmeta()">
+                    <?php
+                    $smetaArray = $smetaList->getSmetaArray();
+                    foreach ($smetaArray as $smeta) {
+                        echo '<a onclick="getSmetaDogovor(' . $smeta->getId() . ')">' . $smeta->getName() . '</a>';
+                    }
+                    ?>
+                </div>
+            </div>
+
         </div>
         <div class="col-lg-3 mgleft2">
             <div class="form-group mgtop5">
-                <label for="exampleFormControlSelect1">Заказчик</label>
-                <select class="form-control" id="exampleFormControlSelect1">
+                <label for="id_zakazchik">Заказчик</label>
+                <select class="form-control" id="id_zakazchik" onchange="getZakazchik()">
                     <option value="0" selected>-- Пожалуйста, выберите --</option>
                     <?php
                     while ($row = $connectionDB->getRowResult($zakazchik)) {
@@ -101,63 +204,64 @@
 
             <div class="form-group mgtop5">
                 <label for="">Должность</label>
-                <input type="text" class="form-control" id="" >
+                <input type="text" class="form-control" id="doljn" >
             </div>
 
             <div class="form-group mgtop5">
                 <label for="">ФИО:</label>
-                <input type="text" class="form-control" id="">
+                <input type="text" class="form-control" id="fio">
             </div>
 
             <div class="form-group mgtop5">
                 <label for="">Основание для подписи:</label>
-                <input type="text" class="form-control" id="">
+                <input type="text" class="form-control" id="osn_podpis">
             </div>
 
             <div class="form-group mgtop5">
                 <label for="">Реквизиты:</label>
-                <textarea class="form-control" id="" rows="3"></textarea>
+                <textarea class="form-control" id="rekvizit" rows="3"></textarea>
             </div>
         </div>
 
         <div class="col-lg-3 mgleft8">
             <div class="form-group mgtop5">
                 <label for="">Источник финансирования</label>
-                <select class="form-control" id="">
-                    <option>-- Пожалуйста, выберите --</option>
-                    <option>Собственные средства заказчика</option>
-                    <option>Местный бюджет</option>
-                    <option>Республиканский бюджет</option>
-                    <option>Государственный целевой бюджетный фонд</option>
-                    <option>Государственный целевой внебюджетный фонд</option>
+                <select class="form-control" id="istochnik">
+                    <option value="0">-- Пожалуйста, выберите --</option>
+                    <option value="1">Собственные средства заказчика</option>
+                    <option value="2">Местный бюджет</option>
+                    <option value="3">Республиканский бюджет</option>
+                    <option value="4">Государственный целевой бюджетный фонд</option>
+                    <option value="5">Государственный целевой внебюджетный фонд</option>
                 </select>
             </div>
 
             <div class="form-group mgtop5">
                 <label for="">Дата начала выполнения работ:</label>
-                <input type="date" class="form-control" id="">
+                <input type="date" class="form-control" id="date_start_work">
             </div>
 
             <div class="form-group mgtop5">
                 <label for="">Дата окончания выполнения:</label>
-                <input type="date" class="form-control" id="">
+                <input type="date" class="form-control" id="date_end_work">
             </div>
 
             <div class="form-group mgtop5">
                 <label for="">Количество экземпляров на бумажном носителе:</label>
-                <input type="number" class="form-control" id="">
+                <input type="number" class="form-control" id="count_bum">
             </div>
 
             <div class="form-group mgtop5">
                 <label for="">Количество экземпляров на электронном носителе:</label>
-                <input type="number" class="form-control" id="">
+                <input type="number" class="form-control" id="count_el">
             </div>
 
             <div class="form-group mgtop5">
                 <label for="">Основание для обследования:</label>
-                <select class="form-control" id="">
-                    <option>Техническое задание заказчика</option>
-                    <option>Обращение заказчика</option>
+                <select class="form-control" id="osn_obsled">
+                    <option value="0">-- Пожалуйста, выберите --</option>
+                    <option value="1">Техническое задание заказчика</option>
+                    <option value="2">Обращение заказчика</option>
                 </select>
             </div>
         </div>
@@ -165,12 +269,12 @@
         <div class="col-lg-3 mgleft8">
             <div class="form-group mgtop5" style="height: 42%;">
                 <label for="">Наименование работ:</label>
-                <textarea class="form-control" id="" style="height: 90%;"></textarea>
+                <textarea class="form-control" id="name_work" style="height: 90%;"></textarea>
 
             </div>
             <div class="form-group mgtop5" style="height: 42%;">
                 <label for="">Цель:</label>
-                <textarea class="form-control" id="" style="height: 90%;"></textarea>
+                <textarea class="form-control" id="target_work" style="height: 90%;"></textarea>
 
             </div>
         </div>
@@ -189,36 +293,38 @@
         <div class="col-lg-3 mgleft2">
             <div class="form-group mgtop5">
                 <label for="">Номер договора:</label>
-                <input type="text" class="form-control" id="">
+                <input type="text" class="form-control" id="nomer_dogovora">
             </div>
 
 
             <div class="form-group mgtop5">
                 <label for="">Дата заключения договора:</label>
-                <input type="date" class="form-control" id="">
+                <input type="date" class="form-control" id="date_zakl_dogovora">
             </div>
 
             <div class="form-group mgtop5">
                 <label for="">Кто подписывает договор:</label>
-                <select class="form-control" id="">
-                    <option>Техническое задание заказчика</option>
-                    <option>Обращение заказчика</option>
+                <select class="form-control" id="who_podpis_dog">
+                    <option value="0">-- Пожалуйста, выберите --</option>
+                    <option value="1">Директор</option>
+                    <option value="2">И.О. Директора</option>
                 </select>
             </div>
 
 
-            <div class="form-group mgtop5">
+            <div class="form-group mgtop5" style = "display: none">
                 <label for="">Срок и вид оплаты:</label>
-                <select class="form-control" id="">
-                    <option>Техническое задание заказчика</option>
-                    <option>Обращение заказчика</option>
+                <select class="form-control" id="srok_vid">
+                    <option value="0">-- Пожалуйста, выберите --</option>
+                    <option value="1">Наличными</option>
+                    <option value="2">Картой</option>
                 </select>
             </div>
 
 
             <div class="form-group mgtop5">
-                <label for="">Количество дней:</label>
-                <input type="number" class="form-control" id="">
+                <label for="">Срок оплаты в банковских днях:</label>
+                <input type="number" class="form-control" id="count_days">
             </div>
 
         </div>
@@ -228,7 +334,7 @@
                 <div class="col-md-6 mgleft2">
                     <div class="form-group ">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                            <input class="form-check-input prilagaetsa" type="checkbox" value="" id="checkbox_1" >
                             <label class="form-check-label" for="invalidCheck">
                                 Смета
                             </label>
@@ -236,7 +342,7 @@
                     </div>
                     <div class="form-group mgtop20p">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                            <input class="form-check-input prilagaetsa" type="checkbox" value="" id="checkbox_2" >
                             <label class="form-check-label" for="invalidCheck">
                                 Калькуляция
                             </label>
@@ -244,17 +350,9 @@
                     </div>
                     <div class="form-group mgtop20p">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                            <input class="form-check-input prilagaetsa" type="checkbox" value="" id="checkbox_3" >
                             <label class="form-check-label" for="invalidCheck">
                                 Сводная смета
-                            </label>
-                        </div>
-                    </div>
-                    <div class="form-group mgtop20p">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                            <label class="form-check-label" for="invalidCheck">
-                                Антикоррупционная оговорка
                             </label>
                         </div>
                     </div>
@@ -264,7 +362,7 @@
                 <div class="col-md-6 ">
                     <div class="form-group ">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                            <input class="form-check-input prilagaetsa" type="checkbox" value="" id="checkbox_5" >
                             <label class="form-check-label" for="invalidCheck">
                                 Календарный план
                             </label>
@@ -272,25 +370,17 @@
                     </div>
                     <div class="form-group mgtop20p">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                            <input class="form-check-input prilagaetsa" type="checkbox" value="" id="checkbox_6" >
                             <label class="form-check-label" for="invalidCheck">
                                 Техническое задание
                             </label>
                         </div>
                     </div>
                     <div class="form-group mgtop20p">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                        <div class="form-check-">
+                            <input class="form-check-input prilagaetsa" type="checkbox" value="" id="checkbox_8" >
                             <label class="form-check-label" for="invalidCheck">
-                                Протокол заседания
-                            </label>
-                        </div>
-                    </div>
-                    <div class="form-group mgtop20p">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                            <label class="form-check-label" for="invalidCheck">
-                                Протокол согласования договорной (контрактной) цены
+                                Протокол договорной (контрактной) цены
                             </label>
                         </div>
                     </div>
@@ -311,31 +401,41 @@
         <div class="col-lg-3 mgleft2">
             <div class="form-group mgtop5">
                 <label for="">Дата акта:</label>
-                <input type="date" class="form-control" id="">
+                <input type="date" class="form-control" id="date_akt">
             </div>
 
             <div class="form-group mgtop5">
                 <label for="">Кто подписывает накладную и акт</label>
-                <select class="form-control" id="">
-                    <option>Директор</option>
-                    <option>И.О. Директора</option>
-
+                <select class="form-control" id="who_podpis_akt">
+                    <option value="0">-- Пожалуйста, выберите --</option>
+                    <option value="1">Директор</option>
+                    <option value="2">И.О. Директора</option>
                 </select>
             </div>
         </div>
 
         <div class="col-lg-3 mgleft8 ">
-            <div class="form-group mgtop20p">
+            <div class="form-group mgtop20p" style = "display: none">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                    <input class="form-check-input" type="checkbox" value="" id="nalich_avans" required>
                     <label class="form-check-label" for="invalidCheck">
                         Наличие аванса
                     </label>
                 </div>
             </div>
-            <div class="form-group mgtop20p">
+            <label for="c2" id="ID-1724763137556">Сумма аванса:</label>
+            <div class="input-group ">
+                <span class="input-group-addon">%</span>
+                <input type="number" value="" min="0" step="0.01" class="form-control currency"
+                       style="appearance: none; display: none;"><input id="sum_avans"
+                                                                       class="ws-number ws-inputreplace form-control currency wsshadow-1724763137553 has-input-buttons"
+                                                                       type="text" placeholder="" value="0" aria-required="false" inputmode="numeric"
+                                                                       aria-labelledby="ID-1724763137556 ID-1724763137557"
+                                                                       style="margin-left: 0px; margin-right: 0px; padding-right: 30px;">
+            </div>
+            <div class="form-group mgtop20p" style = "display: none">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                    <input class="form-check-input" type="checkbox" value="" id="kompl_chert" required>
                     <label class="form-check-label" for="invalidCheck">
                         Комплектация чертежей
                     </label>
@@ -347,21 +447,11 @@
             <div class="row">
 
                 <div class="mgtop20p">
-                    <label for="c2" id="ID-1724763137556">Сумма аванса:</label>
-                    <div class="input-group ">
-                        <span class="input-group-addon">Р</span>
-                        <input type="number" value="1000" min="0" step="0.01" data-number-to-fixed="2"
-                               data-number-stepfactor="100" class="form-control currency" id="c2"
-                               style="appearance: none; display: none;"><input
-                                class="ws-number ws-inputreplace form-control currency wsshadow-1724763137553 has-input-buttons"
-                                type="text" placeholder="" value="1,000" aria-required="false" inputmode="numeric"
-                                aria-labelledby="ID-1724763137556 ID-1724763137557"
-                                style="margin-left: 0px; margin-right: 0px; padding-right: 30px;">
-                    </div>
 
-                    <div class="form-group mgtop5">
+
+                    <div class="form-group mgtop5" style = "display: none">
                         <label for="">Количество томов:</label>
-                        <input type="number" class="form-control" id="">
+                        <input type="number" class="form-control" id="count_toms">
                     </div>
                 </div>
             </div>
@@ -381,7 +471,7 @@
             <div class="col-lg-3 mgleft2">
                 <div class="form-group mgtop20p">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                        <input class="form-check-input" type="checkbox" value="" id="tek_smeta" >
                         <label class="form-check-label" for="invalidCheck">
                             Текущая смета
                         </label>
@@ -389,7 +479,7 @@
                 </div>
                 <div class="form-group mgtop20p">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                        <input class="form-check-input" type="checkbox" value="" id="calculacia" >
                         <label class="form-check-label" for="invalidCheck">
                             Калькуляция
                         </label>
@@ -401,24 +491,22 @@
             <div class="col-lg-4 mgtop20p">
                 <div class="form-group ">
                     <label for="">Кто подписывает титул:</label>
-                    <select class="form-control" id="">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
+                    <select class="form-control" id="who_podpis_titul">
+                        <option value="0">-- Пожалуйста, выберите --</option>
+                        <option value="1">Директор</option>
+                        <option value="2">И.О. Директора</option>
                     </select>
                 </div>
 
                 <div class="mgtop20p">
                     <label for="c2" id="ID-1724763137556">Стоимость работ:</label>
                     <div class="input-group ">
-                        <span class="input-group-addon">Р</span>
-                        <input type="number" value="1000" min="0" step="0.01" data-number-to-fixed="2"
-                               data-number-stepfactor="100" class="form-control currency" id="c2"
-                               style="appearance: none; display: none;"><input
+                        <span class="input-group-addon">BYN</span>
+                        <input type="number" value="" min="0" step="0.01" data-number-to-fixed="2"
+                               data-number-stepfactor="100" class="form-control currency" id=""
+                               style="appearance: none; display: none;"><input id="cost_work"
                                 class="ws-number ws-inputreplace form-control currency wsshadow-1724763137553 has-input-buttons"
-                                type="text" placeholder="" value="1,000" aria-required="false" inputmode="numeric"
+                                type="text" placeholder="" value="" aria-required="false" inputmode="numeric"
                                 aria-labelledby="ID-1724763137556 ID-1724763137557"
                                 style="margin-left: 0px; margin-right: 0px; padding-right: 30px;">
                     </div>
@@ -426,16 +514,13 @@
 
                 <div class="form-group mgtop5">
                     <label for="">Количество страниц:</label>
-                    <input type="text" class="form-control" id="">
+                    <input type="text" class="form-control" id="count_str">
                 </div>
             </div>
         </div>
 
 </section>
-<?php
-$result = (new \MessageFormatter('ru-RU', '{n, spellout}'))->format(['n' => 45]);
-echo $result;
-?>
+
 <script>
 </script>
 

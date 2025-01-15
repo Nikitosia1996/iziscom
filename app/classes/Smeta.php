@@ -12,12 +12,20 @@ class Smeta
     private $textAreaNaimRabot;
     private $textAreaCel;
     private $textAreaMestoObj;
+    private $selectedZakazchik;
+    private $selectedPodryadchik;
+    private $selectedIziskom;
+    private $selectedVskrytie;
+    private $selectedKonkursnoe;
+    private $summa;
     private $haractObject;
     private $ishodValObject;
     private $obmerObject;
     private $obsledObject;
     private $sostTechObject;
     private $calculationObject;
+    private $redaktorObject;
+    private $obsledOtdelObject;
 
 
 
@@ -35,7 +43,7 @@ class Smeta
      * @param $obsledObject
      * @param $sostTechObject
      */
-    public function __construct($id, $name, $id_zakazchik, $id_podryadchik, $dateNachRab, $dateOkonchRab,$textAreaNaimRabot,$textAreaCel,$textAreaMestoObj, $haractObject, $ishodValObject, $obmerObject, $obsledObject, $sostTechObject, $calculationObject)
+    public function __construct($id, $name, $id_zakazchik, $id_podryadchik, $dateNachRab, $dateOkonchRab,$textAreaNaimRabot,$textAreaCel,$textAreaMestoObj, $selectedZakazchik,$selectedPodryadchik,$selectedIziskom,$selectedVskrytie,$selectedKonkursnoe,  $summa,  $haractObject, $ishodValObject, $obmerObject, $obsledObject, $sostTechObject, $calculationObject, $redaktorObject, $obsledOtdelObject)
     {
         $this->id = $id;
         $this->name = $name;
@@ -46,12 +54,20 @@ class Smeta
         $this->textAreaNaimRabot = $textAreaNaimRabot;
         $this->textAreaCel = $textAreaCel;
         $this->textAreaMestoObj = $textAreaMestoObj;
+        $this->selectedZakazchik = $selectedZakazchik;
+        $this->selectedPodryadchik = $selectedPodryadchik;
+        $this->selectedIziskom = $selectedIziskom;
+        $this->selectedVskrytie = $selectedVskrytie;
+        $this->selectedKonkursnoe = $selectedKonkursnoe;
+        $this->summa = $summa;
         $this->haractObject = $haractObject;
         $this->ishodValObject = $ishodValObject;
         $this->obmerObject = $obmerObject;
         $this->obsledObject = $obsledObject;
         $this->sostTechObject = $sostTechObject;
         $this->calculationObject = $calculationObject;
+        $this->redaktorObject = $redaktorObject;
+        $this->obsledOtdelObject = $obsledOtdelObject;
 
     }
 
@@ -173,6 +189,74 @@ class Smeta
     }
 
 
+    //---------------
+
+
+
+    public function getSelectedZakazchik()
+    {
+        return $this->selectedZakazchik;
+    }
+
+    public function setSelectedZakazchik($selectedZakazchik): void
+    {
+        $this->selectedZakazchik = $selectedZakazchik;
+    }
+
+    public function getSelectedPodryadchik()
+{
+    return $this->selectedPodryadchik;
+}
+
+    public function setSelectedPodryadchik($selectedPodryadchik): void
+    {
+        $this->selectedPodryadchik = $selectedPodryadchik;
+    }
+
+    public function getSelectedIziskom()
+{
+    return $this->selectedIziskom;
+}
+
+    public function setSelectedIziskom($selectedIziskom): void
+    {
+        $this->selectedIziskom = $selectedIziskom;
+    }
+
+    public function getSelectedVskrytie()
+{
+    return $this->selectedVskrytie;
+}
+
+    public function setSelectedVskrytie($selectedVskrytie): void
+    {
+        $this->selectedVskrytie = $selectedVskrytie;
+    }
+
+    public function getSelectedKonkursnoe()
+{
+    return $this->selectedKonkursnoe;
+}
+
+    public function setSelectedKonkursnoe($selectedKonkursnoe): void
+    {
+        $this->selectedKonkursnoe = $selectedKonkursnoe;
+    }
+
+
+    //---------------
+
+    public function getSumma()
+    {
+        return $this->summa;
+    }
+
+    public function setSumma($summa): void
+    {
+        $this->summa = $summa;
+    }
+
+
 
     /**
      * @return mixed
@@ -279,6 +363,32 @@ class Smeta
         $this->calculationObject = $calculationObject;
     }
 
+    public function getRedaktorObject()
+    {
+        return $this->redaktorObject;
+    }
+
+    /**
+     * @param mixed $RedaktorObject
+     */
+    public function setRedaktorObject($redaktorObject): void
+    {
+        $this->redaktorObject = $redaktorObject;
+    }
+
+    public function getObsledOtdelObject()
+    {
+        return $this->obsledOtdelObject;
+    }
+
+    /**
+     * @param mixed $ObsledOtdelObject
+     */
+    public function setObsledOtdelObject($obsledOtdelObject): void
+    {
+        $this->obsledOtdelObject = $obsledOtdelObject;
+    }
+
 
 
 
@@ -294,12 +404,20 @@ class Smeta
             'textAreaNaimRabot' => $this->textAreaNaimRabot,
             'textAreaCel' => $this->textAreaCel,
             'textAreaMestoObj' => $this->textAreaMestoObj,
+            'selectedZakazchik' => $this->selectedZakazchik,
+            'selectedPodryadchik' => $this->selectedPodryadchik,
+            'selectedIziskom' => $this->selectedIziskom,
+            'selectedVskrytie' => $this->selectedVskrytie,
+            'selectedKonkursnoe' => $this->selectedKonkursnoe,
+            'summa' => $this->summa,
             'haractObject' => $this->haractObject->toJson(),
             'ishod' => $this->ishodValObject->toJson(),
             'obmer' => $this->obmerObject->toJson(),
             'obsled' => $this->obsledObject->toJson(),
             'sosttech' => $this->sostTechObject->toJson(),
             'calculator' => $this->calculationObject->toJson(),
+            'redaktor' => $this->redaktorObject->toJson(),
+            'obsledotdel' => $this->obsledOtdelObject->toJson(),
         ]);
     }
 

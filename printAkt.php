@@ -1,4 +1,112 @@
 <?php
+setlocale(LC_TIME, 'ru_RU.UTF-8');
+
+$rekvizit = $_POST['rekvizit'] ?? null;
+$name_zakazchik = $_POST['name_zakazchik'] ?? null;
+$nomer_dogovora = $_POST['nomer_dogovora'] ?? null;
+$date_zakl_dogovora = $_POST['date_zakl_dogovora'] ?? null;
+$name_work = $_POST['name_work'] ?? null;
+$formatted_date_zakl_dogovora = null;
+if ($date_zakl_dogovora) {
+    $date_z_dog = DateTime::createFromFormat('Y-m-d', $date_zakl_dogovora);
+    if ($date_z_dog) {
+        $formatted_date_zakl_dogovora = $date_z_dog->format('d.m.Y');
+    } else {
+        $date_zakl_dogovora = $_POST['date_zakl_dogovora'] ?? null;
+    }
+} else {
+    $date_zakl_dogovora = $_POST['date_zakl_dogovora'] ?? null;
+}
+
+if ($date_zakl_dogovora) {
+    $date_zakl_dogovora = DateTime::createFromFormat('Y-m-d', $date_zakl_dogovora);
+    if ($date_zakl_dogovora) {
+
+        $day = $date_zakl_dogovora->format('d');
+        $month = $date_zakl_dogovora->format('n');
+        $year = $date_zakl_dogovora->format('Y');
+
+
+        $day = sprintf('«%02d»', intval($day));
+
+
+        $months = [
+            1 => 'января',
+            2 => 'февраля',
+            3 => 'марта',
+            4 => 'апреля',
+            5 => 'мая',
+            6 => 'июня',
+            7 => 'июля',
+            8 => 'августа',
+            9 => 'сентября',
+            10 => 'октября',
+            11 => 'ноября',
+            12 => 'декабря',
+        ];
+
+        $monthName = $months[(int)$month];
+
+        $formatted_date_start_work = "$day $monthName $year г.";
+    }
+}
+
+
+$cost_work = $_POST['cost_work'] ?? null;
+
+$rubli = intval($cost_work);
+$cost_work = str_replace(',', '.', $cost_work);
+
+// Преобразуем строку в вещественное число
+$number = floatval($cost_work);
+$cost_work = $number * 100;
+$kopeiki = round($cost_work - $rubli * 100);
+
+$last_one_characters_k = substr($kopeiki, -1);
+$intKopLastOne = intval($last_one_characters_k);
+$last_two_characters_k = substr($kopeiki, -2);
+$intKopLastTwo = intval($last_two_characters_k);
+
+$last_one_characters = substr($rubli, -1);
+$intRubLastOne = intval($last_one_characters);
+
+$stringP = "";
+$last_two_characters = substr($rubli, -2);
+$intRubLastTwo = intval($last_two_characters);
+
+$intKopeiki = $kopeiki;
+
+if ($intRubLastTwo >= 5 && $intRubLastTwo < 100) {
+    $stringP = " рублей";
+
+    if ($intRubLastOne == 1 && $intRubLastTwo != 11) {
+        $stringP = " рубль";
+    } else if ($intRubLastOne > 1 && $intRubLastOne < 5 && $intRubLastTwo < 12 || $intRubLastTwo > 20) {
+        $stringP = " рубля";
+    }
+} else {
+    $stringP = " рубль";
+}
+if ($last_two_characters == "00") {
+    $stringP = " рублей";
+}
+
+if ($intKopLastTwo >= 5 && $intKopLastTwo < 100) {
+    $stringK = " копеек";
+    if ($intKopLastOne == 1 && $intKopLastOne != 11) {
+        $stringK = " копейка";
+    }else if ($intKopLastOne > 1 && $intKopLastOne < 5 && ($intKopLastTwo < 12 || $intKopLastTwo > 20)) {
+        $stringK = " копейки";
+    }
+}else{
+    $stringK = " копейки";
+}
+
+$result_rubli = (new \MessageFormatter('ru-RU', '{n, spellout}'))->format(['n' => $rubli]);
+$result_kopeiki = (new \MessageFormatter('ru-RU', '{n, spellout}'))->format(['n' => $kopeiki]);
+
+
+
 echo '		
 <body>
 <style>
@@ -76,18 +184,14 @@ tr:hover {
 <br><br><br>
     <div class="container" style="margin-left: 3%;">
     <div class="left-block" style="text-align: left; line-height: 18pt; padding-left: 0px;">
-        ЗАКАЗЧИК
-Лидское городское унитарное предприятие   жилищно-коммунального хозяйства    
-Республика Беларусь, г. Лида, ул. Победы, 53
-р/с BY17 AKBB 3012 0000 0229 2420 0000 
-в ЦБУ No413 ОАО «АСБ Беларусбанк» 
-код банка AKBBBY2X
-УНП 500012196, ОКПО 03370281
+        <strong>ЗАКАЗЧИК</strong> <br>
+<strong>'.$name_zakazchik.' </strong><br>
+'.$rekvizit.' <br>
 <br>
     </div>
     <div class="right-block" style="text-align: left; line-height: 18pt; margin-left:120px;">
-        ПОДРЯДЧИК
-ООО «ИЗИСКОМ»
+        <strong>ПОДРЯДЧИК</strong><br>
+<strong>ООО «ИЗИСКОМ»</strong><br>
 ул. Шафарнянская, 11, пом.25, г. Минск, 220125, Республика Беларусь
 тел. факс +375(17) 3939673, +375(17) 3968696, 
 E-mail: info@iziscom.by, www.iziscom.by
@@ -106,40 +210,39 @@ E-mail: info@iziscom.by, www.iziscom.by
     margin-bottom: 5px;
 ">
 <!-- Преамбула заявления -->
-    <strong>Акт
-сдачи-приемки выполненных работ
-по договору №103-06/24 от 12.06.2024г.
-</strong> </div>
+    <strong>Акт  </strong>  <br>
+<strong>сдачи-приемки выполненных работ</strong> <br>
+<strong>по договору № '.$nomer_dogovora.' от '.$formatted_date_start_work.' </strong>
+ </div>
     <br>
     <div class="container" style="margin-left: 3%;">
     <div class="left-block" style="text-align: left; line-height: 18pt; padding-left: 0px;">
         г. Минск<br>
     </div>
     <div class="right-block" style="text-align: left; line-height: 18pt; margin-left:120px;">
-        24.10.2024<br>
+        '.$formatted_date_start_work.'<br>
     </div>
 </div>
 <div class="mt-4">
         <p style="text-align: justify;">Мы, нижеподписавшиеся, представитель Подрядчика – директор 
-ООО «ИЗИСКОМ» А.В. Лукьянович, с одной стороны, и представитель Заказчика – заместитель директора Лидское городское унитарное предприятие жилищно-коммунального хозяйства Аршанский Р.А. с другой стороны, составили настоящий акт о том, что работы согласно техническому заданию по обследованию строительных конструкций квартиры №4 по ул. Чапаева, 18 в г. Лиде выполнены в полном объёме:
-1.	Заказчик к качеству и объему выполненных работ претензий не имеет.
-2.	Работы надлежащим образом оформлены и переданы Заказчику по накладной от «22» июля 2024г.
-3.	Стоимость выполненных работ по настоящему акту составляет: 250,39 (Двести пятьдесят рублей 39 копеек) без НДС (в связи с применением УСН).
-4.	Ранее перечислено: 0 (Ноль) белорусских рублей.
-5.	Следует к перечислению: 250,39 (Двести пятьдесят рублей 39 копеек) без НДС (в связи с применением УСН).
+<strong>ООО «ИЗИСКОМ»</strong> А.В. Лукьянович, с одной стороны, и Заказчик – '.$name_zakazchik.' с другой стороны, составили настоящий акт о том, что работы по предмету договора:«'.$name_work.'», выполнены в полном объеме. <br>
+1.	Заказчик к качеству и объему выполненных работ претензий не имеет. <br>
+2.	Работы надлежащим образом оформлены и переданы Заказчику по накладной от «00» июля 0000г. <br>
+3. <strong>Стоимость выполненных работ по настоящему акту составляет: ' . $rubli.','.$kopeiki . ' (' . $result_rubli . ' ' . $stringP . ' ' . $result_kopeiki . ' ' . $stringK. '),</strong> без НДС (в связи с применением УСН).<br>
+4.	Ранее перечислено: 0 (Ноль) белорусских рублей. <br>
+5.	Следует к перечислению: <strong>' . $rubli.','.$kopeiki . ' (' . $result_rubli . ' ' . $stringP . ' ' . $result_kopeiki . ' ' . $stringK. '),</strong> без НДС (в связи с применением УСН).<br>
 </p>
     </div>';
 echo' 
     <div class="container" style="margin-left: 3%;">
  <div class="left-block" style="text-align: left; line-height: 18pt; padding-left: 0px;">
-        УТВЕРЖДАЮ<br><strong>Заказчик</strong><br>asdasdasda<br>
-        Проректор по экономике и материально-<br>техническому развитию
+        <strong>Заказчик</strong><br>Директор<br><strong>'.$name_zakazchik.'</strong> <br>
     </div>
     <div class="right-block" style="text-align: left; line-height: 18pt; margin-left:120px;">
-        СОГЛАСОВАНО<br><strong>Подрядчик</strong><br>asdasdasdasd<br><p>Директор</p>
+        <strong>Подрядчик</strong><br>Директор<br><strong>ООО «ИЗИСКОМ»</strong><br>
     </div>
 </div></div>
-<div class="container" style="margin-left: 3%;">
+<div class="container" style="margin-left: 3%; page-break-after: always;" >
     <div class="left-block" style="text-align: left; line-height: 18pt; padding-left: 0px; ">______________<div class="center-text" style="margin-left: 40px; margin-top: 8px; margin-bottom: 8px;" >м.п.</div></div>
     <div class="right-block" style="text-align: left; line-height: 18pt; margin-left:120px;">______________А.В. Лукьянович<div class="center-text" style="margin-left: 40px; margin-top: 8px; margin-bottom: 8px;" >м.п.</div></div>
     </div><br><br>  ';
@@ -147,20 +250,16 @@ echo'
 
 
 echo'<br><br><br>
-    <div class="container" style="margin-left: 3%;">
+     <div class="container" style="margin-left: 3%;">
     <div class="left-block" style="text-align: left; line-height: 18pt; padding-left: 0px;">
-        ЗАКАЗЧИК
-Лидское городское унитарное предприятие   жилищно-коммунального хозяйства    
-Республика Беларусь, г. Лида, ул. Победы, 53
-р/с BY17 AKBB 3012 0000 0229 2420 0000 
-в ЦБУ No413 ОАО «АСБ Беларусбанк» 
-код банка AKBBBY2X
-УНП 500012196, ОКПО 03370281
+        <strong>ЗАКАЗЧИК</strong> <br>
+<strong>'.$name_zakazchik.' </strong><br>
+'.$rekvizit.' <br>
 <br>
     </div>
     <div class="right-block" style="text-align: left; line-height: 18pt; margin-left:120px;">
-        ПОДРЯДЧИК
-ООО «ИЗИСКОМ»
+        <strong>ПОДРЯДЧИК</strong><br>
+<strong>ООО «ИЗИСКОМ»</strong><br>
 ул. Шафарнянская, 11, пом.25, г. Минск, 220125, Республика Беларусь
 тел. факс +375(17) 3939673, +375(17) 3968696, 
 E-mail: info@iziscom.by, www.iziscom.by
@@ -179,25 +278,25 @@ E-mail: info@iziscom.by, www.iziscom.by
     margin-bottom: 5px;
 ">
 <!-- Преамбула заявления -->
-    <strong>НАКЛАДНАЯ
-на передачу результатов работ
-от «22» июля 2024г.
+    <strong>НАКЛАДНАЯ</strong> <br>
+ <strong>на передачу результатов работ</strong> <br>
+<strong>от '.$formatted_date_start_work.' </strong> <br>
 
-договор №103-06/24 от 12.06.2024г. 
-Обследование строительных конструкций квартиры №4 по ул. Чапаева, 18 в г. Лиде
-</strong> </div>
+договор № '.$nomer_dogovora.' от '.$formatted_date_start_work.'  по объекту: <br>
+<strong>«'.$name_work.'»</strong> <br> <br>
+ </div>
 
 <div style=" justify-content: center; margin-left: 3%;">
 <table style="border-collapse: collapse; border: 1px solid black; width: 98%; margin-top: 0px; margin-bottom: 0;">
     <tr style="padding: 6px;">
         <td style=" text-align: center;">
-            № п/п
+            <strong>№ п/п</strong>
         </td>
         <td style=" text-align: center;">
-            Наименование показателя
+           <strong> Наименование технической документации</strong>
         </td>
        <td style="text-align: center;">
-            Значение показателя
+           <strong> Количество экземпляров</strong>
         </td>
         </tr>
         
@@ -205,36 +304,40 @@ E-mail: info@iziscom.by, www.iziscom.by
 
 
 echo ' <tr>
-        <td style = " width: 10%; text-align: center;">1</td>
-        <td style = "width: 70%; text-align: left;">Категория сложности здания</td>
-        <td style="width: 20%;    word-break: break-word; text-align: center;"> 213123 </td>
+        <td style = " width: 10%; text-align: center;"><strong>1</strong></td>
+        <td style = "width: 70%; text-align: left;"><strong>Отчет о техническом состоянии строительных конструкций по результатам обследования</strong></td>
+        <td style="width: 20%;    word-break: break-word; text-align: center;"><strong> 2 </strong></td>
 </tr>
     
     <tr>
-        <td style = " width: 10%; text-align: center;">2</td>
-        <td style = "width: 70%; text-align: left;">Строительный объем, м.куб</td>
-        <td style="width: 20%;    word-break: break-word; text-align: center;"> 213213</td>
+        <td style = " width: 10%; text-align: center;"><strong>2</strong></td>
+        <td style = "width: 70%; text-align: left;"><strong>Акт сдачи-приемки выполненных работ по договору № '.$nomer_dogovora.' от '.$formatted_date_start_work.' на сумму ' . $rubli.','.$kopeiki . ' руб.</strong></td>
+        <td style="width: 20%;    word-break: break-word; text-align: center;"><strong> 2 </strong></td>
 </tr>
 ';
 echo' </tbody></table>';
 
 echo' <div class="footer">
-            <div>Отпуск документации разрешил:</div>
+ <br>
+            <div><strong>Отпуск документации разрешил:</strong></div>
             <div class="signature">
                 <div>
-                    Директор<br><br><br>
-                    <span>А.В. Лужанович</span>
-                </div>
+                    Директор ООО «ИЗИСКОМ» ________________________________ А. В. Лукьянович         
+                </div><br><br><br>       
             </div>
-            <div>Указанную в накладной документацию принял:</div>
+            <div><strong>Указанную в накладной документацию принял:</strong></div>
             <div class="signature">
-                <div>
-                    должность<br><br><br>
-                    <span>подпись</span>
+                 <div>
+                    <br><br><br>
+                    <span>(должность)</span>
                 </div>
                 <div>
                     <br><br><br>
-                    <span>ФИО</span>
+                    <span>(подпись)</span>
+                </div>
+                <div>
+                    <br><br><br>
+                    <span>(ФИО)</span>
                 </div>
             </div>';
 

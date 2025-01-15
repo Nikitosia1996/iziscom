@@ -6,6 +6,7 @@ class ObmerObject
     /////////////////////////////////
 
     private $id;
+    private $obmerCheck;
     private $obmerobs;
     private $choosCunstruct4;
     private $toggleZd41;
@@ -67,9 +68,10 @@ class ObmerObject
      * @param $toggleZdDopUsl
      * @param $toggleZdDopUsl1
      */
-    public function __construct($id, $obmerobs, $choosCunstruct4, $toggleZd41, $toggleZd42, $toggleZd43, $toggleZd44, $toggleZd45, $toggleZd46, $toggleZd47, $toggleZd48, $toggleZd49, $toggleZd449, $conval41, $conval42, $conval43, $conval44, $conval45, $conval46, $conval47, $conval48, $conval49, $conval449, $toggleZdDopUsl, $toggleZdDopUsl1)
+    public function __construct($id, $obmerCheck,$obmerobs, $choosCunstruct4, $toggleZd41, $toggleZd42, $toggleZd43, $toggleZd44, $toggleZd45, $toggleZd46, $toggleZd47, $toggleZd48, $toggleZd49, $toggleZd449, $conval41, $conval42, $conval43, $conval44, $conval45, $conval46, $conval47, $conval48, $conval49, $conval449, $toggleZdDopUsl, $toggleZdDopUsl1)
     {
         $this->id = $id;
+        $this->obmerCheck = $obmerCheck;
         $this->obmerobs = $obmerobs;
         $this->choosCunstruct4 = $choosCunstruct4;
         $this->toggleZd41 = $toggleZd41;
@@ -111,6 +113,24 @@ class ObmerObject
     {
         $this->id = $id;
     }
+
+
+
+
+    public function getObmerCheck()
+    {
+        return $this->obmerCheck;
+    }
+
+    /**
+     * @param mixed $obmerCheck
+     */
+    public function setObmerCheck($obmerCheck): void
+    {
+        $this->obmerCheck = $obmerCheck;
+    }
+
+
 
     /**
      * @return mixed
@@ -505,6 +525,7 @@ class ObmerObject
     public function toJson(){
         return [
             'id' => $this->id,
+            'obmerCheck' => $this->obmerCheck,
             'obmerobs' => $this->obmerobs,
             'choosCunstruct4' => $this->choosCunstruct4,
             'toggleZd41' => $this->toggleZd41,

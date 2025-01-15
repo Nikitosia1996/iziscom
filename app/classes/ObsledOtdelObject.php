@@ -1,11 +1,12 @@
 <?php
 
 
-class OtdelConstructObject
+class ObsledOtdelObject
 {
     /////////////////////////////////
 
     private $id;
+    private $obsledotdelCheck;
     private $toggleZd81;
     private $toggleZd82;
     private $toggleZd83;
@@ -36,15 +37,6 @@ class OtdelConstructObject
     private $conval87;
     private $conval88;
     private $conval89;
-    private $conval811;
-    private $conval822;
-    private $conval833;
-    private $conval844;
-    private $conval855;
-    private $conval866;
-    private $conval877;
-    private $conval888;
-    private $conval899;
     private $conval081;
     private $conval082;
     private $conval083;
@@ -54,6 +46,18 @@ class OtdelConstructObject
     private $conval087;
     private $conval088;
     private $conval089;
+    private $conval0081;
+    private $conval0082;
+    private $conval0083;
+    private $conval811;
+    private $conval822;
+    private $conval833;
+    private $conval844;
+    private $conval855;
+    private $conval866;
+    private $conval877;
+    private $conval888;
+    private $conval899;
     private $conval0811;
     private $conval0822;
     private $conval0833;
@@ -63,21 +67,33 @@ class OtdelConstructObject
     private $conval0877;
     private $conval0888;
     private $conval0899;
-    private $conval0081;
-    private $conval0082;
-    private $conval0083;
     private $conval00811;
     private $conval00822;
     private $conval00833;
-
-
-
-
-
-/////////////////////////////////
+    private $monolit1;
+    private $monolit2;
+    private $monolit3;
+    private $monolit4;
+    private $monolit5;
+    private $monolit6;
+    private $monolit7;
+    private $monolit8;
+    private $monolit9;
+    private $monolit10;
+    private $monolit11;
+    private $monolit12;
+    private $monolit13;
+    private $monolit14;
+    private $monolit15;
+    private $monolit16;
+    private $monolit17;
+    private $monolit18;
+    private $monolit19;
+    private $monolit20;
+    private $monolit21;
 
     /**
-     * OtdelConstructObject constructor.
+     * ObsledOtdelObject constructor.
      * @param $id
      * @param $toggleZd81
      * @param $toggleZd82
@@ -109,15 +125,6 @@ class OtdelConstructObject
      * @param $conval87
      * @param $conval88
      * @param $conval89
-     * @param $conval811
-     * @param $conval822
-     * @param $conval833
-     * @param $conval844
-     * @param $conval855
-     * @param $conval866
-     * @param $conval877
-     * @param $conval888
-     * @param $conval899
      * @param $conval081
      * @param $conval082
      * @param $conval083
@@ -127,6 +134,18 @@ class OtdelConstructObject
      * @param $conval087
      * @param $conval088
      * @param $conval089
+     * @param $conval0081
+     * @param $conval0082
+     * @param $conval0083
+     * @param $conval811
+     * @param $conval822
+     * @param $conval833
+     * @param $conval844
+     * @param $conval855
+     * @param $conval866
+     * @param $conval877
+     * @param $conval888
+     * @param $conval899
      * @param $conval0811
      * @param $conval0822
      * @param $conval0833
@@ -136,16 +155,35 @@ class OtdelConstructObject
      * @param $conval0877
      * @param $conval0888
      * @param $conval0899
-     * @param $conval0081
-     * @param $conval0082
-     * @param $conval0083
      * @param $conval00811
      * @param $conval00822
      * @param $conval00833
+     * @param $monolit1
+     * @param $monolit2
+     * @param $monolit3
+     * @param $monolit4
+     * @param $monolit5
+     * @param $monolit6
+     * @param $monolit7
+     * @param $monolit8
+     * @param $monolit9
+     * @param $monolit10
+     * @param $monolit11
+     * @param $monolit12
+     * @param $monolit13
+     * @param $monolit14
+     * @param $monolit15
+     * @param $monolit16
+     * @param $monolit17
+     * @param $monolit18
+     * @param $monolit19
+     * @param $monolit20
+     * @param $monolit21
      */
-    public function __construct($id, $toggleZd81, $toggleZd82, $toggleZd83, $toggleZd84, $toggleZd85, $toggleZd86, $toggleZd87, $toggleZd88, $toggleZd89, $toggleZd081, $toggleZd082, $toggleZd083, $toggleZd084, $toggleZd085, $toggleZd086, $toggleZd087, $toggleZd088, $toggleZd089, $toggleZd0081, $toggleZd0082, $toggleZd0083, $conval81, $conval82, $conval83, $conval84, $conval85, $conval86, $conval87, $conval88, $conval89, $conval811, $conval822, $conval833, $conval844, $conval855, $conval866, $conval877, $conval888, $conval899, $conval081, $conval082, $conval083, $conval084, $conval085, $conval086, $conval087, $conval088, $conval089, $conval0811, $conval0822, $conval0833, $conval0844, $conval0855, $conval0866, $conval0877, $conval0888, $conval0899, $conval0081, $conval0082, $conval0083, $conval00811, $conval00822, $conval00833)
+    public function __construct($id,$obsledotdelCheck, $toggleZd81, $toggleZd82, $toggleZd83, $toggleZd84, $toggleZd85, $toggleZd86, $toggleZd87, $toggleZd88, $toggleZd89, $toggleZd081, $toggleZd082, $toggleZd083, $toggleZd084, $toggleZd085, $toggleZd086, $toggleZd087, $toggleZd088, $toggleZd089, $toggleZd0081, $toggleZd0082, $toggleZd0083, $conval81, $conval82, $conval83, $conval84, $conval85, $conval86, $conval87, $conval88, $conval89, $conval081, $conval082, $conval083, $conval084, $conval085, $conval086, $conval087, $conval088, $conval089, $conval0081, $conval0082, $conval0083, $conval811, $conval822, $conval833, $conval844, $conval855, $conval866, $conval877, $conval888, $conval899, $conval0811, $conval0822, $conval0833, $conval0844, $conval0855, $conval0866, $conval0877, $conval0888, $conval0899, $conval00811, $conval00822, $conval00833, $monolit1, $monolit2, $monolit3, $monolit4, $monolit5, $monolit6, $monolit7, $monolit8, $monolit9, $monolit10, $monolit11, $monolit12, $monolit13, $monolit14, $monolit15, $monolit16, $monolit17, $monolit18, $monolit19, $monolit20, $monolit21)
     {
         $this->id = $id;
+        $this->obsledotdelCheck = $obsledotdelCheck;
         $this->toggleZd81 = $toggleZd81;
         $this->toggleZd82 = $toggleZd82;
         $this->toggleZd83 = $toggleZd83;
@@ -176,15 +214,6 @@ class OtdelConstructObject
         $this->conval87 = $conval87;
         $this->conval88 = $conval88;
         $this->conval89 = $conval89;
-        $this->conval811 = $conval811;
-        $this->conval822 = $conval822;
-        $this->conval833 = $conval833;
-        $this->conval844 = $conval844;
-        $this->conval855 = $conval855;
-        $this->conval866 = $conval866;
-        $this->conval877 = $conval877;
-        $this->conval888 = $conval888;
-        $this->conval899 = $conval899;
         $this->conval081 = $conval081;
         $this->conval082 = $conval082;
         $this->conval083 = $conval083;
@@ -194,6 +223,18 @@ class OtdelConstructObject
         $this->conval087 = $conval087;
         $this->conval088 = $conval088;
         $this->conval089 = $conval089;
+        $this->conval0081 = $conval0081;
+        $this->conval0082 = $conval0082;
+        $this->conval0083 = $conval0083;
+        $this->conval811 = $conval811;
+        $this->conval822 = $conval822;
+        $this->conval833 = $conval833;
+        $this->conval844 = $conval844;
+        $this->conval855 = $conval855;
+        $this->conval866 = $conval866;
+        $this->conval877 = $conval877;
+        $this->conval888 = $conval888;
+        $this->conval899 = $conval899;
         $this->conval0811 = $conval0811;
         $this->conval0822 = $conval0822;
         $this->conval0833 = $conval0833;
@@ -203,12 +244,30 @@ class OtdelConstructObject
         $this->conval0877 = $conval0877;
         $this->conval0888 = $conval0888;
         $this->conval0899 = $conval0899;
-        $this->conval0081 = $conval0081;
-        $this->conval0082 = $conval0082;
-        $this->conval0083 = $conval0083;
         $this->conval00811 = $conval00811;
         $this->conval00822 = $conval00822;
         $this->conval00833 = $conval00833;
+        $this->monolit1 = $monolit1;
+        $this->monolit2 = $monolit2;
+        $this->monolit3 = $monolit3;
+        $this->monolit4 = $monolit4;
+        $this->monolit5 = $monolit5;
+        $this->monolit6 = $monolit6;
+        $this->monolit7 = $monolit7;
+        $this->monolit8 = $monolit8;
+        $this->monolit9 = $monolit9;
+        $this->monolit10 = $monolit10;
+        $this->monolit11 = $monolit11;
+        $this->monolit12 = $monolit12;
+        $this->monolit13 = $monolit13;
+        $this->monolit14 = $monolit14;
+        $this->monolit15 = $monolit15;
+        $this->monolit16 = $monolit16;
+        $this->monolit17 = $monolit17;
+        $this->monolit18 = $monolit18;
+        $this->monolit19 = $monolit19;
+        $this->monolit20 = $monolit20;
+        $this->monolit21 = $monolit21;
     }
 
     /**
@@ -226,6 +285,23 @@ class OtdelConstructObject
     {
         $this->id = $id;
     }
+
+
+
+    public function getObsledotdelCheck()
+    {
+        return $this->obsledotdelCheck;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setObsledotdelCheck($obsledotdelCheck): void
+    {
+        $this->obsledotdelCheck = $obsledotdelCheck;
+    }
+
+
 
     /**
      * @return mixed
@@ -710,150 +786,6 @@ class OtdelConstructObject
     /**
      * @return mixed
      */
-    public function getConval811()
-    {
-        return $this->conval811;
-    }
-
-    /**
-     * @param mixed $conval811
-     */
-    public function setConval811($conval811): void
-    {
-        $this->conval811 = $conval811;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getConval822()
-    {
-        return $this->conval822;
-    }
-
-    /**
-     * @param mixed $conval822
-     */
-    public function setConval822($conval822): void
-    {
-        $this->conval822 = $conval822;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getConval833()
-    {
-        return $this->conval833;
-    }
-
-    /**
-     * @param mixed $conval833
-     */
-    public function setConval833($conval833): void
-    {
-        $this->conval833 = $conval833;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getConval844()
-    {
-        return $this->conval844;
-    }
-
-    /**
-     * @param mixed $conval844
-     */
-    public function setConval844($conval844): void
-    {
-        $this->conval844 = $conval844;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getConval855()
-    {
-        return $this->conval855;
-    }
-
-    /**
-     * @param mixed $conval855
-     */
-    public function setConval855($conval855): void
-    {
-        $this->conval855 = $conval855;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getConval866()
-    {
-        return $this->conval866;
-    }
-
-    /**
-     * @param mixed $conval866
-     */
-    public function setConval866($conval866): void
-    {
-        $this->conval866 = $conval866;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getConval877()
-    {
-        return $this->conval877;
-    }
-
-    /**
-     * @param mixed $conval877
-     */
-    public function setConval877($conval877): void
-    {
-        $this->conval877 = $conval877;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getConval888()
-    {
-        return $this->conval888;
-    }
-
-    /**
-     * @param mixed $conval888
-     */
-    public function setConval888($conval888): void
-    {
-        $this->conval888 = $conval888;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getConval899()
-    {
-        return $this->conval899;
-    }
-
-    /**
-     * @param mixed $conval899
-     */
-    public function setConval899($conval899): void
-    {
-        $this->conval899 = $conval899;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getConval081()
     {
         return $this->conval081;
@@ -993,6 +925,198 @@ class OtdelConstructObject
     public function setConval089($conval089): void
     {
         $this->conval089 = $conval089;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConval0081()
+    {
+        return $this->conval0081;
+    }
+
+    /**
+     * @param mixed $conval0081
+     */
+    public function setConval0081($conval0081): void
+    {
+        $this->conval0081 = $conval0081;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConval0082()
+    {
+        return $this->conval0082;
+    }
+
+    /**
+     * @param mixed $conval0082
+     */
+    public function setConval0082($conval0082): void
+    {
+        $this->conval0082 = $conval0082;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConval0083()
+    {
+        return $this->conval0083;
+    }
+
+    /**
+     * @param mixed $conval0083
+     */
+    public function setConval0083($conval0083): void
+    {
+        $this->conval0083 = $conval0083;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConval811()
+    {
+        return $this->conval811;
+    }
+
+    /**
+     * @param mixed $conval811
+     */
+    public function setConval811($conval811): void
+    {
+        $this->conval811 = $conval811;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConval822()
+    {
+        return $this->conval822;
+    }
+
+    /**
+     * @param mixed $conval822
+     */
+    public function setConval822($conval822): void
+    {
+        $this->conval822 = $conval822;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConval833()
+    {
+        return $this->conval833;
+    }
+
+    /**
+     * @param mixed $conval833
+     */
+    public function setConval833($conval833): void
+    {
+        $this->conval833 = $conval833;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConval844()
+    {
+        return $this->conval844;
+    }
+
+    /**
+     * @param mixed $conval844
+     */
+    public function setConval844($conval844): void
+    {
+        $this->conval844 = $conval844;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConval855()
+    {
+        return $this->conval855;
+    }
+
+    /**
+     * @param mixed $conval855
+     */
+    public function setConval855($conval855): void
+    {
+        $this->conval855 = $conval855;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConval866()
+    {
+        return $this->conval866;
+    }
+
+    /**
+     * @param mixed $conval866
+     */
+    public function setConval866($conval866): void
+    {
+        $this->conval866 = $conval866;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConval877()
+    {
+        return $this->conval877;
+    }
+
+    /**
+     * @param mixed $conval877
+     */
+    public function setConval877($conval877): void
+    {
+        $this->conval877 = $conval877;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConval888()
+    {
+        return $this->conval888;
+    }
+
+    /**
+     * @param mixed $conval888
+     */
+    public function setConval888($conval888): void
+    {
+        $this->conval888 = $conval888;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConval899()
+    {
+        return $this->conval899;
+    }
+
+    /**
+     * @param mixed $conval899
+     */
+    public function setConval899($conval899): void
+    {
+        $this->conval899 = $conval899;
     }
 
     /**
@@ -1142,54 +1266,6 @@ class OtdelConstructObject
     /**
      * @return mixed
      */
-    public function getConval0081()
-    {
-        return $this->conval0081;
-    }
-
-    /**
-     * @param mixed $conval0081
-     */
-    public function setConval0081($conval0081): void
-    {
-        $this->conval0081 = $conval0081;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getConval0082()
-    {
-        return $this->conval0082;
-    }
-
-    /**
-     * @param mixed $conval0082
-     */
-    public function setConval0082($conval0082): void
-    {
-        $this->conval0082 = $conval0082;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getConval0083()
-    {
-        return $this->conval0083;
-    }
-
-    /**
-     * @param mixed $conval0083
-     */
-    public function setConval0083($conval0083): void
-    {
-        $this->conval0083 = $conval0083;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getConval00811()
     {
         return $this->conval00811;
@@ -1235,15 +1311,350 @@ class OtdelConstructObject
         $this->conval00833 = $conval00833;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getMonolit1()
+    {
+        return $this->monolit1;
+    }
+
+    /**
+     * @param mixed $monolit1
+     */
+    public function setMonolit1($monolit1): void
+    {
+        $this->monolit1 = $monolit1;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMonolit2()
+    {
+        return $this->monolit2;
+    }
+
+    /**
+     * @param mixed $monolit2
+     */
+    public function setMonolit2($monolit2): void
+    {
+        $this->monolit2 = $monolit2;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMonolit3()
+    {
+        return $this->monolit3;
+    }
+
+    /**
+     * @param mixed $monolit3
+     */
+    public function setMonolit3($monolit3): void
+    {
+        $this->monolit3 = $monolit3;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMonolit4()
+    {
+        return $this->monolit4;
+    }
+
+    /**
+     * @param mixed $monolit4
+     */
+    public function setMonolit4($monolit4): void
+    {
+        $this->monolit4 = $monolit4;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMonolit5()
+    {
+        return $this->monolit5;
+    }
+
+    /**
+     * @param mixed $monolit5
+     */
+    public function setMonolit5($monolit5): void
+    {
+        $this->monolit5 = $monolit5;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMonolit6()
+    {
+        return $this->monolit6;
+    }
+
+    /**
+     * @param mixed $monolit6
+     */
+    public function setMonolit6($monolit6): void
+    {
+        $this->monolit6 = $monolit6;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMonolit7()
+    {
+        return $this->monolit7;
+    }
+
+    /**
+     * @param mixed $monolit7
+     */
+    public function setMonolit7($monolit7): void
+    {
+        $this->monolit7 = $monolit7;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMonolit8()
+    {
+        return $this->monolit8;
+    }
+
+    /**
+     * @param mixed $monolit8
+     */
+    public function setMonolit8($monolit8): void
+    {
+        $this->monolit8 = $monolit8;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMonolit9()
+    {
+        return $this->monolit9;
+    }
+
+    /**
+     * @param mixed $monolit9
+     */
+    public function setMonolit9($monolit9): void
+    {
+        $this->monolit9 = $monolit9;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMonolit10()
+    {
+        return $this->monolit10;
+    }
+
+    /**
+     * @param mixed $monolit10
+     */
+    public function setMonolit10($monolit10): void
+    {
+        $this->monolit10 = $monolit10;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMonolit11()
+    {
+        return $this->monolit11;
+    }
+
+    /**
+     * @param mixed $monolit11
+     */
+    public function setMonolit11($monolit11): void
+    {
+        $this->monolit11 = $monolit11;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMonolit12()
+    {
+        return $this->monolit12;
+    }
+
+    /**
+     * @param mixed $monolit12
+     */
+    public function setMonolit12($monolit12): void
+    {
+        $this->monolit12 = $monolit12;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMonolit13()
+    {
+        return $this->monolit13;
+    }
+
+    /**
+     * @param mixed $monolit13
+     */
+    public function setMonolit13($monolit13): void
+    {
+        $this->monolit13 = $monolit13;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMonolit14()
+    {
+        return $this->monolit14;
+    }
+
+    /**
+     * @param mixed $monolit14
+     */
+    public function setMonolit14($monolit14): void
+    {
+        $this->monolit14 = $monolit14;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMonolit15()
+    {
+        return $this->monolit15;
+    }
+
+    /**
+     * @param mixed $monolit15
+     */
+    public function setMonolit15($monolit15): void
+    {
+        $this->monolit15 = $monolit15;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMonolit16()
+    {
+        return $this->monolit16;
+    }
+
+    /**
+     * @param mixed $monolit16
+     */
+    public function setMonolit16($monolit16): void
+    {
+        $this->monolit16 = $monolit16;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMonolit17()
+    {
+        return $this->monolit17;
+    }
+
+    /**
+     * @param mixed $monolit17
+     */
+    public function setMonolit17($monolit17): void
+    {
+        $this->monolit17 = $monolit17;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMonolit18()
+    {
+        return $this->monolit18;
+    }
+
+    /**
+     * @param mixed $monolit18
+     */
+    public function setMonolit18($monolit18): void
+    {
+        $this->monolit18 = $monolit18;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMonolit19()
+    {
+        return $this->monolit19;
+    }
+
+    /**
+     * @param mixed $monolit19
+     */
+    public function setMonolit19($monolit19): void
+    {
+        $this->monolit19 = $monolit19;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMonolit20()
+    {
+        return $this->monolit20;
+    }
+
+    /**
+     * @param mixed $monolit20
+     */
+    public function setMonolit20($monolit20): void
+    {
+        $this->monolit20 = $monolit20;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMonolit21()
+    {
+        return $this->monolit21;
+    }
+
+    /**
+     * @param mixed $monolit21
+     */
+    public function setMonolit21($monolit21): void
+    {
+        $this->monolit21 = $monolit21;
+    }
 
 
 
 
 
-
-    public function toJson(){
+    public function toJson() {
         return [
             'id' => $this->id,
+            'obsledotdelCheck' => $this->obsledotdelCheck,
             'toggleZd81' => $this->toggleZd81,
             'toggleZd82' => $this->toggleZd82,
             'toggleZd83' => $this->toggleZd83,
@@ -1274,15 +1685,6 @@ class OtdelConstructObject
             'conval87' => $this->conval87,
             'conval88' => $this->conval88,
             'conval89' => $this->conval89,
-            'conval811' => $this->conval811,
-            'conval822' => $this->conval822,
-            'conval833' => $this->conval833,
-            'conval844' => $this->conval844,
-            'conval855' => $this->conval855,
-            'conval866' => $this->conval866,
-            'conval877' => $this->conval877,
-            'conval888' => $this->conval888,
-            'conval899' => $this->conval899,
             'conval081' => $this->conval081,
             'conval082' => $this->conval082,
             'conval083' => $this->conval083,
@@ -1292,21 +1694,51 @@ class OtdelConstructObject
             'conval087' => $this->conval087,
             'conval088' => $this->conval088,
             'conval089' => $this->conval089,
-            'conval0811' => $this->conval0811,
-            'conval0822' => $this->conval0822,
-            'conval0833' => $this->conval0833,
-            'conval0844' => $this->conval0844,
-            'conval0855' => $this->conval0855,
-            'conval0866' => $this->conval0866,
-            'conval0877' => $this->conval0877,
-            'conval0888' => $this->conval0888,
-            'conval0899' => $this->conval0899,
             'conval0081' => $this->conval0081,
             'conval0082' => $this->conval0082,
             'conval0083' => $this->conval0083,
+            'conval811' => $this->conval811,
+            'conval822' => $this->conval822,
+            'conval833' => $this->conval833,
+            'conval844' => $this->conval844,
+            'conval855' => $this->conval855,
+            'conval866' => $this->conval866,
+            'conval877' => $this->conval877,
+            'conval888' => $this->conval888,
+            'conval899' => $this->conval899,
+            'conval0811' => $this->conval0811,
+            'conval0812' => $this->conval0822,
+            'conval0813' => $this->conval0833,
+            'conval0814' => $this->conval0844,
+            'conval0815' => $this->conval0855,
+            'conval0816' => $this->conval0866,
+            'conval0817' => $this->conval0877,
+            'conval0818' => $this->conval0888,
+            'conval0819' => $this->conval0899,
             'conval00811' => $this->conval00811,
             'conval00822' => $this->conval00822,
             'conval00833' => $this->conval00833,
-            ];
+            'monolit1' => $this->monolit1,
+            'monolit2' => $this->monolit2,
+            'monolit3' => $this->monolit3,
+            'monolit4' => $this->monolit4,
+            'monolit5' => $this->monolit5,
+            'monolit6' => $this->monolit6,
+            'monolit7' => $this->monolit7,
+            'monolit8' => $this->monolit8,
+            'monolit9' => $this->monolit9,
+            'monolit10' => $this->monolit10,
+            'monolit11' => $this->monolit11,
+            'monolit12' => $this->monolit12,
+            'monolit13' => $this->monolit13,
+            'monolit14' => $this->monolit14,
+            'monolit15' => $this->monolit15,
+            'monolit16' => $this->monolit16,
+            'monolit17' => $this->monolit17,
+            'monolit18' => $this->monolit18,
+            'monolit19' => $this->monolit19,
+            'monolit20' => $this->monolit20,
+            'monolit21' => $this->monolit21,
+        ];
     }
 }

@@ -4,6 +4,14 @@ let etazh = 1;
 let visotapola = 1;
 
 
+let sborCheck = $('#sborCheck');
+let obmerCheck = $('#obmerCheck');
+let obsledCheck = $('#obsledCheck');
+let sostTechOtchetCheck = $('#sostTechOtchetCheck');
+let redaktorIspConstrCheck = $('#redaktorIspConstr');
+let obsledotdelCheck = $('#obsledotdelCheck');
+let calcalcCheck = $('#calcalc');
+
 let chekb1Val;
 let chekb2Val;
 let chekb3Val;
@@ -31,6 +39,7 @@ let koefSosttech2 = 1;
 
 
 let idActiveSmeta;
+let idActiveDogovor;
 
 let selectZakazchik = $('#zakazchik');
 let selectPodryadchik = $('#podryadchik');
@@ -39,6 +48,11 @@ let inputDateOkonchRab = $('#dateOkonchRab');
 let textAreaNaimRabot = $('#textAreaNaimRabot');
 let textAreaCel = $('#textAreaCel');
 let textAreaMestoObj = $('#textAreaMestoObj');
+let selectedZakazchik = $('#selectedZakazchik1');
+let selectedPodryadchik = $('#selectedPodryadchik1');
+let selectedIziskom = $('#whoVistupaet');
+let selectedVskrytie = $('#selectedVskrytie1');
+let selectedKonkursnoe = $('#selectedKonkursnoe1');
 let divSaveSmeta = $('#divSaveSmeta');
 let smetaName = $('#smetaName');
 let buildingType = $('#buildingType');
@@ -116,6 +130,101 @@ let toggleZdDopUslrazrab = $('#toggleZdDopUslrazrab');
 let toggleZdDopUslrazrabrek = $('#toggleZdDopUslrazrabrek');
 
 
+let toggleZd71 = $('#toggleZd71');
+let toggleZd72 = $('#toggleZd72');
+let toggleZd73 = $('#toggleZd73');
+let toggleZd74 = $('#toggleZd74');
+let conval71 = $('#conval71');
+let conval72 = $('#conval72');
+let conval73 = $('#conval73');
+let conval74 = $('#conval74');
+
+
+let toggleZd81 = $('#toggleZd81');
+let toggleZd82 = $('#toggleZd82');
+let toggleZd83 = $('#toggleZd83');
+let toggleZd84 = $('#toggleZd84');
+let toggleZd85 = $('#toggleZd85');
+let toggleZd86 = $('#toggleZd86');
+let toggleZd87 = $('#toggleZd87');
+let toggleZd88 = $('#toggleZd88');
+let toggleZd89 = $('#toggleZd89');
+let toggleZd081 = $('#toggleZd081');
+let toggleZd082 = $('#toggleZd082');
+let toggleZd083 = $('#toggleZd083');
+let toggleZd084 = $('#toggleZd084');
+let toggleZd085 = $('#toggleZd085');
+let toggleZd086 = $('#toggleZd086');
+let toggleZd087 = $('#toggleZd087');
+let toggleZd088 = $('#toggleZd088');
+let toggleZd089 = $('#toggleZd089');
+let toggleZd0081 = $('#toggleZd0081');
+let toggleZd0082 = $('#toggleZd0082');
+let toggleZd0083 = $('#toggleZd0083');
+let conval81 = $('#conval81');
+let conval811 = $('#conval811');
+let conval82 = $('#conval82');
+let conval822 = $('#conval822');
+let conval83 = $('#conval83');
+let conval833 = $('#conval833');
+let conval84 = $('#conval84');
+let conval844 = $('#conval844');
+let conval85 = $('#conval85');
+let conval855 = $('#conval855');
+let conval86 = $('#conval86');
+let conval866 = $('#conval866');
+let conval87 = $('#conval87');
+let conval877 = $('#conval877');
+let conval88 = $('#conval88');
+let conval888 = $('#conval888');
+let conval89 = $('#conval89');
+let conval899 = $('#conval899');
+let conval081 = $('#conval081');
+let conval0811 = $('#conval0811');
+let conval082 = $('#conval082');
+let conval0822 = $('#conval0822');
+let conval083 = $('#conval083');
+let conval0833 = $('#conval0833');
+let conval084 = $('#conval084');
+let conval0844 = $('#conval0844');
+let conval085 = $('#conval085');
+let conval0855 = $('#conval0855');
+let conval086 = $('#conval086');
+let conval0866 = $('#conval0866');
+let conval087 = $('#conval087');
+let conval0877 = $('#conval0877');
+let conval088 = $('#conval088');
+let conval0888 = $('#conval0888');
+let conval089 = $('#conval089');
+let conval0899 = $('#conval0899');
+let conval00811 = $('#conval00811');
+let conval0082 = $('#conval0082');
+let conval00822 = $('#conval00822');
+let conval0083 = $('#conval0083');
+let conval00833 = $('#conval00833');
+let monolit1 = $('#monolit1');
+let monolit2 = $('#monolit2');
+let monolit3 = $('#monolit3');
+let monolit4 = $('#monolit4');
+let monolit5 = $('#monolit5');
+let monolit6 = $('#monolit6');
+let monolit7 = $('#monolit7');
+let monolit8 = $('#monolit8');
+let monolit9 = $('#monolit9');
+let monolit10 = $('#monolit10');
+let monolit11 = $('#monolit11');
+let monolit12 = $('#monolit12');
+let monolit13 = $('#monolit13');
+let monolit14 = $('#monolit14');
+let monolit15 = $('#monolit15');
+let monolit16 = $('#monolit16');
+let monolit17 = $('#monolit17');
+let monolit18 = $('#monolit18');
+let monolit19 = $('#monolit19');
+let monolit20 = $('#monolit20');
+let monolit21 = $('#monolit21');
+
+
 let selectCalc1 = $('#selectCalc1');
 let selectCalc2 = $('#selectCalc2');
 let selectCalc3 = $('#selectCalc3');
@@ -144,6 +253,14 @@ let inputCalc6 = $('#inputCalc6');
 let inputCalc7 = $('#inputCalc7');
 let inputCalc8 = $('#inputCalc8');
 
+let input2Calc1 = $('#input2Calc1');
+let input2Calc2 = $('#input2Calc2');
+let input2Calc3 = $('#input2Calc3');
+let input2Calc4 = $('#input2Calc4');
+let input2Calc5 = $('#input2Calc5');
+let input2Calc6 = $('#input2Calc6');
+let input2Calc7 = $('#input2Calc7');
+let input2Calc8 = $('#input2Calc8');
 
 let input3Calc1 = $('#input3Calc1');
 let input3Calc2 = $('#input3Calc2');
@@ -158,6 +275,7 @@ let input3Calc8 = $('#input3Calc8');
 async function getSmeta(id) {
     idActiveSmeta = id;
     const selectedItem = smetaList.find(item => item.id == id);
+    console.log(selectedItem);
     if (selectedItem) {
         selectZakazchik.val(selectedItem.id_zakazchik);
         selectPodryadchik.val(selectedItem.id_podryadchik);
@@ -166,8 +284,12 @@ async function getSmeta(id) {
         textAreaNaimRabot.val(selectedItem.textAreaNaimRabot);
         textAreaCel.val(selectedItem.textAreaCel);
         textAreaMestoObj.val(selectedItem.textAreaMestoObj);
+        selectedZakazchik.val(selectedItem.selectedZakazchik);
+        selectedPodryadchik.val(selectedItem.selectedPodryadchik);
+        selectedIziskom.val(selectedItem.selectedIziskom);
+        selectedVskrytie.val(selectedItem.selectedVskrytie);
+        selectedKonkursnoe.val(selectedItem.selectedKonkursnoe);
         smetaName.val(selectedItem.name);
-
 
         const haract = selectedItem.haractObject;
         const ishod = selectedItem.ishod;
@@ -175,6 +297,8 @@ async function getSmeta(id) {
         const obsled = selectedItem.obsled;
         const sosttech = selectedItem.sosttech;
         const calculator = selectedItem.calculator;
+        const redaktor = selectedItem.redaktor;
+        const obsledotdel = selectedItem.obsledotdel;
 
 
         $('#buildingType').val(haract.zdanie);
@@ -206,7 +330,7 @@ async function getSmeta(id) {
 
         choosCunstruct.prop('checked', ishod.choosCunstruct > 0);
         const pasportValue = ishod.pasport_na_zdanie;
-        console.log(pasportValue)
+
 
         if (pasportValue == 1) {
             $('#pasportNaZdanie[value="1"]').prop('checked', true);
@@ -219,7 +343,7 @@ async function getSmeta(id) {
         if (pasportNaZdanie.length) {
             pasportNaZdanie.prop('checked', true);
         } else {
-            console.error("Элемент не найден");
+
         }
         if (ishod.choosCunstruct > 0) {
             toggleZd1.prop('disabled', false);
@@ -281,11 +405,13 @@ async function getSmeta(id) {
             $('#conval9').val('');
 
         }
+
         const obmerElement = $("#obmerobs" + obmer.obmerobs);
         if (obmerElement.length) {
+            console.log (obmer.obmerobs , "lenght");
             obmerElement.prop('checked', true);
         } else {
-            console.error("Элемент не найден");
+
         }
         choosCunstruct4.prop('checked', obmer.choosCunstruct4 > 0);
         if (obmer.choosCunstruct4 > 0) {
@@ -353,7 +479,7 @@ async function getSmeta(id) {
         if (obsledElement.length) {
             obsledElement.prop('checked', true);
         } else {
-            console.error("Элемент не найден");
+
         }
         choosCunstruct5.prop('checked', obsled.choosCunstruct5 > 0);
         if (obsled.choosCunstruct5 > 0) {
@@ -421,7 +547,7 @@ async function getSmeta(id) {
         if (kat_sl_rab_sosttech.length) {
             kat_sl_rab_sosttech.prop('checked', true);
         } else {
-            console.error("Элемент не найден");
+
         }
         choosCunstruct6.prop('checked', sosttech.choosCunstruct6 > 0);
         if (sosttech.choosCunstruct6 > 0) {
@@ -483,7 +609,191 @@ async function getSmeta(id) {
             $('#conval69').val('');
 
         }
+
+        toggleZd71.prop('disabled', false);
+        toggleZd72.prop('disabled', false);
+        toggleZd73.prop('disabled', false);
+        toggleZd74.prop('disabled', false);
+        toggleZd71.prop('checked', redaktor.toggleZd71 > 0);
+        toggleZd72.prop('checked', redaktor.toggleZd72 > 0);
+        toggleZd73.prop('checked', redaktor.toggleZd73 > 0);
+        toggleZd74.prop('checked', redaktor.toggleZd74 > 0);
+        $('#conval71').val(redaktor.conval71);
+        $('#conval72').val(redaktor.conval72);
+        $('#conval73').val(redaktor.conval73);
+        $('#conval74').val(redaktor.conval74);
+
+
+        toggleZd81.prop('disabled', false);
+        toggleZd82.prop('disabled', false);
+        toggleZd83.prop('disabled', false);
+        toggleZd84.prop('disabled', false);
+        toggleZd85.prop('disabled', false);
+        toggleZd86.prop('disabled', false);
+        toggleZd87.prop('disabled', false);
+        toggleZd88.prop('disabled', false);
+        toggleZd89.prop('disabled', false);
+        toggleZd081.prop('disabled', false);
+        toggleZd082.prop('disabled', false);
+        toggleZd083.prop('disabled', false);
+        toggleZd084.prop('disabled', false);
+        toggleZd085.prop('disabled', false);
+        toggleZd086.prop('disabled', false);
+        toggleZd087.prop('disabled', false);
+        toggleZd088.prop('disabled', false);
+        toggleZd089.prop('disabled', false);
+        toggleZd0081.prop('disabled', false);
+        toggleZd0082.prop('disabled', false);
+        toggleZd0083.prop('disabled', false);
+
+        toggleZd81.prop('checked', obsledotdel.toggleZd81 > 0);
+        toggleZd82.prop('checked', obsledotdel.toggleZd82 > 0);
+        toggleZd83.prop('checked', obsledotdel.toggleZd83 > 0);
+        toggleZd84.prop('checked', obsledotdel.toggleZd84 > 0);
+        toggleZd85.prop('checked', obsledotdel.toggleZd85 > 0);
+        toggleZd86.prop('checked', obsledotdel.toggleZd86 > 0);
+        toggleZd87.prop('checked', obsledotdel.toggleZd87 > 0);
+        toggleZd88.prop('checked', obsledotdel.toggleZd88 > 0);
+        toggleZd89.prop('checked', obsledotdel.toggleZd89 > 0);
+        toggleZd081.prop('checked', obsledotdel.toggleZd081 > 0);
+        toggleZd082.prop('checked', obsledotdel.toggleZd082 > 0);
+        toggleZd083.prop('checked', obsledotdel.toggleZd083 > 0);
+        toggleZd084.prop('checked', obsledotdel.toggleZd084 > 0);
+        toggleZd085.prop('checked', obsledotdel.toggleZd085 > 0);
+        toggleZd086.prop('checked', obsledotdel.toggleZd086 > 0);
+        toggleZd087.prop('checked', obsledotdel.toggleZd087 > 0);
+        toggleZd088.prop('checked', obsledotdel.toggleZd088 > 0);
+        toggleZd089.prop('checked', obsledotdel.toggleZd089 > 0);
+        toggleZd0081.prop('checked', obsledotdel.toggleZd0081 > 0);
+        toggleZd0082.prop('checked', obsledotdel.toggleZd0082 > 0);
+        toggleZd0083.prop('checked', obsledotdel.toggleZd0083 > 0);
+
+        $('#conval81').val(obsledotdel.conval81);
+        $('#conval82').val(obsledotdel.conval82);
+        $('#conval83').val(obsledotdel.conval83);
+        $('#conval84').val(obsledotdel.conval84);
+        $('#conval85').val(obsledotdel.conval85);
+        $('#conval86').val(obsledotdel.conval86);
+        $('#conval87').val(obsledotdel.conval87);
+        $('#conval88').val(obsledotdel.conval88);
+        $('#conval89').val(obsledotdel.conval89);
+        $('#conval081').val(obsledotdel.conval081);
+        $('#conval082').val(obsledotdel.conval082);
+        $('#conval083').val(obsledotdel.conval083);
+        $('#conval084').val(obsledotdel.conval084);
+        $('#conval085').val(obsledotdel.conval085);
+        $('#conval086').val(obsledotdel.conval086);
+        $('#conval087').val(obsledotdel.conval087);
+        $('#conval088').val(obsledotdel.conval088);
+        $('#conval089').val(obsledotdel.conval089);
+        $('#conval0081').val(obsledotdel.conval0081);
+        $('#conval0082').val(obsledotdel.conval0082);
+        $('#conval0083').val(obsledotdel.conval0083);
+
+        $('#conval811').val(obsledotdel.conval811);
+        $('#conval822').val(obsledotdel.conval822);
+        $('#conval833').val(obsledotdel.conval833);
+        $('#conval844').val(obsledotdel.conval844);
+        $('#conval855').val(obsledotdel.conval855);
+        $('#conval866').val(obsledotdel.conval866);
+        $('#conval877').val(obsledotdel.conval877);
+        $('#conval888').val(obsledotdel.conval888);
+        $('#conval899').val(obsledotdel.conval899);
+        $('#conval0811').val(obsledotdel.conval0811);
+        $('#conval0822').val(obsledotdel.conval0822);
+        $('#conval0833').val(obsledotdel.conval0833);
+        $('#conval0844').val(obsledotdel.conval0844);
+        $('#conval0855').val(obsledotdel.conval0855);
+        $('#conval0866').val(obsledotdel.conval0866);
+        $('#conval0877').val(obsledotdel.conval0877);
+        $('#conval0888').val(obsledotdel.conval0888);
+        $('#conval0899').val(obsledotdel.conval0899);
+        $('#conval00811').val(obsledotdel.conval00811);
+        $('#conval00822').val(obsledotdel.conval00822);
+        $('#conval00833').val(obsledotdel.conval00833);
+
+
+        monolit1.prop('checked', obsledotdel.monolit1 > 0);
+        monolit2.prop('checked', obsledotdel.monolit2 > 0);
+        monolit3.prop('checked', obsledotdel.monolit3 > 0);
+        monolit4.prop('checked', obsledotdel.monolit4 > 0);
+        monolit5.prop('checked', obsledotdel.monolit5 > 0);
+        monolit6.prop('checked', obsledotdel.monolit6 > 0);
+        monolit7.prop('checked', obsledotdel.monolit7 > 0);
+        monolit8.prop('checked', obsledotdel.monolit8 > 0);
+        monolit9.prop('checked', obsledotdel.monolit9 > 0);
+        monolit10.prop('checked', obsledotdel.monolit10 > 0);
+        monolit11.prop('checked', obsledotdel.monolit11 > 0);
+        monolit12.prop('checked', obsledotdel.monolit12 > 0);
+        monolit13.prop('checked', obsledotdel.monolit13 > 0);
+        monolit14.prop('checked', obsledotdel.monolit14 > 0);
+        monolit15.prop('checked', obsledotdel.monolit15 > 0);
+        monolit16.prop('checked', obsledotdel.monolit16 > 0);
+        monolit17.prop('checked', obsledotdel.monolit17 > 0);
+        monolit18.prop('checked', obsledotdel.monolit18 > 0);
+        monolit19.prop('checked', obsledotdel.monolit19 > 0);
+        monolit20.prop('checked', obsledotdel.monolit20 > 0);
+        monolit21.prop('checked', obsledotdel.monolit21 > 0);
+
+
+        selectCalc1.find(`option[value="${calculator.selectCalc1}"]`).attr('selected', true);
+        selectCalc2.find(`option[value="${calculator.selectCalc2}"]`).attr('selected', true);
+        selectCalc3.val(calculator.selectCalc3);
+        selectCalc4.val(calculator.selectCalc4);
+        selectCalc5.val(calculator.selectCalc5);
+        selectCalc6.val(calculator.selectCalc6);
+        selectCalc7.val(calculator.selectCalc7);
+        selectCalc8.val(calculator.selectCalc8);
+
+
+        select2Calc1.find(`option[value="${calculator.select2Calc1}"]`).attr('selected', true);
+        select2Calc2.val(calculator.select2Calc2);
+        select2Calc3.val(calculator.select2Calc3);
+        select2Calc4.val(calculator.select2Calc4);
+        select2Calc5.val(calculator.select2Calc5);
+        select2Calc6.val(calculator.select2Calc6);
+        select2Calc7.val(calculator.select2Calc7);
+        select2Calc8.val(calculator.select2Calc8);
+
+        inputCalc1.val(calculator.inputCalc1);
+        inputCalc2.val(calculator.inputCalc2);
+        inputCalc3.val(calculator.inputCalc3);
+        inputCalc4.val(calculator.inputCalc4);
+        inputCalc5.val(calculator.inputCalc5);
+        inputCalc6.val(calculator.inputCalc6);
+        inputCalc7.val(calculator.inputCalc7);
+        inputCalc8.val(calculator.inputCalc8);
+
+        input2Calc1.val(calculator.input2Calc1);
+        input2Calc2.val(calculator.input2Calc2);
+        input2Calc3.val(calculator.input2Calc3);
+        input2Calc4.val(calculator.input2Calc4);
+        input2Calc5.val(calculator.input2Calc5);
+        input2Calc6.val(calculator.input2Calc6);
+        input2Calc7.val(calculator.input2Calc7);
+        input2Calc8.val(calculator.input2Calc8);
+
+        input3Calc1.val(calculator.input3Calc1);
+        input3Calc2.val(calculator.input3Calc2);
+        input3Calc3.val(calculator.input3Calc3);
+        input3Calc4.val(calculator.input3Calc4);
+        input3Calc5.val(calculator.input3Calc5);
+        input3Calc6.val(calculator.input3Calc6);
+        input3Calc7.val(calculator.input3Calc7);
+        input3Calc8.val(calculator.input3Calc8);
+
+
+        sborCheck.prop('checked', ishod.sborCheck > 0);
+        obmerCheck.prop('checked', obmer.obmerCheck > 0);
+        obsledCheck.prop('checked', obsled.obsledCheck > 0);
+        sostTechOtchetCheck.prop('checked', sosttech.sostTechOtchetCheck > 0);
+        redaktorIspConstrCheck.prop('checked', redaktor.redaktorIspConstrCheck > 0);
+        obsledotdelCheck.prop('checked', obsledotdel.obsledotdelCheck > 0);
+        calcalcCheck.prop('checked', calculator.calcalcCheck > 0);
+
     }
+
+
     document.getElementById("smetaDropdown").classList.toggle("show");
     executeFunctions();
 }
@@ -496,27 +806,85 @@ async function executeFunctions() {
     await toggleCheckboxesDop4();
     await toggleCheckboxesDop5();
     await toggleCheckboxesDop6();
+    await toggleCheckboxesDop7();
     await calculateHaracterCoefficient();
+
     await calculateK();
+
+
+    let allLolSpace = document.querySelectorAll(".lolspace1");
+    [...allLolSpace].forEach(item => {
+        if (item.children[0].checked) {
+            toggleCheckboxesDop8(item.children[0]);
+        }
+    });
+    let formselectcalc = document.querySelectorAll(".naim_rab");
+    [...formselectcalc].forEach((item, index) => {
+        if (item) {
+            if (item.options[item.selectedIndex].value !== 0) {
+                index = index + 1;
+                selectCalculation(index);
+            }
+
+        }
+    });
+
+    let doljnosti_KSD_class = document.querySelectorAll(".doljnosti_KSD");
+    doljnosti_KSD_class.forEach((item) => {
+        if (item) {
+
+            if (item.options[item.selectedIndex].value !== 0) {
+                let thisTarget = item;
+                let doljnostKoef = thisTarget.options[thisTarget.options.selectedIndex].getAttribute('data-koef');
+                let nextInput = thisTarget.nextElementSibling;
+                let nextnextInput = nextInput.nextElementSibling;
+                if (nextnextInput.value.length === 0)
+                    nextnextInput.value = 1;
+                nextInput.value = doljnostKoef;
+                console.log(doljnostKoef, "doljnostKoef");
+                calculateK();
+            }
+        }
+    });
+
 
 }
 
 function saveSmeta() {
+    let elemSumma = document.getElementById('harakteristikaObjectObsh');
+    let valueelemSumma = elemSumma.textContent || elemSumma.innerText;
+    let summa = parseFloat(valueelemSumma);
+
+
+    let selectedZakazchik = $('#selectedZakazchik1 option:selected').val() ? $('#selectedZakazchik1 option:selected').val() : "";
+    let selectedPodryadchik = $('#selectedPodryadchik1 option:selected').val() ? $('#selectedPodryadchik1 option:selected').val() : "";
+    let selectedIziskom = $('#whoVistupaet option:selected').val() ? $('#whoVistupaet option:selected').val() : "";
+    let selectedVskrytie = $('#selectedVskrytie1 option:selected').val() ? $('#selectedVskrytie1 option:selected').val() : "";
+    let selectedKonkursnoe = $('#selectedKonkursnoe1 option:selected').val() ? $('#selectedKonkursnoe1 option:selected').val() : "";
+    if (selectedZakazchik === "0" || selectedZakazchik === "") selectedZakazchik = "";
+    if (selectedPodryadchik === "0" || selectedPodryadchik === "") selectedPodryadchik = "";
+    if (selectedIziskom === "0" || selectedIziskom === "") selectedIziskom = "";
+    if (selectedVskrytie === "0" || selectedVskrytie === "") selectedVskrytie = "";
+    if (selectedKonkursnoe === "0" || selectedKonkursnoe === "") selectedKonkursnoe = "";
+
+
     let selectedObmerKatSl;
     let selectedButrad;
     let selectedObsled;
     let selectedSosttech;
+
     $(".kat_sl_rab_sosttech").each(function () {
         if ($(this).prop('checked')) {
             selectedSosttech = $(this).val();
         }
     });
-    $("input[name='pasportNaZdanie']").each((item) => {
-        if ($(item).prop('checked')) {
-            selectedButrad = $(item).val();
+    $("input[name='pasportNaZdanie']").each(function ()  {
+        if ($(this).prop('checked')) {
+            selectedButrad = $(this).val();
         }
     });
     let ishod = {
+        sborCheck: sborCheck.prop('checked') ? 1 : 0,
         toggleZd1: toggleZd1.prop('checked') ? 1 : 0,
         toggleZd2: toggleZd2.prop('checked') ? 1 : 0,
         toggleZd3: toggleZd3.prop('checked') ? 1 : 0,
@@ -563,12 +931,13 @@ function saveSmeta() {
         checkb11: chekb11.prop('checked') ? 1 : 0,
         checkb12: chekb12.prop('checked') ? 1 : 0,
     }
-    kat_sl_rab.each(function () {
+    $('.kat_sl_rab').each(function () {
         if ($(this).prop('checked')) {
             selectedObmerKatSl = $(this).val();
         }
     });
     obmerObject = {
+        obmerCheck: obmerCheck.prop('checked') ? 1 : 0,
         obmerobs: selectedObmerKatSl,
         choosCunstruct4: choosCunstruct4.prop('checked') ? 1 : 0,
         toggleZd41: toggleZd41.prop('checked') ? 1 : 0,
@@ -596,7 +965,10 @@ function saveSmeta() {
             selectedObsled = $(this).val();
         }
     });
+
+
     let obsledObject = {
+        obsledCheck: obsledCheck.prop('checked') ? 1 : 0,
         obsledobs: selectedObsled,
         choosCunstruct5: choosCunstruct5.prop('checked') ? 1 : 0,
         toggleZd51: toggleZd51.prop('checked') ? 1 : 0,
@@ -620,6 +992,7 @@ function saveSmeta() {
     }
 
     let sostTechObject = {
+        sostTechOtchetCheck: sostTechOtchetCheck.prop('checked') ? 1 : 0,
         selectedSosttech: selectedSosttech,
         choosCunstruct6: choosCunstruct6.prop('checked') ? 1 : 0,
         toggleZd61: toggleZd61.prop('checked') ? 1 : 0,
@@ -642,6 +1015,156 @@ function saveSmeta() {
         conval69: $('#conval69').val()
     }
 
+    let redactorIspObject = {
+        redaktorIspConstrCheck: redaktorIspConstrCheck.prop('checked') ? 1 : 0,
+        toggleZd71: toggleZd71.prop('checked') ? 1 : 0,
+        toggleZd72: toggleZd72.prop('checked') ? 1 : 0,
+        toggleZd73: toggleZd73.prop('checked') ? 1 : 0,
+        toggleZd74: toggleZd74.prop('checked') ? 1 : 0,
+        conval71: $('#conval71').val(),
+        conval72: $('#conval72').val(),
+        conval73: $('#conval73').val(),
+        conval74: $('#conval74').val()
+    }
+
+    let obsledOtdKonstrObject = {
+        obsledotdelCheck: obsledotdelCheck.prop('checked') ? 1 : 0,
+        toggleZd81: toggleZd81.prop('checked') ? 1 : 0,
+        toggleZd82: toggleZd82.prop('checked') ? 1 : 0,
+        toggleZd83: toggleZd83.prop('checked') ? 1 : 0,
+        toggleZd84: toggleZd84.prop('checked') ? 1 : 0,
+        toggleZd85: toggleZd85.prop('checked') ? 1 : 0,
+        toggleZd86: toggleZd86.prop('checked') ? 1 : 0,
+        toggleZd87: toggleZd87.prop('checked') ? 1 : 0,
+        toggleZd88: toggleZd88.prop('checked') ? 1 : 0,
+        toggleZd89: toggleZd89.prop('checked') ? 1 : 0,
+        toggleZd081: toggleZd081.prop('checked') ? 1 : 0,
+        toggleZd082: toggleZd082.prop('checked') ? 1 : 0,
+        toggleZd083: toggleZd083.prop('checked') ? 1 : 0,
+        toggleZd084: toggleZd084.prop('checked') ? 1 : 0,
+        toggleZd085: toggleZd085.prop('checked') ? 1 : 0,
+        toggleZd086: toggleZd086.prop('checked') ? 1 : 0,
+        toggleZd087: toggleZd087.prop('checked') ? 1 : 0,
+        toggleZd088: toggleZd088.prop('checked') ? 1 : 0,
+        toggleZd089: toggleZd089.prop('checked') ? 1 : 0,
+        toggleZd0081: toggleZd0081.prop('checked') ? 1 : 0,
+        toggleZd0082: toggleZd0082.prop('checked') ? 1 : 0,
+        toggleZd0083: toggleZd0083.prop('checked') ? 1 : 0,
+        conval81: $('#conval81').val(),
+        conval811: $('#conval811').val(),
+        conval82: $('#conval82').val(),
+        conval822: $('#conval822').val(),
+        conval83: $('#conval83').val(),
+        conval833: $('#conval833').val(),
+        conval84: $('#conval84').val(),
+        conval844: $('#conval844').val(),
+        conval85: $('#conval85').val(),
+        conval855: $('#conval855').val(),
+        conval86: $('#conval86').val(),
+        conval866: $('#conval866').val(),
+        conval87: $('#conval87').val(),
+        conval877: $('#conval877').val(),
+        conval88: $('#conval88').val(),
+        conval888: $('#conval888').val(),
+        conval89: $('#conval89').val(),
+        conval899: $('#conval899').val(),
+        conval081: $('#conval081').val(),
+        conval0811: $('#conval0811').val(),
+        conval082: $('#conval082').val(),
+        conval0822: $('#conval0822').val(),
+        conval083: $('#conval083').val(),
+        conval0833: $('#conval0833').val(),
+        conval084: $('#conval084').val(),
+        conval0844: $('#conval0844').val(),
+        conval085: $('#conval085').val(),
+        conval0855: $('#conval0855').val(),
+        conval086: $('#conval086').val(),
+        conval0866: $('#conval0866').val(),
+        conval087: $('#conval087').val(),
+        conval0877: $('#conval0877').val(),
+        conval088: $('#conval088').val(),
+        conval0888: $('#conval0888').val(),
+        conval089: $('#conval089').val(),
+        conval0899: $('#conval0899').val(),
+        conval0081: $('#conval0081').val(),
+        conval00811: $('#conval00811').val(),
+        conval0082: $('#conval0082').val(),
+        conval00822: $('#conval00822').val(),
+        conval0083: $('#conval0083').val(),
+        conval00833: $('#conval00833').val(),
+        monolit1: monolit1.prop('checked') ? 1 : 0,
+        monolit2: monolit2.prop('checked') ? 1 : 0,
+        monolit3: monolit3.prop('checked') ? 1 : 0,
+        monolit4: monolit4.prop('checked') ? 1 : 0,
+        monolit5: monolit5.prop('checked') ? 1 : 0,
+        monolit6: monolit6.prop('checked') ? 1 : 0,
+        monolit7: monolit7.prop('checked') ? 1 : 0,
+        monolit8: monolit8.prop('checked') ? 1 : 0,
+        monolit9: monolit9.prop('checked') ? 1 : 0,
+        monolit10: monolit10.prop('checked') ? 1 : 0,
+        monolit11: monolit11.prop('checked') ? 1 : 0,
+        monolit12: monolit12.prop('checked') ? 1 : 0,
+        monolit13: monolit13.prop('checked') ? 1 : 0,
+        monolit14: monolit14.prop('checked') ? 1 : 0,
+        monolit15: monolit15.prop('checked') ? 1 : 0,
+        monolit16: monolit16.prop('checked') ? 1 : 0,
+        monolit17: monolit17.prop('checked') ? 1 : 0,
+        monolit18: monolit18.prop('checked') ? 1 : 0,
+        monolit19: monolit19.prop('checked') ? 1 : 0,
+        monolit20: monolit20.prop('checked') ? 1 : 0,
+        monolit21: monolit21.prop('checked') ? 1 : 0
+
+    }
+
+    let calculObject = {
+        calcalcCheck: calcalcCheck.prop('checked') ? 1 : 0,
+        selectCalc1: $('#selectCalc1').val(),
+        selectCalc2: $('#selectCalc2').val(),
+        selectCalc3: $('#selectCalc3').val(),
+        selectCalc4: $('#selectCalc4').val(),
+        selectCalc5: $('#selectCalc5').val(),
+        selectCalc6: $('#selectCalc6').val(),
+        selectCalc7: $('#selectCalc7').val(),
+        selectCalc8: $('#selectCalc8').val(),
+
+        inputCalc1: $('#inputCalc1').val(),
+        inputCalc2: $('#inputCalc2').val(),
+        inputCalc3: $('#inputCalc3').val(),
+        inputCalc4: $('#inputCalc4').val(),
+        inputCalc5: $('#inputCalc5').val(),
+        inputCalc6: $('#inputCalc6').val(),
+        inputCalc7: $('#inputCalc7').val(),
+        inputCalc8: $('#inputCalc8').val(),
+
+        select2Calc1: $('#select2Calc1').val(),
+        select2Calc2: $('#select2Calc2').val(),
+        select2Calc3: $('#select2Calc3').val(),
+        select2Calc4: $('#select2Calc4').val(),
+        select2Calc5: $('#select2Calc5').val(),
+        select2Calc6: $('#select2Calc6').val(),
+        select2Calc7: $('#select2Calc7').val(),
+        select2Calc8: $('#select2Calc8').val(),
+
+        input2Calc1: $('#input2Calc1').val(),
+        input2Calc2: $('#input2Calc2').val(),
+        input2Calc3: $('#input2Calc3').val(),
+        input2Calc4: $('#input2Calc4').val(),
+        input2Calc5: $('#input2Calc5').val(),
+        input2Calc6: $('#input2Calc6').val(),
+        input2Calc7: $('#input2Calc7').val(),
+        input2Calc8: $('#input2Calc8').val(),
+
+        input3Calc1: $('#input3Calc1').val(),
+        input3Calc2: $('#input3Calc2').val(),
+        input3Calc3: $('#input3Calc3').val(),
+        input3Calc4: $('#input3Calc4').val(),
+        input3Calc5: $('#input3Calc5').val(),
+        input3Calc6: $('#input3Calc6').val(),
+        input3Calc7: $('#input3Calc7').val(),
+        input3Calc8: $('#input3Calc8').val(),
+
+    }
+
     let smetaForPhp = {
         id: idActiveSmeta?.toString(),
         name: smetaName.val(),
@@ -652,11 +1175,20 @@ function saveSmeta() {
         textAreaNaimRabot: textAreaNaimRabot.val(),
         textAreaCel: textAreaCel.val(),
         textAreaMestoObj: textAreaMestoObj.val(),
+        selectedZakazchik: selectedZakazchik,
+        selectedPodryadchik: selectedPodryadchik,
+        selectedIziskom: selectedIziskom,
+        selectedVskrytie: selectedVskrytie,
+        selectedKonkursnoe: selectedKonkursnoe,
+        summa: summa,
         haractObject: JSON.stringify(haractObject),
         ishod: JSON.stringify(ishod),
         obmerObject: JSON.stringify(obmerObject),
         obsledObject: JSON.stringify(obsledObject),
         sostTechObject: JSON.stringify(sostTechObject),
+        redactorIspObject: JSON.stringify(redactorIspObject),
+        obsledOtdKonstrObject: JSON.stringify(obsledOtdKonstrObject),
+        calculObject: JSON.stringify(calculObject),
 
     };
 
@@ -670,11 +1202,21 @@ function saveSmeta() {
         textAreaNaimRabot: textAreaNaimRabot.val(),
         textAreaCel: textAreaCel.val(),
         textAreaMestoObj: textAreaMestoObj.val(),
+        selectedZakazchik: selectedZakazchik,
+        selectedPodryadchik: selectedPodryadchik,
+        selectedIziskom: selectedIziskom,
+        selectedVskrytie: selectedVskrytie,
+        selectedKonkursnoe: selectedKonkursnoe,
+        summa: summa,
         haractObject: haractObject,
         ishod: ishod,
         obmerObject: obmerObject,
         obsledObject: obsledObject,
         sostTechObject: sostTechObject,
+        redactorIspObject: redactorIspObject,
+        obsledOtdKonstrObject: obsledOtdKonstrObject,
+        calculObject: calculObject,
+
 
     };
 
@@ -780,11 +1322,13 @@ async function calcObmerWorksPart1() {
                 } else {
                     sumObmer = koefObmerWork1 * koefObmerWork2 * b14Value * k18ob * obmerDop1 * obmerDop2 * Vdiv100 * k18101 * ki222 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat * kefVisota;
                 }
-                $('#obmerRaboty').html(sumObmer.toFixed(3));
+
 
             } else {
 
             }
+            $('#obmerRaboty').html(sumObmer.toFixed(3));
+            calculateK();
             resolve();
         })
     })
@@ -852,11 +1396,9 @@ async function calcObmerWorksPart2() {
 
         return new Promise(function (resolve, reject) {
             let budval = $("#buildingType").val();
-            if (budval == 5){
+            if (budval == 5) {
                 typeW = 3;
-            }
-            else if (budval == 6)
-            {
+            } else if (budval == 6) {
                 typeW = 4;
             }
             $.ajax({
@@ -889,6 +1431,7 @@ async function calcObmerWorksPart2() {
                 }
 
                 $('#obmerRaboty').html(sumObmer.toFixed(3));
+                calculateK();
                 resolve();
             }).catch(function (error) {
                 reject(error);
@@ -983,9 +1526,11 @@ async function calcObsled1() {
                 } else {
                     sumObsled = koefObsled1 * koefObsled2 * b14Value * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat * kefVisota;
                 }
-                $('#obsledRab').html(sumObsled.toFixed(3));
+
             } else {
             }
+            $('#obsledRab').html(sumObsled.toFixed(3));
+            calculateK();
             resolve();
         })
     })
@@ -1051,11 +1596,9 @@ async function calcObsled2() {
 
         return new Promise(function (resolve, reject) {
             let budval = $("#buildingType").val();
-            if (budval == 5){
+            if (budval == 5) {
                 typeW = 3;
-            }
-            else if (budval == 6)
-            {
+            } else if (budval == 6) {
                 typeW = 4;
             }
             $.ajax({
@@ -1086,6 +1629,7 @@ async function calcObsled2() {
                     sumObsled = koefObsled1 * koefObsled2 * b14Value * k18ob * obsledDop1 * obsledDop2 * Vdiv100 * k18101 * ki223 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat * kefVisota;
                 }
                 $('#obsledRab').html(sumObsled.toFixed(3));
+                calculateK();
                 resolve();
             }).catch(function (error) {
                 reject(error);
@@ -1183,9 +1727,11 @@ async function calcSosttech1() {
                 } else {
                     sumSosttech = koefSosttech1 * koefSosttech2 * b14Value * k18ob * Vdiv100 * k18101 * ki242 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat * kefVisota;
                 }
-                $('#sostTech').html(sumSosttech.toFixed(3));
+
 
             }
+            $('#sostTech').html(sumSosttech.toFixed(3));
+            calculateK();
             resolve();
         })
     })
@@ -1250,11 +1796,9 @@ async function calcSosttech2() {
 
         return new Promise(function (resolve, reject) {
             let budval = $("#buildingType").val();
-            if (budval == 5){
+            if (budval == 5) {
                 typeW = 3;
-            }
-            else if (budval == 6)
-            {
+            } else if (budval == 6) {
                 typeW = 4;
             }
             $.ajax({
@@ -1285,6 +1829,7 @@ async function calcSosttech2() {
                     sumSosttech = koefSosttech1 * koefSosttech2 * b14Value * k18ob * Vdiv100 * k18101 * ki242 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat * kefVisota;
                 }
                 $('#sostTech').html(sumSosttech.toFixed(3));
+                calculateK();
                 resolve();
             }).catch(function (error) {
                 reject(error);
@@ -1314,7 +1859,7 @@ $("#choosCunstruct6").on("change", async function (event) {
     await calculateK();
 })
 
-$(".doljnosti_KSD").on('change', async (event) => {
+async function call_doljnosti_KSD(event) {
     let thisTarget = event.target;
     let doljnostKoef = thisTarget.options[thisTarget.options.selectedIndex].getAttribute('data-koef');
     let nextInput = thisTarget.nextElementSibling;
@@ -1323,7 +1868,11 @@ $(".doljnosti_KSD").on('change', async (event) => {
         nextnextInput.value = 1;
     nextInput.value = doljnostKoef;
     await calculateK();
-})
+}
+
+document.querySelectorAll(".doljnosti_KSD").forEach(element => {
+    element.addEventListener('change', call_doljnosti_KSD);
+});
 
 $(".kol_isp").on('change', async (event) => {
 
@@ -1353,7 +1902,7 @@ async function calcCalkulation() {
         }
         let resultElement = chilsitel / znamenatel;
         let result = resultElement.toFixed(1);
-        console.log(chilsitel, znamenatel);
+
         $('#sredRazryad').val(result);
         resolve(result);
     })
@@ -1375,7 +1924,7 @@ async function calcCalkulation() {
 
     let sizeTruds = truds.length < 1 ? 1 : truds.length;
 
-    if(truds.length > 1) {
+    if (truds.length > 1) {
         let calc1 = parseFloat(calculacia);
         let sum = 0;
         for (let i = 0; i < sizeTruds; i++) {
@@ -1384,11 +1933,11 @@ async function calcCalkulation() {
 
             if (trudValue !== 0) {
                 sum += calc1 * trudValue * kolIspValue;
-                console.log("calc1 + calc1 * trudValue * kolIspValue" , calc1 + " + " + calc1 + " * " +  trudValue + " * " + kolIspValue)
+
             }
         }
         calculacia = sum.toFixed(2);
-    }else{
+    } else {
         truds.each(function () {
             calculacia *= $(this).val() !== "0" ? parseFloat($(this).val()) : 1;
         });
@@ -1411,13 +1960,32 @@ $(".tarif").on('change', () => {
 })
 
 function printExcel() {
+
     new Promise((resolve, reject) => {
+        document.cookie = "dateStartWork=" + $('#dateNachRab')?.val() + ";";
+        document.cookie = "hardZdanie=" + hardZdanie + ";";
+        document.cookie = "costWork=" + $('#workCost')?.val() + ";";
+        document.cookie = "b14Input=" + $('#b14Input')?.val() + ";";
+        let inputValue = Math.round($('#commonInputField')?.val() / 30);
+        if (inputValue < 1) {
+            inputValue = 1;
+        }
+        document.cookie = "commonInputField=" + inputValue + ";";
+        document.cookie = "chusn=" + chusn + ";";
+
+
+        document.cookie = "kefVisota=" + kefVisota + ";";
         document.cookie = "V=" + V + ";";
         document.cookie = "n=" + etazh + ";";
         document.cookie = "h=" + mainvisotazdani + ";";
+        document.cookie = "usn=" + usn + ";";
+        document.cookie = "peremenusn=" + peremenusn + ";";
+        document.cookie = "fullSummaUsn=" + fullSummaUsn + ";";
+        document.cookie = "fullSummaNds=" + fullSummaNds + ";";
+        document.cookie = "textAreaNaimRabot=" + textAreaNaimRabot.val() + ";";
         document.cookie = " het=" + visotapola + ";";
         document.cookie = " k18101=" + k18101 + ";";
-        document.cookie = " k18ob=" + k18ob + ";";
+        document.cookie = " k18ob=" + k18ob.toFixed(2) + ";";
         document.cookie = " zakazchik=" + selectZakazchik.find('option:selected').text() + ";";
         document.cookie = " podradchik=" + selectPodryadchik.find('option:selected').text() + ";";
         document.cookie = " chacked1=" + isSborIshodnihDannihChecked + ";";
@@ -1426,15 +1994,14 @@ function printExcel() {
         document.cookie = " chacked4=" + isSostTechOtchetCheck + ";";
         document.cookie = " chacked5=" + isRedaktorIspConstr + ";";
         document.cookie = " chacked6=" + isObsledOtdel + ";";
-
         document.cookie = " h3tp_212=" + koefIshod + ";";
         document.cookie = " ph3_212=" + koefIshod2 + ";";
         document.cookie = " ki212=" + ki212 + ";";
         document.cookie = " p212=" + P212 + ";";
-        let formula1 = "V/100 * PH3 * K * БС * Ki";
+        let formula1 = "V/100 * K18.об * Коп  * НЗТР * Ki * РНЗ * B14";
         let formula2 = formula1;
         let formula3 = formula1;
-        let formula6 = "ОК * Ki * (K18.229=1) * БС";
+        let formula6 = "ОК * (K18.229=1) * БС";
         document.cookie = "formula6=" + formula6 + ";";
 
         if ($("#constructionType").val() === "2") {
@@ -1517,10 +2084,10 @@ function printExcel() {
 
         //
 
-        document.cookie = " toggleZd71=" + toggleZd71 + ";";
-        document.cookie = " toggleZd72=" + toggleZd72 + ";";
-        document.cookie = " toggleZd73=" + toggleZd73 + ";";
-        document.cookie = " toggleZd74=" + toggleZd74 + ";";
+        document.cookie = " toggleZd71=" + toggleZd71.is(':checked') + ";";
+        document.cookie = " toggleZd72=" + toggleZd72.is(':checked') + ";";
+        document.cookie = " toggleZd73=" + toggleZd73.is(':checked') + ";";
+        document.cookie = " toggleZd74=" + toggleZd74.is(':checked') + ";";
 
         document.cookie = " conval71=" + conval71 + ";";
         document.cookie = " conval72=" + conval72 + ";";
@@ -1540,6 +2107,46 @@ function printExcel() {
 
         document.cookie = " fullSumma=" + fullSumma + ";";
 
+
+        document.cookie = " whoVistupaet=" + $("#whoVistupaet option:selected").text() + ";";
+
+        let arrSbor = [];
+
+        $(".ishod2check:checked").each(function () {
+            var nextText = $(this).next();
+            arrSbor.push(nextText.text().replace(/\s+/g, ' ').trim());
+        })
+        const arrSborString = JSON.stringify(arrSbor);
+        document.cookie = `arrSbor=${encodeURIComponent(arrSborString)}; path=/; max-age=3600`;
+
+        let arrObmer = [];
+
+        $(".obmer2check:checked").each(function () {
+            var nextText = $(this).next();
+            arrObmer.push(nextText.text().replace(/\s+/g, ' ').trim());
+        })
+        const arrObmerString = JSON.stringify(arrObmer);
+        document.cookie = `arrObmer=${encodeURIComponent(arrObmerString)}; path=/; max-age=3600`;
+
+        let arrObsled = [];
+
+        $(".obsled2check:checked").each(function () {
+            var nextText = $(this).next();
+            arrObsled.push(nextText.text().replace(/\s+/g, ' ').trim());
+        })
+        const arrObsledString = JSON.stringify(arrObsled);
+        document.cookie = `arrObsled=${encodeURIComponent(arrObsledString)}; path=/; max-age=3600`;
+
+        let arrSostTech = [];
+
+        $(".sostTech2check:checked").each(function () {
+            var nextText = $(this).next();
+            arrSostTech.push(nextText.text().replace(/\s+/g, ' ').trim());
+        })
+        const arrSostTechString = JSON.stringify(arrSostTech);
+        document.cookie = `arrSostTech=${encodeURIComponent(arrSostTechString)}; path=/; max-age=3600`;
+
+
         const objString = JSON.stringify(arrObsledOtdel);
         document.cookie = `myObject=${encodeURIComponent(objString)}; path=/; max-age=3600`;
         resolve();
@@ -1554,14 +2161,14 @@ function printCalculExcel() {
     let hasTarifData = false;
 
     $('.trud').each((index, item) => {
-        console.log(`Значение .trud на индексе ${index}:`, $(item).val());
+
         if (!$(item).is(':disabled') && $(item).val() !== "") {
             hasTrudData = true;
         }
     });
 
     $('.tarif').each((index, item) => {
-        console.log(`Значение .tarif на индексе ${index}:`, $(item).val());
+
         if ($(item).val() !== "") {
             hasTarifData = true;
         }
@@ -1593,7 +2200,6 @@ function printCalculExcel() {
                     selectedText = sel.find('option:selected').text();
                 }
 
-                console.log(`selectedText для name_rab${index + 1}:`, selectedText);
 
                 if (selectedText && selectedText.trim() !== "") {
                     document.cookie = "name_rab" + (index + 1) + "=" + selectedText + ";";
@@ -1622,35 +2228,287 @@ function printCalculExcel() {
     });
 }
 
+
+
+let applications = [];
+
+function pushApplications() {
+    applications = [];
+    const checkboxes = document.querySelectorAll('.prilagaetsa');
+    let index = 1;
+    checkboxes.forEach(checkbox => {
+        if (checkbox.checked) {
+
+            const label = checkbox.nextElementSibling.innerText;
+            let appObj = {
+                ind: index,
+                lab: label
+            }
+            applications.push(appObj);
+            index++;
+        }
+    });
+    console.log(applications)
+}
 function printDogovor() {
+        let id_zakazchik = document.getElementById("id_zakazchik");
+        let name_zakazchik  = id_zakazchik.options[id_zakazchik.selectedIndex].text;
+        let  doljn = document.getElementById("doljn").value;
+        let fio = document.getElementById("fio").value;
+        let osn_podpis = document.getElementById("osn_podpis").value;
+        let rekvizit = document.getElementById("rekvizit").value;
+        let istochnik = document.getElementById("istochnik");
+        let istochnik_fin  = istochnik.options[istochnik.selectedIndex].text;
+        let date_start_work = document.getElementById("date_start_work").value;
+        let date_end_work = document.getElementById("date_end_work").value;
+        let count_bum = document.getElementById("count_bum").value;
+        let  count_el = document.getElementById("count_el").value;
+        let  osn_obsled = document.getElementById("osn_obsled").value;
+        let  name_work = document.getElementById("name_work").value;
+        let  target_work = document.getElementById("target_work").value;
+        let  nomer_dogovora = document.getElementById("nomer_dogovora").value;
+        let who_podpis_dog = document.getElementById("who_podpis_dog").value;
+        let srok_vid = document.getElementById("srok_vid").value;
+        let count_days = document.getElementById("count_days").value;
+        let date_akt = document.getElementById("date_akt").value;
+        let who_podpis_akt = document.getElementById("who_podpis_akt").value;
+        let date_zakl_dogovora = document.getElementById("date_zakl_dogovora").value;
+        let count_toms = document.getElementById("count_toms").value;
+        let who_podpis_titul = document.getElementById("who_podpis_titul").value;
+        let  sum_avans = document.getElementById("sum_avans").value.replace(".", ",");
+        let cost_work = document.getElementById("cost_work").value.replace(".", ",");
+        let count_str = document.getElementById("count_str").value;
+
+
+
+    pushApplications();
+
+
+
+    let htmlOutput = '';
+    if (applications.length > 0) {
+        htmlOutput = '<h2 class="text-lg font-bold">10. К ДОГОВОРУ ПРИЛАГАЕТСЯ:</h2>';
+        applications.forEach(function(app) {
+            htmlOutput += `<p class="ml-4 mt-2 no-margin">10.${app.ind}. ${app.lab} (Приложение № ${app.ind})</p>`;
+        });
+    } else {
+        htmlOutput = "";
+    }
+    let indprot ;
+
+    applications.forEach(function(app) {
+        if (app.lab.toLowerCase().includes("протокол"))
+        {
+            indprot = app.ind;
+        }
+    });
+
+    let indsmeta ;
+
+    applications.forEach(function(app) {
+        if (app.lab.toLowerCase().includes("протокол"))
+        {
+            indsmeta = app.ind;
+        }
+    });
+
+
+
+    let indcalc ;
+
+    applications.forEach(function(app) {
+        if (app.lab.toLowerCase().includes("протокол"))
+        {
+            indcalc = app.ind;
+        }
+    });
+
+
+    let indsvodsmet ;
+
+    applications.forEach(function(app) {
+        if (app.lab.toLowerCase().includes("протокол"))
+        {
+            indsvodsmet = app.ind;
+        }
+    });
+
+
+    let indcalendarplan ;
+
+    applications.forEach(function(app) {
+        if (app.lab.toLowerCase().includes("протокол"))
+        {
+            indcalendarplan = app.ind;
+        }
+    });
+
+
+    let indtehzad ;
+
+    applications.forEach(function(app) {
+        if (app.lab.toLowerCase().includes("протокол"))
+        {
+            indtehzad = app.ind;
+        }
+    });
+
+console.log (rekvizit);
     $.ajax({
         url: 'printDogovor.php',
         type: 'POST',
-        data: {},
-        success: function (response) {
-            var WinPrint = window.open('', '', 'left=50,top=50,width=1200,height=860,toolbar=0,scrollbars=1,status=0');
-            WinPrint.document.write('<style>@page {\n' +
-                'margin: 1rem;\n' +
-                '}</style>');
-            WinPrint.document.write('<br/>');
-            WinPrint.document.write(response);
-            WinPrint.document.close();
-            WinPrint.focus();
-            WinPrint.print();
-            WinPrint.close();
+        data: {
+            nomer_dogovora: nomer_dogovora,
+            date_zakl_dogovora: date_zakl_dogovora,
+            name_zakazchik: name_zakazchik,
+            date_start_work: date_start_work,
+            date_end_work: date_end_work,
+            target_work: target_work,
+            name_work: name_work,
+            cost_work: cost_work,
+            rekvizit: rekvizit,
+            istochnik: istochnik_fin,
+            doljn: doljn,
+            osn_podpis: osn_podpis,
+            sum_avans: sum_avans,
+            applications: htmlOutput,
+            fio: fio,
 
-            resolve();
+            indprot: indprot,
+            indtehzad: indtehzad,
+            indcalendarplan: indcalendarplan,
+            indsvodsmet: indsvodsmet,
+            indcalc: indcalc,
+            indsmeta: indsmeta,
+            osn_obsled: $('#osn_obsled option:selected').text(),
+            id_zakazchik: $('#id_zakazchik option:selected').text(),
+            who_podpis_dog: $('#who_podpis_dog option:selected').text(),
+        },
+        success: function (response) {
+            function downloadAsWord(response) {
+                // Create a Blob object with the HTML content and a Word-related MIME type
+                const blob = new Blob(['\ufeff', '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/1999/xhtml">',
+                    '<head><meta charset="utf-8" />',
+                    '<title>Report</title>',
+                    '<style>@page { margin: 1rem; }</style>',
+                    '</head>',
+                    '<body>', response, '</body>',
+                    '</html>'
+                ], {type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'});
+
+                // Create an anchor element with a download attribute
+                const a = document.createElement('a');
+                a.href = window.URL.createObjectURL(blob);
+                a.download = 'Договор №' +nomer_dogovora + '.doc';
+
+                // Trigger a click event on the anchor element to download the Blob as a Word document
+                a.click();
+            }
+            downloadAsWord(response);
+
+
         }
 
     })
 }
 
+function printProtocol(){
+    pushApplications();
+
+        applications.forEach(function (item) {
+            if((item.lab.toLowerCase()).includes("протокол заседания")){
+                $.ajax({
+                    url: 'printProtocol.php',
+                    type: 'POST',
+                    data: {
+                        id: item.ind,
+                        nomer_dogovora: $("#nomer_dogovora").val(),
+                        date_zakl_dogovora: $("#date_zakl_dogovora").val(),
+                        name_work: $("#name_work").val(),
+                        osn_obsled: $('#osn_obsled option:selected').text(),
+                        id_zakazchik: $('#id_zakazchik option:selected').text(),
+                        cost_work: $('#cost_work').val(),
+                        doljn: $('#doljn').val(),
+                        fio: $('#fio').val(),
+                        who_podpis_dog: $('#who_podpis_dog option:selected').text(),
+                    },
+                    success: function (response) {
+                        var WinPrint = window.open('', '', 'left=50,top=50,width=1200,height=860,toolbar=0,scrollbars=1,status=0');
+                        WinPrint.document.write('<style>@page {\n' +
+                            'margin: 1rem;\n' +
+                            '}</style>');
+                        WinPrint.document.write('<br/>');
+                        WinPrint.document.write(response);
+                        WinPrint.document.close();
+                        WinPrint.focus();
+                        WinPrint.print();
+                        WinPrint.close();
+                    }
+                })
+            }
+        })
+}
+
+function printPlan(){
+    pushApplications();
+
+    applications.forEach(function (item) {
+        if((item.lab.toLowerCase()).includes("план")){
+            $.ajax({
+                url: 'printPlan.php',
+                type: 'POST',
+                data: {id: item.ind,
+                    nomer_dogovora: $("#nomer_dogovora").val(),
+                    date_zakl_dogovora: $("#date_zakl_dogovora").val(),
+                    name_work: $("#name_work").val(),
+                    date_start_work: $("#date_start_work").val(),
+                    date_end_work: $("#date_end_work").val(),
+                    istochnik: $('#istochnik option:selected').text(),
+                    id_zakazchik: $('#id_zakazchik option:selected').text(),
+                    cost_work: $('#cost_work').val(),
+                    doljn: $('#doljn').val(),
+                    fio: $('#fio').val(),
+                    who_podpis_dog: $('#who_podpis_dog option:selected').text(),
+                },
+                success: function (response) {
+                    var WinPrint = window.open('', '', 'left=50,top=50,width=1200,height=860,toolbar=0,scrollbars=1,status=0');
+                    WinPrint.document.write('<style>@page {\n' +
+                        'margin: 1rem;\n' +
+                        '}</style>');
+                    WinPrint.document.write('<br/>');
+                    WinPrint.document.write(response);
+                    WinPrint.document.close();
+                    WinPrint.focus();
+                    WinPrint.print();
+                    WinPrint.close();
+
+                }
+
+            })
+        }
+    })
+
+
+}
 
 function printAkt() {
+    let cost_work = document.getElementById("cost_work").value.replace(".", ",");
+    let  name_work = document.getElementById("name_work").value;
+    let date_zakl_dogovora = document.getElementById("date_zakl_dogovora").value;
+    let  nomer_dogovora = document.getElementById("nomer_dogovora").value;
+    let id_zakazchik = document.getElementById("id_zakazchik");
+    let name_zakazchik  = id_zakazchik.options[id_zakazchik.selectedIndex].text;
+    let rekvizit = document.getElementById("rekvizit").value;
     $.ajax({
         url: 'printAkt.php',
         type: 'POST',
-        data: {},
+        data: {name_zakazchik: name_zakazchik,
+            name_work: name_work,
+            date_zakl_dogovora: date_zakl_dogovora,
+            rekvizit: rekvizit,
+            nomer_dogovora: nomer_dogovora,
+            cost_work: cost_work,
+            },
         success: function (response) {
             var WinPrint = window.open('', '', 'left=50,top=50,width=1200,height=860,toolbar=0,scrollbars=1,status=0');
             WinPrint.document.write('<style>@page {\n' +
@@ -1663,7 +2521,6 @@ function printAkt() {
             WinPrint.print();
             WinPrint.close();
 
-            resolve();
         }
 
     })
@@ -1686,8 +2543,267 @@ function deleteF(){
     }).then(response => alert("ok"));
 }
 
-///////////////////////////////////////////////////////////////////////////
 
+function toggleDropdownDogovor() {
+    document.getElementById("dogovorDropdown").classList.toggle("show");
+}
+
+function filterDogovor() {
+    var input, filter, dropdown, a, i;
+    input = document.getElementById("dogovorSearch");
+    filter = input.value.toUpperCase();
+    dropdown = document.getElementById("dogovorDropdown");
+    a = dropdown.getElementsByTagName("a");
+    for (i = 0; i < a.length; i++) {
+        txtValue = a[i].textContent || a[i].innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            a[i].style.display = "";
+        } else {
+            a[i].style.display = "none";
+        }
+    }
+}
+
+let selectedDogovor = null;
+
+function getDogovor(id) {
+    selectedDogovor = id;
+    if (id) {
+        const selectedItemDogovor = dogovorList.find(item => item.id_dogovor == id);
+        if (selectedItemDogovor) {
+            console.log(selectedItemDogovor);
+            document.getElementById("id_zakazchik").value = selectedItemDogovor.id_zakazchik;
+            document.getElementById("doljn").value = selectedItemDogovor.doljn;
+            document.getElementById("fio").value = selectedItemDogovor.fio;
+            document.getElementById("osn_podpis").value = selectedItemDogovor.osn_podpis;
+            document.getElementById("rekvizit").value = selectedItemDogovor.rekvizit;
+            document.getElementById("istochnik").value = selectedItemDogovor.istochnik;
+            document.getElementById("date_start_work").value = selectedItemDogovor.date_start_work;
+            document.getElementById("date_end_work").value = selectedItemDogovor.date_end_work;
+            document.getElementById("count_bum").value = selectedItemDogovor.count_bum;
+            document.getElementById("count_el").value = selectedItemDogovor.count_el;
+            document.getElementById("osn_obsled").value = selectedItemDogovor.osn_obsled;
+            document.getElementById("name_work").value = selectedItemDogovor.name_work;
+            document.getElementById("target_work").value = selectedItemDogovor.target_work;
+            document.getElementById("nomer_dogovora").value = selectedItemDogovor.nomer_dogovora;
+            document.getElementById("who_podpis_dog").value = selectedItemDogovor.who_podpis_dog;
+            document.getElementById("srok_vid").value = selectedItemDogovor.srok_vid;
+            document.getElementById("count_days").value = selectedItemDogovor.count_days;
+            document.getElementById("date_akt").value = selectedItemDogovor.date_akt;
+            document.getElementById("who_podpis_akt").value = selectedItemDogovor.who_podpis_akt;
+            document.getElementById("date_zakl_dogovora").value = selectedItemDogovor.date_zakl_dogovora;
+            document.getElementById("count_toms").value = selectedItemDogovor.count_toms;
+            document.getElementById("who_podpis_titul").value = selectedItemDogovor.who_podpis_titul;
+            document.getElementById("sum_avans").value = selectedItemDogovor.sum_avans.replace(".", ",");
+            document.getElementById("cost_work").value = selectedItemDogovor.cost_work.replace(".", ",");
+            document.getElementById("count_str").value = selectedItemDogovor.count_str;
+
+
+//-----------------------------------------------------------------------------------------------------------------
+            const checkboxes = document.querySelectorAll('.form-check-input');
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = false;
+            });
+            const checkboxDRall = ['nalich_avans', 'kompl_chert', 'tek_smeta', 'calculacia'];
+            checkboxDRall.forEach(id => {
+                const checkboxDR = document.getElementById(id);
+                if (checkboxDR) {
+                    console.log(selectedItemDogovor[id]);
+                    checkboxDR.checked = selectedItemDogovor[id] > 0;
+                }
+            });
+
+            const checkboxprilagaetsa = selectedItemDogovor.prilagaetsa;
+            if (checkboxprilagaetsa) {
+                const idcheckboxprilagaetsa = checkboxprilagaetsa.split(';');
+                idcheckboxprilagaetsa.forEach(id => {
+                    const checkbox = document.getElementById(`checkbox_${id}`);
+                    if (checkbox) {
+                        checkbox.checked = true;
+                    }
+                });
+            }
+        } else {
+            console.error("Договор не найден");
+        }
+
+        document.getElementById("dogovorDropdown").classList.toggle("show");
+    }
+
+    getZakazchik();
+    updateCost();
+}
+
+function saveDogovor() {
+
+    let dogovor = {
+        id_zakazchik: document.getElementById("id_zakazchik").value,
+        doljn: document.getElementById("doljn").value,
+        fio: document.getElementById("fio").value,
+        osn_podpis: document.getElementById("osn_podpis").value,
+        rekvizit: document.getElementById("rekvizit").value,
+        istochnik: document.getElementById("istochnik").value,
+        date_start_work: document.getElementById("date_start_work").value,
+        date_end_work: document.getElementById("date_end_work").value,
+        count_bum: document.getElementById("count_bum").value,
+        count_el: document.getElementById("count_el").value,
+        osn_obsled: document.getElementById("osn_obsled").value,
+        name_work: document.getElementById("name_work").value,
+        target_work: document.getElementById("target_work").value,
+        nomer_dogovora: document.getElementById("nomer_dogovora").value,
+        who_podpis_dog: document.getElementById("who_podpis_dog").value,
+        srok_vid: document.getElementById("srok_vid").value,
+        count_days: document.getElementById("count_days").value,
+        date_akt: document.getElementById("date_akt").value,
+        who_podpis_akt: document.getElementById("who_podpis_akt").value,
+        date_zakl_dogovora: document.getElementById("date_zakl_dogovora").value,
+        count_toms: document.getElementById("count_toms").value,
+        who_podpis_titul: document.getElementById("who_podpis_titul").value,
+        sum_avans: document.getElementById("sum_avans").value.replace(".", ","),
+        cost_work: document.getElementById("cost_work").value.replace(".", ","),
+        count_str: document.getElementById("count_str").value,
+        prilagaetsa: ""
+    };
+    const checkboxDRall = ['nalich_avans', 'kompl_chert', 'tek_smeta', 'calculacia'];
+    checkboxDRall.forEach(id => {
+        const checkboxDR = document.getElementById(id);
+        if (checkboxDR) {
+            dogovor[id] = checkboxDR.checked ? 1 : 0;
+        }
+    });
+
+    document.querySelectorAll(".prilagaetsa").forEach(function(item) {
+        if(item.checked){
+            console.log(item);
+            dogovor["prilagaetsa"] += item.id.slice(-1) + ";";
+        }
+    })
+ //   dogovor["prilagaetsa"] = dogovor["prilagaetsa"].slice(0, -1);
+
+    $.ajax({
+        url: "app/ajax/saveDogovor.php",
+        method: "POST",
+        data: {dogovor: dogovor, id: selectedDogovor}
+    }).then(response => {
+        alert("Данные дохранены");
+    }).catch(e => {
+        console.log(e);
+        const message = JSON.parse(e.responseText) ? JSON.parse(e.responseText).message : "";
+        alert("Ошибка: " + message);
+    })
+
+    if(selectedDogovor) {
+        dogovorList[selectedDogovor] = dogovor;
+    }else{
+        dogovorList.push(dogovor);
+    }
+
+
+}
+
+///////////////////////////////////////////////////////////////////////////
+function toggleDropdown() {
+    document.getElementById("smetaDropdown").classList.toggle("show");
+}
+
+function filterSmeta() {
+    var input, filter, dropdown, a, i;
+    input = document.getElementById("smetaSearch");
+    filter = input.value.toUpperCase();
+    dropdown = document.getElementById("smetaDropdown");
+    a = dropdown.getElementsByTagName("a");
+    for (i = 0; i < a.length; i++) {
+        txtValue = a[i].textContent || a[i].innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            a[i].style.display = "";
+        } else {
+            a[i].style.display = "none";
+        }
+    }
+}
+
+window.onclick = function(event) {
+    if (!event.target.matches('.btn-primary')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        for (var i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+        }
+    }
+}
+
+function getSmetaDogovor(id) {
+    idActiveSmeta = id;
+    const selectedItem = smetaList.find(item => item.id == id);
+    if (selectedItem) {
+        const haract = selectedItem.haractObject;
+        const ishod = selectedItem.ishod;
+        const obmer = selectedItem.obmer;
+        const obsled = selectedItem.obsled;
+        const sosttech = selectedItem.sosttech;
+        const calculator = selectedItem.calculator;
+        const redaktor = selectedItem.redaktor;
+        const obsledotdel = selectedItem.obsledotdel;
+        console.log (selectedItem);
+
+
+        document.getElementById("id_zakazchik").value = selectedItem.id_zakazchik;
+        document.getElementById("date_start_work").value = selectedItem.dateNachRab;
+        document.getElementById("date_end_work").value = selectedItem.dateOkonchRab;
+        document.getElementById("name_work").value = selectedItem.textAreaNaimRabot;
+        document.getElementById("target_work").value = selectedItem.textAreaCel;
+        document.getElementById("cost_work").value = selectedItem.summa;
+
+
+    }
+    getZakazchik();
+    updateCost();
+}
+
+
+ function getZakazchik() {
+
+         var selectedValue = $('#id_zakazchik').val();
+         if (selectedValue != "0") {
+             $.ajax({
+                 url: 'app/ajax/getZakazchik.php',
+                 type: 'POST',
+                 data: {id: selectedValue},
+                 success: function (data) {
+                     let responseData = JSON.parse(data);
+                     console.log(responseData);
+                     if (data) {
+                         console.log(data);
+                         $('#rekvizit').val(responseData.rekvizit);
+                     } else {
+
+                     }
+                 },
+
+             });
+         } else {
+             $('#rekvizit').val("");
+         }
+
+ }
+
+function updateCost() {
+    let cost = $('#cost_work').val();
+    $('#stoimost_rabot').text(cost);
+}
+$('#cost_work').on('input', function() {
+    updateCost();
+});
+
+
+$(document).ready(function() {
+    $('#cost_work').on('input', function() {
+        let cost = $(this).val();
+        $('#stoimost_rabot').text(cost);
+    });
+});
 
 // function calculateHaracterCheckb(thisEl){
 //     let data_id = thisEl.getAttribute('data-id');

@@ -136,17 +136,17 @@ if ($connectionDB->getNumRows($result) == 0) {
         $id_zakazchik = $row['id_zakazchik'];
         echo '<tr data-id=' . $id_zakazchik . '>';
         echo '<td>' . $id_zakazchik . '</td>';
-        echo '<td contenteditable="true" onblur="saveField(event, \'nameZakazchik\', ' . $id_zakazchik . ')">' . $row['nameZakazchik'] . '</td>';
-        echo '<td contenteditable="true" onblur="saveField(event, \'dolzhnostIP\', ' . $id_zakazchik . ')">' . $row['dolzhnostIP'] . '</td>';
-        echo '<td contenteditable="true" onblur="saveField(event, \'dolzhnostRP\', ' . $id_zakazchik . ')">' . $row['dolzhnostRP'] . '</td>';
-        echo '<td contenteditable="true" onblur="saveField(event, \'fioIP\', ' . $id_zakazchik . ')">' . $row['fioIP'] . '</td>';
-        echo '<td contenteditable="true" onblur="saveField(event, \'fioRP\', ' . $id_zakazchik . ')">' . $row['fioRP'] . '</td>';
-        echo '<td contenteditable="true" onblur="saveField(event, \'osnovanie\', ' . $id_zakazchik . ')">' . $row['osnovanie'] . '</td>';
-        echo '<td contenteditable="true" onblur="saveField(event, \'rekvizit\', ' . $id_zakazchik . ')">' . $row['rekvizit'] . '</td>';
-        echo '<td contenteditable="true" onblur="saveField(event, \'contact\', ' . $id_zakazchik . ')">' . $row['contact'] . '</td>';
-        echo '<td contenteditable="true" onblur="saveField(event, \'email\', ' . $id_zakazchik . ')">' . $row['email'] . '</td>';
-        echo '<td contenteditable="true" onblur="saveField(event, \'pochtaIndex\', ' . $id_zakazchik . ')">' . $row['pochtaIndex'] . '</td>';
-        echo '<td contenteditable="true" onblur="saveField(event, \'primechanie\', ' . $id_zakazchik . ')">' . $row['primechanie'] . '</td>';
+        echo '<td contenteditable="true" oninput="saveField(event, \'nameZakazchik\', ' . $id_zakazchik . ')">' . $row['nameZakazchik'] . '</td>';
+        echo '<td contenteditable="true" oninput="saveField(event, \'dolzhnostIP\', ' . $id_zakazchik . ')">' . $row['dolzhnostIP'] . '</td>';
+        echo '<td contenteditable="true" oninput="saveField(event, \'dolzhnostRP\', ' . $id_zakazchik . ')">' . $row['dolzhnostRP'] . '</td>';
+        echo '<td contenteditable="true" oninput="saveField(event, \'fioIP\', ' . $id_zakazchik . ')">' . $row['fioIP'] . '</td>';
+        echo '<td contenteditable="true" oninput="saveField(event, \'fioRP\', ' . $id_zakazchik . ')">' . $row['fioRP'] . '</td>';
+        echo '<td contenteditable="true" oninput="saveField(event, \'osnovanie\', ' . $id_zakazchik . ')">' . $row['osnovanie'] . '</td>';
+        echo '<td contenteditable="true" oninput="saveField(event, \'rekvizit\', ' . $id_zakazchik . ')">' . $row['rekvizit'] . '</td>';
+        echo '<td contenteditable="true" oninput="saveField(event, \'contact\', ' . $id_zakazchik . ')">' . $row['contact'] . '</td>';
+        echo '<td contenteditable="true" oninput="saveField(event, \'email\', ' . $id_zakazchik . ')">' . $row['email'] . '</td>';
+        echo '<td contenteditable="true" oninput="saveField(event, \'pochtaIndex\', ' . $id_zakazchik . ')">' . $row['pochtaIndex'] . '</td>';
+        echo '<td contenteditable="true" oninput="saveField(event, \'primechanie\', ' . $id_zakazchik . ')">' . $row['primechanie'] . '</td>';
         echo '<td><button class="btn btn-danger" onclick="deleteZakazchik(' . $id_zakazchik . ')">&#10060;</button></td>';
         echo '</tr>';
     }
@@ -163,7 +163,7 @@ echo '
 <script>
     $(document).ready(function() {
         $("#addZakazchikForm").on("submit", function(event) {
-            event.preventDefault();
+        
             const formData = {
                 nameZakazchik: $("#nameZakazchik").val(),
                 dolzhnostIP: $("#dolzhnostIP").val(),
@@ -192,6 +192,7 @@ echo '
     });
 
     function saveField(event, fieldName, id_zakazchik) {
+        event.stopPropagation();
         const newValue = event.target.innerText;
         $.ajax({
             url: "app/ajax/updateZakazchik.php",
@@ -202,7 +203,7 @@ echo '
                 value: newValue
             }
         }).done(function(response) {
-            alert("Данные обновлены.");
+         
         }).fail(function() {
             alert("Ошибка при обновлении данных.");
         });

@@ -6,6 +6,7 @@ class SostTechObject
     /////////////////////////////////
 
     private $id;
+    private $sostTechOtchetCheck;
     private $zaklSostStr;
     private $toggleZd61;
     private $toggleZd62;
@@ -61,9 +62,10 @@ class SostTechObject
      * @param $toggleZdDopUslrazrabrek
      * @param $choosCunstruct6
      */
-    public function __construct($id, $zaklSostStr, $toggleZd61, $toggleZd62, $toggleZd63, $toggleZd64, $toggleZd65, $toggleZd66, $toggleZd67, $toggleZd68, $toggleZd69, $conval61, $conval62, $conval63, $conval64, $conval65, $conval66, $conval67, $conval68, $conval69, $toggleZdDopUslseism, $toggleZdDopUslrazrab, $toggleZdDopUslrazrabrek, $choosCunstruct6)
+    public function __construct($id, $sostTechOtchetCheck, $zaklSostStr, $toggleZd61, $toggleZd62, $toggleZd63, $toggleZd64, $toggleZd65, $toggleZd66, $toggleZd67, $toggleZd68, $toggleZd69, $conval61, $conval62, $conval63, $conval64, $conval65, $conval66, $conval67, $conval68, $conval69, $toggleZdDopUslseism, $toggleZdDopUslrazrab, $toggleZdDopUslrazrabrek, $choosCunstruct6)
     {
         $this->id = $id;
+        $this->sostTechOtchetCheck = $sostTechOtchetCheck;
         $this->zaklSostStr = $zaklSostStr;
         $this->toggleZd61 = $toggleZd61;
         $this->toggleZd62 = $toggleZd62;
@@ -103,6 +105,20 @@ class SostTechObject
     public function setId($id): void
     {
         $this->id = $id;
+    }
+
+
+    public function getSostTechOtchetCheck()
+    {
+        return $this->sostTechOtchetCheck;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setSostTechOtchetCheck($sostTechOtchetCheck): void
+    {
+        $this->sostTechOtchetCheck = $sostTechOtchetCheck;
     }
 
     /**
@@ -476,6 +492,7 @@ class SostTechObject
     public function toJson(){
         return [
             'id' => $this->id,
+            'sostTechOtchetCheck' => $this->sostTechOtchetCheck,
             'zaklSostStr' => $this->zaklSostStr,
             'toggleZd61' => $this->toggleZd61,
             'toggleZd62' => $this->toggleZd62,
