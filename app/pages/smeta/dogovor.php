@@ -148,12 +148,12 @@ echo "<script>
             <div style = "margin-left:30px;" id = "actnacl">
                 <button id="btnTechZad" class="btn btn-primary" onclick="printAkt()">Акт, накладная в Word</button>
             </div>
-            <div style = "margin-left:30px;" id = "protoc">
-                <button id="btnPrintProtocol" class="btn btn-primary" onclick="printProtocol()">Протокол</button>
-            </div>
-            <div style = "margin-left:30px;" id = "plan">
-                <button id="btnPrintPlan" class="btn btn-primary" onclick="printPlan()">Календарный план</button>
-            </div>
+<!--            <div style = "margin-left:30px;" id = "protoc">-->
+<!--                <button id="btnPrintProtocol" class="btn btn-primary" onclick="printProtocol()">Протокол</button>-->
+<!--            </div>-->
+<!--            <div style = "margin-left:30px;" id = "plan">-->
+<!--                <button id="btnPrintPlan" class="btn btn-primary" onclick="printPlan()">Календарный план</button>-->
+<!--            </div>-->
             <div style = "margin-left:30px;"  id = "dogr">
                 <button id="btnTechZad" class="btn btn-primary" onclick="printDogovor()">Договор в Word</button>
             </div>

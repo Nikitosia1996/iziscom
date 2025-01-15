@@ -218,12 +218,12 @@ echo '
 
 
  h2 {
+ font-size:14pt;
             text-align: center;
         }
 
-        p {
-            text-indent: 30px; 
-            text-align: justify; 
+        p { 
+            text-align: center; 
         }
 table {
   width: 100%;
@@ -264,12 +264,26 @@ tr:hover {
   background-color: #f5f5f5;
 }
 .text-lg{
-font-size: 14px;
+font-size: 14pt;
 }
     .no-margin {
         margin: 0; /* Убираем отступы */
     }
+pre{
+    font-family: "Times New Roman";
+    font-size: 12pt;
+    text-align: justify; 
+    text-indent: 30px;
+}
 
+.mt-m2{
+    margin-top: -200px;
+    padding-top:-200px;
+}
+
+.ft td{
+ border:none;
+}
 </style>
 </body>        
 <div style=" font-size: 14pt;
@@ -280,101 +294,93 @@ font-size: 14px;
 ">
 <!-- Преамбула заявления -->
     <strong>Договор № ' . $nomer_dogovora . ' </strong> </div>
-    <br>
-    <div class="container" style="margin-left: 3%;">
-    <div class="left-block" style="text-align: left; line-height: 18pt; padding-left: 0px;">
-        г. Минск<br>
-    </div>
-    <div class="right-block" style="text-align: left; line-height: 18pt; margin-left:340px;">
-        ' . $form_date_zakl_dogovora . '<br>
-    </div>
-</div>
-<div class="mt-4">
+
+    <div style="margin-top:-100px">
+    <pre  style="text-align: left; line-height: 18pt; padding-left: 0px; ">
+        г. Минск                                                                               ' . $form_date_zakl_dogovora . '
+    </pre>
         <p style="text-align: justify;"> ' . $name_zakazchik . ', именуемое в дальнейшем «<strong>Заказчик</strong>» в лице ' . $doljn . ', действующего на основании ' . $osn_podpis . ' с одной стороны, и <strong>ООО «ИЗИСКОМ»</strong> в лице директора Лукьяновича А.В., действующего на основании Устава, именуемое в дальнейшем <strong>«Подрядчик»</strong>, с другой стороны, вместе именуемые - Стороны, заключили настоящий Договор о нижеследующем:</p>
     </div> 
-    <div class="mt-8">
+    <div >
         <h2 class="text-lg font-bold">1. ПРЕДМЕТ ДОГОВОРА</h2>
-        <p class="mt-2 no-margin">1.1. <strong>Заказчик</strong> поручает, а <strong>Подрядчик</strong> обязуется выполнить <strong> ' . $name_work . ' </strong> с последующей выдачей соответствующего заключения.</p>
-        <p class="mt-2 no-margin">1.2. Цель проведения работ – ' . $target_work . '</p>
+        <pre class=" no-margin" style=" text-indent: 30px; ">1.1. <strong>Заказчик</strong> поручает, а <strong>Подрядчик</strong> обязуется выполнить <strong> ' . $name_work . ' </strong> с последующей выдачей соответствующего заключения. <br></pre>
+        <pre style=" text-indent: 30px; ">1.2. Цель проведения работ – ' . $target_work . '</pre>
     </div>
-    <div class="mt-8">
+    <div >
         <h2 class="text-lg font-bold">2. СРОКИ ВЫПОЛНЕНИЯ РАБОТ</h2>
-        <p class="mt-2 no-margin">2.1. Сроки выполнения работ: ' . $formatted_date_start_work . ' - ' . $formatted_date_end_work . '</p>
-        <p class="mt-2 no-margin">2.2. В случае не своевременного выполнения <strong>Заказчиком</strong> обязательства, изложенного в п. 3.1.1 настоящего Договора, <strong>Подрядчик</strong> имеет право сместить срок выполнения на соответствующее число дней.</p>
+       <pre class=" no-margin" >2.1. Сроки выполнения работ: ' . $formatted_date_start_work . ' - ' . $formatted_date_end_work . '</pre>
+       <pre>2.2. В случае не своевременного выполнения <strong>Заказчиком</strong> обязательства, изложенного в п. 3.1.1 настоящего Договора, <strong>Подрядчик</strong> имеет право сместить срок выполнения на соответствующее число дней.</pre>
     </div>
-     <div class="mt-8">
+     <div class="">
         <h2 class="text-lg font-bold">3. ПРАВА И ОБЯЗАННОСТИ СТОРОН</h2>
-        <p class="mt-2 no-margin">3.1. <strong>Заказчик</strong> обязуется:</p>
-        <p class="ml-4 mt-2 no-margin">3.1.1. Содействовать <strong>Подрядчику</strong> в обеспечении свободного, непрерывного и безопасного доступа к строительным конструкциям объекта на весь период действия договора.</p>
-        <p class="ml-4 mt-2 no-margin">3.1.2. Предоставить имеющуюся техническую документацию по объекту <strong>Подрядчику</strong> для изучения.</p>
-        <p class="ml-4 mt-2 no-margin">3.1.3. В случае необходимости своевременно информировать <strong>Подрядчика</strong> о предполагаемых изменениях в техническом состоянии объекта.</p>
-        <p class="ml-4 mt-2 no-margin">3.1.4. Обеспечить своевременную приемку работ по настоящему договору.</p>
-        <p class="ml-4 mt-2 no-margin">3.1.5. При необходимости произвести своими силами и за свой счет вскрытия в строительных конструкциях в местах отбора образцов, определённых <strong>Подрядчиком</strong>.</p>
-        <p class="mt-2 no-margin">3.2. <strong>Подрядчик</strong> обязуется:</p>
-        <p class="ml-4 mt-2 no-margin">3.2.1. Произвести работы в соответствии с СН 1.04.01 «Техническое состояние зданий и сооружений», а также с требованиями указанных в техническом задании.</p>
-        <p class="ml-4 mt-2 no-margin">3.2.2. Доставлять собственными силами и за свой счёт необходимое для надлежащего выполнения работ материально-техническое обеспечение на объект и обратно, обеспечить выполнение всех видов работ по настоящему договору своими силами и за свой счёт, обеспечить качественное и своевременное исполнение всех видов работ, соблюдения сотрудниками правил выполнения работ и техники безопасности при их производстве.</p>
-        <p class="ml-4 mt-2 no-margin">3.2.3. <strong>Подрядчик</strong> имеет право привлекать для проведения или обеспечения некоторых видов работ по настоящему договору сторонние (субподрядные) организации.</p> 
+        <pre class=" no-margin">3.1. <strong>Заказчик</strong> обязуется:</pre>
+        <pre class=" no-margin">3.1.1. Содействовать <strong>Подрядчику</strong> в обеспечении свободного, непрерывного и безопасного доступа к строительным конструкциям объекта на весь период действия договора.</pre>
+        <pre class=" no-margin">3.1.2. Предоставить имеющуюся техническую документацию по объекту <strong>Подрядчику</strong> для изучения.</pre>
+        <pre class=" no-margin">3.1.3. В случае необходимости своевременно информировать <strong>Подрядчика</strong> о предполагаемых изменениях в техническом состоянии объекта.</pre>
+        <pre class=" no-margin">3.1.4. Обеспечить своевременную приемку работ по настоящему договору.</pre>
+        <pre class=" no-margin">3.1.5. При необходимости произвести своими силами и за свой счет вскрытия в строительных конструкциях в местах отбора образцов, определённых <strong>Подрядчиком</strong>.</pre>
+        <pre class=" no-margin">3.2. <strong>Подрядчик</strong> обязуется:</pre>
+        <pre class=" no-margin">3.2.1. Произвести работы в соответствии с СН 1.04.01 «Техническое состояние зданий и сооружений», а также с требованиями указанных в техническом задании.</pre>
+        <pre class=" no-margin">3.2.2. Доставлять собственными силами и за свой счёт необходимое для надлежащего выполнения работ материально-техническое обеспечение на объект и обратно, обеспечить выполнение всех видов работ по настоящему договору своими силами и за свой счёт, обеспечить качественное и своевременное исполнение всех видов работ, соблюдения сотрудниками правил выполнения работ и техники безопасности при их производстве.</pre>
+        <pre class=" no-margin">3.2.3. <strong>Подрядчик</strong> имеет право привлекать для проведения или обеспечения некоторых видов работ по настоящему договору сторонние (субподрядные) организации.</pre> 
     </div>';
 
 echo '     <div class="mt-8">
         <h2 class="text-lg font-bold">4. СТОИМОСТЬ РАБОТ И ПОРЯДОК ОПЛАТЫ</h2>
-        <p class="ml-4 mt-2 no-margin">4.1. Стоимость работ определена на момент составления договора, согласно утвержденной сторонами протокола (Приложение №' . $indprot . ') и составляет:<strong> ' . $rubli . ',' . $kopeiki . ' (' . $result_rubli . ' ' . $stringP . ' ' . $result_kopeiki . ' ' . $stringK . ')</strong>, без НДС (в связи с применением УСН).</p>
-        <p class="ml-4 mt-2 no-margin">4.2. Цена может изменяться в следующих случаях:</p>
-        <p class="ml-4 mt-2 no-margin">- внесения <strong>Заказчиком</strong> изменений в первоначальное задание, влекущее за собой изменение объемов обследовательских работ;</p>
-        <p class="ml-4 mt-2 no-margin">- изменения налогового законодательства;</p>
-        <p class="ml-4 mt-2 no-margin">В случае изменения договорной цены расчеты производятся на основании исполнительной калькуляции по фактическим трудозатратам.</p>
+        <pre class=" no-margin">4.1. Стоимость работ определена на момент составления договора, согласно утвержденной сторонами протокола (Приложение №' . $indprot . ') и составляет:<strong> ' . $rubli . ',' . $kopeiki . ' (' . $result_rubli . ' ' . $stringP . ' ' . $result_kopeiki . ' ' . $stringK . ')</strong>, без НДС (в связи с применением УСН).</pre>
+        <pre class=" no-margin">4.2. Цена может изменяться в следующих случаях:</pre>
+        <pre class=" no-margin">- внесения <strong>Заказчиком</strong> изменений в первоначальное задание, влекущее за собой изменение объемов обследовательских работ;</pre>
+        <pre class=" no-margin">- изменения налогового законодательства;</pre>
+        <pre class=" no-margin">В случае изменения договорной цены расчеты производятся на основании исполнительной калькуляции по фактическим трудозатратам.</pre>
         ';
 if ($sum_avans == "0") {
-    echo '<p class="ml-4 mt-2 no-margin">4.3. Расчет за выполненные работы производится путем банковского перевода денежных средств на расчетный счет <strong>Подрядчика</strong> в течение 05 банковских дней со дня подписания акта сдачи-приёмки выполненных работ.</p>';
+    echo '<pre class="ml-4 mt-2 no-margin">4.3. Расчет за выполненные работы производится путем банковского перевода денежных средств на расчетный счет <strong>Подрядчика</strong> в течение 05 банковских дней со дня подписания акта сдачи-приёмки выполненных работ.</pre>';
 } else {
-    echo '<p class="ml-4 mt-2 no-margin">4.3. Заказчик в течении 2 банковских дней от даты договора перечисляет Подрядчику авансовый платеж в размере ' . $sum_avans . '% от стоимости работ по договору, что составляет: <strong> ' . $rubli1 . ',' . $kopeiki1 . ' (' . $result_rubli1 . ' ' . $stringP1 . ' ' . $result_kopeiki1 . ' ' . $stringK1 . ')</strong>. Подрядчик приступает к выполнению работ со дня вступления авансового платежа. При несвоевременном перечислении авансового платежа подрядчик имеет право перенести срок сдачи работ соразмерно количеству дней задержки авансового платежа.</p>';
+    echo '<pre class="ml-4 mt-2 no-margin">4.3. Заказчик в течении 2 банковских дней от даты договора перечисляет Подрядчику авансовый платеж в размере ' . $sum_avans . '% от стоимости работ по договору, что составляет: <strong> ' . $rubli1 . ',' . $kopeiki1 . ' (' . $result_rubli1 . ' ' . $stringP1 . ' ' . $result_kopeiki1 . ' ' . $stringK1 . ')</strong>. Подрядчик приступает к выполнению работ со дня вступления авансового платежа. При несвоевременном перечислении авансового платежа подрядчик имеет право перенести срок сдачи работ соразмерно количеству дней задержки авансового платежа.</pre>';
 }
-echo ' <p class="ml-4 mt-2 no-margin">4.4. В случае приостановления или прекращения работ по инициативе <strong>Заказчика</strong> окончательный расчет производится за фактически выполненный объем работ с учетом фактических затрат <strong>Подрядчика</strong> в течение пяти банковских дней после подписания акта сдачи-приемки выполненных работ.</p>
-        <p class="ml-4 mt-2 no-margin">4.5. В случае возникновения необходимости выполнения работ, непредусмотренных договором и не включенных в смету, данные работы оплачиваются на основании дополнительного соглашения сторон, при этом сумма дополнительной оплаты рассчитывается на основе и по методике основной сметы.</p>
-        <p class="ml-4 mt-2 no-margin">4.6. Источник финансирования – ' . $istochnik . '.</p> 
+echo ' <pre class="ml-4 mt-2 no-margin">4.4. В случае приостановления или прекращения работ по инициативе <strong>Заказчика</strong> окончательный расчет производится за фактически выполненный объем работ с учетом фактических затрат <strong>Подрядчика</strong> в течение пяти банковских дней после подписания акта сдачи-приемки выполненных работ.</pre>
+        <pre class="ml-4 mt-2 no-margin">4.5. В случае возникновения необходимости выполнения работ, непредусмотренных договором и не включенных в смету, данные работы оплачиваются на основании дополнительного соглашения сторон, при этом сумма дополнительной оплаты рассчитывается на основе и по методике основной сметы.</pre>
+        <pre class="ml-4 mt-2 no-margin">4.6. Источник финансирования – ' . $istochnik . '.</pre> 
     </div>';
 
 echo '     <div class="mt-8">
         <h2 class="text-lg font-bold">5. ПОРЯДОК СДАЧИ И ПРИЕМКИ РАБОТ</h2>
-        <p class="ml-4 mt-2 no-margin">5.1. Работа принимается по накладной на основании подписанного сторонами акта сдачи-приемки выполненных работ.
-</p>
-        <p class="ml-4 mt-2 no-margin">5.2. <strong>Заказчик</strong> обязан принять выполненные работы и подписать накладную и акт сдачи-приемки выполненных работ в течение 5 (пяти) дней с момента их завершения или направить <strong>Подрядчику</strong> обоснованные претензии, в противном случае работы считаются принятыми и подлежат оплате со дня предоставления накладной и акта.</p>
-        <p class="ml-4 mt-2 no-margin">5.3. Если в процессе выполнения работ выясняется невозможность ее дальнейшего проведения, Подрядчик обязан приостановить ее, письменно поставить об этом в известность <strong>Заказчика</strong> и в 10-ти дневный срок рассмотреть вопрос о дальнейших действиях. По истечении указанного срока <strong>Заказчик</strong> уплачивает <strong>Подрядчику</strong> стоимость выполненных работ.</p> 
+        <pre class="ml-4 mt-2 no-margin">5.1. Работа принимается по накладной на основании подписанного сторонами акта сдачи-приемки выполненных работ.
+</pre>
+        <pre class="ml-4 mt-2 no-margin">5.2. <strong>Заказчик</strong> обязан принять выполненные работы и подписать накладную и акт сдачи-приемки выполненных работ в течение 5 (пяти) дней с момента их завершения или направить <strong>Подрядчику</strong> обоснованные претензии, в противном случае работы считаются принятыми и подлежат оплате со дня предоставления накладной и акта.</pre>
+        <pre class="ml-4 mt-2 no-margin">5.3. Если в процессе выполнения работ выясняется невозможность ее дальнейшего проведения, Подрядчик обязан приостановить ее, письменно поставить об этом в известность <strong>Заказчика</strong> и в 10-ти дневный срок рассмотреть вопрос о дальнейших действиях. По истечении указанного срока <strong>Заказчик</strong> уплачивает <strong>Подрядчику</strong> стоимость выполненных работ.</pre> 
     </div>';
 
 echo '     <div class="mt-8">
         <h2 class="text-lg font-bold">6. ОТВЕТСТВЕННОСТЬ СТОРОН</h2>
-        <p class="ml-4 mt-2 no-margin">6.1. За невыполнение или ненадлежащее выполнение обязательств по настоящему договору <strong>Заказчик</strong> и <strong>Подрядчик</strong> несут имущественную ответственность в соответствии с действующим законодательством Республики Беларусь.
-</p>
-        <p class="ml-4 mt-2 no-margin">6.2. Споры, связанные с заключением и исполнением настоящего договора, рассматриваются в экономическом суде по месту нахождения ответчика в порядке, установленным хозяйственно-процессуальным кодексом Республики Беларусь.</p>
-        <p class="ml-4 mt-2 no-margin">6.3. Стороны освобождаются от ответственности при наступлении форс-мажорных обстоятельств (пожар, наводнение, землетрясение и др.).</p> 
-        <p class="ml-4 mt-2 no-margin">6.4. За нарушение сроков выполнения работ (п. 2.1 настоящего договора) Подрядчик уплачивает пеню в размере 0.2% от стоимости работ за каждый день просрочки, но не более 10% от стоимости.</p> 
-        <p class="ml-4 mt-2 no-margin">6.5. За несвоевременную оплату выполненных работ (п. 4.3 настоящего договора) Заказчик уплачивает пеню в размере 0.2% от стоимости несвоевременно оплаченных работ за каждый день просрочки, но не более 10% от стоимости.</p> 
+        <pre class="ml-4 mt-2 no-margin">6.1. За невыполнение или ненадлежащее выполнение обязательств по настоящему договору <strong>Заказчик</strong> и <strong>Подрядчик</strong> несут имущественную ответственность в соответствии с действующим законодательством Республики Беларусь.
+</pre>
+        <pre class="ml-4 mt-2 no-margin">6.2. Споры, связанные с заключением и исполнением настоящего договора, рассматриваются в экономическом суде по месту нахождения ответчика в порядке, установленным хозяйственно-процессуальным кодексом Республики Беларусь.</pre>
+        <pre class="ml-4 mt-2 no-margin">6.3. Стороны освобождаются от ответственности при наступлении форс-мажорных обстоятельств (пожар, наводнение, землетрясение и др.).</pre> 
+        <pre class="ml-4 mt-2 no-margin">6.4. За нарушение сроков выполнения работ (п. 2.1 настоящего договора) Подрядчик уплачивает пеню в размере 0.2% от стоимости работ за каждый день просрочки, но не более 10% от стоимости.</pre> 
+        <pre class="ml-4 mt-2 no-margin">6.5. За несвоевременную оплату выполненных работ (п. 4.3 настоящего договора) Заказчик уплачивает пеню в размере 0.2% от стоимости несвоевременно оплаченных работ за каждый день просрочки, но не более 10% от стоимости.</pre> 
     </div>';
 
 echo '     <div class="mt-8" >
         <h2 class="text-lg font-bold">7. ДОПОЛНИТЕЛЬНЫЕ УСЛОВИЯ</h2>
-        <p class="ml-4 mt-2 no-margin">7.1. Все изменения и дополнения в договор вносятся путем заключения дополнительного соглашения, подписанного обеими сторонами.
-</p>
+        <pre class="ml-4 mt-2 no-margin">7.1. Все изменения и дополнения в договор вносятся путем заключения дополнительного соглашения, подписанного обеими сторонами.
+</pre>
     </div>';
 echo '     <div class="mt-8">
         <h2 class="text-lg font-bold">8. СРОК ДЕЙСТВИЯ ДОГОВОРА </h2>
-        <p class="ml-4 mt-2 no-margin">8.1. Настоящий договор вступает в силу со дня его подписания и действует до полного исполнения сторонами своих обязательств.
-</p>
+        <pre class="ml-4 mt-2 no-margin">8.1. Настоящий договор вступает в силу со дня его подписания и действует до полного исполнения сторонами своих обязательств.
+</pre>
     </div>';
 
 echo '    
     
      <div class="mt-8 page-break" >
         <h2 class="text-lg font-bold">9. ЮРИДИЧЕСКИЕ АДРЕСА СТОРОН</h2>
-        <p class="ml-4 mt-2 no-margin"> <strong>Заказчик: ' . $name_zakazchik . '   </strong></p>
-<div style = "margin-left:30px">' . $rekvizit . ' </div>
-
-  <p class="ml-4 mt-2" style = "margin-bottom:0px"> <strong>Подрядчик: ООО «ИЗИСКОМ»</strong></p>
- <div style = "margin-left:30px " > ул. Шафарнянская, 11, пом.25, г. Минск, 220125, Республика Беларусь
-тел. факс +375(17) 3939673, +375(17) 3968696, E-mail: info@iziscom.by, www.iziscom.by
-УНП193091186 р/с BY61TECN30125225720180000010
-БИК: TECNBY22 в ОАО «Технобанк» ул. Руссиянова, 8, г. Минск.</div>
+        <pre class="ml-4 mt-2 no-margin"><strong>Заказчик: ' . $name_zakazchik . '   </strong></pre>
+<pre>' . $rekvizit . ' </pre>
+<br>
+  <pre class="ml-4 mt-2" style = "margin-bottom:0px"><strong>Подрядчик: ООО «ИЗИСКОМ»</strong></pre>
+ <pre >ул. Шафарнянская, 11, пом.25, г. Минск, 220125, Республика Беларусь тел. факс +375(17) 3939673, +375(17) 3968696, E-mail: info@iziscom.by, www.iziscom.by УНП193091186 р/с BY61TECN30125225720180000010 БИК: TECNBY22 в ОАО «Технобанк» ул. Руссиянова, 8, г. Минск.</pre>
 
     </div>';
 
@@ -384,18 +390,33 @@ echo '     <div class="mt-8">
 
 
 echo ' 
-    <div class="container" style="margin-left: 3%;">
- <div class="left-block" style="text-align: left; line-height: 18pt; padding-left: 0px;">
-      <strong>Подрядчик</strong><br><br><div>Директор<br>ООО «ИЗИСКОМ»</div>
-    </div>
-    <div class="right-block" style="text-align: left; line-height: 18pt; margin-left:120px;">
-      <strong>Заказчик</strong><br><br><div>'.$doljn.'<br>'.$name_zakazchik.'</div>
-    </div>
-</div></div>
-<div class="container" style="margin-left: 3%;">
-    <div class="left-block" style="text-align: left; line-height: 18pt; padding-left: 0px; ">______________ '.$fio.'<div class="center-text" style="margin-left: 40px; margin-top: 8px; margin-bottom: 8px;" >м.п.</div></div>
-    <div class="right-block" style="text-align: left; line-height: 18pt; margin-left:120px;">______________ А.В. Лукьянович<div class="center-text" style="margin-left: 40px; margin-top: 8px; margin-bottom: 8px;" >м.п.</div></div>
-    </div><br><br>  ';
+
+ <br><br>
+ <table class ="ft" style="border-collapse: collapse; border: none;" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td style="width: 45%;font-weight: 600;">ПОДРЯДЧИК <br>  ООО «ИЗИСКОМ» </td>
+        <td style="width: 10%;font-weight: 600;"> </td>
+        <td style="width: 45%;font-weight: 600;">ЗАКАЗЧИК <br> '.$name_zakazchik.'</td>
+    </tr>
+ 
+    <tr>
+        <td style="width: 45%; vertical-align: top">Директор</td>
+        <td style="width: 10%;font-weight: 600;"> </td>
+        <td style="width: 45%; vertical-align: top">'.$doljn.'</td><br><br>
+    </tr> 
+        <tr>
+        <td style="width: 45%; vertical-align: top">______________ А.В. Лукьянович</td>
+        <td style="width: 10%;font-weight: 600;"> </td>
+        <td style="width: 45%; vertical-align: top">______________ '.$fio.'</td>
+    </tr>
+            <tr>
+        <td style="width: 45%; vertical-align: center">м.п.</td>
+        <td style="width: 10%;font-weight: 600;"> </td>
+        <td style="width: 45%; vertical-align: center">м.п.</td>
+    </tr>
+</table>
+
+<br><br><br><br><br>  ';
 
 
 
@@ -494,44 +515,46 @@ $result_kopeiki = (new \MessageFormatter('ru-RU', '{n, spellout}'))->format(['n'
     <div style="text-align: center; margin-top: 50px; font-size:18px"><b>Протокол</b></div>
     <div style="text-align: center; margin-top: 10px; font-size:14px"><b>согласования договорной (контрактной) цены</b></div>
 
-    <div >
-        <div style="margin-left: 30px">Наименование выполняемых работ:</div>
-        <div style="margin-left: 0px">«<?= $name_work ?>»</div>
+<br>
+        <div style="text-align: center;">Наименование выполняемых работ:</div>
+        <p style="margin: 0;">«<?= $name_work ?>»</p> <br>
         <div style="margin-left: 30px">Основание для обследования: <?= $osn_obsled ?></div>
         <div style="margin-left: 30px"><b>Заказчик</b>: <?= $id_zakazchik ?></div>
         <div style="margin-left: 30px"><b>Подрядчик</b>: ООО «ИЗИСКОМ»</div>
-        <p class = "no-margin">Договорная цена работ: <b><?=$rubli.','.$kopeiki . ' (' . $result_rubli . ' ' . $stringP . ' ' . $kopeiki . ' ' . $stringK . ')' ?></b>,без НДС (в связи с применением УСН).</p>
+        <div style=" text-indent:30px;">Договорная цена работ: <b><?=$rubli.','.$kopeiki . ' (' . $result_rubli . ' ' . $stringP . ' ' . $kopeiki . ' ' . $stringK . ')' ?></b>,без НДС (в связи с применением УСН).</div>
 
 
-    </div>
+    <br>
+    <br>
 
 
+<?php echo '
+ <table class ="ft" style="border-collapse: collapse; border: none;" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td style="width: 45%;font-weight: 600;">ПОДРЯДЧИК <br>  ООО «ИЗИСКОМ» </td>
+        <td style="width: 10%;font-weight: 600;"> </td>
+        <td style="width: 45%;font-weight: 600;">ЗАКАЗЧИК <br> '.$name_zakazchik.'</td>
+    </tr>
+ 
+    <tr>
+        <td style="width: 45%; vertical-align: top">Директор</td>
+        <td style="width: 10%;font-weight: 600;"> </td>
+        <td style="width: 45%; vertical-align: top">'.$doljn.'</td> <br><br>
+    </tr> 
+        <tr>
+        <td style="width: 45%; vertical-align: top">______________ А.В. Лукьянович</td>
+        <td style="width: 10%;font-weight: 600;"> </td>
+        <td style="width: 45%; vertical-align: top">______________ '.$fio.'</td>
+    </tr>
+            <tr>
+        <td style="width: 45%; vertical-align: center">м.п.</td>
+        <td style="width: 10%;font-weight: 600;"> </td>
+        <td style="width: 45%; vertical-align: center">м.п.</td>
+    </tr>
+</table>
+    ';
+?>
 
-    <div style="display: flex; justify-content: space-between; margin-top: 60px; margin-left: 40px; margin-right: 40px;">
-        <div>
-            <b>Подрядчик</b>
-            <br>
-            <br>
-            <?=$who_podpis_dog?><br>
-            ООО «ИЗИСКОМ»<br><br>
-            _____________<?=$fioDirika?>
-            <br>
-            <div style="text-align: left; font-size: 12px; margin-left:40px">М.П.</div>
-        </div>
-        <div>
-            <b>Заказчик</b>
-            <br>
-            <br>
-            <?=$doljn?><br>
-            <?=$id_zakazchik?><br><br>
-            _____________<?=$fio?>
-            <br>
-            <div style="text-align: left; font-size: 12px; margin-left:40px">М.П.</div>
-        </div>
-    </div>
-    <div style="display: flex; justify-content: space-around; margin-top: 20px;">
-
-    </div>
 </div>
 </body>
 </html>
@@ -631,30 +654,53 @@ $result_kopeiki = (new \MessageFormatter('ru-RU', '{n, spellout}'))->format(['n'
 <html>
 <head>
     <style>
-        td{
+         .dirikxyu td{
             text-align: center;
         }
     </style>
 </head>
 <body>
-<DIV class = "page-break"></DIV>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <div style="display: grid">
     <div style='float: right'>
-        <div style='position: relative; text-align: right'>Приложение №<?= $indtehzad ?></div>
+        <div style='position: relative; text-align: right'>Приложение №<?= $indcalendarplan ?></div>
         <div style='position: relative;text-align: right'>к договору <?= $nomer_dogovora ?></div>
         <div style='position: relative; text-align: right'>от <?= $formatted_date_zakl_dogovora ?></div>
     </div>
 
     <div style="text-align: center; margin-top: 50px; font-size:14px"><b>КАЛЕНДАРНЫЙ ПЛАН</b></div><br>
-
-    <div >
-        <div style="margin-left: 30px;margin-top: 10px;" >Наименование выполняемых работ:</div>
-        <div style="margin-left: 0px">«<?= $name_work ?>»</div>
-
-    </div><br>
+        <div style="text-align: center;">Наименование выполняемых работ:</div>
+        <p style="margin: 0;">«<?= $name_work ?>»</p>
+    <br>
 
     <div>
-        <table border="1">
+        <table class = "dirikxyu" border="1">
             <tr>
                 <th rowspan="2">
                     Наименование работ
@@ -700,37 +746,39 @@ $result_kopeiki = (new \MessageFormatter('ru-RU', '{n, spellout}'))->format(['n'
                 <td><b><?=$rubli . ',' . $kopeiki?></b></td>
                 <td></td>
                 <td></td>
-                <td></td>
+                <td><?=$count_bum + $count_el?></td>
             </tr>
         </table>
     </div>
-
-    <div style="display: flex; justify-content: space-between; margin-top: 60px; margin-left: 40px; margin-right: 40px;">
-        <div>
-            <b>Подрядчик</b>
-            <br>
-            <br>
-            <?=$who_podpis_dog?><br>
-            ООО «ИЗИСКОМ»<br><br>
-            _____________<?=$fioDirika?>
-            <br>
-            <div style="text-align: left; font-size: 12px; margin-left:40px">М.П.</div>
-        </div>
-        <div>
-            <b>Заказчик</b>
-            <br>
-            <br>
-            <?=$doljn?><br>
-            <?=$id_zakazchik?><br><br>
-            _____________<?=$fio?>
-            <br>
-            <div style="text-align: left; font-size: 12px; margin-left:40px">М.П.</div>
-        </div>
-    </div>
-    <div style="display: flex; justify-content: space-around; margin-top: 20px;">
-
-    </div>
+    <br>
+    <br>
 </div>
+<?php echo '
+ <table class ="ft" style="border-collapse: collapse; border: none;" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td style="width: 45%;font-weight: 600; vertical-align: top">ПОДРЯДЧИК <br>  ООО «ИЗИСКОМ» </td>
+        <td style="width: 10%;font-weight: 600;"> </td>
+        <td style="width: 45%;font-weight: 600; vertical-align: top">ЗАКАЗЧИК <br> '.$name_zakazchik.'</td>
+    </tr>
+ 
+    <tr>
+        <td style="width: 45%; vertical-align: top">Директор</td>
+        <td style="width: 10%;font-weight: 600;"> </td>
+        <td style="width: 45%; vertical-align: top">'.$doljn.'</td> <br><br>
+    </tr> 
+        <tr>
+        <td style="width: 45%; vertical-align: top">______________ А.В. Лукьянович</td>
+        <td style="width: 10%;font-weight: 600;"> </td>
+        <td style="width: 45%; vertical-align: top">______________ '.$fio.'</td>
+    </tr>
+            <tr>
+        <td style="width: 45%; vertical-align: center">м.п.</td>
+        <td style="width: 10%;font-weight: 600;"> </td>
+        <td style="width: 45%; vertical-align: center">м.п.</td>
+    </tr>
+</table>
+    ';
+?>
 </body>
 </html>
 

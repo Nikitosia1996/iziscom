@@ -1,6 +1,8 @@
 <?php
 setlocale(LC_TIME, 'ru_RU.UTF-8');
 
+$doljn = $_POST['doljn'] ?? null;
+$fio = $_POST['fio'] ?? null;
 $rekvizit = $_POST['rekvizit'] ?? null;
 $date_akt = $_POST['date_akt'] ?? null;
 $date_end_work = $_POST['date_end_work'] ?? null;
@@ -186,11 +188,12 @@ echo '
 
 
  h2 {
+ font-size:14pt;
             text-align: center;
         }
 
-        p {
-            text-indent: 30px; 
+        p { 
+            text-align: center; 
         }
 table {
   width: 100%;
@@ -209,7 +212,6 @@ table {
     width: 50%; 
     padding: 20px;
     box-sizing: border-box; 
-   
 }
 td {
    border: 1px solid black;
@@ -231,50 +233,54 @@ tr:nth-child(even) {
 tr:hover {
   background-color: #f5f5f5;
 }
+.text-lg{
+font-size: 14pt;
+}
+    .no-margin {
+        margin: 0; /* Убираем отступы */
+    }
+pre{
+    font-family: "Times New Roman";
+    font-size: 12pt;
+    text-align: justify; 
+    text-indent: 30px;
+}
 
-        .footer {
-            margin-top: 20px;
-        }
-        .footer div {
-            margin-top: 20px;
-        }
-        .signature {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 40px;
-        }
-        .signature div {
-            width: 45%;
-            text-align: center;
-        }
-        .signature div span {
-            display: block;
-            margin-top: 40px;
-            border-top: 1px solid black;
-        }
+.mt-m2{
+    margin-top: -200px;
+    padding-top:-200px;
+}
 
+.ft td{
+ border:none;
+}
+    
 </style>
 </body>        
-    <div class="container" style="margin-left: 3%;">
-    <div class="left-block" style="text-align: left; line-height: 14pt; padding-left: 0px;">
-        <strong>ЗАКАЗЧИК</strong> <br>
-<strong>'.$name_zakazchik.' </strong><br>
-'.$rekvizit.' <br>
+
+<table class ="ft" style="border-collapse: collapse; border: none;" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td style="width: 45%;font-weight: 600; vertical-align: top"">ЗАКАЗЧИК <br> '.$name_zakazchik.'</td>
+        <td style="width: 10%;font-weight: 600;"> </td>
+        <td style="width: 45%;font-weight: 600; vertical-align: top"">ПОДРЯДЧИК <br> ООО «ИЗИСКОМ»</td>
+    </tr>
+ 
+    <tr>
+        <td style="width: 45%; vertical-align: top">'. $rekvizit .'</td>
+        <td style="width: 10%;font-weight: 600;"> </td>
+        <td style="width: 45%; vertical-align: top">ул. Шафарнянская, 11, пом.25, г. Минск, 220125, Республика Беларусь<br>
+            тел. факс +375(17) 3939673, <br>+375(17) 3968696,
+            E-mail: info@iziscom.by, www.iziscom.by<br>
+            УНП193091186
+            р/с BY61TECN30125225720180000010<br>
+            БИК: TECNBY22 в ОАО «Технобанк»<br>
+            ул. Руссиянова, 8, г. Минск.
+        </td>
+    </tr>
+</table>
+  
 <br>
-    </div>
-    <div class="right-block" style="text-align: left; line-height: 14pt; margin-left:90px;">
-        <strong>ПОДРЯДЧИК</strong><br>
-<strong>ООО «ИЗИСКОМ»</strong><br>
-ул. Шафарнянская, 11, пом.25, г. Минск, 220125, Республика Беларусь
-тел. факс +375(17) 3939673, +375(17) 3968696, 
-E-mail: info@iziscom.by, www.iziscom.by
-УНП193091186
-р/с BY61TECN30125225720180000010
-БИК: TECNBY22 в ОАО «Технобанк»
-ул. Руссиянова, 8, г. Минск.
-<br>
-    </div>
-</div>
+
 
 <div style=" font-size: 14pt;
     position: relative;
@@ -284,83 +290,91 @@ E-mail: info@iziscom.by, www.iziscom.by
 ">
 <!-- Преамбула заявления -->
     <strong>Акт  </strong>  <br><br>
-<strong>сдачи-приемки выполненных работ</strong> <br>
-<strong>по договору № '.$nomer_dogovora.' от '.$formatted_date_start_work.' </strong>
+<strong style="font-size: 12pt">сдачи-приемки выполненных работ</strong> <br>
+<strong style="font-size: 12pt">по договору № '.$nomer_dogovora.' от '.$formatted_date_start_work.' </strong>
  </div>
-    <br>
-    <div class="container" style="margin-left: 3%;">
-    <div class="left-block" style="text-align: left; line-height: 14pt; padding-left: 0px;">
-        г. Минск<br>
-    </div>
-    <div class="right-block" style="text-align: left; line-height: 14pt; margin-left:340px;">
-        '.$formatted_date_start_akt.'<br>
-    </div>
+     <pre  style="text-align: left; line-height: 18pt; padding-left: 0px; ">
+        г. Минск                                                                               ' . $formatted_date_start_akt . '
+    </pre>
+   
 </div>
-<div class="mt-4">
-        <p style="text-align: justify;">Мы, нижеподписавшиеся, представитель Подрядчика – директор 
-<strong>ООО «ИЗИСКОМ»</strong> А.В. Лукьянович, с одной стороны, и Заказчик – '.$name_zakazchik.' с другой стороны, составили настоящий акт о том, что работы по предмету договора: «'.$name_work.'», выполнены в полном объеме. <br>
-1.	Заказчик к качеству и объему выполненных работ претензий не имеет. <br>
-2.	Работы надлежащим образом оформлены и переданы Заказчику по накладной от '.$formatted_date_end_work.'. <br>
-3. <strong>Стоимость выполненных работ по настоящему акту составляет: ' . $rubli.','.$kopeiki . ' (' . $result_rubli . ' ' . $stringP . ' ' . $result_kopeiki . ' ' . $stringK. '),</strong> без НДС (в связи с применением УСН).<br>
-4.	Ранее перечислено: 0 (Ноль) белорусских рублей. <br>
-5.	Следует к перечислению: <strong>' . $rubli.','.$kopeiki . ' (' . $result_rubli . ' ' . $stringP . ' ' . $result_kopeiki . ' ' . $stringK. '),</strong> без НДС (в связи с применением УСН).<br>
-</p>
-    </div>';
+
+        <pre style="text-align: justify;">Мы, нижеподписавшиеся, представитель Подрядчика – директор <strong>ООО «ИЗИСКОМ»</strong> А.В. Лукьянович, с одной стороны, и Заказчик – '.$name_zakazchik.' с другой стороны, составили настоящий акт о том, что работы по предмету договора: «'.$name_work.'», выполнены в полном объеме.
+1. Заказчик к качеству и объему выполненных работ претензий не имеет. 
+2. Работы надлежащим образом оформлены и переданы Заказчику по накладной от '.$formatted_date_end_work.'. 
+3. <strong>Стоимость выполненных работ по настоящему акту составляет: ' . $rubli.','.$kopeiki . ' (' . $result_rubli . ' ' . $stringP . ' ' . $result_kopeiki . ' ' . $stringK. '),</strong> без НДС (в связи с применением УСН).
+4. Ранее перечислено: 0 (Ноль) белорусских рублей. 
+</pre><pre style="text-align:left">5. Следует к перечислению: <b>' . $rubli.','.$kopeiki . ' (' . $result_rubli . ' ' . $stringP . ' ' . $result_kopeiki . ' ' . $stringK. '),</b> без НДС (в связи с применением УСН).<br>
+</pre>
+    ';
 echo' 
-    <div class="container" style="margin-left: 3%;">
- <div class="left-block" style="text-align: left; line-height: 18pt; padding-left: 0px;">
-        <strong>Заказчик</strong><br>Директор<br><strong>'.$name_zakazchik.'</strong> <br>
-    </div>
-    <div class="right-block" style="text-align: left; line-height: 18pt; margin-left:120px;">
-        <strong>Подрядчик</strong><br>Директор<br><strong>ООО «ИЗИСКОМ»</strong><br>
-    </div>
-</div></div>
-<div class="container" style="margin-left: 3%; page-break-after: always;" >
-    <div class="left-block" style="text-align: left; line-height: 18pt; padding-left: 0px; ">______________<div class="center-text" style="margin-left: 40px; margin-top: 8px; margin-bottom: 8px;" >м.п.</div></div>
-    <div class="right-block" style="text-align: left; line-height: 18pt; margin-left:120px;">______________А.В. Лукьянович<div class="center-text" style="margin-left: 40px; margin-top: 8px; margin-bottom: 8px;" >м.п.</div></div>
-    </div><br><br>  ';
+    <br><br>
+ <table class ="ft" style="border-collapse: collapse; border: none;" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td style="width: 45%;font-weight: 600; vertical-align: top"">ПОДРЯДЧИК <br>  ООО «ИЗИСКОМ» </td>
+        <td style="width: 10%;font-weight: 600;"> </td>
+        <td style="width: 45%;font-weight: 600; vertical-align: top"">ЗАКАЗЧИК <br> '.$name_zakazchik.'</td>
+    </tr>
+ 
+    <tr>
+        <td style="width: 45%; vertical-align: top">Директор</td>
+        <td style="width: 10%;font-weight: 600;"> </td>
+        <td style="width: 45%; vertical-align: top">'.$doljn.'</td> <br><br>
+    </tr> 
+        <tr>
+        <td style="width: 45%; vertical-align: top">______________ А.В. Лукьянович</td>
+        <td style="width: 10%;font-weight: 600;"> </td>
+        <td style="width: 45%; vertical-align: top">______________ '.$fio.'</td>
+    </tr>
+            <tr>
+        <td style="width: 45%; vertical-align: center">м.п.</td>
+        <td style="width: 10%;font-weight: 600;"> </td>
+        <td style="width: 45%; vertical-align: center">м.п.</td>
+    </tr>
+</table>
+    </div><br><br><br><br>  ';
 
 
 
 echo'
-  <div class="container" style="margin-left: 3%;">
-    <div class="left-block" style="text-align: left; line-height: 14pt; padding-left: 0px;">
-        <strong>ЗАКАЗЧИК</strong> <br>
-<strong>'.$name_zakazchik.' </strong><br>
-'.$rekvizit.' <br>
-<br>
-    </div>
-    <div class="right-block" style="text-align: left; line-height: 14pt; margin-left:90px;">
-        <strong>ПОДРЯДЧИК</strong><br>
-<strong>ООО «ИЗИСКОМ»</strong><br>
-ул. Шафарнянская, 11, пом.25, г. Минск, 220125, Республика Беларусь
-тел. факс +375(17) 3939673, +375(17) 3968696, 
-E-mail: info@iziscom.by, www.iziscom.by
-УНП193091186
-р/с BY61TECN30125225720180000010
-БИК: TECNBY22 в ОАО «Технобанк»
-ул. Руссиянова, 8, г. Минск.
-<br>
-    </div>
-</div>
+  <table class ="ft" style="border-collapse: collapse; border: none;" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td style="width: 45%;font-weight: 600; vertical-align: top"">ЗАКАЗЧИК <br> '.$name_zakazchik.'</td>
+        <td style="width: 10%;font-weight: 600;"> </td>
+        <td style="width: 45%;font-weight: 600; vertical-align: top"">ПОДРЯДЧИК <br> ООО «ИЗИСКОМ»</td>
+    </tr>
+ 
+    <tr>
+        <td style="width: 45%; vertical-align: top">'. $rekvizit .'</td>
+        <td style="width: 10%;font-weight: 600;"> </td>
+        <td style="width: 45%; vertical-align: top">ул. Шафарнянская, 11, пом.25, г. Минск, 220125, Республика Беларусь<br>
+            тел. факс +375(17) 3939673, <br>+375(17) 3968696,
+            E-mail: info@iziscom.by, www.iziscom.by<br>
+            УНП193091186
+            р/с BY61TECN30125225720180000010<br>
+            БИК: TECNBY22 в ОАО «Технобанк»<br>
+            ул. Руссиянова, 8, г. Минск.
+        </td>
+    </tr>
+</table>
 
 <div style=" font-size: 14pt;
     position: relative;
     text-align: center;
-    margin-top: 5px;
+    margin-top: 35px;
     margin-bottom: 5px;
 ">
 <!-- Преамбула заявления -->
     <strong>НАКЛАДНАЯ</strong> <br><br>
- <strong>на передачу результатов работ</strong> <br>
-<strong>от '.$formatted_date_start_work.' </strong> <br><br>
+ <strong style="font-size: 12pt">на передачу результатов работ</strong> <br>
+<strong style="font-size: 12pt">от '.$formatted_date_start_work.' </strong> <br><br>
 
 договор № '.$nomer_dogovora.' от '.$formatted_date_start_work.'  по объекту: <br><br>
-<strong>«'.$name_work.'»</strong> <br> <br>
+<strong style="font-size: 12pt">«'.$name_work.'»</strong> <br> <br>
  </div>
 
 <div style=" justify-content: center; margin-left: 3%;">
-<table style="border-collapse: collapse; border: 1px solid black; width: 98%; margin-top: 0px; margin-bottom: 0;">
+<table border="1" >
     <tr style="padding: 6px;">
         <td style=" text-align: center;">
             <strong>№ п/п</strong>
@@ -402,28 +416,21 @@ echo ' <tr>
 ';
 echo' </tbody></table>';
 
-echo' <div class="footer">
-            <div><strong>Отпуск документации разрешил:</strong></div>
+echo'<br> <div class="footer">
+            <div><strong>Отпуск документации разрешил:</strong></div><br>
             <div>
                 <div>
                     <i>Директор ООО «ИЗИСКОМ» ___________________ А. В. Лукьянович</i>         
-                </div><DIV STYLE = "MARGIN-LEFT:250PX;">М.П.</DIV><br>      
+                </div><DIV STYLE = "MARGIN-LEFT:275PX;">М.П.</DIV><br>     <br>  
             </div>
             <div><strong>Указанную в накладной документацию принял:</strong></div>
             
-            <div STYLE = "display: flex; justify-content: space-between;">
-                 <div>
-                    <br><br>__________________<br>
-                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i>(должность)</i></span>
-                </div>
-                <div>
-                    <br><br>__________________<br>
-                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i>(подпись)</i></span>
-                </div>
-                <div>
-                    <br><br>__________________<br>
-                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i>(ФИО)</i></span>
-                </div>
+            
+                 <pre>
+                    <br><br>__________________                     __________________                      __________________ 
+   <i>(подпись)</i>                                       <i>(должность)</i>                                       <i>(ФИО)</i>
+                </pre>
+             
             </div>';
 
 ?>

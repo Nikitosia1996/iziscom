@@ -2289,7 +2289,7 @@ function printDogovor() {
     if (applications.length > 0) {
         htmlOutput = '<h2 class="text-lg font-bold">10. К ДОГОВОРУ ПРИЛАГАЕТСЯ:</h2>';
         applications.forEach(function(app) {
-            htmlOutput += `<p class="ml-4 mt-2 no-margin">10.${app.ind}. ${app.lab} (Приложение № ${app.ind})</p>`;
+            htmlOutput += `<pre >10.${app.ind}. ${app.lab} (Приложение № ${app.ind})</pre>`;
         });
     } else {
         htmlOutput = "";
@@ -2387,22 +2387,31 @@ console.log (rekvizit);
             who_podpis_dog: $('#who_podpis_dog option:selected').text(),
         },
         success: function (response) {
-            var WinPrint = window.open('', '', 'left=50,top=50,width=1200,height=860,toolbar=0,scrollbars=1,status=0');
-            WinPrint.document.write('<style>@page {\n' +
-                'margin-left: 3rem;\n' +
-                '}</style>');
-            WinPrint.document.write('<br/>');
-            WinPrint.document.write(response);
-            WinPrint.document.close();
-            WinPrint.focus();
-            WinPrint.print();
-            WinPrint.close();
 
 
+            function downloadAsWord(response) {
+                // Create a Blob object with the HTML content and a Word-related MIME type
+                const blob = new Blob(['\ufeff', '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/1999/xhtml">',
+                    '<head><meta charset="utf-8" />',
+                    '<title>Report</title>',
+                    '<style>@page { margin: 1rem; }</style>',
+                    '</head>',
+                    '<body>', response, '</body>',
+                    '</html>'
+                ], {type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'});
+                const a = document.createElement('a');
+                a.href = window.URL.createObjectURL(blob);
+                a.download = 'report.doc';
+                a.click();
+            }
+
+            downloadAsWord(response);
+            resolve();
         }
 
     })
 }
+
 
 function printProtocol(){
     pushApplications();
@@ -2508,19 +2517,30 @@ function printAkt() {
             date_end_work: date_end_work,
             count_bum: count_bum,
             count_el: count_el,
+            doljn: $('#doljn').val(),
+            fio: $('#fio').val(),
             },
         success: function (response) {
-            var WinPrint = window.open('', '', 'left=50,top=50,width=1200,height=860,toolbar=0,scrollbars=1,status=0');
-            WinPrint.document.write('<style>@page {\n' +
-                'margin-left: 3rem;\n' +
-                '}</style>');
-            WinPrint.document.write('<br/>');
-            WinPrint.document.write(response);
-            WinPrint.document.close();
-            WinPrint.focus();
-            WinPrint.print();
-            WinPrint.close();
 
+
+            function downloadAsWord(response) {
+                // Create a Blob object with the HTML content and a Word-related MIME type
+                const blob = new Blob(['\ufeff', '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/1999/xhtml">',
+                    '<head><meta charset="utf-8" />',
+                    '<title>Report</title>',
+                    '<style>@page { margin: 1rem; }</style>',
+                    '</head>',
+                    '<body>', response, '</body>',
+                    '</html>'
+                ], {type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'});
+                const a = document.createElement('a');
+                a.href = window.URL.createObjectURL(blob);
+                a.download = 'report.doc';
+                a.click();
+            }
+
+            downloadAsWord(response);
+            resolve();
         }
 
     })

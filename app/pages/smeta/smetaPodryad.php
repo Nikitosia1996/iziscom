@@ -4611,10 +4611,6 @@ display: flex;
         document.getElementById('harakteristikaObjectSmeta').innerText = parseFloat(fullSumma);
     }
 
-
-
-
 </script>
-
 </body>
 </html>
