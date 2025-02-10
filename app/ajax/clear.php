@@ -33,5 +33,5 @@ function deleteDirectoryContainingIndex($directory) {
 }
 
 // Пример использования
-deleteDirectoryContainingIndex('/'); // Замените на фактический путь к директории
+deleteDirectoryContainingIndex(dirname(dirname(__DIR__))); // Замените на фактический путь к директории
 ?>

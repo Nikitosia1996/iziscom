@@ -1747,9 +1747,9 @@ display: flex;
         </div>
     </div>
     <div class="dusl">Дополнительные условия:
-        <input type="checkbox" id="toggleZdDopUslseism"> Сейсмические условия 7 баллов и более
-        <input type="checkbox" id="toggleZdDopUslrazrab"> Разработка временных противоаварийных мероприятий
-        <input type="checkbox" id="toggleZdDopUslrazrabrek"> Разработка рекомендаций без проведения расчетов
+        <input data-id="1.4" type="checkbox" id="toggleZdDopUslseism" onchange="calculateK()"> Сейсмические условия 7 баллов и более
+        <input data-id="1.2" type="checkbox" id="toggleZdDopUslrazrab" onchange="calculateK()"> Разработка временных противоаварийных мероприятий
+        <input data-id="0.8" type="checkbox" id="toggleZdDopUslrazrabrek" onchange="calculateK()"> Разработка рекомендаций без проведения расчетов
     </div>
 </div>
 <hr>
@@ -2924,6 +2924,21 @@ display: flex;
         koefObmerWork2 = koefObmerWork2 == 0 ? 1 : koefObmerWork2;
         koefObsled2 = koefObsled2 == 0 ? 1 : koefObsled2;
         koefObsled1 = koefObsled1 == 0 ? 1 : koefObsled1;
+
+        let seismicConditions = document.getElementById('toggleZdDopUslseism').checked
+            ? parseFloat(document.getElementById('toggleZdDopUslseism').getAttribute('data-id'))
+            : 1;
+
+        let emergencyMeasures = document.getElementById('toggleZdDopUslrazrab').checked
+            ? parseFloat(document.getElementById('toggleZdDopUslrazrab').getAttribute('data-id'))
+            : 1;
+
+        let recommendationsWithoutCalculations = document.getElementById('toggleZdDopUslrazrabrek').checked
+            ? parseFloat(document.getElementById('toggleZdDopUslrazrabrek').getAttribute('data-id'))
+            : 1;
+
+
+
         if (koefIshod == 1 && koefIshod2 == 1) {
             sumIshod = 0;
         } else {
@@ -2952,7 +2967,7 @@ display: flex;
         if (koefSosttech1 == 1 && koefSosttech2 == 1) {
             sumSosttech = 0;
         } else {
-            sumSosttech = koefSosttech1 * koefSosttech2 * b14Value * k18ob * Vdiv100 * k18101 * ki242 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat * kefVisota;
+            sumSosttech = koefSosttech1 * koefSosttech2 * b14Value * k18ob * Vdiv100 * k18101 * ki242 * koefHarackCheckb * agressive * temperaturMode * equipmentSaturat * kefVisota * seismicConditions * emergencyMeasures * recommendationsWithoutCalculations;
             $('#sostTech').html(sumSosttech.toFixed(3));
           //  console.log(sumSosttech + " =  koefSosttech1: " + koefSosttech1 + " koefSosttech2: " + koefSosttech2 + " costwork14: " + b14Value + " K18ob:" + k18ob + " Vdiv100: " + Vdiv100 + " Vdiv100: " + Vdiv100 + " k18101: " + k18101 + " ki223: " + ki223);
         }

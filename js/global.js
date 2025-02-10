@@ -1,5 +1,9 @@
 var currentUrl = window.location.search;
 
+
+
+
+
 let etazh = 1;
 let visotapola = 1;
 
@@ -1705,6 +1709,11 @@ async function calcSosttech1() {
     } else if (kat_sl_rab == 3) {
         P242 = 15.5;
     }
+
+
+
+
+
     return new Promise((resolve, reject) => {
         $.ajax({
             url: "app/ajax/getKoefSosttech1.php",
