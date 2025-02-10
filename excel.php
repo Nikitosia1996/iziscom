@@ -68,6 +68,7 @@ $k18216 = $_COOKIE['K18216'];
 $k18217 = $_COOKIE['K18217'];
 $k18218 = $_COOKIE['K18218'];
 $k18220 = $_COOKIE['K18220'];
+$minuskef = $_COOKIE['minuskef'];
 
 $fullSumma = floatval($_COOKIE['fullSumma']);
 
@@ -858,18 +859,37 @@ $sheet->getStyle('E' . $startedCell)->getFont()->setBold(true);
 $sheet->getStyle('A' . $startedCell . ':O' . $startedCell)->applyFromArray($styleArray);
 
 
-for ($i = 1; $i < 3; $i++) {
+for ($i = 1; $i < 4; $i++) {
     if ($i == 1) {
-        $sheet->setCellValue("B" . $startedCell + $i, "Сумма налога при упрощенной системе налогообложения (" . $proc ."%)");
-        $sheet->setCellValue("L" . $startedCell + $i, "п." . $nom . " * " . $proc . " / " . $znam );
+        if($minuskef !== "1"){
+            $sheet->setCellValue("B" . $startedCell + $i, "С учетом понижающего коэффициента на выполняемые работы");
+            $sheet->setCellValue("L" . $startedCell + $i, "п." . $nom . " * " . $minuskef );
+            $sheet->setCellValue("N" . $startedCell + $i, $fullSumma * $minuskef);
+        }
+    } else if ($i == 2) {
+        if($minuskef === "1"){
+            $sheet->setCellValue("B" . $startedCell + $i - 1, "Сумма налога при упрощенной системе налогообложения (" . $proc ."%)");
+            $sheet->setCellValue("L" . $startedCell + $i - 1, "п." . $nom-1 . " * " . $proc . " / " . $znam );
+            $sheet->setCellValue("N" . $startedCell + $i - 1, $fullSumma * $minuskef * $proc / $znam);
 
-            $sheet->setCellValue("N" . $startedCell + $i, $fullSumma * $proc / $znam);
+        }else{
+            $sheet->setCellValue("B" . $startedCell + $i, "Сумма налога при упрощенной системе налогообложения (" . $proc ."%)");
+            $sheet->setCellValue("L" . $startedCell + $i, "п." . $nom . " * " . $proc . " / " . $znam );
+            $sheet->setCellValue("N" . $startedCell + $i, $fullSumma * $minuskef * $proc / $znam);
+        }
 
-
-    } else {
-        $sheet->setCellValue("B" . $startedCell + $i, "Итого стоимость работ без НДС:");
-        $sheet->setCellValue("L" . $startedCell + $i, "п." . $nom - 1  . " + " . "п." . $nom );
-        $sheet->setCellValue("N" . $startedCell + $i, $fullSumma + $itog * $proc / $znam);
+    }
+    else{
+        if($minuskef === "1") {
+            $sheet->setCellValue("B" . $startedCell + $i-1, "Итого стоимость работ без НДС:");
+            $sheet->setCellValue("L" . $startedCell + $i-1, "п." . $nom - 2 . " + " . "п." . $nom - 1);
+            $sheet->setCellValue("N" . $startedCell + $i-1, ($fullSumma * $minuskef) + ($fullSumma * $minuskef * $proc) / $znam);
+//        $sheet->setCellValue("N" . $startedCell + $i, $fullSumma * $minuskef + $itog * $proc / $znam);
+        }else{
+            $sheet->setCellValue("B" . $startedCell + $i, "Итого стоимость работ без НДС:");
+            $sheet->setCellValue("L" . $startedCell + $i, "п." . $nom - 1 . " + " . "п." . $nom);
+            $sheet->setCellValue("N" . $startedCell + $i, ($fullSumma * $minuskef) + ($fullSumma * $minuskef * $proc) / $znam);
+        }
 
     }
     $sheet->getStyle('L' . $startedCell + $i)->getFont()->setSize(10);
