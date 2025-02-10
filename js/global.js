@@ -1998,6 +1998,7 @@ function printExcel() {
         document.cookie = " ph3_212=" + koefIshod2 + ";";
         document.cookie = " ki212=" + ki212 + ";";
         document.cookie = " p212=" + P212 + ";";
+        document.cookie = " minuskef=" + document.getElementById("minuskef").value + ";";
         let formula1 = "V/100 * K18.об * Коп  * НЗТР * Ki * РНЗ * B14";
         let formula2 = formula1;
         let formula3 = formula1;
